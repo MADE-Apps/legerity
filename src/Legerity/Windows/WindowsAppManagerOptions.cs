@@ -1,4 +1,4 @@
-namespace Legerity
+namespace Legerity.Windows
 {
     using OpenQA.Selenium.Appium;
 

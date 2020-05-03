@@ -3,6 +3,7 @@ namespace Legerity
     using System;
 
     using Legerity.Exceptions;
+    using Legerity.Windows;
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
