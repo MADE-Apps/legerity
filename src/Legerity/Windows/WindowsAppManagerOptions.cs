@@ -51,14 +51,13 @@ namespace Legerity.Windows
         {
             var options = new AppiumOptions();
             options.AddAdditionalCapability("app", this.AppId);
-            if (additionalOptions == null)
-            {
-                return;
-            }
 
-            foreach ((string capabilityName, object capabilityValue) in additionalOptions)
+            if (additionalOptions != null)
             {
-                options.AddAdditionalCapability(capabilityName, capabilityValue);
+                foreach ((string capabilityName, object capabilityValue) in additionalOptions)
+                {
+                    options.AddAdditionalCapability(capabilityName, capabilityValue);
+                }
             }
 
             this.AppiumOptions = options;

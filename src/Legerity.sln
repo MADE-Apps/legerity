@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity", "Legerity\Legerity.csproj", "{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{71D6D4B1-DD5C-4238-8E85-5BC755F40931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsAlarmsAndClock", "..\samples\WindowsAlarmsAndClock\WindowsAlarmsAndClock.csproj", "{88AAEC2D-9E0A-43E3-8BF4-4856B442FD66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88AAEC2D-9E0A-43E3-8BF4-4856B442FD66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88AAEC2D-9E0A-43E3-8BF4-4856B442FD66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88AAEC2D-9E0A-43E3-8BF4-4856B442FD66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88AAEC2D-9E0A-43E3-8BF4-4856B442FD66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88AAEC2D-9E0A-43E3-8BF4-4856B442FD66} = {71D6D4B1-DD5C-4238-8E85-5BC755F40931}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAB58D66-B3F1-408A-A96F-572170771367}
