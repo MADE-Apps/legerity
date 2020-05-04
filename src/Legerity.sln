@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity", "Legerity\Legerity.csproj", "{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{71D6D4B1-DD5C-4238-8E85-5BC755F40931}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlControlsGallery", "..\samples\XamlControlsGallery\XamlControlsGallery.csproj", "{DEF3B388-F782-4E32-B72B-732F1C1BEB62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsAlarmsAndClock", "..\samples\WindowsAlarmsAndClock\WindowsAlarmsAndClock.csproj", "{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF3B388-F782-4E32-B72B-732F1C1BEB62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF3B388-F782-4E32-B72B-732F1C1BEB62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF3B388-F782-4E32-B72B-732F1C1BEB62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF3B388-F782-4E32-B72B-732F1C1BEB62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DEF3B388-F782-4E32-B72B-732F1C1BEB62} = {71D6D4B1-DD5C-4238-8E85-5BC755F40931}
+		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070} = {71D6D4B1-DD5C-4238-8E85-5BC755F40931}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FAB58D66-B3F1-408A-A96F-572170771367}
+	EndGlobalSection
+EndGlobal
