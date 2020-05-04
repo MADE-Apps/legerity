@@ -12,10 +12,8 @@ namespace Legerity.Windows.Elements.Core
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP TimePicker control.
     /// </summary>
-    public class TimePicker
+    public class TimePicker : WindowsElementWrapper
     {
-        private readonly WeakReference elementReference;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="TimePicker"/> class.
         /// </summary>
@@ -23,25 +21,34 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="WindowsElement"/> reference..
         /// </param>
         public TimePicker(WindowsElement element)
+            : base(element)
         {
-            this.elementReference = new WeakReference(element);
         }
 
-        /// <summary>Gets the original <see cref="WindowsElement"/> reference object.</summary>
-        public WindowsElement Element =>
-            this.elementReference != null && this.elementReference.IsAlive
-                ? this.elementReference.Target as WindowsElement
-                : null;
+        /// <summary>
+        /// Gets the query for the popup displayed for the time picker when invoking the control.
+        /// </summary>
+        public By Flyout => ByExtensions.AutomationId("TimePickerFlyoutPresenter");
 
         /// <summary>
         /// Gets the query for the hour looping selector.
         /// </summary>
-        public By Hour => ByExtensions.AutomationId("HourLoopingSelector");
+        public By HourSelector => ByExtensions.AutomationId("HourLoopingSelector");
 
         /// <summary>
         /// Gets the query for the minute looping selector.
         /// </summary>
-        public By Minute => ByExtensions.AutomationId("MinuteLoopingSelector");
+        public By MinuteSelector => ByExtensions.AutomationId("MinuteLoopingSelector");
+
+        /// <summary>
+        /// Gets the query for the accept button.
+        /// </summary>
+        public By AcceptButton => ByExtensions.AutomationId("AcceptButton");
+
+        /// <summary>
+        /// Gets the query for the dismiss button.
+        /// </summary>
+        public By DismissButton => ByExtensions.AutomationId("DismissButton");
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="TimePicker"/> without direct casting.
@@ -65,8 +72,14 @@ namespace Legerity.Windows.Elements.Core
         /// </param>
         public void SetTime(TimeSpan time)
         {
-            this.Element.FindElement(this.Hour).FindElementByName(time.ToString("%h")).Click();
-            this.Element.FindElement(this.Minute).FindElementByName(time.ToString("mm")).Click();
+            // Taps the time picker to show the popup.
+            this.Element.Click();
+
+            // Finds the popup and changes the time.
+            WindowsElement popup = this.Driver.FindElement(this.Flyout);
+            popup.FindElement(this.HourSelector).FindElementByName(time.ToString("%h")).Click();
+            popup.FindElement(this.MinuteSelector).FindElementByName(time.ToString("mm")).Click();
+            popup.FindElement(this.AcceptButton).Click();
         }
     }
 }

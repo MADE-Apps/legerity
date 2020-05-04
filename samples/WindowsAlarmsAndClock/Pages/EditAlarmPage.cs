@@ -64,8 +64,8 @@ namespace WindowsAlarmsAndClock.Pages
         /// </returns>
         public EditAlarmPage SetAlarmTime(TimeSpan time)
         {
-            TimePicker timePicker = this.WindowsApp.FindElement(this.alarmTimePicker);
-            timePicker.SetTime(time);
+            CustomTimePicker customTimePicker = this.WindowsApp.FindElement(this.alarmTimePicker);
+            customTimePicker.SetTime(time);
             return this;
         }
 
