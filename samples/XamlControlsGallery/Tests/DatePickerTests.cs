@@ -24,9 +24,10 @@ namespace XamlControlsGallery.Tests
             // Arrange
             var expectedDate = new DateTime(2020, 4, 14);
 
+            // Act
             DatePickerPage.SetSimpleDatePickerDate(expectedDate);
 
-            // Act & Assert
+            // Assert
             DatePickerPage.VerifySimpleTimePickerTime(expectedDate);
         }
     }
