@@ -37,5 +37,18 @@ namespace XamlControlsGallery.Pages
             gridView.ClickItem("TimePicker");
             return new TimePickerPage();
         }
+
+        /// <summary>
+        /// Navigates to the date picker page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="DatePickerPage"/>.
+        /// </returns>
+        public DatePickerPage GoToDatePicker()
+        {
+            GridView gridView = this.WindowsApp.FindElement(this.controlList);
+            gridView.ClickItem("DatePicker");
+            return new DatePickerPage();
+        }
     }
 }

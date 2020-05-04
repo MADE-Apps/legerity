@@ -18,7 +18,7 @@ namespace Legerity.Windows.Elements.Core
         /// Initializes a new instance of the <see cref="TimePicker"/> class.
         /// </summary>
         /// <param name="element">
-        /// The <see cref="WindowsElement"/> reference..
+        /// The <see cref="WindowsElement"/> reference.
         /// </param>
         public TimePicker(WindowsElement element)
             : base(element)
