@@ -10,7 +10,7 @@ namespace WindowsAlarmsAndClock.Pages
     using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>
-    /// Defines the add/edit alarm page of the Windows Alarms & Clock application.
+    /// Defines the add/edit alarm page of the Windows Alarms &amp; Clock application.
     /// </summary>
     public class EditAlarmPage : BasePage
     {
