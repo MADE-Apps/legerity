@@ -33,9 +33,26 @@ namespace XamlControlsGallery.Pages
         /// </returns>
         public ComboBoxPage GoToComboBox()
         {
-            GridView gridView = this.WindowsApp.FindElement(this.controlList);
-            gridView.ClickItem("ComboBox");
+            this.NavigateTo("ComboBox");
             return new ComboBoxPage();
+        }
+
+        /// <summary>
+        /// Navigates to the slider page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ComboBoxPage"/>.
+        /// </returns>
+        public SliderPage GoToSlider()
+        {
+            this.NavigateTo("Slider");
+            return new SliderPage();
+        }
+
+        private void NavigateTo(string page)
+        {
+            GridView gridView = this.WindowsApp.FindElement(this.controlList);
+            gridView.ClickItem(page);
         }
     }
 }
