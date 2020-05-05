@@ -49,6 +49,16 @@ namespace XamlControlsGallery.Pages
             return new SliderPage();
         }
 
+        /// <summary>
+        /// Navigates to the toggle switch page.
+        /// </summary>
+        /// <returns>The <see cref="ToggleSwitchPage"/>.</returns>
+        public ToggleSwitchPage GoToToggleSwitch()
+        {
+            this.NavigateTo("ToggleSwitch");
+            return new ToggleSwitchPage();
+        }
+
         private void NavigateTo(string page)
         {
             GridView gridView = this.WindowsApp.FindElement(this.controlList);

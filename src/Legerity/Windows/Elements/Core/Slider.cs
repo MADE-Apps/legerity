@@ -65,6 +65,15 @@ namespace Legerity.Windows.Elements.Core
             return new Slider(element);
         }
 
+        /// <summary>
+        /// Sets the value of the slider.
+        /// </summary>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown if the value is out of the minimum and maximum range of the slider.
+        /// </exception>
         public void SetValue(double value)
         {
             double min = this.Minimum;

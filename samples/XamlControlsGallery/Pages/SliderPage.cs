@@ -12,7 +12,7 @@ namespace XamlControlsGallery.Pages
     using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>
-    /// Defines the SliderPage page of the XAML Controls Gallery application.
+    /// Defines the Slider page of the XAML Controls Gallery application.
     /// </summary>
     public class SliderPage : BasePage
     {
