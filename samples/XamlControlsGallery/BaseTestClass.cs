@@ -20,7 +20,7 @@ namespace XamlControlsGallery
         [TestCleanup]
         public virtual void Cleanup()
         {
-            // AppManager.StopApp();
+            AppManager.StopApp();
         }
     }
 }
