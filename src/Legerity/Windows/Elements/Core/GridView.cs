@@ -54,10 +54,7 @@ namespace Legerity.Windows.Elements.Core
             ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(By.ClassName("GridViewItem"));
 
             AppiumWebElement item = listElements.FirstOrDefault(
-                element => element.GetAttribute("Name").Contains(
-                    name,
-                    CultureInfo.CurrentCulture,
-                    CompareOptions.IgnoreCase));
+                element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
             item.Click();
         }

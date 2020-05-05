@@ -27,7 +27,7 @@ namespace XamlControlsGallery.Pages
         protected override By Trait => ByExtensions.AutomationId("NavigationViewControl");
 
         /// <summary>
-        /// Navigates to the basic input page.
+        /// Navigates to the date and time page.
         /// </summary>
         /// <returns>
         /// The <see cref="DateAndTimePage"/>.
@@ -37,6 +37,19 @@ namespace XamlControlsGallery.Pages
             ListView listView = this.WindowsApp.FindElement(this.menuList);
             listView.ClickItem("Date and Time");
             return new DateAndTimePage();
+        }
+
+        /// <summary>
+        /// Navigates to the basic input page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="DateAndTimePage"/>.
+        /// </returns>
+        public BasicInputPage GoToBasicInput()
+        {
+            ListView listView = this.WindowsApp.FindElement(this.menuList);
+            listView.ClickItem("Basic Input");
+            return new BasicInputPage();
         }
     }
 }

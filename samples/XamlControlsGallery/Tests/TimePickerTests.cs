@@ -24,9 +24,10 @@ namespace XamlControlsGallery.Tests
             // Arrange
             var expectedTime = new TimeSpan(7, 5, 0);
 
+            // Act
             TimePickerPage.SetSimpleTimePickerTime(expectedTime);
 
-            // Act & Assert
+            // Assert
             TimePickerPage.VerifySimpleTimePickerTime(expectedTime);
         }
     }
