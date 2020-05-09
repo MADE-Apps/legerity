@@ -8,18 +8,8 @@ namespace XamlControlsGallery.Pages
     /// <summary>
     /// Defines the Basic Input page of the XAML Controls Gallery application.
     /// </summary>
-    public class BasicInputPage : BasePage
+    public class BasicInputPage : GroupBasePage
     {
-        private readonly By controlList;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BasicInputPage"/> class.
-        /// </summary>
-        public BasicInputPage()
-        {
-            this.controlList = By.Name("Items In Group");
-        }
-
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
@@ -57,12 +47,6 @@ namespace XamlControlsGallery.Pages
         {
             this.NavigateTo("ToggleSwitch");
             return new ToggleSwitchPage();
-        }
-
-        private void NavigateTo(string page)
-        {
-            GridView gridView = this.WindowsApp.FindElement(this.controlList);
-            gridView.ClickItem(page);
         }
     }
 }

@@ -8,18 +8,8 @@ namespace XamlControlsGallery.Pages
     /// <summary>
     /// Defines the Date and Time page of the XAML Controls Gallery application.
     /// </summary>
-    public class DateAndTimePage : BasePage
+    public class DateAndTimePage : GroupBasePage
     {
-        private readonly By controlList;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DateAndTimePage"/> class.
-        /// </summary>
-        public DateAndTimePage()
-        {
-            this.controlList = By.Name("Items In Group");
-        }
-
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
@@ -33,8 +23,7 @@ namespace XamlControlsGallery.Pages
         /// </returns>
         public TimePickerPage GoToTimePicker()
         {
-            GridView gridView = this.WindowsApp.FindElement(this.controlList);
-            gridView.ClickItem("TimePicker");
+            this.NavigateTo("TimePicker");
             return new TimePickerPage();
         }
 
@@ -46,8 +35,7 @@ namespace XamlControlsGallery.Pages
         /// </returns>
         public DatePickerPage GoToDatePicker()
         {
-            GridView gridView = this.WindowsApp.FindElement(this.controlList);
-            gridView.ClickItem("DatePicker");
+            this.NavigateTo("DatePicker");
             return new DatePickerPage();
         }
     }
