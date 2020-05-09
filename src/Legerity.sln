@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlControlsGallery", "..\s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsAlarmsAndClock", "..\samples\WindowsAlarmsAndClock\WindowsAlarmsAndClock.csproj", "{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legerity.WinUI", "Legerity.WinUI\Legerity.WinUI.csproj", "{39CD911A-FE7A-47AB-8581-888352267554}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39CD911A-FE7A-47AB-8581-888352267554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39CD911A-FE7A-47AB-8581-888352267554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39CD911A-FE7A-47AB-8581-888352267554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39CD911A-FE7A-47AB-8581-888352267554}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

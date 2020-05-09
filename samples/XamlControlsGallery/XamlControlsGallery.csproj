@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Legerity.WinUI\Legerity.WinUI.csproj" />
     <ProjectReference Include="..\..\src\Legerity\Legerity.csproj" />
   </ItemGroup>
 

@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Legerity</RootNamespace>
+    <RootNamespace>Legerity.Windows.Elements.WinUI</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.1.1" />
+    <ProjectReference Include="..\Legerity\Legerity.csproj" />
   </ItemGroup>
 
 </Project>
