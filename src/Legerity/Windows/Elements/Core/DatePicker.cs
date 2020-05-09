@@ -5,6 +5,7 @@ namespace Legerity.Windows.Elements.Core
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>
@@ -65,6 +66,20 @@ namespace Legerity.Windows.Elements.Core
         public static implicit operator DatePicker(WindowsElement element)
         {
             return new DatePicker(element);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="DatePicker"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="AppiumWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="DatePicker"/>.
+        /// </returns>
+        public static implicit operator DatePicker(AppiumWebElement element)
+        {
+            return new DatePicker(element as WindowsElement);
         }
 
         /// <summary>

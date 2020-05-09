@@ -41,6 +41,20 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
+        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ComboBox"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="AppiumWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ComboBox"/>.
+        /// </returns>
+        public static implicit operator ComboBox(AppiumWebElement element)
+        {
+            return new ComboBox(element as WindowsElement);
+        }
+
+        /// <summary>
         /// Selects an item in the combo-box with the specified item name.
         /// </summary>
         /// <param name="name">

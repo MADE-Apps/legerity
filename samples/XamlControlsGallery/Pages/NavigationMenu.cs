@@ -2,23 +2,22 @@ namespace XamlControlsGallery.Pages
 {
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
+    using Legerity.Windows.Elements.WinUI;
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>
     /// Defines a helper for navigating the application's menu.
     /// </summary>
     public class NavigationMenu : BasePage
     {
-        private readonly By menuList;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationMenu"/> class.
         /// </summary>
         public NavigationMenu()
         {
-            this.menuList = ByExtensions.AutomationId("MenuItemsHost");
         }
 
         /// <summary>
@@ -34,8 +33,8 @@ namespace XamlControlsGallery.Pages
         /// </returns>
         public DateAndTimePage GoToDateAndTime()
         {
-            ListView listView = this.WindowsApp.FindElement(this.menuList);
-            listView.ClickItem("Date and Time");
+            NavigationView navigationMenu = this.WindowsApp.FindElement(this.Trait);
+            navigationMenu.ClickMenuOption("Date and Time");
             return new DateAndTimePage();
         }
 
@@ -47,8 +46,8 @@ namespace XamlControlsGallery.Pages
         /// </returns>
         public BasicInputPage GoToBasicInput()
         {
-            ListView listView = this.WindowsApp.FindElement(this.menuList);
-            listView.ClickItem("Basic Input");
+            NavigationView navigationMenu = this.WindowsApp.FindElement(this.Trait);
+            navigationMenu.ClickMenuOption("Basic Input");
             return new BasicInputPage();
         }
     }

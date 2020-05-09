@@ -48,6 +48,20 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
+        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ToggleSwitch"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="AppiumWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ToggleSwitch"/>.
+        /// </returns>
+        public static implicit operator ToggleSwitch(AppiumWebElement element)
+        {
+            return new ToggleSwitch(element as WindowsElement);
+        }
+
+        /// <summary>
         /// Toggles the switch on.
         /// </summary>
         public void ToggleOn()

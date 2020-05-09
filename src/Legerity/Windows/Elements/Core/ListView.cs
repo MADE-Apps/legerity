@@ -44,6 +44,20 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
+        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ListView"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="AppiumWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ListView"/>.
+        /// </returns>
+        public static implicit operator ListView(AppiumWebElement element)
+        {
+            return new ListView(element as WindowsElement);
+        }
+
+        /// <summary>
         /// Clicks on an item in the list view with the specified item name.
         /// </summary>
         /// <param name="name">

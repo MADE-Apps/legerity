@@ -65,6 +65,20 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
+        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="TimePicker"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="AppiumWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="TimePicker"/>.
+        /// </returns>
+        public static implicit operator TimePicker(AppiumWebElement element)
+        {
+            return new TimePicker(element as WindowsElement);
+        }
+
+        /// <summary>
         /// Sets the time to the specified time.
         /// </summary>
         /// <param name="time">
