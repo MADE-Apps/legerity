@@ -1,10 +1,9 @@
-namespace XamlControlsGallery.Pages
+namespace XamlControlsGallery.Pages.DateAndTime
 {
     using System;
 
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -5,6 +5,8 @@ namespace XamlControlsGallery.Pages
 
     using OpenQA.Selenium;
 
+    using XamlControlsGallery.Pages.BasicInput;
+
     /// <summary>
     /// Defines the Basic Input page of the XAML Controls Gallery application.
     /// </summary>

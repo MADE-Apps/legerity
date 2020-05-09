@@ -22,4 +22,9 @@
     <ProjectReference Include="..\..\src\Legerity\Legerity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Text\" />
+    <Folder Include="Tests\Text\" />
+  </ItemGroup>
+
 </Project>

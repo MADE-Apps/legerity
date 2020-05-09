@@ -1,8 +1,9 @@
-namespace XamlControlsGallery.Tests
+namespace XamlControlsGallery.Tests.BasicInput
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using XamlControlsGallery.Pages;
+    using XamlControlsGallery.Pages.BasicInput;
 
     [TestClass]
     public class SliderTests : BaseTestClass

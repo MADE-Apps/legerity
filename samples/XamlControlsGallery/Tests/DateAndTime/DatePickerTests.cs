@@ -1,10 +1,11 @@
-namespace XamlControlsGallery.Tests
+namespace XamlControlsGallery.Tests.DateAndTime
 {
     using System;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using XamlControlsGallery.Pages;
+    using XamlControlsGallery.Pages.DateAndTime;
 
     [TestClass]
     public class DatePickerTests : BaseTestClass

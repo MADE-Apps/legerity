@@ -1,4 +1,4 @@
-namespace XamlControlsGallery.Pages
+namespace XamlControlsGallery.Pages.BasicInput
 {
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;

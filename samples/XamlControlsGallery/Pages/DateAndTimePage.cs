@@ -5,6 +5,8 @@ namespace XamlControlsGallery.Pages
 
     using OpenQA.Selenium;
 
+    using XamlControlsGallery.Pages.DateAndTime;
+
     /// <summary>
     /// Defines the Date and Time page of the XAML Controls Gallery application.
     /// </summary>

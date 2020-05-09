@@ -1,15 +1,11 @@
-namespace XamlControlsGallery.Pages
+namespace XamlControlsGallery.Pages.BasicInput
 {
-    using System;
-
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>
     /// Defines the ToggleSwitch page of the XAML Controls Gallery application.
