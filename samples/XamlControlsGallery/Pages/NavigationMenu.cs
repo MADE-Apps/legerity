@@ -57,6 +57,16 @@ namespace XamlControlsGallery.Pages
         }
 
         /// <summary>
+        /// Navigates to the calendar view control page.
+        /// </summary>
+        /// <returns>The <see cref="CalendarViewPage"/>.</returns>
+        public CalendarViewPage GoToCalendarViewPage()
+        {
+            this.SearchForControl("CalendarView");
+            return new CalendarViewPage();
+        }
+
+        /// <summary>
         /// Navigates to the combo box control page.
         /// </summary>
         /// <returns>
