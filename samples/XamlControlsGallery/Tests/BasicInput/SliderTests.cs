@@ -14,7 +14,7 @@ namespace XamlControlsGallery.Tests.BasicInput
         public override void Initialize()
         {
             base.Initialize();
-            SliderPage = new NavigationMenu().GoToBasicInput().GoToSlider();
+            SliderPage = new NavigationMenu().GoToSlider();
         }
 
         [TestMethod]

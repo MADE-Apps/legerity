@@ -8,11 +8,17 @@ namespace XamlControlsGallery.Pages
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Windows;
 
+    using XamlControlsGallery.Pages.BasicInput;
+    using XamlControlsGallery.Pages.DateAndTime;
+    using XamlControlsGallery.Pages.Text;
+
     /// <summary>
     /// Defines a helper for navigating the application's menu.
     /// </summary>
     public class NavigationMenu : BasePage
     {
+        private readonly By controlsSearchBoxQuery = ByExtensions.AutomationId("controlsSearchBox");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationMenu"/> class.
         /// </summary>
@@ -26,29 +32,82 @@ namespace XamlControlsGallery.Pages
         protected override By Trait => ByExtensions.AutomationId("NavigationViewControl");
 
         /// <summary>
-        /// Navigates to the date and time page.
+        /// Navigates to the combo box control page.
         /// </summary>
         /// <returns>
-        /// The <see cref="DateAndTimePage"/>.
+        /// The <see cref="ComboBoxPage"/>.
         /// </returns>
-        public DateAndTimePage GoToDateAndTime()
+        public ComboBoxPage GoToComboBox()
         {
-            NavigationView navigationMenu = this.WindowsApp.FindElement(this.Trait);
-            navigationMenu.ClickMenuOption("Date and Time");
-            return new DateAndTimePage();
+            this.SearchForControl("ComboBox");
+            return new ComboBoxPage();
         }
 
         /// <summary>
-        /// Navigates to the basic input page.
+        /// Navigates to the slider control page.
         /// </summary>
         /// <returns>
-        /// The <see cref="DateAndTimePage"/>.
+        /// The <see cref="SliderPage"/>.
         /// </returns>
-        public BasicInputPage GoToBasicInput()
+        public SliderPage GoToSlider()
         {
-            NavigationView navigationMenu = this.WindowsApp.FindElement(this.Trait);
-            navigationMenu.ClickMenuOption("Basic Input");
-            return new BasicInputPage();
+            this.SearchForControl("Slider");
+            return new SliderPage();
+        }
+
+        /// <summary>
+        /// Navigates to the toggle switch control page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ToggleSwitchPage"/>.
+        /// </returns>
+        public ToggleSwitchPage GoToToggleSwitch()
+        {
+            this.SearchForControl("ToggleSwitch");
+            return new ToggleSwitchPage();
+        }
+        
+        /// <summary>
+        /// Navigates to the date picker control page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="DatePickerPage"/>.
+        /// </returns>
+        public DatePickerPage GoToDatePicker()
+        {
+            this.SearchForControl("DatePicker");
+            return new DatePickerPage();
+        }
+
+        /// <summary>
+        /// Navigates to the time picker control page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="TimePickerPage"/>.
+        /// </returns>
+        public TimePickerPage GoToTimePicker()
+        {
+            this.SearchForControl("TimePicker");
+            return new TimePickerPage();
+        }
+
+        /// <summary>
+        /// Navigates to the auto-suggest box control page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="AutoSuggestBoxPage"/>.
+        /// </returns>
+        public AutoSuggestBoxPage GoToAutoSuggestBox()
+        {
+            this.SearchForControl("AutoSuggestBox");
+            return new AutoSuggestBoxPage();
+        }
+
+        private void SearchForControl(string control)
+        {
+            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
+            AutoSuggestBox controlsSearchBox = navigationView.Element.FindElement(this.controlsSearchBoxQuery);
+            controlsSearchBox.SelectSuggestion(control);
         }
     }
 }

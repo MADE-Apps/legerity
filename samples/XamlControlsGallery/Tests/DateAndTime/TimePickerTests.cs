@@ -16,7 +16,7 @@ namespace XamlControlsGallery.Tests.DateAndTime
         public override void Initialize()
         {
             base.Initialize();
-            TimePickerPage = new NavigationMenu().GoToDateAndTime().GoToTimePicker();
+            TimePickerPage = new NavigationMenu().GoToTimePicker();
         }
 
         [TestMethod]

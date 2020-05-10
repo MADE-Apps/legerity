@@ -14,7 +14,7 @@ namespace XamlControlsGallery.Tests.BasicInput
         public override void Initialize()
         {
             base.Initialize();
-            ComboBoxPage = new NavigationMenu().GoToBasicInput().GoToComboBox();
+            ComboBoxPage = new NavigationMenu().GoToComboBox();
         }
 
         [TestMethod]

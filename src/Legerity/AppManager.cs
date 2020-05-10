@@ -63,7 +63,7 @@ namespace Legerity
                     throw new DriverLoadFailedException(opts);
                 }
 
-                // Set implicit timeout to 1.5 seconds to make element search to retry every 500 ms for at most three times
+                // Set implicit timeout to 2 seconds to make element search to retry every 500 ms for at most three times
                 windowsApp.Manage().Timeouts().ImplicitWait = winOpts.ImplicitWait;
             }
         }

@@ -1,5 +1,7 @@
 namespace Legerity.Windows.Elements.Core
 {
+    using System;
+
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;
@@ -11,6 +13,10 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class AutoSuggestBox : WindowsElementWrapper
     {
+        private readonly By suggestionsPopupQuery = ByExtensions.AutomationId("SuggestionsPopup");
+
+        private readonly By textBoxQuery = ByExtensions.AutomationId("TextBox");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AutoSuggestBox"/> class.
         /// </summary>
@@ -23,19 +29,19 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
-        /// Gets the query for the popup displayed for the auto-suggest box when invoking the control.
+        /// Gets the element associated with the suggestions popup.
         /// </summary>
-        public By SuggestionsPopup => ByExtensions.AutomationId("SuggestionsPopup");
+        public AppiumWebElement SuggestionsPopup => this.Element.FindElement(this.suggestionsPopupQuery);
 
         /// <summary>
-        /// Gets the query for the text box of the auto-suggest box.
+        /// Gets the element associated with the text box.
         /// </summary>
-        public By TextBox => ByExtensions.AutomationId("TextBox");
+        public AppiumWebElement TextBox => this.Element.FindElement(this.textBoxQuery);
 
         /// <summary>
         /// Gets the value of the auto-suggest box.
         /// </summary>
-        public string Value => this.Element.GetAttribute("Value.Value");
+        public string Value => this.TextBox.GetAttribute("Value.Value");
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="AutoSuggestBox"/> without direct casting.
@@ -71,10 +77,21 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="suggestion">The suggestion to select.</param>
         public void SelectSuggestion(string suggestion)
         {
-            this.Element.Click();
+            this.SelectSuggestion(suggestion, suggestion);
+        }
 
-            WindowsElement popup = this.Driver.FindElement(this.SuggestionsPopup);
-            ListView suggestionList = popup.FindElement(ByExtensions.AutomationId("SuggestionsList"));
+        /// <summary>
+        /// Selects a suggestion from the auto-suggest box.
+        /// </summary>
+        /// <param name="value">The initial value to set.</param>
+        /// <param name="suggestion">The suggestion to select.</param>
+        public void SelectSuggestion(string value, string suggestion)
+        {
+            this.SetValue(value);
+
+            this.VerifyElementShown(this.suggestionsPopupQuery, TimeSpan.FromSeconds(2));
+
+            ListView suggestionList = this.SuggestionsPopup.FindElement(ByExtensions.AutomationId("SuggestionsList"));
             suggestionList.ClickItem(suggestion);
         }
 

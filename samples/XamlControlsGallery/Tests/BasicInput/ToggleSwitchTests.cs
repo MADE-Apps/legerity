@@ -14,7 +14,7 @@ namespace XamlControlsGallery.Tests.BasicInput
         public override void Initialize()
         {
             base.Initialize();
-            ToggleSwitchPage = new NavigationMenu().GoToBasicInput().GoToToggleSwitch();
+            ToggleSwitchPage = new NavigationMenu().GoToToggleSwitch();
         }
 
         [TestMethod]

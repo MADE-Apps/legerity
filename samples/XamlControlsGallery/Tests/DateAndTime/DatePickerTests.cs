@@ -16,14 +16,14 @@ namespace XamlControlsGallery.Tests.DateAndTime
         public override void Initialize()
         {
             base.Initialize();
-            DatePickerPage = new NavigationMenu().GoToDateAndTime().GoToDatePicker();
+            DatePickerPage = new NavigationMenu().GoToDatePicker();
         }
 
         [TestMethod]
         public void SetSimpleDatePickerDate()
         {
             // Arrange
-            var expectedDate = new DateTime(2020, 4, 14);
+            var expectedDate = new DateTime(2020, 4, 20);
 
             // Act
             DatePickerPage.SetSimpleDatePickerDate(expectedDate);

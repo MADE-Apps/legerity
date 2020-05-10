@@ -18,17 +18,24 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class GridView : WindowsElementWrapper
     {
+        private readonly By gridViewItems = By.ClassName("GridViewItem");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GridView"/> class.
         /// </summary>
         /// <param name="element">
-        /// The <see cref="WindowsElement"/> reference..
+        /// The <see cref="WindowsElement"/> reference.
         /// </param>
         public GridView(WindowsElement element)
             : base(element)
         {
         }
 
+        /// <summary>
+        /// Gets the collection of items associated with the grid view.
+        /// </summary>
+        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.gridViewItems);
+        
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="GridView"/> without direct casting.
         /// </summary>
@@ -65,9 +72,9 @@ namespace Legerity.Windows.Elements.Core
         /// </param>
         public void ClickItem(string name)
         {
-            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(By.ClassName("GridViewItem"));
+            this.VerifyElementsShown(this.gridViewItems, TimeSpan.FromSeconds(2));
 
-            AppiumWebElement item = listElements.FirstOrDefault(
+            AppiumWebElement item = this.Items.FirstOrDefault(
                 element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
             item.Click();

@@ -22,10 +22,10 @@ namespace Legerity
         /// <summary>
         /// Gets or sets the implicit wait timeout, which is the amount of time the driver should wait when searching for an element if it is not immediately present.
         /// <para>
-        /// By default, the wait time will be 1.5 seconds.
+        /// By default, the wait time will be 2 seconds.
         /// </para>
         /// </summary>
-        public TimeSpan ImplicitWait { get; set; } = TimeSpan.FromSeconds(1.5);
+        public TimeSpan ImplicitWait { get; set; } = TimeSpan.FromSeconds(2);
 
         /// <summary>Returns a string that represents the current object.</summary>
         /// <returns>A string that represents the current object.</returns>

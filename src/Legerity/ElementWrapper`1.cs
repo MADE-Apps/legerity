@@ -2,8 +2,12 @@ namespace Legerity
 {
     using System;
 
+    using Legerity.Exceptions;
+
+    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Support.UI;
 
     /// <summary>
     /// Defines a base wrapper for elements to expose platform element logic.
@@ -32,5 +36,53 @@ namespace Legerity
             this.elementReference != null && this.elementReference.IsAlive
                 ? this.elementReference.Target as TElement
                 : null;
+
+        /// <summary>
+        /// Determines whether the specified element is shown with the specified timeout.
+        /// </summary>
+        /// <param name="query">The query to find a specific element.</param>
+        /// <param name="timeout">
+        /// The amount of time the driver should wait when searching for the <see cref="query"/> if it is not immediately present.
+        /// </param>
+        protected void VerifyElementShown(By query, TimeSpan? timeout)
+        {
+            if (timeout == null)
+            {
+                if (this.Element.FindElement(query) == null)
+                {
+                    throw new ElementNotShownException(query.ToString());
+                }
+            }
+            else
+            {
+                var wait = new WebDriverWait(this.Element.WrappedDriver, timeout.Value);
+                wait.Until(driver => driver.FindElement(query) != null);
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the specified elements are shown with the specified timeout.
+        /// </summary>
+        /// <param name="query">
+        /// The query to find a collection of elements.
+        /// </param>
+        /// <param name="timeout">
+        /// The amount of time the driver should wait when searching for the <see cref="query"/> if it is not immediately present.
+        /// </param>
+        protected void VerifyElementsShown(By query, TimeSpan? timeout)
+        {
+            if (timeout == null)
+            {
+                if (this.Element.FindElements(query).Count == 0)
+                {
+                    throw new ElementNotShownException(query.ToString());
+                }
+            }
+            else
+            {
+                var wait = new WebDriverWait(this.Element.WrappedDriver, timeout.Value);
+                wait.Until(driver => driver.FindElements(query).Count != 0);
+            }
+        }
     }
 }
