@@ -10,6 +10,7 @@ namespace XamlControlsGallery.Pages
 
     using XamlControlsGallery.Pages.BasicInput;
     using XamlControlsGallery.Pages.DateAndTime;
+    using XamlControlsGallery.Pages.MenusAndToolbars;
     using XamlControlsGallery.Pages.Text;
 
     /// <summary>
@@ -32,6 +33,30 @@ namespace XamlControlsGallery.Pages
         protected override By Trait => ByExtensions.AutomationId("NavigationViewControl");
 
         /// <summary>
+        /// Navigates to the app bar toggle button control page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="AppBarToggleButtonPage"/>.
+        /// </returns>
+        public AppBarToggleButtonPage GoToAppBarToggleButton()
+        {
+            this.SearchForControl("AppBarToggleButton");
+            return new AppBarToggleButtonPage();
+        }
+
+        /// <summary>
+        /// Navigates to the auto-suggest box control page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="AutoSuggestBoxPage"/>.
+        /// </returns>
+        public AutoSuggestBoxPage GoToAutoSuggestBox()
+        {
+            this.SearchForControl("AutoSuggestBox");
+            return new AutoSuggestBoxPage();
+        }
+
+        /// <summary>
         /// Navigates to the combo box control page.
         /// </summary>
         /// <returns>
@@ -43,30 +68,6 @@ namespace XamlControlsGallery.Pages
             return new ComboBoxPage();
         }
 
-        /// <summary>
-        /// Navigates to the slider control page.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="SliderPage"/>.
-        /// </returns>
-        public SliderPage GoToSlider()
-        {
-            this.SearchForControl("Slider");
-            return new SliderPage();
-        }
-
-        /// <summary>
-        /// Navigates to the toggle switch control page.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="ToggleSwitchPage"/>.
-        /// </returns>
-        public ToggleSwitchPage GoToToggleSwitch()
-        {
-            this.SearchForControl("ToggleSwitch");
-            return new ToggleSwitchPage();
-        }
-        
         /// <summary>
         /// Navigates to the date picker control page.
         /// </summary>
@@ -80,6 +81,18 @@ namespace XamlControlsGallery.Pages
         }
 
         /// <summary>
+        /// Navigates to the slider control page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="SliderPage"/>.
+        /// </returns>
+        public SliderPage GoToSlider()
+        {
+            this.SearchForControl("Slider");
+            return new SliderPage();
+        }
+        
+        /// <summary>
         /// Navigates to the time picker control page.
         /// </summary>
         /// <returns>
@@ -92,15 +105,15 @@ namespace XamlControlsGallery.Pages
         }
 
         /// <summary>
-        /// Navigates to the auto-suggest box control page.
+        /// Navigates to the toggle switch control page.
         /// </summary>
         /// <returns>
-        /// The <see cref="AutoSuggestBoxPage"/>.
+        /// The <see cref="ToggleSwitchPage"/>.
         /// </returns>
-        public AutoSuggestBoxPage GoToAutoSuggestBox()
+        public ToggleSwitchPage GoToToggleSwitch()
         {
-            this.SearchForControl("AutoSuggestBox");
-            return new AutoSuggestBoxPage();
+            this.SearchForControl("ToggleSwitch");
+            return new ToggleSwitchPage();
         }
 
         private void SearchForControl(string control)

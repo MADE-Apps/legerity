@@ -34,7 +34,7 @@ namespace XamlControlsGallery.Pages.BasicInput
         /// A value indicating whether to toggle on.
         /// </param>
         /// <returns>
-        /// The <see cref="SliderPage"/>.
+        /// The <see cref="ToggleSwitchPage"/>.
         /// </returns>
         public ToggleSwitchPage ToggleSimpleSwitch(bool on)
         {
