@@ -15,6 +15,8 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class ComboBox : WindowsElementWrapper
     {
+        private readonly By comboBoxItemQuery = By.ClassName("ComboBoxItem");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBox"/> class.
         /// </summary>
@@ -25,6 +27,11 @@ namespace Legerity.Windows.Elements.Core
             : base(element)
         {
         }
+
+        /// <summary>
+        /// Gets the currently selected item.
+        /// </summary>
+        public string SelectedItem => this.GetSelectedItem();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ComboBox"/> without direct casting.
@@ -64,7 +71,9 @@ namespace Legerity.Windows.Elements.Core
         {
             this.Element.Click();
 
-            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(By.ClassName("ComboBoxItem"));
+            this.VerifyElementsShown(this.comboBoxItemQuery, TimeSpan.FromSeconds(2));
+
+            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemQuery);
 
             AppiumWebElement item = listElements.FirstOrDefault(
                 element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
@@ -72,15 +81,9 @@ namespace Legerity.Windows.Elements.Core
             item.Click();
         }
 
-        /// <summary>
-        /// Retrieves the currently select item.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="string"/> associated with the selected item.
-        /// </returns>
-        public string GetSelectItem()
+        private string GetSelectedItem()
         {
-            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(By.ClassName("ComboBoxItem"));
+            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemQuery);
             return listElements.Count == 1 ? listElements.FirstOrDefault().GetAttribute("Name") : null;
         }
     }

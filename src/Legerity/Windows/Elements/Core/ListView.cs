@@ -18,7 +18,7 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class ListView : WindowsElementWrapper
     {
-        private readonly By listViewItems = By.ClassName("ListViewItem");
+        private readonly By listViewItemQuery = By.ClassName("ListViewItem");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ListView"/> class.
@@ -34,7 +34,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the list view.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.listViewItems);
+        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.listViewItemQuery);
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ListView"/> without direct casting.
@@ -72,7 +72,7 @@ namespace Legerity.Windows.Elements.Core
         /// </param>
         public void ClickItem(string name)
         {
-            this.VerifyElementsShown(this.listViewItems, TimeSpan.FromSeconds(2));
+            this.VerifyElementsShown(this.listViewItemQuery, TimeSpan.FromSeconds(2));
 
             AppiumWebElement item = this.Items.FirstOrDefault(
                 element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));

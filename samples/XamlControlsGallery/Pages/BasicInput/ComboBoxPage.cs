@@ -52,7 +52,7 @@ namespace XamlControlsGallery.Pages.BasicInput
         public void VerifyColorsComboBoxItem(string expectedItem)
         {
             ComboBox comboBox = this.WindowsApp.FindElement(this.colorComboBox);
-            Assert.AreEqual(expectedItem, comboBox.GetSelectItem());
+            Assert.AreEqual(expectedItem, comboBox.SelectedItem);
         }
     }
 }

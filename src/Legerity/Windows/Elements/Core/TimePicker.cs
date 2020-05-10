@@ -14,6 +14,16 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class TimePicker : WindowsElementWrapper
     {
+        private readonly By flyoutQuery = ByExtensions.AutomationId("TimePickerFlyoutPresenter");
+
+        private readonly By hourSelectorQuery = ByExtensions.AutomationId("HourLoopingSelector");
+
+        private readonly By minuteSelectorQuery = ByExtensions.AutomationId("MinuteLoopingSelector");
+
+        private readonly By acceptButtonQuery = ByExtensions.AutomationId("AcceptButton");
+
+        private readonly By dismissButtonQuery = ByExtensions.AutomationId("DismissButton");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TimePicker"/> class.
         /// </summary>
@@ -24,31 +34,6 @@ namespace Legerity.Windows.Elements.Core
             : base(element)
         {
         }
-
-        /// <summary>
-        /// Gets the query for the popup displayed for the time picker when invoking the control.
-        /// </summary>
-        public By Flyout => ByExtensions.AutomationId("TimePickerFlyoutPresenter");
-
-        /// <summary>
-        /// Gets the query for the hour looping selector.
-        /// </summary>
-        public By HourSelector => ByExtensions.AutomationId("HourLoopingSelector");
-
-        /// <summary>
-        /// Gets the query for the minute looping selector.
-        /// </summary>
-        public By MinuteSelector => ByExtensions.AutomationId("MinuteLoopingSelector");
-
-        /// <summary>
-        /// Gets the query for the accept button.
-        /// </summary>
-        public By AcceptButton => ByExtensions.AutomationId("AcceptButton");
-
-        /// <summary>
-        /// Gets the query for the dismiss button.
-        /// </summary>
-        public By DismissButton => ByExtensions.AutomationId("DismissButton");
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="TimePicker"/> without direct casting.
@@ -90,10 +75,10 @@ namespace Legerity.Windows.Elements.Core
             this.Element.Click();
 
             // Finds the popup and changes the time.
-            WindowsElement popup = this.Driver.FindElement(this.Flyout);
-            popup.FindElement(this.HourSelector).FindElementByName(time.ToString("%h")).Click();
-            popup.FindElement(this.MinuteSelector).FindElementByName(time.ToString("mm")).Click();
-            popup.FindElement(this.AcceptButton).Click();
+            WindowsElement popup = this.Driver.FindElement(this.flyoutQuery);
+            popup.FindElement(this.hourSelectorQuery).FindElementByName(time.ToString("%h")).Click();
+            popup.FindElement(this.minuteSelectorQuery).FindElementByName(time.ToString("mm")).Click();
+            popup.FindElement(this.acceptButtonQuery).Click();
         }
     }
 }

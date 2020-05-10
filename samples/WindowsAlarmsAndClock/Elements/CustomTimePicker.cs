@@ -14,6 +14,10 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class CustomTimePicker : WindowsElementWrapper
     {
+        private readonly By hourSelectorQuery = ByExtensions.AutomationId("HourLoopingSelector");
+
+        private readonly By minuteSelectorQuery = ByExtensions.AutomationId("MinuteLoopingSelector");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomTimePicker"/> class.
         /// </summary>
@@ -24,16 +28,6 @@ namespace Legerity.Windows.Elements.Core
             : base(element)
         {
         }
-
-        /// <summary>
-        /// Gets the query for the hour looping selector.
-        /// </summary>
-        public By HourSelector => ByExtensions.AutomationId("HourLoopingSelector");
-
-        /// <summary>
-        /// Gets the query for the minute looping selector.
-        /// </summary>
-        public By MinuteSelector => ByExtensions.AutomationId("MinuteLoopingSelector");
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CustomTimePicker"/> without direct casting.
@@ -50,6 +44,20 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
+        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="CustomTimePicker"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="AppiumWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="CustomTimePicker"/>.
+        /// </returns>
+        public static implicit operator CustomTimePicker(AppiumWebElement element)
+        {
+            return new CustomTimePicker(element as WindowsElement);
+        }
+
+        /// <summary>
         /// Sets the time to the specified time.
         /// </summary>
         /// <param name="time">
@@ -57,8 +65,8 @@ namespace Legerity.Windows.Elements.Core
         /// </param>
         public void SetTime(TimeSpan time)
         {
-            this.Element.FindElement(this.HourSelector).FindElementByName(time.ToString("%h")).Click();
-            this.Element.FindElement(this.MinuteSelector).FindElementByName(time.ToString("mm")).Click();
+            this.Element.FindElement(this.hourSelectorQuery).FindElementByName(time.ToString("%h")).Click();
+            this.Element.FindElement(this.minuteSelectorQuery).FindElementByName(time.ToString("mm")).Click();
         }
     }
 }

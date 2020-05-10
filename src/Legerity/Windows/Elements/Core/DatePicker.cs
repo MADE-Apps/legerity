@@ -13,6 +13,18 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class DatePicker : WindowsElementWrapper
     {
+        private readonly By flyoutQuery = ByExtensions.AutomationId("DatePickerFlyoutPresenter");
+
+        private readonly By daySelectorQuery = ByExtensions.AutomationId("DayLoopingSelector");
+
+        private readonly By monthSelectorQuery = ByExtensions.AutomationId("MonthLoopingSelector");
+
+        private readonly By yearSelectorQuery = ByExtensions.AutomationId("YearLoopingSelector");
+
+        private readonly By acceptButtonQuery = ByExtensions.AutomationId("AcceptButton");
+
+        private readonly By dismissButtonQuery = ByExtensions.AutomationId("DismissButton");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DatePicker"/> class.
         /// </summary>
@@ -23,36 +35,6 @@ namespace Legerity.Windows.Elements.Core
             : base(element)
         {
         }
-
-        /// <summary>
-        /// Gets the query for the popup displayed for the date picker when invoking the control.
-        /// </summary>
-        public By Flyout => ByExtensions.AutomationId("DatePickerFlyoutPresenter");
-
-        /// <summary>
-        /// Gets the query for the day looping selector.
-        /// </summary>
-        public By DaySelector => ByExtensions.AutomationId("DayLoopingSelector");
-
-        /// <summary>
-        /// Gets the query for the month looping selector.
-        /// </summary>
-        public By MonthSelector => ByExtensions.AutomationId("MonthLoopingSelector");
-
-        /// <summary>
-        /// Gets the query for the year looping selector.
-        /// </summary>
-        public By YearSelector => ByExtensions.AutomationId("YearLoopingSelector");
-
-        /// <summary>
-        /// Gets the query for the accept button.
-        /// </summary>
-        public By AcceptButton => ByExtensions.AutomationId("AcceptButton");
-
-        /// <summary>
-        /// Gets the query for the dismiss button.
-        /// </summary>
-        public By DismissButton => ByExtensions.AutomationId("DismissButton");
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="DatePicker"/> without direct casting.
@@ -92,11 +74,11 @@ namespace Legerity.Windows.Elements.Core
             this.Element.Click();
 
             // Finds the popup and changes the time.
-            WindowsElement popup = this.Driver.FindElement(this.Flyout);
-            popup.FindElement(this.DaySelector).FindElementByName(date.ToString("%d")).Click();
-            popup.FindElement(this.MonthSelector).FindElementByName(date.ToString("MMMM")).Click();
-            popup.FindElement(this.YearSelector).FindElementByName(date.ToString("yyyy")).Click();
-            popup.FindElement(this.AcceptButton).Click();
+            WindowsElement popup = this.Driver.FindElement(this.flyoutQuery);
+            popup.FindElement(this.daySelectorQuery).FindElementByName(date.ToString("%d")).Click();
+            popup.FindElement(this.monthSelectorQuery).FindElementByName(date.ToString("MMMM")).Click();
+            popup.FindElement(this.yearSelectorQuery).FindElementByName(date.ToString("yyyy")).Click();
+            popup.FindElement(this.acceptButtonQuery).Click();
         }
     }
 }
