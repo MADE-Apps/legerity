@@ -4,13 +4,8 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
     using Legerity.Windows.Elements.Core;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
-
-    using XamlControlsGallery.Pages.BasicInput;
 
     /// <summary>
     /// Defines the AppBarToggleButton page of the XAML Controls Gallery application.
