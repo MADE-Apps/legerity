@@ -89,6 +89,16 @@ namespace XamlControlsGallery.Pages
         }
 
         /// <summary>
+        /// Navigates to the command bar page.
+        /// </summary>
+        /// <returns>The <see cref="CommandBarPage"/>.</returns>
+        public CommandBarPage GoToCommandBarPage()
+        {
+            this.SearchForControl("CommandBar");
+            return new CommandBarPage();
+        }
+
+        /// <summary>
         /// Navigates to the date picker control page.
         /// </summary>
         /// <returns>
