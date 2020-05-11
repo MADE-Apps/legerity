@@ -57,6 +57,16 @@ namespace XamlControlsGallery.Pages
         }
 
         /// <summary>
+        /// Navigates to the calendar date picker control page.
+        /// </summary>
+        /// <returns>The <see cref="CalendarDatePickerPage"/>.</returns>
+        public CalendarDatePickerPage GoToCalendarDatePickerPage()
+        {
+            this.SearchForControl("CalendarDatePicker");
+            return new CalendarDatePickerPage();
+        }
+
+        /// <summary>
         /// Navigates to the calendar view control page.
         /// </summary>
         /// <returns>The <see cref="CalendarViewPage"/>.</returns>
