@@ -8,7 +8,9 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class CheckBox : WindowsElementWrapper
     {
-        private const string ToggleOnValue = "1";
+        private const string CheckedValue = "1";
+
+        private const string IndeterminateValue = "2";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckBox"/> class.
@@ -24,7 +26,12 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets a value indicating whether the check box is in the checked state.
         /// </summary>
-        public bool IsChecked => this.Element.GetAttribute("Toggle.ToggleState") == ToggleOnValue;
+        public bool IsChecked => this.Element.GetAttribute("Toggle.ToggleState") == CheckedValue;
+
+        /// <summary>
+        /// Gets a value indicating whether the check box is in the indeterminate state.
+        /// </summary>
+        public bool IsIndeterminate => this.Element.GetAttribute("Toggle.ToggleState") == IndeterminateValue;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CheckBox"/> without direct casting.
