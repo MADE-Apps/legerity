@@ -9,6 +9,7 @@ namespace XamlControlsGallery.Pages
     using OpenQA.Selenium.Appium.Windows;
 
     using XamlControlsGallery.Pages.BasicInput;
+    using XamlControlsGallery.Pages.Collections;
     using XamlControlsGallery.Pages.DateAndTime;
     using XamlControlsGallery.Pages.MenusAndToolbars;
     using XamlControlsGallery.Pages.Text;
@@ -108,6 +109,18 @@ namespace XamlControlsGallery.Pages
         {
             this.SearchForControl("DatePicker");
             return new DatePickerPage();
+        }
+
+        /// <summary>
+        /// Navigates to the flip view control page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="FlipViewPage"/>.
+        /// </returns>
+        public FlipViewPage GoToFlipViewPage()
+        {
+            this.SearchForControl("FlipView");
+            return new FlipViewPage();
         }
 
         /// <summary>
