@@ -13,7 +13,7 @@ namespace Legerity.Windows.Elements.Core
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP AppBarButton control.
     /// </summary>
-    public class AppBarButton : WindowsElementWrapper
+    public class AppBarButton : Button
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AppBarButton"/> class.
@@ -52,14 +52,6 @@ namespace Legerity.Windows.Elements.Core
         public static implicit operator AppBarButton(AppiumWebElement element)
         {
             return new AppBarButton(element as WindowsElement);
-        }
-
-        /// <summary>
-        /// Clicks the app bar button.
-        /// </summary>
-        public void Click()
-        {
-            this.Element.Click();
         }
     }
 }

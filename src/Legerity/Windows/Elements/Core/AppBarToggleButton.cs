@@ -71,7 +71,7 @@ namespace Legerity.Windows.Elements.Core
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Legerity.Windows.Elements.Core
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
     }
 }

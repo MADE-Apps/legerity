@@ -13,7 +13,7 @@ namespace Legerity.Windows.Elements.Core
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP HyperlinkButton control.
     /// </summary>
-    public class HyperlinkButton : WindowsElementWrapper
+    public class HyperlinkButton : Button
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Button"/> class.
@@ -52,14 +52,6 @@ namespace Legerity.Windows.Elements.Core
         public static implicit operator HyperlinkButton(AppiumWebElement element)
         {
             return new HyperlinkButton(element as WindowsElement);
-        }
-
-        /// <summary>
-        /// Clicks the hyperlink button.
-        /// </summary>
-        public void Click()
-        {
-            this.Element.Click();
         }
     }
 }
