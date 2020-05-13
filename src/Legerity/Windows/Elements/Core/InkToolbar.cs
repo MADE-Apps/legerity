@@ -25,24 +25,24 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the ballpoint pen button.
         /// </summary>
-        public Button BallpointPenButton =>
+        public RadioButton BallpointPenButton =>
             this.Element.FindElement(ByExtensions.AutomationId("InkToolbarBallpointPenButton"));
 
         /// <summary>
         /// Gets the element associated with the pencil button.
         /// </summary>
-        public Button PencilButton => this.Element.FindElement(ByExtensions.AutomationId("InkToolbarPencilButton"));
+        public RadioButton PencilButton => this.Element.FindElement(ByExtensions.AutomationId("InkToolbarPencilButton"));
 
         /// <summary>
         /// Gets the element associated with the highlighter button.
         /// </summary>
-        public Button HighlighterButton =>
+        public RadioButton HighlighterButton =>
             this.Element.FindElement(ByExtensions.AutomationId("InkToolbarHighlighterButton"));
 
         /// <summary>
         /// Gets the element associated with the ruler button.
         /// </summary>
-        public Button RulerButton => this.Element.FindElement(ByExtensions.AutomationId("InkToolbarStencilButton"));
+        public ToggleButton RulerButton => this.Element.FindElement(ByExtensions.AutomationId("InkToolbarStencilButton"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InkToolbar"/> without direct casting.
