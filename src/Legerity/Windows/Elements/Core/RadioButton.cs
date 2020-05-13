@@ -19,7 +19,7 @@ namespace Legerity.Windows.Elements.Core
         /// Initializes a new instance of the <see cref="RadioButton"/> class.
         /// </summary>
         /// <param name="element">
-        /// The <see cref="RadioButton"/> reference.
+        /// The <see cref="WindowsElement"/> reference.
         /// </param>
         public RadioButton(WindowsElement element)
             : base(element)
