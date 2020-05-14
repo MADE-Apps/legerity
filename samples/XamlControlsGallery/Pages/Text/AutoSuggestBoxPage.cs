@@ -39,7 +39,7 @@ namespace XamlControlsGallery.Pages.Text
         public AutoSuggestBoxPage SetBasicAutoSuggestBoxText(string expectedText)
         {
             AutoSuggestBox autoSuggestBox = this.WindowsApp.FindElement(this.basicAutoSuggestBox);
-            autoSuggestBox.SetValue(expectedText);
+            autoSuggestBox.SetText(expectedText);
             return this;
         }
 
@@ -69,7 +69,7 @@ namespace XamlControlsGallery.Pages.Text
         public void VerifyBasicAutoSuggestBoxValue(string expectedText)
         {
             AutoSuggestBox autoSuggestBox = this.WindowsApp.FindElement(this.basicAutoSuggestBox);
-            Assert.AreEqual(expectedText, autoSuggestBox.Value);
+            Assert.AreEqual(expectedText, autoSuggestBox.Text);
         }
     }
 }

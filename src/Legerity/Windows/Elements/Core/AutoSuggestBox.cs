@@ -36,12 +36,12 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the text box.
         /// </summary>
-        public AppiumWebElement TextBox => this.Element.FindElement(this.textBoxQuery);
+        public TextBox TextBox => this.Element.FindElement(this.textBoxQuery);
 
         /// <summary>
         /// Gets the value of the auto-suggest box.
         /// </summary>
-        public string Value => this.TextBox.GetAttribute("Value.Value");
+        public string Text => this.TextBox.Text;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="AutoSuggestBox"/> without direct casting.
@@ -87,7 +87,7 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="suggestion">The suggestion to select.</param>
         public void SelectSuggestion(string value, string suggestion)
         {
-            this.SetValue(value);
+            this.SetText(value);
 
             this.VerifyElementShown(this.suggestionsPopupQuery, TimeSpan.FromSeconds(2));
 
@@ -99,10 +99,9 @@ namespace Legerity.Windows.Elements.Core
         /// Sets the value of the auto-suggest box.
         /// </summary>
         /// <param name="value">The value to set.</param>
-        public void SetValue(string value)
+        public void SetText(string value)
         {
-            this.Element.Click();
-            this.Element.SendKeys(value);
+            this.TextBox.SetText(value);
         }
     }
 }
