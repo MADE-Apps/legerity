@@ -38,6 +38,11 @@ namespace Legerity
                 : null;
 
         /// <summary>
+        /// Gets a value indicating whether the element is visible.
+        /// </summary>
+        public bool IsVisible => this.Element.Displayed;
+
+        /// <summary>
         /// Determines whether the specified element is shown with the specified timeout.
         /// </summary>
         /// <param name="query">The query to find a specific element.</param>
