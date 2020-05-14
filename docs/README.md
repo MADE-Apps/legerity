@@ -16,3 +16,12 @@ The Windows Alarms And Clock sample project provides an easy to understand examp
 
 [Read more about implementing POP](POP.md).
 
+## Platform control wrappers
+
+Platform control wrappers are as simple as they sound. They are a wrapper around the Appium element (AppiumWebElement, WindowsElement, AndroidElement etc.) which provide better actions for interaction and exposed properties to give you an easier development experience with UI tests. 
+
+Currently the project supports the core UWP interactive controls with plan to expand to core iOS and Android controls in Xamarin.
+
+These are built in a way that also allows you to extend the base wrapper to create wrappers for your own custom controls! 
+
+[Read more about using Windows control wrappers](WindowsControlWrappers.md)
