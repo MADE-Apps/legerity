@@ -11,6 +11,7 @@ namespace XamlControlsGallery.Pages
     using XamlControlsGallery.Pages.BasicInput;
     using XamlControlsGallery.Pages.Collections;
     using XamlControlsGallery.Pages.DateAndTime;
+    using XamlControlsGallery.Pages.Media;
     using XamlControlsGallery.Pages.MenusAndToolbars;
     using XamlControlsGallery.Pages.Text;
 
@@ -121,6 +122,18 @@ namespace XamlControlsGallery.Pages
         {
             this.SearchForControl("FlipView");
             return new FlipViewPage();
+        }
+
+        /// <summary>
+        /// Navigates to the ink toolbar control page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="InkToolbarPage"/>.
+        /// </returns>
+        public InkToolbarPage GoToInkToolbarPage()
+        {
+            this.SearchForControl("InkToolbar");
+            return new InkToolbarPage();
         }
 
         /// <summary>

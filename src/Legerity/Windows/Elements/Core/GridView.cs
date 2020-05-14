@@ -35,7 +35,7 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the collection of items associated with the grid view.
         /// </summary>
         public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.gridViewItemQuery);
-        
+
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="GridView"/> without direct casting.
         /// </summary>
@@ -74,8 +74,7 @@ namespace Legerity.Windows.Elements.Core
         {
             this.VerifyElementsShown(this.gridViewItemQuery, TimeSpan.FromSeconds(2));
 
-            AppiumWebElement item = this.Items.FirstOrDefault(
-                element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
+            AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
             item.Click();
         }
