@@ -17,9 +17,9 @@ namespace Legerity.Windows.Elements.WinUI
     /// </summary>
     public class NavigationView : WindowsElementWrapper
     {
-        private readonly By menuItemsView = ByExtensions.AutomationId("MenuItemsHost");
+        private readonly By menuItemsHostQuery = ByExtensions.AutomationId("MenuItemsHost");
 
-        private readonly By menuItem = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+        private readonly By navigationViewItemQuery = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationView"/> class.
@@ -35,12 +35,12 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the UI component associated with displaying the menu items.
         /// </summary>
-        public AppiumWebElement MenuItemsView => this.Element.FindElement(this.menuItemsView);
+        public AppiumWebElement MenuItemsView => this.Element.FindElement(this.menuItemsHostQuery);
 
         /// <summary>
         /// Gets the UI components associated with the menu items.
         /// </summary>
-        public IEnumerable<AppiumWebElement> MenuItems => this.MenuItemsView.FindElements(this.menuItem);
+        public IEnumerable<AppiumWebElement> MenuItems => this.MenuItemsView.FindElements(this.navigationViewItemQuery);
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationView"/> without direct casting.

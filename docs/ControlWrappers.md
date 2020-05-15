@@ -1,3 +1,18 @@
+# Control wrappers
+
+The goal of the platform control wrappers is to provide an easy set of elements which surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them. 
+
+## Create your own
+
+While out-of-the-box, Legerity attempts to provide a collection of core control wrappers for a platform, we expose the parts of the framework that allow you to create elements for your own custom controls!
+
+### Example
+
+In this example, the application associated has a custom time picker control implementation.
+
+It's recommended that when creating your own control wrappers, you provide the [implicit operators](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/user-defined-conversion-operators) which will allow you to use your wrapper when finding an element without direct casting.
+
+```csharp
 namespace WindowsAlarmsAndClock.Elements
 {
     using System;
@@ -70,3 +85,20 @@ namespace WindowsAlarmsAndClock.Elements
         }
     }
 }
+```
+
+### Platform specifics
+
+Each of the platform specific wrappers exposes not just the wrappered element but the driver for that application type to allow you to access more information around your control.
+
+For example, a control may contain a popup or flyout which is displayed in a different tree to the current element, such as the [UWP InkToolbar](../src/Legerity/Windows/Elements/Core/InkToolbar.cs).
+
+If you want to create a platform specific wrapper, you can start by implementing one of the following platform base wrappers.
+
+- [WindowsElementWrapper](../src/Legerity/Windows/Elements/WindowsElementWrapper.cs)
+
+## Windows
+
+The Windows control wrappers are designed to be used with applications built for the Windows platform.
+
+[Discover the Windows control wrappers](Windows/WindowsControlWrappers.md)

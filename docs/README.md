@@ -24,4 +24,4 @@ Currently the project supports the core UWP interactive controls with plan to ex
 
 These are built in a way that also allows you to extend the base wrapper to create wrappers for your own custom controls! 
 
-[Read more about using Windows control wrappers](WindowsControlWrappers.md)
+[Read more about using control wrappers](ControlWrappers.md)
