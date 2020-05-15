@@ -2,6 +2,18 @@
 
 The goal of the platform control wrappers is to provide an easy set of elements which surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them. 
 
+## Usage
+
+Using a control wrapper in your test application is super simple. 
+
+Where you want to find an element in the Appium driver which would usually return an AppiumWebElement or platform alternative, simply replace the `var` or Type to the intended control.
+
+```csharp
+Slider slider = this.Driver.FindElement(ByExtensions.AutomationId("MySlider"));
+```
+
+From there, you can access all of the additional actions and properties that are exposed by the wrapper.
+
 ## Create your own
 
 While out-of-the-box, Legerity attempts to provide a collection of core control wrappers for a platform, we expose the parts of the framework that allow you to create elements for your own custom controls!
