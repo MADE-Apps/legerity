@@ -2,10 +2,38 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.0.0</Version>
+    <Authors>MADE Apps</Authors>
+    <Company>MADE Apps</Company>
+    <Product>Legerity - Framework for UI tests with Appium with .NET</Product>
+    <Description>A framework for speeding up the development of automated UI tests with Appium with .NET.</Description>
+    <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/MADE-Apps/legerity</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>ProjectLogo.png</PackageIcon>
+    <PackageTags>Appium WinAppDriver POP UWP Xamarin</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageId>Legerity</PackageId>
     <RootNamespace>Legerity</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\Legerity.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
+    <None Include="..\..\assets\ProjectLogo.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
     <PackageReference Include="Appium.WebDriver" Version="4.1.1" />
   </ItemGroup>
 
