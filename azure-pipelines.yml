@@ -1,0 +1,95 @@
+name: $(Major).$(Minor).$(Year:yy)$(DayOfYear).$(Rev:r)$(PreReleaseTag)
+
+trigger:
+  branches:
+    include:
+    - master
+
+pr:
+  branches:
+    include:
+    - master
+
+stages:
+
+- stage: 'Build'
+  variables:
+    Solution: '**/*.sln'
+    BuildConfiguration: 'Release'
+
+  jobs:
+  - job:
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    workspace:
+      clean: all
+
+    steps:
+    - task: NuGetToolInstaller@1
+      inputs:
+        versionSpec: '5.5.1'
+    
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: '$(Solution)'
+
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+        projects: '$(Solution)'
+        arguments: '--configuration $(BuildConfiguration) -p:Version=$(Build.BuildNumber)'
+
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)'
+        Contents: |
+          **/*.nupkg
+          **/*.snupkg
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/artifacts'
+
+    - publish: '$(Build.ArtifactStagingDirectory)/artifacts'
+      artifact: 'artifacts'
+
+- stage: 'InternalPublish'
+  dependsOn: 'Build'
+  condition: succeeded()
+  jobs:
+    - job:
+      pool:
+        vmImage: 'ubuntu-latest'
+      
+      steps:
+      - checkout: none
+
+      - download: current
+        artifact: 'artifacts'
+
+      - task: NuGetCommand@2
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
+          nuGetFeedType: 'internal'
+          publishVstsFeed: 'NuGet-PreRelease'
+
+- stage: 'NuGetPublish'
+  dependsOn: 'InternalPublish'
+  condition: and(succeeded(), eq(variables['NuGetPublish'], 'true'))
+  jobs:
+    - job:
+      pool:
+        vmImage: 'ubuntu-latest'
+
+      steps:
+      - checkout: none
+
+      - download: current
+        artifact: 'artifacts'
+
+      - task: NuGetCommand@2
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
+          nuGetFeedType: 'external'
+          publishFeedCredentials: 'NuGet - MADE Apps'
