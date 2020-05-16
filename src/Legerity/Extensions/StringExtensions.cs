@@ -12,10 +12,10 @@ namespace Legerity.Extensions
         /// Determines whether the specified value contains the comparison value by the specified culture and comparison option. 
         /// </summary>
         /// <param name="value">
-        /// The value to check contains the <see cref="contains"/> value.
+        /// The value to check contains the <paramref name="contains"/> value.
         /// </param>
         /// <param name="contains">
-        /// The value that should be contained within the <see cref="value"/>.
+        /// The value that should be contained within the <paramref name="value"/>.
         /// </param>
         /// <param name="culture">
         /// The culture for comparison.

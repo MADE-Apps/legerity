@@ -24,14 +24,14 @@ namespace Legerity
         /// Initializes a new instance of the <see cref="ElementWrapper{TElement}"/> class.
         /// </summary>
         /// <param name="element">
-        /// The <see cref="TElement"/> reference.
+        /// The <typeparamref name="TElement"/> reference.
         /// </param>
         protected ElementWrapper(TElement element)
         {
             this.elementReference = new WeakReference(element);
         }
 
-        /// <summary>Gets the original <see cref="TElement"/> reference object.</summary>
+        /// <summary>Gets the original <typeparamref name="TElement"/> reference object.</summary>
         public TElement Element =>
             this.elementReference != null && this.elementReference.IsAlive
                 ? this.elementReference.Target as TElement
@@ -47,7 +47,7 @@ namespace Legerity
         /// </summary>
         /// <param name="query">The query to find a specific element.</param>
         /// <param name="timeout">
-        /// The amount of time the driver should wait when searching for the <see cref="query"/> if it is not immediately present.
+        /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
         /// </param>
         protected void VerifyElementShown(By query, TimeSpan? timeout)
         {
@@ -72,7 +72,7 @@ namespace Legerity
         /// The query to find a collection of elements.
         /// </param>
         /// <param name="timeout">
-        /// The amount of time the driver should wait when searching for the <see cref="query"/> if it is not immediately present.
+        /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
         /// </param>
         protected void VerifyElementsShown(By query, TimeSpan? timeout)
         {

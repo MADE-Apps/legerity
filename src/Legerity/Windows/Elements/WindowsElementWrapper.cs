@@ -34,7 +34,7 @@ namespace Legerity.Windows.Elements
         /// </summary>
         /// <param name="query">The query to find a specific element.</param>
         /// <param name="timeout">
-        /// The amount of time the driver should wait when searching for the <see cref="query"/> if it is not immediately present.
+        /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
         /// </param>
         protected void VerifyDriverElementShown(By query, TimeSpan? timeout)
         {
@@ -59,7 +59,7 @@ namespace Legerity.Windows.Elements
         /// The query to find a collection of elements.
         /// </param>
         /// <param name="timeout">
-        /// The amount of time the driver should wait when searching for the <see cref="query"/> if it is not immediately present.
+        /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
         /// </param>
         protected void VerifyDriverElementsShown(By query, TimeSpan? timeout)
         {
