@@ -13,6 +13,7 @@ namespace XamlControlsGallery.Pages
     using XamlControlsGallery.Pages.DateAndTime;
     using XamlControlsGallery.Pages.Media;
     using XamlControlsGallery.Pages.MenusAndToolbars;
+    using XamlControlsGallery.Pages.Navigation;
     using XamlControlsGallery.Pages.Text;
 
     /// <summary>
@@ -146,6 +147,16 @@ namespace XamlControlsGallery.Pages
         {
             this.SearchForControl("Slider");
             return new SliderPage();
+        }
+
+        /// <summary>
+        /// Navigates to the tab view control page.
+        /// </summary>
+        /// <returns>The <see cref="TabViewPage"/>.</returns>
+        public TabViewPage GoToTabViewPage()
+        {
+            this.SearchForControl("TabView");
+            return new TabViewPage();
         }
         
         /// <summary>
