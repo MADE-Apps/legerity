@@ -24,8 +24,13 @@ namespace Legerity.Windows.Extensions
         /// </returns>
         public static bool VerifyNameOrAutomationIdEquals(this AppiumWebElement element, string compare)
         {
-            return element.GetAttribute("Name").Equals(compare, StringComparison.CurrentCultureIgnoreCase) || element
-                       .GetAttribute("AutomationId").Equals(compare, StringComparison.CurrentCultureIgnoreCase);
+            string name = element.GetAttribute("Name");
+            string automationId = element.GetAttribute("AutomationId");
+
+            return string.Equals(compare, name, StringComparison.CurrentCultureIgnoreCase) || string.Equals(
+                       compare,
+                       automationId,
+                       StringComparison.CurrentCultureIgnoreCase);
         }
 
         /// <summary>
@@ -42,8 +47,13 @@ namespace Legerity.Windows.Extensions
         /// </returns>
         public static bool VerifyNameOrAutomationIdEquals(this WindowsElement element, string compare)
         {
-            return element.GetAttribute("Name").Equals(compare, StringComparison.CurrentCultureIgnoreCase) || element
-                       .GetAttribute("AutomationId").Equals(compare, StringComparison.CurrentCultureIgnoreCase);
+            string name = element.GetAttribute("Name");
+            string automationId = element.GetAttribute("AutomationId");
+
+            return string.Equals(compare, name, StringComparison.CurrentCultureIgnoreCase) || string.Equals(
+                       compare,
+                       automationId,
+                       StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }

@@ -37,6 +37,15 @@ namespace Legerity.Windows.Elements.Core
         public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.listViewItemQuery);
 
         /// <summary>
+        /// Gets the element associated with the currently selected item.
+        /// </summary>
+        public AppiumWebElement SelectedItem =>
+            this.Items.FirstOrDefault(
+                i => i.GetAttribute("SelectionItem.IsSelected").Equals(
+                    "True",
+                    StringComparison.CurrentCultureIgnoreCase));
+
+        /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ListView"/> without direct casting.
         /// </summary>
         /// <param name="element">
