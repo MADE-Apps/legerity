@@ -138,6 +138,16 @@ namespace XamlControlsGallery.Pages
         }
 
         /// <summary>
+        /// Navigates to the number box control page.
+        /// </summary>
+        /// <returns>The <see cref="NumberBoxPage"/>.</returns>
+        public NumberBoxPage GoToNumberBoxPage()
+        {
+            this.SearchForControl("NumberBox");
+            return new NumberBoxPage();
+        }
+
+        /// <summary>
         /// Navigates to the slider control page.
         /// </summary>
         /// <returns>
