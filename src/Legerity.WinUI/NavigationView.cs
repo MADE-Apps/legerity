@@ -27,6 +27,8 @@ namespace Legerity.Windows.Elements.WinUI
 
         private readonly By togglePaneButtonItemQuery = ByExtensions.AutomationId("TogglePaneButton");
 
+        private readonly By navigationViewBackButtonQuery = ByExtensions.AutomationId("NavigationViewBackButton");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationView"/> class.
         /// </summary>
@@ -57,6 +59,11 @@ namespace Legerity.Windows.Elements.WinUI
         /// Gets the UI component associated with the navigation pane toggle button.
         /// </summary>
         public Button ToggleNavigationPaneButton => this.Element.FindElement(this.togglePaneButtonItemQuery);
+
+        /// <summary>
+        /// Gets the UI component associated with the navigation back button.
+        /// </summary>
+        public Button BackButton => this.Element.FindElement(this.navigationViewBackButtonQuery);
 
         /// <summary>
         /// Gets a value indicating whether the pane is currently open.
@@ -115,6 +122,17 @@ namespace Legerity.Windows.Elements.WinUI
             }
 
             this.ToggleNavigationPaneButton.Click();
+        }
+
+        /// <summary>
+        /// Navigates the view back.
+        /// </summary>
+        public void GoBack()
+        {
+            if (this.BackButton.IsEnabled)
+            {
+                this.BackButton.Click();
+            }
         }
 
         /// <summary>
