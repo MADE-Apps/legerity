@@ -21,6 +21,8 @@ namespace Legerity.Windows.Elements.WinUI
 
         private readonly By navigationViewItemQuery = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
 
+        private readonly By settingsMenuItemQuery = ByExtensions.AutomationId("SettingsNavPaneItem");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationView"/> class.
         /// </summary>
@@ -41,6 +43,11 @@ namespace Legerity.Windows.Elements.WinUI
         /// Gets the UI components associated with the menu items.
         /// </summary>
         public IEnumerable<AppiumWebElement> MenuItems => this.MenuItemsView.FindElements(this.navigationViewItemQuery);
+
+        /// <summary>
+        /// Gets the UI component associated with the settings menu item.
+        /// </summary>
+        public AppiumWebElement SettingsMenuItem => this.Element.FindElement(this.settingsMenuItemQuery);
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationView"/> without direct casting.
@@ -82,6 +89,14 @@ namespace Legerity.Windows.Elements.WinUI
                 element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
             item.Click();
+        }
+
+        /// <summary>
+        /// Opens the settings option.
+        /// </summary>
+        public void OpenSettings()
+        {
+            this.SettingsMenuItem.Click();
         }
     }
 }

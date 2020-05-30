@@ -148,6 +148,17 @@ namespace XamlControlsGallery.Pages
         }
 
         /// <summary>
+        /// Navigates to the settings page.
+        /// </summary>
+        /// <returns>The <see cref="SettingsPage"/>.</returns>
+        public SettingsPage GoToSettingsPage()
+        {
+            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
+            navigationView.OpenSettings();
+            return new SettingsPage();
+        }
+
+        /// <summary>
         /// Navigates to the slider control page.
         /// </summary>
         /// <returns>
