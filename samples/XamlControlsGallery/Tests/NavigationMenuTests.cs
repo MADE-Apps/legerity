@@ -5,41 +5,41 @@ namespace XamlControlsGallery.Tests
     using XamlControlsGallery.Pages;
 
     [TestClass]
-    public class SettingsTests : BaseTestClass
+    public class NavigationMenuTests : BaseTestClass
     {
-        private static SettingsPage SettingsPage { get; set; }
+        private static NavigationMenu NavigationMenu { get; set; }
 
         [TestInitialize]
         public override void Initialize()
         {
             base.Initialize();
-            SettingsPage = new NavigationMenu().GoToSettingsPage();
+            NavigationMenu = new NavigationMenu();
         }
 
         [TestMethod]
-        public void SetSoundToggleOn()
+        public void SetPaneOpen()
         {
             // Arrange
             const bool expectedState = true;
 
             // Act
-            SettingsPage.ToggleSoundOption(expectedState);
+            NavigationMenu.ToggleNavigationPane(expectedState);
 
             // Assert
-            SettingsPage.VerifyToggleSoundOption(expectedState);
+            NavigationMenu.VerifyToggleNavigationPane(expectedState);
         }
 
         [TestMethod]
-        public void SetSoundToggleOff()
+        public void SetPaneClosed()
         {
             // Arrange
             const bool expectedState = false;
 
             // Act
-            SettingsPage.ToggleSoundOption(expectedState);
+            NavigationMenu.ToggleNavigationPane(expectedState);
 
             // Assert
-            SettingsPage.VerifyToggleSoundOption(expectedState);
+            NavigationMenu.VerifyToggleNavigationPane(expectedState);
         }
     }
 }

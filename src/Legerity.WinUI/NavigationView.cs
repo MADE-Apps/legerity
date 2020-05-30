@@ -17,11 +17,15 @@ namespace Legerity.Windows.Elements.WinUI
     /// </summary>
     public class NavigationView : WindowsElementWrapper
     {
+        private readonly By paneRootQuery = ByExtensions.AutomationId("PaneRoot");
+
         private readonly By menuItemsHostQuery = ByExtensions.AutomationId("MenuItemsHost");
 
         private readonly By navigationViewItemQuery = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
 
         private readonly By settingsMenuItemQuery = ByExtensions.AutomationId("SettingsNavPaneItem");
+
+        private readonly By togglePaneButtonItemQuery = ByExtensions.AutomationId("TogglePaneButton");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationView"/> class.
@@ -48,6 +52,16 @@ namespace Legerity.Windows.Elements.WinUI
         /// Gets the UI component associated with the settings menu item.
         /// </summary>
         public AppiumWebElement SettingsMenuItem => this.Element.FindElement(this.settingsMenuItemQuery);
+
+        /// <summary>
+        /// Gets the UI component associated with the navigation pane toggle button.
+        /// </summary>
+        public Button ToggleNavigationPaneButton => this.Element.FindElement(this.togglePaneButtonItemQuery);
+
+        /// <summary>
+        /// Gets a value indicating whether the pane is currently open.
+        /// </summary>
+        public bool IsPaneOpen => this.VerifyPaneOpen();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationView"/> without direct casting.
@@ -78,6 +92,32 @@ namespace Legerity.Windows.Elements.WinUI
         }
 
         /// <summary>
+        /// Opens the navigation pane.
+        /// </summary>
+        public void OpenNavigationPane()
+        {
+            if (this.IsPaneOpen)
+            {
+                return;
+            }
+
+            this.ToggleNavigationPaneButton.Click();
+        }
+
+        /// <summary>
+        /// Collapses the navigation pane.
+        /// </summary>
+        public void CloseNavigationPane()
+        {
+            if (!this.IsPaneOpen)
+            {
+                return;
+            }
+
+            this.ToggleNavigationPaneButton.Click();
+        }
+
+        /// <summary>
         /// Clicks on a menu option in the navigation view with the specified item name.
         /// </summary>
         /// <param name="name">
@@ -97,6 +137,14 @@ namespace Legerity.Windows.Elements.WinUI
         public void OpenSettings()
         {
             this.SettingsMenuItem.Click();
+        }
+
+        private bool VerifyPaneOpen()
+        {
+            AppiumWebElement pane = this.Element.FindElement(this.paneRootQuery);
+            return pane.GetAttribute("IsWindowPatternAvailable").Equals(
+                "True",
+                StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }
