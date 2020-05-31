@@ -247,6 +247,25 @@ namespace XamlControlsGallery.Pages
             return this;
         }
 
+        /// <summary>
+        /// Selects a control option from the menu.
+        /// </summary>
+        /// <param name="expectedGroupOption">
+        /// The expected group option.
+        /// </param>
+        /// <param name="expectedOption">
+        /// The expected option.
+        /// </param>
+        /// <returns>
+        /// The <see cref="NavigationMenu"/>.
+        /// </returns>
+        public NavigationMenu SelectControlOption(string expectedGroupOption, string expectedOption)
+        {
+            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
+            navigationView.ClickMenuOption(expectedGroupOption).ClickChildOption(expectedOption);
+            return this;
+        }
+
         private void SearchForControl(string control)
         {
             NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);

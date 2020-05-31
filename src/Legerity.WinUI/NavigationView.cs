@@ -48,7 +48,9 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the UI components associated with the menu items.
         /// </summary>
-        public IEnumerable<AppiumWebElement> MenuItems => this.MenuItemsView.FindElements(this.navigationViewItemQuery);
+        public IEnumerable<NavigationViewItem> MenuItems =>
+            this.MenuItemsView.FindElements(this.navigationViewItemQuery)
+                .Select(element => new NavigationViewItem(this, element as WindowsElement));
 
         /// <summary>
         /// Gets the UI component associated with the settings menu item.
@@ -69,6 +71,11 @@ namespace Legerity.Windows.Elements.WinUI
         /// Gets a value indicating whether the pane is currently open.
         /// </summary>
         public bool IsPaneOpen => this.VerifyPaneOpen();
+
+        /// <summary>
+        /// Gets or sets the expected compact pane width used to determine the pane open state.
+        /// </summary>
+        public int ExpectedCompactPaneWidth { get; set; } = 40;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationView"/> without direct casting.
@@ -141,12 +148,15 @@ namespace Legerity.Windows.Elements.WinUI
         /// <param name="name">
         /// The name of the item to click.
         /// </param>
-        public void ClickMenuOption(string name)
+        /// <returns>
+        /// The clicked <see cref="NavigationViewItem"/>.
+        /// </returns>
+        public NavigationViewItem ClickMenuOption(string name)
         {
-            AppiumWebElement item = this.MenuItems.FirstOrDefault(
-                element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
-
+            NavigationViewItem item = this.MenuItems.FirstOrDefault(
+                element => element.Element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
             item.Click();
+            return item;
         }
 
         /// <summary>
@@ -160,9 +170,8 @@ namespace Legerity.Windows.Elements.WinUI
         private bool VerifyPaneOpen()
         {
             AppiumWebElement pane = this.Element.FindElement(this.paneRootQuery);
-            return pane.GetAttribute("IsWindowPatternAvailable").Equals(
-                "True",
-                StringComparison.CurrentCultureIgnoreCase);
+            int paneWidth = pane.Rect.Width;
+            return paneWidth > this.ExpectedCompactPaneWidth;
         }
     }
 }

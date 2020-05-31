@@ -3,6 +3,7 @@ namespace XamlControlsGallery.Tests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using XamlControlsGallery.Pages;
+    using XamlControlsGallery.Pages.BasicInput;
 
     [TestClass]
     public class NavigationMenuTests : BaseTestClass
@@ -40,6 +41,20 @@ namespace XamlControlsGallery.Tests
 
             // Assert
             NavigationMenu.VerifyToggleNavigationPane(expectedState);
+        }
+
+        [TestMethod]
+        public void ClickComboBoxMenuOption()
+        {
+            // Arrange
+            const string expectedGroupOption = "Basic Input";
+            const string expectedOption = "ComboBox";
+
+            // Act
+            NavigationMenu.SelectControlOption(expectedGroupOption, expectedOption);
+
+            // Assert
+            var comboBoxPage = new ComboBoxPage();
         }
     }
 }
