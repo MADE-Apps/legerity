@@ -17,9 +17,17 @@ namespace Legerity.Windows.Elements.WinUI
     /// </summary>
     public class NavigationView : WindowsElementWrapper
     {
+        private readonly By paneRootQuery = ByExtensions.AutomationId("PaneRoot");
+
         private readonly By menuItemsHostQuery = ByExtensions.AutomationId("MenuItemsHost");
 
         private readonly By navigationViewItemQuery = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+
+        private readonly By settingsMenuItemQuery = ByExtensions.AutomationId("SettingsNavPaneItem");
+
+        private readonly By togglePaneButtonItemQuery = ByExtensions.AutomationId("TogglePaneButton");
+
+        private readonly By navigationViewBackButtonQuery = ByExtensions.AutomationId("NavigationViewBackButton");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationView"/> class.
@@ -40,7 +48,34 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the UI components associated with the menu items.
         /// </summary>
-        public IEnumerable<AppiumWebElement> MenuItems => this.MenuItemsView.FindElements(this.navigationViewItemQuery);
+        public IEnumerable<NavigationViewItem> MenuItems =>
+            this.MenuItemsView.FindElements(this.navigationViewItemQuery)
+                .Select(element => new NavigationViewItem(this, element as WindowsElement));
+
+        /// <summary>
+        /// Gets the UI component associated with the settings menu item.
+        /// </summary>
+        public AppiumWebElement SettingsMenuItem => this.Element.FindElement(this.settingsMenuItemQuery);
+
+        /// <summary>
+        /// Gets the UI component associated with the navigation pane toggle button.
+        /// </summary>
+        public Button ToggleNavigationPaneButton => this.Element.FindElement(this.togglePaneButtonItemQuery);
+
+        /// <summary>
+        /// Gets the UI component associated with the navigation back button.
+        /// </summary>
+        public Button BackButton => this.Element.FindElement(this.navigationViewBackButtonQuery);
+
+        /// <summary>
+        /// Gets a value indicating whether the pane is currently open.
+        /// </summary>
+        public bool IsPaneOpen => this.VerifyPaneOpen();
+
+        /// <summary>
+        /// Gets or sets the expected compact pane width used to determine the pane open state.
+        /// </summary>
+        public int ExpectedCompactPaneWidth { get; set; } = 40;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationView"/> without direct casting.
@@ -71,17 +106,72 @@ namespace Legerity.Windows.Elements.WinUI
         }
 
         /// <summary>
+        /// Opens the navigation pane.
+        /// </summary>
+        public void OpenNavigationPane()
+        {
+            if (this.IsPaneOpen)
+            {
+                return;
+            }
+
+            this.ToggleNavigationPaneButton.Click();
+        }
+
+        /// <summary>
+        /// Collapses the navigation pane.
+        /// </summary>
+        public void CloseNavigationPane()
+        {
+            if (!this.IsPaneOpen)
+            {
+                return;
+            }
+
+            this.ToggleNavigationPaneButton.Click();
+        }
+
+        /// <summary>
+        /// Navigates the view back.
+        /// </summary>
+        public void GoBack()
+        {
+            if (this.BackButton.IsEnabled)
+            {
+                this.BackButton.Click();
+            }
+        }
+
+        /// <summary>
         /// Clicks on a menu option in the navigation view with the specified item name.
         /// </summary>
         /// <param name="name">
         /// The name of the item to click.
         /// </param>
-        public void ClickMenuOption(string name)
+        /// <returns>
+        /// The clicked <see cref="NavigationViewItem"/>.
+        /// </returns>
+        public NavigationViewItem ClickMenuOption(string name)
         {
-            AppiumWebElement item = this.MenuItems.FirstOrDefault(
-                element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
-
+            NavigationViewItem item = this.MenuItems.FirstOrDefault(
+                element => element.Element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
             item.Click();
+            return item;
+        }
+
+        /// <summary>
+        /// Opens the settings option.
+        /// </summary>
+        public void OpenSettings()
+        {
+            this.SettingsMenuItem.Click();
+        }
+
+        private bool VerifyPaneOpen()
+        {
+            AppiumWebElement pane = this.Element.FindElement(this.paneRootQuery);
+            int paneWidth = pane.Rect.Width;
+            return paneWidth > this.ExpectedCompactPaneWidth;
         }
     }
 }

@@ -5,6 +5,8 @@ namespace XamlControlsGallery.Pages
     using Legerity.Windows.Elements.WinUI;
     using Legerity.Windows.Extensions;
 
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -148,6 +150,17 @@ namespace XamlControlsGallery.Pages
         }
 
         /// <summary>
+        /// Navigates to the settings page.
+        /// </summary>
+        /// <returns>The <see cref="SettingsPage"/>.</returns>
+        public SettingsPage GoToSettingsPage()
+        {
+            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
+            navigationView.OpenSettings();
+            return new SettingsPage();
+        }
+
+        /// <summary>
         /// Navigates to the slider control page.
         /// </summary>
         /// <returns>
@@ -191,6 +204,66 @@ namespace XamlControlsGallery.Pages
         {
             this.SearchForControl("ToggleSwitch");
             return new ToggleSwitchPage();
+        }
+
+        /// <summary>
+        /// Toggles the navigation pane.
+        /// </summary>
+        /// <param name="open">
+        /// A value indicating whether to toggle open.
+        /// </param>
+        /// <returns>
+        /// The <see cref="NavigationMenu"/>.
+        /// </returns>
+        public NavigationMenu ToggleNavigationPane(bool open)
+        {
+            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
+
+            if (open)
+            {
+                navigationView.OpenNavigationPane();
+            }
+            else
+            {
+                navigationView.CloseNavigationPane();
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        /// Verifies that the navigation pane has been updated.
+        /// </summary>
+        /// <param name="open">
+        /// A value indicating whether the pane should be open.
+        /// </param>
+        /// <returns>
+        /// The <see cref="NavigationMenu"/>.
+        /// </returns>
+        public NavigationMenu VerifyToggleNavigationPane(bool open)
+        {
+            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
+            Assert.AreEqual(open, navigationView.IsPaneOpen);
+            return this;
+        }
+
+        /// <summary>
+        /// Selects a control option from the menu.
+        /// </summary>
+        /// <param name="expectedGroupOption">
+        /// The expected group option.
+        /// </param>
+        /// <param name="expectedOption">
+        /// The expected option.
+        /// </param>
+        /// <returns>
+        /// The <see cref="NavigationMenu"/>.
+        /// </returns>
+        public NavigationMenu SelectControlOption(string expectedGroupOption, string expectedOption)
+        {
+            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
+            navigationView.ClickMenuOption(expectedGroupOption).ClickChildOption(expectedOption);
+            return this;
         }
 
         private void SearchForControl(string control)
