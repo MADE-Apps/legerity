@@ -4,11 +4,13 @@ namespace Legerity
 
     using Legerity.Android;
     using Legerity.Exceptions;
+    using Legerity.IOS;
     using Legerity.Windows;
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
 
@@ -20,6 +22,8 @@ namespace Legerity
         private static WindowsDriver<WindowsElement> windowsApp;
 
         private static AndroidDriver<AndroidElement> androidApp;
+
+        private static IOSDriver<IOSElement> iosApp;
 
         /// <summary>
         /// Gets the instance of the started Windows application.
@@ -34,7 +38,7 @@ namespace Legerity
                 if (windowsApp == null)
                 {
                     throw new DriverNotInitializedException(
-                        "'AppManager.WindowsApp' not set. Call 'AppManager.StartApp()' with WindowsAppManagerOptions before trying to access it.");
+                        $"'AppManager.WindowsApp' not set. Call 'AppManager.StartApp()' with {nameof(WindowsAppManagerOptions)} before trying to access it.");
                 }
 
                 return windowsApp;
@@ -54,10 +58,30 @@ namespace Legerity
                 if (androidApp == null)
                 {
                     throw new DriverNotInitializedException(
-                        "'AppManager.AndroidApp' not set. Call 'AppManager.StartApp()' with AndroidAppManagerOptions before trying to access it.");
+                        $"'AppManager.AndroidApp' not set. Call 'AppManager.StartApp()' with {nameof(AndroidAppManagerOptions)} before trying to access it.");
                 }
 
                 return androidApp;
+            }
+        }
+
+        /// <summary>
+        /// Gets the instance of the started iOS application.
+        /// </summary>
+        /// <exception cref="NullReferenceException">
+        /// Thrown if the <see cref="IOSApp"/> is null as a result of not calling <see cref="StartApp"/>.
+        /// </exception>
+        public static IOSDriver<IOSElement> IOSApp
+        {
+            get
+            {
+                if (iosApp == null)
+                {
+                    throw new DriverNotInitializedException(
+                        $"'AppManager.IOSApp' not set. Call 'AppManager.StartApp()' with {nameof(IOSAppManagerOptions)} before trying to access it.");
+                }
+
+                return iosApp;
             }
         }
 
@@ -87,13 +111,7 @@ namespace Legerity
                         new Uri(winOpts.AppiumDriverUrl),
                         winOpts.AppiumOptions);
 
-                    if (windowsApp?.SessionId == null)
-                    {
-                        throw new DriverLoadFailedException(opts);
-                    }
-
-                    // Set implicit timeout to 2 seconds to make element search to retry every 500 ms for at most three times
-                    windowsApp.Manage().Timeouts().ImplicitWait = winOpts.ImplicitWait;
+                    VerifyAppDriver(windowsApp, winOpts);
                     break;
                 }
 
@@ -103,13 +121,15 @@ namespace Legerity
                         new Uri(androidOpts.AppiumDriverUrl),
                         androidOpts.AppiumOptions);
 
-                    if (androidApp?.SessionId == null)
-                    {
-                        throw new DriverLoadFailedException(opts);
-                    }
+                    VerifyAppDriver(androidApp, androidOpts);
+                    break;
+                }
 
-                    // Set implicit timeout to 2 seconds to make element search to retry every 500 ms for at most three times
-                    androidApp.Manage().Timeouts().ImplicitWait = androidOpts.ImplicitWait;
+                case IOSAppManagerOptions iosOpts:
+                {
+                    iosApp = new IOSDriver<IOSElement>(new Uri(iosOpts.AppiumDriverUrl), iosOpts.AppiumOptions);
+
+                    VerifyAppDriver(iosApp, iosOpts);
                     break;
                 }
             }
@@ -131,6 +151,23 @@ namespace Legerity
                 androidApp.Quit();
                 androidApp = null;
             }
+
+            if (iosApp != null)
+            {
+                iosApp.Quit();
+                iosApp = null;
+            }
+        }
+
+        private static void VerifyAppDriver(RemoteWebDriver app, AppManagerOptions opts)
+        {
+            if (app?.SessionId == null)
+            {
+                throw new DriverLoadFailedException(opts);
+            }
+
+            // Set implicit timeout to 2 seconds to make element search to retry every 500 ms for at most three times.
+            app.Manage().Timeouts().ImplicitWait = opts.ImplicitWait;
         }
     }
 }
