@@ -2,11 +2,13 @@ namespace Legerity
 {
     using System;
 
+    using Legerity.Android;
     using Legerity.Exceptions;
     using Legerity.Windows;
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
+    using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
 
@@ -16,6 +18,8 @@ namespace Legerity
     public static class AppManager
     {
         private static WindowsDriver<WindowsElement> windowsApp;
+
+        private static AndroidDriver<AndroidElement> androidApp;
 
         /// <summary>
         /// Gets the instance of the started Windows application.
@@ -38,6 +42,26 @@ namespace Legerity
         }
 
         /// <summary>
+        /// Gets the instance of the started Android application.
+        /// </summary>
+        /// <exception cref="NullReferenceException">
+        /// Thrown if the <see cref="AndroidApp"/> is null as a result of not calling <see cref="StartApp"/>.
+        /// </exception>
+        public static AndroidDriver<AndroidElement> AndroidApp
+        {
+            get
+            {
+                if (androidApp == null)
+                {
+                    throw new DriverNotInitializedException(
+                        "'AppManager.AndroidApp' not set. Call 'AppManager.StartApp()' with AndroidAppManagerOptions before trying to access it.");
+                }
+
+                return androidApp;
+            }
+        }
+
+        /// <summary>
         /// Starts the application ready for testing.
         /// </summary>
         /// <param name="opts">
@@ -55,16 +79,39 @@ namespace Legerity
 
             StopApp();
 
-            if (opts is WindowsAppManagerOptions winOpts)
+            switch (opts)
             {
-                windowsApp = new WindowsDriver<WindowsElement>(new Uri(winOpts.AppiumDriverUrl), winOpts.AppiumOptions);
-                if (windowsApp?.SessionId == null)
+                case WindowsAppManagerOptions winOpts:
                 {
-                    throw new DriverLoadFailedException(opts);
+                    windowsApp = new WindowsDriver<WindowsElement>(
+                        new Uri(winOpts.AppiumDriverUrl),
+                        winOpts.AppiumOptions);
+
+                    if (windowsApp?.SessionId == null)
+                    {
+                        throw new DriverLoadFailedException(opts);
+                    }
+
+                    // Set implicit timeout to 2 seconds to make element search to retry every 500 ms for at most three times
+                    windowsApp.Manage().Timeouts().ImplicitWait = winOpts.ImplicitWait;
+                    break;
                 }
 
-                // Set implicit timeout to 2 seconds to make element search to retry every 500 ms for at most three times
-                windowsApp.Manage().Timeouts().ImplicitWait = winOpts.ImplicitWait;
+                case AndroidAppManagerOptions androidOpts:
+                {
+                    androidApp = new AndroidDriver<AndroidElement>(
+                        new Uri(androidOpts.AppiumDriverUrl),
+                        androidOpts.AppiumOptions);
+
+                    if (androidApp?.SessionId == null)
+                    {
+                        throw new DriverLoadFailedException(opts);
+                    }
+
+                    // Set implicit timeout to 2 seconds to make element search to retry every 500 ms for at most three times
+                    androidApp.Manage().Timeouts().ImplicitWait = androidOpts.ImplicitWait;
+                    break;
+                }
             }
         }
 
@@ -77,6 +124,12 @@ namespace Legerity
             {
                 windowsApp.Quit();
                 windowsApp = null;
+            }
+
+            if (androidApp != null)
+            {
+                androidApp.Quit();
+                androidApp = null;
             }
         }
     }
