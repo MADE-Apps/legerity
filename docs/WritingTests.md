@@ -14,6 +14,10 @@ Currently the `AppManager` configuration supports the following app drivers.
 
 - [WindowsDriver](https://github.com/microsoft/WinAppDriver)
   - [WindowsAppManagerOptions](../src/Legerity/Windows/WindowsAppManagerOptions.cs)
+- AndroidDriver
+  - [AndroidAppManagerOptions](../src/Legerity/Android/AndroidAppManagerOptions.cs)
+- IOSDriver
+  - [IOSAppManagerOptions](../src/Legerity/IOS/IOSAppManagerOptions.cs)
 
 The options object also provides the use of additional capabilities using the `AppiumOptions` object to apply to the driver when the app is started.
 
@@ -49,3 +53,11 @@ namespace WindowsAlarmsAndClock
     }
 }
 ```
+
+To access the driver for the currently running application, it's as simple as reaching out to one of the following [`AppManager`](../src/Legerity/AppManager.cs) properties:
+
+- `WindowsApp`
+- `AndroidApp`
+- `IOSApp`
+
+Each of these properties exposes the platform specific Appium driver which can be used to access UI elements.
