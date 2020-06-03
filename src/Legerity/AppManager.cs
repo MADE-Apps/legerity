@@ -19,71 +19,20 @@ namespace Legerity
     /// </summary>
     public static class AppManager
     {
-        private static WindowsDriver<WindowsElement> windowsApp;
-
-        private static AndroidDriver<AndroidElement> androidApp;
-
-        private static IOSDriver<IOSElement> iosApp;
-
         /// <summary>
         /// Gets the instance of the started Windows application.
         /// </summary>
-        /// <exception cref="NullReferenceException">
-        /// Thrown if the <see cref="WindowsApp"/> is null as a result of not calling <see cref="StartApp"/>.
-        /// </exception>
-        public static WindowsDriver<WindowsElement> WindowsApp
-        {
-            get
-            {
-                if (windowsApp == null)
-                {
-                    throw new DriverNotInitializedException(
-                        $"'AppManager.WindowsApp' not set. Call 'AppManager.StartApp()' with {nameof(WindowsAppManagerOptions)} before trying to access it.");
-                }
-
-                return windowsApp;
-            }
-        }
+        public static WindowsDriver<WindowsElement> WindowsApp { get; private set; }
 
         /// <summary>
         /// Gets the instance of the started Android application.
         /// </summary>
-        /// <exception cref="NullReferenceException">
-        /// Thrown if the <see cref="AndroidApp"/> is null as a result of not calling <see cref="StartApp"/>.
-        /// </exception>
-        public static AndroidDriver<AndroidElement> AndroidApp
-        {
-            get
-            {
-                if (androidApp == null)
-                {
-                    throw new DriverNotInitializedException(
-                        $"'AppManager.AndroidApp' not set. Call 'AppManager.StartApp()' with {nameof(AndroidAppManagerOptions)} before trying to access it.");
-                }
-
-                return androidApp;
-            }
-        }
+        public static AndroidDriver<AndroidElement> AndroidApp { get; private set; }
 
         /// <summary>
         /// Gets the instance of the started iOS application.
         /// </summary>
-        /// <exception cref="NullReferenceException">
-        /// Thrown if the <see cref="IOSApp"/> is null as a result of not calling <see cref="StartApp"/>.
-        /// </exception>
-        public static IOSDriver<IOSElement> IOSApp
-        {
-            get
-            {
-                if (iosApp == null)
-                {
-                    throw new DriverNotInitializedException(
-                        $"'AppManager.IOSApp' not set. Call 'AppManager.StartApp()' with {nameof(IOSAppManagerOptions)} before trying to access it.");
-                }
-
-                return iosApp;
-            }
-        }
+        public static IOSDriver<IOSElement> IOSApp { get; private set; }
 
         /// <summary>
         /// Starts the application ready for testing.
@@ -96,40 +45,35 @@ namespace Legerity
         /// </exception>
         public static void StartApp(AppManagerOptions opts)
         {
-            if (windowsApp != null)
-            {
-                return;
-            }
-
             StopApp();
 
             switch (opts)
             {
                 case WindowsAppManagerOptions winOpts:
                 {
-                    windowsApp = new WindowsDriver<WindowsElement>(
+                    WindowsApp = new WindowsDriver<WindowsElement>(
                         new Uri(winOpts.AppiumDriverUrl),
                         winOpts.AppiumOptions);
 
-                    VerifyAppDriver(windowsApp, winOpts);
+                    VerifyAppDriver(WindowsApp, winOpts);
                     break;
                 }
 
                 case AndroidAppManagerOptions androidOpts:
                 {
-                    androidApp = new AndroidDriver<AndroidElement>(
+                    AndroidApp = new AndroidDriver<AndroidElement>(
                         new Uri(androidOpts.AppiumDriverUrl),
                         androidOpts.AppiumOptions);
 
-                    VerifyAppDriver(androidApp, androidOpts);
+                    VerifyAppDriver(AndroidApp, androidOpts);
                     break;
                 }
 
                 case IOSAppManagerOptions iosOpts:
                 {
-                    iosApp = new IOSDriver<IOSElement>(new Uri(iosOpts.AppiumDriverUrl), iosOpts.AppiumOptions);
+                    IOSApp = new IOSDriver<IOSElement>(new Uri(iosOpts.AppiumDriverUrl), iosOpts.AppiumOptions);
 
-                    VerifyAppDriver(iosApp, iosOpts);
+                    VerifyAppDriver(IOSApp, iosOpts);
                     break;
                 }
             }
@@ -140,22 +84,22 @@ namespace Legerity
         /// </summary>
         public static void StopApp()
         {
-            if (windowsApp != null)
+            if (WindowsApp != null)
             {
-                windowsApp.Quit();
-                windowsApp = null;
+                WindowsApp.Quit();
+                WindowsApp = null;
             }
 
-            if (androidApp != null)
+            if (AndroidApp != null)
             {
-                androidApp.Quit();
-                androidApp = null;
+                AndroidApp.Quit();
+                AndroidApp = null;
             }
 
-            if (iosApp != null)
+            if (IOSApp != null)
             {
-                iosApp.Quit();
-                iosApp = null;
+                IOSApp.Quit();
+                IOSApp = null;
             }
         }
 
