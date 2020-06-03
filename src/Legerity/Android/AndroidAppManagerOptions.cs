@@ -74,29 +74,29 @@ namespace Legerity.Android
         }
 
         /// <summary>
-        /// Gets the ID of the application under test.
+        /// Gets or sets the ID of the application under test.
         /// </summary>
-        public string AppId { get; }
+        public string AppId { get; set; }
 
         /// <summary>
-        /// Gets the activity of the application to start, e.g. com.instagram.android.activity.MainTabActivity.
+        /// Gets or sets the activity of the application to start, e.g. com.instagram.android.activity.MainTabActivity.
         /// </summary>
-        public string AppActivity { get; }
+        public string AppActivity { get; set; }
 
         /// <summary>
-        /// Gets the version of Android to run the application on.
+        /// Gets or sets the version of Android to run the application on.
         /// </summary>
-        public string OSVersion { get; }
+        public string OSVersion { get; set; }
 
         /// <summary>
-        /// Gets the name of the Android device to run the application on.
+        /// Gets or sets the name of the Android device to run the application on.
         /// </summary>
-        public string DeviceName { get; }
+        public string DeviceName { get; set; }
 
         /// <summary>
-        /// Gets the ID of the Android device to run the application on.
+        /// Gets or sets the ID of the Android device to run the application on.
         /// </summary>
-        public string DeviceId { get; }
+        public string DeviceId { get; set; }
 
         /// <summary>
         /// Configures the <see cref="AppManagerOptions.AppiumOptions"/> with the specified additional options.
