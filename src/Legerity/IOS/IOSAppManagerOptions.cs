@@ -61,24 +61,24 @@ namespace Legerity.IOS
         }
 
         /// <summary>
-        /// Gets the ID of the application under test.
+        /// Gets or sets the ID of the application under test.
         /// </summary>
-        public string AppId { get; }
+        public string AppId { get; set; }
 
         /// <summary>
-        /// Gets the version of iOS to run the application on.
+        /// Gets or sets the version of iOS to run the application on.
         /// </summary>
-        public string OSVersion { get; }
+        public string OSVersion { get; set; }
 
         /// <summary>
-        /// Gets the name of the iOS device to run the application on.
+        /// Gets or sets the name of the iOS device to run the application on.
         /// </summary>
-        public string DeviceName { get; }
+        public string DeviceName { get; set; }
 
         /// <summary>
-        /// Gets the ID of the iOS device to run the application on.
+        /// Gets or sets the ID of the iOS device to run the application on.
         /// </summary>
-        public string DeviceId { get; }
+        public string DeviceId { get; set; }
 
         /// <summary>
         /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
