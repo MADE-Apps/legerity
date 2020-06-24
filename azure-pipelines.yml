@@ -3,12 +3,12 @@ name: $(Major).$(Minor).$(Year:yy)$(DayOfYear).$(Rev:r)$(PreReleaseTag)
 trigger:
   branches:
     include:
-    - master
+    - main
 
 pr:
   branches:
     include:
-    - master
+    - main
 
 stages:
 
