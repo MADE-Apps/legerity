@@ -4,9 +4,9 @@ namespace Legerity.IOS
     using OpenQA.Selenium.Appium.Enums;
 
     /// <summary>
-    /// Defines a specific <see cref="AppManagerOptions"/> for an iOS application.
+    /// Defines a specific <see cref="AppiumManagerOptions"/> for an iOS application.
     /// </summary>
-    public class IOSAppManagerOptions : AppManagerOptions
+    public class IOSAppManagerOptions : AppiumManagerOptions
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="IOSAppManagerOptions"/> class.
@@ -114,7 +114,7 @@ namespace Legerity.IOS
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            return $"{base.ToString()}, AppId [{this.AppId}]";
+            return $"{base.ToString()}, App ID [{this.AppId}]";
         }
     }
 }

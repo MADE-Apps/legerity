@@ -42,6 +42,14 @@ namespace Legerity.Pages
         protected IOSDriver<IOSElement> IOSApp => AppManager.IOSApp;
 
         /// <summary>
+        /// Gets the instance of the started web application.
+        /// <para>
+        /// The <see cref="WebApp"/> instance also serves as base for the Appium drivers and can be referenced for basic Selenium functions.
+        /// </para>
+        /// </summary>
+        protected RemoteWebDriver WebApp => AppManager.WebApp;
+
+        /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
         protected abstract By Trait { get; }
@@ -54,7 +62,7 @@ namespace Legerity.Pages
         /// </param>
         public void VerifyPageShown(TimeSpan? timeout)
         {
-            if (this.WindowsApp == null && this.AndroidApp == null && this.IOSApp == null)
+            if (this.WebApp == null)
             {
                 throw new DriverNotInitializedException(
                     $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
@@ -62,37 +70,21 @@ namespace Legerity.Pages
 
             if (timeout == null)
             {
-                if (this.WindowsApp != null && this.WindowsApp.FindElement(this.Trait) == null)
-                {
-                    throw new PageNotShownException(this.GetType().Name);
-                }
-                else if (this.AndroidApp != null && this.AndroidApp.FindElement(this.Trait) == null)
-                {
-                    throw new PageNotShownException(this.GetType().Name);
-                }
-                else if (this.IOSApp != null && this.IOSApp.FindElement(this.Trait) == null)
+                if (this.WebApp != null && this.WebApp.FindElement(this.Trait) == null)
                 {
                     throw new PageNotShownException(this.GetType().Name);
                 }
             }
             else
             {
-                if (this.WindowsApp != null)
+                if (this.WebApp != null)
                 {
-                    this.AttemptWaitForDriverElement(this.WindowsApp, timeout.Value);
-                }
-                else if (this.AndroidApp != null)
-                {
-                    this.AttemptWaitForDriverElement(this.AndroidApp, timeout.Value);
-                }
-                else if (this.IOSApp != null)
-                {
-                    this.AttemptWaitForDriverElement(this.IOSApp, timeout.Value);
+                    this.AttemptWaitForDriverElement(this.WebApp, timeout.Value);
                 }
             }
         }
 
-        private void AttemptWaitForDriverElement(RemoteWebDriver appDriver, TimeSpan timeout)
+        private void AttemptWaitForDriverElement(IWebDriver appDriver, TimeSpan timeout)
         {
             var wait = new WebDriverWait(appDriver, timeout);
             wait.Until(driver => driver.FindElement(this.Trait) != null);

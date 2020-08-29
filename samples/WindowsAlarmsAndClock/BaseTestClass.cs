@@ -13,7 +13,7 @@ namespace WindowsAlarmsAndClock
             AppManager.StartApp(
                 new WindowsAppManagerOptions("Microsoft.WindowsAlarms_8wekyb3d8bbwe!App")
                 {
-                    AppiumDriverUrl = "http://127.0.0.1:4723"
+                    DriverUri = "http://127.0.0.1:4723"
                 });
         }
 
