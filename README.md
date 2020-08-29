@@ -2,7 +2,7 @@
 
 # Legerity
 
-Legerity is a framework for speeding up the development of automated UI testing with Appium and .NET!
+Legerity is a framework for speeding up the development of automated UI testing with Selenium, Appium and .NET!
 
 The aim of the framework is to provide easy to use components that allow you to quickly and easily get up and running in little to no time. 
 
