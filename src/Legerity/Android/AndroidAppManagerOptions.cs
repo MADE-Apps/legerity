@@ -4,9 +4,9 @@ namespace Legerity.Android
     using OpenQA.Selenium.Appium.Enums;
 
     /// <summary>
-    /// Defines a specific <see cref="AppManagerOptions"/> for an Android application.
+    /// Defines a specific <see cref="AppiumManagerOptions"/> for an Android application.
     /// </summary>
-    public class AndroidAppManagerOptions : AppManagerOptions
+    public class AndroidAppManagerOptions : AppiumManagerOptions
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
@@ -133,7 +133,7 @@ namespace Legerity.Android
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            return $"{base.ToString()}, AppId [{this.AppId}]";
+            return $"{base.ToString()}, App ID [{this.AppId}]";
         }
     }
 }

@@ -5,6 +5,7 @@ namespace Legerity
     using Legerity.Android;
     using Legerity.Exceptions;
     using Legerity.IOS;
+    using Legerity.Web;
     using Legerity.Windows;
 
     using OpenQA.Selenium;
@@ -12,27 +13,39 @@ namespace Legerity
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Chrome;
+    using OpenQA.Selenium.Edge;
+    using OpenQA.Selenium.Firefox;
+    using OpenQA.Selenium.IE;
+    using OpenQA.Selenium.Opera;
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Safari;
 
     /// <summary>
     /// Defines a manager for the application under test.
     /// </summary>
     public static class AppManager
     {
+
         /// <summary>
         /// Gets the instance of the started Windows application.
         /// </summary>
-        public static WindowsDriver<WindowsElement> WindowsApp { get; private set; }
+        public static WindowsDriver<WindowsElement> WindowsApp => WebApp as WindowsDriver<WindowsElement>;
 
         /// <summary>
         /// Gets the instance of the started Android application.
         /// </summary>
-        public static AndroidDriver<AndroidElement> AndroidApp { get; private set; }
+        public static AndroidDriver<AndroidElement> AndroidApp => WebApp as AndroidDriver<AndroidElement>;
 
         /// <summary>
         /// Gets the instance of the started iOS application.
         /// </summary>
-        public static IOSDriver<IOSElement> IOSApp { get; private set; }
+        public static IOSDriver<IOSElement> IOSApp => WebApp as IOSDriver<IOSElement>;
+
+        /// <summary>
+        /// Get the instance of the started web application.
+        /// </summary>
+        public static RemoteWebDriver WebApp { get; set; }
 
         /// <summary>
         /// Starts the application ready for testing.
@@ -49,33 +62,71 @@ namespace Legerity
 
             switch (opts)
             {
-                case WindowsAppManagerOptions winOpts:
-                {
-                    WindowsApp = new WindowsDriver<WindowsElement>(
-                        new Uri(winOpts.AppiumDriverUrl),
-                        winOpts.AppiumOptions);
+                case WebAppManagerOptions webOpts:
+                    {
+                        switch (webOpts.DriverType)
+                        {
+                            case WebAppDriverType.Chrome:
+                                WebApp = new ChromeDriver(webOpts.DriverUri);
+                                break;
+                            case WebAppDriverType.Firefox:
+                                WebApp = new FirefoxDriver(webOpts.DriverUri);
+                                break;
+                            case WebAppDriverType.Opera:
+                                WebApp = new OperaDriver(webOpts.DriverUri);
+                                break;
+                            case WebAppDriverType.Safari:
+                                WebApp = new SafariDriver(webOpts.DriverUri);
+                                break;
+                            case WebAppDriverType.Edge:
+                                WebApp = new EdgeDriver(webOpts.DriverUri);
+                                break;
+                            case WebAppDriverType.InternetExplorer:
+                                WebApp = new InternetExplorerDriver(webOpts.DriverUri);
+                                break;
+                        }
 
-                    VerifyAppDriver(WindowsApp, winOpts);
-                    break;
-                }
+                        VerifyAppDriver(WebApp, webOpts);
+
+                        if (webOpts.Maximize)
+                        {
+                            WebApp.Manage().Window.Maximize();
+                        }
+                        else
+                        {
+                            WebApp.Manage().Window.Size = webOpts.DesiredSize;
+                        }
+
+                        WebApp.Url = webOpts.Url;
+                        break;
+                    }
+                case WindowsAppManagerOptions winOpts:
+                    {
+                        WebApp = new WindowsDriver<WindowsElement>(
+                            new Uri(winOpts.DriverUri),
+                            winOpts.AppiumOptions);
+
+                        VerifyAppDriver(WindowsApp, winOpts);
+                        break;
+                    }
 
                 case AndroidAppManagerOptions androidOpts:
-                {
-                    AndroidApp = new AndroidDriver<AndroidElement>(
-                        new Uri(androidOpts.AppiumDriverUrl),
-                        androidOpts.AppiumOptions);
+                    {
+                        WebApp = new AndroidDriver<AndroidElement>(
+                            new Uri(androidOpts.DriverUri),
+                            androidOpts.AppiumOptions);
 
-                    VerifyAppDriver(AndroidApp, androidOpts);
-                    break;
-                }
+                        VerifyAppDriver(AndroidApp, androidOpts);
+                        break;
+                    }
 
                 case IOSAppManagerOptions iosOpts:
-                {
-                    IOSApp = new IOSDriver<IOSElement>(new Uri(iosOpts.AppiumDriverUrl), iosOpts.AppiumOptions);
+                    {
+                        WebApp = new IOSDriver<IOSElement>(new Uri(iosOpts.DriverUri), iosOpts.AppiumOptions);
 
-                    VerifyAppDriver(IOSApp, iosOpts);
-                    break;
-                }
+                        VerifyAppDriver(IOSApp, iosOpts);
+                        break;
+                    }
             }
         }
 
@@ -84,22 +135,10 @@ namespace Legerity
         /// </summary>
         public static void StopApp()
         {
-            if (WindowsApp != null)
+            if (WebApp != null)
             {
-                WindowsApp.Quit();
-                WindowsApp = null;
-            }
-
-            if (AndroidApp != null)
-            {
-                AndroidApp.Quit();
-                AndroidApp = null;
-            }
-
-            if (IOSApp != null)
-            {
-                IOSApp.Quit();
-                IOSApp = null;
+                WebApp.Quit();
+                WebApp = null;
             }
         }
 

@@ -3,9 +3,9 @@ namespace Legerity.Windows
     using OpenQA.Selenium.Appium;
 
     /// <summary>
-    /// Defines a specific <see cref="AppManagerOptions"/> for a Windows application.
+    /// Defines a specific <see cref="AppiumManagerOptions"/> for a Windows application.
     /// </summary>
-    public class WindowsAppManagerOptions : AppManagerOptions
+    public class WindowsAppManagerOptions : AppiumManagerOptions
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WindowsAppManagerOptions"/> class.
@@ -67,7 +67,7 @@ namespace Legerity.Windows
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            return $"{base.ToString()}, AppId [{this.AppId}]";
+            return $"{base.ToString()}, App ID [{this.AppId}]";
         }
     }
 }

@@ -1,9 +1,9 @@
 # Overview
 
-The Legerity framework for speeding up development with .NET & Appium is seprated into multiple areas covering:
+The Legerity framework for speeding up development with .NET & Selenium or Appium is separated into multiple areas covering:
 
 - [Writing tests with AppManager](../src/Legerity/AppManager.cs)
-  - The framework is designed to provide an easy experience for writing your .NET Appium UI tests. Using the handy AppManager, you can easily get going with your tests with a base test class which simply starts and stops your application.
+  - The framework is designed to provide an easy experience for writing your .NET Selenium or Appium UI tests. Using the handy AppManager, you can easily get going with your tests with a base test class which simply starts and stops your application.
 
 - [Page Object Pattern (POP)](../src/Legerity/Pages/BasePage.cs)
   - The goal of the page object pattern is to use page objects to abstract page information away from your tests. Ideally, they will store all your selectors to find UI elements that a page is aware of and actions that are capable of the page. 

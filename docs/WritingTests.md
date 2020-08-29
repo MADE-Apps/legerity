@@ -6,7 +6,7 @@ Legerity exposes an AppManager which is a lightweight wrapper for the applicatio
 
 ## Creating a base test class
 
-Using your testing framework of choice, getting your application started in the appropriate Appium driver is as simple as calling `AppManager.StartApp()` passing through a `AppManagerOptions` configuration object.
+Using your testing framework of choice, getting your application started in the appropriate Selenimum or Appium driver is as simple as calling `AppManager.StartApp()` passing through a `AppManagerOptions` configuration object.
 
 Depending on your configuration object, the specific application will launch.
 
@@ -18,8 +18,10 @@ Currently the `AppManager` configuration supports the following app drivers.
   - [AndroidAppManagerOptions](../src/Legerity/Android/AndroidAppManagerOptions.cs)
 - IOSDriver
   - [IOSAppManagerOptions](../src/Legerity/IOS/IOSAppManagerOptions.cs)
+- ChromeDriver, FirefoxDriver, OperaDriver, SafariDriver, EdgeDriver, InternetExplorerDriver
+  - [WebAppManagerOptions](../src/Legerity/Web/WebAppManagerOptions.cs)
 
-The options object also provides the use of additional capabilities using the `AppiumOptions` object to apply to the driver when the app is started.
+For Appium drivers, an options object also provides the use of additional capabilities using the `AppiumOptions` object to apply to the driver when the app is started.
 
 ### Example base test class
 
@@ -59,5 +61,6 @@ To access the driver for the currently running application, it's as simple as re
 - `WindowsApp`
 - `AndroidApp`
 - `IOSApp`
+- `WebApp`
 
 Each of these properties exposes the platform specific Appium driver which can be used to access UI elements.
