@@ -24,6 +24,17 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationViewItem"/> class.
         /// </summary>
+        /// <param name="element">
+        /// The <see cref="WindowsElement"/> reference.
+        /// </param>
+        public NavigationViewItem(WindowsElement element)
+            : this(null, null, element)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NavigationViewItem"/> class.
+        /// </summary>
         /// <param name="parentNavigationView">
         /// The parent <see cref="NavigationView"/>.
         /// </param>
