@@ -34,7 +34,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-    <PackageReference Include="Appium.WebDriver" Version="4.2.0" />
+    <PackageReference Include="Appium.WebDriver" Version="4.2.1" />
   </ItemGroup>
 
   <ItemGroup>
