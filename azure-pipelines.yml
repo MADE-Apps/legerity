@@ -8,6 +8,7 @@ trigger:
     include:
     - src/*
     - samples/*
+    - azure-pipelines.yml
 
 pr:
   branches:
@@ -17,6 +18,7 @@ pr:
     include:
     - src/*
     - samples/*
+    - azure-pipelines.yml
     
 stages:
 
