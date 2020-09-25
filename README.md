@@ -2,7 +2,7 @@
 
 # Legerity
 
-Legerity is a framework for speeding up the development of automated UI testing with Selenium, Appium and .NET!
+Legerity is a framework for speeding up the development of automated UI testing of Windows, Android, iOS, and Web apps with Appium/Selenium with .NET!
 
 The aim of the framework is to provide easy to use components that allow you to quickly and easily get up and running in little to no time. 
 
@@ -12,8 +12,7 @@ With the help of out-of-the-box element wrappers for core platform controls, all
 
 | Source | Build |
 | ------ | ------ |
-| Azure Artifacts | [![Build Status](https://dev.azure.com/jamesmcroft/GitHub/_apis/build/status/MADE-Apps.legerity?branchName=master)](https://dev.azure.com/jamesmcroft/GitHub/_build/latest?definitionId=37&branchName=master) |
-| NuGet | [![Build Status](https://dev.azure.com/jamesmcroft/GitHub/_apis/build/status/MADE-Apps.legerity?branchName=master)](https://dev.azure.com/jamesmcroft/GitHub/_build/latest?definitionId=37&branchName=master) |
+| Azure Artifacts | [![Build Status](https://dev.azure.com/jamesmcroft/GitHub/_apis/build/status/MADE-Apps.legerity?branchName=main)](https://dev.azure.com/jamesmcroft/GitHub/_build/latest?definitionId=37&branchName=main) |
 
 ## Installation
 
@@ -24,6 +23,7 @@ For non-core platform controls, for example WinUI or the Windows Community Toolk
 | Package | Current | Preview |
 | ------ | ------ | ------ |
 | Legerity | [![Nuget](https://img.shields.io/nuget/v/Legerity.svg)](https://www.nuget.org/packages/Legerity/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.svg)](https://www.nuget.org/packages/Legerity/) |
+| Legerity.WCT | [![Nuget](https://img.shields.io/nuget/v/Legerity.WCT.svg)](https://www.nuget.org/packages/Legerity.WCT/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.WCT.svg)](https://www.nuget.org/packages/Legerity.WCT/) |
 | Legerity.WinUI | [![Nuget](https://img.shields.io/nuget/v/Legerity.WinUI.svg)](https://www.nuget.org/packages/Legerity.WinUI/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.WinUI.svg)](https://www.nuget.org/packages/Legerity.WinUI/) |
 
 ## Tested with Legerity
