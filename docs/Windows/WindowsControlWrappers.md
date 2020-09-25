@@ -45,3 +45,9 @@ These UWP control wrappers are designed to be used with controls from the [WinUI
 
 - [NavigationView](../../src/Legerity.WinUI/NavigationView.cs)
 - [TabView](../../src/Legerity.WinUI/TabView.cs)
+
+## Windows Community Toolkit Controls
+
+These UWP control wrappers are designed to be used with controls from the [Windows Community Toolkit](https://github.com/windows-toolkit/WindowsCommunityToolkit) suite.
+
+- [RadialGauge](../../src/Legerity.WCT/RadialGauge.cs)
