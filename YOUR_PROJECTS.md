@@ -7,3 +7,4 @@ So, if you have a project you want to share with the world, drop it in the list 
 | Project | Link |
 | ------ | ------ |
 | XAML Controls Gallery | https://github.com/microsoft/Xaml-Controls-Gallery |
+| Windows Community Toolkit Samples | https://github.com/windows-toolkit/WindowsCommunityToolkit |
