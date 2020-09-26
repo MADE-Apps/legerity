@@ -46,6 +46,12 @@ Even better, why not help build out your custom control wrapper elements within 
 
 Looking to help build Legerity? Take a look through our [contribution guidelines](CONTRIBUTING.md). We actively encourage you to jump in and help with any issues!
 
+### UI Automation tooling
+
+When contributing to new element wrappers, we recommended using the [Accessibility Insights tool](https://accessibilityinsights.io/en/). The tool is capable of inspecting and providing property values for Android, Web and Windows applications.
+
+Alternatively, you can use the [Inspect.exe tool](https://docs.microsoft.com/en-us/windows/win32/winauto/inspect-objects) for Windows applications installed with the Windows SDKs. This is not recommended however as the tool is considered legacy and can often cause oddities in UI when using. 
+
 ## Building Legerity
 
 Legeirty have been built using .NET Standard, taking advantage of the new SDK-style projects.
