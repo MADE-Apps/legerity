@@ -64,7 +64,7 @@ stages:
 
 - stage: 'InternalPublish'
   dependsOn: 'Build'
-  condition: succeeded()
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   jobs:
     - job:
       pool:
