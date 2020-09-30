@@ -100,7 +100,7 @@ namespace Legerity.Windows.Elements.WCT
             this.Element.Click();
 
             double currentValue = this.Value;
-            while (Math.Abs(currentValue - value) > double.Epsilon)
+            while ((Math.Abs(currentValue - value)) > double.Epsilon)
             {
                 this.Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
                 currentValue = this.Value;
