@@ -11,6 +11,58 @@ namespace Legerity.Android
         /// <summary>
         /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
         /// </summary>
+        /// <param name="appPath">
+        /// The path of the application under test, e.g. c:/users/legerity/source/myapp/com.instagram.android.apk.
+        /// </param>
+        /// <param name="osVersion">
+        /// The version of Android to run the application on.
+        /// </param>
+        /// <param name="deviceName">
+        /// The name of the Android device to run the application on.
+        /// </param>
+        /// <param name="deviceId">
+        /// The ID of the Android device to run the application on.
+        /// </param>
+        public AndroidAppManagerOptions(
+            string appPath,
+            string osVersion,
+            string deviceName,
+            string deviceId)
+            : this(null, null, appPath, osVersion, deviceName, deviceId, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
+        /// </summary>
+        /// <param name="appPath">
+        /// The path of the application under test, e.g. c:/users/legerity/source/myapp/com.instagram.android.apk.
+        /// </param>
+        /// <param name="osVersion">
+        /// The version of Android to run the application on.
+        /// </param>
+        /// <param name="deviceName">
+        /// The name of the Android device to run the application on.
+        /// </param>
+        /// <param name="deviceId">
+        /// The ID of the Android device to run the application on.
+        /// </param>
+        /// <param name="additionalOptions">
+        /// The additional options to apply to the <see cref="AppiumOptions"/>.
+        /// </param>
+        public AndroidAppManagerOptions(
+            string appPath,
+            string osVersion,
+            string deviceName,
+            string deviceId,
+            params (string, object)[] additionalOptions)
+            : this(null, null, appPath, osVersion, deviceName, deviceId, additionalOptions)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
+        /// </summary>
         /// <param name="appId">
         /// The ID of the application under test, e.g. com.instagram.android.
         /// </param>
@@ -32,7 +84,7 @@ namespace Legerity.Android
             string osVersion,
             string deviceName,
             string deviceId)
-            : this(appId, appActivity, osVersion, deviceName, deviceId, null)
+            : this(appId, appActivity, null, osVersion, deviceName, deviceId, null)
         {
         }
 
@@ -63,10 +115,46 @@ namespace Legerity.Android
             string osVersion,
             string deviceName,
             string deviceId,
+            params (string, object)[] additionalOptions) : this(appId, appActivity, null, osVersion, deviceName, deviceId, additionalOptions)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
+        /// </summary>
+        /// <param name="appId">
+        /// The ID of the application under test, e.g. com.instagram.android.
+        /// </param>
+        /// <param name="appActivity">
+        /// The activity of the application to start, e.g. com.instagram.android.activity.MainTabActivity.
+        /// </param>
+        /// <param name="appPath">
+        /// The path of the application under test, e.g. c:/users/legerity/source/myapp/com.instagram.android.apk.
+        /// </param>
+        /// <param name="osVersion">
+        /// The version of Android to run the application on.
+        /// </param>
+        /// <param name="deviceName">
+        /// The name of the Android device to run the application on.
+        /// </param>
+        /// <param name="deviceId">
+        /// The ID of the Android device to run the application on.
+        /// </param>
+        /// <param name="additionalOptions">
+        /// The additional options to apply to the <see cref="AppiumOptions"/>.
+        /// </param>
+        public AndroidAppManagerOptions(
+            string appId,
+            string appActivity,
+            string appPath,
+            string osVersion,
+            string deviceName,
+            string deviceId,
             params (string, object)[] additionalOptions)
         {
             this.AppId = appId;
             this.AppActivity = appActivity;
+            this.AppPath = appPath;
             this.OSVersion = osVersion;
             this.DeviceName = deviceName;
             this.DeviceId = deviceId;
@@ -82,6 +170,11 @@ namespace Legerity.Android
         /// Gets or sets the activity of the application to start, e.g. com.instagram.android.activity.MainTabActivity.
         /// </summary>
         public string AppActivity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the path of the application under test, e.g. c:/users/legerity/source/myapp/com.instagram.android.apk.
+        /// </summary>
+        public string AppPath { get; set; }
 
         /// <summary>
         /// Gets or sets the version of Android to run the application on.
@@ -115,8 +208,21 @@ namespace Legerity.Android
             options.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
             options.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
             options.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
-            options.AddAdditionalCapability("appPackage", this.AppId);
-            options.AddAdditionalCapability("appActivity", this.AppActivity);
+
+            if (!string.IsNullOrWhiteSpace(this.AppId))
+            {
+                options.AddAdditionalCapability("appPackage", this.AppId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.AppActivity))
+            {
+                options.AddAdditionalCapability("appActivity", this.AppActivity);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.AppPath))
+            {
+                options.AddAdditionalCapability("app", this.AppPath);
+            }
 
             if (additionalOptions != null)
             {
