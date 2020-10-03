@@ -107,7 +107,15 @@ For example, a control may contain a popup or flyout which is displayed in a dif
 
 If you want to create a platform specific wrapper, you can start by implementing one of the following platform base wrappers.
 
+- [AndroidElementWrapper](../src/Legerity/Android/Elements/AndroidElementWrapper.cs)
+- [IOSElementWrapper](../src/Legerity/IOS/Elements/IOSElementWrapper.cs)
 - [WindowsElementWrapper](../src/Legerity/Windows/Elements/WindowsElementWrapper.cs)
+
+## Android
+
+The Android control wrappers are designed to be used with applications built for the Android platform.
+
+[Discover the Android control wrappers](Android/AndroidControlWrappers.md)
 
 ## Windows
 
