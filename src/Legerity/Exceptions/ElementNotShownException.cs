@@ -11,8 +11,8 @@ namespace Legerity.Exceptions
         /// <param name="elementName">
         /// The name of the element that was not shown.
         /// </param>
-        internal ElementNotShownException(string elementName)
-            : base($"Unable to verify '{elementName}' exists")
+        public ElementNotShownException(string elementName)
+            : base($"'{elementName}' is not shown when it should")
         {
             this.ElementName = elementName;
         }

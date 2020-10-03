@@ -50,4 +50,5 @@ These UWP control wrappers are designed to be used with controls from the [WinUI
 
 These UWP control wrappers are designed to be used with controls from the [Windows Community Toolkit](https://github.com/windows-toolkit/WindowsCommunityToolkit) suite.
 
+- [InAppNotification](../../src/Legerity.WCT/InAppNotification.cs)
 - [RadialGauge](../../src/Legerity.WCT/RadialGauge.cs)

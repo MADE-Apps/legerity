@@ -1,12 +1,9 @@
 namespace Legerity.Pages
 {
     using System;
-
-    using Legerity.Android;
     using Legerity.Exceptions;
 
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
@@ -79,15 +76,80 @@ namespace Legerity.Pages
             {
                 if (this.WebApp != null)
                 {
-                    this.AttemptWaitForDriverElement(this.WebApp, timeout.Value);
+                    AttemptWaitForDriverElement(this.Trait, timeout.Value, this.WebApp);
                 }
             }
         }
 
-        private void AttemptWaitForDriverElement(IWebDriver appDriver, TimeSpan timeout)
+        /// <summary>
+        /// Determines whether the given element is shown.
+        /// </summary>
+        /// <param name="by">
+        /// The query for the element to find.
+        /// </param>
+        public void VerifyElementShown(By by)
+        {
+            this.VerifyElementShown(by, null);
+        }
+
+        /// <summary>
+        /// Determines whether the given element is shown with the specified timeout.
+        /// </summary>
+        /// <param name="by">
+        /// The query for the element to find.
+        /// </param>
+        /// <param name="timeout">
+        /// The amount of time the driver should wait when searching for the <paramref name="by"/> element if it is not immediately present.
+        /// </param>
+        public void VerifyElementShown(By by, TimeSpan? timeout)
+        {
+            if (this.WebApp == null)
+            {
+                throw new DriverNotInitializedException(
+                    $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
+            }
+
+            if (timeout == null)
+            {
+                if (this.WebApp != null && this.WebApp.FindElement(by) == null)
+                {
+                    throw new ElementNotShownException(by.ToString());
+                }
+            }
+            else
+            {
+                if (this.WebApp != null)
+                {
+                    AttemptWaitForDriverElement(by, timeout.Value, this.WebApp);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the given element is not shown.
+        /// </summary>
+        /// <param name="by">
+        /// The query for the element to locate.
+        /// </param>
+        public void VerifyElementNotShown(By by)
+        {
+            if (this.WebApp == null)
+            {
+                throw new DriverNotInitializedException(
+                    $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
+            }
+
+            if (this.WebApp != null && this.WebApp.FindElement(by) == null)
+            {
+                throw new ElementNotShownException(by.ToString());
+            }
+
+        }
+
+        private static void AttemptWaitForDriverElement(By by, TimeSpan timeout, IWebDriver appDriver)
         {
             var wait = new WebDriverWait(appDriver, timeout);
-            wait.Until(driver => driver.FindElement(this.Trait) != null);
+            wait.Until(driver => driver.FindElement(by) != null);
         }
     }
 }
