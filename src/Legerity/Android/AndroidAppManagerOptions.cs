@@ -1,5 +1,6 @@
 namespace Legerity.Android
 {
+    using System;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Enums;
 
@@ -14,21 +15,8 @@ namespace Legerity.Android
         /// <param name="appPath">
         /// The path of the application under test, e.g. c:/users/legerity/source/myapp/com.instagram.android.apk.
         /// </param>
-        /// <param name="osVersion">
-        /// The version of Android to run the application on.
-        /// </param>
-        /// <param name="deviceName">
-        /// The name of the Android device to run the application on.
-        /// </param>
-        /// <param name="deviceId">
-        /// The ID of the Android device to run the application on.
-        /// </param>
-        public AndroidAppManagerOptions(
-            string appPath,
-            string osVersion,
-            string deviceName,
-            string deviceId)
-            : this(null, null, appPath, osVersion, deviceName, deviceId, null)
+        public AndroidAppManagerOptions(string appPath)
+            : this(null, null, appPath, null, null, null, null)
         {
         }
 
@@ -38,25 +26,49 @@ namespace Legerity.Android
         /// <param name="appPath">
         /// The path of the application under test, e.g. c:/users/legerity/source/myapp/com.instagram.android.apk.
         /// </param>
-        /// <param name="osVersion">
-        /// The version of Android to run the application on.
-        /// </param>
-        /// <param name="deviceName">
-        /// The name of the Android device to run the application on.
-        /// </param>
-        /// <param name="deviceId">
-        /// The ID of the Android device to run the application on.
-        /// </param>
         /// <param name="additionalOptions">
         /// The additional options to apply to the <see cref="AppiumOptions"/>.
         /// </param>
         public AndroidAppManagerOptions(
             string appPath,
-            string osVersion,
-            string deviceName,
-            string deviceId,
             params (string, object)[] additionalOptions)
-            : this(null, null, appPath, osVersion, deviceName, deviceId, additionalOptions)
+            : this(null, null, appPath, null, null, null, additionalOptions)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
+        /// </summary>
+        /// <param name="appId">
+        /// The ID of the application under test, e.g. com.instagram.android.
+        /// </param>
+        /// <param name="appActivity">
+        /// The activity of the application to start, e.g. com.instagram.android.activity.MainTabActivity.
+        /// </param>
+        public AndroidAppManagerOptions(
+            string appId,
+            string appActivity)
+            : this(appId, appActivity, null, null, null, null, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
+        /// </summary>
+        /// <param name="appId">
+        /// The ID of the application under test, e.g. com.instagram.android.
+        /// </param>
+        /// <param name="appActivity">
+        /// The activity of the application to start, e.g. com.instagram.android.activity.MainTabActivity.
+        /// </param>
+        /// <param name="additionalOptions">
+        /// The additional options to apply to the <see cref="AppiumOptions"/>.
+        /// </param>
+        public AndroidAppManagerOptions(
+            string appId,
+            string appActivity,
+            params (string, object)[] additionalOptions)
+            : this(appId, appActivity, null, null, null, null, additionalOptions)
         {
         }
 
@@ -78,6 +90,7 @@ namespace Legerity.Android
         /// <param name="deviceId">
         /// The ID of the Android device to run the application on.
         /// </param>
+        [Obsolete("This constructor will be removed in a future major release. Please use the (string appId, string appActivity) instead and provide optional parameters for configuring for the device needed.")]
         public AndroidAppManagerOptions(
             string appId,
             string appActivity,
@@ -109,6 +122,7 @@ namespace Legerity.Android
         /// <param name="additionalOptions">
         /// The additional options to apply to the <see cref="AppiumOptions"/>.
         /// </param>
+        [Obsolete("This constructor will be removed in a future major release. Please use the (string appId, string appActivity, params (string, object)[] additionalOptions) instead and provide optional parameters for configuring for the device needed.")]
         public AndroidAppManagerOptions(
             string appId,
             string appActivity,
@@ -205,9 +219,21 @@ namespace Legerity.Android
             var options = new AppiumOptions();
 
             options.AddAdditionalCapability(MobileCapabilityType.PlatformName, "Android");
-            options.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
-            options.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
-            options.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
+
+            if (!string.IsNullOrWhiteSpace(this.OSVersion))
+            {
+                options.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DeviceName))
+            {
+                options.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DeviceId))
+            {
+                options.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
+            }
 
             if (!string.IsNullOrWhiteSpace(this.AppId))
             {
