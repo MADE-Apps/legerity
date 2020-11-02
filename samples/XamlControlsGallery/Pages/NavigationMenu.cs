@@ -139,6 +139,12 @@ namespace XamlControlsGallery.Pages
             return new InkToolbarPage();
         }
 
+        public MenuBarPage GoToMenuBarPage()
+        {
+            this.SearchForControl("MenuBar");
+            return new MenuBarPage();
+        }
+
         /// <summary>
         /// Navigates to the number box control page.
         /// </summary>

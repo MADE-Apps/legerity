@@ -28,6 +28,8 @@ These UWP control wrappers are designed to be used with applications built with 
 - [HyperlinkButton](../../src/Legerity/Windows/Elements/Core/HyperlinkButton.cs)
 - [InkToolbar](../../src/Legerity/Windows/Elements/Core/InkToolbar.cs)
 - [ListView](../../src/Legerity/Windows/Elements/Core/ListView.cs)
+- [MenuFlyoutItem](../../src/Legerity/Windows/Elements/Core/MenuFlyoutItem.cs)
+- [MenuFlyoutSubItem](../../src/Legerity/Windows/Elements/Core/MenuFlyoutSubItem.cs)
 - [PasswordBox](../../src/Legerity/Windows/Elements/Core/PasswordBox.cs)
 - [Pivot](../../src/Legerity/Windows/Elements/Core/Pivot.cs)
 - [ProgressBar](../../src/Legerity/Windows/Elements/Core/ProgressBar.cs)
@@ -43,7 +45,11 @@ These UWP control wrappers are designed to be used with applications built with 
 
 These UWP control wrappers are designed to be used with controls from the [WinUI](https://github.com/microsoft/microsoft-ui-xaml) suite.
 
+- [MenuBar](../../src/Legerity.WinUI/MenuBar.cs)
+- [MenuBarItem](../../src/Legerity.WinUI/MenuBarItem.cs)
 - [NavigationView](../../src/Legerity.WinUI/NavigationView.cs)
+- [NavigationViewItem](../../src/Legerity.WinUI/NavigationViewItem.cs)
+- [NumberBox](../../src/Legerity.WinUI/NumberBox.cs)
 - [TabView](../../src/Legerity.WinUI/TabView.cs)
 
 ## Windows Community Toolkit Controls
