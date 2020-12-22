@@ -165,6 +165,9 @@ namespace Legerity.Pages
             catch (ElementNotShownException)
             {
             }
+            catch (WebDriverException wde) when (wde.Message.Contains("element could not be located"))
+            {
+            }
         }
 
         private static void AttemptWaitForDriverElement(By by, TimeSpan timeout, IWebDriver appDriver)

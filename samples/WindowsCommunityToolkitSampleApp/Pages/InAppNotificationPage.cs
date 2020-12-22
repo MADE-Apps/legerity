@@ -80,11 +80,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
 
         public InAppNotificationPage VerifyExampleInAppNotificationHidden()
         {
-            if (this.ExampleInAppNotification.IsVisible)
-            {
-                throw new ElementShownException(this.exampleInAppNotificationQuery.ToString());
-            }
-
+            this.VerifyElementNotShown(this.exampleInAppNotificationQuery);
             return this;
         }
 
@@ -106,11 +102,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
 
         public InAppNotificationPage VerifyExampleVSCodeInAppNotificationHidden()
         {
-            if (this.ExampleVSCodeInAppNotification.IsVisible)
-            {
-                throw new ElementShownException(this.exampleCodeInAppNotificationQuery.ToString());
-            }
-
+            this.VerifyElementNotShown(this.exampleCodeInAppNotificationQuery);
             return this;
         }
     }
