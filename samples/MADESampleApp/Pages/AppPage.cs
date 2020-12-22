@@ -1,6 +1,7 @@
 namespace MADESampleApp.Pages
 {
     using System;
+    using System.Collections.Generic;
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.MADE;
@@ -24,6 +25,8 @@ namespace MADESampleApp.Pages
 
         public DatePicker DateInput => this.DateInputValidator.Input(ByExtensions.AutomationId("DatePicker"));
 
+        public DropDownList DropDownList => this.WindowsApp.FindElementByAutomationId("DropDownList");
+
         public void SetTextBoxText(string text)
         {
             this.TextInput.SetText(text);
@@ -32,6 +35,14 @@ namespace MADESampleApp.Pages
         public void SetDatePickerDate(DateTime date)
         {
             this.DateInput.SetDate(date);
+        }
+
+        public void SetDropDownListItems(IEnumerable<string> items)
+        {
+            foreach (string item in items)
+            {
+                this.DropDownList.SelectItem(item);
+            }
         }
     }
 }

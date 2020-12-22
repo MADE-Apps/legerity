@@ -1,7 +1,7 @@
 namespace Legerity.Windows.Extensions
 {
     using System;
-
+    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -10,6 +10,28 @@ namespace Legerity.Windows.Extensions
     /// </summary>
     public static class WindowsElementExtensions
     {
+        /// <summary>
+        /// Finds an element within the <paramref name="driver"/> with the given <paramref name="automationId"/>.
+        /// </summary>
+        /// <param name="driver">The <see cref="WindowsDriver{TElement}"/> to search.</param>
+        /// <param name="automationId">The automation ID associated with the element to locate.</param>
+        /// <returns>The located <see cref="TElement"/>.</returns>
+        public static TElement FindElementByAutomationId<TElement>(this WindowsDriver<TElement> driver, string automationId) where TElement : IWebElement
+        {
+            return driver.FindElement(ByExtensions.AutomationId(automationId));
+        }
+
+        /// <summary>
+        /// Finds an element within the <paramref name="element"/> with the given <paramref name="automationId"/>.
+        /// </summary>
+        /// <param name="element">The element to search.</param>
+        /// <param name="automationId">The automation ID associated with the element to locate.</param>
+        /// <returns>The located <see cref="AppiumWebElement"/>.</returns>
+        public static AppiumWebElement FindElementByAutomationId(this WindowsElement element, string automationId)
+        {
+            return element.FindElement(ByExtensions.AutomationId(automationId));
+        }
+
         /// <summary>
         /// Verifies the elements name or AutomationId based on the given compare.
         /// </summary>
