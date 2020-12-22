@@ -8,6 +8,10 @@ namespace Legerity.Android.Elements.Core
     /// </summary>
     public class EditText : AndroidElementWrapper
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EditText"/> class.
+        /// </summary>
+        /// <param name="element">The <see cref="AndroidElement"/> representing the <see cref="EditText"/> element.</param>
         public EditText(AndroidElement element) : base(element)
         {
         }

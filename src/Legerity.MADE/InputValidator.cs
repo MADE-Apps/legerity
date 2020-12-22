@@ -61,12 +61,21 @@ namespace Legerity.Windows.Elements.MADE
             return new InputValidator(element as WindowsElement);
         }
 
+        /// <summary>
+        /// Retrieves the input element with the given query.
+        /// </summary>
+        /// <param name="query">The query to find the input element.</param>
+        /// <returns>The <see cref="AppiumWebElement"/> if found; otherwise, throws <see cref="WebDriverException"/>.</returns>
         public AppiumWebElement Input(By query)
         {
             return this.Element.FindElement(query);
         }
 
-        public string GetFeedbackMessage()
+        /// <summary>
+        /// Retrieves the feedback message text if the <see cref="ValidationFeedback"/> is shown.
+        /// </summary>
+        /// <returns>The feedback message text of the <see cref="ValidationFeedback"/> element.</returns>
+        public string FeedbackMessage()
         {
             string message;
 

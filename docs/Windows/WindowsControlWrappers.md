@@ -36,6 +36,7 @@ These UWP control wrappers are designed to be used with applications built with 
 - [ProgressRing](../../src/Legerity/Windows/Elements/Core/ProgressRing.cs)
 - [RadioButton](../../src/Legerity/Windows/Elements/Core/RadioButton.cs)
 - [Slider](../../src/Legerity/Windows/Elements/Core/Slider.cs)
+- [TextBlock](../../src/Legerity/Windows/Elements/Core/TextBlock.cs)
 - [TextBox](../../src/Legerity/Windows/Elements/Core/TextBox.cs)
 - [TimePicker](../../src/Legerity/Windows/Elements/Core/TimePicker.cs)
 - [ToggleButton](../../src/Legerity/Windows/Elements/Core/ToggleButton.cs)
@@ -56,5 +57,13 @@ These UWP control wrappers are designed to be used with controls from the [WinUI
 
 These UWP control wrappers are designed to be used with controls from the [Windows Community Toolkit](https://github.com/windows-toolkit/WindowsCommunityToolkit) suite.
 
+- [Expander](../../src/Legerity.WCT/Expander.cs)
 - [InAppNotification](../../src/Legerity.WCT/InAppNotification.cs)
 - [RadialGauge](../../src/Legerity.WCT/RadialGauge.cs)
+
+## MADE.NET Controls
+
+These UWP control wrappers are designed to be used with controls from the [MADE.NET](https://github.com/MADE-Apps/MADE.NET) suite.
+
+- [DropDownList](../../src/Legerity.MADE/DropDownList.cs)
+- [InputValidator](../../src/Legerity.MADE/InputValidator.cs)

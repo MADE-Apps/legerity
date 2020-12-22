@@ -39,7 +39,7 @@ namespace Legerity.Windows
         public string AppId { get; set; }
 
         /// <summary>
-        /// Configures the <see cref="AppManagerOptions.AppiumOptions"/> with the specified additional options.
+        /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
         /// <para>
         /// By default, the <see cref="AppId"/> will be added to the options as capability 'app'.
         /// </para>

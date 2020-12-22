@@ -28,7 +28,7 @@ namespace MADESampleApp.Tests
 
             // Assert
             AppPage.TextInput.Text.ShouldBe(email);
-            AppPage.TextInputValidator.GetFeedbackMessage().ShouldBeNull();
+            AppPage.TextInputValidator.FeedbackMessage().ShouldBeNull();
         }
 
         [TestMethod]
@@ -42,7 +42,7 @@ namespace MADESampleApp.Tests
 
             // Assert
             AppPage.TextInput.Text.ShouldBe(email);
-            AppPage.TextInputValidator.GetFeedbackMessage().ShouldNotBeNull();
+            AppPage.TextInputValidator.FeedbackMessage().ShouldNotBeNull();
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace MADESampleApp.Tests
             AppPage.SetDatePickerDate(date);
 
             // Assert
-            AppPage.DateInputValidator.GetFeedbackMessage().ShouldBeNull();
+            AppPage.DateInputValidator.FeedbackMessage().ShouldBeNull();
         }
 
         [TestMethod]
@@ -68,7 +68,7 @@ namespace MADESampleApp.Tests
             AppPage.SetDatePickerDate(date);
 
             // Assert
-            AppPage.DateInputValidator.GetFeedbackMessage().ShouldNotBeNull();
+            AppPage.DateInputValidator.FeedbackMessage().ShouldNotBeNull();
         }
     }
 }
