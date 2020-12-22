@@ -57,6 +57,8 @@ These UWP control wrappers are designed to be used with controls from the [WinUI
 
 These UWP control wrappers are designed to be used with controls from the [Windows Community Toolkit](https://github.com/windows-toolkit/WindowsCommunityToolkit) suite.
 
+- [BladeView](../../src/Legerity.WCT/BladeView.cs)
+- [BladeViewItem](../../src/Legerity.WCT/BladeViewItem.cs)
 - [Expander](../../src/Legerity.WCT/Expander.cs)
 - [InAppNotification](../../src/Legerity.WCT/InAppNotification.cs)
 - [RadialGauge](../../src/Legerity.WCT/RadialGauge.cs)
