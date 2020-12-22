@@ -12,13 +12,24 @@
     <Authors>MADE Apps</Authors>
     <Company>MADE Apps</Company>
     <Product>Legerity for WinUI - Framework for UI tests with Appium with .NET</Product>
-    <Description>An extension to Legerity to support WinUI elements for speeding up the development of automated UI tests with Appium with .NET.</Description>
+    <Description>
+      This package is a WinUI extension to the Legerity core framework for speeding up the development of automated UI tests with Selenium and .NET including:
+      - MenuBar Windows element.
+      - MenuBarItem Windows element.
+      - NavigationView Windows element.
+      - NavigationViewItem Windows element.
+      - NumberBox Windows element.
+      - TabView Windows element.
+    </Description>
     <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
     <PackageProjectUrl>https://github.com/MADE-Apps/legerity</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>ProjectLogo.png</PackageIcon>
     <PackageTags>Appium WinAppDriver UWP WinUI</PackageTags>
+    <PackageReleaseNotes>https://github.com/MADE-Apps/legerity/releases</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <LangVersion>8.0</LangVersion>
     <PackageId>Legerity.WinUI</PackageId>
     <RootNamespace>Legerity.Windows.Elements.WinUI</RootNamespace>
   </PropertyGroup>
