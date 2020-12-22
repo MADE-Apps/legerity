@@ -18,6 +18,8 @@ namespace Legerity.Pages
         /// <summary>
         /// Initializes a new instance of the <see cref="BasePage"/> class.
         /// </summary>
+        /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
+        /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown in 2 seconds.</exception>
         protected BasePage()
         {
             this.VerifyPageShown(TimeSpan.FromSeconds(2));
@@ -54,6 +56,8 @@ namespace Legerity.Pages
         /// <summary>
         /// Determines whether the current page is shown immediately.
         /// </summary>
+        /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
+        /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown.</exception>
         public void VerifyPageShown()
         {
             this.VerifyPageShown(null);
@@ -65,6 +69,8 @@ namespace Legerity.Pages
         /// <param name="timeout">
         /// The amount of time the driver should wait when searching for the <see cref="Trait"/> if it is not immediately present.
         /// </param>
+        /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
+        /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown.</exception>
         public void VerifyPageShown(TimeSpan? timeout)
         {
             if (this.WebApp == null)
@@ -95,6 +101,8 @@ namespace Legerity.Pages
         /// <param name="by">
         /// The query for the element to find.
         /// </param>
+        /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
+        /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
         public void VerifyElementShown(By by)
         {
             this.VerifyElementShown(by, null);
@@ -109,6 +117,8 @@ namespace Legerity.Pages
         /// <param name="timeout">
         /// The amount of time the driver should wait when searching for the <paramref name="by"/> element if it is not immediately present.
         /// </param>
+        /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
+        /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
         public void VerifyElementShown(By by, TimeSpan? timeout)
         {
             if (this.WebApp == null)
@@ -139,6 +149,7 @@ namespace Legerity.Pages
         /// <param name="by">
         /// The query for the element to locate.
         /// </param>
+        /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
         public void VerifyElementNotShown(By by)
         {
             if (this.WebApp == null)
@@ -147,11 +158,13 @@ namespace Legerity.Pages
                     $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
             }
 
-            if (this.WebApp != null && this.WebApp.FindElement(by) == null)
+            try
             {
-                throw new ElementNotShownException(by.ToString());
+                this.VerifyElementShown(by);
             }
-
+            catch (ElementNotShownException)
+            {
+            }
         }
 
         private static void AttemptWaitForDriverElement(By by, TimeSpan timeout, IWebDriver appDriver)

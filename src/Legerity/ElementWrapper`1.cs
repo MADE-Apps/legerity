@@ -43,12 +43,25 @@ namespace Legerity
         public bool IsVisible => this.Element.Displayed;
 
         /// <summary>
+        /// Determines whether the given element is shown.
+        /// </summary>
+        /// <param name="by">
+        /// The query for the element to find.
+        /// </param>
+        /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
+        protected void VerifyElementShown(By by)
+        {
+            this.VerifyElementShown(by, null);
+        }
+
+        /// <summary>
         /// Determines whether the specified element is shown with the specified timeout.
         /// </summary>
         /// <param name="query">The query to find a specific element.</param>
         /// <param name="timeout">
         /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
         /// </param>
+        /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
         protected void VerifyElementShown(By query, TimeSpan? timeout)
         {
             if (timeout == null)
@@ -66,6 +79,18 @@ namespace Legerity
         }
 
         /// <summary>
+        /// Determines whether the specified elements are shown.
+        /// </summary>
+        /// <param name="by">
+        /// The query for the element to find.
+        /// </param>
+        /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the elements are not shown.</exception>
+        protected void VerifyElementsShown(By by)
+        {
+            this.VerifyElementsShown(by, null);
+        }
+
+        /// <summary>
         /// Determines whether the specified elements are shown with the specified timeout.
         /// </summary>
         /// <param name="query">
@@ -74,6 +99,7 @@ namespace Legerity
         /// <param name="timeout">
         /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
         /// </param>
+        /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the elements are not shown.</exception>
         protected void VerifyElementsShown(By query, TimeSpan? timeout)
         {
             if (timeout == null)
@@ -87,6 +113,23 @@ namespace Legerity
             {
                 var wait = new WebDriverWait(this.Element.WrappedDriver, timeout.Value);
                 wait.Until(driver => driver.FindElements(query).Count != 0);
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the given element is not shown.
+        /// </summary>
+        /// <param name="by">
+        /// The query for the element to locate.
+        /// </param>
+        public void VerifyElementNotShown(By by)
+        {
+            try
+            {
+                this.VerifyElementShown(by);
+            }
+            catch (ElementNotShownException)
+            {
             }
         }
     }

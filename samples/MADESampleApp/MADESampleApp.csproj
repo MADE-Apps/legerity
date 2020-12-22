@@ -15,8 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Legerity.WCT\Legerity.WCT.csproj" />
-    <ProjectReference Include="..\..\src\Legerity.WinUI\Legerity.WinUI.csproj" />
+    <ProjectReference Include="..\..\src\Legerity.MADE\Legerity.MADE.csproj" />
     <ProjectReference Include="..\..\src\Legerity\Legerity.csproj" />
   </ItemGroup>
 
