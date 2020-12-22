@@ -61,7 +61,6 @@ namespace Legerity.Windows.Elements.WinUI
             return new MenuBar(element as WindowsElement);
         }
 
-
         /// <summary>
         /// Clicks on a child menu option with the specified item name.
         /// </summary>
