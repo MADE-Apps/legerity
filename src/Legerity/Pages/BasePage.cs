@@ -52,6 +52,14 @@ namespace Legerity.Pages
         protected abstract By Trait { get; }
 
         /// <summary>
+        /// Determines whether the current page is shown immediately.
+        /// </summary>
+        public void VerifyPageShown()
+        {
+            this.VerifyPageShown(null);
+        }
+
+        /// <summary>
         /// Determines whether the current page is shown with the specified timeout.
         /// </summary>
         /// <param name="timeout">
