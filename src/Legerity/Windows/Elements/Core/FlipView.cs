@@ -4,15 +4,12 @@ namespace Legerity.Windows.Elements.Core
     using System.Collections.ObjectModel;
     using System.Globalization;
     using System.Linq;
-
-    using Legerity.Exceptions;
     using Legerity.Extensions;
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
-    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP FlipView control.

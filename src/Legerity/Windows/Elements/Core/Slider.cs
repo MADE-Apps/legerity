@@ -1,11 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
-    using System.Collections.ObjectModel;
-    using System.Linq;
-
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;

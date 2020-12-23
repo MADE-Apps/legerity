@@ -2,8 +2,6 @@ namespace Legerity
 {
     using System;
 
-    using OpenQA.Selenium.Appium;
-
     /// <summary>
     /// Defines a base model that represents configuration options for the <see cref="AppManager"/>.
     /// </summary>

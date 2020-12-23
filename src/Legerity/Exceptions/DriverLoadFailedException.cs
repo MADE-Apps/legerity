@@ -1,7 +1,5 @@
 namespace Legerity.Exceptions
 {
-    using System;
-
     /// <summary>
     /// Defines an exception thrown if the Appium driver fails to load the requested application.
     /// </summary>

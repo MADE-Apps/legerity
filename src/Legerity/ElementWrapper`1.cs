@@ -6,7 +6,6 @@ namespace Legerity
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
-    using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Support.UI;
 
     /// <summary>

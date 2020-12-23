@@ -1,8 +1,8 @@
 namespace Legerity.Windows.Elements.MADE
 {
     using Core;
-    using Exceptions;
     using Extensions;
+    using Legerity.Exceptions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;

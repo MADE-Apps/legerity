@@ -1,8 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
-    using System.Threading;
-
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;
