@@ -15,7 +15,8 @@ namespace MADESampleApp
             AppManager.StartApp(
                 new WindowsAppManagerOptions(DebugSampleApp)
                 {
-                    DriverUri = "http://127.0.0.1:4723"
+                    DriverUri = "http://127.0.0.1:4723",
+                    LaunchWinAppDriver = true
                 });
         }
 

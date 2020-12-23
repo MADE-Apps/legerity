@@ -1,5 +1,6 @@
 namespace Legerity.Windows
 {
+    using Helpers;
     using OpenQA.Selenium.Appium;
 
     /// <summary>
@@ -37,6 +38,19 @@ namespace Legerity.Windows
         /// Gets or sets the ID of the application under test.
         /// </summary>
         public string AppId { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to launch the WinAppDriver if it is not already running.
+        /// </summary>
+        public bool LaunchWinAppDriver { get; set; }
+
+        /// <summary>
+        /// Gets or sets the path to the WinAppDriver installation for launch.
+        /// <para>
+        /// By default, the path will be the default install location; C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe.
+        /// </para>
+        /// </summary>
+        public string WinAppDriverPath { get; set; } = WinAppDriverHelper.DefaultInstallLocation;
 
         /// <summary>
         /// Configures the <see cref="AppiumOptions"/> with the specified additional options.

@@ -1,15 +1,12 @@
 namespace Legerity
 {
     using System;
-
     using Legerity.Android;
     using Legerity.Exceptions;
     using Legerity.IOS;
     using Legerity.Web;
     using Legerity.Windows;
-
-    using OpenQA.Selenium;
-    using OpenQA.Selenium.Appium;
+    using Legerity.Windows.Helpers;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
@@ -56,6 +53,8 @@ namespace Legerity
         /// <exception cref="DriverLoadFailedException">
         /// Thrown if the application is null or the session ID is null once initialized.
         /// </exception>
+        /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverNotFoundException">Thrown if the WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.</exception>
+        /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverLoadFailedException">Thrown if the WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.</exception>
         public static void StartApp(AppManagerOptions opts)
         {
             StopApp();
@@ -64,27 +63,16 @@ namespace Legerity
             {
                 case WebAppManagerOptions webOpts:
                     {
-                        switch (webOpts.DriverType)
+                        WebApp = webOpts.DriverType switch
                         {
-                            case WebAppDriverType.Chrome:
-                                WebApp = new ChromeDriver(webOpts.DriverUri);
-                                break;
-                            case WebAppDriverType.Firefox:
-                                WebApp = new FirefoxDriver(webOpts.DriverUri);
-                                break;
-                            case WebAppDriverType.Opera:
-                                WebApp = new OperaDriver(webOpts.DriverUri);
-                                break;
-                            case WebAppDriverType.Safari:
-                                WebApp = new SafariDriver(webOpts.DriverUri);
-                                break;
-                            case WebAppDriverType.Edge:
-                                WebApp = new EdgeDriver(webOpts.DriverUri);
-                                break;
-                            case WebAppDriverType.InternetExplorer:
-                                WebApp = new InternetExplorerDriver(webOpts.DriverUri);
-                                break;
-                        }
+                            WebAppDriverType.Chrome => new ChromeDriver(webOpts.DriverUri),
+                            WebAppDriverType.Firefox => new FirefoxDriver(webOpts.DriverUri),
+                            WebAppDriverType.Opera => new OperaDriver(webOpts.DriverUri),
+                            WebAppDriverType.Safari => new SafariDriver(webOpts.DriverUri),
+                            WebAppDriverType.Edge => new EdgeDriver(webOpts.DriverUri),
+                            WebAppDriverType.InternetExplorer => new InternetExplorerDriver(webOpts.DriverUri),
+                            _ => WebApp
+                        };
 
                         VerifyAppDriver(WebApp, webOpts);
 
@@ -102,6 +90,11 @@ namespace Legerity
                     }
                 case WindowsAppManagerOptions winOpts:
                     {
+                        if (winOpts.LaunchWinAppDriver)
+                        {
+                            WinAppDriverHelper.Run();
+                        }
+
                         WebApp = new WindowsDriver<WindowsElement>(
                             new Uri(winOpts.DriverUri),
                             winOpts.AppiumOptions);
@@ -140,8 +133,11 @@ namespace Legerity
                 WebApp.Quit();
                 WebApp = null;
             }
+
+            WinAppDriverHelper.Stop();
         }
 
+        /// <exception cref="T:Legerity.Exceptions.DriverLoadFailedException">Condition.</exception>
         private static void VerifyAppDriver(RemoteWebDriver app, AppManagerOptions opts)
         {
             if (app?.SessionId == null)
