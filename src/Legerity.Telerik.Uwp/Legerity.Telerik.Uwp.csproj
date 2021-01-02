@@ -28,7 +28,7 @@
     <NeutralLanguage>en</NeutralLanguage>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <LangVersion>8.0</LangVersion>
-    <PackageId>Legerity.MADE</PackageId>
+    <PackageId>Legerity.Telerik.Uwp</PackageId>
     <RootNamespace>Legerity.Windows.Elements.Telerik</RootNamespace>
   </PropertyGroup>
 
