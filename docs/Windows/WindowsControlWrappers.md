@@ -10,8 +10,6 @@ These UWP control wrappers are designed to be used with applications built with 
 
 **NOTE**, these control wrappers will also work with the WinUI alternatives. 
 
-### Supported
-
 - [AppBarButton](../../src/Legerity/Windows/Elements/Core/AppBarButton.cs)
 - [AppBarToggleButton](../../src/Legerity/Windows/Elements/Core/AppBarToggleButton.cs)
 - [AutoSuggestBox](../../src/Legerity/Windows/Elements/Core/AutoSuggestBox.cs)
@@ -63,6 +61,15 @@ These UWP control wrappers are designed to be used with controls from the [Windo
 - [Expander](../../src/Legerity.WCT/Expander.cs)
 - [InAppNotification](../../src/Legerity.WCT/InAppNotification.cs)
 - [RadialGauge](../../src/Legerity.WCT/RadialGauge.cs)
+
+## Telerik UWP Controls
+
+These UWP control wrappers are designed to be used with controls from the [Telerik UI for UWP](https://github.com/telerik/UI-For-UWP) suite.
+
+- [RadAutoCompleteBox](../../src/Legerity.Telerik.Uwp/RadAutoCompleteBox.cs)
+- [RadBulletGraph](../../src/Legerity.Telerik.Uwp/RadBulletGraph.cs)
+- [RadBusyIndicator](../../src/Legerity.Telerik.Uwp/RadBusyIndicator.cs)
+- [RadNumericBox](../../src/Legerity.Telerik.Uwp/RadNumericBox.cs)
 
 ## MADE.NET Controls
 
