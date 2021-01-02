@@ -2,6 +2,7 @@ namespace TelerikUwpSdkSample.Pages
 {
     using AutoCompleteBox;
     using BulletGraph;
+    using BusyIndicator;
 
     public class ControlsPage : ListPage
     {
@@ -13,6 +14,11 @@ namespace TelerikUwpSdkSample.Pages
         public BulletGraphOptionsPage GoToBulletGraph()
         {
             return this.Select<BulletGraphOptionsPage>("BulletGraph");
+        }
+
+        public BusyIndicatorOptionsPage GoToBusyIndicator()
+        {
+            return this.Select<BusyIndicatorOptionsPage>("BusyIndicator");
         }
     }
 }
