@@ -27,6 +27,7 @@ These UWP control wrappers are designed to be used with applications built with 
 - [Hub](../../src/Legerity/Windows/Elements/Core/Hub.cs)
 - [HyperlinkButton](../../src/Legerity/Windows/Elements/Core/HyperlinkButton.cs)
 - [InkToolbar](../../src/Legerity/Windows/Elements/Core/InkToolbar.cs)
+- [ListBox](../../src/Legerity/Windows/Elements/Core/ListBox.cs)
 - [ListView](../../src/Legerity/Windows/Elements/Core/ListView.cs)
 - [MenuFlyoutItem](../../src/Legerity/Windows/Elements/Core/MenuFlyoutItem.cs)
 - [MenuFlyoutSubItem](../../src/Legerity/Windows/Elements/Core/MenuFlyoutSubItem.cs)
