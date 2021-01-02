@@ -139,6 +139,12 @@ namespace XamlControlsGallery.Pages
             return new InkToolbarPage();
         }
 
+        public ListBoxPage GoToListBox()
+        {
+            this.SearchForControl("ListBox");
+            return new ListBoxPage();
+        }
+
         public MenuBarPage GoToMenuBarPage()
         {
             this.SearchForControl("MenuBar");

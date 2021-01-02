@@ -17,7 +17,7 @@ namespace XamlControlsGallery
         public virtual void Initialize()
         {
             AppManager.StartApp(
-                new WindowsAppManagerOptions(DebugSampleApp)
+                new WindowsAppManagerOptions(StoreSampleApp)
                 {
                     DriverUri = "http://127.0.0.1:4723",
                     LaunchWinAppDriver = true
