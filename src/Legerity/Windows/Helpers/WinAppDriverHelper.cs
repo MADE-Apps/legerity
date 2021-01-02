@@ -60,7 +60,7 @@ namespace Legerity.Windows.Helpers
             {
                 if (WinAppDriverProcess != null && !WinAppDriverProcess.HasExited)
                 {
-                    WinAppDriverProcess.Close();
+                    WinAppDriverProcess.Kill();
                 }
             }
             catch (Exception)
