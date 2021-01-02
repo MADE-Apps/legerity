@@ -82,6 +82,7 @@ stages:
           packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
           nuGetFeedType: 'internal'
           publishVstsFeed: 'NuGet-PreRelease'
+          allowPackageConflicts: true
 
 - stage: 'NuGetPublish'
   dependsOn: 'InternalPublish'
