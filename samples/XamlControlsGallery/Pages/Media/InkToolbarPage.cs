@@ -1,13 +1,8 @@
 namespace XamlControlsGallery.Pages.Media
 {
-    using System.Threading;
-
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Extensions;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using OpenQA.Selenium;
 
     /// <summary>

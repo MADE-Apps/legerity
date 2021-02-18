@@ -3,7 +3,6 @@ namespace XamlControlsGallery.Tests.Navigation
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using XamlControlsGallery.Pages;
-    using XamlControlsGallery.Pages.Collections;
     using XamlControlsGallery.Pages.Navigation;
 
     [TestClass]

@@ -1,11 +1,8 @@
 namespace XamlControlsGallery.Tests.Media
 {
-    using System;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using XamlControlsGallery.Pages;
-    using XamlControlsGallery.Pages.DateAndTime;
     using XamlControlsGallery.Pages.Media;
 
     [TestClass]

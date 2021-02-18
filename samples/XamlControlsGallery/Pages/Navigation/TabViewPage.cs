@@ -1,9 +1,6 @@
 namespace XamlControlsGallery.Pages.Navigation
 {
-    using System.Linq;
-
     using Legerity.Pages;
-    using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WinUI;
     using Legerity.Windows.Extensions;
 

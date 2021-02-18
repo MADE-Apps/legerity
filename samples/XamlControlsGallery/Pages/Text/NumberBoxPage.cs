@@ -1,7 +1,6 @@
 namespace XamlControlsGallery.Pages.Text
 {
     using Legerity.Pages;
-    using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WinUI;
     using Legerity.Windows.Extensions;
 

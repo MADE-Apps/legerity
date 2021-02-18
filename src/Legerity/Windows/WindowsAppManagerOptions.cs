@@ -45,6 +45,11 @@ namespace Legerity.Windows
         public bool LaunchWinAppDriver { get; set; }
 
         /// <summary>
+        /// Gets or sets whether to maximize the window for the application.
+        /// </summary>
+        public bool Maximize { get; set; }
+
+        /// <summary>
         /// Gets or sets the path to the WinAppDriver installation for launch.
         /// <para>
         /// By default, the path will be the default install location; C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe.

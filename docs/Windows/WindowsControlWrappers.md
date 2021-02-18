@@ -1,12 +1,12 @@
 # Windows control wrappers
 
-The goal of the platform control wrappers is to provide an easy set of elements which surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them. 
+The goal of the platform control wrappers is to provide an easy set of elements that surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them. 
 
 These Windows control wrappers are designed to be used with applications built for the Windows platform.
 
 ## UWP Core Controls
 
-These UWP control wrappers are designed to be used with applications built with Windows 10 SDK controls. 
+These Windows control wrappers are designed to be used with applications built with Windows 10 SDK controls. 
 
 **NOTE**, these control wrappers will also work with the WinUI alternatives. 
 
@@ -43,8 +43,9 @@ These UWP control wrappers are designed to be used with applications built with 
 
 ## WinUI Controls
 
-These UWP control wrappers are designed to be used with controls from the [WinUI](https://github.com/microsoft/microsoft-ui-xaml) suite.
+These Windows control wrappers are designed to be used with controls from the [WinUI](https://github.com/microsoft/microsoft-ui-xaml) suite.
 
+- [InfoBar](../../src/Legerity.WinUI/InfoBar.cs)
 - [MenuBar](../../src/Legerity.WinUI/MenuBar.cs)
 - [MenuBarItem](../../src/Legerity.WinUI/MenuBarItem.cs)
 - [NavigationView](../../src/Legerity.WinUI/NavigationView.cs)
@@ -54,7 +55,7 @@ These UWP control wrappers are designed to be used with controls from the [WinUI
 
 ## Windows Community Toolkit Controls
 
-These UWP control wrappers are designed to be used with controls from the [Windows Community Toolkit](https://github.com/windows-toolkit/WindowsCommunityToolkit) suite.
+These Windows control wrappers are designed to be used with controls from the [Windows Community Toolkit](https://github.com/windows-toolkit/WindowsCommunityToolkit) suite.
 
 - [BladeView](../../src/Legerity.WCT/BladeView.cs)
 - [BladeViewItem](../../src/Legerity.WCT/BladeViewItem.cs)
@@ -64,7 +65,7 @@ These UWP control wrappers are designed to be used with controls from the [Windo
 
 ## Telerik UWP Controls
 
-These UWP control wrappers are designed to be used with controls from the [Telerik UI for UWP](https://github.com/telerik/UI-For-UWP) suite.
+These Windows control wrappers are designed to be used with controls from the [Telerik UI for UWP](https://github.com/telerik/UI-For-UWP) suite.
 
 - [RadAutoCompleteBox](../../src/Legerity.Telerik.Uwp/RadAutoCompleteBox.cs)
 - [RadBulletGraph](../../src/Legerity.Telerik.Uwp/RadBulletGraph.cs)
@@ -73,7 +74,7 @@ These UWP control wrappers are designed to be used with controls from the [Teler
 
 ## MADE.NET Controls
 
-These UWP control wrappers are designed to be used with controls from the [MADE.NET](https://github.com/MADE-Apps/MADE.NET) suite.
+These Windows control wrappers are designed to be used with controls from the [MADE.NET](https://github.com/MADE-Apps/MADE.NET) suite.
 
 - [DropDownList](../../src/Legerity.MADE/DropDownList.cs)
 - [InputValidator](../../src/Legerity.MADE/InputValidator.cs)

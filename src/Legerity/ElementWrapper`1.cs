@@ -42,6 +42,16 @@ namespace Legerity
         public bool IsVisible => this.Element.Displayed;
 
         /// <summary>
+        /// Finds a child element by the specified query.
+        /// </summary>
+        /// <param name="by">The query to find a child element by.</param>
+        /// <returns>The <typeparamref name="TElement"/>.</returns>
+        public AppiumWebElement FindElement(By by)
+        {
+            return this.Element.FindElement(by);
+        }
+
+        /// <summary>
         /// Determines whether the given element is shown.
         /// </summary>
         /// <param name="by">

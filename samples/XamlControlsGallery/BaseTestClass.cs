@@ -20,7 +20,8 @@ namespace XamlControlsGallery
                 new WindowsAppManagerOptions(StoreSampleApp)
                 {
                     DriverUri = "http://127.0.0.1:4723",
-                    LaunchWinAppDriver = true
+                    LaunchWinAppDriver = true,
+                    Maximize = true
                 });
         }
 

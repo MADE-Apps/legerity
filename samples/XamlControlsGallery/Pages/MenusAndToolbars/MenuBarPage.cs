@@ -1,7 +1,5 @@
 namespace XamlControlsGallery.Pages.MenusAndToolbars
 {
-    using System.Linq;
-    using Legerity;
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WinUI;

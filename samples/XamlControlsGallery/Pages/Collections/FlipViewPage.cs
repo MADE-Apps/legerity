@@ -4,8 +4,6 @@ namespace XamlControlsGallery.Pages.Collections
 
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;

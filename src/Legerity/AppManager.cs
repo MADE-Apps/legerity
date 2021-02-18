@@ -100,6 +100,11 @@ namespace Legerity
                             winOpts.AppiumOptions);
 
                         VerifyAppDriver(WindowsApp, winOpts);
+
+                        if (winOpts.Maximize)
+                        {
+                            WebApp.Manage().Window.Maximize();
+                        }
                         break;
                     }
 

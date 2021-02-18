@@ -8,7 +8,6 @@ namespace XamlControlsGallery.Pages.DateAndTime
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>
     /// Defines the CalendarDatePickerPage page of the XAML Controls Gallery application.

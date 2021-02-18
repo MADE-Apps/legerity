@@ -3,7 +3,6 @@ namespace XamlControlsGallery.Tests.BasicInput
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using XamlControlsGallery.Pages;
-    using XamlControlsGallery.Pages.BasicInput;
     using XamlControlsGallery.Pages.MenusAndToolbars;
 
     [TestClass]

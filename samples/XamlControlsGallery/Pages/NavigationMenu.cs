@@ -8,8 +8,7 @@ namespace XamlControlsGallery.Pages
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Appium.Windows;
-
+    using StatusAndInfo;
     using XamlControlsGallery.Pages.BasicInput;
     using XamlControlsGallery.Pages.Collections;
     using XamlControlsGallery.Pages.DateAndTime;
@@ -125,6 +124,12 @@ namespace XamlControlsGallery.Pages
         {
             this.SearchForControl("FlipView");
             return new FlipViewPage();
+        }
+
+        public InfoBarPage GoToInfoBarPage()
+        {
+            this.SearchForControl("InfoBar");
+            return new InfoBarPage();
         }
 
         /// <summary>

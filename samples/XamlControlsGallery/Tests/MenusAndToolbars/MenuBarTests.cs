@@ -1,12 +1,7 @@
 namespace XamlControlsGallery.Tests.BasicInput
 {
-    using System.Linq;
-    using Legerity;
-    using Legerity.Windows.Elements.WinUI;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using OpenQA.Selenium;
     using XamlControlsGallery.Pages;
-    using XamlControlsGallery.Pages.BasicInput;
     using XamlControlsGallery.Pages.MenusAndToolbars;
 
     [TestClass]
