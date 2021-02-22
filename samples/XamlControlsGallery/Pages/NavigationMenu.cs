@@ -166,6 +166,12 @@ namespace XamlControlsGallery.Pages
             return new NumberBoxPage();
         }
 
+        public RatingControlPage GoToRatingControl()
+        {
+            this.SearchForControl("RatingControl");
+            return new RatingControlPage();
+        }
+
         /// <summary>
         /// Navigates to the settings page.
         /// </summary>

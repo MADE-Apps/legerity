@@ -51,6 +51,7 @@ These Windows control wrappers are designed to be used with controls from the [W
 - [NavigationView](../../src/Legerity.WinUI/NavigationView.cs)
 - [NavigationViewItem](../../src/Legerity.WinUI/NavigationViewItem.cs)
 - [NumberBox](../../src/Legerity.WinUI/NumberBox.cs)
+- [RatingControl](../../src/Legerity.WinUI/RatingControl.cs)
 - [TabView](../../src/Legerity.WinUI/TabView.cs)
 
 ## Windows Community Toolkit Controls
