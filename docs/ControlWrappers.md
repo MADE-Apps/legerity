@@ -1,12 +1,12 @@
 # Control wrappers
 
-The goal of the platform control wrappers is to provide an easy set of elements which surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them. 
+The goal of the platform control wrappers is to provide an easy set of elements that surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them. 
 
 ## Usage
 
 Using a control wrapper in your test application is super simple. 
 
-Where you want to find an element in the Appium driver which would usually return an AppiumWebElement or platform alternative, simply replace the `var` or Type to the intended control.
+Where you want to find an element in the Appium driver that would usually return an AppiumWebElement or platform alternative, simply replace the `var` or Type to the intended control.
 
 ```csharp
 Slider slider = this.Driver.FindElement(ByExtensions.AutomationId("MySlider"));
@@ -101,11 +101,11 @@ namespace WindowsAlarmsAndClock.Elements
 
 ### Platform specifics
 
-Each of the platform specific wrappers exposes not just the wrappered element but the driver for that application type to allow you to access more information around your control.
+Each of the platform-specific wrappers exposes not just the wrapper element but the driver for that application type to allow you to access more information around your control.
 
 For example, a control may contain a popup or flyout which is displayed in a different tree to the current element, such as the [UWP InkToolbar](../src/Legerity/Windows/Elements/Core/InkToolbar.cs).
 
-If you want to create a platform specific wrapper, you can start by implementing one of the following platform base wrappers.
+If you want to create a platform-specific wrapper, you can start by implementing one of the following platform base wrappers.
 
 - [AndroidElementWrapper](../src/Legerity/Android/Elements/AndroidElementWrapper.cs)
 - [IOSElementWrapper](../src/Legerity/IOS/Elements/IOSElementWrapper.cs)
@@ -116,6 +116,12 @@ If you want to create a platform specific wrapper, you can start by implementing
 The Android control wrappers are designed to be used with applications built for the Android platform.
 
 [Discover the Android control wrappers](Android/AndroidControlWrappers.md)
+
+## iOS
+
+The iOS control wrappers are designed to be used with applications built for the iOS platform.
+
+[Discover the iOS control wrappers](IOS/IOSControlWrappers.md)
 
 ## Windows
 

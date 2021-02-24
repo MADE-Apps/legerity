@@ -1,16 +1,16 @@
 # Writing tests
 
-As with the aim of the control wrappers, writing tests should be super easy to get started with. 
+Writing UI tests should be simple and easy to get going. 
 
-Legerity exposes an AppManager which is a lightweight wrapper for the application driver that allows you to simply start your applications using a configuration object.
+Legerity exposes an `AppManager` which is a lightweight wrapper for the application driver that allows you to simply start your applications using a configuration object.
 
 ## Creating a base test class
 
-Using your testing framework of choice, getting your application started in the appropriate Selenimum or Appium driver is as simple as calling `AppManager.StartApp()` passing through a `AppManagerOptions` configuration object.
+Using your testing framework of choice, getting your application started in the appropriate Selenium or Appium driver is as simple as calling `AppManager.StartApp()` passing through a `AppManagerOptions` configuration object.
 
 Depending on your configuration object, the specific application will launch.
 
-Currently the `AppManager` configuration supports the following app drivers.
+Currently, the `AppManager` configuration supports the following app drivers.
 
 - [WindowsDriver](https://github.com/microsoft/WinAppDriver)
   - [WindowsAppManagerOptions](../src/Legerity/Windows/WindowsAppManagerOptions.cs)
@@ -25,7 +25,7 @@ For Appium drivers, an options object also provides the use of additional capabi
 
 ### Example base test class
 
-In this example, using the Microsoft Testing Framework, each test that implements the `BaseTestClass` will launch the application on the start of each test, then close the application once the test has completed.
+In this example, using the Microsoft Testing Framework, each test that implements the `BaseTestClass` will launch the application at the start of each test, then close the application once the test has been completed.
 
 ```csharp
 namespace WindowsAlarmsAndClock
@@ -64,4 +64,4 @@ To access the driver for the currently running application, it's as simple as re
 - `IOSApp`
 - `WebApp`
 
-Each of these properties exposes the platform specific Appium driver which can be used to access UI elements.
+Each of these properties exposes the platform-specific Appium driver which can be used to access UI elements.

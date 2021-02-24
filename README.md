@@ -4,7 +4,7 @@
 
 Legerity is a framework for speeding up the development of automated UI testing of Windows, Android, iOS, and Web apps with Appium/Selenium with .NET!
 
-The aim of the framework is to provide easy to use components that allow you to quickly and easily get up and running in little to no time. 
+The aim of the framework is to provide easy-to-use components that allow you to quickly and easily get up and running in little to no time. 
 
 With the help of out-of-the-box element wrappers for core platform controls, all the repetitive querying of your UI is alleviated! 
 
@@ -18,7 +18,7 @@ With the help of out-of-the-box element wrappers for core platform controls, all
 
 Legerity is publicly available via NuGet. Each available package is detailed below. 
 
-For non-core platform controls, for example WinUI or the Windows Community Toolkit, we're providing additional extension packages for you to take advantage of within your test projects.
+For non-core platform controls, for example, WinUI or the Windows Community Toolkit, we're providing additional extension packages for you to take advantage of within your test projects.
 
 | Package | Current | Preview |
 | ------ | ------ | ------ |
@@ -50,13 +50,13 @@ Looking to help build Legerity? Take a look through our [contribution guidelines
 
 ### UI Automation tooling
 
-When contributing to new element wrappers, we recommended using the [Accessibility Insights tool](https://accessibilityinsights.io/en/). The tool is capable of inspecting and providing property values for Android, Web and Windows applications.
+When contributing to new element wrappers, we recommended using the [Accessibility Insights tool](https://accessibilityinsights.io/en/). The tool is capable of inspecting and providing property values for Android, Web, and Windows applications.
 
-Alternatively, you can use the [Inspect.exe tool](https://docs.microsoft.com/en-us/windows/win32/winauto/inspect-objects) for Windows applications installed with the Windows SDKs. This is not recommended however as the tool is considered legacy and can often cause oddities in UI when using. 
+Alternatively, you can use the [Inspect.exe tool](https://docs.microsoft.com/en-us/windows/win32/winauto/inspect-objects) for Windows applications installed with the Windows SDKs. This is not recommended as the tool is considered legacy and can often cause oddities in UI when using. 
 
 ## Building Legerity
 
-Legeirty have been built using .NET Standard, taking advantage of the new SDK-style projects.
+Legerity is built using .NET Standard, taking advantage of the new SDK-style projects.
 
 You can build the solution using Visual Studio with the following workloads installed:
 

@@ -1,26 +1,26 @@
 # Page Object Pattern (POP)
 
-The goal of the page object pattern is to use page objects to abstract page information away from your tests. Ideally, they will store all your selectors to find UI elements that a page is aware of and actions that are capable of the page. 
+The goal of the page object pattern is to use page objects to extract page interactions from your tests. Ideally, they will store all your selectors to find UI elements and their interactions for a page. 
 
 ## BasePage.cs
 
 As a part of the Legerity framework, we provide a [`BasePage`](../src/Legerity/Pages/BasePage.cs) class which is a starting point for creating pages for your application.
 
-Our Windows Alarms And Clock sample project provides an easy to understand example of how to implement a page within your tests in the form of the [EditAlarmPage](../samples/WindowsAlarmsAndClock/Pages/EditAlarmPage.cs).
+The Windows Alarms And Clock sample project provides an easy-to-understand example of how to implement a page within your tests. Take a look at the [EditAlarmPage](../samples/WindowsAlarmsAndClock/Pages/EditAlarmPage.cs) to get started.
 
 ### Trait
 
-Each page has a trait. This is a UI element which is always displayed on this page. This can often be tied to a **title** element for the view or a specific menu item having been selected. 
+Each page has a trait. This is a UI element that is always displayed on this page. This can often be tied to a **title** element for the view or a specific menu item having been selected. 
 
 The Trait is used when the page is constructed to ensure that the page is currently in view. 
 
-By default, there will be a 2 second wait for the element to appear before the test will fail. 
+By default, there will be a 2-second wait for the element to appear before the test will fail. 
 
 ### Example
 
 In the below example, a page is being defined for the XAML Controls Gallery app which showcases the functionality of a combo box control.
 
-You'll notice in this example that there are multiple actions that this page can serve. Where an action can be chained, the instance of the page can be returned to produce a simple human-readable test.
+You'll notice in this example that there are multiple actions that this page can serve. Where actions can be chained, the instance of the page can be returned to produce a simple human-readable test.
 
 ```csharp
 namespace XamlControlsGallery.Pages.BasicInput
