@@ -30,6 +30,11 @@ namespace Legerity.Android.Elements
         public AndroidDriver<AndroidElement> Driver => AppManager.AndroidApp;
 
         /// <summary>
+        /// Gets a value indicating whether the element is enabled.
+        /// </summary>
+        public bool IsEnabled => this.Element.Enabled;
+
+        /// <summary>
         /// Determines whether the specified element is shown with the specified timeout.
         /// </summary>
         /// <param name="query">The query to find a specific element.</param>

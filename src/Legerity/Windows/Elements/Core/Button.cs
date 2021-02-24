@@ -20,11 +20,6 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
-        /// Gets a value indicating whether the button is enabled.
-        /// </summary>
-        public bool IsEnabled => this.Element.Enabled;
-
-        /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="Button"/> without direct casting.
         /// </summary>
         /// <param name="element">
