@@ -16,4 +16,5 @@ These Android control wrappers are designed to be used with applications built w
 - [RadioButton](../../src/Legerity/Android/Elements/Core/RadioButton.cs)
 - [Spinner](../../src/Legerity/Android/Elements/Core/Spinner.cs)
 - [Switch](../../src/Legerity/Android/Elements/Core/Switch.cs)
+- [TextView](../../src/Legerity/Android/Elements/Core/TextView.cs)
 - [ToggleButton](../../src/Legerity/Android/Elements/Core/ToggleButton.cs)

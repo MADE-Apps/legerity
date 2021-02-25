@@ -73,7 +73,7 @@ namespace Legerity.Android.Elements.Core
 
         private string GetSelectedItem()
         {
-            AppiumWebElement textElement = this.Element.FindElement(By.ClassName("android.widget.TextView"));
+            TextView textElement = this.Element.FindElement(By.ClassName("android.widget.TextView"));
             return textElement.Text;
         }
     }
