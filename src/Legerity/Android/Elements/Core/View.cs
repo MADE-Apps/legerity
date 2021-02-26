@@ -5,33 +5,33 @@ namespace Legerity.Android.Elements.Core
     using OpenQA.Selenium.Appium.Android;
 
     /// <summary>
-    /// Defines a <see cref="AndroidElement"/> wrapper for the core Android Button control.
+    /// Defines a <see cref="AndroidElement"/> wrapper for the core Android View base control.
     /// </summary>
-    public class Button : AndroidElementWrapper
+    public class View : AndroidElementWrapper
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Button"/> class.
+        /// Initializes a new instance of the <see cref="View"/> class.
         /// </summary>
         /// <param name="element">
         /// The <see cref="AndroidElement"/> reference.
         /// </param>
-        public Button(AndroidElement element)
+        public View(AndroidElement element)
             : base(element)
         {
         }
 
         /// <summary>
-        /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="Button"/> without direct casting.
+        /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="View"/> without direct casting.
         /// </summary>
         /// <param name="element">
         /// The <see cref="AndroidElement"/>.
         /// </param>
         /// <returns>
-        /// The <see cref="Button"/>.
+        /// The <see cref="View"/>.
         /// </returns>
-        public static implicit operator Button(AndroidElement element)
+        public static implicit operator View(AndroidElement element)
         {
-            return new Button(element);
+            return new View(element);
         }
 
         /// <summary>
@@ -43,13 +43,13 @@ namespace Legerity.Android.Elements.Core
         /// <returns>
         /// The <see cref="Button"/>.
         /// </returns>
-        public static implicit operator Button(AppiumWebElement element)
+        public static implicit operator View(AppiumWebElement element)
         {
-            return new Button(element as AndroidElement);
+            return new View(element as AndroidElement);
         }
 
         /// <summary>
-        /// Clicks the button.
+        /// Clicks the element.
         /// </summary>
         public void Click()
         {
