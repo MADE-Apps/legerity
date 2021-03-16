@@ -2,7 +2,6 @@ namespace Legerity.Windows.Elements.WinUI
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
 
     using Legerity.Windows.Elements.Core;

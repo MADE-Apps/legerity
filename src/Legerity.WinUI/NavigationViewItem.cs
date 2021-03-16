@@ -7,7 +7,6 @@ namespace Legerity.Windows.Elements.WinUI
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>

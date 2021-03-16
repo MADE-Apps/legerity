@@ -1,7 +1,6 @@
 namespace WindowsCommunityToolkitSampleApp.Pages
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;

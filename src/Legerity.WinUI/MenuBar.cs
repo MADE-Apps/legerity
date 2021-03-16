@@ -3,7 +3,6 @@ namespace Legerity.Windows.Elements.WinUI
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Core;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;

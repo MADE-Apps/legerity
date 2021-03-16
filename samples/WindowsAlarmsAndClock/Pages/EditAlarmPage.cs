@@ -3,7 +3,6 @@ namespace WindowsAlarmsAndClock.Pages
     using System;
 
     using Legerity.Pages;
-    using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;

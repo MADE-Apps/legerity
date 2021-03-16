@@ -1,11 +1,9 @@
 namespace WindowsCommunityToolkitSampleApp.Pages
 {
-    using System.Runtime.CompilerServices;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WCT;
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Interactions;
 
     /// <summary>
     /// Defines the BladeView page of the Windows Community Toolkit sample application.
