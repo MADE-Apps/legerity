@@ -7,20 +7,19 @@ assignees: ''
 
 ---
 
-## Steps to reproduce
+## Describe the bug
 <!-- Please describe below the details of the issue and steps taken to reproduce -->
-
-## Which package version are you using?
-<!-- Please provide the versions affected -->
 
 ## What is the expected behaviour?
 <!-- Please describe below the expected behaviour -->
 
-## What is the actual behaviour?
-<!-- Please describe below the actual behaviour -->
+## Additional detail
 
-## What platform(s) does this affect?
-<!-- Please provide enough applicable information -->
+Package(s): 
+
+Package Version(s): 
+
+Platform(s) affected: 
 
 ## Other information
-<!-- Please provide any additional information, links, screenshots or projects with reproduced issues below if applicable -->
+<!-- Please provide any additional information, links, screenshots, or projects with reproduced issues below if applicable -->

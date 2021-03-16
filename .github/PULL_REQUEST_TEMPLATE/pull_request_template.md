@@ -1,13 +1,16 @@
-## PR summary
-<!-- Please provide a description below of the changes made and how it was tested -->
+## Fixes #
+<!-- Add the issue ID after the '#' to automatically close the issue once the PR is merged -->
+
+<!-- Please provide a description below of the changes made and how it has been tested -->
 
 ## PR checklist
 
 - [ ] Sample tests have been added/updated and pass
-- [ ] Code styling has been run on all new source file changes
+- [ ] [Documentation](/docs) has been added/updated for changes
+- [ ] Code styling has been met on new source file changes
 - [ ] Contains **NO** breaking changes
 
 <!-- If a breaking change has been made, please provide a detailed description below of the impact and the migration path -->
 
-## References
-<!-- Please provide any additional references below that are relevant to the changes made (i.e. another work item, existing PR) -->
+## Other information
+<!-- Please provide any additional information, links, or screenshots below if applicable -->

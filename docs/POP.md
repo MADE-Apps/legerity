@@ -1,6 +1,6 @@
 # Page Object Pattern (POP)
 
-The goal of the page object pattern is to use page objects to extract page interactions from your tests. Ideally, they will store all your selectors to find UI elements and their interactions for a page. 
+The goal of the page object pattern is to use page objects to extract page interactions from your tests. Ideally, they will store all your selectors to find UI elements and their interactions for a page.
 
 ## BasePage.cs
 
@@ -10,15 +10,15 @@ The Windows Alarms And Clock sample project provides an easy-to-understand examp
 
 ### Trait
 
-Each page has a trait. This is a UI element that is always displayed on this page. This can often be tied to a **title** element for the view or a specific menu item having been selected. 
+Each page has a trait. This is a UI element that is always displayed on this page. This can often be tied to a **title** element for the view or a specific menu item having been selected.
 
-The Trait is used when the page is constructed to ensure that the page is currently in view. 
+The Trait is used when the page is constructed to ensure that the page is currently in view.
 
-By default, there will be a 2-second wait for the element to appear before the test will fail. 
+By default, there will be a 2-second wait for the element to appear before the test will fail.
 
 ### Example
 
-In the below example, a page is being defined for the XAML Controls Gallery app which showcases the functionality of a combo box control.
+In the below example, a page is being defined for the XAML Controls Gallery app that showcases the functionality of a combo box control.
 
 You'll notice in this example that there are multiple actions that this page can serve. Where actions can be chained, the instance of the page can be returned to produce a simple human-readable test.
 

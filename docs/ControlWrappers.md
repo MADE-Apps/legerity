@@ -1,12 +1,12 @@
 # Control wrappers
 
-The goal of the platform control wrappers is to provide an easy set of elements that surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them. 
+The goal of the platform control wrappers is to provide an easy set of elements that surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them.
 
 ## Usage
 
 Using a control wrapper in your test application is super simple. 
 
-Where you want to find an element in the Appium driver that would usually return an AppiumWebElement or platform alternative, simply replace the `var` or Type to the intended control.
+Where you want to find an element in the Appium driver that would usually return an AppiumWebElement or platform alternative, simply replace the `var` or Type with the intended control.
 
 ```csharp
 Slider slider = this.Driver.FindElement(ByExtensions.AutomationId("MySlider"));
@@ -107,9 +107,16 @@ For example, a control may contain a popup or flyout which is displayed in a dif
 
 If you want to create a platform-specific wrapper, you can start by implementing one of the following platform base wrappers.
 
+- [WindowsElementWrapper](../src/Legerity/Windows/Elements/WindowsElementWrapper.cs)
 - [AndroidElementWrapper](../src/Legerity/Android/Elements/AndroidElementWrapper.cs)
 - [IOSElementWrapper](../src/Legerity/IOS/Elements/IOSElementWrapper.cs)
-- [WindowsElementWrapper](../src/Legerity/Windows/Elements/WindowsElementWrapper.cs)
+- [WebElementWrapper](../src/Legerity/Web/Elements/WebElementWrapper.cs)
+
+## Windows
+
+The Windows control wrappers are designed to be used with applications built for the Windows platform.
+
+[Discover the Windows control wrappers](Windows/WindowsControlWrappers.md)
 
 ## Android
 
@@ -123,8 +130,8 @@ The iOS control wrappers are designed to be used with applications built for the
 
 [Discover the iOS control wrappers](IOS/IOSControlWrappers.md)
 
-## Windows
+## Web
 
-The Windows control wrappers are designed to be used with applications built for the Windows platform.
+The Web control wrappers are designed to be used with applications built for the Web.
 
-[Discover the Windows control wrappers](Windows/WindowsControlWrappers.md)
+[Discover the Web control wrappers](Web/WebControlWrappers.md)

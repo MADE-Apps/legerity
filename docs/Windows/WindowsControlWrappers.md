@@ -1,12 +1,12 @@
 # Windows control wrappers
 
-The goal of the platform control wrappers is to provide an easy set of elements that surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them. 
+The goal of the platform control wrappers is to provide an easy set of elements that surface up properties and actions of the actual controls within the UI to make it easier for you to write tests that interact with them.
 
 These Windows control wrappers are designed to be used with applications built for the Windows platform.
 
 ## UWP Core Controls
 
-These Windows control wrappers are designed to be used with applications built with Windows 10 SDK controls. 
+These Windows control wrappers are designed to be used with applications built with Windows 10 SDK controls.
 
 **NOTE**, these control wrappers will also work with the WinUI alternatives. 
 

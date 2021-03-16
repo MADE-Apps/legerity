@@ -2,7 +2,7 @@
 
 Writing UI tests should be simple and easy to get going. 
 
-Legerity exposes an `AppManager` which is a lightweight wrapper for the application driver that allows you to simply start your applications using a configuration object.
+Legerity exposes an `AppManager` that is a lightweight wrapper for the application driver that allows you to start your applications using a configuration object.
 
 ## Creating a base test class
 
@@ -64,4 +64,4 @@ To access the driver for the currently running application, it's as simple as re
 - `IOSApp`
 - `WebApp`
 
-Each of these properties exposes the platform-specific Appium driver which can be used to access UI elements.
+Each of these properties exposes the platform-specific Appium driver that can be used to access UI elements.
