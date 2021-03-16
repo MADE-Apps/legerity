@@ -9,7 +9,7 @@ namespace XamlControlsGallery.Pages.Text
     using OpenQA.Selenium;
 
     /// <summary>
-    /// Defines the NumberBox page of the XAML Controls Gallery application.
+    /// Defines the NumberInput page of the XAML Controls Gallery application.
     /// </summary>
     public class NumberBoxPage : BasePage
     {
@@ -30,7 +30,7 @@ namespace XamlControlsGallery.Pages.Text
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
-        protected override By Trait => By.XPath(".//*[@Name='NumberBox'][@AutomationId='TitleTextBlock']");
+        protected override By Trait => By.XPath(".//*[@Name='NumberInput'][@AutomationId='TitleTextBlock']");
 
         /// <summary>
         /// Sets the spinner number box value to the specified value.

@@ -23,7 +23,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the text value of the text input.
         /// </summary>
-        public string Text => this.Element.Text;
+        public string Text => this.Element.GetAttribute("value");
 
         /// <summary>
         /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="TextInput"/> without direct casting.
