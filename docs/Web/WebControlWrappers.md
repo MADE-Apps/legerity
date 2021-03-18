@@ -13,6 +13,8 @@ These Web control wrappers are designed to be used with applications built with 
 - [FileInput](../../src/Legerity/Web/Elements/Core/FileInput.cs)
 - [List](../../src/Legerity/Web/Elements/Core/List.cs)
 - [NumberInput](../../src/Legerity/Web/Elements/Core/NumberInput.cs)
+- [Option](../../src/Legerity/Web/Elements/Core/Option.cs)
 - [RadioButton](../../src/Legerity/Web/Elements/Core/RadioButton.cs)
 - [RangeInput](../../src/Legerity/Web/Elements/Core/RangeInput.cs)
+- [Select](../../src/Legerity/Web/Elements/Core/Select.cs)
 - [TextInput](../../src/Legerity/Web/Elements/Core/TextInput.cs)
