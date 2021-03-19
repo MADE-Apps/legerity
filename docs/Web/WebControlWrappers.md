@@ -11,6 +11,7 @@ These Web control wrappers are designed to be used with applications built with 
 - [Button](../../src/Legerity/Web/Elements/Core/Button.cs)
 - [CheckBox](../../src/Legerity/Web/Elements/Core/CheckBox.cs)
 - [FileInput](../../src/Legerity/Web/Elements/Core/FileInput.cs)
+- [Image](../../src/Legerity/Web/Elements/Core/Image.cs)
 - [List](../../src/Legerity/Web/Elements/Core/List.cs)
 - [NumberInput](../../src/Legerity/Web/Elements/Core/NumberInput.cs)
 - [Option](../../src/Legerity/Web/Elements/Core/Option.cs)
