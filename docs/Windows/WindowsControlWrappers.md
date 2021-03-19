@@ -60,6 +60,7 @@ These Windows control wrappers are designed to be used with controls from the [W
 
 - [BladeView](../../src/Legerity.WCT/BladeView.cs)
 - [BladeViewItem](../../src/Legerity.WCT/BladeViewItem.cs)
+- [Carousel](../../src/Legerity.WCT/Carousel.cs)
 - [Expander](../../src/Legerity.WCT/Expander.cs)
 - [InAppNotification](../../src/Legerity.WCT/InAppNotification.cs)
 - [RadialGauge](../../src/Legerity.WCT/RadialGauge.cs)
