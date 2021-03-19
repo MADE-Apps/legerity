@@ -15,6 +15,16 @@ namespace Legerity.Web.Elements.Core
         /// <param name="element">
         /// The <see cref="IWebElement"/> reference.
         /// </param>
+        public TextInput(IWebElement element) : this(element as RemoteWebElement)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextInput"/> class.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/> reference.
+        /// </param>
         public TextInput(RemoteWebElement element)
             : base(element)
         {
