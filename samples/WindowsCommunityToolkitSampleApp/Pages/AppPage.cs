@@ -2,6 +2,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
 {
     using System;
     using System.Linq;
+    using System.Threading;
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WinUI;
@@ -45,6 +46,8 @@ namespace WindowsCommunityToolkitSampleApp.Pages
             NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
             AutoSuggestBox controlsSearchBox = navigationView.Element.FindElement(this.sampleSearchBoxQuery);
             controlsSearchBox.SetText(sampleName);
+
+            Thread.Sleep(100);
         }
     }
 }
