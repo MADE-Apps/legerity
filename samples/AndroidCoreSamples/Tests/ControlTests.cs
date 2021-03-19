@@ -137,5 +137,35 @@ namespace AndroidCoreSamples.Tests
 
             newSelectedDate.Date.ShouldBe(setDate.Date);
         }
+
+        [TestMethod]
+        public void TimePickerTest()
+        {
+            TimePicker timePicker = AppManager.AndroidApp.FindElement(By.Id("timePicker1"));
+
+            timePicker.IsEnabled.ShouldBeTrue();
+
+            int currentTimeHours = DateTime.Now.TimeOfDay.Hours;
+            int currentTimeMinutes = DateTime.Now.TimeOfDay.Minutes;
+            TimeSpan currentSelectedTime = timePicker.SelectedTime;
+
+            currentSelectedTime.Hours.ShouldBe(currentTimeHours);
+            currentSelectedTime.Minutes.ShouldBe(currentTimeMinutes);
+
+            //var setPM = new TimeSpan(13, 59, 0);
+
+            //timePicker.SetTime(setPM);
+
+
+            //pmSelectedTime.TotalMinutes.ShouldBe(setPM.TotalMinutes);
+
+            //var setAM = new TimeSpan(3, 12, 0);
+
+            //timePicker.SetTime(setAM);
+
+            //TimeSpan amSelectedTime = timePicker.SelectedTime;
+
+            //amSelectedTime.TotalMinutes.ShouldBe(setAM.TotalMinutes);
+        }
     }
 }

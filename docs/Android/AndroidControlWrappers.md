@@ -18,5 +18,6 @@ These Android control wrappers are designed to be used with applications built w
 - [Spinner](../../src/Legerity/Android/Elements/Core/Spinner.cs)
 - [Switch](../../src/Legerity/Android/Elements/Core/Switch.cs)
 - [TextView](../../src/Legerity/Android/Elements/Core/TextView.cs)
+- [TimePicker](../../src/Legerity/Android/Elements/Core/TimePicker.cs)
 - [ToggleButton](../../src/Legerity/Android/Elements/Core/ToggleButton.cs)
 - [View](../../src/Legerity/Android/Elements/Core/View.cs)
