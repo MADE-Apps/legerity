@@ -22,6 +22,16 @@ namespace Legerity.Web.Elements
         /// <param name="element">
         /// The <see cref="IWebElement"/> reference.
         /// </param>
+        protected WebElementWrapper(IWebElement element) : this(element as RemoteWebElement)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebElementWrapper"/> class.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/> reference.
+        /// </param>
         protected WebElementWrapper(RemoteWebElement element)
         {
             this.elementReference = new WeakReference(element);

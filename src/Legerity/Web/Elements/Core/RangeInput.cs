@@ -13,6 +13,17 @@ namespace Legerity.Web.Elements.Core
         /// Initializes a new instance of the <see cref="RangeInput"/> class.
         /// </summary>
         /// <param name="element">
+        /// The <see cref="IWebElement"/> reference.
+        /// </param>
+        public RangeInput(IWebElement element)
+            : this(element as RemoteWebElement)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RangeInput"/> class.
+        /// </summary>
+        /// <param name="element">
         /// The <see cref="RemoteWebElement"/> reference.
         /// </param>
         public RangeInput(RemoteWebElement element)
