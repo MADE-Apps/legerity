@@ -13,6 +13,17 @@ namespace Legerity.Web.Elements.Core
         /// Initializes a new instance of the <see cref="CheckBox"/> class.
         /// </summary>
         /// <param name="element">
+        /// The <see cref="IWebElement"/> reference.
+        /// </param>
+        public CheckBox(IWebElement element)
+            : this(element as RemoteWebElement)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CheckBox"/> class.
+        /// </summary>
+        /// <param name="element">
         /// The <see cref="RemoteWebElement"/> reference.
         /// </param>
         public CheckBox(RemoteWebElement element)
