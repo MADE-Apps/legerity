@@ -35,7 +35,7 @@ jobs:
         Import-Module .\build\GetBuildVersion.psm1
         $version = GetBuildVersion -VersionString $Env:GITHUB_REF
         Write-Host "Build version: $version"
-        echo "BUILD_VERSION=$version"
+        echo "BUILD_VERSION=$version" >> $GITHUB_ENV
       shell: pwsh
 
     - name: Setup NuGet
