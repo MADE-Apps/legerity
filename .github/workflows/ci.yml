@@ -35,7 +35,7 @@ jobs:
         Import-Module build/GetBuildVersion.ps1
         $BUILD_VERSION = GetBuildVersion -VersionString $(Build.SourceBranchName)
         Write-Host "Build version: $BUILD_VERSION"
-      shell: powershell
+      shell: pwsh
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
