@@ -37,11 +37,8 @@ jobs:
         Write-Host $Env:GITHUB_REF
         $version = GetBuildVersion -VersionString $Env:GITHUB_REF
         echo "BUILD_VERSION=$version" >> $GITHUB_ENV
+        Write-Host $BUILD_VERSION
       shell: pwsh
-
-    - name: Validate Build Version
-      run: |
-          echo "${{env.BUILD_VERSION}}"
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
