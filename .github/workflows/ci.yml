@@ -24,7 +24,6 @@ jobs:
     env:
       BUILD_CONFIG: 'Release'
       SOLUTION: 'src/Legerity.sln'
-      BUILD_VERSION: '1.0.0'
 
     runs-on: ubuntu-latest
 
@@ -36,8 +35,7 @@ jobs:
         Import-Module .\build\GetBuildVersion.psm1
         Write-Host $Env:GITHUB_REF
         $version = GetBuildVersion -VersionString $Env:GITHUB_REF
-        echo "BUILD_VERSION=$version" >> $GITHUB_ENV
-        Write-Host $BUILD_VERSION
+        echo "BUILD_VERSION=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
       shell: pwsh
 
     - name: Setup NuGet
