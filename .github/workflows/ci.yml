@@ -38,5 +38,5 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Build
-      run: dotnet build --configuration $BUILD_CONFIG --no-restore
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
 
