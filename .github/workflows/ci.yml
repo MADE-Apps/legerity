@@ -30,6 +30,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Get Build Version
+      run: |
+        Import-Module build/GetBuildVersion.ps1
+        $BUILD_VERSION = GetBuildVersion -VersionString $(Build.SourceBranchName)
+        Write-Host "Build version: $BUILD_VERSION"
+      shell: powershell
+
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
 
@@ -42,7 +49,7 @@ jobs:
         dotnet-version: 3.1.x
 
     - name: Build
-      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
 
     - name: Publish
       if: startsWith(github.ref, 'refs/heads/release')
