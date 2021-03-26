@@ -34,6 +34,7 @@ jobs:
     - name: Get Build Version
       run: |
         Import-Module .\build\GetBuildVersion.psm1
+        Write-Host $Env:GITHUB_REF
         $version = GetBuildVersion -VersionString $Env:GITHUB_REF
         echo "BUILD_VERSION=$version" >> $GITHUB_ENV
       shell: pwsh
