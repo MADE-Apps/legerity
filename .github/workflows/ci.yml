@@ -20,21 +20,19 @@ jobs:
   build:
     env:
       BUILD_CONFIG: 'Release'
-      
+
     runs-on: ubuntu-latest
 
     steps:
     - name: Get Source
     - uses: actions/checkout@v2
-    
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-        
     - name: Restore dependencies
       run: dotnet restore
-      
     - name: Build
       run: dotnet build --configuration $BUILD_CONFIG --no-restore
 
