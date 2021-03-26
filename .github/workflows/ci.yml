@@ -24,6 +24,7 @@ jobs:
     env:
       BUILD_CONFIG: 'Release'
       SOLUTION: 'src/Legerity.sln'
+      BUILD_VERSION: '1.0.0'
 
     runs-on: ubuntu-latest
 
@@ -53,7 +54,7 @@ jobs:
         dotnet-version: 3.1.x
 
     - name: Build
-      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=${{env.BUILD_VERSION}} --no-restore
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
 
     - name: Publish
       if: startsWith(github.ref, 'refs/heads/release')
