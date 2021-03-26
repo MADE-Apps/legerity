@@ -12,7 +12,7 @@ With the help of out-of-the-box element wrappers for core platform controls, all
 
 | Source | Build |
 | ------ | ------ |
-| Azure Artifacts | [![Build Status](https://dev.azure.com/jamesmcroft/GitHub/_apis/build/status/MADE-Apps.legerity?branchName=main)](https://dev.azure.com/jamesmcroft/GitHub/_build/latest?definitionId=37&branchName=main) |
+| GitHub Actions | [![CI](https://github.com/MADE-Apps/legerity/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity/actions/workflows/ci.yml) |
 
 ## Installation
 
