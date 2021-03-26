@@ -33,7 +33,7 @@ jobs:
     - name: Get Build Version
       run: |
         Import-Module .\build\GetBuildVersion.psm1
-        $BUILD_VERSION = GetBuildVersion -VersionString $(github.ref)
+        $BUILD_VERSION = GetBuildVersion -VersionString $Env:GITHUB_REF
         Write-Host "Build version: $BUILD_VERSION"
       shell: pwsh
 
