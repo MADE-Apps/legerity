@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Legerity.Telerik.Uwp\Legerity.Telerik.Uwp.csproj" />
-    <ProjectReference Include="..\..\src\Legerity\Legerity.csproj" />
   </ItemGroup>
 
 </Project>

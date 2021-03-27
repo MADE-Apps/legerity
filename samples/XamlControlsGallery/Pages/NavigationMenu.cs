@@ -162,7 +162,7 @@ namespace XamlControlsGallery.Pages
         /// <returns>The <see cref="NumberBoxPage"/>.</returns>
         public NumberBoxPage GoToNumberBoxPage()
         {
-            this.SearchForControl("NumberInput");
+            this.SearchForControl("NumberBox");
             return new NumberBoxPage();
         }
 

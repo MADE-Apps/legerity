@@ -61,7 +61,7 @@ namespace XamlControlsGallery.Pages.Media
         public InkToolbarPage SelectHighlighterColor(string color)
         {
             InkToolbar inkToolbar = this.WindowsApp.FindElement(this.inkToolbarQuery);
-            inkToolbar.SetBallpointPenColor(color);
+            inkToolbar.SetHighlighterColor(color);
             return this;
         }
     }

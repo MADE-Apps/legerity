@@ -15,4 +15,12 @@
     <PackageReference Include="Appium.WebDriver" Version="4.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Elements\Core\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Legerity.Core\Legerity.Core.csproj" />
+  </ItemGroup>
+
 </Project>

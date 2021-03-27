@@ -56,7 +56,7 @@ namespace XamlControlsGallery.Pages.DateAndTime
         {
             string timeString = time.ToString(@"hh\:mm");
 
-            WindowsElement updatedTimePicker = this.WindowsApp.FindElement(By.Name($" {timeString} time picker"));
+            WindowsElement updatedTimePicker = this.WindowsApp.FindElement(By.XPath($".//*[contains(@Name,\"{timeString}\")]"));
             Assert.IsNotNull(updatedTimePicker);
         }
     }

@@ -9,6 +9,7 @@
       -
     </Description>
     <PackageTags>Appium Selenium WinAppDriver POP UWP Xamarin</PackageTags>
+    <RootNamespace>Legerity</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

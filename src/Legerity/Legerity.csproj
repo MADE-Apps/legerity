@@ -20,7 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IOS\Elements\Core\" />
+    <ProjectReference Include="..\Legerity.Android\Legerity.Android.csproj" />
+    <ProjectReference Include="..\Legerity.Core\Legerity.Core.csproj" />
+    <ProjectReference Include="..\Legerity.IOS\Legerity.IOS.csproj" />
+    <ProjectReference Include="..\Legerity.Web\Legerity.Web.csproj" />
+    <ProjectReference Include="..\Legerity.Windows\Legerity.Windows.csproj" />
   </ItemGroup>
 
 </Project>

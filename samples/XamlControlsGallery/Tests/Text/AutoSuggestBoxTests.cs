@@ -21,7 +21,7 @@ namespace XamlControlsGallery.Tests.Text
         public void SetBasicAutoSuggestBoxText()
         {
             // Arrange
-            string expectedItem = "Green";
+            string expectedItem = "Burmese";
 
             // Act
             AutoSuggestBoxPage.SetBasicAutoSuggestBoxText(expectedItem);
@@ -34,8 +34,8 @@ namespace XamlControlsGallery.Tests.Text
         public void SetBasicAutoSuggestBoxSuggestion()
         {
             // Arrange
-            string value = "2";
-            string expectedItem = "21";
+            string value = "Amer";
+            string expectedItem = "American Bobtail";
 
             // Act
             AutoSuggestBoxPage.SelectBasicAutoSuggestBoxSuggestion(value, expectedItem);
