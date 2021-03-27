@@ -6,10 +6,10 @@
     <Product>Legerity for MADE.NET - Framework for UI tests with Selenium/Appium</Product>
     <Description>
       This package is a MADE.NET extension to the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      - DropDownList Windows element.
-      - InputValidator Windows element.
+      - DropDownList, a drop down element capable of selecting multiple options
+      - InputValidator, a validation element capable of validating the state of an input element
     </Description>
-    <PackageTags>Appium WinAppDriver UWP MADE</PackageTags>
+    <PackageTags>Appium Selenium WinAppDriver WindowsDriver MADE UWP Windows Android IOS Xamarin Uno</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.MADE</RootNamespace>
   </PropertyGroup>
 

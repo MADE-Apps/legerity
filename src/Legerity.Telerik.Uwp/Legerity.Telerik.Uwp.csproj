@@ -6,12 +6,12 @@
     <Product>Legerity for Telerik for UWP - Framework for UI tests with Selenium/Appium</Product>
     <Description>
       This package is a Telerik for UWP extension to the Legerity core framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      - RadAutoCompleteBox
-      - RadBulletGraph
-      - RadBusyIndicator
-      - RadNumericBox
+      - RadAutoCompleteBox, a text input element which also has auto-complete capabilities
+      - RadBulletGraph, a graphing element for bullet graphs
+      - RadBusyIndicator, a status indicator element
+      - RadNumericBox, a text input element for numeric values with value stepper capabilities
     </Description>
-    <PackageTags>Appium WinAppDriver UWP Telerik</PackageTags>
+    <PackageTags>Appium Selenium WinAppDriver WindowsDriver Telerik UWP Windows</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.Telerik</RootNamespace>
   </PropertyGroup>
 

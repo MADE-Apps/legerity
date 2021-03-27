@@ -6,11 +6,11 @@
     <Product>Legerity for Windows Community Toolkit - Framework for UI tests with Selenium/Appium</Product>
     <Description>
       This package is a Windows Community Toolkit extension to the Legerity core framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      - Expander
-      - InAppNotification
-      - RadialGauge
+      - Expander, a wrapper element capable of showing and hiding content
+      - InAppNotification, a popup element for displaying notifications within applications
+      - RadialGauge, a graphing element for a gauge
     </Description>
-    <PackageTags>Appium WinAppDriver UWP WCT</PackageTags>
+    <PackageTags>Appium Selenium WinAppDriver WindowsDriver WCT UWP Windows Community Toolkit</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.WCT</RootNamespace>
   </PropertyGroup>
 

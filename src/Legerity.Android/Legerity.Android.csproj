@@ -6,9 +6,19 @@
     <Product>Legerity for Android - Framework for UI testing with Selenium/Appium</Product>
     <Description>
       This package is an Android core extension to the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      -
+      - AndroidElementWrapper, for creating element wrappers for custom controls
+      - Button, a clickable button element
+      - CheckBox, a checkable element
+      - DatePicker, an element for selecting and validating dates
+      - EditText, a text input element
+      - RadioButton, a selectable button element
+      - Spinner, a drop down selector
+      - Switch, a slider element with an on/off toggle state
+      - TextView, a readonly text element
+      - ToggleButton, a button element with a toggle state
+      - View, a base for Android elements
     </Description>
-    <PackageTags>Appium Selenium AndroidDriver Android</PackageTags>
+    <PackageTags>Appium Selenium AndroidDriver Android Xamarin Uno</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
