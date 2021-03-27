@@ -1,10 +1,12 @@
 name: CI
 
 on:
+  create:
+    branches: 
+      - release/**
   push:
     branches:
     - main
-    - release/**
     paths:
     - src/**
     - samples/**
@@ -12,7 +14,6 @@ on:
   pull_request:
     branches:
     - main
-    - release/**
     paths:
     - src/**
     - samples/**
