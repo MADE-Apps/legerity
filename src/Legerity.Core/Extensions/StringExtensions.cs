@@ -5,10 +5,10 @@ namespace Legerity.Extensions
     /// <summary>
     /// Defines a collection of extensions for <see cref="string"/>.
     /// </summary>
-    internal static class StringExtensions
+    public static class StringExtensions
     {
         /// <summary>
-        /// Determines whether the specified value contains the comparison value by the specified culture and comparison option. 
+        /// Determines whether the specified value contains the comparison value by the specified culture and comparison option.
         /// </summary>
         /// <param name="value">
         /// The value to check contains the <paramref name="contains"/> value.

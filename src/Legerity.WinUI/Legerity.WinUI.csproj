@@ -3,53 +3,26 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0.0</Version>
-    <Authors>MADE Apps</Authors>
-    <Company>MADE Apps</Company>
-    <Product>Legerity for WinUI - Framework for UI tests with Appium with .NET</Product>
+    <Product>Legerity for WinUI - Framework for UI tests with Selenium/Appium</Product>
     <Description>
-      This package is a WinUI extension to the Legerity core framework for speeding up the development of automated UI tests with Selenium and .NET including:
-      - MenuBar Windows element.
-      - MenuBarItem Windows element.
-      - NavigationView Windows element.
-      - NavigationViewItem Windows element.
-      - NumberBox Windows element.
-      - TabView Windows element.
+      This package is a WinUI extension for speeding up the development of automated UI tests with Selenium/Appium including:
+      - MenuBar
+      - MenuBarItem
+      - NavigationView
+      - NavigationViewItem
+      - NumberBox
+      - TabView
     </Description>
-    <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/MADE-Apps/legerity</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>ProjectLogo.png</PackageIcon>
-    <PackageTags>Appium WinAppDriver UWP WinUI</PackageTags>
-    <PackageReleaseNotes>https://github.com/MADE-Apps/legerity/releases</PackageReleaseNotes>
-    <NeutralLanguage>en</NeutralLanguage>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <LangVersion>8.0</LangVersion>
-    <PackageId>Legerity.WinUI</PackageId>
+    <PackageTags>Appium Selenium WindowsDriver WinAppDriver Windows WinUI</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.WinUI</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\Legerity.WinUI.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
-    <None Include="..\..\assets\ProjectLogo.png" Pack="true" PackagePath="" />
-    <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Appium.WebDriver" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Legerity\Legerity.csproj" />
+    <ProjectReference Include="..\Legerity.Windows\Legerity.Windows.csproj" />
   </ItemGroup>
 
 </Project>

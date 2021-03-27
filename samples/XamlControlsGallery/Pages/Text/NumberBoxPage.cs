@@ -30,7 +30,7 @@ namespace XamlControlsGallery.Pages.Text
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
-        protected override By Trait => By.XPath(".//*[@Name='NumberInput'][@AutomationId='TitleTextBlock']");
+        protected override By Trait => By.XPath(".//*[@Name='NumberBox'][@AutomationId='TitleTextBlock']");
 
         /// <summary>
         /// Sets the spinner number box value to the specified value.

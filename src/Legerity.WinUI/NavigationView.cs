@@ -22,7 +22,7 @@ namespace Legerity.Windows.Elements.WinUI
 
         private readonly By navigationViewItemQuery = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
 
-        private readonly By settingsMenuItemQuery = ByExtensions.AutomationId("SettingsNavPaneItem");
+        private readonly By settingsMenuItemQuery = ByExtensions.AutomationId("SettingsItem");
 
         private readonly By togglePaneButtonItemQuery = ByExtensions.AutomationId("TogglePaneButton");
 
@@ -74,7 +74,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets or sets the expected compact pane width used to determine the pane open state.
         /// </summary>
-        public int ExpectedCompactPaneWidth { get; set; } = 40;
+        public int ExpectedCompactPaneWidth { get; set; } = 50;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationView"/> without direct casting.

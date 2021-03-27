@@ -23,7 +23,6 @@ namespace Legerity
     /// </summary>
     public static class AppManager
     {
-
         /// <summary>
         /// Gets the instance of the started Windows application.
         /// </summary>

@@ -12,7 +12,7 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class CalendarDatePicker : WindowsElementWrapper
     {
-        private readonly By calendarPopupQuery = By.XPath(".//*[@ClassName='Popup'][@Name='Pop-up']");
+        private readonly By calendarPopupQuery = By.XPath(".//*[@ClassName='Popup'][@Name='Popup']");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CalendarDatePicker"/> class.

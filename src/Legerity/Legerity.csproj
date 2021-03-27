@@ -3,52 +3,28 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0.0</Version>
-    <Authors>MADE Apps</Authors>
-    <Company>MADE Apps</Company>
-    <Product>Legerity - Framework for UI tests with Appium with .NET</Product>
+    <Product>Legerity - Framework for UI testing with Selenium/Appium</Product>
     <Description>
-      This package is the core framework for speeding up the development of automated UI tests with Selenium and .NET including:
+      This is a meta-package for the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
       - Page object pattern framework.
       - Windows core element wrappers.
       - Android core element wrappers.
       - iOS core element wrappers.
       - Web core element wrappers.
     </Description>
-    <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/MADE-Apps/legerity</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>ProjectLogo.png</PackageIcon>
-    <PackageTags>Appium WinAppDriver POP UWP Xamarin</PackageTags>
-    <PackageReleaseNotes>https://github.com/MADE-Apps/legerity/releases</PackageReleaseNotes>
-    <NeutralLanguage>en</NeutralLanguage>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <LangVersion>8.0</LangVersion>
-    <PackageId>Legerity</PackageId>
-    <RootNamespace>Legerity</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\Legerity.xml</DocumentationFile>
+    <PackageTags>Appium Selenium WinAppDriver POP Windows UWP Web Android IOS Xamarin Uno</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\assets\ProjectLogo.png" Pack="true" PackagePath="" />
-    <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Appium.WebDriver" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IOS\Elements\Core\" />
+    <ProjectReference Include="..\Legerity.Android\Legerity.Android.csproj" />
+    <ProjectReference Include="..\Legerity.Core\Legerity.Core.csproj" />
+    <ProjectReference Include="..\Legerity.IOS\Legerity.IOS.csproj" />
+    <ProjectReference Include="..\Legerity.Web\Legerity.Web.csproj" />
+    <ProjectReference Include="..\Legerity.Windows\Legerity.Windows.csproj" />
   </ItemGroup>
 
 </Project>

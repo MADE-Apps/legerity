@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>Legerity Core - Framework for UI testing with Selenium/Appium</Product>
+    <Description>
+      This package is the core framework for speeding up the development of automated UI tests with Selenium/Appium including:
+      - Page Object Pattern classes, for providing the base framework to build maintainable UI tests
+      - AppManager, for configuring, launching, and managing the lifecycle of the application driver
+      - ElementWrapper, for providing a base to build custom element wrappers for platform-specific elements
+    </Description>
+    <PackageTags>Appium Selenium WinAppDriver POP Windows UWP Web Android IOS Xamarin Uno</PackageTags>
+    <RootNamespace>Legerity</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Appium.WebDriver" Version="4.3.1" />
+  </ItemGroup>
+
+</Project>

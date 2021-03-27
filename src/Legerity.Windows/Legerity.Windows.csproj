@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>Legerity for Windows - Framework for UI testing with Selenium/Appium</Product>
+    <Description>
+      This package is a Windows core extension to the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
+      - WindowsElementWrapper, for creating element wrappers for custom controls
+      - AppBarButton, a clickable app bar button element
+      - AppBarToggleButton, an app bar button element with a toggle state
+      - AutoSuggestBox, a text input element which also has auto-complete capabilities
+      - Button, a clickable button element
+      - CalendarDatePicker, a popup element with capabilities to select a date from a calendar
+      - CalendarView, a calendar date picker element
+      - CheckBox, a checkable element
+      - ComboBox, a drop down selector
+      - CommandBar, a wrapper element for displaying app bar button elements
+      - DatePicker, an element for selecting and validating dates
+      - FlipView, a carousel-like element for viewing items within a collection
+      - GridView, a visual list based element which shows items in a grid
+      - Hub, a layout element for displaying content within sections
+      - HyperlinkButton, a clickable URL button element
+      - InkToolbar, a wrapper element for displaying ink selection elements
+      - ListBox, a list item selector
+      - ListView, a visual list based element which shows items in a vertical list
+      - MenuFlyoutItem, a clickable element from a menu flyout
+      - MenuFlyoutSubItem, a clickable sub element of a menu flyout item
+      - PasswordBox, a text input element for secret values
+      - Pivot, a layout element for displaying content on pivotal pages
+      - ProgressBar, a visual indicator element for percentage progress
+      - ProgressRing, a visual indicator element for progress
+      - RadioButton, a selectable button element
+      - Slider, a value selection element that allows a value to be selected in a range
+      - TextBlock, a readonly text element
+      - TextBox, a text input element
+      - TimePicker, an element for selecting and validating time
+      - ToggleButton, a button element with a toggle state
+      - ToggleSwitch, a slider element with an on/off toggle state
+    </Description>
+    <PackageTags>Appium Selenium WindowsDriver WinAppDriver Windows WinUI</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Appium.WebDriver" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Legerity.Core\Legerity.Core.csproj" />
+  </ItemGroup>
+
+</Project>
