@@ -23,6 +23,11 @@ For non-core platform controls, for example, WinUI or the Windows Community Tool
 | Package | Current | Preview |
 | ------ | ------ | ------ |
 | Legerity | [![Nuget](https://img.shields.io/nuget/v/Legerity.svg)](https://www.nuget.org/packages/Legerity/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.svg)](https://www.nuget.org/packages/Legerity/) |
+| Legerity.Core | [![Nuget](https://img.shields.io/nuget/v/Legerity.Core.svg)](https://www.nuget.org/packages/Legerity.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.Core.svg)](https://www.nuget.org/packages/Legerity.Core/) |
+| Legerity.Windows | [![Nuget](https://img.shields.io/nuget/v/Legerity.Windows.svg)](https://www.nuget.org/packages/Legerity.Windows/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.Windows.svg)](https://www.nuget.org/packages/Legerity.Windows/) |
+| Legerity.Android | [![Nuget](https://img.shields.io/nuget/v/Legerity.Android.svg)](https://www.nuget.org/packages/Legerity.Android/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.Android.svg)](https://www.nuget.org/packages/Legerity.Android/) |
+| Legerity.IOS | [![Nuget](https://img.shields.io/nuget/v/Legerity.IOS.svg)](https://www.nuget.org/packages/Legerity.IOS/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.IOS.svg)](https://www.nuget.org/packages/Legerity.IOS/) |
+| Legerity.Web | [![Nuget](https://img.shields.io/nuget/v/Legerity.Web.svg)](https://www.nuget.org/packages/Legerity.Web/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.Web.svg)](https://www.nuget.org/packages/Legerity.Web/) |
 | Legerity.MADE | [![Nuget](https://img.shields.io/nuget/v/Legerity.MADE.svg)](https://www.nuget.org/packages/Legerity.MADE/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.MADE.svg)](https://www.nuget.org/packages/Legerity.MADE/) |
 | Legerity.Telerik.Uwp | [![Nuget](https://img.shields.io/nuget/v/Legerity.Telerik.Uwp.svg)](https://www.nuget.org/packages/Legerity.Telerik.Uwp/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.Telerik.Uwp.svg)](https://www.nuget.org/packages/Legerity.Telerik.Uwp/) |
 | Legerity.WCT | [![Nuget](https://img.shields.io/nuget/v/Legerity.WCT.svg)](https://www.nuget.org/packages/Legerity.WCT/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.WCT.svg)](https://www.nuget.org/packages/Legerity.WCT/) |
