@@ -3,7 +3,8 @@ namespace Legerity.Windows.Helpers
     using System;
     using System.Diagnostics;
     using System.IO;
-    using Exceptions;
+    using System.Linq;
+    using Legerity.Windows.Exceptions;
 
     /// <summary>
     /// Defines a helper class for the WinAppDriver.
@@ -30,6 +31,7 @@ namespace Legerity.Windows.Helpers
         /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverLoadFailedException">Thrown if the WinAppDriver failed to load.</exception>
         public static void Run(string path = DefaultInstallLocation)
         {
+            WinAppDriverProcess ??= Process.GetProcessesByName("WinAppDriver").FirstOrDefault();
             if (WinAppDriverProcess != null && !WinAppDriverProcess.HasExited)
             {
                 return;
