@@ -43,7 +43,7 @@ If you want to deep dive into the Legerity framework with details on how to use 
 
 Looking to help build Legerity? Take a look through our [contribution guidelines](CONTRIBUTING.md). We actively encourage you to jump in and help with any issues!
 
-## Building Legerity
+## Building Legerity 🛠
 
 Legerity is built using .NET Standard, taking advantage of the new SDK-style projects.
 
@@ -52,13 +52,13 @@ You can build the solution using Visual Studio with the following workloads inst
 - .NET desktop development
 - .NET Core cross-platform development
 
-## Got controls? 🤔
+## Got controls? 💭
 
 Do you have a collection of custom controls that you'd like to see added to the Legerity framework? Feel free to drop a feature request into our [work tracker](https://github.com/MADE-Apps/legerity/issues)!
 
 Even better, why not help build out your custom control wrapper elements within the framework and help out the community!
 
-### UI Automation tooling
+### UI Automation tooling 🧰
 
 When contributing to new element wrappers, we recommended using the [Accessibility Insights tool](https://accessibilityinsights.io/en/). The tool is capable of inspecting and providing property values for Android, Web, and Windows applications.
 
