@@ -1,25 +1,30 @@
-# Writing tests
+---
+uid: building-with-legerity
+title: Writing UI tests | Legerity
+---
 
-Writing UI tests should be simple and easy to get going. 
+# Writing UI tests with Legerity
+
+Writing UI tests should be simple and easy.
 
 Legerity exposes an `AppManager` that is a lightweight wrapper for the application driver that allows you to start your applications using a configuration object.
 
 ## Creating a base test class
 
-Using your testing framework of choice, getting your application started in the appropriate Selenium or Appium driver is as simple as calling `AppManager.StartApp()` passing through a `AppManagerOptions` configuration object.
+Using your testing framework of choice, getting your application started in the appropriate Selenium driver is as simple as calling `AppManager.StartApp()` passing through an `AppManagerOptions` configuration object.
 
 Depending on your configuration object, the specific application will launch.
 
 Currently, the `AppManager` configuration supports the following app drivers.
 
 - [WindowsDriver](https://github.com/microsoft/WinAppDriver)
-  - [WindowsAppManagerOptions](../src/Legerity/Windows/WindowsAppManagerOptions.cs)
+  - [WindowsAppManagerOptions](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Core/Windows/WindowsAppManagerOptions.cs)
 - AndroidDriver
-  - [AndroidAppManagerOptions](../src/Legerity/Android/AndroidAppManagerOptions.cs)
+  - [AndroidAppManagerOptions](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Core/Android/AndroidAppManagerOptions.cs)
 - IOSDriver
-  - [IOSAppManagerOptions](../src/Legerity/IOS/IOSAppManagerOptions.cs)
+  - [IOSAppManagerOptions](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Core/IOS/IOSAppManagerOptions.cs)
 - ChromeDriver, FirefoxDriver, OperaDriver, SafariDriver, EdgeDriver, InternetExplorerDriver
-  - [WebAppManagerOptions](../src/Legerity/Web/WebAppManagerOptions.cs)
+  - [WebAppManagerOptions](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Core/Web/WebAppManagerOptions.cs)
 
 For Appium drivers, an options object also provides the use of additional capabilities using the `AppiumOptions` object to apply to the driver when the app is started.
 
@@ -57,7 +62,7 @@ namespace WindowsAlarmsAndClock
 }
 ```
 
-To access the driver for the currently running application, it's as simple as reaching out to one of the following [`AppManager`](../src/Legerity/AppManager.cs) properties:
+To access the driver for the currently running application, it's as simple as reaching out to one of the following [`AppManager`](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Core/AppManager.cs) properties:
 
 - `WindowsApp`
 - `AndroidApp`

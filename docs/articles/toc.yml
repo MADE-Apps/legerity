@@ -1,0 +1,38 @@
+- name: Overview
+  topicHref: intro.md
+- name: Get started
+  items:
+    - name: Installing Legerity packages
+      href: available-packages.md
+- name: Building UI tests with Legerity
+  href: building-with-legerity.md
+- name: Best practices for UI tests
+  href: best-practices.md
+- name: Building platform element wrappers
+  href: building-platform-wrappers.md
+- name: Available element wrappers
+  items:
+    - name: For Windows apps
+      items:
+        - name: Overview
+          href: features/windows.md
+        - name: WinUI
+          href: features/windows-ui.md
+        - name: Windows Community Toolkit
+          href: features/windows-community-toolkit.md
+        - name: MADE.NET
+          href: features/made-windows.md
+        - name: Telerik for UWP
+          href: features/telerik-for-uwp.md
+    - name: For Android apps
+      items:
+        - name: Overview
+          href: features/android.md
+    - name: For iOS apps
+      items:
+        - name: Overview
+          href: features/ios.md
+    - name: For Web apps
+      items:
+        - name: Overview
+          href: features/web.md
