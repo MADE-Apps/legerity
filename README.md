@@ -14,7 +14,8 @@ As many developers know, projects like Legerity are built and maintained in spar
 
 | Build | Status | Current Version |
 | ------ | ------ | ------ |
-| GitHub Actions | [![CI](https://github.com/MADE-Apps/legerity/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity/actions/workflows/ci.yml) | [![Nuget](https://img.shields.io/nuget/v/Legerity.svg)](https://www.nuget.org/packages/Legerity/) |
+| Packages | [![CI](https://github.com/MADE-Apps/legerity/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity/actions/workflows/ci.yml) | [![Nuget](https://img.shields.io/nuget/v/Legerity.svg)](https://www.nuget.org/packages/Legerity/) |
+| Docs | [![Docs](https://github.com/MADE-Apps/legerity/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity/actions/workflows/docs.yml) | N/A |
 
 ## Installation 💾
 
@@ -37,7 +38,7 @@ For non-core platform controls, for example, WinUI or the Windows Community Tool
 
 ## Documentation 📃
 
-If you want to deep dive into the Legerity framework with details on how to use the features, you can browse the [documentation](docs/README.md) for help getting up and running!
+If you want to deep dive into the Legerity framework with details on how to use the features, you can browse the [documentation](https://made-apps.github.io/legerity/) for help getting up and running!
 
 ## Contributing 🚀
 
