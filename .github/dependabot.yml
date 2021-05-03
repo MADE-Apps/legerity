@@ -5,17 +5,3 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: MSTest.TestFramework
-    versions:
-    - 2.2.1
-    - 2.2.2
-    - 2.2.3
-  - dependency-name: MSTest.TestAdapter
-    versions:
-    - 2.2.1
-    - 2.2.2
-    - 2.2.3
-  - dependency-name: Microsoft.NET.Test.Sdk
-    versions:
-    - 16.9.1
