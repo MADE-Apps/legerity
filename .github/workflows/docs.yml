@@ -6,11 +6,13 @@ on:
     - main
     paths:
     - docs/**
+    - src/**
   pull_request:
     branches:
     - main
     paths:
     - docs/**
+    - src/**
 
 jobs:
   generate-docs:
