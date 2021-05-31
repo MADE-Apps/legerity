@@ -26,22 +26,30 @@ namespace Legerity
         /// <summary>
         /// Gets the instance of the started Windows application.
         /// </summary>
-        public static WindowsDriver<WindowsElement> WindowsApp => WebApp as WindowsDriver<WindowsElement>;
+        public static WindowsDriver<WindowsElement> WindowsApp => App as WindowsDriver<WindowsElement>;
 
         /// <summary>
         /// Gets the instance of the started Android application.
         /// </summary>
-        public static AndroidDriver<AndroidElement> AndroidApp => WebApp as AndroidDriver<AndroidElement>;
+        public static AndroidDriver<AndroidElement> AndroidApp => App as AndroidDriver<AndroidElement>;
 
         /// <summary>
         /// Gets the instance of the started iOS application.
         /// </summary>
-        public static IOSDriver<IOSElement> IOSApp => WebApp as IOSDriver<IOSElement>;
+        public static IOSDriver<IOSElement> IOSApp => App as IOSDriver<IOSElement>;
 
         /// <summary>
         /// Get the instance of the started web application.
         /// </summary>
-        public static RemoteWebDriver WebApp { get; set; }
+        public static RemoteWebDriver WebApp => App;
+
+        /// <summary>
+        /// Gets the instance of the started application.
+        /// <para>
+        /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
+        /// </para>
+        /// </summary>
+        public static RemoteWebDriver App { get; set; }
 
         /// <summary>
         /// Starts the application ready for testing.
@@ -62,7 +70,7 @@ namespace Legerity
             {
                 case WebAppManagerOptions webOpts:
                     {
-                        WebApp = webOpts.DriverType switch
+                        App = webOpts.DriverType switch
                         {
                             WebAppDriverType.Chrome => new ChromeDriver(webOpts.DriverUri),
                             WebAppDriverType.Firefox => new FirefoxDriver(webOpts.DriverUri),
@@ -70,21 +78,21 @@ namespace Legerity
                             WebAppDriverType.Safari => new SafariDriver(webOpts.DriverUri),
                             WebAppDriverType.Edge => new EdgeDriver(webOpts.DriverUri),
                             WebAppDriverType.InternetExplorer => new InternetExplorerDriver(webOpts.DriverUri),
-                            _ => WebApp
+                            _ => App
                         };
 
-                        VerifyAppDriver(WebApp, webOpts);
+                        VerifyAppDriver(App, webOpts);
 
                         if (webOpts.Maximize)
                         {
-                            WebApp.Manage().Window.Maximize();
+                            App.Manage().Window.Maximize();
                         }
                         else
                         {
-                            WebApp.Manage().Window.Size = webOpts.DesiredSize;
+                            App.Manage().Window.Size = webOpts.DesiredSize;
                         }
 
-                        WebApp.Url = webOpts.Url;
+                        App.Url = webOpts.Url;
                         break;
                     }
                 case WindowsAppManagerOptions winOpts:
@@ -94,7 +102,7 @@ namespace Legerity
                             WinAppDriverHelper.Run();
                         }
 
-                        WebApp = new WindowsDriver<WindowsElement>(
+                        App = new WindowsDriver<WindowsElement>(
                             new Uri(winOpts.DriverUri),
                             winOpts.AppiumOptions);
 
@@ -102,14 +110,15 @@ namespace Legerity
 
                         if (winOpts.Maximize)
                         {
-                            WebApp.Manage().Window.Maximize();
+                            App.Manage().Window.Maximize();
                         }
+
                         break;
                     }
 
                 case AndroidAppManagerOptions androidOpts:
                     {
-                        WebApp = new AndroidDriver<AndroidElement>(
+                        App = new AndroidDriver<AndroidElement>(
                             new Uri(androidOpts.DriverUri),
                             androidOpts.AppiumOptions);
 
@@ -119,7 +128,7 @@ namespace Legerity
 
                 case IOSAppManagerOptions iosOpts:
                     {
-                        WebApp = new IOSDriver<IOSElement>(new Uri(iosOpts.DriverUri), iosOpts.AppiumOptions);
+                        App = new IOSDriver<IOSElement>(new Uri(iosOpts.DriverUri), iosOpts.AppiumOptions);
 
                         VerifyAppDriver(IOSApp, iosOpts);
                         break;
@@ -132,10 +141,10 @@ namespace Legerity
         /// </summary>
         public static void StopApp()
         {
-            if (WebApp != null)
+            if (App != null)
             {
-                WebApp.Quit();
-                WebApp = null;
+                App.Quit();
+                App = null;
             }
 
             WinAppDriverHelper.Stop();

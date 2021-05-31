@@ -1,6 +1,7 @@
 namespace Legerity.Pages
 {
     using System;
+
     using Legerity.Exceptions;
 
     using OpenQA.Selenium;
@@ -42,11 +43,19 @@ namespace Legerity.Pages
 
         /// <summary>
         /// Gets the instance of the started web application.
-        /// <para>
-        /// The <see cref="WebApp"/> instance also serves as base for the Appium drivers and can be referenced for basic Selenium functions.
-        /// </para>
         /// </summary>
         protected RemoteWebDriver WebApp => AppManager.WebApp;
+
+        /// <summary>
+        /// Gets the instance of the started application.
+        /// <para>
+        /// The <see cref="App"/> instance serves as base for the drivers and can be referenced for basic Selenium functions.
+        /// </para>
+        /// <para>
+        /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
+        /// </para>
+        /// </summary>
+        protected RemoteWebDriver App => AppManager.App;
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -73,7 +82,7 @@ namespace Legerity.Pages
         /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown.</exception>
         public void VerifyPageShown(TimeSpan? timeout)
         {
-            if (this.WebApp == null)
+            if (this.App == null)
             {
                 throw new DriverNotInitializedException(
                     $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
@@ -81,16 +90,16 @@ namespace Legerity.Pages
 
             if (timeout == null)
             {
-                if (this.WebApp != null && this.WebApp.FindElement(this.Trait) == null)
+                if (this.App != null && this.App.FindElement(this.Trait) == null)
                 {
                     throw new PageNotShownException(this.GetType().Name);
                 }
             }
             else
             {
-                if (this.WebApp != null)
+                if (this.App != null)
                 {
-                    AttemptWaitForDriverElement(this.Trait, timeout.Value, this.WebApp);
+                    AttemptWaitForDriverElement(this.Trait, timeout.Value, this.App);
                 }
             }
         }
@@ -121,7 +130,7 @@ namespace Legerity.Pages
         /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
         public void VerifyElementShown(By by, TimeSpan? timeout)
         {
-            if (this.WebApp == null)
+            if (this.App == null)
             {
                 throw new DriverNotInitializedException(
                     $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
@@ -129,16 +138,16 @@ namespace Legerity.Pages
 
             if (timeout == null)
             {
-                if (this.WebApp != null && this.WebApp.FindElement(by) == null)
+                if (this.App != null && this.App.FindElement(by) == null)
                 {
                     throw new ElementNotShownException(by.ToString());
                 }
             }
             else
             {
-                if (this.WebApp != null)
+                if (this.App != null)
                 {
-                    AttemptWaitForDriverElement(by, timeout.Value, this.WebApp);
+                    AttemptWaitForDriverElement(by, timeout.Value, this.App);
                 }
             }
         }
@@ -152,7 +161,7 @@ namespace Legerity.Pages
         /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
         public void VerifyElementNotShown(By by)
         {
-            if (this.WebApp == null)
+            if (this.App == null)
             {
                 throw new DriverNotInitializedException(
                     $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
