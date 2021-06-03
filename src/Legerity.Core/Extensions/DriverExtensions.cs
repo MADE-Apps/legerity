@@ -31,5 +31,49 @@ namespace Legerity.Extensions
         {
             return driver.FindElements(by).Cast<RemoteWebElement>().ToList().AsReadOnly();
         }
+
+        /// <summary>
+        /// Finds the first element in the page that matches the specified text.
+        /// </summary>
+        /// <param name="driver">The remote web driver.</param>
+        /// <param name="text">The text to find.</param>
+        /// <returns>A <see cref="IWebElement"/>.</returns>
+        public static IWebElement FindElementByText(this RemoteWebDriver driver, string text)
+        {
+            return driver.FindElement(ByExtras.Text(text));
+        }
+
+        /// <summary>
+        /// Finds all the elements in the page that matches the specified text.
+        /// </summary>
+        /// <param name="driver">The remote web driver.</param>
+        /// <param name="text">The text to find.</param>
+        /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
+        public static ReadOnlyCollection<IWebElement> FindElementsByText(this RemoteWebDriver driver, string text)
+        {
+            return driver.FindElements(ByExtras.Text(text));
+        }
+
+        /// <summary>
+        /// Finds the first element in the page that matches the specified text partially.
+        /// </summary>
+        /// <param name="driver">The remote web driver.</param>
+        /// <param name="text">The partial text to find.</param>
+        /// <returns>A <see cref="IWebElement"/>.</returns>
+        public static IWebElement FindElementByPartialText(this RemoteWebDriver driver, string text)
+        {
+            return driver.FindElement(ByExtras.PartialText(text));
+        }
+
+        /// <summary>
+        /// Finds all the elements in the page that matches the specified text partially.
+        /// </summary>
+        /// <param name="driver">The remote web driver.</param>
+        /// <param name="text">The partial text to find.</param>
+        /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
+        public static ReadOnlyCollection<IWebElement> FindElementsByPartialText(this RemoteWebDriver driver, string text)
+        {
+            return driver.FindElements(ByExtras.PartialText(text));
+        }
     }
 }
