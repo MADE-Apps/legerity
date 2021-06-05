@@ -3,6 +3,7 @@ namespace Legerity
     using System;
     using Legerity.Android;
     using Legerity.Exceptions;
+    using Legerity.Helpers;
     using Legerity.IOS;
     using Legerity.Web;
     using Legerity.Windows;
@@ -60,6 +61,7 @@ namespace Legerity
         /// <exception cref="DriverLoadFailedException">
         /// Thrown if the application is null or the session ID is null once initialized.
         /// </exception>
+        /// <exception cref="T:Legerity.Exceptions.AppiumServerLoadFailedException">Thrown if the Appium server could not be found when running with <see cref="AndroidAppManagerOptions.LaunchAppiumServer"/> or <see cref="IOSAppManagerOptions.LaunchAppiumServer"/> true.</exception>
         /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverNotFoundException">Thrown if the WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.</exception>
         /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverLoadFailedException">Thrown if the WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.</exception>
         public static void StartApp(AppManagerOptions opts)
@@ -118,6 +120,11 @@ namespace Legerity
 
                 case AndroidAppManagerOptions androidOpts:
                     {
+                        if (androidOpts.LaunchAppiumServer)
+                        {
+                            AppiumServerHelper.Run();
+                        }
+
                         App = new AndroidDriver<AndroidElement>(
                             new Uri(androidOpts.DriverUri),
                             androidOpts.AppiumOptions);
@@ -128,6 +135,11 @@ namespace Legerity
 
                 case IOSAppManagerOptions iosOpts:
                     {
+                        if (iosOpts.LaunchAppiumServer)
+                        {
+                            AppiumServerHelper.Run();
+                        }
+
                         App = new IOSDriver<IOSElement>(new Uri(iosOpts.DriverUri), iosOpts.AppiumOptions);
 
                         VerifyAppDriver(IOSApp, iosOpts);
@@ -148,6 +160,7 @@ namespace Legerity
             }
 
             WinAppDriverHelper.Stop();
+            AppiumServerHelper.Stop();
         }
 
         /// <exception cref="T:Legerity.Exceptions.DriverLoadFailedException">Condition.</exception>

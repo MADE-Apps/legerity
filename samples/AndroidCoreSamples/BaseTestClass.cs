@@ -14,6 +14,7 @@ namespace AndroidCoreSamples
             AppManager.StartApp(
                 new AndroidAppManagerOptions(Path.Combine(Environment.CurrentDirectory, "Tools\\com.companyname.app2.apk"))
                 {
+                    LaunchAppiumServer = true,
                     DriverUri = "http://localhost:4723/wd/hub"
                 });
         }

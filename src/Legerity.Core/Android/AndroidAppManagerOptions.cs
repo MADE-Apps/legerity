@@ -206,6 +206,11 @@ namespace Legerity.Android
         public string DeviceId { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether to launch the Appium server instance.
+        /// </summary>
+        public bool LaunchAppiumServer { get; set; }
+
+        /// <summary>
         /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
         /// <para>
         /// By default, the <see cref="AppId"/> will be added to the options as capability 'app'.
