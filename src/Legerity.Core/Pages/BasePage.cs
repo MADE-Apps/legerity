@@ -17,13 +17,26 @@ namespace Legerity.Pages
     public abstract class BasePage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BasePage"/> class.
+        /// Initializes a new instance of the <see cref="BasePage"/> class that verifies the page has loaded within 2 seconds.
         /// </summary>
         /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
         /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown in 2 seconds.</exception>
         protected BasePage()
+            : this(TimeSpan.FromSeconds(2))
         {
-            this.VerifyPageShown(TimeSpan.FromSeconds(2));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BasePage"/> class that verifies the page has loaded within the given timeout.
+        /// </summary>
+        /// <param name="traitTimeout">
+        /// The amount of time the driver should wait when searching for the <see cref="Trait"/> if it is not immediately present.
+        /// </param>
+        /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
+        /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown in the given timeout.</exception>
+        protected BasePage(TimeSpan? traitTimeout)
+        {
+            this.VerifyPageShown(traitTimeout ?? TimeSpan.FromSeconds(2));
         }
 
         /// <summary>
