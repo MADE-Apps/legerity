@@ -13,6 +13,7 @@ on:
     paths:
     - docs/**
     - src/**
+  workflow_dispatch:
 
 jobs:
   generate-docs:
