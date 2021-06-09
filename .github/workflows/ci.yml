@@ -18,6 +18,7 @@ on:
     - src/**
     - samples/**
     - .github/workflows/ci.yml
+  workflow_dispatch:
 
 jobs:
   build:
