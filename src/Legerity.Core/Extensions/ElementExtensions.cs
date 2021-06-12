@@ -24,7 +24,7 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
-        /// Finds the first element in the page that matches the <see cref="By" /> query.
+        /// Finds the first element in the given element that matches the <see cref="By" /> query.
         /// </summary>
         /// <param name="element">The remote web element.</param>
         /// <param name="by">The query to find the element.</param>
@@ -35,7 +35,7 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
-        /// Finds all the elements in the page that matches the <see cref="By" /> query.
+        /// Finds all the elements in the given element that matches the <see cref="By" /> query.
         /// </summary>
         /// <param name="element">The remote web element.</param>
         /// <param name="by">The query to find the elements.</param>
@@ -46,7 +46,7 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
-        /// Finds the first element in the page that matches the specified text.
+        /// Finds the first element in the given element that matches the specified text.
         /// </summary>
         /// <param name="element">The remote web element.</param>
         /// <param name="text">The text to find.</param>
@@ -57,7 +57,7 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
-        /// Finds all the elements in the page that matches the specified text.
+        /// Finds all the elements in the given element that matches the specified text.
         /// </summary>
         /// <param name="element">The remote web element.</param>
         /// <param name="text">The text to find.</param>
@@ -68,7 +68,7 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
-        /// Finds the first element in the page that matches the specified text partially.
+        /// Finds the first element in the given element that matches the specified text partially.
         /// </summary>
         /// <param name="element">The remote web element.</param>
         /// <param name="text">The partial text to find.</param>
@@ -79,7 +79,7 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
-        /// Finds all the elements in the page that matches the specified text partially.
+        /// Finds all the elements in the given element that matches the specified text partially.
         /// </summary>
         /// <param name="element">The remote web element.</param>
         /// <param name="text">The partial text to find.</param>
@@ -87,6 +87,16 @@ namespace Legerity.Extensions
         public static ReadOnlyCollection<IWebElement> FindElementsByPartialText(this IWebElement element, string text)
         {
             return element.FindElements(ByExtras.PartialText(text));
+        }
+
+        /// <summary>
+        /// Retrieves all elements that can be located by the driver for the given element.
+        /// </summary>
+        /// <param name="element">The remote web driver.</param>
+        /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
+        public static ReadOnlyCollection<IWebElement> GetAllElements(this IWebElement element)
+        {
+            return element.FindElements(By.XPath("//*"));
         }
     }
 }

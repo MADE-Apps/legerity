@@ -75,5 +75,15 @@ namespace Legerity.Extensions
         {
             return driver.FindElements(ByExtras.PartialText(text));
         }
+
+        /// <summary>
+        /// Retrieves all elements that can be located by the driver in the page.
+        /// </summary>
+        /// <param name="driver">The remote web driver.</param>
+        /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
+        public static ReadOnlyCollection<IWebElement> GetAllElements(this RemoteWebDriver driver)
+        {
+            return driver.FindElements(By.XPath("//*"));
+        }
     }
 }
