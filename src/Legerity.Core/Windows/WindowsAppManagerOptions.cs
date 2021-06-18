@@ -1,5 +1,6 @@
 namespace Legerity.Windows
 {
+    using System.Collections.Generic;
     using Helpers;
     using OpenQA.Selenium.Appium;
 
@@ -86,7 +87,19 @@ namespace Legerity.Windows
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            return $"{base.ToString()}, App ID [{this.AppId}]";
+            return $"Platform [Windows], {base.ToString()}, {this.GetOptionDetails()}";
+        }
+
+        private string GetOptionDetails()
+        {
+            var options = new List<string>();
+
+            if (!string.IsNullOrWhiteSpace(this.AppId))
+            {
+                options.Add($"App ID [{this.AppId}]");
+            }
+
+            return string.Join(", ", options);
         }
     }
 }

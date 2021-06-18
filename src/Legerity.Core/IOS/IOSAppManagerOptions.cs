@@ -1,5 +1,6 @@
 namespace Legerity.IOS
 {
+    using System.Collections.Generic;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Enums;
 
@@ -119,7 +120,29 @@ namespace Legerity.IOS
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            return $"{base.ToString()}, App ID [{this.AppId}]";
+            return $"Platform [IOS], {base.ToString()}, {this.GetOptionDetails()}";
+        }
+
+        private string GetOptionDetails()
+        {
+            var options = new List<string>();
+
+            if (!string.IsNullOrWhiteSpace(this.AppId))
+            {
+                options.Add($"App ID [{this.AppId}]");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DeviceId))
+            {
+                options.Add($"Device ID [{this.DeviceId}]");
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DeviceName))
+            {
+                options.Add($"Device Name [{this.DeviceName}]");
+            }
+
+            return string.Join(", ", options);
         }
     }
 }

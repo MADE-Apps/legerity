@@ -1,5 +1,6 @@
 namespace Legerity.Web
 {
+    using System.Collections.Generic;
     using System.Drawing;
 
     /// <summary>
@@ -48,7 +49,19 @@ namespace Legerity.Web
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            return $"{base.ToString()}, App URL [{this.Url}]";
+            return $"Platform [{this.DriverType}], {base.ToString()}, {this.GetOptionDetails()}";
+        }
+
+        private string GetOptionDetails()
+        {
+            var options = new List<string>();
+
+            if (!string.IsNullOrWhiteSpace(this.Url))
+            {
+                options.Add($"URL [{this.Url}]");
+            }
+
+            return string.Join(", ", options);
         }
     }
 
