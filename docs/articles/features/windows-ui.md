@@ -1,6 +1,6 @@
 ---
 uid: windows-ui-element-wrappers
-title: Using the WinUI 2 element wrappers | Legerity
+title: Using the WinUI 2 element wrappers
 ---
 
 # Using the WinUI 2 element wrappers

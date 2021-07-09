@@ -1,6 +1,6 @@
 ---
 uid: api-docs
-title: Explore the APIs | Legerity
+title: Explore the APIs
 ---
 
 # Explore the APIs

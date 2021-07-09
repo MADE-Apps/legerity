@@ -1,6 +1,6 @@
 ---
 uid: telerik-for-uwp-element-wrappers
-title: Using the Telerik for UWP element wrappers | Legerity
+title: Using the Telerik for UWP element wrappers
 ---
 
 # Using the Telerik for UWP element wrappers

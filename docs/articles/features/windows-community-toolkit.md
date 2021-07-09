@@ -1,6 +1,6 @@
 ---
 uid: windows-community-toolkit-element-wrappers
-title: Using the Windows Community Toolkit element wrappers | Legerity
+title: Using the Windows Community Toolkit element wrappers
 ---
 
 # Using the Windows Community Toolkit element wrappers

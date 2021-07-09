@@ -1,6 +1,6 @@
 ---
 uid: best-practices
-title: UI test best practices | Legerity
+title: UI test best practices
 ---
 
 # UI test best practices

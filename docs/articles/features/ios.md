@@ -1,6 +1,6 @@
 ---
 uid: ios-element-wrappers
-title: Using the iOS element wrappers | Legerity
+title: Using the iOS element wrappers
 ---
 
 # Using the iOS element wrappers

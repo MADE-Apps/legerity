@@ -1,6 +1,6 @@
 ---
 uid: available-packages
-title: Available packages | Legerity
+title: Available packages
 ---
 
 # Available Legerity packages

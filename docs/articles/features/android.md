@@ -1,6 +1,6 @@
 ---
 uid: android-element-wrappers
-title: Using the Android element wrappers | Legerity
+title: Using the Android element wrappers
 ---
 
 # Using the Android element wrappers

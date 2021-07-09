@@ -1,6 +1,6 @@
 ---
 uid: made-windows-element-wrappers
-title: Using the MADE.NET Windows element wrappers | Legerity
+title: Using the MADE.NET Windows element wrappers
 ---
 
 # Using the MADE.NET Windows element wrappers

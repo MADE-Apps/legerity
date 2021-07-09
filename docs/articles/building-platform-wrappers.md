@@ -1,6 +1,6 @@
 ---
 uid: building-platform-wrappers
-title: Building platform element wrappers | Legerity
+title: Building platform element wrappers
 ---
 
 # Building platform element wrappers

@@ -1,6 +1,6 @@
 ---
 uid: web-element-wrappers
-title: Using the Web element wrappers | Legerity
+title: Using the Web element wrappers
 ---
 
 # Using the Web element wrappers

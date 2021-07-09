@@ -1,6 +1,6 @@
 ---
 uid: windows-element-wrappers
-title: Using the Windows element wrappers | Legerity
+title: Using the Windows element wrappers
 ---
 
 # Using the Windows element wrappers
