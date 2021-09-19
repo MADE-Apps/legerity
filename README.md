@@ -69,11 +69,17 @@ You can build the solution using Visual Studio with the following workloads inst
 - .NET desktop development
 - .NET Core cross-platform development
 
-## Got controls? 💭
+## Got components? 💭
 
-Do you have a collection of custom controls that you'd like to see added to the Legerity framework? Feel free to drop a feature request into our [work tracker](https://github.com/MADE-Apps/legerity/issues)!
+Do you have a collection of custom components that you'd like to see added to the Legerity framework? Feel free to drop a feature request into our [work tracker](https://github.com/MADE-Apps/legerity/issues)!
 
 Even better, why not help build out your custom control wrapper elements within the framework and help out the community!
+
+### Additional component extensions
+
+| Package | Downloads | Description |
+| ------ | ------ | ------ |
+| [![Nuget](https://img.shields.io/nuget/v/RazorWire.Selenium.svg?label=razor-wire)](https://www.nuget.org/packages/RazorWire.Selenium/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/RazorWire.Selenium.svg)](https://www.nuget.org/packages/RazorWire.Selenium/) | Component element wrappers for the [razor-wire](https://www.npmjs.com/package/razor-wire) Vue 3 library |
 
 ### UI Automation tooling 🧰
 
