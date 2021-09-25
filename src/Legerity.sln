@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31710.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity", "Legerity\Legerity.csproj", "{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}"
 EndProject
@@ -51,15 +51,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndroidCoreSamples", "..\sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "W3SchoolsWebTests", "..\samples\W3SchoolsWebTests\W3SchoolsWebTests.csproj", "{89BD06DC-7E77-4062-9149-EF95D3F9D999}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legerity.Windows", "Legerity.Windows\Legerity.Windows.csproj", "{05F72C9E-FBF7-44D8-9201-2BE21D138989}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Windows", "Legerity.Windows\Legerity.Windows.csproj", "{05F72C9E-FBF7-44D8-9201-2BE21D138989}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legerity.Core", "Legerity.Core\Legerity.Core.csproj", "{48417FD9-1A34-4526-B96F-50DA5A00F346}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Core", "Legerity.Core\Legerity.Core.csproj", "{48417FD9-1A34-4526-B96F-50DA5A00F346}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legerity.Android", "Legerity.Android\Legerity.Android.csproj", "{9D35994A-8A9F-4201-BF1A-5405009FDBDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Android", "Legerity.Android\Legerity.Android.csproj", "{9D35994A-8A9F-4201-BF1A-5405009FDBDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legerity.IOS", "Legerity.IOS\Legerity.IOS.csproj", "{8137CE31-02F7-48B5-B663-47782F790EE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.IOS", "Legerity.IOS\Legerity.IOS.csproj", "{8137CE31-02F7-48B5-B663-47782F790EE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legerity.Web", "Legerity.Web\Legerity.Web.csproj", "{66469000-1C91-4CBA-A27E-043C3E222DA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Web", "Legerity.Web\Legerity.Web.csproj", "{66469000-1C91-4CBA-A27E-043C3E222DA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,11 +74,9 @@ Global
 		{DEF3B388-F782-4E32-B72B-732F1C1BEB62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DEF3B388-F782-4E32-B72B-732F1C1BEB62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEF3B388-F782-4E32-B72B-732F1C1BEB62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEF3B388-F782-4E32-B72B-732F1C1BEB62}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6A4DAD1-7DEF-40B7-AEAE-667EA2931070}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39CD911A-FE7A-47AB-8581-888352267554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39CD911A-FE7A-47AB-8581-888352267554}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39CD911A-FE7A-47AB-8581-888352267554}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -86,7 +84,6 @@ Global
 		{0BCFB2AC-9B1B-41DF-919C-521E60AA0186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0BCFB2AC-9B1B-41DF-919C-521E60AA0186}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BCFB2AC-9B1B-41DF-919C-521E60AA0186}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BCFB2AC-9B1B-41DF-919C-521E60AA0186}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DAE078FF-6E67-440E-B501-C2524209CF88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DAE078FF-6E67-440E-B501-C2524209CF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAE078FF-6E67-440E-B501-C2524209CF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -94,7 +91,6 @@ Global
 		{837B7598-683F-4987-9765-B7C6CB0784CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{837B7598-683F-4987-9765-B7C6CB0784CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{837B7598-683F-4987-9765-B7C6CB0784CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{837B7598-683F-4987-9765-B7C6CB0784CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD0B92F8-E67B-46FB-8F9F-F080853CB7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD0B92F8-E67B-46FB-8F9F-F080853CB7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0B92F8-E67B-46FB-8F9F-F080853CB7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -102,7 +98,6 @@ Global
 		{E2402575-282E-4529-9819-3CEA8713010D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E2402575-282E-4529-9819-3CEA8713010D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2402575-282E-4529-9819-3CEA8713010D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2402575-282E-4529-9819-3CEA8713010D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C2C23847-72CA-4201-BEF0-49EB4DFE33FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2C23847-72CA-4201-BEF0-49EB4DFE33FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2C23847-72CA-4201-BEF0-49EB4DFE33FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -110,15 +105,12 @@ Global
 		{EF10E4CE-62F1-41A9-807A-79A153CD7A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EF10E4CE-62F1-41A9-807A-79A153CD7A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF10E4CE-62F1-41A9-807A-79A153CD7A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF10E4CE-62F1-41A9-807A-79A153CD7A04}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9D100607-5873-419C-B1AD-8DE55E464CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9D100607-5873-419C-B1AD-8DE55E464CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D100607-5873-419C-B1AD-8DE55E464CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D100607-5873-419C-B1AD-8DE55E464CFE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89BD06DC-7E77-4062-9149-EF95D3F9D999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89BD06DC-7E77-4062-9149-EF95D3F9D999}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89BD06DC-7E77-4062-9149-EF95D3F9D999}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89BD06DC-7E77-4062-9149-EF95D3F9D999}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05F72C9E-FBF7-44D8-9201-2BE21D138989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05F72C9E-FBF7-44D8-9201-2BE21D138989}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F72C9E-FBF7-44D8-9201-2BE21D138989}.Release|Any CPU.ActiveCfg = Release|Any CPU
