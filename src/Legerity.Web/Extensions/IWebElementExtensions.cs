@@ -3,7 +3,7 @@ namespace Legerity.Web.Extensions
     using OpenQA.Selenium;
 
     /// <summary>
-    /// Defines a collection of extensions for the <see cref="By"/> class.
+    /// Defines a collection of extensions for the <see cref="IWebElement"/> class.
     /// </summary>
     public static class IWebElementExtensions
     {
