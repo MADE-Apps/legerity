@@ -2,9 +2,8 @@ namespace Legerity.Web.Elements
 {
     using System;
     using System.Collections.ObjectModel;
-    using Extensions;
     using Legerity.Exceptions;
-
+    using Legerity.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
     using OpenQA.Selenium.Support.UI;
