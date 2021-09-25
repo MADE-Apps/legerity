@@ -80,6 +80,7 @@ namespace Legerity
                             WebAppDriverType.Safari => new SafariDriver(webOpts.DriverUri),
                             WebAppDriverType.Edge => new EdgeDriver(webOpts.DriverUri),
                             WebAppDriverType.InternetExplorer => new InternetExplorerDriver(webOpts.DriverUri),
+                            WebAppDriverType.EdgeChromium => new Microsoft.Edge.SeleniumTools.EdgeDriver(webOpts.DriverUri, new Microsoft.Edge.SeleniumTools.EdgeOptions { UseChromium = true }),
                             _ => App
                         };
 

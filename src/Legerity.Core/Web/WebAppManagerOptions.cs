@@ -96,13 +96,18 @@ namespace Legerity.Web
         Safari,
 
         /// <summary>
-        /// Edge. Setting this will cause the application driver to launch for Microsoft's Edge.
+        /// Edge. Setting this will cause the application driver to launch for Microsoft's Legacy Edge.
         /// </summary>
         Edge,
 
         /// <summary>
         /// Internet Explorer. This will cause the application driver to launch for Microsoft's Internet Explorer.
         /// </summary>
-        InternetExplorer
+        InternetExplorer,
+
+        /// <summary>
+        /// Edge Chromium. Setting this will cause the application driver to launch for Microsoft's Chromium Edge.
+        /// </summary>
+        EdgeChromium,
     }
 }

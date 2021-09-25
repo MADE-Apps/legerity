@@ -15,8 +15,7 @@ namespace W3SchoolsWebTests
         public virtual void Initialize()
         {
             AppManager.StartApp(
-                new WebAppManagerOptions(WebAppDriverType.Edge,
-                    Path.Combine(Environment.CurrentDirectory, "Tools\\Edge"))
+                new WebAppManagerOptions(WebAppDriverType.EdgeChromium, Environment.CurrentDirectory)
                 {
                     Maximize = true,
                     Url = this.Url

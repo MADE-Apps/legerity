@@ -11,17 +11,12 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
+    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="94.0.986" />
     <PackageReference Include="Shouldly" Version="4.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Legerity\Legerity.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Tools\Edge\MicrosoftWebDriver.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
