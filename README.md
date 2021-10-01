@@ -2,6 +2,29 @@
 
 # Legerity
 
+<div style="margin-bottom:16px;">
+    <div>
+        <div><span>/<span>ləˈdʒɛr ɪ ti</span>/ (l<i>uh</i>-<b>jer</b>-i-tee)</span></div>
+    </div>
+    <div>
+        <div>
+            <div>
+                <div><i><span>noun</span></i></div>
+            </div>
+        </div>
+        <ol>
+            <li>
+                <div style="margin-left:20px">
+                    <div class="LTKOO sY7ric">
+                        <div style="display:inline" data-dobid="dfn"><span>physical or mental quickness; nimbleness;
+                                agility.</span></div>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
 [![GitHub release](https://img.shields.io/github/release/MADE-Apps/legerity.svg)](https://github.com/MADE-Apps/legerity/releases)
 [![Nuget](https://img.shields.io/nuget/v/Legerity.svg)](https://www.nuget.org/packages/Legerity/)
 [![Nuget Preview](https://img.shields.io/nuget/vpre/Legerity.svg?label=nuget%20%28preview%29)](https://www.nuget.org/packages/Legerity/)
