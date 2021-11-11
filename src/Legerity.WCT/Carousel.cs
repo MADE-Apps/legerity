@@ -3,8 +3,8 @@ namespace Legerity.Windows.Elements.WCT
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using Core;
-    using Extensions;
+    using Legerity.Windows.Elements.Core;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -22,7 +22,8 @@ namespace Legerity.Windows.Elements.WCT
         /// <param name="element">
         /// The <see cref="WindowsElement"/> reference.
         /// </param>
-        public Carousel(WindowsElement element) : base(element)
+        public Carousel(WindowsElement element)
+            : base(element)
         {
         }
 
@@ -41,7 +42,7 @@ namespace Legerity.Windows.Elements.WCT
                     StringComparison.CurrentCultureIgnoreCase));
 
         /// <summary>
-        /// Gets the index of the element associated with the currently selected item. 
+        /// Gets the index of the element associated with the currently selected item.
         /// </summary>
         public int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
 

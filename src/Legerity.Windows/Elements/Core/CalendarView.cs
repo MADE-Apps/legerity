@@ -131,7 +131,7 @@ namespace Legerity.Windows.Elements.Core
 
             AppiumWebElement item = this.Days.FirstOrDefault(
                 element => element.GetAttribute("Name").Equals(expectedDay, StringComparison.CurrentCultureIgnoreCase));
-            
+
             item.Click();
         }
 

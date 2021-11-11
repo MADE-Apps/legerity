@@ -16,7 +16,8 @@ namespace Legerity.Windows.Elements.WCT
         /// <param name="element">
         /// The <see cref="WindowsElement"/> reference.
         /// </param>
-        public RadialGauge(WindowsElement element) : base(element)
+        public RadialGauge(WindowsElement element)
+            : base(element)
         {
         }
 

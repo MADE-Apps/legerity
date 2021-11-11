@@ -1,8 +1,8 @@
 namespace Legerity.Windows.Elements.WCT
 {
     using System;
-    using Core;
-    using Extensions;
+    using Legerity.Windows.Elements.Core;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -23,7 +23,8 @@ namespace Legerity.Windows.Elements.WCT
         /// <param name="element">
         /// The <see cref="WindowsElement"/> reference.
         /// </param>
-        public BladeViewItem(WindowsElement element) : this(null, element)
+        public BladeViewItem(WindowsElement element)
+            : this(null, element)
         {
         }
 
@@ -49,7 +50,7 @@ namespace Legerity.Windows.Elements.WCT
 
         /// <summary>Gets the original parent <see cref="BladeView"/> reference object.</summary>
         public BladeView ParentMenuBar =>
-            this.parentBladeViewReference != null && this.parentBladeViewReference.IsAlive
+            this.parentBladeViewReference is { IsAlive: true }
                 ? this.parentBladeViewReference.Target as BladeView
                 : null;
 

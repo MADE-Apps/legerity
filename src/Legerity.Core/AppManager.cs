@@ -40,12 +40,12 @@ namespace Legerity
         public static IOSDriver<IOSElement> IOSApp => App as IOSDriver<IOSElement>;
 
         /// <summary>
-        /// Get the instance of the started web application.
+        /// Gets the instance of the started web application.
         /// </summary>
         public static RemoteWebDriver WebApp => App;
 
         /// <summary>
-        /// Gets the instance of the started application.
+        /// Gets or sets the instance of the started application.
         /// <para>
         /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
         /// </para>
@@ -74,13 +74,13 @@ namespace Legerity
                     {
                         App = webOpts.DriverType switch
                         {
-                            WebAppDriverType.Chrome => new ChromeDriver(webOpts.DriverUri),
-                            WebAppDriverType.Firefox => new FirefoxDriver(webOpts.DriverUri),
-                            WebAppDriverType.Opera => new OperaDriver(webOpts.DriverUri),
-                            WebAppDriverType.Safari => new SafariDriver(webOpts.DriverUri),
-                            WebAppDriverType.Edge => new EdgeDriver(webOpts.DriverUri),
-                            WebAppDriverType.InternetExplorer => new InternetExplorerDriver(webOpts.DriverUri),
-                            WebAppDriverType.EdgeChromium => new Microsoft.Edge.SeleniumTools.EdgeDriver(webOpts.DriverUri, new Microsoft.Edge.SeleniumTools.EdgeOptions { UseChromium = true }),
+                            WebAppDriverType.Chrome => new ChromeDriver(webOpts.DriverUri, webOpts.DriverOptions as ChromeOptions ?? new ChromeOptions()),
+                            WebAppDriverType.Firefox => new FirefoxDriver(webOpts.DriverUri, webOpts.DriverOptions as FirefoxOptions ?? new FirefoxOptions()),
+                            WebAppDriverType.Opera => new OperaDriver(webOpts.DriverUri, webOpts.DriverOptions as OperaOptions ?? new OperaOptions()),
+                            WebAppDriverType.Safari => new SafariDriver(webOpts.DriverUri, webOpts.DriverOptions as SafariOptions ?? new SafariOptions()),
+                            WebAppDriverType.Edge => new EdgeDriver(webOpts.DriverUri, webOpts.DriverOptions as EdgeOptions ?? new EdgeOptions()),
+                            WebAppDriverType.InternetExplorer => new InternetExplorerDriver(webOpts.DriverUri, webOpts.DriverOptions as InternetExplorerOptions ?? new InternetExplorerOptions()),
+                            WebAppDriverType.EdgeChromium => new Microsoft.Edge.SeleniumTools.EdgeDriver(webOpts.DriverUri, webOpts.DriverOptions as Microsoft.Edge.SeleniumTools.EdgeOptions ?? new Microsoft.Edge.SeleniumTools.EdgeOptions { UseChromium = true }),
                             _ => App
                         };
 
@@ -98,6 +98,7 @@ namespace Legerity
                         App.Url = webOpts.Url;
                         break;
                     }
+
                 case WindowsAppManagerOptions winOpts:
                     {
                         if (winOpts.LaunchWinAppDriver)

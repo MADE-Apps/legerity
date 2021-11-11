@@ -27,7 +27,7 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the collection of items associated with the hub.
         /// </summary>
         public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.hubSectionItemQuery);
-        
+
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="Hub"/> without direct casting.
         /// </summary>

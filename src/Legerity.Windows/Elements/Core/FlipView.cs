@@ -57,7 +57,6 @@ namespace Legerity.Windows.Elements.Core
                     "True",
                     StringComparison.CurrentCultureIgnoreCase));
 
-
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="FlipView"/> without direct casting.
         /// </summary>

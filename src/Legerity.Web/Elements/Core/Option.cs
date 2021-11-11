@@ -1,8 +1,8 @@
 namespace Legerity.Web.Elements.Core
 {
+    using Legerity.Web.Elements;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
-    using Web.Elements;
 
     /// <summary>
     /// Defines a <see cref="IWebElement"/> wrapper for the core web Option control.

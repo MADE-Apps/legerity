@@ -11,6 +11,9 @@ namespace Legerity.Windows.Helpers
     /// </summary>
     public static class WinAppDriverHelper
     {
+        /// <summary>
+        /// Defines the default install location for the WinAppDriver.
+        /// </summary>
         internal const string DefaultInstallLocation =
             @"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe";
 
@@ -19,6 +22,8 @@ namespace Legerity.Windows.Helpers
         /// <summary>
         /// Determines whether the WinAppDriver is installed.
         /// </summary>
+        /// <param name="path">The expected path for the WinAppDriver.</param>
+        /// <returns>True if the WinAppDriver exists at the specified <paramref name="path"/>; otherwise, false.</returns>
         public static bool IsInstalled(string path = DefaultInstallLocation)
         {
             return File.Exists(path);
@@ -27,12 +32,13 @@ namespace Legerity.Windows.Helpers
         /// <summary>
         /// Loads an instance of the WinAppDriver process.
         /// </summary>
+        /// <param name="path">The expected path for the WinAppDriver.</param>
         /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverNotFoundException">Thrown if the WinAppDriver could not be found.</exception>
         /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverLoadFailedException">Thrown if the WinAppDriver failed to load.</exception>
         public static void Run(string path = DefaultInstallLocation)
         {
             WinAppDriverProcess ??= Process.GetProcessesByName("WinAppDriver").FirstOrDefault();
-            if (WinAppDriverProcess != null && !WinAppDriverProcess.HasExited)
+            if (WinAppDriverProcess is { HasExited: false })
             {
                 return;
             }
@@ -60,7 +66,7 @@ namespace Legerity.Windows.Helpers
         {
             try
             {
-                if (WinAppDriverProcess != null && !WinAppDriverProcess.HasExited)
+                if (WinAppDriverProcess is { HasExited: false })
                 {
                     WinAppDriverProcess.Kill();
                 }

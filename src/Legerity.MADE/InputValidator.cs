@@ -1,7 +1,7 @@
 namespace Legerity.Windows.Elements.MADE
 {
-    using Core;
-    using Extensions;
+    using Legerity.Windows.Elements.Core;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -19,7 +19,8 @@ namespace Legerity.Windows.Elements.MADE
         /// <param name="element">
         /// The <see cref="WindowsElement"/> reference.
         /// </param>
-        public InputValidator(WindowsElement element) : base(element)
+        public InputValidator(WindowsElement element)
+            : base(element)
         {
         }
 

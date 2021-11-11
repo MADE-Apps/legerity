@@ -9,6 +9,9 @@ namespace Legerity.Windows.Elements.Core
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
+    /// <summary>
+    /// Defines the color flyout components of the <see cref="InkToolbar"/>.
+    /// </summary>
     public partial class InkToolbar
     {
         /// <summary>
@@ -19,7 +22,7 @@ namespace Legerity.Windows.Elements.Core
             private readonly By colorGridViewQuery = ByExtensions.AutomationId("PenColorPalette");
 
             private readonly By sizeSliderQuery = ByExtensions.AutomationId("PenStrokeWidthSlider");
-            
+
             /// <summary>
             /// Initializes a new instance of the <see cref="InkToolbarColorFlyoutBase"/> class.
             /// </summary>

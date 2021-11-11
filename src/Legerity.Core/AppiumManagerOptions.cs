@@ -10,6 +10,10 @@ namespace Legerity
         /// <summary>
         /// Gets or sets the options to configure the Appium driver.
         /// </summary>
-        public AppiumOptions AppiumOptions { get; set; }
+        public AppiumOptions AppiumOptions
+        {
+            get => this.DriverOptions as AppiumOptions;
+            set => this.DriverOptions = value;
+        }
     }
 }

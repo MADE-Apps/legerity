@@ -14,7 +14,8 @@ namespace Legerity.Web.Elements.Core
         /// <param name="element">
         /// The <see cref="IWebElement"/> reference.
         /// </param>
-        public TextArea(IWebElement element) : this(element as RemoteWebElement)
+        public TextArea(IWebElement element)
+            : this(element as RemoteWebElement)
         {
         }
 
@@ -52,6 +53,5 @@ namespace Legerity.Web.Elements.Core
         {
             return new TextArea(element);
         }
-
     }
 }

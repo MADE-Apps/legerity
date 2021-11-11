@@ -52,6 +52,23 @@ namespace Legerity
         }
 
         /// <summary>
+        /// Determines whether the given element is not shown.
+        /// </summary>
+        /// <param name="by">
+        /// The query for the element to locate.
+        /// </param>
+        public void VerifyElementNotShown(By by)
+        {
+            try
+            {
+                this.VerifyElementShown(by);
+            }
+            catch (ElementNotShownException)
+            {
+            }
+        }
+
+        /// <summary>
         /// Determines whether the given element is shown.
         /// </summary>
         /// <param name="by">
@@ -122,23 +139,6 @@ namespace Legerity
             {
                 var wait = new WebDriverWait(this.Element.WrappedDriver, timeout.Value);
                 wait.Until(driver => driver.FindElements(query).Count != 0);
-            }
-        }
-
-        /// <summary>
-        /// Determines whether the given element is not shown.
-        /// </summary>
-        /// <param name="by">
-        /// The query for the element to locate.
-        /// </param>
-        public void VerifyElementNotShown(By by)
-        {
-            try
-            {
-                this.VerifyElementShown(by);
-            }
-            catch (ElementNotShownException)
-            {
             }
         }
     }

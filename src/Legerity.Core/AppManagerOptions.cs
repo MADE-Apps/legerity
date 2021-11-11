@@ -1,6 +1,7 @@
 namespace Legerity
 {
     using System;
+    using OpenQA.Selenium;
 
     /// <summary>
     /// Defines a base model that represents configuration options for the <see cref="AppManager"/>.
@@ -22,6 +23,11 @@ namespace Legerity
         /// </para>
         /// </summary>
         public TimeSpan ImplicitWait { get; set; } = TimeSpan.FromSeconds(2);
+
+        /// <summary>
+        /// Gets or sets the additional options to configure the driver.
+        /// </summary>
+        public DriverOptions DriverOptions { get; set; }
 
         /// <summary>Returns a string that represents the current object.</summary>
         /// <returns>A string that represents the current object.</returns>

@@ -78,9 +78,7 @@ namespace Legerity.Windows.Elements.Core
         public void ClickItem(string name)
         {
             this.VerifyElementsShown(this.listViewItemQuery, TimeSpan.FromSeconds(2));
-
             AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
-            
             item.Click();
         }
     }
