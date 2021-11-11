@@ -10,7 +10,10 @@ namespace Legerity.Windows.Exceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="WinAppDriverLoadFailedException"/> class.
         /// </summary>
-        internal WinAppDriverLoadFailedException(string path, Exception exception) : base($"The WinAppDriver could not be loaded at {path}.", exception)
+        /// <param name="path">The expected path for the WinAppDriver.</param>
+        /// <param name="exception">The inner exception thrown by the failure to load the WinAppDriver.</param>
+        internal WinAppDriverLoadFailedException(string path, Exception exception)
+            : base($"The WinAppDriver could not be loaded at {path}.", exception)
         {
             this.Path = path;
         }

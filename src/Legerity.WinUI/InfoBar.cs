@@ -1,7 +1,7 @@
 namespace Legerity.Windows.Elements.WinUI
 {
-    using Core;
-    using Extensions;
+    using Legerity.Windows.Elements.Core;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 

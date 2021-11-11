@@ -1,7 +1,7 @@
 namespace Legerity.Web.Elements.Core
 {
     using System.Collections.ObjectModel;
-    using Elements;
+    using Legerity.Web.Elements;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 

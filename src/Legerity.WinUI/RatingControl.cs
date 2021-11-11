@@ -20,7 +20,7 @@ namespace Legerity.Windows.Elements.WinUI
             : base(element)
         {
         }
-        
+
         /// <summary>
         /// Gets the value of the rating out of 5.
         /// </summary>
@@ -30,9 +30,9 @@ namespace Legerity.Windows.Elements.WinUI
         /// Gets a value indicating whether the control is in a readonly state.
         /// </summary>
         public bool IsReadonly => bool.Parse(this.Element.GetAttribute("RangeValue.IsReadOnly"));
-        
+
         private double Minimum => double.Parse(this.Element.GetAttribute("RangeValue.Minimum"));
-        
+
         private double Maximum => double.Parse(this.Element.GetAttribute("RangeValue.Maximum"));
 
         /// <summary>

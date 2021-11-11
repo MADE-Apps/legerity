@@ -13,10 +13,14 @@ namespace Legerity.Windows.Extensions
         /// <summary>
         /// Finds an element within the <paramref name="driver"/> with the given <paramref name="automationId"/>.
         /// </summary>
+        /// <typeparam name="TElement">
+        /// The type of <see cref="IWebElement"/>. For this method, this would likely be <see cref="WindowsElement"/>.
+        /// </typeparam>
         /// <param name="driver">The <see cref="WindowsDriver{TElement}"/> to search.</param>
         /// <param name="automationId">The automation ID associated with the element to locate.</param>
         /// <returns>The located <typeparamref name="TElement"/>.</returns>
-        public static TElement FindElementByAutomationId<TElement>(this WindowsDriver<TElement> driver, string automationId) where TElement : IWebElement
+        public static TElement FindElementByAutomationId<TElement>(this WindowsDriver<TElement> driver, string automationId)
+            where TElement : IWebElement
         {
             return driver.FindElement(ByExtensions.AutomationId(automationId));
         }

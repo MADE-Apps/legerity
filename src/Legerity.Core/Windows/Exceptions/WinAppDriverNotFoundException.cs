@@ -8,6 +8,7 @@ namespace Legerity.Windows.Exceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="WinAppDriverNotFoundException"/> class.
         /// </summary>
+        /// <param name="path">The expected path for the WinAppDriver.</param>
         internal WinAppDriverNotFoundException(string path)
             : base($"The WinAppDriver could not be located at {path}. Please ensure it is installed first.")
         {

@@ -130,7 +130,8 @@ namespace Legerity.Android
             string osVersion,
             string deviceName,
             string deviceId,
-            params (string, object)[] additionalOptions) : this(appId, appActivity, null, osVersion, deviceName, deviceId, additionalOptions)
+            params (string, object)[] additionalOptions)
+            : this(appId, appActivity, null, osVersion, deviceName, deviceId, additionalOptions)
         {
         }
 

@@ -21,7 +21,8 @@ namespace Legerity.Web.Elements
         /// <param name="element">
         /// The <see cref="IWebElement"/> reference.
         /// </param>
-        protected WebElementWrapper(IWebElement element) : this(element as RemoteWebElement)
+        protected WebElementWrapper(IWebElement element)
+            : this(element as RemoteWebElement)
         {
         }
 
@@ -75,6 +76,23 @@ namespace Legerity.Web.Elements
         public ReadOnlyCollection<RemoteWebElement> FindElements(By by)
         {
             return this.Element.FindWebElements(by);
+        }
+
+        /// <summary>
+        /// Determines whether the given element is not shown.
+        /// </summary>
+        /// <param name="by">
+        /// The query for the element to locate.
+        /// </param>
+        public void VerifyElementNotShown(By by)
+        {
+            try
+            {
+                this.VerifyElementShown(by);
+            }
+            catch (ElementNotShownException)
+            {
+            }
         }
 
         /// <summary>
@@ -148,23 +166,6 @@ namespace Legerity.Web.Elements
             {
                 var wait = new WebDriverWait(this.Driver, timeout.Value);
                 wait.Until(driver => driver.FindElements(query).Count != 0);
-            }
-        }
-
-        /// <summary>
-        /// Determines whether the given element is not shown.
-        /// </summary>
-        /// <param name="by">
-        /// The query for the element to locate.
-        /// </param>
-        public void VerifyElementNotShown(By by)
-        {
-            try
-            {
-                this.VerifyElementShown(by);
-            }
-            catch (ElementNotShownException)
-            {
             }
         }
     }

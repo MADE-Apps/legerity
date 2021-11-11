@@ -14,7 +14,7 @@ namespace Legerity.IOS.Elements
     public abstract class IOSElementWrapper : ElementWrapper<IOSElement>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IOSElement"/> class.
+        /// Initializes a new instance of the <see cref="IOSElementWrapper"/> class.
         /// </summary>
         /// <param name="element">
         /// The <see cref="IOSElement"/> reference.

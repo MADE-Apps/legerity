@@ -3,6 +3,9 @@ namespace Legerity.Windows.Elements.Core
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
+    /// <summary>
+    /// Defines the highlighter flyout components of the <see cref="InkToolbar"/>.
+    /// </summary>
     public partial class InkToolbar
     {
         /// <summary>

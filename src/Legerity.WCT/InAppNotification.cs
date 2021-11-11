@@ -1,8 +1,8 @@
 namespace Legerity.Windows.Elements.WCT
 {
     using System.Linq;
-    using Core;
-    using Extensions;
+    using Legerity.Windows.Elements.Core;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -20,7 +20,8 @@ namespace Legerity.Windows.Elements.WCT
         /// <param name="element">
         /// The <see cref="WindowsElement"/> reference.
         /// </param>
-        public InAppNotification(WindowsElement element) : base(element)
+        public InAppNotification(WindowsElement element)
+            : base(element)
         {
         }
 

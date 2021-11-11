@@ -1,8 +1,8 @@
 namespace Legerity.Web.Elements.Core
 {
+    using Legerity.Web.Elements;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
-    using Web.Elements;
 
     /// <summary>
     /// Defines a <see cref="IWebElement"/> wrapper for the core web Input text control.
@@ -15,7 +15,8 @@ namespace Legerity.Web.Elements.Core
         /// <param name="element">
         /// The <see cref="IWebElement"/> reference.
         /// </param>
-        public TextInput(IWebElement element) : this(element as RemoteWebElement)
+        public TextInput(IWebElement element)
+            : this(element as RemoteWebElement)
         {
         }
 

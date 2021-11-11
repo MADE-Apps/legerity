@@ -1,6 +1,6 @@
 namespace Legerity.Android.Elements.Core
 {
-    using Elements;
+    using Legerity.Android.Elements;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
 

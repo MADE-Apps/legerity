@@ -9,7 +9,7 @@ namespace Legerity.Windows.Elements.Core
     public class HyperlinkButton : Button
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Button"/> class.
+        /// Initializes a new instance of the <see cref="HyperlinkButton"/> class.
         /// </summary>
         /// <param name="element">
         /// The <see cref="WindowsElement"/> reference.

@@ -1,6 +1,6 @@
 namespace Legerity.Web.Elements.Core
 {
-    using Elements;
+    using Legerity.Web.Elements;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 

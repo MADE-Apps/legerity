@@ -10,7 +10,9 @@ namespace Legerity.Exceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="AppiumServerLoadFailedException"/> class.
         /// </summary>
-        internal AppiumServerLoadFailedException(Exception exception) : base("The Appium server could not be loaded.", exception)
+        /// <param name="exception">The inner exception thrown as a result of the Appium server load failure.</param>
+        internal AppiumServerLoadFailedException(Exception exception)
+            : base("The Appium server could not be loaded.", exception)
         {
         }
     }

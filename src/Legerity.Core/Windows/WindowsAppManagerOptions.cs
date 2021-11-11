@@ -1,7 +1,7 @@
 namespace Legerity.Windows
 {
     using System.Collections.Generic;
-    using Helpers;
+    using Legerity.Windows.Helpers;
     using OpenQA.Selenium.Appium;
 
     /// <summary>
@@ -46,7 +46,7 @@ namespace Legerity.Windows
         public bool LaunchWinAppDriver { get; set; }
 
         /// <summary>
-        /// Gets or sets whether to maximize the window for the application.
+        /// Gets or sets a value indicating whether to maximize the window for the application.
         /// </summary>
         public bool Maximize { get; set; }
 
