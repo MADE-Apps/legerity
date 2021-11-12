@@ -12,7 +12,7 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class CalendarDatePicker : WindowsElementWrapper
     {
-        private readonly By calendarPopupQuery = By.XPath(".//*[@ClassName='Popup'][@Name='Popup']");
+        private readonly By calendarPopupLocator = By.XPath(".//*[@ClassName='Popup'][@Name='Popup']");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CalendarDatePicker"/> class.
@@ -29,7 +29,7 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the element associated with the calendar flyout.
         /// </summary>
         public CalendarView CalendarViewFlyout =>
-            this.Driver.FindElement(this.calendarPopupQuery).FindElement(ByExtensions.AutomationId("CalendarView"));
+            this.Driver.FindElement(this.calendarPopupLocator).FindElement(ByExtensions.AutomationId("CalendarView"));
 
         /// <summary>
         /// Gets the value of the calendar date picker.
@@ -72,7 +72,7 @@ namespace Legerity.Windows.Elements.Core
         {
             this.Element.Click();
 
-            this.VerifyDriverElementShown(this.calendarPopupQuery, TimeSpan.FromSeconds(2));
+            this.VerifyDriverElementShown(this.calendarPopupLocator, TimeSpan.FromSeconds(2));
 
             this.CalendarViewFlyout.SetDate(date);
         }

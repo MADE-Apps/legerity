@@ -11,7 +11,7 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
     /// </summary>
     public class CommandBarPage : BasePage
     {
-        private readonly By primaryCommandBarQuery = ByExtensions.AutomationId("PrimaryCommandBar");
+        public CommandBar PrimaryCommandBar => this.WindowsApp.FindElement(ByExtensions.AutomationId("PrimaryCommandBar"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -26,8 +26,7 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
         /// </returns>
         public CommandBarPage ClickAddButton()
         {
-            CommandBar primaryCommandBar = this.WindowsApp.FindElement(this.primaryCommandBarQuery);
-            primaryCommandBar.ClickPrimaryButton("addButton");
+            this.PrimaryCommandBar.ClickPrimaryButton("addButton");
             return this;
         }
 
@@ -39,8 +38,7 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
         /// </returns>
         public CommandBarPage ClickEditButton()
         {
-            CommandBar primaryCommandBar = this.WindowsApp.FindElement(this.primaryCommandBarQuery);
-            primaryCommandBar.ClickPrimaryButton("editButton");
+            this.PrimaryCommandBar.ClickPrimaryButton("editButton");
             return this;
         }
 
@@ -50,8 +48,7 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
         /// <returns>The <see cref="CommandBarPage"/>.</returns>
         public CommandBarPage ClickSettingsButton()
         {
-            CommandBar primaryCommandBar = this.WindowsApp.FindElement(this.primaryCommandBarQuery);
-            primaryCommandBar.ClickSecondaryButton("settingsButton");
+            this.PrimaryCommandBar.ClickSecondaryButton("settingsButton");
             return this;
         }
     }

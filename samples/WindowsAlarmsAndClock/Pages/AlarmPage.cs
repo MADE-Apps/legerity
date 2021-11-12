@@ -3,7 +3,8 @@ namespace WindowsAlarmsAndClock.Pages
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
-
+    using Elements;
+    using Legerity.Extensions;
     using Legerity.Pages;
     using Legerity.Windows.Extensions;
 
@@ -11,15 +12,14 @@ namespace WindowsAlarmsAndClock.Pages
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines the alarm page of the Windows Alarms &amp; Clock application.
     /// </summary>
-    public class AlarmPage : BasePage
+    public class AlarmPage : AppPage
     {
         private readonly By addAlarmButton;
-
-        private readonly By selectAlarmsButton;
 
         private readonly By alarmList;
 
@@ -29,9 +29,10 @@ namespace WindowsAlarmsAndClock.Pages
         public AlarmPage()
         {
             this.addAlarmButton = ByExtensions.AutomationId("AddAlarmButton");
-            this.selectAlarmsButton = ByExtensions.AutomationId("SelectAlarmsButton");
             this.alarmList = ByExtensions.AutomationId("AlarmListView");
         }
+
+        public AlarmPopup AlarmPopup => this.WindowsApp.FindElement(ByExtensions.AutomationId("EditFlyout"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -42,12 +43,12 @@ namespace WindowsAlarmsAndClock.Pages
         /// Navigates to adding an alarm.
         /// </summary>
         /// <returns>
-        /// The <see cref="EditAlarmPage"/>.
+        /// The <see cref="AlarmPage"/>.
         /// </returns>
-        public EditAlarmPage GoToAddAlarm()
+        public AlarmPage GoToAddAlarm()
         {
             this.WindowsApp.FindElement(this.addAlarmButton).Click();
-            return new EditAlarmPage();
+            return this;
         }
 
         /// <summary>
@@ -57,12 +58,30 @@ namespace WindowsAlarmsAndClock.Pages
         /// The name of the alarm to edit.
         /// </param>
         /// <returns>
-        /// The <see cref="EditAlarmPage"/>.
+        /// The <see cref="AlarmPage"/>.
         /// </returns>
-        public EditAlarmPage GoToEditAlarm(string alarmName)
+        public AlarmPage GoToEditAlarm(string alarmName)
         {
             this.GetListAlarmElement(alarmName).Click();
-            return new EditAlarmPage();
+            return this;
+        }
+
+        public AlarmPage SetAlarmTime(TimeSpan time)
+        {
+            this.AlarmPopup.SetTime(time);
+            return this;
+        }
+
+        public AlarmPage SetAlarmName(string name)
+        {
+            this.AlarmPopup.SetName(name);
+            return this;
+        }
+
+        public AlarmPage SaveAlarm()
+        {
+            this.AlarmPopup.SaveAlarm();
+            return this;
         }
 
         /// <summary>
@@ -101,7 +120,7 @@ namespace WindowsAlarmsAndClock.Pages
                 this.WindowsApp.FindElement(this.alarmList).FindElements(By.ClassName("ListViewItem"));
 
             return listElements.FirstOrDefault(
-                element => element.GetAttribute("Name").Contains(name, StringComparison.CurrentCulture));
+                element => element.GetName().Contains(name, StringComparison.CurrentCulture));
         }
     }
 }

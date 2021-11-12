@@ -15,9 +15,9 @@ namespace W3SchoolsWebTests.Tests
     {
         public override string Url => "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio";
 
-        [TestCase("male")]
-        [TestCase("female")]
-        [TestCase("other")]
+        [TestCase("html")]
+        [TestCase("css")]
+        [TestCase("javascript")]
         [TestCase("age1")]
         [TestCase("age2")]
         [TestCase("age3")]
@@ -28,7 +28,7 @@ namespace W3SchoolsWebTests.Tests
             radioButton.IsSelected.ShouldBeTrue();
         }
 
-        [TestCase("gender", "male", "female")]
+        [TestCase("fav_language", "html", "javascript")]
         [TestCase("age", "age3", "age2")]
         public void ShouldOnlySelectOneInGroup(string groupName, string initialRadioId, string expectedRadioId)
         {

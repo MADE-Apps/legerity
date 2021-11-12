@@ -10,8 +10,6 @@ namespace Legerity.Web.Elements.Core
     /// </summary>
     public class List : WebElementWrapper
     {
-        private readonly By listItemQuery = By.TagName("li");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="List"/> class.
         /// </summary>
@@ -37,7 +35,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the list.
         /// </summary>
-        public ReadOnlyCollection<IWebElement> Items => this.Element.FindElements(this.listItemQuery);
+        public ReadOnlyCollection<IWebElement> Items => this.Element.FindElements(By.TagName("li"));
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="List"/> without direct casting.

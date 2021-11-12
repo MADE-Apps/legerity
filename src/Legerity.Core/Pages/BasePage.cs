@@ -40,6 +40,17 @@ namespace Legerity.Pages
         }
 
         /// <summary>
+        /// Gets the instance of the started application.
+        /// <para>
+        /// The <see cref="App"/> instance serves as base for the drivers and can be referenced for basic Selenium functions.
+        /// </para>
+        /// <para>
+        /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
+        /// </para>
+        /// </summary>
+        public RemoteWebDriver App => AppManager.App;
+
+        /// <summary>
         /// Gets the instance of the started Windows application.
         /// </summary>
         protected WindowsDriver<WindowsElement> WindowsApp => AppManager.WindowsApp;
@@ -58,17 +69,6 @@ namespace Legerity.Pages
         /// Gets the instance of the started web application.
         /// </summary>
         protected RemoteWebDriver WebApp => AppManager.WebApp;
-
-        /// <summary>
-        /// Gets the instance of the started application.
-        /// <para>
-        /// The <see cref="App"/> instance serves as base for the drivers and can be referenced for basic Selenium functions.
-        /// </para>
-        /// <para>
-        /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
-        /// </para>
-        /// </summary>
-        protected RemoteWebDriver App => AppManager.App;
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -120,28 +120,28 @@ namespace Legerity.Pages
         /// <summary>
         /// Determines whether the given element is shown.
         /// </summary>
-        /// <param name="by">
-        /// The query for the element to find.
+        /// <param name="locator">
+        /// The locator for the element to find.
         /// </param>
         /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
         /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
-        public void VerifyElementShown(By by)
+        public void VerifyElementShown(By locator)
         {
-            this.VerifyElementShown(by, null);
+            this.VerifyElementShown(locator, null);
         }
 
         /// <summary>
         /// Determines whether the given element is shown with the specified timeout.
         /// </summary>
-        /// <param name="by">
-        /// The query for the element to find.
+        /// <param name="locator">
+        /// The locator for the element to find.
         /// </param>
         /// <param name="timeout">
-        /// The amount of time the driver should wait when searching for the <paramref name="by"/> element if it is not immediately present.
+        /// The amount of time the driver should wait when searching for the <paramref name="locator"/> element if it is not immediately present.
         /// </param>
         /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
         /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
-        public void VerifyElementShown(By by, TimeSpan? timeout)
+        public void VerifyElementShown(By locator, TimeSpan? timeout)
         {
             if (this.App == null)
             {
@@ -151,16 +151,16 @@ namespace Legerity.Pages
 
             if (timeout == null)
             {
-                if (this.App != null && this.App.FindElement(by) == null)
+                if (this.App != null && this.App.FindElement(locator) == null)
                 {
-                    throw new ElementNotShownException(by.ToString());
+                    throw new ElementNotShownException(locator.ToString());
                 }
             }
             else
             {
                 if (this.App != null)
                 {
-                    AttemptWaitForDriverElement(by, timeout.Value, this.App);
+                    AttemptWaitForDriverElement(locator, timeout.Value, this.App);
                 }
             }
         }
@@ -168,11 +168,11 @@ namespace Legerity.Pages
         /// <summary>
         /// Determines whether the given element is not shown.
         /// </summary>
-        /// <param name="by">
-        /// The query for the element to locate.
+        /// <param name="locator">
+        /// The locator for the element to locate.
         /// </param>
         /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
-        public void VerifyElementNotShown(By by)
+        public void VerifyElementNotShown(By locator)
         {
             if (this.App == null)
             {
@@ -182,7 +182,7 @@ namespace Legerity.Pages
 
             try
             {
-                this.VerifyElementShown(by);
+                this.VerifyElementShown(locator);
             }
             catch (ElementNotShownException)
             {
@@ -192,10 +192,10 @@ namespace Legerity.Pages
             }
         }
 
-        private static void AttemptWaitForDriverElement(By by, TimeSpan timeout, IWebDriver appDriver)
+        private static void AttemptWaitForDriverElement(By locator, TimeSpan timeout, IWebDriver appDriver)
         {
             var wait = new WebDriverWait(appDriver, timeout);
-            wait.Until(driver => driver.FindElement(by) != null);
+            wait.Until(driver => driver.FindElement(locator) != null);
         }
     }
 }

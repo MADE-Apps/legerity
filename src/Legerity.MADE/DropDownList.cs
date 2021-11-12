@@ -12,8 +12,6 @@ namespace Legerity.Windows.Elements.MADE
     /// </summary>
     public class DropDownList : WindowsElementWrapper
     {
-        private readonly By dropDownContentQuery = ByExtensions.AutomationId("DropDownContent");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="DropDownList"/> class.
         /// </summary>
@@ -28,7 +26,7 @@ namespace Legerity.Windows.Elements.MADE
         /// <summary>
         /// Gets the <see cref="ListView"/> element associated with the drop down content.
         /// </summary>
-        public ListView DropDown => this.Element.FindElement(this.dropDownContentQuery);
+        public ListView DropDown => this.Element.FindElement(ByExtensions.AutomationId("DropDownContent"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="DropDownList"/> without direct casting.

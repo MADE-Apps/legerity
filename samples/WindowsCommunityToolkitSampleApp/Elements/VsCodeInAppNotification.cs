@@ -1,6 +1,7 @@
 namespace WindowsCommunityToolkitSampleApp.Elements
 {
     using System.Linq;
+    using Legerity.Extensions;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WCT;
     using OpenQA.Selenium;
@@ -16,7 +17,7 @@ namespace WindowsCommunityToolkitSampleApp.Elements
         /// <summary>
         /// Gets the dismiss button.
         /// </summary>
-        public override Button DismissButton => this.Element.FindElements(By.ClassName("Button")).FirstOrDefault(x => x.GetAttribute("Name") == "Close");
+        public override Button DismissButton => this.Element.FindElements(By.ClassName("Button")).FirstOrDefault(x => x.GetName() == "Close");
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="VsCodeInAppNotification"/> without direct casting.

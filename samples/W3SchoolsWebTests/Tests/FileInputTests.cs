@@ -17,19 +17,19 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldSetAbsoluteFilePath()
         {
-            string filePath = Path.Combine(Environment.CurrentDirectory, @"Tools\Edge\MicrosoftWebDriver.exe");
+            string filePath = Path.Combine(Environment.CurrentDirectory, @"msedgedriver.exe");
 
             FileInput fileInput = AppManager.WebApp.FindElementById("myfile") as RemoteWebElement;
             fileInput.SetAbsoluteFilePath(filePath);
 
             // Cannot check absolute file path as browser security feature prevents seeing full URI.
-            fileInput.FilePath.ShouldContain("MicrosoftWebDriver.exe");
+            fileInput.FilePath.ShouldContain("msedgedriver.exe");
         }
 
         [Test]
         public void ShouldClearFile()
         {
-            string filePath = Path.Combine(Environment.CurrentDirectory, @"Tools\Edge\MicrosoftWebDriver.exe");
+            string filePath = Path.Combine(Environment.CurrentDirectory, @"msedgedriver.exe");
 
             FileInput fileInput = AppManager.WebApp.FindElementById("myfile") as RemoteWebElement;
             fileInput.SetAbsoluteFilePath(filePath);

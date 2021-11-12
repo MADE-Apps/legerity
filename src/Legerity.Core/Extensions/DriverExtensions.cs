@@ -1,9 +1,11 @@
 namespace Legerity.Extensions
 {
+    using System;
     using System.Collections.ObjectModel;
     using System.Linq;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Support.UI;
 
     /// <summary>
     /// Defines a collection of extensions for a driver.
@@ -11,25 +13,25 @@ namespace Legerity.Extensions
     public static class DriverExtensions
     {
         /// <summary>
-        /// Finds the first element in the page that matches the <see cref="By" /> query.
+        /// Finds the first element in the page that matches the <see cref="By" /> locator.
         /// </summary>
         /// <param name="driver">The remote web driver.</param>
-        /// <param name="by">The query to find the element.</param>
+        /// <param name="locator">The locator to find the element.</param>
         /// <returns>A <see cref="RemoteWebElement"/>.</returns>
-        public static RemoteWebElement FindWebElement(this RemoteWebDriver driver, By by)
+        public static RemoteWebElement FindWebElement(this RemoteWebDriver driver, By locator)
         {
-            return driver.FindElement(by) as RemoteWebElement;
+            return driver.FindElement(locator) as RemoteWebElement;
         }
 
         /// <summary>
-        /// Finds all the elements in the page that matches the <see cref="By" /> query.
+        /// Finds all the elements in the page that matches the <see cref="By" /> locator.
         /// </summary>
         /// <param name="driver">The remote web driver.</param>
-        /// <param name="by">The query to find the elements.</param>
+        /// <param name="locator">The locator to find the elements.</param>
         /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
-        public static ReadOnlyCollection<RemoteWebElement> FindWebElements(this RemoteWebDriver driver, By by)
+        public static ReadOnlyCollection<RemoteWebElement> FindWebElements(this RemoteWebDriver driver, By locator)
         {
-            return driver.FindElements(by).Cast<RemoteWebElement>().ToList().AsReadOnly();
+            return driver.FindElements(locator).Cast<RemoteWebElement>().ToList().AsReadOnly();
         }
 
         /// <summary>
@@ -84,6 +86,17 @@ namespace Legerity.Extensions
         public static ReadOnlyCollection<IWebElement> GetAllElements(this RemoteWebDriver driver)
         {
             return driver.FindElements(By.XPath("//*"));
+        }
+
+        /// <summary>
+        /// Waits until a specified driver condition is met, with an optional timeout.
+        /// </summary>
+        /// <param name="appDriver">The driver to wait on.</param>
+        /// <param name="condition">The condition of the element to wait on.</param>
+        /// <param name="timeout">The optional timeout wait on the condition being true.</param>
+        public static void WaitUntil(this IWebDriver appDriver, Func<IWebDriver, bool> condition, TimeSpan? timeout = default)
+        {
+            new WebDriverWait(appDriver, timeout ?? TimeSpan.Zero).Until(condition);
         }
     }
 }

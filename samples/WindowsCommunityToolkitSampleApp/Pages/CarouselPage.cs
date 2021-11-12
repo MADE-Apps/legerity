@@ -10,8 +10,6 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     /// </summary>
     public class CarouselPage : AppPage
     {
-        private readonly By carouselQuery = ByExtensions.AutomationId("CarouselControl");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CarouselPage"/> class.
         /// </summary>
@@ -19,7 +17,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         {
         }
 
-        public Carousel Carousel => this.WindowsApp.FindElement(this.carouselQuery);
+        public Carousel Carousel => this.WindowsApp.FindElement(ByExtensions.AutomationId("CarouselControl"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

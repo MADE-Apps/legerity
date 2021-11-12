@@ -16,12 +16,6 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class FlipView : WindowsElementWrapper
     {
-        private readonly By flipViewItemQuery = By.ClassName("FlipViewItem");
-
-        private readonly By nextButtonQuery = ByExtensions.AutomationId("NextButtonHorizontal");
-
-        private readonly By previousButtonQuery = ByExtensions.AutomationId("PreviousButtonHorizontal");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="FlipView"/> class.
         /// </summary>
@@ -36,17 +30,17 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the flip view.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.flipViewItemQuery);
+        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(By.ClassName("FlipViewItem"));
 
         /// <summary>
         /// Gets the element associated with the next item button.
         /// </summary>
-        public Button NextButton => this.Element.FindElement(this.nextButtonQuery);
+        public Button NextButton => this.Element.FindElement(ByExtensions.AutomationId("NextButtonHorizontal"));
 
         /// <summary>
         /// Gets the element associated with the previous item button.
         /// </summary>
-        public Button PreviousButton => this.Element.FindElement(this.previousButtonQuery);
+        public Button PreviousButton => this.Element.FindElement(ByExtensions.AutomationId("PreviousButtonHorizontal"));
 
         /// <summary>
         /// Gets the currently selected item.

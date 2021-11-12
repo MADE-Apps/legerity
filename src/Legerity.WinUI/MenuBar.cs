@@ -3,6 +3,7 @@ namespace Legerity.Windows.Elements.WinUI
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Legerity.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -12,8 +13,6 @@ namespace Legerity.Windows.Elements.WinUI
     /// </summary>
     public class MenuBar : WindowsElementWrapper
     {
-        private readonly By menuBarItemsQuery = By.ClassName("Microsoft.UI.Xaml.Controls.MenuBarItem");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="MenuBar"/> class.
         /// </summary>
@@ -29,7 +28,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// Gets the UI components associated with the menu items.
         /// </summary>
         public IEnumerable<MenuBarItem> MenuItems =>
-            this.Element.FindElements(this.menuBarItemsQuery)
+            this.Element.FindElements(By.ClassName("Microsoft.UI.Xaml.Controls.MenuBarItem"))
                 .Select(element => new MenuBarItem(this, element as WindowsElement));
 
         /// <summary>
@@ -72,7 +71,7 @@ namespace Legerity.Windows.Elements.WinUI
         public MenuBarItem ClickOption(string name)
         {
             MenuBarItem item = this.MenuItems.FirstOrDefault(
-                element => element.Element.GetAttribute("Name")
+                element => element.GetName()
                     .Equals(name, StringComparison.CurrentCultureIgnoreCase));
             item.Click();
             return item;

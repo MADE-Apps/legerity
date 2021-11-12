@@ -10,7 +10,7 @@ namespace XamlControlsGallery.Pages.Media
     /// </summary>
     public class InkToolbarPage : BasePage
     {
-        private readonly By inkToolbarQuery = ByExtensions.AutomationId("inkToolbar");
+        public InkToolbar InkToolbar => this.WindowsApp.FindElement(ByExtensions.AutomationId("inkToolbar"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -28,8 +28,7 @@ namespace XamlControlsGallery.Pages.Media
         /// </returns>
         public InkToolbarPage SelectBallpointPenColor(string color)
         {
-            InkToolbar inkToolbar = this.WindowsApp.FindElement(this.inkToolbarQuery);
-            inkToolbar.SetBallpointPenColor(color);
+            this.InkToolbar.SetBallpointPenColor(color);
             return this;
         }
 
@@ -44,8 +43,7 @@ namespace XamlControlsGallery.Pages.Media
         /// </returns>
         public InkToolbarPage SelectPencilColor(string color)
         {
-            InkToolbar inkToolbar = this.WindowsApp.FindElement(this.inkToolbarQuery);
-            inkToolbar.SetBallpointPenColor(color);
+            this.InkToolbar.SetBallpointPenColor(color);
             return this;
         }
 
@@ -60,8 +58,7 @@ namespace XamlControlsGallery.Pages.Media
         /// </returns>
         public InkToolbarPage SelectHighlighterColor(string color)
         {
-            InkToolbar inkToolbar = this.WindowsApp.FindElement(this.inkToolbarQuery);
-            inkToolbar.SetHighlighterColor(color);
+            this.InkToolbar.SetHighlighterColor(color);
             return this;
         }
     }

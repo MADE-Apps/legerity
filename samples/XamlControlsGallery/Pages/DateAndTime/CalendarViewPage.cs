@@ -14,7 +14,7 @@ namespace XamlControlsGallery.Pages.DateAndTime
     /// </summary>
     public class CalendarViewPage : BasePage
     {
-        private readonly By calendarViewQuery = By.ClassName("CalendarView");
+        public CalendarView CalendarView => this.WindowsApp.FindElement(By.ClassName(nameof(this.CalendarView)));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -32,8 +32,7 @@ namespace XamlControlsGallery.Pages.DateAndTime
         /// </returns>
         public CalendarViewPage SetCalendarViewDate(DateTime date)
         {
-            CalendarView calendarView = this.WindowsApp.FindElement(this.calendarViewQuery);
-            calendarView.SetDate(date);
+            this.CalendarView.SetDate(date);
             return this;
         }
 
@@ -49,8 +48,7 @@ namespace XamlControlsGallery.Pages.DateAndTime
             string month = date.ToString("MMMM");
             string year = date.ToString("yyyy");
 
-            CalendarView calendarView = this.WindowsApp.FindElement(this.calendarViewQuery);
-            string actual = calendarView.Value;
+            string actual = this.CalendarView.Value;
 
             Assert.IsTrue(
                 actual.Contains(day, StringComparison.CurrentCultureIgnoreCase)

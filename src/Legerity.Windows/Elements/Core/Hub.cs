@@ -10,8 +10,6 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class Hub : WindowsElementWrapper
     {
-        private readonly By hubSectionItemQuery = By.ClassName("HubSection");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Hub"/> class.
         /// </summary>
@@ -26,7 +24,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the hub.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.hubSectionItemQuery);
+        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(By.ClassName("HubSection"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="Hub"/> without direct casting.

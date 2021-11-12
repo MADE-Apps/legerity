@@ -14,7 +14,7 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class ListBox : WindowsElementWrapper
     {
-        private readonly By listBoxItemQuery = By.ClassName("ListBoxItem");
+        private readonly By listBoxItemLocator = By.ClassName("ListBoxItem");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBox"/> class.
@@ -30,7 +30,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the list box.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.listBoxItemQuery);
+        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.listBoxItemLocator);
 
         /// <summary>
         /// Gets the element associated with the currently selected item.
@@ -77,7 +77,7 @@ namespace Legerity.Windows.Elements.Core
         /// </param>
         public void ClickItem(string name)
         {
-            this.VerifyElementsShown(this.listBoxItemQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementsShown(this.listBoxItemLocator, TimeSpan.FromSeconds(2));
 
             AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 

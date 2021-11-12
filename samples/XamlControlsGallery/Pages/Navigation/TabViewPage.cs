@@ -13,7 +13,7 @@ namespace XamlControlsGallery.Pages.Navigation
     /// </summary>
     public class TabViewPage : BasePage
     {
-        private readonly By tabViewQuery = ByExtensions.AutomationId("TabView1");
+        public TabView TabView => this.WindowsApp.FindElement(ByExtensions.AutomationId("TabView1"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -27,8 +27,7 @@ namespace XamlControlsGallery.Pages.Navigation
         /// <returns>The <see cref="TabViewPage"/>.</returns>
         public TabViewPage SelectTab(string name)
         {
-            TabView tabView = this.WindowsApp.FindElement(this.tabViewQuery);
-            tabView.SelectTab(name);
+            this.TabView.SelectTab(name);
             return this;
         }
 
@@ -39,8 +38,7 @@ namespace XamlControlsGallery.Pages.Navigation
         /// <returns>The <see cref="TabViewPage"/>.</returns>
         public TabViewPage CloseTab(string name)
         {
-            TabView tabView = this.WindowsApp.FindElement(this.tabViewQuery);
-            tabView.CloseTab(name);
+            this.TabView.CloseTab(name);
             return this;
         }
 
@@ -52,8 +50,7 @@ namespace XamlControlsGallery.Pages.Navigation
         /// </returns>
         public TabViewPage CreateTab()
         {
-            TabView tabView = this.WindowsApp.FindElement(this.tabViewQuery);
-            tabView.CreateTab();
+            this.TabView.CreateTab();
             return this;
         }
 
@@ -65,8 +62,7 @@ namespace XamlControlsGallery.Pages.Navigation
         /// </param>
         public void VerifyTabSelected(string expectedItem)
         {
-            TabView tabView = this.WindowsApp.FindElement(this.tabViewQuery);
-            Assert.AreEqual(expectedItem, tabView.SelectedItem.Text);
+            Assert.AreEqual(expectedItem, this.TabView.SelectedItem.Text);
         }
 
         /// <summary>
@@ -77,8 +73,7 @@ namespace XamlControlsGallery.Pages.Navigation
         /// </param>
         public void VerifyTabCount(int count)
         {
-            TabView tabView = this.WindowsApp.FindElement(this.tabViewQuery);
-            Assert.AreEqual(count, tabView.Tabs.Count);
+            Assert.AreEqual(count, this.TabView.Tabs.Count);
         }
     }
 }

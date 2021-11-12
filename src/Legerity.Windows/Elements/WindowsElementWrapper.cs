@@ -1,7 +1,6 @@
 namespace Legerity.Windows.Elements
 {
     using System;
-
     using Legerity.Exceptions;
 
     using OpenQA.Selenium;
@@ -37,48 +36,48 @@ namespace Legerity.Windows.Elements
         /// <summary>
         /// Determines whether the specified element is shown with the specified timeout.
         /// </summary>
-        /// <param name="query">The query to find a specific element.</param>
+        /// <param name="locator">The locator to find a specific element.</param>
         /// <param name="timeout">
-        /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
+        /// The amount of time the driver should wait when searching for the <paramref name="locator"/> if it is not immediately present.
         /// </param>
-        protected void VerifyDriverElementShown(By query, TimeSpan? timeout)
+        protected void VerifyDriverElementShown(By locator, TimeSpan? timeout)
         {
             if (timeout == null)
             {
-                if (this.Driver.FindElement(query) == null)
+                if (this.Driver.FindElement(locator) == null)
                 {
-                    throw new ElementNotShownException(query.ToString());
+                    throw new ElementNotShownException(locator.ToString());
                 }
             }
             else
             {
                 var wait = new WebDriverWait(this.Driver, timeout.Value);
-                wait.Until(driver => driver.FindElement(query) != null);
+                wait.Until(driver => driver.FindElement(locator) != null);
             }
         }
 
         /// <summary>
         /// Determines whether the specified elements are shown with the specified timeout.
         /// </summary>
-        /// <param name="query">
-        /// The query to find a collection of elements.
+        /// <param name="locator">
+        /// The locator to find a collection of elements.
         /// </param>
         /// <param name="timeout">
-        /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
+        /// The amount of time the driver should wait when searching for the <paramref name="locator"/> if it is not immediately present.
         /// </param>
-        protected void VerifyDriverElementsShown(By query, TimeSpan? timeout)
+        protected void VerifyDriverElementsShown(By locator, TimeSpan? timeout)
         {
             if (timeout == null)
             {
-                if (this.Driver.FindElements(query).Count == 0)
+                if (this.Driver.FindElements(locator).Count == 0)
                 {
-                    throw new ElementNotShownException(query.ToString());
+                    throw new ElementNotShownException(locator.ToString());
                 }
             }
             else
             {
                 var wait = new WebDriverWait(this.Driver, timeout.Value);
-                wait.Until(driver => driver.FindElements(query).Count != 0);
+                wait.Until(driver => driver.FindElements(locator).Count != 0);
             }
         }
     }

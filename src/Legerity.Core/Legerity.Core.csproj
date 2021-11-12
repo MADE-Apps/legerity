@@ -9,7 +9,7 @@
       - Page Object Pattern classes, for providing the base framework to build maintainable UI tests
       - AppManager, for configuring, launching, and managing the lifecycle of the application driver
       - ElementWrapper, for providing a base to build custom element wrappers for platform-specific elements
-      - ByExtras, for providing additional query constraints for finding elements
+      - ByExtras, for providing additional locator constraints for finding elements
     </Description>
     <PackageTags>Appium Selenium WinAppDriver POP Windows UWP Web Android IOS Xamarin Uno</PackageTags>
     <RootNamespace>Legerity</RootNamespace>

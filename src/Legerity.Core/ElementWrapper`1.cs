@@ -14,7 +14,7 @@ namespace Legerity
     /// <typeparam name="TElement">
     /// The type of <see cref="AppiumWebElement"/>.
     /// </typeparam>
-    public abstract class ElementWrapper<TElement>
+    public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
         where TElement : AppiumWebElement
     {
         private readonly WeakReference elementReference;
@@ -32,7 +32,7 @@ namespace Legerity
 
         /// <summary>Gets the original <typeparamref name="TElement"/> reference object.</summary>
         public TElement Element =>
-            this.elementReference != null && this.elementReference.IsAlive
+            this.elementReference is { IsAlive: true }
                 ? this.elementReference.Target as TElement
                 : null;
 
@@ -42,26 +42,27 @@ namespace Legerity
         public bool IsVisible => this.Element.Displayed;
 
         /// <summary>
-        /// Finds a child element by the specified query.
+        /// Finds a child element by the specified locator.
         /// </summary>
-        /// <param name="by">The query to find a child element by.</param>
+        /// <param name="locator">The locator to find a child element by.</param>
         /// <returns>The <typeparamref name="TElement"/>.</returns>
-        public AppiumWebElement FindElement(By by)
+        public AppiumWebElement FindElement(By locator)
         {
-            return this.Element.FindElement(by);
+            return this.Element.FindElement(locator);
         }
 
         /// <summary>
         /// Determines whether the given element is not shown.
         /// </summary>
-        /// <param name="by">
-        /// The query for the element to locate.
+        /// <param name="locator">
+        /// The locator for the element to locate.
         /// </param>
-        public void VerifyElementNotShown(By by)
+        public void VerifyElementNotShown(By locator)
         {
             try
             {
-                this.VerifyElementShown(by);
+                this.VerifyElementShown(locator);
+                throw new ElementShownException(locator.ToString());
             }
             catch (ElementNotShownException)
             {
@@ -71,74 +72,74 @@ namespace Legerity
         /// <summary>
         /// Determines whether the given element is shown.
         /// </summary>
-        /// <param name="by">
-        /// The query for the element to find.
+        /// <param name="locator">
+        /// The locator for the element to find.
         /// </param>
         /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
-        protected void VerifyElementShown(By by)
+        public void VerifyElementShown(By locator)
         {
-            this.VerifyElementShown(by, null);
+            this.VerifyElementShown(locator, null);
         }
 
         /// <summary>
         /// Determines whether the specified element is shown with the specified timeout.
         /// </summary>
-        /// <param name="query">The query to find a specific element.</param>
+        /// <param name="locator">The locator to find a specific element.</param>
         /// <param name="timeout">
-        /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
+        /// The amount of time the driver should wait when searching for the <paramref name="locator"/> if it is not immediately present.
         /// </param>
         /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
-        protected void VerifyElementShown(By query, TimeSpan? timeout)
+        public void VerifyElementShown(By locator, TimeSpan? timeout)
         {
             if (timeout == null)
             {
-                if (this.Element.FindElement(query) == null)
+                if (this.Element.FindElement(locator) == null)
                 {
-                    throw new ElementNotShownException(query.ToString());
+                    throw new ElementNotShownException(locator.ToString());
                 }
             }
             else
             {
                 var wait = new WebDriverWait(this.Element.WrappedDriver, timeout.Value);
-                wait.Until(driver => driver.FindElement(query) != null);
+                wait.Until(driver => driver.FindElement(locator) != null);
             }
         }
 
         /// <summary>
         /// Determines whether the specified elements are shown.
         /// </summary>
-        /// <param name="by">
-        /// The query for the element to find.
+        /// <param name="locator">
+        /// The locator for the element to find.
         /// </param>
         /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the elements are not shown.</exception>
-        protected void VerifyElementsShown(By by)
+        public void VerifyElementsShown(By locator)
         {
-            this.VerifyElementsShown(by, null);
+            this.VerifyElementsShown(locator, null);
         }
 
         /// <summary>
         /// Determines whether the specified elements are shown with the specified timeout.
         /// </summary>
-        /// <param name="query">
-        /// The query to find a collection of elements.
+        /// <param name="locator">
+        /// The locator to find a collection of elements.
         /// </param>
         /// <param name="timeout">
-        /// The amount of time the driver should wait when searching for the <paramref name="query"/> if it is not immediately present.
+        /// The amount of time the driver should wait when searching for the <paramref name="locator"/> if it is not immediately present.
         /// </param>
         /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the elements are not shown.</exception>
-        protected void VerifyElementsShown(By query, TimeSpan? timeout)
+        public void VerifyElementsShown(By locator, TimeSpan? timeout)
         {
             if (timeout == null)
             {
-                if (this.Element.FindElements(query).Count == 0)
+                if (this.Element.FindElements(locator).Count == 0)
                 {
-                    throw new ElementNotShownException(query.ToString());
+                    throw new ElementNotShownException(locator.ToString());
                 }
             }
             else
             {
                 var wait = new WebDriverWait(this.Element.WrappedDriver, timeout.Value);
-                wait.Until(driver => driver.FindElements(query).Count != 0);
+                wait.Until(driver => driver.FindElements(locator).Count != 0);
             }
         }
     }

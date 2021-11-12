@@ -14,7 +14,7 @@ namespace Legerity.Windows.Elements.WCT
     /// </summary>
     public class Carousel : WindowsElementWrapper
     {
-        private readonly By carouselItemQuery = By.ClassName("CarouselItem");
+        private readonly By carouselItemLocator = By.ClassName("CarouselItem");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Carousel"/> class.
@@ -30,7 +30,7 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets the collection of items associated with the carousel.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.carouselItemQuery);
+        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.carouselItemLocator);
 
         /// <summary>
         /// Gets the element associated with the currently selected item.
@@ -82,7 +82,7 @@ namespace Legerity.Windows.Elements.WCT
         /// </param>
         public void SelectItem(string name)
         {
-            this.VerifyElementsShown(this.carouselItemQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
 
             int index = this.Items.IndexOf(this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name)));
             int selectedIndex = this.SelectedIndex;
@@ -108,7 +108,7 @@ namespace Legerity.Windows.Elements.WCT
                     "Cannot select an element that is outside the range of items available.");
             }
 
-            this.VerifyElementsShown(this.carouselItemQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
 
             int selectedIndex = this.SelectedIndex;
             while (Math.Abs(index - selectedIndex) > double.Epsilon)

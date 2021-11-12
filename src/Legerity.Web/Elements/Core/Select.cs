@@ -12,8 +12,6 @@ namespace Legerity.Web.Elements.Core
     /// </summary>
     public class Select : WebElementWrapper
     {
-        private readonly By selectItemQuery = By.TagName("option");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Select"/> class.
         /// </summary>
@@ -44,7 +42,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the select.
         /// </summary>
-        public IEnumerable<Option> Options => this.Element.FindElements(this.selectItemQuery).Select(e => new Option(e));
+        public IEnumerable<Option> Options => this.Element.FindElements(By.TagName("option")).Select(e => new Option(e));
 
         /// <summary>
         /// Gets the selected item when in a single selection state.

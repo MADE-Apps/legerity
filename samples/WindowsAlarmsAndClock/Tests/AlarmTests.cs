@@ -16,7 +16,7 @@ namespace WindowsAlarmsAndClock.Tests
             const string ExpectedAlarmName = "Test Add Alarm";
             var expectedAlarmTime = new TimeSpan(7, 5, 0);
 
-            var alarmPage = new AlarmPage();
+            AlarmPage alarmPage = new AppPage().SelectPage<AlarmPage>("Alarm");
 
             // Act
             alarmPage.GoToAddAlarm().SetAlarmTime(expectedAlarmTime).SetAlarmName(ExpectedAlarmName).SaveAlarm();
@@ -32,7 +32,7 @@ namespace WindowsAlarmsAndClock.Tests
             const string ExpectedAlarmName = "Test Edit Alarm";
             var expectedAlarmTime = new TimeSpan(12, 30, 0);
 
-            var alarmPage = new AlarmPage();
+            AlarmPage alarmPage = new AppPage().SelectPage<AlarmPage>("Alarm");
             alarmPage.GoToAddAlarm().SetAlarmTime(new TimeSpan(7, 5, 0)).SetAlarmName(ExpectedAlarmName).SaveAlarm();
 
             // Act

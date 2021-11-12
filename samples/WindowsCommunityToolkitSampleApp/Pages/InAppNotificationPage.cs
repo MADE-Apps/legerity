@@ -3,6 +3,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     using System.Linq;
     using Elements;
     using Legerity.Exceptions;
+    using Legerity.Extensions;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WCT;
     using Legerity.Windows.Extensions;
@@ -13,36 +14,36 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     /// </summary>
     public class InAppNotificationPage : AppPage
     {
-        private readonly By exampleInAppNotificationQuery = ByExtensions.AutomationId("ExampleInAppNotification");
+        private readonly By exampleInAppNotificationLocator = ByExtensions.AutomationId("ExampleInAppNotification");
 
-        private readonly By exampleCodeInAppNotificationQuery =
+        private readonly By exampleCodeInAppNotificationLocator =
             ByExtensions.AutomationId("ExampleVSCodeInAppNotification");
-
-        /// <summary>
-        /// Gets a given trait of the page to verify that the page is in view.
-        /// </summary>
-        protected override By Trait => By.XPath(".//*[@ClassName='TextBlock'][@Name='InAppNotification']");
 
         /// <summary>
         /// Gets the example in-app notification element.
         /// </summary>
         public InAppNotification ExampleInAppNotification =>
-            this.WindowsApp.FindElement(this.exampleInAppNotificationQuery);
+            this.WindowsApp.FindElement(this.exampleInAppNotificationLocator);
 
         /// <summary>
         /// Gets the example VS Code in-app notification element.
         /// </summary>
         public VsCodeInAppNotification ExampleVSCodeInAppNotification =>
-            this.WindowsApp.FindElement(this.exampleCodeInAppNotificationQuery);
+            this.WindowsApp.FindElement(this.exampleCodeInAppNotificationLocator);
 
-        public Button NotificationWithRandomTextButton => this.WindowsApp.FindElements(By.ClassName("Button"))
-            .FirstOrDefault(x => x.GetAttribute("Name") == "Show notification with random text");
+        public Button NotificationWithRandomTextButton => this.WindowsApp.FindElements(By.ClassName(nameof(Button)))
+            .FirstOrDefault(x => x.GetName() == "Show notification with random text");
 
-        public Button NotificationWithButtonsButton => this.WindowsApp.FindElements(By.ClassName("Button"))
-            .FirstOrDefault(x => x.GetAttribute("Name") == "Show notification with buttons (without DataTemplate)");
+        public Button NotificationWithButtonsButton => this.WindowsApp.FindElements(By.ClassName(nameof(Button)))
+            .FirstOrDefault(x => x.GetName() == "Show notification with buttons (without DataTemplate)");
 
-        public Button NotificationWithVSCodeTemplateButton => this.WindowsApp.FindElements(By.ClassName("Button"))
-            .FirstOrDefault(x => x.GetAttribute("Name") == "Show notification with Visual Studio Code template (info notification)");
+        public Button NotificationWithVSCodeTemplateButton => this.WindowsApp.FindElements(By.ClassName(nameof(Button)))
+            .FirstOrDefault(x => x.GetName() == "Show notification with Visual Studio Code template (info notification)");
+
+        /// <summary>
+        /// Gets a given trait of the page to verify that the page is in view.
+        /// </summary>
+        protected override By Trait => By.XPath(".//*[@ClassName='TextBlock'][@Name='InAppNotification']");
 
         public InAppNotificationPage ShowNotificationWithRandomText()
         {
@@ -66,7 +67,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         {
             if (!this.ExampleInAppNotification.IsVisible)
             {
-                throw new ElementNotShownException(this.exampleInAppNotificationQuery.ToString());
+                throw new ElementNotShownException(this.exampleInAppNotificationLocator.ToString());
             }
 
             return this;
@@ -80,7 +81,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
 
         public InAppNotificationPage VerifyExampleInAppNotificationHidden()
         {
-            this.VerifyElementNotShown(this.exampleInAppNotificationQuery);
+            this.VerifyElementNotShown(this.exampleInAppNotificationLocator);
             return this;
         }
 
@@ -88,7 +89,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         {
             if (!this.ExampleVSCodeInAppNotification.IsVisible)
             {
-                throw new ElementNotShownException(this.exampleCodeInAppNotificationQuery.ToString());
+                throw new ElementNotShownException(this.exampleCodeInAppNotificationLocator.ToString());
             }
 
             return this;
@@ -102,7 +103,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
 
         public InAppNotificationPage VerifyExampleVSCodeInAppNotificationHidden()
         {
-            this.VerifyElementNotShown(this.exampleCodeInAppNotificationQuery);
+            this.VerifyElementNotShown(this.exampleCodeInAppNotificationLocator);
             return this;
         }
     }

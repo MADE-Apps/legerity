@@ -16,11 +16,7 @@ namespace Legerity.Windows.Elements.WinUI
     /// </summary>
     public class TabView : WindowsElementWrapper
     {
-        private readonly By tabListViewQuery = ByExtensions.AutomationId("TabListView");
-
-        private readonly By addTabButtonQuery = ByExtensions.AutomationId("AddButton");
-
-        private readonly By closeTabButtonQuery = ByExtensions.AutomationId("CloseButton");
+        private readonly By tabListViewLocator = ByExtensions.AutomationId("TabListView");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TabView"/> class.
@@ -36,7 +32,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the element associated with the add tab button.
         /// </summary>
-        public Button AddTabButton => this.Element.FindElement(this.addTabButtonQuery);
+        public Button AddTabButton => this.Element.FindElement(ByExtensions.AutomationId("AddButton"));
 
         /// <summary>
         /// Gets the collection of items associated with the pivot.
@@ -48,7 +44,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// </summary>
         public AppiumWebElement SelectedItem => this.TabsListView.SelectedItem;
 
-        private ListView TabsListView => this.Element.FindElement(this.tabListViewQuery);
+        private ListView TabsListView => this.Element.FindElement(this.tabListViewLocator);
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="TabView"/> without direct casting.
@@ -83,7 +79,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// </summary>
         public void CreateTab()
         {
-            this.VerifyElementShown(this.tabListViewQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
             this.AddTabButton.Click();
         }
 
@@ -95,7 +91,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// </param>
         public void SelectTab(string name)
         {
-            this.VerifyElementShown(this.tabListViewQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
             AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
             item.Click();
         }
@@ -106,9 +102,9 @@ namespace Legerity.Windows.Elements.WinUI
         /// <param name="name">The name of the item to close.</param>
         public void CloseTab(string name)
         {
-            this.VerifyElementShown(this.tabListViewQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
             AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
-            Button closeButton = item.FindElement(this.closeTabButtonQuery);
+            Button closeButton = item.FindElement(ByExtensions.AutomationId("CloseButton"));
             closeButton.Click();
         }
     }

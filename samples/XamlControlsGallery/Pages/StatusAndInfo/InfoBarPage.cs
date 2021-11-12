@@ -10,7 +10,7 @@ namespace XamlControlsGallery.Pages.StatusAndInfo
     /// </summary>
     public class InfoBarPage : BasePage
     {
-        private readonly By closableBarWithOptsQuery = ByExtensions.AutomationId("TestInfoBar1");
+        public InfoBar CloseableBarWithOpts => this.WindowsApp.FindElement(ByExtensions.AutomationId("TestInfoBar1"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -19,8 +19,7 @@ namespace XamlControlsGallery.Pages.StatusAndInfo
 
         public InfoBarPage CloseClosableBarWithOptions()
         {
-            InfoBar closeableBarWithOpts = this.WindowsApp.FindElement(this.closableBarWithOptsQuery);
-            closeableBarWithOpts.Close();
+            this.CloseableBarWithOpts.Close();
             return this;
         }
     }

@@ -12,7 +12,7 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
     /// </summary>
     public class AppBarToggleButtonPage : BasePage
     {
-        private readonly By symbolIconQuery = By.Name("SymbolIcon");
+        public AppBarToggleButton ToggleButton => this.WindowsApp.FindElement(By.Name("SymbolIcon"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -30,15 +30,13 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
         /// </returns>
         public AppBarToggleButtonPage ToggleSymbolIconButton(bool on)
         {
-            AppBarToggleButton toggle = this.WindowsApp.FindElement(this.symbolIconQuery);
-
             if (on)
             {
-                toggle.ToggleOn();
+                this.ToggleButton.ToggleOn();
             }
             else
             {
-                toggle.ToggleOff();
+                this.ToggleButton.ToggleOff();
             }
 
             return this;
@@ -52,8 +50,7 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
         /// </param>
         public void VerifySymbolIconButton(bool on)
         {
-            AppBarToggleButton toggle = this.WindowsApp.FindElement(this.symbolIconQuery);
-            Assert.AreEqual(on, toggle.IsOn);
+            Assert.AreEqual(on, this.ToggleButton.IsOn);
         }
     }
 }

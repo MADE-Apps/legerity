@@ -3,7 +3,6 @@ namespace Legerity.Windows.Elements.WCT
     using System;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Extensions;
-    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>
@@ -11,10 +10,6 @@ namespace Legerity.Windows.Elements.WCT
     /// </summary>
     public class BladeViewItem : WindowsElementWrapper
     {
-        private readonly By enlargeButtonQuery = ByExtensions.AutomationId("EnlargeButton");
-
-        private readonly By closeButtonQuery = ByExtensions.AutomationId("CloseButton");
-
         private readonly WeakReference parentBladeViewReference;
 
         /// <summary>
@@ -57,12 +52,12 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets the <see cref="Button"/> element associated with the blade enlarge option.
         /// </summary>
-        public Button EnlargeButton => this.Element.FindElement(this.enlargeButtonQuery);
+        public Button EnlargeButton => this.Element.FindElement(ByExtensions.AutomationId("EnlargeButton"));
 
         /// <summary>
         /// Gets the <see cref="Button"/> element associated with the blade close option.
         /// </summary>
-        public Button CloseButton => this.Element.FindElement(this.closeButtonQuery);
+        public Button CloseButton => this.Element.FindElement(ByExtensions.AutomationId("CloseButton"));
 
         /// <summary>
         /// Closes the blade item.

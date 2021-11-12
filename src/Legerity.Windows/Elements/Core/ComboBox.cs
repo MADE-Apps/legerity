@@ -3,6 +3,7 @@ namespace Legerity.Windows.Elements.Core
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using Legerity.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -12,7 +13,7 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class ComboBox : WindowsElementWrapper
     {
-        private readonly By comboBoxItemQuery = By.ClassName("ComboBoxItem");
+        private readonly By comboBoxItemLocator = By.ClassName("ComboBoxItem");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBox"/> class.
@@ -68,20 +69,20 @@ namespace Legerity.Windows.Elements.Core
         {
             this.Element.Click();
 
-            this.VerifyElementsShown(this.comboBoxItemQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementsShown(this.comboBoxItemLocator, TimeSpan.FromSeconds(2));
 
-            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemQuery);
+            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator);
 
             AppiumWebElement item = listElements.FirstOrDefault(
-                element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase));
+                element => element.GetName().Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
             item.Click();
         }
 
         private string GetSelectedItem()
         {
-            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemQuery);
-            return listElements.Count == 1 ? listElements.FirstOrDefault().GetAttribute("Name") : null;
+            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator);
+            return listElements.Count == 1 ? listElements.FirstOrDefault().GetName() : null;
         }
     }
 }

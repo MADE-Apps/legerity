@@ -11,8 +11,6 @@ namespace Legerity.Windows.Elements.MADE
     /// </summary>
     public class InputValidator : WindowsElementWrapper
     {
-        private readonly By validationFeedbackQuery = ByExtensions.AutomationId("ValidatorFeedbackMessage");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="InputValidator"/> class.
         /// </summary>
@@ -27,7 +25,7 @@ namespace Legerity.Windows.Elements.MADE
         /// <summary>
         /// Gets the <see cref="TextBlock"/> associated with the validation feedback message.
         /// </summary>
-        public TextBlock ValidationFeedback => this.Element.FindElement(this.validationFeedbackQuery);
+        public TextBlock ValidationFeedback => this.Element.FindElement(ByExtensions.AutomationId("ValidatorFeedbackMessage"));
 
         /// <summary>
         /// Gets the validation feedback message associated with the <see cref="ValidationFeedback"/> element.
@@ -63,13 +61,13 @@ namespace Legerity.Windows.Elements.MADE
         }
 
         /// <summary>
-        /// Retrieves the input element with the given query.
+        /// Retrieves the input element with the given locator.
         /// </summary>
-        /// <param name="query">The query to find the input element.</param>
+        /// <param name="locator">The locator to find the input element.</param>
         /// <returns>The <see cref="AppiumWebElement"/> if found; otherwise, throws <see cref="WebDriverException"/>.</returns>
-        public AppiumWebElement Input(By query)
+        public AppiumWebElement Input(By locator)
         {
-            return this.Element.FindElement(query);
+            return this.Element.FindElement(locator);
         }
 
         /// <summary>
