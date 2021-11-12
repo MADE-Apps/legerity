@@ -2,13 +2,12 @@ namespace Legerity
 {
     using System;
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines an interface for a Selenium/Appium element wrapper.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="IWebElement"/>.
     /// </typeparam>
     public interface IElementWrapper<TElement>
         where TElement : IWebElement
