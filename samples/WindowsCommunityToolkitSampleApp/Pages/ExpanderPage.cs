@@ -10,17 +10,9 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     /// </summary>
     public class ExpanderPage : AppPage
     {
-        private readonly By verticalExpanderQuery;
-        private readonly By horizontalExpanderQuery;
+        public Expander VerticalExpander => this.WindowsApp.FindElement(ByExtensions.AutomationId("Expander1"));
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ExpanderPage"/> class.
-        /// </summary>
-        public ExpanderPage()
-        {
-            this.verticalExpanderQuery = ByExtensions.AutomationId("Expander1");
-            this.horizontalExpanderQuery = ByExtensions.AutomationId("Expander2");
-        }
+        public Expander HorizontalExpander => this.WindowsApp.FindElement(ByExtensions.AutomationId("Expander2"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -38,15 +30,13 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         /// </returns>
         public ExpanderPage ToggleVerticalExpander(bool expanded)
         {
-            Expander expander = this.WindowsApp.FindElement(this.verticalExpanderQuery);
-
             if (expanded)
             {
-                expander.Expand();
+                this.VerticalExpander.Expand();
             }
             else
             {
-                expander.Collapse();
+                this.VerticalExpander.Collapse();
             }
 
             return this;
@@ -63,15 +53,13 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         /// </returns>
         public ExpanderPage ToggleHorizontalExpander(bool expanded)
         {
-            Expander expander = this.WindowsApp.FindElement(this.horizontalExpanderQuery);
-
             if (expanded)
             {
-                expander.Expand();
+                this.HorizontalExpander.Expand();
             }
             else
             {
-                expander.Collapse();
+                this.HorizontalExpander.Collapse();
             }
 
             return this;
@@ -85,8 +73,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         /// </param>
         public void VerifyVerticalExpanderState(bool expanded)
         {
-            Expander expander = this.WindowsApp.FindElement(this.verticalExpanderQuery);
-            Assert.AreEqual(expanded, expander.IsExpanded);
+            Assert.AreEqual(expanded, this.VerticalExpander.IsExpanded);
         }
 
         /// <summary>
@@ -97,8 +84,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         /// </param>
         public void VerifyHorizontalExpanderState(bool expanded)
         {
-            Expander expander = this.WindowsApp.FindElement(this.horizontalExpanderQuery);
-            Assert.AreEqual(expanded, expander.IsExpanded);
+            Assert.AreEqual(expanded, this.HorizontalExpander.IsExpanded);
         }
 
     }

@@ -12,11 +12,11 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public partial class InkToolbar : WindowsElementWrapper
     {
-        private readonly By ballpointPenFlyoutQuery = By.Name("Ballpoint pen flyout");
+        private readonly By ballpointPenFlyoutLocator = By.Name("Ballpoint pen flyout");
 
-        private readonly By pencilFlyoutQuery = By.Name("Pencil flyout");
+        private readonly By pencilFlyoutLocator = By.Name("Pencil flyout");
 
-        private readonly By highlighterFlyoutQuery = By.Name("Highlighter flyout");
+        private readonly By highlighterFlyoutLocator = By.Name("Highlighter flyout");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InkToolbar"/> class.
@@ -69,11 +69,11 @@ namespace Legerity.Windows.Elements.Core
             this.Element.FindElement(ByExtensions.AutomationId("InkToolbarStencilButton"));
 
         private InkToolbarBallpointPenFlyout BallpointPenFlyout =>
-            this.Driver.FindElement(this.ballpointPenFlyoutQuery);
+            this.Driver.FindElement(this.ballpointPenFlyoutLocator);
 
-        private InkToolbarPencilFlyout PencilFlyout => this.Driver.FindElement(this.pencilFlyoutQuery);
+        private InkToolbarPencilFlyout PencilFlyout => this.Driver.FindElement(this.pencilFlyoutLocator);
 
-        private InkToolbarHighlighterFlyout HighlighterFlyout => this.Driver.FindElement(this.highlighterFlyoutQuery);
+        private InkToolbarHighlighterFlyout HighlighterFlyout => this.Driver.FindElement(this.highlighterFlyoutLocator);
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InkToolbar"/> without direct casting.
@@ -122,7 +122,7 @@ namespace Legerity.Windows.Elements.Core
             this.SelectBallpointPen();
 
             this.BallpointPenButton.Click();
-            this.VerifyDriverElementShown(this.ballpointPenFlyoutQuery, TimeSpan.FromSeconds(2));
+            this.VerifyDriverElementShown(this.ballpointPenFlyoutLocator, TimeSpan.FromSeconds(2));
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Legerity.Windows.Elements.Core
             this.SelectPencil();
 
             this.PencilButton.Click();
-            this.VerifyDriverElementShown(this.pencilFlyoutQuery, TimeSpan.FromSeconds(2));
+            this.VerifyDriverElementShown(this.pencilFlyoutLocator, TimeSpan.FromSeconds(2));
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Legerity.Windows.Elements.Core
             this.SelectHighlighter();
 
             this.HighlighterButton.Click();
-            this.VerifyDriverElementShown(this.highlighterFlyoutQuery, TimeSpan.FromSeconds(2));
+            this.VerifyDriverElementShown(this.highlighterFlyoutLocator, TimeSpan.FromSeconds(2));
         }
 
         /// <summary>

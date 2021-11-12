@@ -1,7 +1,6 @@
 namespace XamlControlsGallery.Pages.DateAndTime
 {
     using System;
-
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
 
@@ -14,7 +13,7 @@ namespace XamlControlsGallery.Pages.DateAndTime
     /// </summary>
     public class CalendarDatePickerPage : BasePage
     {
-        private readonly By calendarDatePickerQuery = By.ClassName("CalendarDatePicker");
+        public CalendarDatePicker CalendarDatePicker => this.WindowsApp.FindElement(By.ClassName(nameof(this.CalendarDatePicker)));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -32,8 +31,7 @@ namespace XamlControlsGallery.Pages.DateAndTime
         /// </returns>
         public CalendarDatePickerPage SetCalendarDatePickerDate(DateTime date)
         {
-            CalendarDatePicker calendarDatePicker = this.WindowsApp.FindElement(this.calendarDatePickerQuery);
-            calendarDatePicker.SetDate(date);
+            this.CalendarDatePicker.SetDate(date);
             return this;
         }
 
@@ -47,8 +45,7 @@ namespace XamlControlsGallery.Pages.DateAndTime
         {
             string expectedValue = date.ToString("dd/MM/yyyy");
 
-            CalendarView calendarView = this.WindowsApp.FindElement(this.calendarDatePickerQuery);
-            string actual = calendarView.Value;
+            string actual = this.CalendarDatePicker.Value;
 
             Assert.IsTrue(expectedValue.Equals(actual, StringComparison.CurrentCultureIgnoreCase));
         }

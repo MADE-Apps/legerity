@@ -3,7 +3,7 @@ namespace Legerity.Windows.Elements.WinUI
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+    using Legerity.Extensions;
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;
@@ -14,7 +14,7 @@ namespace Legerity.Windows.Elements.WinUI
     /// </summary>
     public class NavigationViewItem : WindowsElementWrapper
     {
-        private readonly By navigationViewItemQuery = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+        private readonly By navigationViewItemLocator = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
 
         private readonly WeakReference parentNavigationViewReference;
 
@@ -90,13 +90,13 @@ namespace Legerity.Windows.Elements.WinUI
 
         /// <summary>Gets the original parent <see cref="NavigationView"/> reference object.</summary>
         public NavigationView ParentNavigationView =>
-            this.parentNavigationViewReference != null && this.parentNavigationViewReference.IsAlive
+            this.parentNavigationViewReference is { IsAlive: true }
                 ? this.parentNavigationViewReference.Target as NavigationView
                 : null;
 
         /// <summary>Gets the original parent <see cref="NavigationViewItem"/> reference object.</summary>
         public NavigationViewItem ParentItem =>
-            this.parentItemReference != null && this.parentItemReference.IsAlive
+            this.parentItemReference is { IsAlive: true }
                 ? this.parentItemReference.Target as NavigationViewItem
                 : null;
 
@@ -125,7 +125,7 @@ namespace Legerity.Windows.Elements.WinUI
         public NavigationViewItem ClickChildOption(string name)
         {
             NavigationViewItem item = this.ChildMenuItems.FirstOrDefault(
-                element => element.Element.GetAttribute("Name")
+                element => element.GetName()
                     .Equals(name, StringComparison.CurrentCultureIgnoreCase));
             item.Click();
             return item;
@@ -135,15 +135,13 @@ namespace Legerity.Windows.Elements.WinUI
         {
             if (this.ParentNavigationView == null || this.ParentNavigationView.IsPaneOpen)
             {
-                return this.Element.FindElements(this.navigationViewItemQuery).Select(
+                return this.Element.FindElements(this.navigationViewItemLocator).Select(
                     element => new NavigationViewItem(this.ParentNavigationView, this, element as WindowsElement));
             }
-            else
-            {
-                return this.Driver.FindElement(ByExtensions.AutomationId("ChildrenFlyout"))
-                    .FindElements(this.navigationViewItemQuery).Select(
-                        element => new NavigationViewItem(this.ParentNavigationView, this, element as WindowsElement));
-            }
+
+            return this.Driver.FindElement(ByExtensions.AutomationId("ChildrenFlyout"))
+                .FindElements(this.navigationViewItemLocator).Select(
+                    element => new NavigationViewItem(this.ParentNavigationView, this, element as WindowsElement));
         }
     }
 }

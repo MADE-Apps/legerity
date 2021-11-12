@@ -11,25 +11,25 @@ namespace Legerity.Extensions
     public static class DriverExtensions
     {
         /// <summary>
-        /// Finds the first element in the page that matches the <see cref="By" /> query.
+        /// Finds the first element in the page that matches the <see cref="By" /> locator.
         /// </summary>
         /// <param name="driver">The remote web driver.</param>
-        /// <param name="by">The query to find the element.</param>
+        /// <param name="locator">The locator to find the element.</param>
         /// <returns>A <see cref="RemoteWebElement"/>.</returns>
-        public static RemoteWebElement FindWebElement(this RemoteWebDriver driver, By by)
+        public static RemoteWebElement FindWebElement(this RemoteWebDriver driver, By locator)
         {
-            return driver.FindElement(by) as RemoteWebElement;
+            return driver.FindElement(locator) as RemoteWebElement;
         }
 
         /// <summary>
-        /// Finds all the elements in the page that matches the <see cref="By" /> query.
+        /// Finds all the elements in the page that matches the <see cref="By" /> locator.
         /// </summary>
         /// <param name="driver">The remote web driver.</param>
-        /// <param name="by">The query to find the elements.</param>
+        /// <param name="locator">The locator to find the elements.</param>
         /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
-        public static ReadOnlyCollection<RemoteWebElement> FindWebElements(this RemoteWebDriver driver, By by)
+        public static ReadOnlyCollection<RemoteWebElement> FindWebElements(this RemoteWebDriver driver, By locator)
         {
-            return driver.FindElements(by).Cast<RemoteWebElement>().ToList().AsReadOnly();
+            return driver.FindElements(locator).Cast<RemoteWebElement>().ToList().AsReadOnly();
         }
 
         /// <summary>

@@ -1,10 +1,7 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
-
     using Legerity.Windows.Extensions;
-
-    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -13,16 +10,6 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class TimePicker : WindowsElementWrapper
     {
-        private readonly By flyoutQuery = ByExtensions.AutomationId("TimePickerFlyoutPresenter");
-
-        private readonly By hourSelectorQuery = ByExtensions.AutomationId("HourLoopingSelector");
-
-        private readonly By minuteSelectorQuery = ByExtensions.AutomationId("MinuteLoopingSelector");
-
-        private readonly By acceptButtonQuery = ByExtensions.AutomationId("AcceptButton");
-
-        private readonly By dismissButtonQuery = ByExtensions.AutomationId("DismissButton");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="TimePicker"/> class.
         /// </summary>
@@ -74,10 +61,10 @@ namespace Legerity.Windows.Elements.Core
             this.Element.Click();
 
             // Finds the popup and changes the time.
-            WindowsElement popup = this.Driver.FindElement(this.flyoutQuery);
-            popup.FindElement(this.hourSelectorQuery).FindElementByName(time.ToString("%h")).Click();
-            popup.FindElement(this.minuteSelectorQuery).FindElementByName(time.ToString("mm")).Click();
-            popup.FindElement(this.acceptButtonQuery).Click();
+            WindowsElement popup = this.Driver.FindElement(ByExtensions.AutomationId("TimePickerFlyoutPresenter"));
+            popup.FindElement(ByExtensions.AutomationId("HourLoopingSelector")).FindElementByName(time.ToString("%h")).Click();
+            popup.FindElement(ByExtensions.AutomationId("MinuteLoopingSelector")).FindElementByName(time.ToString("mm")).Click();
+            popup.FindElement(ByExtensions.AutomationId("AcceptButton")).Click();
         }
     }
 }

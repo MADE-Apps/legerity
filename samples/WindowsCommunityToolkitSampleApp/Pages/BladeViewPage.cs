@@ -10,8 +10,6 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     /// </summary>
     public class BladeViewPage : AppPage
     {
-        private readonly By bladeViewQuery = ByExtensions.AutomationId("BladeView");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="BladeViewPage"/> class.
         /// </summary>
@@ -19,7 +17,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         {
         }
 
-        public BladeView BladeView => this.WindowsApp.FindElement(this.bladeViewQuery);
+        public BladeView BladeView => this.WindowsApp.FindElement(ByExtensions.AutomationId("BladeView"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

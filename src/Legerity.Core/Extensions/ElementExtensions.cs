@@ -24,25 +24,25 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
-        /// Finds the first element in the given element that matches the <see cref="By" /> query.
+        /// Finds the first element in the given element that matches the <see cref="By" /> locator.
         /// </summary>
         /// <param name="element">The remote web element.</param>
-        /// <param name="by">The query to find the element.</param>
+        /// <param name="locator">The locator to find the element.</param>
         /// <returns>A <see cref="RemoteWebElement"/>.</returns>
-        public static RemoteWebElement FindWebElement(this IWebElement element, By by)
+        public static RemoteWebElement FindWebElement(this IWebElement element, By locator)
         {
-            return element.FindElement(by) as RemoteWebElement;
+            return element.FindElement(locator) as RemoteWebElement;
         }
 
         /// <summary>
-        /// Finds all the elements in the given element that matches the <see cref="By" /> query.
+        /// Finds all the elements in the given element that matches the <see cref="By" /> locator.
         /// </summary>
         /// <param name="element">The remote web element.</param>
-        /// <param name="by">The query to find the elements.</param>
+        /// <param name="locator">The locator to find the elements.</param>
         /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
-        public static ReadOnlyCollection<RemoteWebElement> FindWebElements(this IWebElement element, By by)
+        public static ReadOnlyCollection<RemoteWebElement> FindWebElements(this IWebElement element, By locator)
         {
-            return element.FindElements(by).Cast<RemoteWebElement>().ToList().AsReadOnly();
+            return element.FindElements(locator).Cast<RemoteWebElement>().ToList().AsReadOnly();
         }
 
         /// <summary>

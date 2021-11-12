@@ -5,7 +5,7 @@ namespace Legerity.Windows.Elements.Core
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading;
-
+    using Legerity.Extensions;
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;
@@ -17,10 +17,6 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class CalendarView : WindowsElementWrapper
     {
-        private readonly By monthPaneQuery = ByExtensions.AutomationId("MonthViewScrollViewer");
-
-        private readonly By calendarViewDayItemQuery = By.ClassName("CalendarViewDayItem");
-
         private readonly Dictionary<string, string> months = new Dictionary<string, string>()
                                                           {
                                                               { "January", "01" },
@@ -66,7 +62,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the collection of days associated with the current month in the calendar view.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Days => this.Element.FindElements(this.calendarViewDayItemQuery);
+        public ReadOnlyCollection<AppiumWebElement> Days => this.Element.FindElements(By.ClassName("CalendarViewDayItem"));
 
         /// <summary>
         /// Gets the value of the calendar view.
@@ -110,7 +106,7 @@ namespace Legerity.Windows.Elements.Core
             string expectedDay = date.ToString("%d");
             string expectedHeader = date.ToString("MMMM yyyy");
 
-            string currentHeader = this.HeaderButton.Element.GetAttribute("Name");
+            string currentHeader = this.HeaderButton.GetName();
             DateTime currentViewDate = this.GetCurrentViewDate(currentHeader);
 
             while (!expectedHeader.Equals(currentHeader, StringComparison.CurrentCultureIgnoreCase))
@@ -126,11 +122,11 @@ namespace Legerity.Windows.Elements.Core
 
                 Thread.Sleep(10);
 
-                currentHeader = this.HeaderButton.Element.GetAttribute("Name");
+                currentHeader = this.HeaderButton.GetName();
             }
 
             AppiumWebElement item = this.Days.FirstOrDefault(
-                element => element.GetAttribute("Name").Equals(expectedDay, StringComparison.CurrentCultureIgnoreCase));
+                element => element.GetName().Equals(expectedDay, StringComparison.CurrentCultureIgnoreCase));
 
             item.Click();
         }

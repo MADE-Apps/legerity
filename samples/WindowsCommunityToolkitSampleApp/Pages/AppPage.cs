@@ -12,7 +12,9 @@ namespace WindowsCommunityToolkitSampleApp.Pages
 
     public class AppPage : BasePage
     {
-        private readonly By sampleSearchBoxQuery = ByExtensions.AutomationId("SearchBox");
+        public NavigationView NavigationView => this.WindowsApp.FindElement(this.Trait);
+
+        public AutoSuggestBox SampleSearchBox => this.NavigationView.FindElement(ByExtensions.AutomationId("SearchBox"));
 
         /// <summary>
         /// Gets the UI component associated with the sample picker.
@@ -43,10 +45,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
 
         private void SearchForSample(string sampleName)
         {
-            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
-            AutoSuggestBox controlsSearchBox = navigationView.Element.FindElement(this.sampleSearchBoxQuery);
-            controlsSearchBox.SetText(sampleName);
-
+            this.SampleSearchBox.SetText(sampleName);
             Thread.Sleep(100);
         }
     }

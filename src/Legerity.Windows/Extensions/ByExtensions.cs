@@ -10,13 +10,13 @@ namespace Legerity.Windows.Extensions
     public static class ByExtensions
     {
         /// <summary>
-        /// Provides a query for retrieving an element by a Windows AutomationId.
+        /// Provides a locator for retrieving an element by a Windows AutomationId.
         /// </summary>
         /// <param name="automationId">
         /// The automation ID of the element to retrieve.
         /// </param>
         /// <returns>
-        /// The <see cref="By"/> query for the Windows element.
+        /// The <see cref="By"/> locator for the Windows element.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         /// Thrown if the <paramref name="automationId"/> is null.

@@ -12,9 +12,7 @@ namespace Legerity.Windows.Elements.Telerik
     /// </summary>
     public class RadAutoCompleteBox : WindowsElementWrapper
     {
-        private readonly By textBoxQuery = By.ClassName("TextBox");
-
-        private readonly By listBoxQuery = ByExtensions.AutomationId("PART_SuggestionsControl");
+        private readonly By suggestionsControlLocator = ByExtensions.AutomationId("PART_SuggestionsControl");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RadAutoCompleteBox"/> class.
@@ -30,7 +28,7 @@ namespace Legerity.Windows.Elements.Telerik
         /// <summary>
         /// Gets the element associated with the text box.
         /// </summary>
-        public TextBox TextBox => this.Element.FindElement(this.textBoxQuery);
+        public TextBox TextBox => this.Element.FindElement(By.ClassName("TextBox"));
 
         /// <summary>
         /// Gets the value of the auto-suggest box.
@@ -83,9 +81,9 @@ namespace Legerity.Windows.Elements.Telerik
         {
             this.SetText(value);
 
-            this.VerifyElementShown(this.listBoxQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.suggestionsControlLocator, TimeSpan.FromSeconds(2));
 
-            ListBox suggestionList = this.Element.FindElement(this.listBoxQuery);
+            ListBox suggestionList = this.Element.FindElement(this.suggestionsControlLocator);
             suggestionList.ClickItem(suggestion);
         }
 

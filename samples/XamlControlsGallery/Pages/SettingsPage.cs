@@ -10,7 +10,7 @@ namespace XamlControlsGallery.Pages
 
     public class SettingsPage : BasePage
     {
-        private readonly By soundToggleQuery = ByExtensions.AutomationId("soundToggle");
+        public ToggleSwitch SoundToggle => this.WindowsApp.FindElement(ByExtensions.AutomationId("soundToggle"));
 
         protected override By Trait => By.XPath(".//*[@Name='Settings'][@AutomationId='TitleTextBlock']");
 
@@ -23,15 +23,13 @@ namespace XamlControlsGallery.Pages
         /// </returns>
         public SettingsPage ToggleSoundOption(bool toggleOn)
         {
-            ToggleSwitch soundToggle = this.WindowsApp.FindElement(this.soundToggleQuery);
-
             if (toggleOn)
             {
-                soundToggle.ToggleOn();
+                this.SoundToggle.ToggleOn();
             }
             else
             {
-                soundToggle.ToggleOff();
+                this.SoundToggle.ToggleOff();
             }
 
             return this;
@@ -51,9 +49,7 @@ namespace XamlControlsGallery.Pages
         /// </exception>
         public SettingsPage VerifyToggleSoundOption(bool expectedToggleOn)
         {
-            ToggleSwitch soundToggle = this.WindowsApp.FindElement(this.soundToggleQuery);
-
-            if ((!expectedToggleOn || !soundToggle.IsOn) && (expectedToggleOn || soundToggle.IsOn))
+            if ((!expectedToggleOn || !this.SoundToggle.IsOn) && (expectedToggleOn || this.SoundToggle.IsOn))
             {
                 throw new AssertFailedException(
                     $"The toggle switch 'soundToggle' was not in the expected state. Expected toggle on: {expectedToggleOn}.");

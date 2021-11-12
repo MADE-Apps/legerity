@@ -13,19 +13,10 @@ namespace XamlControlsGallery.Pages.Text
     /// </summary>
     public class NumberBoxPage : BasePage
     {
-        private readonly By spinnerNumberBoxQuery = ByExtensions.AutomationId("NumberBoxSpinButtonPlacementExample");
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NumberBoxPage"/> class.
-        /// </summary>
-        public NumberBoxPage()
-        {
-        }
-
         /// <summary>
         /// Gets the element associated with the spinner number box.
         /// </summary>
-        public NumberBox SpinnerNumberBox => this.WindowsApp.FindElement(this.spinnerNumberBoxQuery);
+        public NumberBox SpinnerNumberBox => this.WindowsApp.FindElement(ByExtensions.AutomationId("NumberBoxSpinButtonPlacementExample"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

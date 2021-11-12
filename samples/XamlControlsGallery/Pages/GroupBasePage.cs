@@ -11,9 +11,9 @@ namespace XamlControlsGallery.Pages
     public abstract class GroupBasePage : BasePage
     {
         /// <summary>
-        /// Gets the query associated with the control list.
+        /// Gets the locator associated with the control list.
         /// </summary>
-        public By ControlList => By.Name("Items In Group");
+        public By ControlListLocator => By.Name("Items In Group");
 
         /// <summary>
         /// Navigates to a page within the control list.
@@ -23,7 +23,7 @@ namespace XamlControlsGallery.Pages
         /// </param>
         public void NavigateTo(string page)
         {
-            GridView gridView = this.WindowsApp.FindElement(this.ControlList);
+            GridView gridView = this.WindowsApp.FindElement(this.ControlListLocator);
             gridView.ClickItem(page);
         }
     }

@@ -2,7 +2,7 @@ namespace Legerity.Windows.Elements.Core
 {
     using System;
     using System.Linq;
-
+    using Legerity.Extensions;
     using Legerity.Windows.Extensions;
 
     using OpenQA.Selenium;
@@ -19,9 +19,7 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         private abstract class InkToolbarColorFlyoutBase : WindowsElementWrapper
         {
-            private readonly By colorGridViewQuery = ByExtensions.AutomationId("PenColorPalette");
-
-            private readonly By sizeSliderQuery = ByExtensions.AutomationId("PenStrokeWidthSlider");
+            private readonly By penColorPaletteLocator = ByExtensions.AutomationId("PenColorPalette");
 
             /// <summary>
             /// Initializes a new instance of the <see cref="InkToolbarColorFlyoutBase"/> class.
@@ -37,17 +35,17 @@ namespace Legerity.Windows.Elements.Core
             /// <summary>
             /// Gets the element associated with the color grid.
             /// </summary>
-            public GridView ColorGridView => this.Driver.FindElement(this.colorGridViewQuery);
+            public GridView ColorGridView => this.Driver.FindElement(this.penColorPaletteLocator);
 
             /// <summary>
             /// Gets the element associated with the size of the ink.
             /// </summary>
-            public Slider SizeSlider => this.Driver.FindElement(this.sizeSliderQuery);
+            public Slider SizeSlider => this.Driver.FindElement(ByExtensions.AutomationId("PenStrokeWidthSlider"));
 
             /// <summary>
             /// Gets the currently selected color.
             /// </summary>
-            public string SelectedColor => this.GetSelectedColor().GetAttribute("Name");
+            public string SelectedColor => this.GetSelectedColor().GetName();
 
             /// <summary>
             /// Gets the currently selected size.
@@ -65,7 +63,7 @@ namespace Legerity.Windows.Elements.Core
 
             private AppiumWebElement GetSelectedColor()
             {
-                this.VerifyElementShown(this.colorGridViewQuery, TimeSpan.FromSeconds(2));
+                this.VerifyElementShown(this.penColorPaletteLocator, TimeSpan.FromSeconds(2));
 
                 return this.ColorGridView.Items.FirstOrDefault(
                     i => i.GetAttribute("SelectionItem.IsSelected").Equals(

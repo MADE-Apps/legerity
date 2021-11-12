@@ -3,7 +3,6 @@ namespace Legerity.Windows.Elements.WCT
     using System.Linq;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Extensions;
-    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -12,8 +11,6 @@ namespace Legerity.Windows.Elements.WCT
     /// </summary>
     public class InAppNotification : WindowsElementWrapper
     {
-        private readonly By dismissButtonQuery = ByExtensions.AutomationId("PART_DismissButton");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="InAppNotification"/> class.
         /// </summary>
@@ -28,7 +25,7 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets the dismiss button.
         /// </summary>
-        public virtual Button DismissButton => this.Element.FindElement(this.dismissButtonQuery);
+        public virtual Button DismissButton => this.Element.FindElement(ByExtensions.AutomationId("PART_DismissButton"));
 
         /// <summary>
         /// Gets the message displayed.

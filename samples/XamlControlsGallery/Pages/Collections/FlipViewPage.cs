@@ -13,7 +13,9 @@ namespace XamlControlsGallery.Pages.Collections
     /// </summary>
     public class FlipViewPage : BasePage
     {
-        private readonly By flipViewQuery = By.ClassName("FlipView");
+        private readonly By flipViewLocator = By.ClassName(nameof(FlipView));
+
+        public FlipView XamlFlipView => this.WindowsApp.FindElements(this.flipViewLocator).LastOrDefault();
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -27,8 +29,7 @@ namespace XamlControlsGallery.Pages.Collections
         /// <returns>The <see cref="FlipViewPage"/>.</returns>
         public FlipViewPage SelectXamlFlipViewItem(string name)
         {
-            FlipView xamlFlipView = this.WindowsApp.FindElements(this.flipViewQuery).LastOrDefault();
-            xamlFlipView.SelectItem(name);
+            this.XamlFlipView.SelectItem(name);
             return this;
         }
 
@@ -40,8 +41,7 @@ namespace XamlControlsGallery.Pages.Collections
         /// </param>
         public void VerifyXamlFlipViewItem(string expectedItem)
         {
-            FlipView xamlFlipView = this.WindowsApp.FindElements(this.flipViewQuery).LastOrDefault();
-            Assert.AreEqual(expectedItem, xamlFlipView.SelectedItem.Text);
+            Assert.AreEqual(expectedItem, this.XamlFlipView.SelectedItem.Text);
         }
     }
 }

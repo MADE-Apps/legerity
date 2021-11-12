@@ -12,8 +12,6 @@ namespace Legerity.Windows.Elements.WCT
     /// </summary>
     public class BladeView : WindowsElementWrapper
     {
-        private readonly By bladeViewItemQuery = By.ClassName("BladeItem");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="BladeView"/> class.
         /// </summary>
@@ -29,7 +27,7 @@ namespace Legerity.Windows.Elements.WCT
         /// Gets the UI components associated with the child blades.
         /// </summary>
         public IEnumerable<BladeViewItem> Blades =>
-            this.Element.FindElements(this.bladeViewItemQuery)
+            this.Element.FindElements(By.ClassName("BladeItem"))
                 .Select(element => new BladeViewItem(this, element as WindowsElement));
 
         /// <summary>

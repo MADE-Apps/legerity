@@ -4,20 +4,15 @@ namespace WindowsAlarmsAndClock.Elements
 
     using Legerity.Windows.Elements;
     using Legerity.Windows.Extensions;
-
-    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the custom TimePicker control.
     /// </summary>
     public class CustomTimePicker : WindowsElementWrapper
     {
-        private readonly By hourSelectorQuery = ByExtensions.AutomationId("HourLoopingSelector");
-
-        private readonly By minuteSelectorQuery = ByExtensions.AutomationId("MinuteLoopingSelector");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomTimePicker"/> class.
         /// </summary>
@@ -58,6 +53,20 @@ namespace WindowsAlarmsAndClock.Elements
         }
 
         /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CustomTimePicker"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="AppiumWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="CustomTimePicker"/>.
+        /// </returns>
+        public static implicit operator CustomTimePicker(RemoteWebElement element)
+        {
+            return new CustomTimePicker(element as WindowsElement);
+        }
+
+        /// <summary>
         /// Sets the time to the specified time.
         /// </summary>
         /// <param name="time">
@@ -65,8 +74,8 @@ namespace WindowsAlarmsAndClock.Elements
         /// </param>
         public void SetTime(TimeSpan time)
         {
-            this.Element.FindElement(this.hourSelectorQuery).FindElementByName(time.ToString("%h")).Click();
-            this.Element.FindElement(this.minuteSelectorQuery).FindElementByName(time.ToString("mm")).Click();
+            this.Element.FindElement(ByExtensions.AutomationId("HourPicker")).FindElementByName(time.ToString("%h")).Click();
+            this.Element.FindElement(ByExtensions.AutomationId("MinutePicker")).FindElementByName(time.ToString("mm")).Click();
         }
     }
 }

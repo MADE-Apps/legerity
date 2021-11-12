@@ -3,7 +3,7 @@ namespace Legerity
     using OpenQA.Selenium;
 
     /// <summary>
-    /// Defines a collection of extra query constraints for <see cref="By"/>.
+    /// Defines a collection of extra locator constraints for <see cref="By"/>.
     /// </summary>
     public static class ByExtras
     {

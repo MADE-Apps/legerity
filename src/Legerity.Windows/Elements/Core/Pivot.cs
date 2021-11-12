@@ -14,7 +14,7 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class Pivot : WindowsElementWrapper
     {
-        private readonly By pivotItemQuery = By.ClassName("PivotItem");
+        private readonly By pivotItemLocator = By.ClassName("PivotItem");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Pivot"/> class.
@@ -30,7 +30,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the pivot.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.pivotItemQuery);
+        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.pivotItemLocator);
 
         /// <summary>
         /// Gets the currently selected item.
@@ -77,7 +77,7 @@ namespace Legerity.Windows.Elements.Core
         /// </param>
         public void ClickItem(string name)
         {
-            this.VerifyElementsShown(this.pivotItemQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementsShown(this.pivotItemLocator, TimeSpan.FromSeconds(2));
 
             AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 

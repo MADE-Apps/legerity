@@ -1,6 +1,7 @@
 namespace Legerity.Windows.Extensions
 {
     using System;
+    using Legerity.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -50,8 +51,8 @@ namespace Legerity.Windows.Extensions
         /// </returns>
         public static bool VerifyNameOrAutomationIdEquals(this AppiumWebElement element, string compare)
         {
-            string name = element.GetAttribute("Name");
-            string automationId = element.GetAttribute("AutomationId");
+            string name = element.GetName();
+            string automationId = element.GetAutomationId();
 
             return string.Equals(compare, name, StringComparison.CurrentCultureIgnoreCase) || string.Equals(
                        compare,
@@ -73,8 +74,8 @@ namespace Legerity.Windows.Extensions
         /// </returns>
         public static bool VerifyNameOrAutomationIdEquals(this WindowsElement element, string compare)
         {
-            string name = element.GetAttribute("Name");
-            string automationId = element.GetAttribute("AutomationId");
+            string name = element.GetName();
+            string automationId = element.GetAutomationId();
 
             return string.Equals(compare, name, StringComparison.CurrentCultureIgnoreCase) || string.Equals(
                        compare,

@@ -13,9 +13,7 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class AutoSuggestBox : WindowsElementWrapper
     {
-        private readonly By suggestionsPopupQuery = ByExtensions.AutomationId("SuggestionsPopup");
-
-        private readonly By textBoxQuery = ByExtensions.AutomationId("TextBox");
+        private readonly By suggestionsPopupLocator = ByExtensions.AutomationId("SuggestionsPopup");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AutoSuggestBox"/> class.
@@ -31,12 +29,17 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the suggestions popup.
         /// </summary>
-        public AppiumWebElement SuggestionsPopup => this.Element.FindElement(this.suggestionsPopupQuery);
+        public AppiumWebElement SuggestionsPopup => this.Element.FindElement(this.suggestionsPopupLocator);
+
+        /// <summary>
+        /// Gets the element associated with the suggestion list when the <see cref="SuggestionsPopup"/> is shown.
+        /// </summary>
+        public ListView SuggestionList => this.SuggestionsPopup.FindElement(ByExtensions.AutomationId("SuggestionsList"));
 
         /// <summary>
         /// Gets the element associated with the text box.
         /// </summary>
-        public TextBox TextBox => this.Element.FindElement(this.textBoxQuery);
+        public TextBox TextBox => this.Element.FindElement(ByExtensions.AutomationId("TextBox"));
 
         /// <summary>
         /// Gets the value of the auto-suggest box.
@@ -89,10 +92,9 @@ namespace Legerity.Windows.Elements.Core
         {
             this.SetText(value);
 
-            this.VerifyElementShown(this.suggestionsPopupQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromSeconds(2));
 
-            ListView suggestionList = this.SuggestionsPopup.FindElement(ByExtensions.AutomationId("SuggestionsList"));
-            suggestionList.ClickItem(suggestion);
+            this.SuggestionList.ClickItem(suggestion);
         }
 
         /// <summary>

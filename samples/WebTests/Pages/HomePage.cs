@@ -11,11 +11,11 @@ namespace WebTests.Pages
     /// </summary>
     public class HomePage : BasePage
     {
-        private readonly By heroPostsQuery = By.ClassName("nectar-recent-posts-single_featured");
+        private readonly By heroPostsLocator = By.ClassName("nectar-recent-posts-single_featured");
 
-        private readonly By heroPostItemQuery = By.ClassName("nectar-recent-post-slide");
+        private readonly By heroPostLocator = By.ClassName("nectar-recent-post-slide");
 
-        private readonly By readArticleButtonQuery = By.ClassName("nectar-button");
+        private readonly By readPostButtonLocator = By.ClassName("nectar-button");
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -24,9 +24,9 @@ namespace WebTests.Pages
 
         public HomePage VerifyHeroPostsShown()
         {
-            IWebElement heroPostsContainer = this.WebApp.FindElement(this.heroPostsQuery);
+            IWebElement heroPostsContainer = this.WebApp.FindElement(this.heroPostsLocator);
 
-            ReadOnlyCollection<IWebElement> heroPosts = heroPostsContainer.FindElements(this.heroPostItemQuery);
+            ReadOnlyCollection<IWebElement> heroPosts = heroPostsContainer.FindElements(this.heroPostLocator);
 
             Assert.AreEqual(3, heroPosts.Count);
 
@@ -35,12 +35,12 @@ namespace WebTests.Pages
 
         public PostPage NavigateToHeroPost()
         {
-            IWebElement heroPostsContainer = this.WebApp.FindElement(this.heroPostsQuery);
+            IWebElement heroPostsContainer = this.WebApp.FindElement(this.heroPostsLocator);
 
-            ReadOnlyCollection<IWebElement> heroPosts = heroPostsContainer.FindElements(this.heroPostItemQuery);
+            ReadOnlyCollection<IWebElement> heroPosts = heroPostsContainer.FindElements(this.heroPostLocator);
 
             IWebElement heroPost = heroPosts.FirstOrDefault(p => p.Displayed);
-            IWebElement readButton = heroPost.FindElement(this.readArticleButtonQuery);
+            IWebElement readButton = heroPost.FindElement(this.readPostButtonLocator);
 
             readButton.Click();
 

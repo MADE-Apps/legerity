@@ -3,8 +3,6 @@ namespace Legerity.Windows.Elements.Core
     using System;
 
     using Legerity.Windows.Extensions;
-
-    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -13,18 +11,6 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class DatePicker : WindowsElementWrapper
     {
-        private readonly By flyoutQuery = ByExtensions.AutomationId("DatePickerFlyoutPresenter");
-
-        private readonly By daySelectorQuery = ByExtensions.AutomationId("DayLoopingSelector");
-
-        private readonly By monthSelectorQuery = ByExtensions.AutomationId("MonthLoopingSelector");
-
-        private readonly By yearSelectorQuery = ByExtensions.AutomationId("YearLoopingSelector");
-
-        private readonly By acceptButtonQuery = ByExtensions.AutomationId("AcceptButton");
-
-        private readonly By dismissButtonQuery = ByExtensions.AutomationId("DismissButton");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="DatePicker"/> class.
         /// </summary>
@@ -74,11 +60,11 @@ namespace Legerity.Windows.Elements.Core
             this.Element.Click();
 
             // Finds the popup and changes the time.
-            WindowsElement popup = this.Driver.FindElement(this.flyoutQuery);
-            popup.FindElement(this.daySelectorQuery).FindElementByName(date.ToString("%d")).Click();
-            popup.FindElement(this.monthSelectorQuery).FindElementByName(date.ToString("MMMM")).Click();
-            popup.FindElement(this.yearSelectorQuery).FindElementByName(date.ToString("yyyy")).Click();
-            popup.FindElement(this.acceptButtonQuery).Click();
+            WindowsElement popup = this.Driver.FindElement(ByExtensions.AutomationId("DatePickerFlyoutPresenter"));
+            popup.FindElement(ByExtensions.AutomationId("DayLoopingSelector")).FindElementByName(date.ToString("%d")).Click();
+            popup.FindElement(ByExtensions.AutomationId("MonthLoopingSelector")).FindElementByName(date.ToString("MMMM")).Click();
+            popup.FindElement(ByExtensions.AutomationId("YearLoopingSelector")).FindElementByName(date.ToString("yyyy")).Click();
+            popup.FindElement(ByExtensions.AutomationId("AcceptButton")).Click();
         }
     }
 }

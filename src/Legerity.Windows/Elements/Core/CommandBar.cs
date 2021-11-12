@@ -15,11 +15,11 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class CommandBar : WindowsElementWrapper
     {
-        private readonly By secondaryOverflowButtonQuery = ByExtensions.AutomationId("MoreButton");
+        private readonly By moreButtonLocator = ByExtensions.AutomationId("MoreButton");
 
-        private readonly By secondaryOverflowPopupQuery = ByExtensions.AutomationId("OverflowPopup");
+        private readonly By overflowPopupLocator = ByExtensions.AutomationId("OverflowPopup");
 
-        private readonly By appBarButtonItemQuery = By.ClassName("AppBarButton");
+        private readonly By appBarButtonLocator = By.ClassName(nameof(AppBarButton));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandBar"/> class.
@@ -36,7 +36,7 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the collection of primary buttons.
         /// </summary>
         public IEnumerable<AppBarButton> PrimaryButtons =>
-            this.Element.FindElements(this.appBarButtonItemQuery)
+            this.Element.FindElements(this.appBarButtonLocator)
                 .Select<AppiumWebElement, AppBarButton>(element => element);
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Legerity.Windows.Elements.Core
         /// </para>
         /// </summary>
         public IEnumerable<AppBarButton> SecondaryButtons =>
-            this.Driver.FindElement(this.secondaryOverflowPopupQuery).FindElements(this.appBarButtonItemQuery)
+            this.Driver.FindElement(this.overflowPopupLocator).FindElements(this.appBarButtonLocator)
                 .Select<AppiumWebElement, AppBarButton>(element => element);
 
         /// <summary>
@@ -99,12 +99,12 @@ namespace Legerity.Windows.Elements.Core
         /// </param>
         public void ClickSecondaryButton(string name)
         {
-            this.VerifyElementShown(this.secondaryOverflowButtonQuery, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.moreButtonLocator, TimeSpan.FromSeconds(2));
 
-            AppBarButton secondaryOverflowButton = this.Element.FindElement(this.secondaryOverflowButtonQuery);
+            AppBarButton secondaryOverflowButton = this.Element.FindElement(this.moreButtonLocator);
             secondaryOverflowButton.Click();
 
-            this.VerifyDriverElementShown(this.secondaryOverflowPopupQuery, TimeSpan.FromSeconds(2));
+            this.VerifyDriverElementShown(this.overflowPopupLocator, TimeSpan.FromSeconds(2));
 
             AppBarButton secondaryButton = this.SecondaryButtons.FirstOrDefault(
                 button => button.Element.VerifyNameOrAutomationIdEquals(name));

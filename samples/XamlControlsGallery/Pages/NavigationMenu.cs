@@ -9,27 +9,22 @@ namespace XamlControlsGallery.Pages
 
     using OpenQA.Selenium;
     using StatusAndInfo;
-    using XamlControlsGallery.Pages.BasicInput;
-    using XamlControlsGallery.Pages.Collections;
-    using XamlControlsGallery.Pages.DateAndTime;
-    using XamlControlsGallery.Pages.Media;
-    using XamlControlsGallery.Pages.MenusAndToolbars;
-    using XamlControlsGallery.Pages.Navigation;
-    using XamlControlsGallery.Pages.Text;
+    using BasicInput;
+    using Collections;
+    using DateAndTime;
+    using Media;
+    using MenusAndToolbars;
+    using Navigation;
+    using Text;
 
     /// <summary>
     /// Defines a helper for navigating the application's menu.
     /// </summary>
     public class NavigationMenu : BasePage
     {
-        private readonly By controlsSearchBoxQuery = ByExtensions.AutomationId("controlsSearchBox");
+        public NavigationView NavigationView => this.WindowsApp.FindElement(this.Trait);
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NavigationMenu"/> class.
-        /// </summary>
-        public NavigationMenu()
-        {
-        }
+        public AutoSuggestBox ControlsSearchBox => this.NavigationView.FindElement(ByExtensions.AutomationId("controlsSearchBox"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
@@ -178,8 +173,7 @@ namespace XamlControlsGallery.Pages
         /// <returns>The <see cref="SettingsPage"/>.</returns>
         public SettingsPage GoToSettingsPage()
         {
-            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
-            navigationView.OpenSettings();
+            this.NavigationView.OpenSettings();
             return new SettingsPage();
         }
 
@@ -204,7 +198,7 @@ namespace XamlControlsGallery.Pages
             this.SearchForControl("TabView");
             return new TabViewPage();
         }
-        
+
         /// <summary>
         /// Navigates to the time picker control page.
         /// </summary>
@@ -240,15 +234,13 @@ namespace XamlControlsGallery.Pages
         /// </returns>
         public NavigationMenu ToggleNavigationPane(bool open)
         {
-            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
-
             if (open)
             {
-                navigationView.OpenNavigationPane();
+                this.NavigationView.OpenNavigationPane();
             }
             else
             {
-                navigationView.CloseNavigationPane();
+                this.NavigationView.CloseNavigationPane();
             }
 
             return this;
@@ -265,8 +257,7 @@ namespace XamlControlsGallery.Pages
         /// </returns>
         public NavigationMenu VerifyToggleNavigationPane(bool open)
         {
-            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
-            Assert.AreEqual(open, navigationView.IsPaneOpen);
+            Assert.AreEqual(open, this.NavigationView.IsPaneOpen);
             return this;
         }
 
@@ -284,16 +275,13 @@ namespace XamlControlsGallery.Pages
         /// </returns>
         public NavigationMenu SelectControlOption(string expectedGroupOption, string expectedOption)
         {
-            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
-            navigationView.ClickMenuOption(expectedGroupOption).ClickChildOption(expectedOption);
+            this.NavigationView.ClickMenuOption(expectedGroupOption).ClickChildOption(expectedOption);
             return this;
         }
 
         private void SearchForControl(string control)
         {
-            NavigationView navigationView = this.WindowsApp.FindElement(this.Trait);
-            AutoSuggestBox controlsSearchBox = navigationView.Element.FindElement(this.controlsSearchBoxQuery);
-            controlsSearchBox.SelectSuggestion(control);
+            this.ControlsSearchBox.SelectSuggestion(control);
         }
     }
 }

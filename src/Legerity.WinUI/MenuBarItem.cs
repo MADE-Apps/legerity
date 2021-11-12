@@ -3,6 +3,7 @@ namespace Legerity.Windows.Elements.WinUI
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Legerity.Extensions;
     using Legerity.Windows.Elements.Core;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Windows;
@@ -12,10 +13,6 @@ namespace Legerity.Windows.Elements.WinUI
     /// </summary>
     public class MenuBarItem : WindowsElementWrapper
     {
-        private readonly By menuFlyoutItemQuery = By.ClassName("MenuFlyoutItem");
-
-        private readonly By menuFlyoutSubItemQuery = By.ClassName("MenuFlyoutSubItem");
-
         private readonly WeakReference parentMenuBarReference;
 
         /// <summary>
@@ -85,7 +82,7 @@ namespace Legerity.Windows.Elements.WinUI
         public MenuFlyoutItem ClickChildOption(string name)
         {
             MenuFlyoutItem item = this.ChildMenuItems.FirstOrDefault(
-                element => element.Element.GetAttribute("Name")
+                element => element.GetName()
                     .Equals(name, StringComparison.CurrentCultureIgnoreCase));
             item.Click();
             return item;
@@ -99,7 +96,7 @@ namespace Legerity.Windows.Elements.WinUI
         public MenuFlyoutSubItem ClickChildSubOption(string name)
         {
             MenuFlyoutSubItem item = this.ChildMenuSubItems.FirstOrDefault(
-                element => element.Element.GetAttribute("Name")
+                element => element.GetName()
                     .Equals(name, StringComparison.CurrentCultureIgnoreCase));
             item.Click();
             return item;
@@ -108,14 +105,14 @@ namespace Legerity.Windows.Elements.WinUI
         private IEnumerable<MenuFlyoutItem> GetChildMenuItems()
         {
             return this.Driver.FindElement(By.ClassName("MenuFlyout"))
-                .FindElements(this.menuFlyoutItemQuery).Select(
+                .FindElements(By.ClassName(nameof(MenuFlyoutItem))).Select(
                     element => new MenuFlyoutItem(element as WindowsElement));
         }
 
         private IEnumerable<MenuFlyoutSubItem> GetChildMenuSubItems()
         {
             return this.Driver.FindElement(By.ClassName("MenuFlyout"))
-                .FindElements(this.menuFlyoutSubItemQuery).Select(
+                .FindElements(By.ClassName(nameof(MenuFlyoutSubItem))).Select(
                     element => new MenuFlyoutSubItem(element as WindowsElement));
         }
     }
