@@ -1,9 +1,11 @@
 namespace Legerity.Extensions
 {
+    using System;
     using System.Collections.ObjectModel;
     using System.Linq;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Support.UI;
 
     /// <summary>
     /// Defines a collection of extensions for a driver.
@@ -84,6 +86,17 @@ namespace Legerity.Extensions
         public static ReadOnlyCollection<IWebElement> GetAllElements(this RemoteWebDriver driver)
         {
             return driver.FindElements(By.XPath("//*"));
+        }
+
+        /// <summary>
+        /// Waits until a specified driver condition is met, with an optional timeout.
+        /// </summary>
+        /// <param name="appDriver">The driver to wait on.</param>
+        /// <param name="condition">The condition of the element to wait on.</param>
+        /// <param name="timeout">The optional timeout wait on the condition being true.</param>
+        public static void WaitUntil(this IWebDriver appDriver, Func<IWebDriver, bool> condition, TimeSpan? timeout = default)
+        {
+            new WebDriverWait(appDriver, timeout ?? TimeSpan.Zero).Until(condition);
         }
     }
 }

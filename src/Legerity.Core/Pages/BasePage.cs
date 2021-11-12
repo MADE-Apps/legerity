@@ -40,6 +40,17 @@ namespace Legerity.Pages
         }
 
         /// <summary>
+        /// Gets the instance of the started application.
+        /// <para>
+        /// The <see cref="App"/> instance serves as base for the drivers and can be referenced for basic Selenium functions.
+        /// </para>
+        /// <para>
+        /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
+        /// </para>
+        /// </summary>
+        public RemoteWebDriver App => AppManager.App;
+
+        /// <summary>
         /// Gets the instance of the started Windows application.
         /// </summary>
         protected WindowsDriver<WindowsElement> WindowsApp => AppManager.WindowsApp;
@@ -58,17 +69,6 @@ namespace Legerity.Pages
         /// Gets the instance of the started web application.
         /// </summary>
         protected RemoteWebDriver WebApp => AppManager.WebApp;
-
-        /// <summary>
-        /// Gets the instance of the started application.
-        /// <para>
-        /// The <see cref="App"/> instance serves as base for the drivers and can be referenced for basic Selenium functions.
-        /// </para>
-        /// <para>
-        /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
-        /// </para>
-        /// </summary>
-        protected RemoteWebDriver App => AppManager.App;
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
