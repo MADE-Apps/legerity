@@ -92,13 +92,13 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
-        /// Retrieves all elements that can be located by the driver for the given element.
+        /// Retrieves all child elements that can be located by the driver for the given element.
         /// </summary>
         /// <param name="element">The remote web driver.</param>
         /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
-        public static ReadOnlyCollection<IWebElement> GetAllElements(this IWebElement element)
+        public static ReadOnlyCollection<IWebElement> GetAllChildElements(this IWebElement element)
         {
-            return element.FindElements(By.XPath("//*"));
+            return element.FindElements(By.XPath(".//*"));
         }
 
         /// <summary>
