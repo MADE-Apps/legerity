@@ -3,11 +3,13 @@ namespace Legerity
     using System;
     using Legerity.Android;
     using Legerity.Exceptions;
+    using Legerity.Extensions;
     using Legerity.Helpers;
     using Legerity.IOS;
     using Legerity.Web;
     using Legerity.Windows;
     using Legerity.Windows.Helpers;
+    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
@@ -58,13 +60,23 @@ namespace Legerity
         /// <param name="opts">
         /// The options to configure the driver with.
         /// </param>
+        /// <param name="waitUntil">
+        /// An optional condition of the driver to wait on until it is met.
+        /// </param>
+        /// <param name="waitUntilTimeout">
+        /// An optional timeout wait on the conditional wait until being true. If not set, the wait will run immediately, and if not valid, will throw an exception.
+        /// </param>
+        /// <param name="waitUntilRetries">
+        /// An optional count of retries after a timeout on the wait until condition before accepting the failure.
+        /// </param>
         /// <exception cref="DriverLoadFailedException">
         /// Thrown if the application is null or the session ID is null once initialized.
         /// </exception>
         /// <exception cref="T:Legerity.Exceptions.AppiumServerLoadFailedException">Thrown if the Appium server could not be found when running with <see cref="AndroidAppManagerOptions.LaunchAppiumServer"/> or <see cref="IOSAppManagerOptions.LaunchAppiumServer"/> true.</exception>
         /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverNotFoundException">Thrown if the WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.</exception>
         /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverLoadFailedException">Thrown if the WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.</exception>
-        public static void StartApp(AppManagerOptions opts)
+        /// <exception cref="WebDriverException">Thrown if the wait until condition is not met in the allocated timeout period if provided.</exception>
+        public static void StartApp(AppManagerOptions opts, Func<IWebDriver, bool> waitUntil = default, TimeSpan? waitUntilTimeout = default, int waitUntilRetries = 0)
         {
             StopApp();
 
@@ -147,6 +159,11 @@ namespace Legerity
                         VerifyAppDriver(IOSApp, iosOpts);
                         break;
                     }
+            }
+
+            if (waitUntil != null)
+            {
+                App.WaitUntil(waitUntil, waitUntilTimeout, waitUntilRetries);
             }
         }
 

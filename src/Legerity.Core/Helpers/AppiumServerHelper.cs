@@ -17,7 +17,7 @@ namespace Legerity.Helpers
         /// <exception cref="T:Legerity.Exceptions.AppiumServerLoadFailedException">Thrown if the Appium server failed to load.</exception>
         public static void Run()
         {
-            if (AppiumServer?.IsRunning ?? false)
+            if (AppiumServer is { IsRunning: true })
             {
                 return;
             }
@@ -40,7 +40,7 @@ namespace Legerity.Helpers
         {
             try
             {
-                if (AppiumServer.IsRunning)
+                if (AppiumServer is { IsRunning: true })
                 {
                     AppiumServer.Dispose();
                 }
