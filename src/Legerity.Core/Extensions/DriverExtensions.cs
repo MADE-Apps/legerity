@@ -94,9 +94,23 @@ namespace Legerity.Extensions
         /// <param name="appDriver">The driver to wait on.</param>
         /// <param name="condition">The condition of the element to wait on.</param>
         /// <param name="timeout">The optional timeout wait on the condition being true.</param>
-        public static void WaitUntil(this IWebDriver appDriver, Func<IWebDriver, bool> condition, TimeSpan? timeout = default)
+        /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
+        /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
+        public static void WaitUntil(this IWebDriver appDriver, Func<IWebDriver, bool> condition, TimeSpan? timeout = default, int retries = 0)
         {
-            new WebDriverWait(appDriver, timeout ?? TimeSpan.Zero).Until(condition);
+            try
+            {
+                new WebDriverWait(appDriver, timeout ?? TimeSpan.Zero).Until(condition);
+            }
+            catch (WebDriverException)
+            {
+                if (retries <= 0)
+                {
+                    throw;
+                }
+
+                WaitUntil(appDriver, condition, timeout, retries - 1);
+            }
         }
     }
 }
