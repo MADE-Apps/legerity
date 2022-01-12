@@ -89,6 +89,16 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
+        /// Retrieves all child elements that can be located by the driver in the page.
+        /// </summary>
+        /// <param name="driver">The remote web driver.</param>
+        /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
+        public static ReadOnlyCollection<IWebElement> GetAllChildElements(this RemoteWebDriver driver)
+        {
+            return driver.FindElements(By.XPath(".//*"));
+        }
+
+        /// <summary>
         /// Waits until a specified driver condition is met, with an optional timeout.
         /// </summary>
         /// <param name="appDriver">The driver to wait on.</param>
