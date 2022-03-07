@@ -11,7 +11,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="nunit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
-    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="97.0.1072.55" />
+    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="99.0.1150.25" />
     <PackageReference Include="Shouldly" Version="4.0.3" />
   </ItemGroup>
 
