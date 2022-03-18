@@ -1,16 +1,40 @@
 namespace W3SchoolsWebTests.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
     using Legerity;
+    using Legerity.Web;
     using Legerity.Web.Elements.Core;
     using NUnit.Framework;
     using OpenQA.Selenium.Remote;
     using Shouldly;
     using W3SchoolsWebTests;
 
-    [TestFixture]
+    [TestFixtureSource(nameof(TestPlatformOptions))]
     public class RangeInputTests : BaseTestClass
     {
-        public override string Url => "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_range";
+        private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_range";
+
+        public RangeInputTests(AppManagerOptions options) : base(options)
+        {
+        }
+
+        static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
+        {
+            new WebAppManagerOptions(
+                WebAppDriverType.EdgeChromium,
+                Path.Combine(Environment.CurrentDirectory))
+            {
+                Maximize = true, Url = Url, ImplicitWait = TimeSpan.FromSeconds(10)
+            },
+            new WebAppManagerOptions(
+                WebAppDriverType.Chrome,
+                Path.Combine(Environment.CurrentDirectory))
+            {
+                Maximize = true, Url = Url, ImplicitWait = TimeSpan.FromSeconds(10)
+            }
+        };
 
         [Test]
         public void ShouldGetValueRange()

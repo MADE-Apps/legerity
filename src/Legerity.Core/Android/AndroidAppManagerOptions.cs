@@ -174,7 +174,7 @@ namespace Legerity.Android
             this.OSVersion = osVersion;
             this.DeviceName = deviceName;
             this.DeviceId = deviceId;
-            this.Configure(additionalOptions);
+            this.AdditionalOptions = additionalOptions;
         }
 
         /// <summary>
@@ -213,59 +213,55 @@ namespace Legerity.Android
         public bool LaunchAppiumServer { get; set; }
 
         /// <summary>
+        /// Configures the <see cref="AppiumManagerOptions.AppiumOptions"/> with the specified additional options.
+        /// </summary>
+        public override void Configure()
+        {
+            base.Configure();
+
+            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "Android");
+
+            if (!string.IsNullOrWhiteSpace(this.OSVersion))
+            {
+                this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DeviceName))
+            {
+                this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.DeviceId))
+            {
+                this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.AppId))
+            {
+                this.AppiumOptions.AddAdditionalCapability("appPackage", this.AppId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.AppActivity))
+            {
+                this.AppiumOptions.AddAdditionalCapability("appActivity", this.AppActivity);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.AppPath))
+            {
+                this.AppiumOptions.AddAdditionalCapability("app", this.AppPath);
+            }
+        }
+
+        /// <summary>
         /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
-        /// <para>
-        /// By default, the <see cref="AppId"/> will be added to the options as capability 'app'.
-        /// </para>
         /// </summary>
         /// <param name="additionalOptions">
         /// The additional options to apply to the <see cref="AppiumOptions"/>.
         /// </param>
         public void Configure((string, object)[] additionalOptions)
         {
-            var options = new AppiumOptions();
-
-            options.AddAdditionalCapability(MobileCapabilityType.PlatformName, "Android");
-
-            if (!string.IsNullOrWhiteSpace(this.OSVersion))
-            {
-                options.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
-            }
-
-            if (!string.IsNullOrWhiteSpace(this.DeviceName))
-            {
-                options.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
-            }
-
-            if (!string.IsNullOrWhiteSpace(this.DeviceId))
-            {
-                options.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
-            }
-
-            if (!string.IsNullOrWhiteSpace(this.AppId))
-            {
-                options.AddAdditionalCapability("appPackage", this.AppId);
-            }
-
-            if (!string.IsNullOrWhiteSpace(this.AppActivity))
-            {
-                options.AddAdditionalCapability("appActivity", this.AppActivity);
-            }
-
-            if (!string.IsNullOrWhiteSpace(this.AppPath))
-            {
-                options.AddAdditionalCapability("app", this.AppPath);
-            }
-
-            if (additionalOptions != null)
-            {
-                foreach ((string capabilityName, object capabilityValue) in additionalOptions)
-                {
-                    options.AddAdditionalCapability(capabilityName, capabilityValue);
-                }
-            }
-
-            this.AppiumOptions = options;
+            this.AdditionalOptions = additionalOptions;
+            this.Configure();
         }
 
         /// <summary>Returns a string that represents the current object.</summary>
@@ -297,6 +293,14 @@ namespace Legerity.Android
             if (!string.IsNullOrWhiteSpace(this.DeviceName))
             {
                 options.Add($"Device Name [{this.DeviceName}]");
+            }
+
+            if (this.AdditionalOptions != null)
+            {
+                foreach ((string name, object value) in this.AdditionalOptions)
+                {
+                    options.Add($"{name} [{value}]");
+                }
             }
 
             return string.Join(", ", options);

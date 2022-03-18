@@ -1,25 +1,24 @@
 namespace W3SchoolsWebTests
 {
     using System;
-    using System.IO;
     using Legerity;
-    using Legerity.Web;
     using NUnit.Framework;
     using OpenQA.Selenium;
 
-    public abstract class BaseTestClass
+    public abstract class BaseTestClass : LegerityTestClass
     {
-        public abstract string Url { get; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseTestClass"/> class with application launch option.
+        /// </summary>
+        /// <param name="options">The application launch options.</param>
+        protected BaseTestClass(AppManagerOptions options) : base(options)
+        {
+        }
 
         [SetUp]
         public virtual void Initialize()
         {
-            AppManager.StartApp(
-                new WebAppManagerOptions(WebAppDriverType.EdgeChromium, Environment.CurrentDirectory)
-                {
-                    Maximize = true,
-                    Url = this.Url
-                });
+            base.StartApp();
 
             try
             {
@@ -37,7 +36,7 @@ namespace W3SchoolsWebTests
         [TearDown]
         public virtual void Cleanup()
         {
-            AppManager.StopApp();
+            base.StopApp();
         }
     }
 }

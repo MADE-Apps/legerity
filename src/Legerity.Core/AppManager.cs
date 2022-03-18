@@ -80,6 +80,11 @@ namespace Legerity
         {
             StopApp();
 
+            if (opts is AppiumManagerOptions appiumOpts)
+            {
+                appiumOpts.Configure();
+            }
+
             switch (opts)
             {
                 case WebAppManagerOptions webOpts:

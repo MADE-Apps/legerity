@@ -58,7 +58,7 @@ namespace Legerity.IOS
             this.OSVersion = osVersion;
             this.DeviceName = deviceName;
             this.DeviceId = deviceId;
-            this.Configure(additionalOptions);
+            this.AdditionalOptions = additionalOptions;
         }
 
         /// <summary>
@@ -87,33 +87,29 @@ namespace Legerity.IOS
         public bool LaunchAppiumServer { get; set; }
 
         /// <summary>
+        /// Configures the <see cref="AppiumManagerOptions.AppiumOptions"/> with the specified additional options.
+        /// </summary>
+        public override void Configure()
+        {
+            base.Configure();
+
+            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "iOS");
+            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
+            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
+            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
+            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.App, this.AppId);
+        }
+
+        /// <summary>
         /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
-        /// <para>
-        /// By default, the <see cref="AppId"/> will be added to the options as capability 'app'.
-        /// </para>
         /// </summary>
         /// <param name="additionalOptions">
         /// The additional options to apply to the <see cref="AppiumOptions"/>.
         /// </param>
         public void Configure((string, object)[] additionalOptions)
         {
-            var options = new AppiumOptions();
-
-            options.AddAdditionalCapability(MobileCapabilityType.PlatformName, "iOS");
-            options.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
-            options.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
-            options.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
-            options.AddAdditionalCapability(MobileCapabilityType.App, this.AppId);
-
-            if (additionalOptions != null)
-            {
-                foreach ((string capabilityName, object capabilityValue) in additionalOptions)
-                {
-                    options.AddAdditionalCapability(capabilityName, capabilityValue);
-                }
-            }
-
-            this.AppiumOptions = options;
+            this.AdditionalOptions = additionalOptions;
+            this.Configure();
         }
 
         /// <summary>Returns a string that represents the current object.</summary>
@@ -140,6 +136,14 @@ namespace Legerity.IOS
             if (!string.IsNullOrWhiteSpace(this.DeviceName))
             {
                 options.Add($"Device Name [{this.DeviceName}]");
+            }
+
+            if (this.AdditionalOptions != null)
+            {
+                foreach ((string name, object value) in this.AdditionalOptions)
+                {
+                    options.Add($"{name} [{value}]");
+                }
             }
 
             return string.Join(", ", options);
