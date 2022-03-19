@@ -32,7 +32,7 @@ namespace Legerity.Windows
         public WindowsAppManagerOptions(string appId, params (string, object)[] additionalOptions)
         {
             this.AppId = appId;
-            this.Configure(additionalOptions);
+            this.AdditionalOptions = additionalOptions;
         }
 
         /// <summary>
@@ -59,28 +59,24 @@ namespace Legerity.Windows
         public string WinAppDriverPath { get; set; } = WinAppDriverHelper.DefaultInstallLocation;
 
         /// <summary>
+        /// Configures the <see cref="AppiumManagerOptions.AppiumOptions"/> with the specified additional options.
+        /// </summary>
+        public override void Configure()
+        {
+            base.Configure();
+            this.AppiumOptions.AddAdditionalCapability("app", this.AppId);
+        }
+
+        /// <summary>
         /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
-        /// <para>
-        /// By default, the <see cref="AppId"/> will be added to the options as capability 'app'.
-        /// </para>
         /// </summary>
         /// <param name="additionalOptions">
         /// The additional options to apply to the <see cref="AppiumOptions"/>.
         /// </param>
         public void Configure((string, object)[] additionalOptions)
         {
-            var options = new AppiumOptions();
-            options.AddAdditionalCapability("app", this.AppId);
-
-            if (additionalOptions != null)
-            {
-                foreach ((string capabilityName, object capabilityValue) in additionalOptions)
-                {
-                    options.AddAdditionalCapability(capabilityName, capabilityValue);
-                }
-            }
-
-            this.AppiumOptions = options;
+            this.AdditionalOptions = additionalOptions;
+            this.Configure();
         }
 
         /// <summary>Returns a string that represents the current object.</summary>
@@ -97,6 +93,14 @@ namespace Legerity.Windows
             if (!string.IsNullOrWhiteSpace(this.AppId))
             {
                 options.Add($"App ID [{this.AppId}]");
+            }
+
+            if (this.AdditionalOptions != null)
+            {
+                foreach ((string name, object value) in this.AdditionalOptions)
+                {
+                    options.Add($"{name} [{value}]");
+                }
             }
 
             return string.Join(", ", options);

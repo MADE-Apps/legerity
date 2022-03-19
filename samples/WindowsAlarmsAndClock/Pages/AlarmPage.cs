@@ -5,14 +5,12 @@ namespace WindowsAlarmsAndClock.Pages
     using System.Linq;
     using Elements;
     using Legerity.Extensions;
-    using Legerity.Pages;
     using Legerity.Windows.Extensions;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
-    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines the alarm page of the Windows Alarms &amp; Clock application.

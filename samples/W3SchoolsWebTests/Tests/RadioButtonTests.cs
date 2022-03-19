@@ -1,8 +1,12 @@
 namespace W3SchoolsWebTests.Tests
 {
+    using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.IO;
     using System.Linq;
     using Legerity;
+    using Legerity.Web;
     using Legerity.Web.Elements.Core;
     using NUnit.Framework;
     using OpenQA.Selenium;
@@ -10,10 +14,30 @@ namespace W3SchoolsWebTests.Tests
     using Shouldly;
     using W3SchoolsWebTests;
 
-    [TestFixture]
+    [TestFixtureSource(nameof(TestPlatformOptions))]
     public class RadioButtonTests : BaseTestClass
     {
-        public override string Url => "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio";
+        private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio";
+
+        public RadioButtonTests(AppManagerOptions options) : base(options)
+        {
+        }
+
+        static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
+        {
+            new WebAppManagerOptions(
+                WebAppDriverType.EdgeChromium,
+                Path.Combine(Environment.CurrentDirectory))
+            {
+                Maximize = true, Url = Url, ImplicitWait = TimeSpan.FromSeconds(10)
+            },
+            new WebAppManagerOptions(
+                WebAppDriverType.Chrome,
+                Path.Combine(Environment.CurrentDirectory))
+            {
+                Maximize = true, Url = Url, ImplicitWait = TimeSpan.FromSeconds(10)
+            }
+        };
 
         [TestCase("html")]
         [TestCase("css")]
