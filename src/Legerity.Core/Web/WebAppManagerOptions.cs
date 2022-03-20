@@ -11,6 +11,14 @@ namespace Legerity.Web
         /// <summary>
         /// Initializes a new instance of the <see cref="WebAppManagerOptions"/> class.
         /// </summary>
+
+        public WebAppManagerOptions()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebAppManagerOptions"/> class.
+        /// </summary>
         /// <param name="driverType">The type of web application driver to start.</param>
         /// <param name="driverDirectoryPath">The path to the web application driver directory.</param>
         public WebAppManagerOptions(WebAppDriverType driverType, string driverDirectoryPath)

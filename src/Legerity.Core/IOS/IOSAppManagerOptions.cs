@@ -12,6 +12,13 @@ namespace Legerity.IOS
         /// <summary>
         /// Initializes a new instance of the <see cref="IOSAppManagerOptions"/> class.
         /// </summary>
+        public IOSAppManagerOptions()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IOSAppManagerOptions"/> class.
+        /// </summary>
         /// <param name="appId">
         /// The ID of the application under test, e.g. com.instagram.ios.
         /// </param>
