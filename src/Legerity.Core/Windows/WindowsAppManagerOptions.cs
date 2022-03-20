@@ -12,6 +12,13 @@ namespace Legerity.Windows
         /// <summary>
         /// Initializes a new instance of the <see cref="WindowsAppManagerOptions"/> class.
         /// </summary>
+        public WindowsAppManagerOptions()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowsAppManagerOptions"/> class.
+        /// </summary>
         /// <param name="appId">
         /// The ID of the application under test.
         /// </param>

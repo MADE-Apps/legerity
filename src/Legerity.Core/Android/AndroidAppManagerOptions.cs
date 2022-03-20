@@ -13,6 +13,13 @@ namespace Legerity.Android
         /// <summary>
         /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
         /// </summary>
+        public AndroidAppManagerOptions()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
+        /// </summary>
         /// <param name="appPath">
         /// The path of the application under test, e.g. c:/users/legerity/source/myapp/com.instagram.android.apk.
         /// </param>
