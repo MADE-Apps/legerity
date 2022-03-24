@@ -7,7 +7,7 @@ namespace Legerity.Android
     /// <summary>
     /// Defines a collection of extra locator constraints for <see cref="By"/>.
     /// </summary>
-    public static class ByExtras
+    public static class AndroidByExtras
     {
         /// <summary>
         /// Gets a mechanism to find elements by an Android content description.

@@ -16,7 +16,7 @@ namespace Legerity.Windows.Elements.WinUI
     /// </summary>
     public class TabView : WindowsElementWrapper
     {
-        private readonly By tabListViewLocator = ByExtensions.AutomationId("TabListView");
+        private readonly By tabListViewLocator = WindowsByExtras.AutomationId("TabListView");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TabView"/> class.
@@ -32,7 +32,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the element associated with the add tab button.
         /// </summary>
-        public Button AddTabButton => this.Element.FindElement(ByExtensions.AutomationId("AddButton"));
+        public Button AddTabButton => this.Element.FindElement(WindowsByExtras.AutomationId("AddButton"));
 
         /// <summary>
         /// Gets the collection of items associated with the pivot.
@@ -104,7 +104,7 @@ namespace Legerity.Windows.Elements.WinUI
         {
             this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
             AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
-            Button closeButton = item.FindElement(ByExtensions.AutomationId("CloseButton"));
+            Button closeButton = item.FindElement(WindowsByExtras.AutomationId("CloseButton"));
             closeButton.Click();
         }
     }

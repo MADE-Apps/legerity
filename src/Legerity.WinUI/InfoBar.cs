@@ -1,7 +1,6 @@
 namespace Legerity.Windows.Elements.WinUI
 {
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -39,17 +38,17 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the element associated with the title <see cref="TextBlock"/>.
         /// </summary>
-        public TextBlock TitleTextBlock => this.FindElement(ByExtensions.AutomationId("Title"));
+        public TextBlock TitleTextBlock => this.FindElement(WindowsByExtras.AutomationId("Title"));
 
         /// <summary>
         /// Gets the element associated with the message <see cref="TextBlock"/>.
         /// </summary>
-        public TextBlock MessageTextBlock => this.FindElement(ByExtensions.AutomationId("Message"));
+        public TextBlock MessageTextBlock => this.FindElement(WindowsByExtras.AutomationId("Message"));
 
         /// <summary>
         /// Gets the element associated with the close <see cref="Button"/>.
         /// </summary>
-        public Button CloseButton => this.FindElement(ByExtensions.AutomationId("CloseButton"));
+        public Button CloseButton => this.FindElement(WindowsByExtras.AutomationId("CloseButton"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InfoBar"/> without direct casting.

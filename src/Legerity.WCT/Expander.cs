@@ -1,7 +1,6 @@
 namespace Legerity.Windows.Elements.WCT
 {
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -28,7 +27,7 @@ namespace Legerity.Windows.Elements.WCT
         /// </summary>
         public bool IsExpanded => this.Element.GetAttribute("Toggle.ToggleState") == ToggleOnValue;
 
-        private ToggleButton ToggleButton => this.Element.FindElement(ByExtensions.AutomationId("PART_ExpanderToggleButton"));
+        private ToggleButton ToggleButton => this.Element.FindElement(WindowsByExtras.AutomationId("PART_ExpanderToggleButton"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="Expander"/> without direct casting.

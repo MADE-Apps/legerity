@@ -5,8 +5,7 @@ namespace WindowsAlarmsAndClock.Pages
     using System.Linq;
     using Elements;
     using Legerity.Extensions;
-    using Legerity.Windows.Extensions;
-
+    using Legerity.Windows;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
@@ -26,16 +25,16 @@ namespace WindowsAlarmsAndClock.Pages
         /// </summary>
         public AlarmPage()
         {
-            this.addAlarmButton = ByExtensions.AutomationId("AddAlarmButton");
-            this.alarmList = ByExtensions.AutomationId("AlarmListView");
+            this.addAlarmButton = WindowsByExtras.AutomationId("AddAlarmButton");
+            this.alarmList = WindowsByExtras.AutomationId("AlarmListView");
         }
 
-        public AlarmPopup AlarmPopup => this.WindowsApp.FindElement(ByExtensions.AutomationId("EditFlyout"));
+        public AlarmPopup AlarmPopup => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("EditFlyout"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
-        protected override By Trait => ByExtensions.AutomationId("AddAlarmButton");
+        protected override By Trait => WindowsByExtras.AutomationId("AddAlarmButton");
 
         /// <summary>
         /// Navigates to adding an alarm.

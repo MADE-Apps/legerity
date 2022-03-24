@@ -5,8 +5,6 @@ namespace Legerity.Windows.Elements.WinUI
     using System.Linq;
     using Legerity.Extensions;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -30,7 +28,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the UI component associated with displaying the menu items.
         /// </summary>
-        public AppiumWebElement MenuItemsView => this.Element.FindElement(ByExtensions.AutomationId("MenuItemsHost"));
+        public AppiumWebElement MenuItemsView => this.Element.FindElement(WindowsByExtras.AutomationId("MenuItemsHost"));
 
         /// <summary>
         /// Gets the UI components associated with the menu items.
@@ -42,17 +40,17 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the UI component associated with the settings menu item.
         /// </summary>
-        public AppiumWebElement SettingsMenuItem => this.Element.FindElement(ByExtensions.AutomationId("SettingsItem"));
+        public AppiumWebElement SettingsMenuItem => this.Element.FindElement(WindowsByExtras.AutomationId("SettingsItem"));
 
         /// <summary>
         /// Gets the UI component associated with the navigation pane toggle button.
         /// </summary>
-        public Button ToggleNavigationPaneButton => this.Element.FindElement(ByExtensions.AutomationId("TogglePaneButton"));
+        public Button ToggleNavigationPaneButton => this.Element.FindElement(WindowsByExtras.AutomationId("TogglePaneButton"));
 
         /// <summary>
         /// Gets the UI component associated with the navigation back button.
         /// </summary>
-        public Button BackButton => this.Element.FindElement(ByExtensions.AutomationId("NavigationViewBackButton"));
+        public Button BackButton => this.Element.FindElement(WindowsByExtras.AutomationId("NavigationViewBackButton"));
 
         /// <summary>
         /// Gets a value indicating whether the pane is currently open.
@@ -161,7 +159,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <returns>True if the pane is open; otherwise, false.</returns>
         public bool VerifyPaneOpen(int expectedCompactPaneWidth)
         {
-            AppiumWebElement pane = this.Element.FindElement(ByExtensions.AutomationId("PaneRoot"));
+            AppiumWebElement pane = this.Element.FindElement(WindowsByExtras.AutomationId("PaneRoot"));
             int paneWidth = pane.Rect.Width;
             return paneWidth > expectedCompactPaneWidth;
         }

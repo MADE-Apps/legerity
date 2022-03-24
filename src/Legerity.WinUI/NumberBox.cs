@@ -3,8 +3,6 @@ namespace Legerity.Windows.Elements.WinUI
     using System;
 
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -53,17 +51,17 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the element associated with the inline up button.
         /// </summary>
-        public Button InlineUpButton => this.Element.FindElement(ByExtensions.AutomationId("UpSpinButton"));
+        public Button InlineUpButton => this.Element.FindElement(WindowsByExtras.AutomationId("UpSpinButton"));
 
         /// <summary>
         /// Gets the element associated with the inline down button.
         /// </summary>
-        public Button InlineDownButton => this.Element.FindElement(ByExtensions.AutomationId("DownSpinButton"));
+        public Button InlineDownButton => this.Element.FindElement(WindowsByExtras.AutomationId("DownSpinButton"));
 
         /// <summary>
         /// Gets the element associated with the input text box.
         /// </summary>
-        public TextBox InputBox => this.Element.FindElement(ByExtensions.AutomationId("InputBox"));
+        public TextBox InputBox => this.Element.FindElement(WindowsByExtras.AutomationId("InputBox"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NumberBox"/> without direct casting.

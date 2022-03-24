@@ -2,8 +2,8 @@ namespace WindowsAlarmsAndClock.Pages
 {
     using System;
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.WinUI;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
 
     public class AppPage : BasePage
@@ -13,7 +13,7 @@ namespace WindowsAlarmsAndClock.Pages
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
-        protected override By Trait => ByExtensions.AutomationId("NavView");
+        protected override By Trait => WindowsByExtras.AutomationId("NavView");
 
         /// <summary>
         /// Selects a sample from the available options with the given name.

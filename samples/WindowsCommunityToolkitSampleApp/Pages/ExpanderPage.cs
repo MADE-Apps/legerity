@@ -1,7 +1,7 @@
 namespace WindowsCommunityToolkitSampleApp.Pages
 {
+    using Legerity.Windows;
     using Legerity.Windows.Elements.WCT;
-    using Legerity.Windows.Extensions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using OpenQA.Selenium;
 
@@ -10,9 +10,9 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     /// </summary>
     public class ExpanderPage : AppPage
     {
-        public Expander VerticalExpander => this.WindowsApp.FindElement(ByExtensions.AutomationId("Expander1"));
+        public Expander VerticalExpander => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("Expander1"));
 
-        public Expander HorizontalExpander => this.WindowsApp.FindElement(ByExtensions.AutomationId("Expander2"));
+        public Expander HorizontalExpander => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("Expander2"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

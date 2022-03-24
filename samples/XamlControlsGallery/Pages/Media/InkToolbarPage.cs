@@ -1,8 +1,8 @@
 namespace XamlControlsGallery.Pages.Media
 {
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
 
     /// <summary>
@@ -10,7 +10,7 @@ namespace XamlControlsGallery.Pages.Media
     /// </summary>
     public class InkToolbarPage : BasePage
     {
-        public InkToolbar InkToolbar => this.WindowsApp.FindElement(ByExtensions.AutomationId("inkToolbar"));
+        public InkToolbar InkToolbar => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("inkToolbar"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

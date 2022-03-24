@@ -1,7 +1,7 @@
 namespace WindowsCommunityToolkitSampleApp.Pages
 {
+    using Legerity.Windows;
     using Legerity.Windows.Elements.WCT;
-    using Legerity.Windows.Extensions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using OpenQA.Selenium;
 
@@ -14,7 +14,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
 
         public RadialGaugePage()
         {
-            this.radialGauge = ByExtensions.AutomationId("RadialGauge");
+            this.radialGauge = WindowsByExtras.AutomationId("RadialGauge");
         }
 
         /// <summary>

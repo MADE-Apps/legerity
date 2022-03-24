@@ -3,6 +3,7 @@ namespace MADESampleApp.Pages
     using System;
     using System.Collections.Generic;
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.MADE;
     using Legerity.Windows.Extensions;
@@ -13,17 +14,17 @@ namespace MADESampleApp.Pages
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
-        protected override By Trait => ByExtensions.AutomationId("DropDownList");
+        protected override By Trait => WindowsByExtras.AutomationId("DropDownList");
 
         public InputValidator TextInputValidator =>
-            this.WindowsApp.FindElement(ByExtensions.AutomationId("TextBoxValidator"));
+            this.WindowsApp.FindElement(WindowsByExtras.AutomationId("TextBoxValidator"));
 
-        public TextBox TextInput => this.TextInputValidator.Input(ByExtensions.AutomationId("TextBox"));
+        public TextBox TextInput => this.TextInputValidator.Input(WindowsByExtras.AutomationId("TextBox"));
 
         public InputValidator DateInputValidator =>
-            this.WindowsApp.FindElement(ByExtensions.AutomationId("DatePickerValidator"));
+            this.WindowsApp.FindElement(WindowsByExtras.AutomationId("DatePickerValidator"));
 
-        public DatePicker DateInput => this.DateInputValidator.Input(ByExtensions.AutomationId("DatePicker"));
+        public DatePicker DateInput => this.DateInputValidator.Input(WindowsByExtras.AutomationId("DatePicker"));
 
         public DropDownList DropDownList => this.WindowsApp.FindElementByAutomationId("DropDownList");
 

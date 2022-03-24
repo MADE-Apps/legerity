@@ -4,8 +4,6 @@ namespace Legerity.Windows.Elements.WinUI
     using System.Collections.Generic;
     using System.Linq;
     using Legerity.Extensions;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -139,7 +137,7 @@ namespace Legerity.Windows.Elements.WinUI
                     element => new NavigationViewItem(this.ParentNavigationView, this, element as WindowsElement));
             }
 
-            return this.Driver.FindElement(ByExtensions.AutomationId("ChildrenFlyout"))
+            return this.Driver.FindElement(WindowsByExtras.AutomationId("ChildrenFlyout"))
                 .FindElements(this.navigationViewItemLocator).Select(
                     element => new NavigationViewItem(this.ParentNavigationView, this, element as WindowsElement));
         }
