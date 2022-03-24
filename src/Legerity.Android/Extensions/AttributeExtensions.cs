@@ -16,5 +16,19 @@ namespace Legerity.Android.Extensions
         {
             return element.GetAttribute("content-desc");
         }
+
+        /// <summary>
+        /// Gets the value of the Android content description for this element.
+        /// </summary>
+        /// <typeparam name="TElement">
+        /// The type of <see cref="IWebElement"/>.
+        /// </typeparam>
+        /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a content description for.</param>
+        /// <returns>The element's content description.</returns>
+        public static string GetContentDescription<TElement>(this IElementWrapper<TElement> element)
+            where TElement : IWebElement
+        {
+            return GetContentDescription(element.Element);
+        }
     }
 }
