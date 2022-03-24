@@ -1,8 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
-
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -60,11 +58,11 @@ namespace Legerity.Windows.Elements.Core
             this.Element.Click();
 
             // Finds the popup and changes the time.
-            WindowsElement popup = this.Driver.FindElement(ByExtensions.AutomationId("DatePickerFlyoutPresenter"));
-            popup.FindElement(ByExtensions.AutomationId("DayLoopingSelector")).FindElementByName(date.ToString("%d")).Click();
-            popup.FindElement(ByExtensions.AutomationId("MonthLoopingSelector")).FindElementByName(date.ToString("MMMM")).Click();
-            popup.FindElement(ByExtensions.AutomationId("YearLoopingSelector")).FindElementByName(date.ToString("yyyy")).Click();
-            popup.FindElement(ByExtensions.AutomationId("AcceptButton")).Click();
+            WindowsElement popup = this.Driver.FindElement(WindowsByExtras.AutomationId("DatePickerFlyoutPresenter"));
+            popup.FindElement(WindowsByExtras.AutomationId("DayLoopingSelector")).FindElementByName(date.ToString("%d")).Click();
+            popup.FindElement(WindowsByExtras.AutomationId("MonthLoopingSelector")).FindElementByName(date.ToString("MMMM")).Click();
+            popup.FindElement(WindowsByExtras.AutomationId("YearLoopingSelector")).FindElementByName(date.ToString("yyyy")).Click();
+            popup.FindElement(WindowsByExtras.AutomationId("AcceptButton")).Click();
         }
     }
 }

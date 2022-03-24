@@ -2,7 +2,6 @@ namespace Legerity.Windows.Elements.MADE
 {
     using Legerity.Exceptions;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -26,7 +25,7 @@ namespace Legerity.Windows.Elements.MADE
         /// <summary>
         /// Gets the <see cref="ListView"/> element associated with the drop down content.
         /// </summary>
-        public ListView DropDown => this.Element.FindElement(ByExtensions.AutomationId("DropDownContent"));
+        public ListView DropDown => this.Element.FindElement(WindowsByExtras.AutomationId("DropDownContent"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="DropDownList"/> without direct casting.

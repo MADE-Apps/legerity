@@ -1,8 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -33,7 +31,7 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the element associated with the ballpoint pen button.
         /// </summary>
         public RadioButton BallpointPenButton =>
-            this.Element.FindElement(ByExtensions.AutomationId("InkToolbarBallpointPenButton"));
+            this.Element.FindElement(WindowsByExtras.AutomationId("InkToolbarBallpointPenButton"));
 
         /// <summary>
         /// Gets the currently selected ballpoint pen color.
@@ -44,7 +42,7 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the element associated with the pencil button.
         /// </summary>
         public RadioButton PencilButton =>
-            this.Element.FindElement(ByExtensions.AutomationId("InkToolbarPencilButton"));
+            this.Element.FindElement(WindowsByExtras.AutomationId("InkToolbarPencilButton"));
 
         /// <summary>
         /// Gets the currently selected pencil color.
@@ -55,7 +53,7 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the element associated with the highlighter button.
         /// </summary>
         public RadioButton HighlighterButton =>
-            this.Element.FindElement(ByExtensions.AutomationId("InkToolbarHighlighterButton"));
+            this.Element.FindElement(WindowsByExtras.AutomationId("InkToolbarHighlighterButton"));
 
         /// <summary>
         /// Gets the currently selected highlighter color.
@@ -66,7 +64,7 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the element associated with the ruler button.
         /// </summary>
         public ToggleButton RulerButton =>
-            this.Element.FindElement(ByExtensions.AutomationId("InkToolbarStencilButton"));
+            this.Element.FindElement(WindowsByExtras.AutomationId("InkToolbarStencilButton"));
 
         private InkToolbarBallpointPenFlyout BallpointPenFlyout =>
             this.Driver.FindElement(this.ballpointPenFlyoutLocator);

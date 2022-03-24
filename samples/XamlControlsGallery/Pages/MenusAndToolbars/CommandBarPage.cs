@@ -1,9 +1,8 @@
 namespace XamlControlsGallery.Pages.MenusAndToolbars
 {
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
 
     /// <summary>
@@ -11,7 +10,7 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
     /// </summary>
     public class CommandBarPage : BasePage
     {
-        public CommandBar PrimaryCommandBar => this.WindowsApp.FindElement(ByExtensions.AutomationId("PrimaryCommandBar"));
+        public CommandBar PrimaryCommandBar => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("PrimaryCommandBar"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

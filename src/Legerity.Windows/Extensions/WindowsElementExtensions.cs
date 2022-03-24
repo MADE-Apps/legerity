@@ -23,7 +23,7 @@ namespace Legerity.Windows.Extensions
         public static TElement FindElementByAutomationId<TElement>(this WindowsDriver<TElement> driver, string automationId)
             where TElement : IWebElement
         {
-            return driver.FindElement(ByExtensions.AutomationId(automationId));
+            return driver.FindElement(WindowsByExtras.AutomationId(automationId));
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Legerity.Windows.Extensions
         /// <returns>The located <see cref="AppiumWebElement"/>.</returns>
         public static AppiumWebElement FindElementByAutomationId(this WindowsElement element, string automationId)
         {
-            return element.FindElement(ByExtensions.AutomationId(automationId));
+            return element.FindElement(WindowsByExtras.AutomationId(automationId));
         }
 
         /// <summary>

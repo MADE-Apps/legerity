@@ -15,9 +15,9 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class CommandBar : WindowsElementWrapper
     {
-        private readonly By moreButtonLocator = ByExtensions.AutomationId("MoreButton");
+        private readonly By moreButtonLocator = WindowsByExtras.AutomationId("MoreButton");
 
-        private readonly By overflowPopupLocator = ByExtensions.AutomationId("OverflowPopup");
+        private readonly By overflowPopupLocator = WindowsByExtras.AutomationId("OverflowPopup");
 
         private readonly By appBarButtonLocator = By.ClassName(nameof(AppBarButton));
 

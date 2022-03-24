@@ -1,8 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -29,7 +27,7 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the element associated with the calendar flyout.
         /// </summary>
         public CalendarView CalendarViewFlyout =>
-            this.Driver.FindElement(this.calendarPopupLocator).FindElement(ByExtensions.AutomationId("CalendarView"));
+            this.Driver.FindElement(this.calendarPopupLocator).FindElement(WindowsByExtras.AutomationId("CalendarView"));
 
         /// <summary>
         /// Gets the value of the calendar date picker.

@@ -2,7 +2,6 @@ namespace Legerity.Windows.Elements.Telerik
 {
     using System;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -12,7 +11,7 @@ namespace Legerity.Windows.Elements.Telerik
     /// </summary>
     public class RadAutoCompleteBox : WindowsElementWrapper
     {
-        private readonly By suggestionsControlLocator = ByExtensions.AutomationId("PART_SuggestionsControl");
+        private readonly By suggestionsControlLocator = WindowsByExtras.AutomationId("PART_SuggestionsControl");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RadAutoCompleteBox"/> class.

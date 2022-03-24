@@ -6,8 +6,6 @@ namespace Legerity.Windows.Elements.Core
     using System.Linq;
     using System.Threading;
     using Legerity.Extensions;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -47,17 +45,17 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the header button (change month, year).
         /// </summary>
-        public Button HeaderButton => this.Element.FindElement(ByExtensions.AutomationId("HeaderButton"));
+        public Button HeaderButton => this.Element.FindElement(WindowsByExtras.AutomationId("HeaderButton"));
 
         /// <summary>
         /// Gets the element associated with the next month button.
         /// </summary>
-        public Button NextMonthButton => this.Element.FindElement(ByExtensions.AutomationId("NextButton"));
+        public Button NextMonthButton => this.Element.FindElement(WindowsByExtras.AutomationId("NextButton"));
 
         /// <summary>
         /// Gets the element associated with the previous month button.
         /// </summary>
-        public Button PreviousMonthButton => this.Element.FindElement(ByExtensions.AutomationId("PreviousButton"));
+        public Button PreviousMonthButton => this.Element.FindElement(WindowsByExtras.AutomationId("PreviousButton"));
 
         /// <summary>
         /// Gets the collection of days associated with the current month in the calendar view.

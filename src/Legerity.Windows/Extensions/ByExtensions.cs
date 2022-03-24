@@ -21,6 +21,7 @@ namespace Legerity.Windows.Extensions
         /// <exception cref="ArgumentNullException">
         /// Thrown if the <paramref name="automationId"/> is null.
         /// </exception>
+        [Obsolete("AutomationId(string) will be removed in a future major release. Please use the WindowsByExtras.AutomationId(string) instead.")]
         public static By AutomationId(string automationId)
         {
             if (automationId == null)
