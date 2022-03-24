@@ -1,10 +1,9 @@
 namespace XamlControlsGallery.Pages.MenusAndToolbars
 {
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WinUI;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
 
     /// <summary>
@@ -12,9 +11,9 @@ namespace XamlControlsGallery.Pages.MenusAndToolbars
     /// </summary>
     public class MenuBarPage : BasePage
     {
-        public MenuBar SimpleMenuBar => this.WindowsApp.FindElement(ByExtensions.AutomationId("Example1"));
+        public MenuBar SimpleMenuBar => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("Example1"));
 
-        public MenuBar MenuBarWithSubMenus => this.WindowsApp.FindElement(ByExtensions.AutomationId("Example3"));
+        public MenuBar MenuBarWithSubMenus => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("Example3"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

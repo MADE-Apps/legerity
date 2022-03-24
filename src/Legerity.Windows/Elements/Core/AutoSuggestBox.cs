@@ -1,9 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
-
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -13,7 +10,7 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class AutoSuggestBox : WindowsElementWrapper
     {
-        private readonly By suggestionsPopupLocator = ByExtensions.AutomationId("SuggestionsPopup");
+        private readonly By suggestionsPopupLocator = WindowsByExtras.AutomationId("SuggestionsPopup");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AutoSuggestBox"/> class.
@@ -34,12 +31,12 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the suggestion list when the <see cref="SuggestionsPopup"/> is shown.
         /// </summary>
-        public ListView SuggestionList => this.SuggestionsPopup.FindElement(ByExtensions.AutomationId("SuggestionsList"));
+        public ListView SuggestionList => this.SuggestionsPopup.FindElement(WindowsByExtras.AutomationId("SuggestionsList"));
 
         /// <summary>
         /// Gets the element associated with the text box.
         /// </summary>
-        public TextBox TextBox => this.Element.FindElement(ByExtensions.AutomationId("TextBox"));
+        public TextBox TextBox => this.Element.FindElement(WindowsByExtras.AutomationId("TextBox"));
 
         /// <summary>
         /// Gets the value of the auto-suggest box.

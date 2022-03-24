@@ -1,9 +1,8 @@
 namespace XamlControlsGallery.Pages.Navigation
 {
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.WinUI;
-    using Legerity.Windows.Extensions;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
@@ -13,7 +12,7 @@ namespace XamlControlsGallery.Pages.Navigation
     /// </summary>
     public class TabViewPage : BasePage
     {
-        public TabView TabView => this.WindowsApp.FindElement(ByExtensions.AutomationId("TabView1"));
+        public TabView TabView => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("TabView1"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

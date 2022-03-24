@@ -1,9 +1,9 @@
 namespace WindowsAlarmsAndClock.Elements
 {
     using System;
+    using Legerity.Windows;
     using Legerity.Windows.Elements;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -67,11 +67,11 @@ namespace WindowsAlarmsAndClock.Elements
             return new AlarmPopup(element as WindowsElement);
         }
 
-        public CustomTimePicker DurationPicker => this.FindElement(ByExtensions.AutomationId("DurationPicker"));
+        public CustomTimePicker DurationPicker => this.FindElement(WindowsByExtras.AutomationId("DurationPicker"));
 
         public TextBox AlarmNameInput => this.FindElement(By.Name("Alarm name"));
 
-        public Button SaveButton => this.Element.FindElement(ByExtensions.AutomationId("PrimaryButton"));
+        public Button SaveButton => this.Element.FindElement(WindowsByExtras.AutomationId("PrimaryButton"));
 
         public void SetTime(TimeSpan time)
         {

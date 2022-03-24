@@ -1,9 +1,8 @@
 namespace WindowsAlarmsAndClock.Elements
 {
     using System;
-
+    using Legerity.Windows;
     using Legerity.Windows.Elements;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
@@ -74,8 +73,8 @@ namespace WindowsAlarmsAndClock.Elements
         /// </param>
         public void SetTime(TimeSpan time)
         {
-            this.Element.FindElement(ByExtensions.AutomationId("HourPicker")).FindElementByName(time.ToString("%h")).Click();
-            this.Element.FindElement(ByExtensions.AutomationId("MinutePicker")).FindElementByName(time.ToString("mm")).Click();
+            this.Element.FindElement(WindowsByExtras.AutomationId("HourPicker")).FindElementByName(time.ToString("%h")).Click();
+            this.Element.FindElement(WindowsByExtras.AutomationId("MinutePicker")).FindElementByName(time.ToString("mm")).Click();
         }
     }
 }

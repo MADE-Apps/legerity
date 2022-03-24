@@ -4,9 +4,9 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     using Elements;
     using Legerity.Exceptions;
     using Legerity.Extensions;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WCT;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
 
     /// <summary>
@@ -14,10 +14,10 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     /// </summary>
     public class InAppNotificationPage : AppPage
     {
-        private readonly By exampleInAppNotificationLocator = ByExtensions.AutomationId("ExampleInAppNotification");
+        private readonly By exampleInAppNotificationLocator = WindowsByExtras.AutomationId("ExampleInAppNotification");
 
         private readonly By exampleCodeInAppNotificationLocator =
-            ByExtensions.AutomationId("ExampleVSCodeInAppNotification");
+            WindowsByExtras.AutomationId("ExampleVSCodeInAppNotification");
 
         /// <summary>
         /// Gets the example in-app notification element.

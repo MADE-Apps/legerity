@@ -1,16 +1,15 @@
 namespace XamlControlsGallery.Pages
 {
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
 
     public class SettingsPage : BasePage
     {
-        public ToggleSwitch SoundToggle => this.WindowsApp.FindElement(ByExtensions.AutomationId("soundToggle"));
+        public ToggleSwitch SoundToggle => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("soundToggle"));
 
         protected override By Trait => By.XPath(".//*[@Name='Settings'][@AutomationId='TitleTextBlock']");
 

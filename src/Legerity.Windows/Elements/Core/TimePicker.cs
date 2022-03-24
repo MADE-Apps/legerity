@@ -1,7 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -61,10 +60,10 @@ namespace Legerity.Windows.Elements.Core
             this.Element.Click();
 
             // Finds the popup and changes the time.
-            WindowsElement popup = this.Driver.FindElement(ByExtensions.AutomationId("TimePickerFlyoutPresenter"));
-            popup.FindElement(ByExtensions.AutomationId("HourLoopingSelector")).FindElementByName(time.ToString("%h")).Click();
-            popup.FindElement(ByExtensions.AutomationId("MinuteLoopingSelector")).FindElementByName(time.ToString("mm")).Click();
-            popup.FindElement(ByExtensions.AutomationId("AcceptButton")).Click();
+            WindowsElement popup = this.Driver.FindElement(WindowsByExtras.AutomationId("TimePickerFlyoutPresenter"));
+            popup.FindElement(WindowsByExtras.AutomationId("HourLoopingSelector")).FindElementByName(time.ToString("%h")).Click();
+            popup.FindElement(WindowsByExtras.AutomationId("MinuteLoopingSelector")).FindElementByName(time.ToString("mm")).Click();
+            popup.FindElement(WindowsByExtras.AutomationId("AcceptButton")).Click();
         }
     }
 }

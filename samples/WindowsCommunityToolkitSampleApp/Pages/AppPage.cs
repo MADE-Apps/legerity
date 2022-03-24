@@ -4,9 +4,9 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     using System.Linq;
     using System.Threading;
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WinUI;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
 
@@ -14,17 +14,17 @@ namespace WindowsCommunityToolkitSampleApp.Pages
     {
         public NavigationView NavigationView => this.WindowsApp.FindElement(this.Trait);
 
-        public AutoSuggestBox SampleSearchBox => this.NavigationView.FindElement(ByExtensions.AutomationId("SearchBox"));
+        public AutoSuggestBox SampleSearchBox => this.NavigationView.FindElement(WindowsByExtras.AutomationId("SearchBox"));
 
         /// <summary>
         /// Gets the UI component associated with the sample picker.
         /// </summary>
-        public GridView SamplePicker => this.WindowsApp.FindElement(ByExtensions.AutomationId("SamplePickerGridView"));
+        public GridView SamplePicker => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("SamplePickerGridView"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
-        protected override By Trait => ByExtensions.AutomationId("NavView");
+        protected override By Trait => WindowsByExtras.AutomationId("NavView");
 
         /// <summary>
         /// Selects a sample from the available options with the given name.

@@ -2,7 +2,6 @@ namespace Legerity.Windows.Elements.Telerik
 {
     using System;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -51,17 +50,17 @@ namespace Legerity.Windows.Elements.Telerik
         /// <summary>
         /// Gets the element associated with the increase button.
         /// </summary>
-        public Button Increase => this.Element.FindElement(ByExtensions.AutomationId("PART_IncreaseButton"));
+        public Button Increase => this.Element.FindElement(WindowsByExtras.AutomationId("PART_IncreaseButton"));
 
         /// <summary>
         /// Gets the element associated with the decrease button.
         /// </summary>
-        public Button DecreaseButton => this.Element.FindElement(ByExtensions.AutomationId("PART_DecreaseButton"));
+        public Button DecreaseButton => this.Element.FindElement(WindowsByExtras.AutomationId("PART_DecreaseButton"));
 
         /// <summary>
         /// Gets the element associated with the input text box.
         /// </summary>
-        public TextBox InputBox => this.Element.FindElement(ByExtensions.AutomationId("PART_TextBox"));
+        public TextBox InputBox => this.Element.FindElement(WindowsByExtras.AutomationId("PART_TextBox"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadNumericBox"/> without direct casting.

@@ -3,8 +3,6 @@ namespace Legerity.Windows.Elements.Core
     using System;
     using System.Linq;
     using Legerity.Extensions;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -19,7 +17,7 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         private abstract class InkToolbarColorFlyoutBase : WindowsElementWrapper
         {
-            private readonly By penColorPaletteLocator = ByExtensions.AutomationId("PenColorPalette");
+            private readonly By penColorPaletteLocator = WindowsByExtras.AutomationId("PenColorPalette");
 
             /// <summary>
             /// Initializes a new instance of the <see cref="InkToolbarColorFlyoutBase"/> class.
@@ -40,7 +38,7 @@ namespace Legerity.Windows.Elements.Core
             /// <summary>
             /// Gets the element associated with the size of the ink.
             /// </summary>
-            public Slider SizeSlider => this.Driver.FindElement(ByExtensions.AutomationId("PenStrokeWidthSlider"));
+            public Slider SizeSlider => this.Driver.FindElement(WindowsByExtras.AutomationId("PenStrokeWidthSlider"));
 
             /// <summary>
             /// Gets the currently selected color.
