@@ -1,8 +1,8 @@
 namespace XamlControlsGallery.Pages.BasicInput
 {
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.WinUI;
-    using Legerity.Windows.Extensions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
@@ -19,7 +19,7 @@ namespace XamlControlsGallery.Pages.BasicInput
         /// </summary>
         public RatingControlPage()
         {
-            this.simpleRatingControl = ByExtensions.AutomationId("RatingControl1");
+            this.simpleRatingControl = WindowsByExtras.AutomationId("RatingControl1");
         }
 
         /// <summary>

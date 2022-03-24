@@ -1,7 +1,6 @@
 namespace Legerity.Windows.Elements.MADE
 {
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -25,7 +24,7 @@ namespace Legerity.Windows.Elements.MADE
         /// <summary>
         /// Gets the <see cref="TextBlock"/> associated with the validation feedback message.
         /// </summary>
-        public TextBlock ValidationFeedback => this.Element.FindElement(ByExtensions.AutomationId("ValidatorFeedbackMessage"));
+        public TextBlock ValidationFeedback => this.Element.FindElement(WindowsByExtras.AutomationId("ValidatorFeedbackMessage"));
 
         /// <summary>
         /// Gets the validation feedback message associated with the <see cref="ValidationFeedback"/> element.

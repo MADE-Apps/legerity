@@ -3,8 +3,7 @@ namespace WindowsAlarmsAndClock.Pages
     using System;
 
     using Legerity.Pages;
-    using Legerity.Windows.Extensions;
-
+    using Legerity.Windows;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -38,21 +37,21 @@ namespace WindowsAlarmsAndClock.Pages
         /// </summary>
         public EditAlarmPage()
         {
-            this.alarmTimePicker = ByExtensions.AutomationId("AlarmTimePicker");
-            this.alarmNameTextBox = ByExtensions.AutomationId("AlarmNameTextBox");
-            this.alarmRepeatButton = ByExtensions.AutomationId("AlarmRepeatsToggleButton");
-            this.alarmSoundButton = ByExtensions.AutomationId("AlarmSoundButton");
-            this.alarmSnoozeComboBox = ByExtensions.AutomationId("AlarmSnoozeCombobox");
-            this.alarmSaveButton = ByExtensions.AutomationId("AlarmSaveButton");
-            this.alarmCancelButton = ByExtensions.AutomationId("CancelButton");
-            this.alarmDeleteButton = ByExtensions.AutomationId("AlarmDeleteButton");
-            this.alarmDeleteDialog = ByExtensions.AutomationId("DeleteConfirmationDialog");
+            this.alarmTimePicker = WindowsByExtras.AutomationId("AlarmTimePicker");
+            this.alarmNameTextBox = WindowsByExtras.AutomationId("AlarmNameTextBox");
+            this.alarmRepeatButton = WindowsByExtras.AutomationId("AlarmRepeatsToggleButton");
+            this.alarmSoundButton = WindowsByExtras.AutomationId("AlarmSoundButton");
+            this.alarmSnoozeComboBox = WindowsByExtras.AutomationId("AlarmSnoozeCombobox");
+            this.alarmSaveButton = WindowsByExtras.AutomationId("AlarmSaveButton");
+            this.alarmCancelButton = WindowsByExtras.AutomationId("CancelButton");
+            this.alarmDeleteButton = WindowsByExtras.AutomationId("AlarmDeleteButton");
+            this.alarmDeleteDialog = WindowsByExtras.AutomationId("DeleteConfirmationDialog");
         }
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
-        protected override By Trait => ByExtensions.AutomationId("EditAlarmHeader");
+        protected override By Trait => WindowsByExtras.AutomationId("EditAlarmHeader");
 
         /// <summary>
         /// Sets the time of the alarm being edited.

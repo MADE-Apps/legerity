@@ -1,7 +1,7 @@
 namespace WindowsCommunityToolkitSampleApp.Pages
 {
+    using Legerity.Windows;
     using Legerity.Windows.Elements.WCT;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using Shouldly;
 
@@ -17,7 +17,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         {
         }
 
-        public Carousel Carousel => this.WindowsApp.FindElement(ByExtensions.AutomationId("CarouselControl"));
+        public Carousel Carousel => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("CarouselControl"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

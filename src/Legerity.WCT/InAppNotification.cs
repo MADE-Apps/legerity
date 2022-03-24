@@ -2,7 +2,6 @@ namespace Legerity.Windows.Elements.WCT
 {
     using System.Linq;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -25,7 +24,7 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets the dismiss button.
         /// </summary>
-        public virtual Button DismissButton => this.Element.FindElement(ByExtensions.AutomationId("PART_DismissButton"));
+        public virtual Button DismissButton => this.Element.FindElement(WindowsByExtras.AutomationId("PART_DismissButton"));
 
         /// <summary>
         /// Gets the message displayed.

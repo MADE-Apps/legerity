@@ -5,8 +5,6 @@ namespace Legerity.Windows.Elements.Core
     using System.Globalization;
     using System.Linq;
     using Legerity.Extensions;
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -35,12 +33,12 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the next item button.
         /// </summary>
-        public Button NextButton => this.Element.FindElement(ByExtensions.AutomationId("NextButtonHorizontal"));
+        public Button NextButton => this.Element.FindElement(WindowsByExtras.AutomationId("NextButtonHorizontal"));
 
         /// <summary>
         /// Gets the element associated with the previous item button.
         /// </summary>
-        public Button PreviousButton => this.Element.FindElement(ByExtensions.AutomationId("PreviousButtonHorizontal"));
+        public Button PreviousButton => this.Element.FindElement(WindowsByExtras.AutomationId("PreviousButtonHorizontal"));
 
         /// <summary>
         /// Gets the currently selected item.

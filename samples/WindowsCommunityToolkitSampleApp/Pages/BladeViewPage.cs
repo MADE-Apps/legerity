@@ -1,8 +1,8 @@
 namespace WindowsCommunityToolkitSampleApp.Pages
 {
+    using Legerity.Windows;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WCT;
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
 
     /// <summary>
@@ -17,7 +17,7 @@ namespace WindowsCommunityToolkitSampleApp.Pages
         {
         }
 
-        public BladeView BladeView => this.WindowsApp.FindElement(ByExtensions.AutomationId("BladeView"));
+        public BladeView BladeView => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("BladeView"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

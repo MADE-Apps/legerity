@@ -1,8 +1,8 @@
 namespace XamlControlsGallery.Pages.Collections
 {
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.Core;
-    using Legerity.Windows.Extensions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using OpenQA.Selenium;
 
@@ -11,7 +11,7 @@ namespace XamlControlsGallery.Pages.Collections
     /// </summary>
     public class ListBoxPage : BasePage
     {
-        private readonly By colorListBox = ByExtensions.AutomationId("ListBox1");
+        private readonly By colorListBox = WindowsByExtras.AutomationId("ListBox1");
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

@@ -3,8 +3,6 @@ namespace XamlControlsGallery.Pages
     using Legerity.Pages;
     using Legerity.Windows.Elements.Core;
     using Legerity.Windows.Elements.WinUI;
-    using Legerity.Windows.Extensions;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
@@ -12,6 +10,7 @@ namespace XamlControlsGallery.Pages
     using BasicInput;
     using Collections;
     using DateAndTime;
+    using Legerity.Windows;
     using Media;
     using MenusAndToolbars;
     using Navigation;
@@ -24,12 +23,12 @@ namespace XamlControlsGallery.Pages
     {
         public NavigationView NavigationView => this.WindowsApp.FindElement(this.Trait);
 
-        public AutoSuggestBox ControlsSearchBox => this.NavigationView.FindElement(ByExtensions.AutomationId("controlsSearchBox"));
+        public AutoSuggestBox ControlsSearchBox => this.NavigationView.FindElement(WindowsByExtras.AutomationId("controlsSearchBox"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
-        protected override By Trait => ByExtensions.AutomationId("NavigationViewControl");
+        protected override By Trait => WindowsByExtras.AutomationId("NavigationViewControl");
 
         /// <summary>
         /// Navigates to the app bar toggle button control page.

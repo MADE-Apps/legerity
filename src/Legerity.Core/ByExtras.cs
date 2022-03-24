@@ -11,7 +11,7 @@ namespace Legerity
         /// Gets a mechanism to find elements by the text content.
         /// </summary>
         /// <param name="text">The text to find.</param>
-        /// <returns>A <see cref="By"/> object the driver can user to find elements.</returns>
+        /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
         public static By Text(string text)
         {
             return By.XPath($".//*[text()='{text}']");
@@ -21,7 +21,7 @@ namespace Legerity
         /// Gets a mechanism to find elements by partial text content.
         /// </summary>
         /// <param name="text">The text to find.</param>
-        /// <returns>A <see cref="By"/> object the driver can user to find elements.</returns>
+        /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
         public static By PartialText(string text)
         {
             return By.XPath($".//*[contains(text(),'{text}')]");

@@ -1,9 +1,8 @@
 namespace XamlControlsGallery.Pages.Text
 {
     using Legerity.Pages;
+    using Legerity.Windows;
     using Legerity.Windows.Elements.WinUI;
-    using Legerity.Windows.Extensions;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using OpenQA.Selenium;
@@ -16,7 +15,7 @@ namespace XamlControlsGallery.Pages.Text
         /// <summary>
         /// Gets the element associated with the spinner number box.
         /// </summary>
-        public NumberBox SpinnerNumberBox => this.WindowsApp.FindElement(ByExtensions.AutomationId("NumberBoxSpinButtonPlacementExample"));
+        public NumberBox SpinnerNumberBox => this.WindowsApp.FindElement(WindowsByExtras.AutomationId("NumberBoxSpinButtonPlacementExample"));
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

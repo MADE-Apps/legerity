@@ -1,7 +1,5 @@
 namespace Legerity.Windows.Elements.Core
 {
-    using Legerity.Windows.Extensions;
-
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -24,7 +22,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the reveal password button.
         /// </summary>
-        public ToggleButton RevealButton => this.Element.FindElement(ByExtensions.AutomationId("RevealButton"));
+        public ToggleButton RevealButton => this.Element.FindElement(WindowsByExtras.AutomationId("RevealButton"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="PasswordBox"/> without direct casting.
