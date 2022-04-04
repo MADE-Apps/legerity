@@ -25,6 +25,11 @@ namespace Legerity.IOS.Elements.Core
         public string Text => this.Element.GetValue();
 
         /// <summary>
+        /// Gets the element associated with the clear text button, if shown.
+        /// </summary>
+        public Button ClearTextButton => this.Element.FindElement(IOSByExtras.Label("Clear text"));
+
+        /// <summary>
         /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="TextField"/> without direct casting.
         /// </summary>
         /// <param name="element">
