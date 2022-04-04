@@ -26,5 +26,25 @@ namespace Legerity.IOS
         {
             return By.XPath($".//*[contains(@label,'{label}')]");
         }
+
+        /// <summary>
+        /// Gets a mechanism to find elements by the value.
+        /// </summary>
+        /// <param name="value">The value to find.</param>
+        /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
+        public static By Value(string value)
+        {
+            return By.XPath($".//*[@value='{value}']");
+        }
+
+        /// <summary>
+        /// Gets a mechanism to find elements by a partial value.
+        /// </summary>
+        /// <param name="value">The value to find.</param>
+        /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
+        public static By PartialValue(string value)
+        {
+            return By.XPath($".//*[contains(@value,'{value}')]");
+        }
     }
 }

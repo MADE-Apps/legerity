@@ -31,5 +31,29 @@ namespace Legerity.IOS.Extensions
         {
             return GetLabel(element.Element);
         }
+
+        /// <summary>
+        /// Retrieves the value attribute from the specified element.
+        /// </summary>
+        /// <param name="element">The <see cref="IWebElement"/> to retrieve a value from.</param>
+        /// <returns>The value of the element.</returns>
+        public static string GetValue(this IWebElement element)
+        {
+            return element.GetAttribute("value");
+        }
+
+        /// <summary>
+        /// Retrieves the value attribute from the specified element.
+        /// </summary>
+        /// <typeparam name="TElement">
+        /// The type of <see cref="RemoteWebElement"/>.
+        /// </typeparam>
+        /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a value from.</param>
+        /// <returns>The value of the element.</returns>
+        public static string GetValue<TElement>(this IElementWrapper<TElement> element)
+            where TElement : IWebElement
+        {
+            return GetValue(element.Element);
+        }
     }
 }
