@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Elements\Core\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Legerity.Core\Legerity.Core.csproj" />
   </ItemGroup>
 

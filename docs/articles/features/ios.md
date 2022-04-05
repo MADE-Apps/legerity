@@ -11,4 +11,9 @@ These iOS control wrappers are designed to be used with applications built for t
 
 ## Available element wrappers
 
-There are currently no base element wrappers for iOS controls. As we added more iOS element wrappers, we will update the documentation here.
+- [Button](xref:Legerity.IOS.Elements.Core.Button)
+- [Label](xref:Legerity.IOS.Elements.Core.Label)
+- [ProgressView](xref:Legerity.IOS.Elements.Core.ProgressView)
+- [Slider](xref:Legerity.IOS.Elements.Core.Slider)
+- [Switch](xref:Legerity.IOS.Elements.Core.Switch)
+- [TextField](xref:Legerity.IOS.Elements.Core.TextField)

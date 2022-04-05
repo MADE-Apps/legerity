@@ -89,6 +89,14 @@ namespace Legerity.IOS
         public string DeviceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the automation tool to use to run the application. Defaults to <b>XCUITest</b>.
+        /// <para>
+        /// If a value is provided in the additional options, this value will override it.
+        /// </para>
+        /// </summary>
+        public string AutomationName { get; set; } = "XCUITest";
+
+        /// <summary>
         /// Gets or sets a value indicating whether to launch the Appium server instance.
         /// </summary>
         public bool LaunchAppiumServer { get; set; }
@@ -105,6 +113,7 @@ namespace Legerity.IOS
             this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
             this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
             this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.App, this.AppId);
+            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.AutomationName, this.AutomationName);
         }
 
         /// <summary>
