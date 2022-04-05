@@ -11,7 +11,7 @@ These Windows element wrappers are designed to be used with applications built w
 
 ## Available element wrappers
 
-- [RadAutoCompleteBox](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Telerik.Uwp/RadAutoCompleteBox.cs)
-- [RadBulletGraph](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Telerik.Uwp/RadBulletGraph.cs)
-- [RadBusyIndicator](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Telerik.Uwp/RadBusyIndicator.cs)
-- [RadNumericBox](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Telerik.Uwp/RadNumericBox.cs)
+- [RadAutoCompleteBox](xref:Legerity.Windows.Elements.Telerik.RadAutoCompleteBox)
+- [RadBulletGraph](xref:Legerity.Windows.Elements.Telerik.RadBulletGraph)
+- [RadBusyIndicator](xref:Legerity.Windows.Elements.Telerik.RadBusyIndicator)
+- [RadNumericBox](xref:Legerity.Windows.Elements.Telerik.RadNumericBox)

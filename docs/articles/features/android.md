@@ -11,13 +11,13 @@ These Android element wrappers are designed to be used with applications built f
 
 ## Available element wrappers
 
-- [Button](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/Button.cs)
-- [CheckBox](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/CheckBox.cs)
-- [DatePicker](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/DatePicker.cs)
-- [EditText](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/EditText.cs)
-- [RadioButton](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/RadioButton.cs)
-- [Spinner](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/Spinner.cs)
-- [Switch](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/Switch.cs)
-- [TextView](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/TextView.cs)
-- [ToggleButton](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/ToggleButton.cs)
-- [View](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Android/Elements/Core/View.cs)
+- [Button](xref:Legerity.Android.Elements.Core.Button)
+- [CheckBox](xref:Legerity.Android.Elements.Core.CheckBox)
+- [DatePicker](xref:Legerity.Android.Elements.Core.DatePicker)
+- [EditText](xref:Legerity.Android.Elements.Core.EditText)
+- [RadioButton](xref:Legerity.Android.Elements.Core.RadioButton)
+- [Spinner](xref:Legerity.Android.Elements.Core.Spinner)
+- [Switch](xref:Legerity.Android.Elements.Core.Switch)
+- [TextView](xref:Legerity.Android.Elements.Core.TextView)
+- [ToggleButton](xref:Legerity.Android.Elements.Core.ToggleButton)
+- [View](xref:Legerity.Android.Elements.Core.View)

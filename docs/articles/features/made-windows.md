@@ -11,5 +11,5 @@ These Windows element wrappers are designed to be used with applications built w
 
 ## Available element wrappers
 
-- [DropDownList](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.MADE/DropDownList.cs)
-- [InputValidator](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.MADE/InputValidator.cs)
+- [DropDownList](xref:Legerity.Windows.Elements.MADE.DropDownList)
+- [InputValidator](xref:Legerity.Windows.Elements.MADE.InputValidator)
