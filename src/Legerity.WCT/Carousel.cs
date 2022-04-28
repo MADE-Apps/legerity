@@ -30,21 +30,17 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets the collection of items associated with the carousel.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.carouselItemLocator);
+        public virtual ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.carouselItemLocator);
 
         /// <summary>
         /// Gets the element associated with the currently selected item.
         /// </summary>
-        public AppiumWebElement SelectedItem =>
-            this.Items.FirstOrDefault(
-                i => i.GetAttribute("SelectionItem.IsSelected").Equals(
-                    "True",
-                    StringComparison.CurrentCultureIgnoreCase));
+        public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
 
         /// <summary>
         /// Gets the index of the element associated with the currently selected item.
         /// </summary>
-        public int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
+        public virtual int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ListView"/> without direct casting.
@@ -80,11 +76,30 @@ namespace Legerity.Windows.Elements.WCT
         /// <param name="name">
         /// The name of the item to click.
         /// </param>
-        public void SelectItem(string name)
+        public virtual void SelectItem(string name)
         {
             this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
 
             int index = this.Items.IndexOf(this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name)));
+            int selectedIndex = this.SelectedIndex;
+            while (Math.Abs(index - selectedIndex) > double.Epsilon)
+            {
+                this.Element.SendKeys(selectedIndex < index ? Keys.ArrowRight : Keys.ArrowLeft);
+                selectedIndex = this.SelectedIndex;
+            }
+        }
+
+        /// <summary>
+        /// Clicks on an item in the carousel with the specified partial item name.
+        /// </summary>
+        /// <param name="partialName">
+        /// The partial name of the item to click.
+        /// </param>
+        public virtual void SelectItemByPartialName(string partialName)
+        {
+            this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
+
+            int index = this.Items.IndexOf(this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName)));
             int selectedIndex = this.SelectedIndex;
             while (Math.Abs(index - selectedIndex) > double.Epsilon)
             {

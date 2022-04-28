@@ -20,7 +20,7 @@ namespace Legerity.Android.Elements.Core
         /// <summary>
         /// Gets the text value of the text box.
         /// </summary>
-        public string Text => this.Element.Text;
+        public virtual string Text => this.Element.Text;
 
         /// <summary>
         /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="EditText"/> without direct casting.
@@ -54,7 +54,7 @@ namespace Legerity.Android.Elements.Core
         /// Sets the text of the text box to the specified text.
         /// </summary>
         /// <param name="text">The text to display.</param>
-        public void SetText(string text)
+        public virtual void SetText(string text)
         {
             this.ClearText();
             this.AppendText(text);
@@ -64,18 +64,18 @@ namespace Legerity.Android.Elements.Core
         /// Appends the specified text to the text box.
         /// </summary>
         /// <param name="text">The text to append.</param>
-        public void AppendText(string text)
+        public virtual void AppendText(string text)
         {
-            this.Element.Click();
+            this.Click();
             this.Element.SendKeys(text);
         }
 
         /// <summary>
         /// Clears the text from the text box.
         /// </summary>
-        public void ClearText()
+        public virtual void ClearText()
         {
-            this.Element.Click();
+            this.Click();
             this.Element.Clear();
         }
     }

@@ -30,48 +30,67 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the ballpoint pen button.
         /// </summary>
-        public RadioButton BallpointPenButton =>
+        public virtual RadioButton BallpointPenButton =>
             this.Element.FindElement(WindowsByExtras.AutomationId("InkToolbarBallpointPenButton"));
 
         /// <summary>
         /// Gets the currently selected ballpoint pen color.
         /// </summary>
-        public string SelectedBallpointPenColor => this.BallpointPenFlyout.SelectedColor;
+        public virtual string SelectedBallpointPenColor => this.BallpointPenFlyout.SelectedColor;
 
         /// <summary>
         /// Gets the element associated with the pencil button.
         /// </summary>
-        public RadioButton PencilButton =>
+        public virtual RadioButton PencilButton =>
             this.Element.FindElement(WindowsByExtras.AutomationId("InkToolbarPencilButton"));
 
         /// <summary>
         /// Gets the currently selected pencil color.
         /// </summary>
-        public string SelectedPencilColor => this.PencilFlyout.SelectedColor;
+        public virtual string SelectedPencilColor => this.PencilFlyout.SelectedColor;
 
         /// <summary>
         /// Gets the element associated with the highlighter button.
         /// </summary>
-        public RadioButton HighlighterButton =>
+        public virtual RadioButton HighlighterButton =>
             this.Element.FindElement(WindowsByExtras.AutomationId("InkToolbarHighlighterButton"));
 
         /// <summary>
         /// Gets the currently selected highlighter color.
         /// </summary>
-        public string SelectedHighlighterColor => this.HighlighterFlyout.SelectedColor;
+        public virtual string SelectedHighlighterColor => this.HighlighterFlyout.SelectedColor;
 
         /// <summary>
         /// Gets the element associated with the ruler button.
         /// </summary>
-        public ToggleButton RulerButton =>
+        public virtual ToggleButton RulerButton =>
             this.Element.FindElement(WindowsByExtras.AutomationId("InkToolbarStencilButton"));
 
-        private InkToolbarBallpointPenFlyout BallpointPenFlyout =>
+        /// <summary>
+        /// Gets the element associated with the ballpoint pen flyout.
+        /// </summary>
+        /// <remarks>
+        /// This is only available when the ballpoint pen button is selected.
+        /// </remarks>
+        public virtual InkToolbarBallpointPenFlyout BallpointPenFlyout =>
             this.Driver.FindElement(this.ballpointPenFlyoutLocator);
 
-        private InkToolbarPencilFlyout PencilFlyout => this.Driver.FindElement(this.pencilFlyoutLocator);
+        /// <summary>
+        /// Gets the element associated with the pencil flyout.
+        /// </summary>
+        /// <remarks>
+        /// This is only available when the pencil button is selected.
+        /// </remarks>
+        public virtual InkToolbarPencilFlyout PencilFlyout => this.Driver.FindElement(this.pencilFlyoutLocator);
 
-        private InkToolbarHighlighterFlyout HighlighterFlyout => this.Driver.FindElement(this.highlighterFlyoutLocator);
+        /// <summary>
+        /// Gets the element associated with the highlighter flyout.
+        /// </summary>
+        /// <remarks>
+        /// This is only available when the highlighter button is selected.
+        /// </remarks>
+        public virtual InkToolbarHighlighterFlyout HighlighterFlyout =>
+            this.Driver.FindElement(this.highlighterFlyoutLocator);
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InkToolbar"/> without direct casting.
@@ -104,7 +123,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Selects the ballpoint pen option.
         /// </summary>
-        public void SelectBallpointPen()
+        public virtual void SelectBallpointPen()
         {
             if (!this.BallpointPenButton.IsSelected)
             {
@@ -115,7 +134,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Opens the ballpoint pen flyout.
         /// </summary>
-        public void OpenBallpointPenFlyout()
+        public virtual void OpenBallpointPenFlyout()
         {
             this.SelectBallpointPen();
 
@@ -129,16 +148,28 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="color">
         /// The color to set.
         /// </param>
-        public void SetBallpointPenColor(string color)
+        public virtual void SetBallpointPenColor(string color)
         {
             this.OpenBallpointPenFlyout();
             this.BallpointPenFlyout.SetColor(color);
         }
 
         /// <summary>
+        /// Sets the toolbar to the ballpoint pen with the given partial color name.
+        /// </summary>
+        /// <param name="color">
+        /// The partial color name to set.
+        /// </param>
+        public virtual void SetBallpointPenColorByPartialName(string color)
+        {
+            this.OpenBallpointPenFlyout();
+            this.BallpointPenFlyout.SetColorByPartialName(color);
+        }
+
+        /// <summary>
         /// Selects the pencil option.
         /// </summary>
-        public void SelectPencil()
+        public virtual void SelectPencil()
         {
             if (!this.PencilButton.IsSelected)
             {
@@ -149,7 +180,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Opens the pencil flyout.
         /// </summary>
-        public void OpenPencilFlyout()
+        public virtual void OpenPencilFlyout()
         {
             this.SelectPencil();
 
@@ -163,16 +194,28 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="color">
         /// The color to set.
         /// </param>
-        public void SetPencilColor(string color)
+        public virtual void SetPencilColor(string color)
         {
             this.OpenPencilFlyout();
             this.PencilFlyout.SetColor(color);
         }
 
         /// <summary>
+        /// Sets the toolbar to the pencil with the given partial color name.
+        /// </summary>
+        /// <param name="color">
+        /// The partial color name to set.
+        /// </param>
+        public virtual void SetPencilColorByPartialName(string color)
+        {
+            this.OpenPencilFlyout();
+            this.PencilFlyout.SetColorByPartialName(color);
+        }
+
+        /// <summary>
         /// Selects the highlighter option.
         /// </summary>
-        public void SelectHighlighter()
+        public virtual void SelectHighlighter()
         {
             if (!this.HighlighterButton.IsSelected)
             {
@@ -183,7 +226,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Opens the pencil flyout.
         /// </summary>
-        public void OpenHighlighterFlyout()
+        public virtual void OpenHighlighterFlyout()
         {
             this.SelectHighlighter();
 
@@ -192,15 +235,27 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
-        /// Sets the toolbar to the pencil with the given color and size.
+        /// Sets the toolbar to the highlighter with the given color.
         /// </summary>
         /// <param name="color">
         /// The color to set.
         /// </param>
-        public void SetHighlighterColor(string color)
+        public virtual void SetHighlighterColor(string color)
         {
             this.OpenHighlighterFlyout();
             this.HighlighterFlyout.SetColor(color);
+        }
+
+        /// <summary>
+        /// Sets the toolbar to the highlighter with the given color.
+        /// </summary>
+        /// <param name="color">
+        /// The color to set.
+        /// </param>
+        public virtual void SetHighlighterColorByPartialName(string color)
+        {
+            this.OpenHighlighterFlyout();
+            this.HighlighterFlyout.SetColorByPartialName(color);
         }
     }
 }

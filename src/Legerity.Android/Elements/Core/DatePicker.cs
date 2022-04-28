@@ -45,7 +45,7 @@ namespace Legerity.Android.Elements.Core
         /// This will be in the format, 'ddd, MMM d'.
         /// </para>
         /// </summary>
-        public TextView DateTextView => this.Element.FindElement(By.Id("android:id/date_picker_header_date"));
+        public virtual TextView DateTextView => this.Element.FindElement(By.Id("android:id/date_picker_header_date"));
 
         /// <summary>
         /// Gets the element associated with the year text.
@@ -53,27 +53,27 @@ namespace Legerity.Android.Elements.Core
         /// This will be in the format, 'YYYY'.
         /// </para>
         /// </summary>
-        public TextView YearTextView => this.Element.FindElement(By.Id("android:id/date_picker_header_year"));
+        public virtual TextView YearTextView => this.Element.FindElement(By.Id("android:id/date_picker_header_year"));
 
         /// <summary>
         /// Gets the element associated with the day picker.
         /// </summary>
-        public View DayPickerView => this.Element.FindElement(By.Id("android:id/day_picker_view_pager"));
+        public virtual View DayPickerView => this.Element.FindElement(By.Id("android:id/day_picker_view_pager"));
 
         /// <summary>
         /// Gets the element associated with the next month button.
         /// </summary>
-        public Button NextMonthButton => this.Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Next month\")");
+        public virtual Button NextMonthButton => this.Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Next month\")");
 
         /// <summary>
         /// Gets the element associated with the previous month button.
         /// </summary>
-        public Button PreviousMonthButton => this.Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Previous month\")");
+        public virtual Button PreviousMonthButton => this.Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Previous month\")");
 
         /// <summary>
         /// Gets the selected date/time value.
         /// </summary>
-        public DateTime SelectedDate => this.GetCurrentViewDate();
+        public virtual DateTime SelectedDate => this.GetCurrentViewDate();
 
         /// <summary>
         /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="DatePicker"/> without direct casting.
@@ -107,7 +107,7 @@ namespace Legerity.Android.Elements.Core
         /// Sets the selected date of the date picker.
         /// </summary>
         /// <param name="date">The date to set to.</param>
-        public void SetDate(DateTime date)
+        public virtual void SetDate(DateTime date)
         {
             DateTime currentViewDate = this.GetCurrentViewDate();
 

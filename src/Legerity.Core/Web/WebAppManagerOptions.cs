@@ -11,7 +11,6 @@ namespace Legerity.Web
         /// <summary>
         /// Initializes a new instance of the <see cref="WebAppManagerOptions"/> class.
         /// </summary>
-
         public WebAppManagerOptions()
         {
         }

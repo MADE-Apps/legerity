@@ -34,22 +34,22 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the source URI of the image.
         /// </summary>
-        public string Source => this.Element.GetAttribute("src");
+        public virtual string Source => this.GetAttribute("src");
 
         /// <summary>
         /// Gets the alt text of the image.
         /// </summary>
-        public string AltText => this.Element.GetAttribute("alt");
+        public virtual string AltText => this.GetAttribute("alt");
 
         /// <summary>
         /// Gets the width of the image.
         /// </summary>
-        public double Width => double.Parse(this.Element.GetAttribute("width"));
+        public virtual double Width => double.Parse(this.GetAttribute("width"));
 
         /// <summary>
         /// Gets the height of the image.
         /// </summary>
-        public double Height => double.Parse(this.Element.GetAttribute("height"));
+        public virtual double Height => double.Parse(this.GetAttribute("height"));
 
         /// <summary>
         /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="Image"/> without direct casting.

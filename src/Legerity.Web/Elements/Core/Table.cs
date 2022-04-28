@@ -36,22 +36,22 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets or sets a value indicating whether the first row in the table is a header row.
         /// </summary>
-        public bool IsFirstRowHeaders { get; set; } = true;
+        public virtual bool IsFirstRowHeaders { get; set; } = true;
 
         /// <summary>
         /// Gets the header names for the table.
         /// </summary>
-        public IEnumerable<string> Headers => this.IsFirstRowHeaders ? this.Rows.FirstOrDefault().GetAllChildElements().Select(x => x.Text) : this.Element.FindElements(By.TagName("th")).Select(x => x.Text);
+        public virtual IEnumerable<string> Headers => this.IsFirstRowHeaders ? this.Rows.FirstOrDefault().GetAllChildElements().Select(x => x.Text) : this.Element.FindElements(WebByExtras.TableHeaderCell()).Select(x => x.Text);
 
         /// <summary>
         /// Gets the collection of rows associated with the table. If a header row exists, that will be included.
         /// </summary>
-        public IEnumerable<TableRow> Rows => this.Element.FindElements(By.TagName("tr")).Select(e => new TableRow(e));
+        public virtual IEnumerable<TableRow> Rows => this.Element.FindElements(WebByExtras.TableRow()).Select(e => new TableRow(e));
 
         /// <summary>
         /// Gets the collection of rows associated with the table only containing the data values (not headers).
         /// </summary>
-        public IEnumerable<TableRow> DataRows => this.Rows.Where(x => x.FindElements(By.TagName("th")).Count == 0);
+        public virtual IEnumerable<TableRow> DataRows => this.Rows.Where(x => x.FindElements(WebByExtras.TableHeaderCell()).Count == 0);
 
         /// <summary>
         /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="Table"/> without direct casting.
@@ -72,7 +72,7 @@ namespace Legerity.Web.Elements.Core
         /// </summary>
         /// <param name="idx">The specified row data index to retrieve data for.</param>
         /// <returns>A dictionary of key-value pairs containing the column header and the column value for the row.</returns>
-        public IReadOnlyDictionary<string, string> GetRowDataByIndex(int idx)
+        public virtual IReadOnlyDictionary<string, string> GetRowDataByIndex(int idx)
         {
             void AddRowData(IDictionary<string, string> dictionary, string header, TableRow tableRow, int valueIdx)
             {
@@ -109,7 +109,7 @@ namespace Legerity.Web.Elements.Core
         /// </summary>
         /// <param name="header">The column header name.</param>
         /// <returns>A collection of values for each row in the column.</returns>
-        public IEnumerable<string> GetColumnDataByHeader(string header)
+        public virtual IEnumerable<string> GetColumnDataByHeader(string header)
         {
             var headers = this.Headers.ToList();
             int idx = headers.IndexOf(header);
@@ -121,7 +121,7 @@ namespace Legerity.Web.Elements.Core
         /// </summary>
         /// <param name="idx">The specified column index of data to retrieve.</param>
         /// <returns>A collection of values for each row in the column.</returns>
-        public IEnumerable<string> GetColumnDataByIndex(int idx)
+        public virtual IEnumerable<string> GetColumnDataByIndex(int idx)
         {
             if (idx == -1)
             {

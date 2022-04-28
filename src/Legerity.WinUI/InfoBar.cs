@@ -23,32 +23,32 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the title of the info bar.
         /// </summary>
-        public string Title => this.TitleTextBlock.Text;
+        public virtual string Title => this.TitleTextBlock.Text;
 
         /// <summary>
         /// Gets the message of the info bar.
         /// </summary>
-        public string Message => this.MessageTextBlock.Text;
+        public virtual string Message => this.MessageTextBlock.Text;
 
         /// <summary>
         /// Gets a value indicating whether the info bar is open.
         /// </summary>
-        public bool IsOpen => !bool.Parse(this.Element.GetAttribute("IsOffscreen"));
+        public virtual bool IsOpen => !bool.Parse(this.GetAttribute("IsOffscreen"));
 
         /// <summary>
         /// Gets the element associated with the title <see cref="TextBlock"/>.
         /// </summary>
-        public TextBlock TitleTextBlock => this.FindElement(WindowsByExtras.AutomationId("Title"));
+        public virtual TextBlock TitleTextBlock => this.FindElement(WindowsByExtras.AutomationId("Title"));
 
         /// <summary>
         /// Gets the element associated with the message <see cref="TextBlock"/>.
         /// </summary>
-        public TextBlock MessageTextBlock => this.FindElement(WindowsByExtras.AutomationId("Message"));
+        public virtual TextBlock MessageTextBlock => this.FindElement(WindowsByExtras.AutomationId("Message"));
 
         /// <summary>
         /// Gets the element associated with the close <see cref="Button"/>.
         /// </summary>
-        public Button CloseButton => this.FindElement(WindowsByExtras.AutomationId("CloseButton"));
+        public virtual Button CloseButton => this.FindElement(WindowsByExtras.AutomationId("CloseButton"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InfoBar"/> without direct casting.
@@ -81,7 +81,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Closes the info bar.
         /// </summary>
-        public void Close()
+        public virtual void Close()
         {
             this.CloseButton.Click();
         }

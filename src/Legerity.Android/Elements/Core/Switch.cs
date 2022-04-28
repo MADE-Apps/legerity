@@ -1,5 +1,6 @@
 namespace Legerity.Android.Elements.Core
 {
+    using System;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
 
@@ -8,8 +9,6 @@ namespace Legerity.Android.Elements.Core
     /// </summary>
     public class Switch : AndroidElementWrapper
     {
-        private const string ToggleOnValue = "true";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Switch"/> class.
         /// </summary>
@@ -24,7 +23,7 @@ namespace Legerity.Android.Elements.Core
         /// <summary>
         /// Gets a value indicating whether the toggle switch is in the on position.
         /// </summary>
-        public bool IsOn => this.Element.GetAttribute("Checked") == ToggleOnValue;
+        public virtual bool IsOn => this.GetAttribute("Checked").Equals("True", StringComparison.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="Switch"/> without direct casting.
@@ -57,27 +56,27 @@ namespace Legerity.Android.Elements.Core
         /// <summary>
         /// Toggles the switch on.
         /// </summary>
-        public void ToggleOn()
+        public virtual void ToggleOn()
         {
             if (this.IsOn)
             {
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
 
         /// <summary>
         /// Toggles the switch off.
         /// </summary>
-        public void ToggleOff()
+        public virtual void ToggleOff()
         {
             if (!this.IsOn)
             {
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
     }
 }

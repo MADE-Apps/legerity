@@ -1,6 +1,7 @@
 namespace Legerity.Web.Elements.Core
 {
     using Legerity.Web.Elements;
+    using Legerity.Web.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 
@@ -34,17 +35,17 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the value of the option.
         /// </summary>
-        public string Value => this.Element.GetAttribute("value");
+        public virtual string Value => this.GetValue();
 
         /// <summary>
         /// Gets the display value of the option.
         /// </summary>
-        public string DisplayValue => this.Element.Text;
+        public virtual string DisplayValue => this.Element.Text;
 
         /// <summary>
         /// Gets a value indicating whether the option is selected.
         /// </summary>
-        public bool IsSelected => this.Element.Selected;
+        public virtual bool IsSelected => this.Element.Selected;
 
         /// <summary>
         /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="Option"/> without direct casting.
@@ -63,9 +64,9 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Selects the option.
         /// </summary>
-        public void Select()
+        public virtual void Select()
         {
-            this.Element.Click();
+            this.Click();
         }
     }
 }

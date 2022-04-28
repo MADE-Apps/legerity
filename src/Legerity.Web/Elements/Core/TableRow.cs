@@ -37,6 +37,6 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets all of the values for each column in the row.
         /// </summary>
-        public IEnumerable<string> Values => this.GetAllChildElements().Select(x => x.GetInnerHtml());
+        public virtual IEnumerable<string> Values => this.GetAllChildElements().Select(x => x.GetInnerHtml());
     }
 }

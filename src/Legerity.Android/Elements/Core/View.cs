@@ -47,13 +47,5 @@ namespace Legerity.Android.Elements.Core
         {
             return new View(element as AndroidElement);
         }
-
-        /// <summary>
-        /// Clicks the element.
-        /// </summary>
-        public void Click()
-        {
-            this.Element.Click();
-        }
     }
 }

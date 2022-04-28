@@ -46,13 +46,5 @@ namespace Legerity.Windows.Elements.Core
         {
             return new Button(element as WindowsElement);
         }
-
-        /// <summary>
-        /// Clicks the button.
-        /// </summary>
-        public void Click()
-        {
-            this.Element.Click();
-        }
     }
 }

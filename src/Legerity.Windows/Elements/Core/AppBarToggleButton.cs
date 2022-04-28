@@ -1,5 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -8,8 +9,6 @@ namespace Legerity.Windows.Elements.Core
     /// </summary>
     public class AppBarToggleButton : AppBarButton
     {
-        private const string ToggleOnValue = "1";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AppBarToggleButton"/> class.
         /// </summary>
@@ -24,7 +23,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets a value indicating whether the toggle button is in the on position.
         /// </summary>
-        public bool IsOn => this.Element.GetAttribute("Toggle.ToggleState") == ToggleOnValue;
+        public virtual bool IsOn => this.GetToggleState() == ToggleState.Checked;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="AppBarToggleButton"/> without direct casting.
@@ -57,7 +56,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Toggles the button on.
         /// </summary>
-        public void ToggleOn()
+        public virtual void ToggleOn()
         {
             if (this.IsOn)
             {
@@ -70,7 +69,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Toggles the button off.
         /// </summary>
-        public void ToggleOff()
+        public virtual void ToggleOff()
         {
             if (!this.IsOn)
             {

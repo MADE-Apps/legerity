@@ -44,13 +44,5 @@ namespace Legerity.Web.Elements.Core
         {
             return new Button(element);
         }
-
-        /// <summary>
-        /// Clicks the button.
-        /// </summary>
-        public void Click()
-        {
-            this.Element.Click();
-        }
     }
 }

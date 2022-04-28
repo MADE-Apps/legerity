@@ -2,6 +2,7 @@ namespace Legerity.Windows.Elements.WinUI
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using Legerity.Extensions;
     using OpenQA.Selenium;
@@ -27,7 +28,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the UI components associated with the menu items.
         /// </summary>
-        public IEnumerable<MenuBarItem> MenuItems =>
+        public virtual IEnumerable<MenuBarItem> MenuItems =>
             this.Element.FindElements(By.ClassName("Microsoft.UI.Xaml.Controls.MenuBarItem"))
                 .Select(element => new MenuBarItem(this, element as WindowsElement));
 
@@ -68,11 +69,29 @@ namespace Legerity.Windows.Elements.WinUI
         /// <returns>
         /// The clicked <see cref="MenuBarItem"/>.
         /// </returns>
-        public MenuBarItem ClickOption(string name)
+        public virtual MenuBarItem ClickOption(string name)
         {
             MenuBarItem item = this.MenuItems.FirstOrDefault(
                 element => element.GetName()
                     .Equals(name, StringComparison.CurrentCultureIgnoreCase));
+            item.Click();
+            return item;
+        }
+
+        /// <summary>
+        /// Clicks on a child menu option with the specified partial item name.
+        /// </summary>
+        /// <param name="name">
+        /// The partial name of the item to click.
+        /// </param>
+        /// <returns>
+        /// The clicked <see cref="MenuBarItem"/>.
+        /// </returns>
+        public virtual MenuBarItem ClickOptionByPartialName(string name)
+        {
+            MenuBarItem item = this.MenuItems.FirstOrDefault(
+                element => element.GetName()
+                    .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
             item.Click();
             return item;
         }

@@ -23,10 +23,8 @@ namespace Legerity.Android.Elements.Core
         /// <summary>
         /// Gets a value indicating whether the radio button is selected.
         /// </summary>
-        public bool IsSelected =>
-            this.Element.GetAttribute("Checked").Equals(
-                "True",
-                StringComparison.CurrentCultureIgnoreCase);
+        public virtual bool IsSelected =>
+            this.GetAttribute("Checked").Equals("True", StringComparison.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="RadioButton"/> without direct casting.

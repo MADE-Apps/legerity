@@ -24,7 +24,7 @@ namespace Legerity.Windows.Elements.Telerik
         /// <summary>
         /// Gets a value indicating whether the busy indicator is on.
         /// </summary>
-        public bool IsOn => this.Element.GetAttribute("ItemStatus") == OnValue;
+        public virtual bool IsOn => this.GetAttribute("ItemStatus") == OnValue;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadBusyIndicator"/> without direct casting.
