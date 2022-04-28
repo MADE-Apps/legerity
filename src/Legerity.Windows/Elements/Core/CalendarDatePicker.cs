@@ -1,6 +1,7 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -26,13 +27,13 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the calendar flyout.
         /// </summary>
-        public CalendarView CalendarViewFlyout =>
+        public virtual CalendarView CalendarViewFlyout =>
             this.Driver.FindElement(this.calendarPopupLocator).FindElement(WindowsByExtras.AutomationId("CalendarView"));
 
         /// <summary>
         /// Gets the value of the calendar date picker.
         /// </summary>
-        public string Value => this.Element.GetAttribute("Value.Value");
+        public virtual string Value => this.GetValue();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
@@ -66,9 +67,9 @@ namespace Legerity.Windows.Elements.Core
         /// Sets the selected date of the calendar view.
         /// </summary>
         /// <param name="date">The date to set to.</param>
-        public void SetDate(DateTime date)
+        public virtual void SetDate(DateTime date)
         {
-            this.Element.Click();
+            this.Click();
 
             this.VerifyDriverElementShown(this.calendarPopupLocator, TimeSpan.FromSeconds(2));
 

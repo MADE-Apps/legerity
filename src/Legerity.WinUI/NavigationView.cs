@@ -2,6 +2,7 @@ namespace Legerity.Windows.Elements.WinUI
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using Legerity.Extensions;
     using Legerity.Windows.Elements.Core;
@@ -28,39 +29,43 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the UI component associated with displaying the menu items.
         /// </summary>
-        public AppiumWebElement MenuItemsView => this.Element.FindElement(WindowsByExtras.AutomationId("MenuItemsHost"));
+        public virtual AppiumWebElement MenuItemsView =>
+            this.Element.FindElement(WindowsByExtras.AutomationId("MenuItemsHost"));
 
         /// <summary>
         /// Gets the UI components associated with the menu items.
         /// </summary>
-        public IEnumerable<NavigationViewItem> MenuItems =>
+        public virtual IEnumerable<NavigationViewItem> MenuItems =>
             this.MenuItemsView.FindElements(By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem"))
                 .Select(element => new NavigationViewItem(this, element as WindowsElement));
 
         /// <summary>
         /// Gets the UI component associated with the settings menu item.
         /// </summary>
-        public AppiumWebElement SettingsMenuItem => this.Element.FindElement(WindowsByExtras.AutomationId("SettingsItem"));
+        public virtual AppiumWebElement SettingsMenuItem =>
+            this.Element.FindElement(WindowsByExtras.AutomationId("SettingsItem"));
 
         /// <summary>
         /// Gets the UI component associated with the navigation pane toggle button.
         /// </summary>
-        public Button ToggleNavigationPaneButton => this.Element.FindElement(WindowsByExtras.AutomationId("TogglePaneButton"));
+        public virtual Button ToggleNavigationPaneButton =>
+            this.Element.FindElement(WindowsByExtras.AutomationId("TogglePaneButton"));
 
         /// <summary>
         /// Gets the UI component associated with the navigation back button.
         /// </summary>
-        public Button BackButton => this.Element.FindElement(WindowsByExtras.AutomationId("NavigationViewBackButton"));
+        public virtual Button BackButton =>
+            this.Element.FindElement(WindowsByExtras.AutomationId("NavigationViewBackButton"));
 
         /// <summary>
         /// Gets a value indicating whether the pane is currently open.
         /// </summary>
-        public bool IsPaneOpen => this.VerifyPaneOpen(this.ExpectedCompactPaneWidth);
+        public virtual bool IsPaneOpen => this.VerifyPaneOpen(this.ExpectedCompactPaneWidth);
 
         /// <summary>
         /// Gets or sets the expected compact pane width used to determine the pane open state.
         /// </summary>
-        public int ExpectedCompactPaneWidth { get; set; } = 72;
+        public virtual int ExpectedCompactPaneWidth { get; set; } = 72;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationView"/> without direct casting.
@@ -93,7 +98,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Opens the navigation pane.
         /// </summary>
-        public void OpenNavigationPane()
+        public virtual void OpenNavigationPane()
         {
             if (this.IsPaneOpen)
             {
@@ -106,7 +111,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Collapses the navigation pane.
         /// </summary>
-        public void CloseNavigationPane()
+        public virtual void CloseNavigationPane()
         {
             if (!this.IsPaneOpen)
             {
@@ -119,7 +124,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Navigates the view back.
         /// </summary>
-        public void GoBack()
+        public virtual void GoBack()
         {
             if (this.BackButton.IsEnabled)
             {
@@ -136,7 +141,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <returns>
         /// The clicked <see cref="NavigationViewItem"/>.
         /// </returns>
-        public NavigationViewItem ClickMenuOption(string name)
+        public virtual NavigationViewItem ClickMenuOption(string name)
         {
             NavigationViewItem item = this.MenuItems.FirstOrDefault(
                 element => element.GetName().Equals(name, StringComparison.CurrentCultureIgnoreCase));
@@ -145,9 +150,26 @@ namespace Legerity.Windows.Elements.WinUI
         }
 
         /// <summary>
+        /// Clicks on a menu option in the navigation view with the specified partial item name.
+        /// </summary>
+        /// <param name="name">
+        /// The partial name of the item to click.
+        /// </param>
+        /// <returns>
+        /// The clicked <see cref="NavigationViewItem"/>.
+        /// </returns>
+        public virtual NavigationViewItem ClickMenuOptionByPartialName(string name)
+        {
+            NavigationViewItem item = this.MenuItems.FirstOrDefault(
+                element => element.GetName().Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
+            item.Click();
+            return item;
+        }
+
+        /// <summary>
         /// Opens the settings option.
         /// </summary>
-        public void OpenSettings()
+        public virtual void OpenSettings()
         {
             this.SettingsMenuItem.Click();
         }
@@ -157,7 +179,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// </summary>
         /// <param name="expectedCompactPaneWidth">The expected compact pane width when closed.</param>
         /// <returns>True if the pane is open; otherwise, false.</returns>
-        public bool VerifyPaneOpen(int expectedCompactPaneWidth)
+        public virtual bool VerifyPaneOpen(int expectedCompactPaneWidth)
         {
             AppiumWebElement pane = this.Element.FindElement(WindowsByExtras.AutomationId("PaneRoot"));
             int paneWidth = pane.Rect.Width;

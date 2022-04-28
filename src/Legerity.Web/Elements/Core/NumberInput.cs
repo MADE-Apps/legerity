@@ -34,17 +34,17 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the minimum value of the NumberBox.
         /// </summary>
-        public double Minimum => double.Parse(this.Element.GetAttribute("min"));
+        public virtual double Minimum => double.Parse(this.GetAttribute("min"));
 
         /// <summary>
         /// Gets the maximum value of the NumberBox.
         /// </summary>
-        public double Maximum => double.Parse(this.Element.GetAttribute("max"));
+        public virtual double Maximum => double.Parse(this.GetAttribute("max"));
 
         /// <summary>
         /// Gets the value of the NumberBox.
         /// </summary>
-        public double Value => double.TryParse(this.Text, out double val) ? val : 0;
+        public virtual double Value => double.TryParse(this.Text, out double val) ? val : 0;
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NumberInput"/> without direct casting.
@@ -69,7 +69,7 @@ namespace Legerity.Web.Elements.Core
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown if the value is out of the minimum and maximum range of the NumberBox.
         /// </exception>
-        public void SetValue(double value)
+        public virtual void SetValue(double value)
         {
             double min = this.Minimum;
             double max = this.Maximum;
@@ -96,7 +96,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Increases the number box value.
         /// </summary>
-        public void Increment()
+        public virtual void Increment()
         {
             this.Element.SendKeys(Keys.ArrowUp);
         }
@@ -104,7 +104,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Decreases the number box value.
         /// </summary>
-        public void Decrement()
+        public virtual void Decrement()
         {
             this.Element.SendKeys(Keys.ArrowDown);
         }

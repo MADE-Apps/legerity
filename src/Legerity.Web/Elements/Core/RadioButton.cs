@@ -1,5 +1,6 @@
 namespace Legerity.Web.Elements.Core
 {
+    using Legerity.Web.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 
@@ -33,12 +34,12 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets a value indicating whether the radio button is selected.
         /// </summary>
-        public bool IsSelected => this.Element.Selected;
+        public virtual bool IsSelected => this.Element.Selected;
 
         /// <summary>
         /// Gets the name of the group for the radio button.
         /// </summary>
-        public string Group => this.Element.GetAttribute("name");
+        public virtual string Group => this.GetName();
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadioButton"/> without direct casting.

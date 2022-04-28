@@ -2,7 +2,9 @@ namespace Legerity.Web.Elements.Core
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
+    using Legerity.Extensions;
     using Legerity.Web.Elements;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
@@ -37,22 +39,23 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets a value indicating whether multiple items can be selected.
         /// </summary>
-        public bool IsMultiple => this.GetIsMultiple();
+        public virtual bool IsMultiple => this.GetIsMultiple();
 
         /// <summary>
         /// Gets the collection of items associated with the select.
         /// </summary>
-        public IEnumerable<Option> Options => this.Element.FindElements(By.TagName("option")).Select(e => new Option(e));
+        public virtual IEnumerable<Option> Options =>
+            this.Element.FindElements(WebByExtras.Option()).Select(e => new Option(e));
 
         /// <summary>
         /// Gets the selected item when in a single selection state.
         /// </summary>
-        public Option SelectedOption => this.Options.FirstOrDefault(e => e.IsSelected);
+        public virtual Option SelectedOption => this.Options.FirstOrDefault(e => e.IsSelected);
 
         /// <summary>
         /// Gets the selected items when in a multiple selection state.
         /// </summary>
-        public IEnumerable<Option> SelectedOptions => this.Options.Where(e => e.IsSelected);
+        public virtual IEnumerable<Option> SelectedOptions => this.Options.Where(e => e.IsSelected);
 
         /// <summary>
         /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="Select"/> without direct casting.
@@ -74,11 +77,28 @@ namespace Legerity.Web.Elements.Core
         /// <param name="displayValue">
         /// The display value of the item to select.
         /// </param>
-        public void SelectOptionByDisplayValue(string displayValue)
+        public virtual void SelectOptionByDisplayValue(string displayValue)
         {
             Option item =
                 this.Options.FirstOrDefault(e =>
                     e.DisplayValue.Equals(displayValue, StringComparison.CurrentCultureIgnoreCase));
+            item.Select();
+        }
+
+        /// <summary>
+        /// Selects an item in the select element with the specified partial display value.
+        /// </summary>
+        /// <param name="partialDisplayValue">
+        /// The partial display value of the item to select.
+        /// </param>
+        public virtual void SelectOptionByPartialDisplayValue(string partialDisplayValue)
+        {
+            Option item =
+                this.Options.FirstOrDefault(e =>
+                    e.DisplayValue.Contains(
+                        partialDisplayValue,
+                        CultureInfo.CurrentCulture,
+                        CompareOptions.IgnoreCase));
             item.Select();
         }
 
@@ -88,7 +108,7 @@ namespace Legerity.Web.Elements.Core
         /// <param name="value">
         /// The value of the item to select.
         /// </param>
-        public void SelectOptionByValue(string value)
+        public virtual void SelectOptionByValue(string value)
         {
             Option item =
                 this.Options.FirstOrDefault(e =>
@@ -96,9 +116,26 @@ namespace Legerity.Web.Elements.Core
             item.Select();
         }
 
+        /// <summary>
+        /// Selects an item in the select element with the specified partial value.
+        /// </summary>
+        /// <param name="partialValue">
+        /// The partial value of the item to select.
+        /// </param>
+        public virtual void SelectOptionByPartialValue(string partialValue)
+        {
+            Option item =
+                this.Options.FirstOrDefault(e =>
+                    e.Value.Contains(
+                        partialValue,
+                        CultureInfo.CurrentCulture,
+                        CompareOptions.IgnoreCase));
+            item.Select();
+        }
+
         private bool GetIsMultiple()
         {
-            string multipleAttr = this.Element.GetAttribute("multiple");
+            string multipleAttr = this.GetAttribute("multiple");
             if (multipleAttr == null)
             {
                 return false;

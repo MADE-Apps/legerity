@@ -1,8 +1,8 @@
 namespace Legerity.Windows.Elements.WinUI
 {
     using System;
-
     using Legerity.Windows.Elements.Core;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -26,42 +26,43 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the minimum value of the NumberBox.
         /// </summary>
-        public double Minimum => double.Parse(this.Element.GetAttribute("RangeValue.Minimum"));
+        public virtual double Minimum => this.GetRangeMinimum();
 
         /// <summary>
         /// Gets the maximum value of the NumberBox.
         /// </summary>
-        public double Maximum => double.Parse(this.Element.GetAttribute("RangeValue.Maximum"));
+        public virtual double Maximum => this.GetRangeMaximum();
 
         /// <summary>
         /// Gets the small change (step) value of the NumberBox.
         /// </summary>
-        public double SmallChange => double.Parse(this.Element.GetAttribute("RangeValue.SmallChange"));
+        public virtual double SmallChange => this.GetRangeSmallChange();
 
         /// <summary>
         /// Gets the value of the NumberBox.
         /// </summary>
-        public double Value => double.Parse(this.Element.GetAttribute("RangeValue.Value"));
+        public virtual double Value => this.GetRangeValue();
 
         /// <summary>
         /// Gets a value indicating whether the control is in a readonly state.
         /// </summary>
-        public bool IsReadonly => bool.Parse(this.Element.GetAttribute("RangeValue.IsReadOnly"));
+        public virtual bool IsReadonly => this.IsRangeReadonly();
 
         /// <summary>
         /// Gets the element associated with the inline up button.
         /// </summary>
-        public Button InlineUpButton => this.Element.FindElement(WindowsByExtras.AutomationId("UpSpinButton"));
+        public virtual Button InlineUpButton => this.Element.FindElement(WindowsByExtras.AutomationId("UpSpinButton"));
 
         /// <summary>
         /// Gets the element associated with the inline down button.
         /// </summary>
-        public Button InlineDownButton => this.Element.FindElement(WindowsByExtras.AutomationId("DownSpinButton"));
+        public virtual Button InlineDownButton =>
+            this.Element.FindElement(WindowsByExtras.AutomationId("DownSpinButton"));
 
         /// <summary>
         /// Gets the element associated with the input text box.
         /// </summary>
-        public TextBox InputBox => this.Element.FindElement(WindowsByExtras.AutomationId("InputBox"));
+        public virtual TextBox InputBox => this.Element.FindElement(WindowsByExtras.AutomationId("InputBox"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NumberBox"/> without direct casting.
@@ -100,7 +101,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown if the value is out of the minimum and maximum range of the NumberBox.
         /// </exception>
-        public void SetValue(double value)
+        public virtual void SetValue(double value)
         {
             double min = this.Minimum;
             double max = this.Maximum;
@@ -128,7 +129,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Increases the number box value by the <see cref="SmallChange"/> value.
         /// </summary>
-        public void Increment()
+        public virtual void Increment()
         {
             this.Element.SendKeys(Keys.ArrowUp);
         }
@@ -136,7 +137,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Decreases the number box value by the <see cref="SmallChange"/> value.
         /// </summary>
-        public void Decrement()
+        public virtual void Decrement()
         {
             this.Element.SendKeys(Keys.ArrowDown);
         }

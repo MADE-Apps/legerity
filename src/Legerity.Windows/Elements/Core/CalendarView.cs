@@ -6,6 +6,7 @@ namespace Legerity.Windows.Elements.Core
     using System.Linq;
     using System.Threading;
     using Legerity.Extensions;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -45,27 +46,27 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the header button (change month, year).
         /// </summary>
-        public Button HeaderButton => this.Element.FindElement(WindowsByExtras.AutomationId("HeaderButton"));
+        public virtual Button HeaderButton => this.Element.FindElement(WindowsByExtras.AutomationId("HeaderButton"));
 
         /// <summary>
         /// Gets the element associated with the next month button.
         /// </summary>
-        public Button NextMonthButton => this.Element.FindElement(WindowsByExtras.AutomationId("NextButton"));
+        public virtual Button NextMonthButton => this.Element.FindElement(WindowsByExtras.AutomationId("NextButton"));
 
         /// <summary>
         /// Gets the element associated with the previous month button.
         /// </summary>
-        public Button PreviousMonthButton => this.Element.FindElement(WindowsByExtras.AutomationId("PreviousButton"));
+        public virtual Button PreviousMonthButton => this.Element.FindElement(WindowsByExtras.AutomationId("PreviousButton"));
 
         /// <summary>
         /// Gets the collection of days associated with the current month in the calendar view.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Days => this.Element.FindElements(By.ClassName("CalendarViewDayItem"));
+        public virtual ReadOnlyCollection<AppiumWebElement> Days => this.Element.FindElements(By.ClassName("CalendarViewDayItem"));
 
         /// <summary>
         /// Gets the value of the calendar view.
         /// </summary>
-        public string Value => this.Element.GetAttribute("Value.Value");
+        public virtual string Value => this.GetValue();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CalendarView"/> without direct casting.

@@ -39,7 +39,30 @@ namespace Legerity
         /// <summary>
         /// Gets a value indicating whether the element is visible.
         /// </summary>
-        public bool IsVisible => this.Element.Displayed;
+        public virtual bool IsVisible => this.Element.Displayed;
+
+        /// <summary>
+        /// Gets a value indicating whether the element is enabled.
+        /// </summary>
+        public virtual bool IsEnabled => this.Element.Enabled;
+
+        /// <summary>
+        /// Clicks the element.
+        /// </summary>
+        public virtual void Click()
+        {
+            this.Element.Click();
+        }
+
+        /// <summary>
+        /// Gets the value of the specified attribute for this element.
+        /// </summary>
+        /// <param name="attributeName">The name of the attribute.</param>
+        /// <returns>The attribute's current value if it exists; otherwise, null.</returns>
+        public string GetAttribute(string attributeName)
+        {
+            return this.Element.GetAttribute(attributeName);
+        }
 
         /// <summary>
         /// Finds a child element by the specified locator.

@@ -23,7 +23,7 @@ namespace Legerity.IOS.Elements.Core
         /// <summary>
         /// Gets the button's label content.
         /// </summary>
-        public string Label => this.Element.GetLabel();
+        public virtual string Label => this.Element.GetLabel();
 
         /// <summary>
         /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="Button"/> without direct casting.
@@ -51,14 +51,6 @@ namespace Legerity.IOS.Elements.Core
         public static implicit operator Button(AppiumWebElement element)
         {
             return new Button(element as IOSElement);
-        }
-
-        /// <summary>
-        /// Clicks the button.
-        /// </summary>
-        public void Click()
-        {
-            this.Element.Click();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets the UI components associated with the child blades.
         /// </summary>
-        public IEnumerable<BladeViewItem> Blades =>
+        public virtual IEnumerable<BladeViewItem> Blades =>
             this.Element.FindElements(By.ClassName("BladeItem"))
                 .Select(element => new BladeViewItem(this, element as WindowsElement));
 
@@ -63,18 +63,38 @@ namespace Legerity.Windows.Elements.WCT
         /// </summary>
         /// <param name="name">The name of the blade to retrieve.</param>
         /// <returns>A <see cref="BladeViewItem"/> instance if found; otherwise, null.</returns>
-        public BladeViewItem GetBlade(string name)
+        public virtual BladeViewItem GetBlade(string name)
         {
             return this.Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdEquals(name));
         }
 
         /// <summary>
-        /// Closes an open blade.
+        /// Retrieves a <see cref="BladeViewItem"/> by the given partial name.
+        /// </summary>
+        /// <param name="partialName">The partial name of the blade to retrieve.</param>
+        /// <returns>A <see cref="BladeViewItem"/> instance if found; otherwise, null.</returns>
+        public virtual BladeViewItem GetBladeByPartialName(string partialName)
+        {
+            return this.Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdContains(partialName));
+        }
+
+        /// <summary>
+        /// Closes an open blade by name.
         /// </summary>
         /// <param name="name">The name of the blade to close.</param>
-        public void CloseBlade(string name)
+        public virtual void CloseBlade(string name)
         {
             BladeViewItem blade = this.GetBlade(name);
+            blade.Close();
+        }
+
+        /// <summary>
+        /// Closes an open blade by partial name.
+        /// </summary>
+        /// <param name="partialName">The partial name of the blade to close.</param>
+        public virtual void CloseBladeByPartialName(string partialName)
+        {
+            BladeViewItem blade = this.GetBladeByPartialName(partialName);
             blade.Close();
         }
     }

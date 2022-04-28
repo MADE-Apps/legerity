@@ -1,5 +1,6 @@
 namespace Legerity.Windows.Elements.Telerik
 {
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -22,17 +23,17 @@ namespace Legerity.Windows.Elements.Telerik
         /// <summary>
         /// Gets the minimum value of the bullet graph.
         /// </summary>
-        public double Minimum => double.Parse(this.Element.GetAttribute("RangeValue.Minimum"));
+        public virtual double Minimum => this.GetRangeMinimum();
 
         /// <summary>
         /// Gets the maximum value of the bullet graph.
         /// </summary>
-        public double Maximum => double.Parse(this.Element.GetAttribute("RangeValue.Maximum"));
+        public virtual double Maximum => this.GetRangeMaximum();
 
         /// <summary>
         /// Gets the value of the bullet graph.
         /// </summary>
-        public double Value => double.Parse(this.Element.GetAttribute("RangeValue.Value"));
+        public virtual double Value => this.GetRangeValue();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadBulletGraph"/> without direct casting.

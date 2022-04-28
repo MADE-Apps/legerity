@@ -32,7 +32,7 @@ namespace Legerity.Windows.Elements.WCT
         /// Note, this only works if the Content is based on a <see cref="string"/> or if the ContentTemplate includes a TextBlock element with the message.
         /// </para>
         /// </summary>
-        public string Message => this.Element.FindElementsByClassName("TextBlock").FirstOrDefault()?.Text;
+        public virtual string Message => this.Element.FindElementsByClassName("TextBlock").FirstOrDefault()?.Text;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InAppNotification"/> without direct casting.

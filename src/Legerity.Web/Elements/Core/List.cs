@@ -35,7 +35,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the list.
         /// </summary>
-        public ReadOnlyCollection<IWebElement> Items => this.Element.FindElements(By.TagName("li"));
+        public virtual ReadOnlyCollection<IWebElement> Items => this.Element.FindElements(WebByExtras.ListItem());
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="List"/> without direct casting.

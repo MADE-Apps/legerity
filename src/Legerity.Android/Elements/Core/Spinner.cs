@@ -23,7 +23,7 @@ namespace Legerity.Android.Elements.Core
         /// <summary>
         /// Gets the currently selected item.
         /// </summary>
-        public string SelectedItem => this.GetSelectedItem();
+        public virtual string SelectedItem => this.GetSelectedItem();
 
         /// <summary>
         /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="Spinner"/> without direct casting.
@@ -59,13 +59,29 @@ namespace Legerity.Android.Elements.Core
         /// <param name="name">
         /// The name of the item to select.
         /// </param>
-        public void SelectItem(string name)
+        public virtual void SelectItem(string name)
         {
-            this.Element.Click();
+            this.Click();
 
             var locator =
                 new ByAndroidUIAutomator(
                     $"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\"{name}\"));");
+            AndroidElement item = this.Driver.FindElement(locator);
+
+            item.Click();
+        }
+
+        /// <summary>
+        /// Selects an item in the combo-box with the specified partial item name.
+        /// </summary>
+        /// <param name="partialName">The partial name match for the item to select.</param>
+        public virtual void SelectItemByPartialName(string partialName)
+        {
+            this.Click();
+
+            var locator =
+                new ByAndroidUIAutomator(
+                    $"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().textContains(\"{partialName}\"));");
             AndroidElement item = this.Driver.FindElement(locator);
 
             item.Click();

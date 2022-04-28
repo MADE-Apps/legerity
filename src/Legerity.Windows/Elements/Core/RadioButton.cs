@@ -1,6 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
-    using System;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -23,10 +23,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets a value indicating whether the radio button is selected.
         /// </summary>
-        public bool IsSelected =>
-            this.Element.GetAttribute("SelectionItem.IsSelected").Equals(
-                "True",
-                StringComparison.CurrentCultureIgnoreCase);
+        public virtual bool IsSelected => this.IsSelected();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadioButton"/> without direct casting.

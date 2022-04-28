@@ -25,12 +25,12 @@ namespace Legerity.IOS.Elements.Core
         /// <summary>
         /// Gets the value of the slider as a percentage between 0 and 100.
         /// </summary>
-        public double Value => double.Parse(this.Element.GetValue().TrimEnd('%'));
+        public virtual double Value => double.Parse(this.Element.GetValue().TrimEnd('%'));
 
         /// <summary>
         /// Gets a value indicating whether the control is in a readonly state.
         /// </summary>
-        public bool IsReadonly => !this.IsEnabled;
+        public virtual bool IsReadonly => !this.IsEnabled;
 
         /// <summary>
         /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="Slider"/> without direct casting.
@@ -66,9 +66,9 @@ namespace Legerity.IOS.Elements.Core
         /// <param name="value">
         /// The value.
         /// </param>
-        public void SetValue(double value)
+        public virtual void SetValue(double value)
         {
-            this.Element.Click();
+            this.Click();
 
             double currentValue = this.Value;
             while (Math.Abs(currentValue - value) > double.Epsilon)

@@ -1,6 +1,7 @@
 namespace Legerity.Windows.Elements.WCT
 {
     using Legerity.Windows.Elements.Core;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -9,8 +10,6 @@ namespace Legerity.Windows.Elements.WCT
     /// </summary>
     public class Expander : WindowsElementWrapper
     {
-        private const string ToggleOnValue = "1";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Expander"/> class.
         /// </summary>
@@ -25,9 +24,12 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets a value indicating whether the expander has the content expanded (visible).
         /// </summary>
-        public bool IsExpanded => this.Element.GetAttribute("Toggle.ToggleState") == ToggleOnValue;
+        public virtual bool IsExpanded => this.GetToggleState() == ToggleState.Checked;
 
-        private ToggleButton ToggleButton => this.Element.FindElement(WindowsByExtras.AutomationId("PART_ExpanderToggleButton"));
+        /// <summary>
+        /// Gets the <see cref="ToggleButton"/> associated with the expander.
+        /// </summary>
+        public virtual ToggleButton ToggleButton => this.Element.FindElement(WindowsByExtras.AutomationId("PART_ExpanderToggleButton"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="Expander"/> without direct casting.
@@ -60,7 +62,7 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Expands the content of the expander.
         /// </summary>
-        public void Expand()
+        public virtual void Expand()
         {
             if (this.IsExpanded)
             {
@@ -73,7 +75,7 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Collapses the content of the expander.
         /// </summary>
-        public void Collapse()
+        public virtual void Collapse()
         {
             if (!this.IsExpanded)
             {

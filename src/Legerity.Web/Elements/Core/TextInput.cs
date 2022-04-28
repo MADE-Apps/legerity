@@ -1,6 +1,7 @@
 namespace Legerity.Web.Elements.Core
 {
     using Legerity.Web.Elements;
+    using Legerity.Web.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 
@@ -34,7 +35,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the text value of the text input.
         /// </summary>
-        public string Text => this.Element.GetAttribute("value");
+        public virtual string Text => this.GetValue();
 
         /// <summary>
         /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="TextInput"/> without direct casting.
@@ -54,7 +55,7 @@ namespace Legerity.Web.Elements.Core
         /// Sets the text of the text box to the specified text.
         /// </summary>
         /// <param name="text">The text to display.</param>
-        public void SetText(string text)
+        public virtual void SetText(string text)
         {
             this.ClearText();
             this.AppendText(text);
@@ -64,18 +65,18 @@ namespace Legerity.Web.Elements.Core
         /// Appends the specified text to the text box.
         /// </summary>
         /// <param name="text">The text to append.</param>
-        public void AppendText(string text)
+        public virtual void AppendText(string text)
         {
-            this.Element.Click();
+            this.Click();
             this.Element.SendKeys(text);
         }
 
         /// <summary>
         /// Clears the text from the text box.
         /// </summary>
-        public void ClearText()
+        public virtual void ClearText()
         {
-            this.Element.Click();
+            this.Click();
             this.Element.Clear();
         }
     }

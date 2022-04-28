@@ -1,6 +1,7 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -23,13 +24,13 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the value of the progress bar.
         /// </summary>
-        public double Percentage => double.Parse(this.Element.GetAttribute("RangeValue.Value"));
+        public virtual double Percentage => this.GetRangeValue();
 
         /// <summary>
         /// Gets a value indicating whether the control is in an indeterminate state.
         /// </summary>
         public bool IsIndeterminate =>
-            this.Element.GetAttribute("IsRangeValuePatternAvailable").Equals(
+            this.GetAttribute("IsRangeValuePatternAvailable").Equals(
                 "False",
                 StringComparison.CurrentCultureIgnoreCase);
 

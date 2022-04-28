@@ -11,7 +11,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Defines a color flyout for the ballpoint pen in the <see cref="InkToolbar"/>.
         /// </summary>
-        private class InkToolbarBallpointPenFlyout : InkToolbarColorFlyoutBase
+        public class InkToolbarBallpointPenFlyout : InkToolbarColorFlyoutBase
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="Legerity.Windows.Elements.Core.InkToolbar.InkToolbarBallpointPenFlyout"/> class.

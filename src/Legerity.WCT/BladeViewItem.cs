@@ -51,17 +51,17 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets the <see cref="Button"/> element associated with the blade enlarge option.
         /// </summary>
-        public Button EnlargeButton => this.Element.FindElement(WindowsByExtras.AutomationId("EnlargeButton"));
+        public virtual Button EnlargeButton => this.Element.FindElement(WindowsByExtras.AutomationId("EnlargeButton"));
 
         /// <summary>
         /// Gets the <see cref="Button"/> element associated with the blade close option.
         /// </summary>
-        public Button CloseButton => this.Element.FindElement(WindowsByExtras.AutomationId("CloseButton"));
+        public virtual Button CloseButton => this.Element.FindElement(WindowsByExtras.AutomationId("CloseButton"));
 
         /// <summary>
         /// Closes the blade item.
         /// </summary>
-        public void Close()
+        public virtual void Close()
         {
             this.CloseButton.Click();
         }

@@ -54,10 +54,10 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="time">
         /// The time to set.
         /// </param>
-        public void SetTime(TimeSpan time)
+        public virtual void SetTime(TimeSpan time)
         {
             // Taps the time picker to show the popup.
-            this.Element.Click();
+            this.Click();
 
             // Finds the popup and changes the time.
             WindowsElement popup = this.Driver.FindElement(WindowsByExtras.AutomationId("TimePickerFlyoutPresenter"));
