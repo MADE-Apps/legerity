@@ -29,11 +29,6 @@ namespace Legerity.Windows.Elements
         public WindowsDriver<WindowsElement> Driver => AppManager.WindowsApp;
 
         /// <summary>
-        /// Gets a value indicating whether the element is enabled.
-        /// </summary>
-        public bool IsEnabled => this.Element.Enabled;
-
-        /// <summary>
         /// Determines whether the specified element is shown with the specified timeout.
         /// </summary>
         /// <param name="locator">The locator to find a specific element.</param>
