@@ -27,12 +27,12 @@ namespace Legerity.Windows.Elements.Telerik
         /// <summary>
         /// Gets the element associated with the text box.
         /// </summary>
-        public TextBox TextBox => this.Element.FindElement(By.ClassName("TextBox"));
+        public virtual TextBox TextBox => this.Element.FindElement(By.ClassName("TextBox"));
 
         /// <summary>
         /// Gets the value of the auto-suggest box.
         /// </summary>
-        public string Text => this.TextBox.Text;
+        public virtual string Text => this.TextBox.Text;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadAutoCompleteBox"/> without direct casting.
@@ -66,7 +66,7 @@ namespace Legerity.Windows.Elements.Telerik
         /// Selects a suggestion from the auto-suggest box.
         /// </summary>
         /// <param name="suggestion">The suggestion to select.</param>
-        public void SelectSuggestion(string suggestion)
+        public virtual void SelectSuggestion(string suggestion)
         {
             this.SelectSuggestion(suggestion, suggestion);
         }
@@ -76,7 +76,7 @@ namespace Legerity.Windows.Elements.Telerik
         /// </summary>
         /// <param name="value">The initial value to set.</param>
         /// <param name="suggestion">The suggestion to select.</param>
-        public void SelectSuggestion(string value, string suggestion)
+        public virtual void SelectSuggestion(string value, string suggestion)
         {
             this.SetText(value);
 
@@ -87,10 +87,25 @@ namespace Legerity.Windows.Elements.Telerik
         }
 
         /// <summary>
+        /// Selects a suggestion from the auto-suggest box.
+        /// </summary>
+        /// <param name="value">The initial value to set.</param>
+        /// <param name="partialSuggestion">The partial suggestion match to select.</param>
+        public virtual void SelectSuggestionByPartialSuggestion(string value, string partialSuggestion)
+        {
+            this.SetText(value);
+
+            this.VerifyElementShown(this.suggestionsControlLocator, TimeSpan.FromSeconds(2));
+
+            ListBox suggestionList = this.Element.FindElement(this.suggestionsControlLocator);
+            suggestionList.ClickItemByPartialName(partialSuggestion);
+        }
+
+        /// <summary>
         /// Sets the value of the auto-suggest box.
         /// </summary>
         /// <param name="value">The value to set.</param>
-        public void SetText(string value)
+        public virtual void SetText(string value)
         {
             this.TextBox.SetText(value);
         }

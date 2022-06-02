@@ -17,13 +17,5 @@ namespace Legerity.Windows.Elements.Core
             : base(element)
         {
         }
-
-        /// <summary>
-        /// Clicks the item.
-        /// </summary>
-        public void Click()
-        {
-            this.Element.Click();
-        }
     }
 }

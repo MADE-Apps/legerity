@@ -26,22 +26,22 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the suggestions popup.
         /// </summary>
-        public AppiumWebElement SuggestionsPopup => this.Element.FindElement(this.suggestionsPopupLocator);
+        public virtual AppiumWebElement SuggestionsPopup => this.Element.FindElement(this.suggestionsPopupLocator);
 
         /// <summary>
         /// Gets the element associated with the suggestion list when the <see cref="SuggestionsPopup"/> is shown.
         /// </summary>
-        public ListView SuggestionList => this.SuggestionsPopup.FindElement(WindowsByExtras.AutomationId("SuggestionsList"));
+        public virtual ListView SuggestionList => this.SuggestionsPopup.FindElement(WindowsByExtras.AutomationId("SuggestionsList"));
 
         /// <summary>
         /// Gets the element associated with the text box.
         /// </summary>
-        public TextBox TextBox => this.Element.FindElement(WindowsByExtras.AutomationId("TextBox"));
+        public virtual TextBox TextBox => this.Element.FindElement(WindowsByExtras.AutomationId("TextBox"));
 
         /// <summary>
         /// Gets the value of the auto-suggest box.
         /// </summary>
-        public string Text => this.TextBox.Text;
+        public virtual string Text => this.TextBox.Text;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="AutoSuggestBox"/> without direct casting.
@@ -75,7 +75,7 @@ namespace Legerity.Windows.Elements.Core
         /// Selects a suggestion from the auto-suggest box.
         /// </summary>
         /// <param name="suggestion">The suggestion to select.</param>
-        public void SelectSuggestion(string suggestion)
+        public virtual void SelectSuggestion(string suggestion)
         {
             this.SelectSuggestion(suggestion, suggestion);
         }
@@ -85,7 +85,7 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         /// <param name="value">The initial value to set.</param>
         /// <param name="suggestion">The suggestion to select.</param>
-        public void SelectSuggestion(string value, string suggestion)
+        public virtual void SelectSuggestion(string value, string suggestion)
         {
             this.SetText(value);
 
@@ -95,10 +95,24 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
+        /// Selects a suggestion from the auto-suggest box.
+        /// </summary>
+        /// <param name="value">The initial value to set.</param>
+        /// <param name="partialSuggestion">The partial suggestion match to select.</param>
+        public virtual void SelectSuggestionByPartialSuggestion(string value, string partialSuggestion)
+        {
+            this.SetText(value);
+
+            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromSeconds(2));
+
+            this.SuggestionList.ClickItemByPartialName(partialSuggestion);
+        }
+
+        /// <summary>
         /// Sets the value of the auto-suggest box.
         /// </summary>
         /// <param name="value">The value to set.</param>
-        public void SetText(string value)
+        public virtual void SetText(string value)
         {
             this.TextBox.SetText(value);
         }

@@ -30,16 +30,12 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the list box.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.listBoxItemLocator);
+        public virtual ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.listBoxItemLocator);
 
         /// <summary>
         /// Gets the element associated with the currently selected item.
         /// </summary>
-        public AppiumWebElement SelectedItem =>
-            this.Items.FirstOrDefault(
-                i => i.GetAttribute("SelectionItem.IsSelected").Equals(
-                    "True",
-                    StringComparison.CurrentCultureIgnoreCase));
+        public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ListBox"/> without direct casting.
@@ -75,12 +71,22 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="name">
         /// The name of the item to click.
         /// </param>
-        public void ClickItem(string name)
+        public virtual void ClickItem(string name)
         {
             this.VerifyElementsShown(this.listBoxItemLocator, TimeSpan.FromSeconds(2));
-
             AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+            item.Click();
+        }
 
+        /// <summary>
+        /// Clicks on an item in the list box with the specified partial item name.
+        /// </summary>
+        /// <param name="partialName">The partial name match for the item to click.</param>
+        public virtual void ClickItemByPartialName(string partialName)
+        {
+            this.VerifyElementsShown(this.listBoxItemLocator, TimeSpan.FromSeconds(2));
+            AppiumWebElement item =
+                this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
             item.Click();
         }
     }

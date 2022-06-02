@@ -1,6 +1,7 @@
 namespace Legerity.Windows.Elements.WCT
 {
     using System;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -24,27 +25,27 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets the minimum value of the gauge.
         /// </summary>
-        public double Minimum => double.Parse(this.Element.GetAttribute("RangeValue.Minimum"));
+        public virtual double Minimum => this.GetRangeMinimum();
 
         /// <summary>
         /// Gets the maximum value of the gauge.
         /// </summary>
-        public double Maximum => double.Parse(this.Element.GetAttribute("RangeValue.Maximum"));
+        public virtual double Maximum => this.GetRangeMaximum();
 
         /// <summary>
         /// Gets the small change (step) value of the gauge.
         /// </summary>
-        public double SmallChange => double.Parse(this.Element.GetAttribute("RangeValue.SmallChange"));
+        public virtual double SmallChange => this.GetRangeSmallChange();
 
         /// <summary>
         /// Gets the value of the gauge.
         /// </summary>
-        public double Value => double.Parse(this.Element.GetAttribute("RangeValue.Value"));
+        public virtual double Value => this.GetRangeValue();
 
         /// <summary>
         /// Gets a value indicating whether the control is in a readonly state.
         /// </summary>
-        public bool IsReadonly => bool.Parse(this.Element.GetAttribute("RangeValue.IsReadOnly"));
+        public virtual bool IsReadonly => this.IsRangeReadonly();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadialGauge"/> without direct casting.
@@ -83,22 +84,28 @@ namespace Legerity.Windows.Elements.WCT
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown if the value is out of the minimum and maximum range of the gauge.
         /// </exception>
-        public void SetValue(double value)
+        public virtual void SetValue(double value)
         {
             double min = this.Minimum;
             double max = this.Maximum;
 
             if (value < this.Minimum)
             {
-                throw new ArgumentOutOfRangeException(nameof(value), value, $"Value must be greater than or equal to the minimum value {min}");
+                throw new ArgumentOutOfRangeException(
+                    nameof(value),
+                    value,
+                    $"Value must be greater than or equal to the minimum value {min}");
             }
 
             if (value > this.Maximum)
             {
-                throw new ArgumentOutOfRangeException(nameof(value), value, $"Value must be less than or equal to the maximum value {max}");
+                throw new ArgumentOutOfRangeException(
+                    nameof(value),
+                    value,
+                    $"Value must be less than or equal to the maximum value {max}");
             }
 
-            this.Element.Click();
+            this.Click();
 
             double currentValue = this.Value;
             while (Math.Abs(currentValue - value) > double.Epsilon)

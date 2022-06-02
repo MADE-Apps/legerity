@@ -11,7 +11,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Defines a color flyout for the highlighter in the <see cref="InkToolbar"/>.
         /// </summary>
-        private class InkToolbarHighlighterFlyout : InkToolbarColorFlyoutBase
+        public class InkToolbarHighlighterFlyout : InkToolbarColorFlyoutBase
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="Legerity.Windows.Elements.Core.InkToolbar.InkToolbarHighlighterFlyout"/> class.

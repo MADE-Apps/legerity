@@ -24,12 +24,12 @@ namespace Legerity.Windows.Elements.MADE
         /// <summary>
         /// Gets the <see cref="TextBlock"/> associated with the validation feedback message.
         /// </summary>
-        public TextBlock ValidationFeedback => this.Element.FindElement(WindowsByExtras.AutomationId("ValidatorFeedbackMessage"));
+        public virtual TextBlock ValidationFeedback => this.Element.FindElement(WindowsByExtras.AutomationId("ValidatorFeedbackMessage"));
 
         /// <summary>
         /// Gets the validation feedback message associated with the <see cref="ValidationFeedback"/> element.
         /// </summary>
-        public string Message => this.ValidationFeedback?.Text;
+        public virtual string Message => this.ValidationFeedback?.Text;
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InputValidator"/> without direct casting.
@@ -73,7 +73,7 @@ namespace Legerity.Windows.Elements.MADE
         /// Retrieves the feedback message text if the <see cref="ValidationFeedback"/> is shown.
         /// </summary>
         /// <returns>The feedback message text of the <see cref="ValidationFeedback"/> element.</returns>
-        public string FeedbackMessage()
+        public virtual string FeedbackMessage()
         {
             string message;
 

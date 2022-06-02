@@ -5,6 +5,7 @@ namespace Legerity.Windows.Elements.Core
     using System.Globalization;
     using System.Linq;
     using Legerity.Extensions;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -28,26 +29,22 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the flip view.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(By.ClassName("FlipViewItem"));
+        public virtual ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(By.ClassName("FlipViewItem"));
 
         /// <summary>
         /// Gets the element associated with the next item button.
         /// </summary>
-        public Button NextButton => this.Element.FindElement(WindowsByExtras.AutomationId("NextButtonHorizontal"));
+        public virtual Button NextButton => this.Element.FindElement(WindowsByExtras.AutomationId("NextButtonHorizontal"));
 
         /// <summary>
         /// Gets the element associated with the previous item button.
         /// </summary>
-        public Button PreviousButton => this.Element.FindElement(WindowsByExtras.AutomationId("PreviousButtonHorizontal"));
+        public virtual Button PreviousButton => this.Element.FindElement(WindowsByExtras.AutomationId("PreviousButtonHorizontal"));
 
         /// <summary>
         /// Gets the currently selected item.
         /// </summary>
-        public AppiumWebElement SelectedItem =>
-            this.Items.FirstOrDefault(
-                i => i.GetAttribute("SelectionItem.IsSelected").Equals(
-                    "True",
-                    StringComparison.CurrentCultureIgnoreCase));
+        public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="FlipView"/> without direct casting.
@@ -83,7 +80,7 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="name">
         /// The name of the item.
         /// </param>
-        public void SelectItem(string name)
+        public virtual void SelectItem(string name)
         {
             int currentItemIdx = this.Items.IndexOf(this.SelectedItem);
             int expectedItemIdx = this.Items.IndexOf(
@@ -109,18 +106,18 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Selects the next item in the flip view.
         /// </summary>
-        public void SelectNext()
+        public virtual void SelectNext()
         {
-            this.Element.Click();
+            this.Click();
             this.Element.SendKeys(Keys.ArrowRight);
         }
 
         /// <summary>
         /// Selects the previous item in the flip view.
         /// </summary>
-        public void SelectPrevious()
+        public virtual void SelectPrevious()
         {
-            this.Element.Click();
+            this.Click();
             this.Element.SendKeys(Keys.ArrowLeft);
         }
     }

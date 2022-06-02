@@ -25,7 +25,7 @@ namespace Legerity.Windows.Elements.MADE
         /// <summary>
         /// Gets the <see cref="ListView"/> element associated with the drop down content.
         /// </summary>
-        public ListView DropDown => this.Element.FindElement(WindowsByExtras.AutomationId("DropDownContent"));
+        public virtual ListView DropDown => this.Element.FindElement(WindowsByExtras.AutomationId("DropDownContent"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="DropDownList"/> without direct casting.
@@ -61,21 +61,38 @@ namespace Legerity.Windows.Elements.MADE
         /// <param name="name">
         /// The name of the item to select.
         /// </param>
-        public void SelectItem(string name)
+        public virtual void SelectItem(string name)
+        {
+            this.OpenDropDown();
+            this.DropDown.ClickItem(name);
+        }
+
+        /// <summary>
+        /// Selects an item in the combo-box with the specified partial item name.
+        /// </summary>
+        /// <param name="partialName">The partial name match for the item to select.</param>
+        public virtual void SelectItemByPartialName(string partialName)
+        {
+            this.OpenDropDown();
+            this.DropDown.ClickItemByPartialName(partialName);
+        }
+
+        /// <summary>
+        /// Opens the drop down if it is not already open.
+        /// </summary>
+        public virtual void OpenDropDown()
         {
             if (!this.IsDropDownOpen())
             {
-                this.Element.Click();
+                this.Click();
             }
-
-            this.DropDown.ClickItem(name);
         }
 
         /// <summary>
         /// Determines whether the drop down is open.
         /// </summary>
         /// <returns>True if the drop down is open; otherwise, false.</returns>
-        public bool IsDropDownOpen()
+        public virtual bool IsDropDownOpen()
         {
             bool isVisible;
 

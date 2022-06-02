@@ -25,7 +25,7 @@ namespace Legerity.IOS.Elements.Core
         /// <summary>
         /// Gets a value indicating whether the toggle switch is in the on position.
         /// </summary>
-        public bool IsOn => this.Element.GetValue() == ToggleOnValue;
+        public virtual bool IsOn => this.Element.GetValue() == ToggleOnValue;
 
         /// <summary>
         /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="Switch"/> without direct casting.
@@ -58,27 +58,27 @@ namespace Legerity.IOS.Elements.Core
         /// <summary>
         /// Toggles the switch on.
         /// </summary>
-        public void ToggleOn()
+        public virtual void ToggleOn()
         {
             if (this.IsOn)
             {
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
 
         /// <summary>
         /// Toggles the switch off.
         /// </summary>
-        public void ToggleOff()
+        public virtual void ToggleOff()
         {
             if (!this.IsOn)
             {
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
     }
 }

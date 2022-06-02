@@ -23,8 +23,8 @@ namespace Legerity.IOS.Elements.Core
         /// <summary>
         /// Gets the value of the progress bar.
         /// </summary>
-        public double Percentage => double.Parse(this.Element.GetValue().TrimEnd('%'));
-        
+        public virtual double Percentage => double.Parse(this.Element.GetValue().TrimEnd('%'));
+
         /// <summary>
         /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="ProgressView"/> without direct casting.
         /// </summary>

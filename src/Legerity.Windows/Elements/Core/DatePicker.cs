@@ -52,10 +52,10 @@ namespace Legerity.Windows.Elements.Core
         /// Sets the date to the specified date.
         /// </summary>
         /// <param name="date">The date to set.</param>
-        public void SetDate(DateTime date)
+        public virtual void SetDate(DateTime date)
         {
             // Taps the time picker to show the popup.
-            this.Element.Click();
+            this.Click();
 
             // Finds the popup and changes the time.
             WindowsElement popup = this.Driver.FindElement(WindowsByExtras.AutomationId("DatePickerFlyoutPresenter"));

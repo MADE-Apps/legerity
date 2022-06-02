@@ -1,5 +1,6 @@
 namespace Legerity.Android.Elements.Core
 {
+    using System;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
 
@@ -8,8 +9,6 @@ namespace Legerity.Android.Elements.Core
     /// </summary>
     public class ToggleButton : Button
     {
-        private const string ToggleOnValue = "true";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ToggleButton"/> class.
         /// </summary>
@@ -24,7 +23,7 @@ namespace Legerity.Android.Elements.Core
         /// <summary>
         /// Gets a value indicating whether the toggle button is in the on position.
         /// </summary>
-        public bool IsOn => this.Element.GetAttribute("Checked") == ToggleOnValue;
+        public virtual bool IsOn => this.GetAttribute("Checked").Equals("True", StringComparison.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="ToggleButton"/> without direct casting.
@@ -57,7 +56,7 @@ namespace Legerity.Android.Elements.Core
         /// <summary>
         /// Toggles the button on.
         /// </summary>
-        public void ToggleOn()
+        public virtual void ToggleOn()
         {
             if (this.IsOn)
             {
@@ -70,7 +69,7 @@ namespace Legerity.Android.Elements.Core
         /// <summary>
         /// Toggles the button off.
         /// </summary>
-        public void ToggleOff()
+        public virtual void ToggleOff()
         {
             if (!this.IsOn)
             {

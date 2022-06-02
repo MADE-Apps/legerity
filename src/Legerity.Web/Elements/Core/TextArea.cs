@@ -33,12 +33,12 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the number of visible text lines.
         /// </summary>
-        public int Rows => int.Parse(this.Element.GetAttribute("rows"));
+        public virtual int Rows => int.Parse(this.GetAttribute("rows"));
 
         /// <summary>
         /// Gets the visible width.
         /// </summary>
-        public int Cols => int.Parse(this.Element.GetAttribute("cols"));
+        public virtual int Cols => int.Parse(this.GetAttribute("cols"));
 
         /// <summary>
         /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="TextArea"/> without direct casting.

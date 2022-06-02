@@ -30,16 +30,12 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the collection of items associated with the pivot.
         /// </summary>
-        public ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.pivotItemLocator);
+        public virtual ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.pivotItemLocator);
 
         /// <summary>
         /// Gets the currently selected item.
         /// </summary>
-        public AppiumWebElement SelectedItem =>
-            this.Items.FirstOrDefault(
-                i => i.GetAttribute("SelectionItem.IsSelected").Equals(
-                    "True",
-                    StringComparison.CurrentCultureIgnoreCase));
+        public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="Pivot"/> without direct casting.
@@ -75,11 +71,26 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="name">
         /// The name of the item to click.
         /// </param>
-        public void ClickItem(string name)
+        public virtual void ClickItem(string name)
         {
             this.VerifyElementsShown(this.pivotItemLocator, TimeSpan.FromSeconds(2));
 
             AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+
+            item.Click();
+        }
+
+        /// <summary>
+        /// Clicks on an item in the pivot with the specified partial item name.
+        /// </summary>
+        /// <param name="name">
+        /// The partial name of the item to click.
+        /// </param>
+        public virtual void ClickItemByPartialName(string name)
+        {
+            this.VerifyElementsShown(this.pivotItemLocator, TimeSpan.FromSeconds(2));
+
+            AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
             item.Click();
         }

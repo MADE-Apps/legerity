@@ -22,12 +22,12 @@ namespace Legerity.IOS.Elements.Core
         /// <summary>
         /// Gets the text value of the text field.
         /// </summary>
-        public string Text => this.Element.GetValue();
+        public virtual string Text => this.Element.GetValue();
 
         /// <summary>
         /// Gets the element associated with the clear text button, if shown.
         /// </summary>
-        public Button ClearTextButton => this.Element.FindElement(IOSByExtras.Label("Clear text"));
+        public virtual Button ClearTextButton => this.Element.FindElement(IOSByExtras.Label("Clear text"));
 
         /// <summary>
         /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="TextField"/> without direct casting.
@@ -61,7 +61,7 @@ namespace Legerity.IOS.Elements.Core
         /// Sets the text of the text field to the specified text.
         /// </summary>
         /// <param name="text">The text to display.</param>
-        public void SetText(string text)
+        public virtual void SetText(string text)
         {
             this.ClearText();
             this.AppendText(text);
@@ -71,18 +71,18 @@ namespace Legerity.IOS.Elements.Core
         /// Appends the specified text to the text field.
         /// </summary>
         /// <param name="text">The text to append.</param>
-        public void AppendText(string text)
+        public virtual void AppendText(string text)
         {
-            this.Element.Click();
+            this.Click();
             this.Element.SendKeys(text);
         }
 
         /// <summary>
         /// Clears the text from the text field.
         /// </summary>
-        public void ClearText()
+        public virtual void ClearText()
         {
-            this.Element.Click();
+            this.Click();
             this.Element.Clear();
         }
     }
