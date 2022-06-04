@@ -1,9 +1,10 @@
 namespace Legerity.Pages
 {
     using System;
-
+    using System.Collections.ObjectModel;
+    using System.Linq;
     using Legerity.Exceptions;
-
+    using Legerity.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
@@ -74,6 +75,66 @@ namespace Legerity.Pages
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
         protected abstract By Trait { get; }
+
+        /// <summary>
+        /// Finds the first element in the page that matches the <see cref="By" /> locator.
+        /// </summary>
+        /// <param name="locator">The locator to find the element.</param>
+        /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+        public RemoteWebElement FindElement(By locator)
+        {
+            return this.App.FindWebElement(locator);
+        }
+
+        /// <summary>
+        /// Finds all the elements in the page that matches the <see cref="By" /> locator.
+        /// </summary>
+        /// <param name="locator">The locator to find the elements.</param>
+        /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
+        public ReadOnlyCollection<RemoteWebElement> FindElements(By locator)
+        {
+            return this.App.FindWebElements(locator);
+        }
+
+        /// <summary>
+        /// Finds the first element in the page that matches the specified XPath.
+        /// </summary>
+        /// <param name="xpath">The XPath to find the element.</param>
+        /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+        public RemoteWebElement FindElementByXPath(string xpath)
+        {
+            return this.App.FindElementByXPath(xpath) as RemoteWebElement;
+        }
+
+        /// <summary>
+        /// Finds all the elements in the page that matches the specified XPath.
+        /// </summary>
+        /// <param name="xpath">The XPath to find the elements.</param>
+        /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
+        public ReadOnlyCollection<RemoteWebElement> FindElementsByXPath(string xpath)
+        {
+            return this.App.FindElementsByXPath(xpath).Cast<RemoteWebElement>().ToList().AsReadOnly();
+        }
+
+        /// <summary>
+        /// Finds the first element in the page that matches the specified ID.
+        /// </summary>
+        /// <param name="id">The ID of the element.</param>
+        /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+        public RemoteWebElement FindElementById(string id)
+        {
+            return this.App.FindElementById(id) as RemoteWebElement;
+        }
+
+        /// <summary>
+        /// Finds the first of element in the page that matches the specified name.
+        /// </summary>
+        /// <param name="name">The name of the element.</param>
+        /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+        public RemoteWebElement FindElementByName(string name)
+        {
+            return this.App.FindElementByName(name) as RemoteWebElement;
+        }
 
         /// <summary>
         /// Determines whether the current page is shown immediately.
