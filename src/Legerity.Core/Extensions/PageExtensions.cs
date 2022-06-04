@@ -1,8 +1,10 @@
 namespace Legerity.Extensions
 {
     using System;
+    using System.Collections.ObjectModel;
     using Legerity.Pages;
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Remote;
     using OpenQA.Selenium.Support.UI;
 
     /// <summary>
