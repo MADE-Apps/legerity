@@ -11,6 +11,7 @@ on:
     - samples/**
     - tests/**
     - build/**
+    - tools/**
     - .github/workflows/ci.yml
   pull_request:
     branches:
@@ -20,6 +21,7 @@ on:
     - samples/**
     - tests/**
     - build/**
+    - tools/**
     - .github/workflows/ci.yml
   workflow_dispatch:
 
@@ -52,7 +54,7 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.5
 
     - name: Restore dependencies
-      run: nuget restore $SOLUTION
+      run: dotnet restore $SOLUTION
 
     - name: Build
       run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore

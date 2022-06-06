@@ -61,6 +61,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.IOS", "Legerity.IO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Web", "Legerity.Web\Legerity.Web.csproj", "{66469000-1C91-4CBA-A27E-043C3E222DA6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{9064E354-7A64-4288-93E5-B3628CA12DD3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.PageObjectGenerator", "..\tools\Legerity.PageObjectGenerator\Legerity.PageObjectGenerator.csproj", "{063E6264-F623-4469-BADF-95C8E93E3ACF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +135,10 @@ Global
 		{66469000-1C91-4CBA-A27E-043C3E222DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66469000-1C91-4CBA-A27E-043C3E222DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66469000-1C91-4CBA-A27E-043C3E222DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{063E6264-F623-4469-BADF-95C8E93E3ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{063E6264-F623-4469-BADF-95C8E93E3ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{063E6264-F623-4469-BADF-95C8E93E3ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{063E6264-F623-4469-BADF-95C8E93E3ACF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -154,6 +162,7 @@ Global
 		{EF10E4CE-62F1-41A9-807A-79A153CD7A04} = {158E9EAA-AEE0-4E0C-81E0-6E9E63341CC1}
 		{9D100607-5873-419C-B1AD-8DE55E464CFE} = {44456B3E-73D9-43C5-9644-430E293ECD5E}
 		{89BD06DC-7E77-4062-9149-EF95D3F9D999} = {1BA37704-10A3-4EDC-94AA-BF0D8CD11A9C}
+		{063E6264-F623-4469-BADF-95C8E93E3ACF} = {9064E354-7A64-4288-93E5-B3628CA12DD3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAB58D66-B3F1-408A-A96F-572170771367}
