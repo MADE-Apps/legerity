@@ -1,0 +1,34 @@
+using System;
+using System.IO;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+using Legerity.Pages;
+using Legerity.Android;
+using Legerity.Android.Elements.Core;
+using Legerity.Android.Extensions;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Appium.Android.UiAutomator;
+using OpenQA.Selenium.Remote;
+
+namespace {{namespace}}
+{
+    /// <summary>
+    /// Defines a Legerity page object that represents the application {{page}}.
+    /// </summary>
+    public class {{page}} : BasePage
+    {
+        /// <summary>
+        /// Gets a given trait of the page to verify that the page is in view.
+        /// </summary>
+        protected override By Trait => {{- if string.contains trait.by "Id"}} By.Id("{{trait.value}}"); {{- else if string.contains trait.by "AndroidContentDesc"}} AndroidByExtras.ContentDescription("{{trait.value}}"); {{- end}}
+        {{~ for element in elements }}
+        /// <summary>
+        /// Gets the {{element.type}} that represents the {{element.name}} UI element of the page.
+        /// </summary>
+        public {{element.type}} {{element.name}} => App.FindElement({{- if string.contains element.by "Id"}}By.Id("{{element.value}}") {{- else if string.contains element.by "AndroidContentDesc"}}AndroidByExtras.ContentDescription("{{element.value}}") {{- end}}) as {{type}};
+        {{~ end ~}}
+    }
+}

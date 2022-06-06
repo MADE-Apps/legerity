@@ -1,0 +1,33 @@
+using System;
+using System.IO;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+using Legerity.Pages;
+using Legerity.Windows;
+using Legerity.Windows.Elements.Core;
+using Legerity.Windows.Extensions;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Windows;
+using OpenQA.Selenium.Remote;
+
+namespace {{namespace}}
+{
+    /// <summary>
+    /// Defines a Legerity page object that represents the application {{page}}.
+    /// </summary>
+    public class {{page}} : BasePage
+    {
+        /// <summary>
+        /// Gets a given trait of the page to verify that the page is in view.
+        /// </summary>
+        protected override By Trait => {{- if string.contains trait.by "Name"}} By.Name("{{trait.value}}"); {{- else if string.contains trait.by "AutomationId"}} WindowsByExtras.AutomationId("{{trait.value}}"); {{- end}}
+        {{~ for element in elements }}
+        /// <summary>
+        /// Gets the {{element.type}} that represents the {{element.name}} UI element of the page.
+        /// </summary>
+        public {{element.type}} {{element.name}} => App.FindElement({{- if string.contains element.by "Name"}}By.Name("{{element.value}}") {{- else if string.contains element.by "AutomationId"}}WindowsByExtras.AutomationId("{{element.value}}") {{- end}}) as {{type}};
+        {{~ end ~}}
+    }
+}

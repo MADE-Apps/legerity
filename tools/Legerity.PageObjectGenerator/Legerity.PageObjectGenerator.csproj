@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>legerity-pop</ToolCommandName>
+    <Product>Legerity Page Object Generator</Product>
+    <Description>A command line tool for auto generating page objects from Windows, Android, iOS, and web pages for UI tests using the Legerity framework</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RootNamespace>Legerity</RootNamespace>
+    <PackageTags>PageObject Appium Selenium WindowsDriver WinAppDriver Windows UWP Web Android IOS Xamarin Uno</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Remove="Templates\AndroidPageObject.template" />
+    <None Remove="Templates\WindowsPageObject.template" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\AndroidPageObject.template">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\WindowsPageObject.template">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="MADE.Collections" Version="1.6.0" />
+    <PackageReference Include="MADE.Data.Validation" Version="1.6.0" />
+    <PackageReference Include="Scriban" Version="5.4.6" />
+    <PackageReference Include="Serilog" Version="2.11.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+  </ItemGroup>
+
+</Project>
