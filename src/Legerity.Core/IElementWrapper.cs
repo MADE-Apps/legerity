@@ -16,6 +16,11 @@ namespace Legerity
         TElement Element { get; }
 
         /// <summary>
+        /// Gets the driver used to find this element.
+        /// </summary>
+        IWebDriver ElementDriver { get; }
+
+        /// <summary>
         /// Gets a value indicating whether the element is visible.
         /// </summary>
         bool IsVisible { get; }

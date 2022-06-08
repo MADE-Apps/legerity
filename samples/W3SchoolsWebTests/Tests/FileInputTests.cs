@@ -6,6 +6,7 @@ namespace W3SchoolsWebTests.Tests
     using Legerity;
     using Legerity.Web;
     using Legerity.Web.Elements.Core;
+    using Legerity.Web.Extensions;
     using NUnit.Framework;
     using OpenQA.Selenium.Remote;
     using Shouldly;
@@ -43,6 +44,8 @@ namespace W3SchoolsWebTests.Tests
 
             FileInput fileInput = AppManager.WebApp.FindElementById("myfile") as RemoteWebElement;
             fileInput.SetAbsoluteFilePath(filePath);
+
+            fileInput.WaitUntil(e => e.FilePath.Contains("msedgedriver"), TimeSpan.FromSeconds(5));
 
             // Cannot check absolute file path as browser security feature prevents seeing full URI.
             fileInput.FilePath.ShouldContain("msedgedriver.exe");

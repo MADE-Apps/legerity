@@ -37,6 +37,11 @@ namespace Legerity
                 : null;
 
         /// <summary>
+        /// Gets the driver used to find this element.
+        /// </summary>
+        public IWebDriver ElementDriver => this.Element.WrappedDriver;
+
+        /// <summary>
         /// Gets a value indicating whether the element is visible.
         /// </summary>
         public virtual bool IsVisible => this.Element.Displayed;

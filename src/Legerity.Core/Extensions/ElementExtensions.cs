@@ -104,11 +104,19 @@ namespace Legerity.Extensions
         /// <summary>
         /// Waits until a specified element condition is met, with an optional timeout.
         /// </summary>
+        /// <remarks>
+        /// This uses the AppManager.App instance to perform a wait.
+        /// </remarks>
         /// <param name="element">The element to wait on.</param>
         /// <param name="condition">The condition of the element to wait on.</param>
         /// <param name="timeout">The optional timeout wait on the condition being true.</param>
         /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
-        public static void WaitUntil<TElement>(this TElement element, Func<TElement, bool> condition, TimeSpan? timeout = default)
+        [Obsolete(
+            "WaitUntil for IWebElement instances will be removed in a future major release as it has a dependency on the static AppManager driver instance.")]
+        public static void WaitUntil<TElement>(
+            this TElement element,
+            Func<TElement, bool> condition,
+            TimeSpan? timeout = default)
             where TElement : IWebElement
         {
             new WebDriverWait(AppManager.App, timeout ?? TimeSpan.Zero).Until(driver =>

@@ -20,7 +20,7 @@ namespace Legerity.Android.Extensions
         public static void WaitUntil<TElementWrapper>(this TElementWrapper element, Func<TElementWrapper, bool> condition, TimeSpan? timeout = default)
             where TElementWrapper : AndroidElementWrapper
         {
-            new WebDriverWait(AppManager.App, timeout ?? TimeSpan.Zero).Until(driver =>
+            new WebDriverWait(element.ElementDriver, timeout ?? TimeSpan.Zero).Until(driver =>
             {
                 try
                 {
