@@ -18,17 +18,30 @@ namespace Legerity.Pages
     public abstract class BasePage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BasePage"/> class that verifies the page has loaded within 2 seconds.
+        /// Initializes a new instance of the <see cref="BasePage"/> class using the <see cref="AppManager.App"/> instance that verifies the page has loaded within 2 seconds.
         /// </summary>
         /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
         /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown in 2 seconds.</exception>
         protected BasePage()
-            : this(TimeSpan.FromSeconds(2))
+            : this(AppManager.App, TimeSpan.FromSeconds(2))
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BasePage"/> class that verifies the page has loaded within the given timeout.
+        /// Initializes a new instance of the <see cref="BasePage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within 2 seconds.
+        /// </summary>
+        /// <param name="app">
+        /// The instance of the started application driver that will be used to drive the page interaction.
+        /// </param>
+        /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
+        /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown in 2 seconds.</exception>
+        protected BasePage(RemoteWebDriver app)
+            : this(app, TimeSpan.FromSeconds(2))
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BasePage"/> class using the <see cref="AppManager.App"/> instance that verifies the page has loaded within the given timeout.
         /// </summary>
         /// <param name="traitTimeout">
         /// The amount of time the driver should wait when searching for the <see cref="Trait"/> if it is not immediately present.
@@ -36,7 +49,24 @@ namespace Legerity.Pages
         /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
         /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown in the given timeout.</exception>
         protected BasePage(TimeSpan? traitTimeout)
+            : this(AppManager.App, traitTimeout)
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BasePage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within the given timeout.
+        /// </summary>
+        /// <param name="app">
+        /// The instance of the started application driver that will be used to drive the page interaction.
+        /// </param>
+        /// <param name="traitTimeout">
+        /// The amount of time the driver should wait when searching for the <see cref="Trait"/> if it is not immediately present.
+        /// </param>
+        /// <exception cref="T:Legerity.Exceptions.DriverNotInitializedException">Thrown if AppManager.StartApp() has not been called.</exception>
+        /// <exception cref="T:Legerity.Exceptions.PageNotShownException">Thrown if the page is not shown in the given timeout.</exception>
+        protected BasePage(RemoteWebDriver app, TimeSpan? traitTimeout)
+        {
+            this.App = app;
             this.VerifyPageShown(traitTimeout ?? TimeSpan.FromSeconds(2));
         }
 
@@ -49,27 +79,27 @@ namespace Legerity.Pages
         /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
         /// </para>
         /// </summary>
-        public RemoteWebDriver App => AppManager.App;
+        public RemoteWebDriver App { get; }
 
         /// <summary>
         /// Gets the instance of the started Windows application.
         /// </summary>
-        protected WindowsDriver<WindowsElement> WindowsApp => AppManager.WindowsApp;
+        protected WindowsDriver<WindowsElement> WindowsApp => this.App as WindowsDriver<WindowsElement>;
 
         /// <summary>
         /// Gets the instance of the started Android application.
         /// </summary>
-        protected AndroidDriver<AndroidElement> AndroidApp => AppManager.AndroidApp;
+        protected AndroidDriver<AndroidElement> AndroidApp => this.App as AndroidDriver<AndroidElement>;
 
         /// <summary>
         /// Gets the instance of the started iOS application.
         /// </summary>
-        protected IOSDriver<IOSElement> IOSApp => AppManager.IOSApp;
+        protected IOSDriver<IOSElement> IOSApp => this.App as IOSDriver<IOSElement>;
 
         /// <summary>
         /// Gets the instance of the started web application.
         /// </summary>
-        protected RemoteWebDriver WebApp => AppManager.WebApp;
+        protected RemoteWebDriver WebApp => this.App;
 
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.

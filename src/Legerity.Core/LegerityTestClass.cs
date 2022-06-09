@@ -1,6 +1,7 @@
 namespace Legerity
 {
     using System;
+    using System.Collections.Generic;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
@@ -12,6 +13,8 @@ namespace Legerity
     /// </summary>
     public abstract class LegerityTestClass
     {
+        private readonly List<RemoteWebDriver> apps = new();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LegerityTestClass"/> class.
         /// <para>
@@ -37,7 +40,18 @@ namespace Legerity
         /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
         /// </para>
         /// </summary>
+        /// <remarks>
+        /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp"/> method.
+        /// </remarks>
         protected RemoteWebDriver App { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the instances of started applications.
+        /// </summary>
+        /// <remarks>
+        /// This is useful for accessing drivers in parallelized tests.
+        /// </remarks>
+        protected IReadOnlyCollection<RemoteWebDriver> Apps => this.apps;
 
         /// <summary>
         /// Gets or sets the model that represents the configuration options for the <see cref="AppManager"/>.
@@ -64,6 +78,7 @@ namespace Legerity
         {
             RemoteWebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
             this.App = app;
+            this.apps.Add(app);
             return app;
         }
 
@@ -87,9 +102,19 @@ namespace Legerity
         /// <param name="stopServer">
         /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
         /// </param>
-        public virtual void StopApp(IWebDriver app, bool stopServer = false)
+        public virtual void StopApp(RemoteWebDriver app, bool stopServer = false)
         {
+            this.apps.Remove(app);
             AppManager.StopApp(app, stopServer);
+        }
+
+        /// <summary>
+        /// Stops all running application drivers.
+        /// </summary>
+        public virtual void StopApps()
+        {
+            this.apps.ForEach(app => this.StopApp(app));
+            this.apps.Clear();
         }
     }
 }
