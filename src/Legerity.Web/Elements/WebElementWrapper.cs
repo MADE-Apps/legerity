@@ -44,9 +44,14 @@ namespace Legerity.Web.Elements
                 : null;
 
         /// <summary>
+        /// Gets the driver used to find this element.
+        /// </summary>
+        public IWebDriver ElementDriver => this.Element.WrappedDriver;
+
+        /// <summary>
         /// Gets the instance of the driver for the web application.
         /// </summary>
-        public RemoteWebDriver Driver => AppManager.WebApp;
+        public RemoteWebDriver Driver => this.ElementDriver as RemoteWebDriver;
 
         /// <summary>
         /// Gets a value indicating whether the element is enabled.

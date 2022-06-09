@@ -17,7 +17,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select";
 
-        public SelectTests(AppManagerOptions options) : base(options)
+        public SelectTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -40,7 +41,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldGetItems()
         {
-            Select carsSelect = AppManager.WebApp.FindElementById("cars") as RemoteWebElement;
+            Select carsSelect = this.App.FindElementById("cars") as RemoteWebElement;
             carsSelect.Options.Count().ShouldBe(4);
 
             var itemValues = carsSelect.Options.Select(e => e.Value).ToList();
@@ -53,7 +54,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldGetIsMultiple()
         {
-            Select carsSelect = AppManager.WebApp.FindElementById("cars") as RemoteWebElement;
+            Select carsSelect = this.App.FindElementById("cars") as RemoteWebElement;
             carsSelect.IsMultiple.ShouldBe(false);
         }
 
@@ -63,7 +64,7 @@ namespace W3SchoolsWebTests.Tests
         [TestCase("audi")]
         public void ShouldSelectOptionByValue(string value)
         {
-            Select carsSelect = AppManager.WebApp.FindElementById("cars") as RemoteWebElement;
+            Select carsSelect = this.App.FindElementById("cars") as RemoteWebElement;
             carsSelect.SelectOptionByValue(value);
 
             Option selectedOption = carsSelect.SelectedOption;
@@ -76,7 +77,7 @@ namespace W3SchoolsWebTests.Tests
         [TestCase("Audi")]
         public void ShouldSelectOptionByDisplayValue(string value)
         {
-            Select carsSelect = AppManager.WebApp.FindElementById("cars") as RemoteWebElement;
+            Select carsSelect = this.App.FindElementById("cars") as RemoteWebElement;
             carsSelect.SelectOptionByDisplayValue(value);
 
             Option selectedOption = carsSelect.SelectedOption;

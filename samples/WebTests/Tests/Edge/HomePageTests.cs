@@ -1,24 +1,27 @@
 namespace WebTests.Tests.Edge
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Pages;
+    using Legerity;
+    using NUnit.Framework;
+    using OpenQA.Selenium.Remote;
+    using WebTests.Pages;
 
-    [TestClass]
-    public class HomePageTests : EdgeBaseTestClass
+    [TestFixtureSource(nameof(TestPlatformOptions))]
+    [Parallelizable(ParallelScope.Fixtures)]
+    public class HomePageTests : BaseTestClass
     {
-        private HomePage Homepage { get; set; }
-
-        [TestInitialize]
-        public override void Initialize()
+        public HomePageTests(AppManagerOptions options)
+            : base(options)
         {
-            base.Initialize();
-            this.Homepage = new HomePage();
         }
 
-        [TestMethod]
-        public void ReadHeroPost()
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [Parallelizable(ParallelScope.Children)]
+        public void ReadHeroPost(int idx)
         {
-            this.Homepage.NavigateToHeroPost().ReadPost(1);
+            RemoteWebDriver app = this.StartApp();
+            new HomePage(app).NavigateToHeroPostByIndex(idx).ReadPost(0.25);
         }
     }
 }

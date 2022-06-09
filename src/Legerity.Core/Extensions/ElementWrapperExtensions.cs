@@ -140,7 +140,7 @@ namespace Legerity.Extensions
         public static void WaitUntil<TElement>(this IElementWrapper<TElement> element, Func<IElementWrapper<TElement>, bool> condition, TimeSpan? timeout = default)
             where TElement : IWebElement
         {
-            new WebDriverWait(AppManager.App, timeout ?? TimeSpan.Zero).Until(driver =>
+            new WebDriverWait(element.ElementDriver, timeout ?? TimeSpan.Zero).Until(driver =>
             {
                 try
                 {

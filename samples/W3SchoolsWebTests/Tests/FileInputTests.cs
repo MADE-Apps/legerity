@@ -6,6 +6,7 @@ namespace W3SchoolsWebTests.Tests
     using Legerity;
     using Legerity.Web;
     using Legerity.Web.Elements.Core;
+    using Legerity.Web.Extensions;
     using NUnit.Framework;
     using OpenQA.Selenium.Remote;
     using Shouldly;
@@ -16,7 +17,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_file";
 
-        public FileInputTests(AppManagerOptions options) : base(options)
+        public FileInputTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -41,8 +43,10 @@ namespace W3SchoolsWebTests.Tests
         {
             string filePath = Path.Combine(Environment.CurrentDirectory, @"msedgedriver.exe");
 
-            FileInput fileInput = AppManager.WebApp.FindElementById("myfile") as RemoteWebElement;
+            FileInput fileInput = this.App.FindElementById("myfile") as RemoteWebElement;
             fileInput.SetAbsoluteFilePath(filePath);
+
+            fileInput.WaitUntil(e => e.FilePath.Contains("msedgedriver"), TimeSpan.FromSeconds(5));
 
             // Cannot check absolute file path as browser security feature prevents seeing full URI.
             fileInput.FilePath.ShouldContain("msedgedriver.exe");
@@ -53,7 +57,7 @@ namespace W3SchoolsWebTests.Tests
         {
             string filePath = Path.Combine(Environment.CurrentDirectory, @"msedgedriver.exe");
 
-            FileInput fileInput = AppManager.WebApp.FindElementById("myfile") as RemoteWebElement;
+            FileInput fileInput = this.App.FindElementById("myfile") as RemoteWebElement;
             fileInput.SetAbsoluteFilePath(filePath);
 
             fileInput.ClearFile();

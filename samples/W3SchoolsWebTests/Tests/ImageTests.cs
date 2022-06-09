@@ -16,7 +16,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_image_test";
 
-        public ImageTests(AppManagerOptions options) : base(options)
+        public ImageTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -39,21 +40,21 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldGetImageSource()
         {
-            Image image = AppManager.WebApp.FindElementByTagName("img") as RemoteWebElement;
+            Image image = this.App.FindElementByTagName("img") as RemoteWebElement;
             image.Source.ShouldContain("img_girl.jpg");
         }
 
         [Test]
         public void ShouldGetAltText()
         {
-            Image image = AppManager.WebApp.FindElementByTagName("img") as RemoteWebElement;
+            Image image = this.App.FindElementByTagName("img") as RemoteWebElement;
             image.AltText.ShouldBe("Girl in a jacket");
         }
 
         [Test]
         public void ShouldGetSize()
         {
-            Image image = AppManager.WebApp.FindElementByTagName("img") as RemoteWebElement;
+            Image image = this.App.FindElementByTagName("img") as RemoteWebElement;
             image.Width.ShouldBe(500);
             image.Height.ShouldBe(600);
         }

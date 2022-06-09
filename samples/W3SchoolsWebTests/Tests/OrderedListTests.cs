@@ -19,7 +19,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_lists";
 
-        public OrderedListTests(AppManagerOptions options) : base(options)
+        public OrderedListTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -42,7 +43,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldContainItems()
         {
-            ReadOnlyCollection<IWebElement> lists = AppManager.WebApp.FindElementsByTagName("ol");
+            ReadOnlyCollection<IWebElement> lists = this.App.FindElementsByTagName("ol");
 
             List list = lists.FirstOrDefault() as RemoteWebElement;
             list.Items.Count.ShouldBe(3);

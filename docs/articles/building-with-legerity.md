@@ -49,22 +49,23 @@ namespace MyWindowsApplication.UiTests
     
     using Legerity;
     using Legerity.Windows;
+    using Legerity.Windows.Extensions;
 
     using NUnit.Framework;
 
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
 
-    public abstract class BaseTestClass
+    public abstract class BaseTestClass : LegerityTestClass
     {
         public const string WindowsApplication = "com.madeapps.sampleapp_7mzr475ysvhxg!App";
 
-        protected static WindowsDriver<WindowsElement> App => AppManager.WindowsApp;
+        protected WindowsDriver<WindowsElement> WindowsApp { get; private set; }
 
         [SetUp]
-        public void StartApp()
+        public void Initialize()
         {
-            AppManager.StartApp(
+            WindowsApp = this.StartWindowsApp(
                 new WindowsAppManagerOptions(WindowsApplication)
                 {
                     DriverUri = "http://127.0.0.1:4723",
@@ -74,9 +75,9 @@ namespace MyWindowsApplication.UiTests
         }
 
         [TearDown]
-        public void StopApp()
+        public void Cleanup()
         {
-            AppManager.StopApp();
+            StopApp(WindowsApp);
         }
     }
 }
@@ -84,7 +85,7 @@ namespace MyWindowsApplication.UiTests
 
 ### Example base test class for an Android application
 
-This example showcases how to start your Android application using a path to a compiled APK. You can also choose to launch your application by application ID and activity if the application is already installed.
+This example showcases how to start your Android application using the ID and activity of an app that is already installed on a device. You can also choose to launch your application by APK if the application is not installed.
 
 When your tests start, the `LaunchAppiumServer` property of the `AndroidAppManagerOptions` will automatically start a new Appium server process, if one is not already running. This support allows you to easily run your tests as part of a CI build without additional overhead of scripting the process to run.
 
@@ -101,33 +102,94 @@ namespace MyAndroidApplication.UiTests
     
     using Legerity;
     using Legerity.Android;
+    using Legerity.Android.Extensions;
 
     using NUnit.Framework;
 
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Remote;
 
-    public abstract class BaseTestClass
+    public abstract class BaseTestClass : LegerityTestClass
     {
-        public const string AndroidApplication = "Tools\\Android\\com.made.sampleapp.apk";
+        public const string AndroidApplication = "com.made.sampleapp";
 
-        protected static AndroidDriver<AndroidElement> App => AppManager.AndroidApp;
+        public const string AndroidApplicationActivity = $"{AndroidApplication}.MainActivity";
+
+        protected AndroidDriver<AndroidElement> AndroidApp { get; private set; }
 
         [SetUp]
-        public void StartApp()
+        public void Initialize()
         {
-            AppManager.StartApp(
-                new AndroidAppManagerOptions(Path.Combine(Environment.CurrentDirectory, AndroidApplication))
+            AndroidApp = this.StartAndroidApp(
+                new AndroidAppManagerOptions
                 {
+                    AppId = AndroidApplication,
+                    AppActivity = AndroidApplicationActivity,
                     LaunchAppiumServer = true,
                     DriverUri = "http://localhost:4723/wd/hub"
                 });
         }
 
         [TearDown]
-        public void StopApp()
+        public void Cleanup()
         {
-            AppManager.StopApp();
+            StopApp(AndroidApp);
+        }
+    }
+}
+```
+
+### Example base test class for an iOS application
+
+This example showcases how to start your iOS application using the ID of an app that is already installed on a device.
+
+When your tests start, the `LaunchAppiumServer` property of the `IOSAppManagerOptions` will automatically start a new Appium server process, if one is not already running. This support allows you to easily run your tests as part of a CI build without additional overhead of scripting the process to run.
+
+You also have to provide additional properties that allows you to choose the device that the application should be under test on using the `DeviceName` or `DeviceId` property. This is useful if you wish to pick a specific emulator or physical device.
+
+```csharp
+namespace MyIOSApplication.UiTests
+{
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    
+    using Legerity;
+    using Legerity.IOS;
+    using Legerity.IOS.Extensions;
+
+    using NUnit.Framework;
+
+    using OpenQA.Selenium.Appium.IOS;
+    using OpenQA.Selenium.Remote;
+
+    public abstract class BaseTestClass : LegerityTestClass
+    {
+        public const string IOSApplication = "com.made.sampleapp";
+
+        protected IOSDriver<IOSElement> IOSApp { get; private set; }
+
+        [SetUp]
+        public void Initialize()
+        {
+            IOSApp = this.StartIOSApp(
+                new IOSAppManagerOptions
+                {
+                    AppId = IOSApplication,
+                    DeviceName = "iPhone SE (3rd generation) Simulator",
+                    DeviceId = "56755E6F-741B-478F-BB1B-A48E05ACFE8A",
+                    OSVersion = "15.4",
+                    LaunchAppiumServer = true,
+                    DriverUri = "http://localhost:4723/wd/hub"
+                });
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+            StopApp(IOSApp);
         }
     }
 }
@@ -136,6 +198,8 @@ namespace MyAndroidApplication.UiTests
 ### Example base test class for a Web application
 
 This example showcases how to start your web application using a URL using a specific browser and associated driver. This example is using the Microsoft Edge browser with a path to the [Microsoft Edge Web Driver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/).
+
+You can also use the web driver NuGet packages in your test project to automatically pull in the specific version of a web drive you require.
 
 When your tests start, the web browser will launch the URL provided to begin running the test scenarios.
 
@@ -159,16 +223,14 @@ namespace MyWebApplication.UiTests
 
     using OpenQA.Selenium.Remote;
 
-    public abstract class BaseTestClass
+    public abstract class BaseTestClass : LegerityTestClass
     {
         public const string WebApplication = "http://localhost:5000";
 
-        protected static RemoteWebDriver App => AppManager.WebApp;
-
         [SetUp]
-        public void StartApp()
+        public void Initialize()
         {
-            AppManager.StartApp(
+            this.StartApp(
                 new WebAppManagerOptions(WebAppDriverType.Edge, Path.Combine(Environment.CurrentDirectory, "Tools\\Edge"))
                 {
                     Maximize = true, 
@@ -178,9 +240,9 @@ namespace MyWebApplication.UiTests
         }
 
         [TearDown]
-        public void StopApp()
+        public void Cleanup()
         {
-            AppManager.StopApp();
+            this.StopApp();
         }
     }
 }
@@ -216,7 +278,7 @@ namespace MyApplication.UiTests
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
 
-    public abstract class BaseTestClass
+    public abstract class BaseTestClass : LegerityTestClass
     {
         public const string AndroidApplication = "Tools\\Android\\com.made.sampleapp.apk";
 
@@ -225,36 +287,11 @@ namespace MyApplication.UiTests
         public const string WindowsApplication = "com.madeapps.sampleapp_7mzr475ysvhxg!App";
 
         protected BaseTestClass(AppManagerOptions options)
-        {
-            Options = options;
-        }
-
-        protected static RemoteWebDriver App => AppManager.App;
-
-        protected AppManagerOptions Options { get; }
-
-        [SetUp]
-        public void StartApp()
-        {
-            AppManager.StartApp(Options);
-        }
-
-        [TearDown]
-        public void StopApp()
-        {
-            AppManager.StopApp();
-            Options = null;
-        }
-    }
-
-    [TestFixtureSource(nameof(TestPlatformOptions))]
-    public class LoginPageTests : BaseTestClass
-    {
-        public LoginPageTests(AppManagerOptions options) : base(options)
+            : base(options)
         {
         }
 
-        static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
+        protected static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
         {
             new AndroidAppManagerOptions(Path.Combine(Environment.CurrentDirectory, AndroidApplication))
             {
@@ -276,6 +313,26 @@ namespace MyApplication.UiTests
                 Maximize = true
             }
         };
+
+        [SetUp]
+        public void Initialize()
+        {
+            this.StartApp();
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+            this.StopApp();
+        }
+    }
+
+    [TestFixtureSource(nameof(TestPlatformOptions))]
+    public class LoginPageTests : BaseTestClass
+    {
+        public LoginPageTests(AppManagerOptions options) : base(options)
+        {
+        }
     }
 }
 ```

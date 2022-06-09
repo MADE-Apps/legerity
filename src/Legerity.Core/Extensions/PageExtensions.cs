@@ -23,7 +23,7 @@ namespace Legerity.Extensions
         public static TPage WaitUntil<TPage>(this TPage page, Func<TPage, bool> condition, TimeSpan? timeout = default)
             where TPage : BasePage
         {
-            new WebDriverWait(AppManager.App, timeout ?? TimeSpan.Zero).Until(driver =>
+            new WebDriverWait(page.App, timeout ?? TimeSpan.Zero).Until(driver =>
             {
                 try
                 {

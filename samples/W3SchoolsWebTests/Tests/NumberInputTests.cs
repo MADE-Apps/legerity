@@ -16,7 +16,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_number";
 
-        public NumberInputTests(AppManagerOptions options) : base(options)
+        public NumberInputTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -39,7 +40,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldGetValueRange()
         {
-            NumberInput quantity = AppManager.WebApp.FindElementById("quantity") as RemoteWebElement;
+            NumberInput quantity = this.App.FindElementById("quantity") as RemoteWebElement;
             quantity.Minimum.ShouldBe(1);
             quantity.Maximum.ShouldBe(5);
         }
@@ -47,7 +48,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldSetValue()
         {
-            NumberInput quantity = AppManager.WebApp.FindElementById("quantity") as RemoteWebElement;
+            NumberInput quantity = this.App.FindElementById("quantity") as RemoteWebElement;
             quantity.SetValue(4);
             quantity.Value.ShouldBe(4);
         }
@@ -55,7 +56,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldIncrement()
         {
-            NumberInput quantity = AppManager.WebApp.FindElementById("quantity") as RemoteWebElement;
+            NumberInput quantity = this.App.FindElementById("quantity") as RemoteWebElement;
             quantity.SetValue(3);
             quantity.Increment();
             quantity.Value.ShouldBe(4);
@@ -64,7 +65,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldDecrement()
         {
-            NumberInput quantity = AppManager.WebApp.FindElementById("quantity") as RemoteWebElement;
+            NumberInput quantity = this.App.FindElementById("quantity") as RemoteWebElement;
             quantity.SetValue(3);
             quantity.Decrement();
             quantity.Value.ShouldBe(2);

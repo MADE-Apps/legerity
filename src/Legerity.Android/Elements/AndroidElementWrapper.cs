@@ -27,7 +27,7 @@ namespace Legerity.Android.Elements
         /// <summary>
         /// Gets the instance of the Appium driver for the Android application.
         /// </summary>
-        public AndroidDriver<AndroidElement> Driver => AppManager.AndroidApp;
+        public AndroidDriver<AndroidElement> Driver => this.ElementDriver as AndroidDriver<AndroidElement>;
 
         /// <summary>
         /// Determines whether the specified element is shown with the specified timeout.

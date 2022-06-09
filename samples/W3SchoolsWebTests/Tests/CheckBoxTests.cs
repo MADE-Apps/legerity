@@ -12,12 +12,15 @@ namespace W3SchoolsWebTests.Tests
     using W3SchoolsWebTests;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
+    [Parallelizable(ParallelScope.Fixtures)]
     public class CheckBoxTests : BaseTestClass
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_checkbox";
 
-        public CheckBoxTests(AppManagerOptions options) : base(options)
+        public CheckBoxTests(AppManagerOptions options)
+            : base(options)
         {
+            this.IsParallelized = true;
         }
 
         static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
@@ -39,21 +42,31 @@ namespace W3SchoolsWebTests.Tests
         [TestCase("vehicle1")]
         [TestCase("vehicle2")]
         [TestCase("vehicle3")]
+        [Parallelizable(ParallelScope.Children)]
         public void ShouldCheckOn(string checkboxId)
         {
-            CheckBox checkbox = AppManager.WebApp.FindElementById(checkboxId) as RemoteWebElement;
+            RemoteWebDriver app = this.StartApp();
+
+            CheckBox checkbox = app.FindElementById(checkboxId) as RemoteWebElement;
             checkbox.CheckOn();
             checkbox.IsChecked.ShouldBeTrue();
+
+            this.StopApp(app);
         }
 
         [TestCase("vehicle1")]
         [TestCase("vehicle2")]
         [TestCase("vehicle3")]
+        [Parallelizable(ParallelScope.Children)]
         public void ShouldCheckOff(string checkboxId)
         {
-            CheckBox checkbox = AppManager.WebApp.FindElementById(checkboxId) as RemoteWebElement;
+            RemoteWebDriver app = this.StartApp();
+
+            CheckBox checkbox = app.FindElementById(checkboxId) as RemoteWebElement;
             checkbox.CheckOff();
             checkbox.IsChecked.ShouldBeFalse();
+
+            this.StopApp(app);
         }
     }
 }
