@@ -10,7 +10,8 @@ namespace WindowsCommunityToolkitSampleApp.Elements
 
     public class VsCodeInAppNotification : InAppNotification
     {
-        public VsCodeInAppNotification(WindowsElement element) : base(element)
+        public VsCodeInAppNotification(WindowsElement element)
+            : base(element)
         {
         }
 

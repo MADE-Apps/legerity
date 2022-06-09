@@ -67,7 +67,8 @@ namespace Legerity.Pages
         protected BasePage(RemoteWebDriver app, TimeSpan? traitTimeout)
         {
             this.App = app;
-            this.VerifyPageShown(traitTimeout ?? TimeSpan.FromSeconds(2));
+            this.WaitTimeout = traitTimeout ?? TimeSpan.FromSeconds(2);
+            this.VerifyPageShown(this.WaitTimeout);
         }
 
         /// <summary>
@@ -80,6 +81,11 @@ namespace Legerity.Pages
         /// </para>
         /// </summary>
         public RemoteWebDriver App { get; }
+
+        /// <summary>
+        /// Gets or sets the amount of time the driver should wait when searching for elements if they are not immediately present.
+        /// </summary>
+        public TimeSpan WaitTimeout { get; set; }
 
         /// <summary>
         /// Gets the instance of the started Windows application.

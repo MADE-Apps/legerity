@@ -146,17 +146,29 @@ namespace Legerity
         /// </param>
         public virtual void StopApp(RemoteWebDriver app, bool stopServer = false)
         {
-            this.apps.Remove(app);
-            AppManager.StopApp(app, stopServer);
+            this.StopAppManagerApp(app, stopServer, true);
         }
 
         /// <summary>
-        /// Stops all running application drivers.
+        /// Stops all running application drivers, with an option to stop the running Appium or WinAppDriver server.
         /// </summary>
-        public virtual void StopApps()
+        /// <param name="stopServer">
+        /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>true</b>.
+        /// </param>
+        public virtual void StopApps(bool stopServer = true)
         {
-            this.apps.ForEach(app => this.StopApp(app));
+            this.apps.ForEach(app => this.StopAppManagerApp(app, stopServer, false));
             this.apps.Clear();
+        }
+
+        private void StopAppManagerApp(RemoteWebDriver app, bool stopServer, bool removeApp)
+        {
+            if (removeApp)
+            {
+                this.apps.Remove(app);
+            }
+
+            AppManager.StopApp(app, stopServer);
         }
     }
 }

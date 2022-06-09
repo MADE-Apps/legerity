@@ -2,6 +2,8 @@ namespace WebTests.Tests.Edge
 {
     using Legerity;
     using NUnit.Framework;
+
+    using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
     using WebTests.Pages;
 
@@ -21,7 +23,14 @@ namespace WebTests.Tests.Edge
         public void ReadHeroPost(int idx)
         {
             RemoteWebDriver app = this.StartApp();
-            new HomePage(app).NavigateToHeroPostByIndex(idx).ReadPost(0.25);
+            try
+            {
+                new HomePage(app).NavigateToHeroPostByIndex(idx).ReadPost(0.25);
+            }
+            catch (WebDriverException)
+            {
+                // Ignored.
+            }
         }
     }
 }
