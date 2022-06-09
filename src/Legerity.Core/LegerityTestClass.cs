@@ -35,7 +35,7 @@ namespace Legerity
         /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
         /// </para>
         /// </summary>
-        protected static RemoteWebDriver App => AppManager.App;
+        protected RemoteWebDriver App { get; private set; }
 
         /// <summary>
         /// Gets or sets the model that represents the configuration options for the <see cref="AppManager"/>.
@@ -47,15 +47,18 @@ namespace Legerity
         /// </summary>
         public virtual void StartApp()
         {
-            AppManager.StartApp(this.Options);
+            this.App = AppManager.StartApp(this.Options);
         }
 
         /// <summary>
-        /// Stops the application.
+        /// Stops the application, with an option to stop the running Appium or WinAppDriver server.
         /// </summary>
-        public virtual void StopApp()
+        /// <param name="stopServer">
+        /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
+        /// </param>
+        public virtual void StopApp(bool stopServer = true)
         {
-            AppManager.StopApp();
+            AppManager.StopApp(this.App, stopServer);
         }
     }
 }

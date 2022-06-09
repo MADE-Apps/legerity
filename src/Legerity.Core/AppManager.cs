@@ -92,8 +92,11 @@ namespace Legerity
         /// <exception cref="T:Legerity.Windows.Exceptions.WinAppDriverLoadFailedException">Thrown if the WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.</exception>
         /// <exception cref="WebDriverException">Thrown if the wait until condition is not met in the allocated timeout period if provided.</exception>
         /// <returns>The configured and running application driver.</returns>
-        public static RemoteWebDriver StartApp(AppManagerOptions opts, Func<IWebDriver, bool> waitUntil = default,
-            TimeSpan? waitUntilTimeout = default, int waitUntilRetries = 0)
+        public static RemoteWebDriver StartApp(
+            AppManagerOptions opts,
+            Func<IWebDriver, bool> waitUntil = default,
+            TimeSpan? waitUntilTimeout = default,
+            int waitUntilRetries = 0)
         {
             RemoteWebDriver app = null;
 
@@ -214,6 +217,9 @@ namespace Legerity
         /// <summary>
         /// Stops the <see cref="App"/>, with an option to stop the running Appium or WinAppDriver server.
         /// </summary>
+        /// <param name="stopServer">
+        /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>true</b>.
+        /// </param>
         public static void StopApp(bool stopServer = true)
         {
             StopApp(App, stopServer);
@@ -223,7 +229,13 @@ namespace Legerity
         /// <summary>
         /// Stops an application driver, with an option to stop the running Appium or WinAppDriver server.
         /// </summary>
-        public static void StopApp(IWebDriver app, bool stopServer)
+        /// <param name="app">
+        /// The <see cref="IWebDriver"/> instance to stop running.
+        /// </param>
+        /// <param name="stopServer">
+        /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
+        /// </param>
+        public static void StopApp(IWebDriver app, bool stopServer = false)
         {
             app?.Quit();
 
