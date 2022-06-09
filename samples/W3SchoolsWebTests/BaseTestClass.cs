@@ -28,8 +28,10 @@ namespace W3SchoolsWebTests
             }
         }
 
-        public override RemoteWebDriver StartApp(Func<IWebDriver, bool> waitUntil = default,
-            TimeSpan? waitUntilTimeout = default, int waitUntilRetries = 0)
+        public override RemoteWebDriver StartApp(
+            Func<IWebDriver, bool> waitUntil = default,
+            TimeSpan? waitUntilTimeout = default,
+            int waitUntilRetries = 0)
         {
             RemoteWebDriver app = base.StartApp(waitUntil, waitUntilTimeout, waitUntilRetries);
 
