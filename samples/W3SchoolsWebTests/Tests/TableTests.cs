@@ -17,7 +17,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro";
 
-        public TableTests(AppManagerOptions options) : base(options)
+        public TableTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -41,7 +42,7 @@ namespace W3SchoolsWebTests.Tests
         public void ShouldGetHeaders()
         {
             // Arrange
-            Table table = AppManager.WebApp.FindWebElement(By.TagName("table"));
+            Table table = this.App.FindWebElement(By.TagName("table"));
 
             // Act
             var headers = table.Headers.ToList();
@@ -65,7 +66,7 @@ namespace W3SchoolsWebTests.Tests
                 new List<string> {"Magazzini Alimentari Riuniti", "Giovanni Rovelli", "Italy"},
             };
 
-            Table table = AppManager.WebApp.FindWebElement(By.TagName("table"));
+            Table table = this.App.FindWebElement(By.TagName("table"));
 
             // Act
             var rows = table.Rows.ToList();
@@ -92,7 +93,7 @@ namespace W3SchoolsWebTests.Tests
                 new List<string> {"Magazzini Alimentari Riuniti", "Giovanni Rovelli", "Italy"},
             };
 
-            Table table = AppManager.WebApp.FindWebElement(By.TagName("table"));
+            Table table = this.App.FindWebElement(By.TagName("table"));
 
             // Act
             var rows = table.DataRows.ToList();
@@ -116,7 +117,7 @@ namespace W3SchoolsWebTests.Tests
                 {"Company", "Alfreds Futterkiste"}, {"Contact", "Maria Anders"}, {"Country", "Germany"}
             };
 
-            Table table = AppManager.WebApp.FindWebElement(By.TagName("table"));
+            Table table = this.App.FindWebElement(By.TagName("table"));
 
             // Act
             IReadOnlyDictionary<string, string> rowData = table.GetRowDataByIndex(0);
@@ -145,7 +146,7 @@ namespace W3SchoolsWebTests.Tests
                 "Magazzini Alimentari Riuniti"
             };
 
-            Table table = AppManager.WebApp.FindWebElement(By.TagName("table"));
+            Table table = this.App.FindWebElement(By.TagName("table"));
 
             // Act
             var columnData = table.GetColumnDataByHeader("Company").ToList();
@@ -173,7 +174,7 @@ namespace W3SchoolsWebTests.Tests
                 "Magazzini Alimentari Riuniti"
             };
 
-            Table table = AppManager.WebApp.FindWebElement(By.TagName("table"));
+            Table table = this.App.FindWebElement(By.TagName("table"));
 
             // Act
             var columnData = table.GetColumnDataByIndex(0).ToList();

@@ -16,7 +16,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_range";
 
-        public RangeInputTests(AppManagerOptions options) : base(options)
+        public RangeInputTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -39,7 +40,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldGetValueRange()
         {
-            RangeInput volume = AppManager.WebApp.FindElementById("vol") as RemoteWebElement;
+            RangeInput volume = this.App.FindElementById("vol") as RemoteWebElement;
             volume.Minimum.ShouldBe(0);
             volume.Maximum.ShouldBe(50);
         }
@@ -47,7 +48,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldSetValue()
         {
-            RangeInput volume = AppManager.WebApp.FindElementById("vol") as RemoteWebElement;
+            RangeInput volume = this.App.FindElementById("vol") as RemoteWebElement;
             volume.SetValue(20);
             volume.Value.ShouldBe(20);
         }
@@ -55,7 +56,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldIncrement()
         {
-            RangeInput volume = AppManager.WebApp.FindElementById("vol") as RemoteWebElement;
+            RangeInput volume = this.App.FindElementById("vol") as RemoteWebElement;
             volume.SetValue(30);
             volume.Increment();
             volume.Value.ShouldBe(31);
@@ -64,7 +65,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldDecrement()
         {
-            RangeInput volume = AppManager.WebApp.FindElementById("vol") as RemoteWebElement;
+            RangeInput volume = this.App.FindElementById("vol") as RemoteWebElement;
             volume.SetValue(20);
             volume.Decrement();
             volume.Value.ShouldBe(19);

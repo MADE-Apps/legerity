@@ -1,5 +1,7 @@
 namespace Legerity
 {
+    using System;
+    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
@@ -45,20 +47,49 @@ namespace Legerity
         /// <summary>
         /// Starts the application ready for testing.
         /// </summary>
-        public virtual void StartApp()
+        /// <param name="waitUntil">
+        /// An optional condition of the driver to wait on until it is met.
+        /// </param>
+        /// <param name="waitUntilTimeout">
+        /// An optional timeout wait on the conditional wait until being true. If not set, the wait will run immediately, and if not valid, will throw an exception.
+        /// </param>
+        /// <param name="waitUntilRetries">
+        /// An optional count of retries after a timeout on the wait until condition before accepting the failure.
+        /// </param>
+        /// <returns>The configured and running application driver.</returns>
+        public virtual RemoteWebDriver StartApp(
+            Func<IWebDriver, bool> waitUntil = default,
+            TimeSpan? waitUntilTimeout = default,
+            int waitUntilRetries = 0)
         {
-            this.App = AppManager.StartApp(this.Options);
+            RemoteWebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
+            this.App = app;
+            return app;
         }
 
         /// <summary>
-        /// Stops the application, with an option to stop the running Appium or WinAppDriver server.
+        /// Stops the <see cref="App"/>, with an option to stop the running Appium or WinAppDriver server.
         /// </summary>
         /// <param name="stopServer">
-        /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
+        /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>true</b>.
         /// </param>
         public virtual void StopApp(bool stopServer = true)
         {
-            AppManager.StopApp(this.App, stopServer);
+            this.StopApp(this.App, stopServer);
+        }
+
+        /// <summary>
+        /// Stops an application, with an option to stop the running Appium or WinAppDriver server.
+        /// </summary>
+        /// <param name="app">
+        /// The <see cref="IWebDriver"/> instance to stop running.
+        /// </param>
+        /// <param name="stopServer">
+        /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
+        /// </param>
+        public virtual void StopApp(IWebDriver app, bool stopServer = false)
+        {
+            AppManager.StopApp(app, stopServer);
         }
     }
 }

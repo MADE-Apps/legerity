@@ -15,7 +15,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_button_test";
 
-        public ButtonTests(AppManagerOptions options) : base(options)
+        public ButtonTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -38,7 +39,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldClickButton()
         {
-            Button button = AppManager.WebApp.FindElementByTagName("button") as RemoteWebElement;
+            Button button = this.App.FindElementByTagName("button") as RemoteWebElement;
             button.Click();
         }
     }

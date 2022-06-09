@@ -4,6 +4,7 @@ namespace W3SchoolsWebTests
     using Legerity;
     using NUnit.Framework;
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Remote;
 
     public abstract class BaseTestClass : LegerityTestClass
     {
@@ -11,18 +12,30 @@ namespace W3SchoolsWebTests
         /// Initializes a new instance of the <see cref="BaseTestClass"/> class with application launch option.
         /// </summary>
         /// <param name="options">The application launch options.</param>
-        protected BaseTestClass(AppManagerOptions options) : base(options)
+        protected BaseTestClass(AppManagerOptions options)
+            : base(options)
         {
         }
+
+        public bool IsParallelized { get; set; } = false;
 
         [SetUp]
         public virtual void Initialize()
         {
-            base.StartApp();
+            if (!this.IsParallelized)
+            {
+                this.StartApp();
+            }
+        }
+
+        public override RemoteWebDriver StartApp(Func<IWebDriver, bool> waitUntil = default,
+            TimeSpan? waitUntilTimeout = default, int waitUntilRetries = 0)
+        {
+            RemoteWebDriver app = base.StartApp(waitUntil, waitUntilTimeout, waitUntilRetries);
 
             try
             {
-                IWebElement closePopup = AppManager.WebApp.FindElement(By.Id("accept-choices"));
+                IWebElement closePopup = app.FindElement(By.Id("accept-choices"));
                 closePopup?.Click();
             }
             catch (Exception)
@@ -30,13 +43,18 @@ namespace W3SchoolsWebTests
                 // Ignored.
             }
 
-            AppManager.WebApp.SwitchTo().Frame("iframeResult");
+            app.SwitchTo().Frame("iframeResult");
+
+            return app;
         }
 
         [TearDown]
         public virtual void Cleanup()
         {
-            base.StopApp();
+            if (!this.IsParallelized)
+            {
+                base.StopApp();
+            }
         }
     }
 }

@@ -15,12 +15,15 @@ namespace W3SchoolsWebTests.Tests
     using W3SchoolsWebTests;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
+    [Parallelizable(ParallelScope.Fixtures)]
     public class RadioButtonTests : BaseTestClass
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio";
 
-        public RadioButtonTests(AppManagerOptions options) : base(options)
+        public RadioButtonTests(AppManagerOptions options)
+            : base(options)
         {
+            this.IsParallelized = true;
         }
 
         static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
@@ -45,18 +48,26 @@ namespace W3SchoolsWebTests.Tests
         [TestCase("age1")]
         [TestCase("age2")]
         [TestCase("age3")]
+        [Parallelizable(ParallelScope.Children)]
         public void ShouldSelect(string radioId)
         {
-            RadioButton radioButton = AppManager.WebApp.FindElementById(radioId) as RemoteWebElement;
+            RemoteWebDriver app = this.StartApp();
+            
+            RadioButton radioButton = app.FindElementById(radioId) as RemoteWebElement;
             radioButton.Click();
             radioButton.IsSelected.ShouldBeTrue();
+
+            this.StopApp(app);
         }
 
         [TestCase("fav_language", "html", "javascript")]
         [TestCase("age", "age3", "age2")]
+        [Parallelizable(ParallelScope.Children)]
         public void ShouldOnlySelectOneInGroup(string groupName, string initialRadioId, string expectedRadioId)
         {
-            ReadOnlyCollection<IWebElement> radioButtons = AppManager.WebApp.FindElements(By.Name(groupName));
+            RemoteWebDriver app = this.StartApp();
+
+            ReadOnlyCollection<IWebElement> radioButtons = app.FindElements(By.Name(groupName));
             RadioButton initialRadioButton = radioButtons.FirstOrDefault(x => x.GetAttribute("id") == initialRadioId) as RemoteWebElement;
             initialRadioButton.Click();
             initialRadioButton.IsSelected.ShouldBeTrue();
@@ -65,6 +76,8 @@ namespace W3SchoolsWebTests.Tests
             expectedRadioButton.Click();
             expectedRadioButton.IsSelected.ShouldBeTrue();
             initialRadioButton.IsSelected.ShouldBeFalse();
+
+            this.StopApp(app);
         }
     }
 }

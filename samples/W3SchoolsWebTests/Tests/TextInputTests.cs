@@ -16,7 +16,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_text";
 
-        public TextInputTests(AppManagerOptions options) : base(options)
+        public TextInputTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -39,7 +40,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldSetText()
         {
-            TextInput firstName = AppManager.WebApp.FindElementById("fname") as RemoteWebElement;
+            TextInput firstName = this.App.FindElementById("fname") as RemoteWebElement;
             firstName.SetText("James");
             firstName.Text.ShouldBe("James");
         }
@@ -47,7 +48,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldAppendText()
         {
-            TextInput firstName = AppManager.WebApp.FindElementById("fname") as RemoteWebElement;
+            TextInput firstName = this.App.FindElementById("fname") as RemoteWebElement;
             firstName.SetText("James");
             firstName.AppendText(" Croft");
             firstName.Text.ShouldBe("James Croft");
@@ -56,7 +57,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldClearText()
         {
-            TextInput firstName = AppManager.WebApp.FindElementById("fname") as RemoteWebElement;
+            TextInput firstName = this.App.FindElementById("fname") as RemoteWebElement;
             firstName.SetText("James");
             firstName.ClearText();
             firstName.Text.ShouldBe(string.Empty);

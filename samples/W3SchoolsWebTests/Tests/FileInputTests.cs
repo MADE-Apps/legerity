@@ -17,7 +17,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_file";
 
-        public FileInputTests(AppManagerOptions options) : base(options)
+        public FileInputTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -42,7 +43,7 @@ namespace W3SchoolsWebTests.Tests
         {
             string filePath = Path.Combine(Environment.CurrentDirectory, @"msedgedriver.exe");
 
-            FileInput fileInput = AppManager.WebApp.FindElementById("myfile") as RemoteWebElement;
+            FileInput fileInput = this.App.FindElementById("myfile") as RemoteWebElement;
             fileInput.SetAbsoluteFilePath(filePath);
 
             fileInput.WaitUntil(e => e.FilePath.Contains("msedgedriver"), TimeSpan.FromSeconds(5));
@@ -56,7 +57,7 @@ namespace W3SchoolsWebTests.Tests
         {
             string filePath = Path.Combine(Environment.CurrentDirectory, @"msedgedriver.exe");
 
-            FileInput fileInput = AppManager.WebApp.FindElementById("myfile") as RemoteWebElement;
+            FileInput fileInput = this.App.FindElementById("myfile") as RemoteWebElement;
             fileInput.SetAbsoluteFilePath(filePath);
 
             fileInput.ClearFile();
