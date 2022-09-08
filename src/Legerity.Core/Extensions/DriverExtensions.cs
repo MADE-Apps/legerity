@@ -109,7 +109,8 @@ namespace Legerity.Extensions
         /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
         /// <param name="timeoutExceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
         /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
-        public static void TryWaitUntil(
+        /// <returns>Whether the wait was a success.</returns>
+        public static bool TryWaitUntil(
             this IWebDriver appDriver,
             Func<IWebDriver, bool> condition,
             TimeSpan? timeout = default,
@@ -123,7 +124,10 @@ namespace Legerity.Extensions
             catch (WebDriverTimeoutException ex)
             {
                 timeoutExceptionHandler?.Invoke(ex);
+                return false;
             }
+
+            return true;
         }
 
         /// <summary>

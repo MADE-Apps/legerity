@@ -144,7 +144,8 @@ namespace Legerity.Extensions
         /// <param name="timeout">The optional timeout wait on the condition being true.</param>
         /// <param name="timeoutExceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
         /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
-        public static void TryWaitUntil<TElement>(
+        /// <returns>Whether the wait was a success.</returns>
+        public static bool TryWaitUntil<TElement>(
             this IElementWrapper<TElement> element,
             Func<IElementWrapper<TElement>, bool> condition,
             TimeSpan? timeout = default,
@@ -158,7 +159,10 @@ namespace Legerity.Extensions
             catch (WebDriverTimeoutException ex)
             {
                 timeoutExceptionHandler?.Invoke(ex);
+                return false;
             }
+
+            return true;
         }
 
         /// <summary>

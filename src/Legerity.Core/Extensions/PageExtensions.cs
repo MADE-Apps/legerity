@@ -18,8 +18,8 @@ namespace Legerity.Extensions
         /// <param name="timeout">The optional timeout wait on the condition being true.</param>
         /// <param name="timeoutExceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
         /// <typeparam name="TPage">The type of <see cref="BasePage"/>.</typeparam>
-        /// <returns>The instance of the page.</returns>
-        public static TPage TryWaitUntil<TPage>(
+        /// <returns>Whether the wait was a success and the instance of the page.</returns>
+        public static (bool success, TPage page) TryWaitUntil<TPage>(
             this TPage page,
             Func<TPage, bool> condition,
             TimeSpan? timeout = default,
@@ -33,9 +33,10 @@ namespace Legerity.Extensions
             catch (WebDriverTimeoutException ex)
             {
                 timeoutExceptionHandler?.Invoke(ex);
+                return (false, page);
             }
 
-            return page;
+            return (true, page);
         }
 
         /// <summary>

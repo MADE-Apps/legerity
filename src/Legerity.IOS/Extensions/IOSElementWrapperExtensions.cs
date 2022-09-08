@@ -18,7 +18,8 @@ namespace Legerity.IOS.Extensions
         /// <param name="timeout">The optional timeout wait on the condition being true.</param>
         /// <param name="timeoutExceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
         /// <typeparam name="TElementWrapper">The type of <see cref="IOSElementWrapper"/>.</typeparam>
-        public static void TryWaitUntil<TElementWrapper>(
+        /// <returns>Whether the wait was a success.</returns>
+        public static bool TryWaitUntil<TElementWrapper>(
             this TElementWrapper element,
             Func<TElementWrapper, bool> condition,
             TimeSpan? timeout = default,
@@ -32,7 +33,10 @@ namespace Legerity.IOS.Extensions
             catch (WebDriverTimeoutException ex)
             {
                 timeoutExceptionHandler?.Invoke(ex);
+                return false;
             }
+
+            return true;
         }
 
         /// <summary>
