@@ -73,7 +73,9 @@ namespace Legerity.Extensions
         /// <param name="driver">The remote web driver.</param>
         /// <param name="text">The partial text to find.</param>
         /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
-        public static ReadOnlyCollection<IWebElement> FindElementsByPartialText(this RemoteWebDriver driver, string text)
+        public static ReadOnlyCollection<IWebElement> FindElementsByPartialText(
+            this RemoteWebDriver driver,
+            string text)
         {
             return driver.FindElements(ByExtras.PartialText(text));
         }
@@ -99,6 +101,32 @@ namespace Legerity.Extensions
         }
 
         /// <summary>
+        /// Attempts to wait until a specified driver condition is met, with an optional timeout.
+        /// </summary>
+        /// <param name="appDriver">The driver to wait on.</param>
+        /// <param name="condition">The condition of the element to wait on.</param>
+        /// <param name="timeout">The optional timeout wait on the condition being true.</param>
+        /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
+        /// <param name="timeoutExceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
+        /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
+        public static void TryWaitUntil(
+            this IWebDriver appDriver,
+            Func<IWebDriver, bool> condition,
+            TimeSpan? timeout = default,
+            int retries = 0,
+            Action<WebDriverTimeoutException> timeoutExceptionHandler = null)
+        {
+            try
+            {
+                WaitUntil(appDriver, condition, timeout, retries);
+            }
+            catch (WebDriverTimeoutException ex)
+            {
+                timeoutExceptionHandler?.Invoke(ex);
+            }
+        }
+
+        /// <summary>
         /// Waits until a specified driver condition is met, with an optional timeout.
         /// </summary>
         /// <param name="appDriver">The driver to wait on.</param>
@@ -106,7 +134,11 @@ namespace Legerity.Extensions
         /// <param name="timeout">The optional timeout wait on the condition being true.</param>
         /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
         /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
-        public static void WaitUntil(this IWebDriver appDriver, Func<IWebDriver, bool> condition, TimeSpan? timeout = default, int retries = 0)
+        public static void WaitUntil(
+            this IWebDriver appDriver,
+            Func<IWebDriver, bool> condition,
+            TimeSpan? timeout = default,
+            int retries = 0)
         {
             try
             {
