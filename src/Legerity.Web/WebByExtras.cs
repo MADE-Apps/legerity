@@ -8,6 +8,16 @@ namespace Legerity.Web
     public static class WebByExtras
     {
         /// <summary>
+        /// Gets a mechanism to find elements by the HTML input tag with a specified type.
+        /// </summary>
+        /// <param name="inputType">The input type to find.</param>
+        /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
+        public static By InputType(string inputType)
+        {
+            return By.XPath($"//input[@type='{inputType}']");
+        }
+
+        /// <summary>
         /// Gets a mechanism to find elements by the HTML li tag.
         /// </summary>
         /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
