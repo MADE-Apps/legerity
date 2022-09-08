@@ -65,6 +65,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{9064E354
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.PageObjectGenerator", "..\tools\Legerity.PageObjectGenerator\Legerity.PageObjectGenerator.csproj", "{063E6264-F623-4469-BADF-95C8E93E3ACF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Web.Authentication", "Legerity.Web.Authentication\Legerity.Web.Authentication.csproj", "{F6CCE4EA-9C7D-4DD0-BD6B-0B5C70EE9175}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,10 @@ Global
 		{063E6264-F623-4469-BADF-95C8E93E3ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{063E6264-F623-4469-BADF-95C8E93E3ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{063E6264-F623-4469-BADF-95C8E93E3ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6CCE4EA-9C7D-4DD0-BD6B-0B5C70EE9175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6CCE4EA-9C7D-4DD0-BD6B-0B5C70EE9175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6CCE4EA-9C7D-4DD0-BD6B-0B5C70EE9175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6CCE4EA-9C7D-4DD0-BD6B-0B5C70EE9175}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
