@@ -17,6 +17,7 @@ For non-core platform controls, for example, the Windows Community Toolkit, we p
 | Legerity.Android | [![Nuget](https://img.shields.io/nuget/v/Legerity.Android.svg)](https://www.nuget.org/packages/Legerity.Android/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.Android.svg)](https://www.nuget.org/packages/Legerity.Android/) |
 | Legerity.IOS | [![Nuget](https://img.shields.io/nuget/v/Legerity.IOS.svg)](https://www.nuget.org/packages/Legerity.IOS/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.IOS.svg)](https://www.nuget.org/packages/Legerity.IOS/) |
 | Legerity.Web | [![Nuget](https://img.shields.io/nuget/v/Legerity.Web.svg)](https://www.nuget.org/packages/Legerity.Web/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.Web.svg)](https://www.nuget.org/packages/Legerity.Web/) |
+| Legerity.Web.Authentication | [![Nuget](https://img.shields.io/nuget/v/Legerity.Web.Authentication.svg)](https://www.nuget.org/packages/Legerity.Web.Authentication/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.Web.Authentication.svg)](https://www.nuget.org/packages/Legerity.Web.Authentication/) |
 | Legerity.MADE | [![Nuget](https://img.shields.io/nuget/v/Legerity.MADE.svg)](https://www.nuget.org/packages/Legerity.MADE/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.MADE.svg)](https://www.nuget.org/packages/Legerity.MADE/) |
 | Legerity.Telerik.Uwp | [![Nuget](https://img.shields.io/nuget/v/Legerity.Telerik.Uwp.svg)](https://www.nuget.org/packages/Legerity.Telerik.Uwp/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.Telerik.Uwp.svg)](https://www.nuget.org/packages/Legerity.Telerik.Uwp/) |
 | Legerity.WCT | [![Nuget](https://img.shields.io/nuget/v/Legerity.WCT.svg)](https://www.nuget.org/packages/Legerity.WCT/) | [![Nuget](https://img.shields.io/nuget/vpre/Legerity.WCT.svg)](https://www.nuget.org/packages/Legerity.WCT/) |
@@ -238,5 +239,15 @@ It includes the base `WebElementWrapper` as well as the following element wrappe
 <span class="button">
 
 [Using the Web package](features/web.md)
+
+</span>
+
+### Web Authentication
+
+The Web Authentication extension package provides the capabilities for common page objects that cover standard web authentication provider flows, such as Azure Active Directory login.
+
+<span class="button">
+
+[Using the Web Authentication package](features/web-authentication.md)
 
 </span>

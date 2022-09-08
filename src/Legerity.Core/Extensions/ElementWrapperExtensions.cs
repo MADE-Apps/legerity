@@ -50,7 +50,8 @@ namespace Legerity.Extensions
         /// <param name="element">The remote web element.</param>
         /// <param name="locator">The locator to find the elements.</param>
         /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
-        public static ReadOnlyCollection<RemoteWebElement> FindWebElements<TElement>(this IElementWrapper<TElement> element, By locator)
+        public static ReadOnlyCollection<RemoteWebElement> FindWebElements<TElement>(
+            this IElementWrapper<TElement> element, By locator)
             where TElement : IWebElement
         {
             return element.Element.FindWebElements(locator);
@@ -80,7 +81,8 @@ namespace Legerity.Extensions
         /// <param name="element">The remote web element.</param>
         /// <param name="text">The text to find.</param>
         /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
-        public static ReadOnlyCollection<IWebElement> FindElementsByText<TElement>(this IElementWrapper<TElement> element, string text)
+        public static ReadOnlyCollection<IWebElement> FindElementsByText<TElement>(
+            this IElementWrapper<TElement> element, string text)
             where TElement : IWebElement
         {
             return element.Element.FindElementsByText(text);
@@ -95,7 +97,9 @@ namespace Legerity.Extensions
         /// <param name="element">The remote web element.</param>
         /// <param name="text">The partial text to find.</param>
         /// <returns>A <see cref="IWebElement"/>.</returns>
-        public static IWebElement FindElementByPartialText<TElement>(this IElementWrapper<TElement> element, string text)
+        public static IWebElement FindElementByPartialText<TElement>(
+            this IElementWrapper<TElement> element,
+            string text)
             where TElement : IWebElement
         {
             return element.Element.FindElementByPartialText(text);
@@ -110,7 +114,8 @@ namespace Legerity.Extensions
         /// <param name="element">The remote web element.</param>
         /// <param name="text">The partial text to find.</param>
         /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
-        public static ReadOnlyCollection<IWebElement> FindElementsByPartialText<TElement>(this IElementWrapper<TElement> element, string text)
+        public static ReadOnlyCollection<IWebElement> FindElementsByPartialText<TElement>(
+            this IElementWrapper<TElement> element, string text)
             where TElement : IWebElement
         {
             return element.Element.FindElementsByPartialText(text);
@@ -124,10 +129,40 @@ namespace Legerity.Extensions
         /// </typeparam>
         /// <param name="element">The remote web driver.</param>
         /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
-        public static ReadOnlyCollection<IWebElement> GetAllChildElements<TElement>(this IElementWrapper<TElement> element)
+        public static ReadOnlyCollection<IWebElement> GetAllChildElements<TElement>(
+            this IElementWrapper<TElement> element)
             where TElement : IWebElement
         {
             return element.Element.GetAllChildElements();
+        }
+
+        /// <summary>
+        /// Attempts to wait until a specified element condition is met, with an optional timeout.
+        /// </summary>
+        /// <param name="element">The element to wait on.</param>
+        /// <param name="condition">The condition of the element to wait on.</param>
+        /// <param name="timeout">The optional timeout wait on the condition being true.</param>
+        /// <param name="timeoutExceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
+        /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
+        /// <returns>Whether the wait was a success.</returns>
+        public static bool TryWaitUntil<TElement>(
+            this IElementWrapper<TElement> element,
+            Func<IElementWrapper<TElement>, bool> condition,
+            TimeSpan? timeout = default,
+            Action<WebDriverTimeoutException> timeoutExceptionHandler = null)
+            where TElement : IWebElement
+        {
+            try
+            {
+                WaitUntil(element, condition, timeout);
+            }
+            catch (WebDriverTimeoutException ex)
+            {
+                timeoutExceptionHandler?.Invoke(ex);
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -137,7 +172,10 @@ namespace Legerity.Extensions
         /// <param name="condition">The condition of the element to wait on.</param>
         /// <param name="timeout">The optional timeout wait on the condition being true.</param>
         /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
-        public static void WaitUntil<TElement>(this IElementWrapper<TElement> element, Func<IElementWrapper<TElement>, bool> condition, TimeSpan? timeout = default)
+        public static void WaitUntil<TElement>(
+            this IElementWrapper<TElement> element,
+            Func<IElementWrapper<TElement>, bool> condition,
+            TimeSpan? timeout = default)
             where TElement : IWebElement
         {
             new WebDriverWait(element.ElementDriver, timeout ?? TimeSpan.Zero).Until(driver =>
