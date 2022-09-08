@@ -33,7 +33,7 @@
 [![Legerity docs](https://img.shields.io/badge/docs-Legerity-blue.svg)](https://made-apps.github.io/legerity/)
 [![Legerity discussions](https://img.shields.io/badge/discuss-Legerity-blue.svg)](https://github.com/MADE-Apps/legerity/discussions)
 
-Legerity is an automated UI testing framework for building maintainable tests quickly for Windows, Android, iOS, and Web applications with C#/.NET. 
+Legerity is an automated UI testing framework for building maintainable tests quickly for Windows, Android, iOS, and Web applications with C#/.NET.
 
 It simplifies the development by providing easy-to-use element wrappers for native app controls that allow developers to quickly get up and running with UI tests in no time.
 
@@ -59,7 +59,7 @@ Our documentation includes usages examples, as well as API documentation for you
 
 ## Installation 💾
 
-Legerity is publicly available via NuGet. Each available package is detailed below. 
+Legerity is publicly available via NuGet. Each available package is detailed below.
 
 For non-core platform controls, for example, WinUI or the Windows Community Toolkit, we're providing additional extension packages for you to take advantage of within your test projects.
 
@@ -71,6 +71,7 @@ For non-core platform controls, for example, WinUI or the Windows Community Tool
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.Android.svg?label=Legerity.Android)](https://www.nuget.org/packages/Legerity.Android/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Android.svg)](https://www.nuget.org/packages/Legerity.Android) |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.IOS.svg?label=Legerity.IOS)](https://www.nuget.org/packages/Legerity.IOS/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.IOS.svg)](https://www.nuget.org/packages/Legerity.IOS) |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.Web.svg?label=Legerity.Web)](https://www.nuget.org/packages/Legerity.Web/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Web.svg)](https://www.nuget.org/packages/Legerity.Web) |
+| [![Nuget](https://img.shields.io/nuget/v/Legerity.Web.Authentication.svg?label=Legerity.Web.Authentication)](https://www.nuget.org/packages/Legerity.Web.Authentication/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Web.Authentication.svg)](https://www.nuget.org/packages/Legerity.Web.Authentication) |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.MADE.svg?label=Legerity.MADE)](https://www.nuget.org/packages/Legerity.MADE/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.MADE.svg)](https://www.nuget.org/packages/Legerity.MADE) |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.Telerik.Uwp.svg?label=Legerity.Telerik.Uwp)](https://www.nuget.org/packages/Legerity.Telerik.Uwp/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Telerik.Uwp.svg)](https://www.nuget.org/packages/Legerity.Telerik.Uwp) |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.WCT.svg?label=Legerity.WCT)](https://www.nuget.org/packages/Legerity.WCT/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.WCT.svg)](https://www.nuget.org/packages/Legerity.WCT) |
@@ -78,7 +79,7 @@ For non-core platform controls, for example, WinUI or the Windows Community Tool
 
 ## Support Legerity 💗
 
-As many developers know, projects like Legerity are built and maintained in spare time. If you find this project useful, please **Star** the repo and if possible, sponsor the project development on GitHub. 
+As many developers know, projects like Legerity are built and maintained in spare time. If you find this project useful, please **Star** the repo and if possible, sponsor the project development on GitHub.
 
 ## Contributing 🚀
 
@@ -110,7 +111,7 @@ Even better, why not help build out your custom control wrapper elements within 
 
 When contributing to new element wrappers, we recommended using the [Accessibility Insights tool](https://accessibilityinsights.io/en/). The tool is capable of inspecting and providing property values for Android, Web, and Windows applications.
 
-Alternatively, you can use the [Inspect.exe tool](https://docs.microsoft.com/en-us/windows/win32/winauto/inspect-objects) for Windows applications installed with the Windows SDKs. This is not recommended as the tool is considered legacy and can often cause oddities in UI when using. 
+Alternatively, you can use the [Inspect.exe tool](https://docs.microsoft.com/en-us/windows/win32/winauto/inspect-objects) for Windows applications installed with the Windows SDKs. This is not recommended as the tool is considered legacy and can often cause oddities in UI when using.
 
 ## License
 
