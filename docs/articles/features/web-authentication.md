@@ -23,3 +23,13 @@ new FacebookLoginPage(AppManager.App)
 ```
 
 - [FacebookLoginPage](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Web.Authentication/Pages/FacebookLoginPage.cs)
+
+## Google login
+
+The Google login page object allows you to automate authenticating Google users through the Google authentication UI. This is particularly useful when building applications that support Google identity.
+
+To use the page object, initialize the `GoogleLoginPage` when the page is in view, and call the `Login` method with a username and password to login.
+
+> 💡 Google uses a 2-step process for authentication. The page object will handle this for you.
+
+- [GoogleLoginPage](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Web.Authentication/Pages/GoogleLoginPage.cs)
