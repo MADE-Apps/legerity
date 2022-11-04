@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.3.2" />
+    <PackageReference Include="Appium.WebDriver" Version="4.4.0" />
   </ItemGroup>
 
   <ItemGroup>
