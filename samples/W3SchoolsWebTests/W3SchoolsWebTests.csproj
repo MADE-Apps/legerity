@@ -10,7 +10,7 @@
     <PackageReference Include="Appium.WebDriver" Version="4.3.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageReference Include="nunit" Version="3.13.3" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.3.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="107.0.5304.6200" />
     <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="106.0.1370.34" />
     <PackageReference Include="Shouldly" Version="4.1.0" />
