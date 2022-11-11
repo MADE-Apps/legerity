@@ -2,9 +2,11 @@ namespace WebTests.Pages
 {
     using System.Collections.ObjectModel;
     using System.Linq;
+
     using Legerity.Pages;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Remote;
+    using Shouldly;
 
     /// <summary>
     /// Defines the home page of the website.
@@ -17,6 +19,11 @@ namespace WebTests.Pages
 
         private readonly By readPostButtonLocator = By.ClassName("nectar-button");
 
+        public HomePage(RemoteWebDriver app)
+            : base(app)
+        {
+        }
+
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
@@ -27,19 +34,32 @@ namespace WebTests.Pages
             IWebElement heroPostsContainer = this.WebApp.FindElement(this.heroPostsLocator);
 
             ReadOnlyCollection<IWebElement> heroPosts = heroPostsContainer.FindElements(this.heroPostLocator);
-
-            Assert.AreEqual(3, heroPosts.Count);
+            heroPosts.Count.ShouldBe(3);
 
             return this;
         }
 
-        public PostPage NavigateToHeroPost()
+        public PostPage NavigateToFirstHeroPost()
         {
             IWebElement heroPostsContainer = this.WebApp.FindElement(this.heroPostsLocator);
 
             ReadOnlyCollection<IWebElement> heroPosts = heroPostsContainer.FindElements(this.heroPostLocator);
 
             IWebElement heroPost = heroPosts.FirstOrDefault(p => p.Displayed);
+            IWebElement readButton = heroPost.FindElement(this.readPostButtonLocator);
+
+            readButton.Click();
+
+            return new PostPage();
+        }
+
+        public PostPage NavigateToHeroPostByIndex(int idx)
+        {
+            IWebElement heroPostsContainer = this.WebApp.FindElement(this.heroPostsLocator);
+
+            ReadOnlyCollection<IWebElement> heroPosts = heroPostsContainer.FindElements(this.heroPostLocator);
+            
+            IWebElement heroPost = heroPosts[idx];
             IWebElement readButton = heroPost.FindElement(this.readPostButtonLocator);
 
             readButton.Click();

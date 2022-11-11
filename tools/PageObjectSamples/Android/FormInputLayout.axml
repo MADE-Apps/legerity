@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/FormLayoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/GroupHeaderText"
+        android:text="@string/FormLayoutHeader" />
+
+    <TextView
+        android:text="@string/FormLayoutRef"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="FormLayoutRef" />
+
+    <TextView
+        android:text="@string/FormLayoutDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/FormLayoutDate" />
+
+    <Spinner
+        android:id="@+id/FormLayoutReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/FormLayoutFromDate" />
+
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/FormLayoutToDate" />
+
+    <EditText
+        android:id="@+id/FormLayoutComments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/FormLayoutSavingProgress"
+        android:indeterminateOnly="true"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

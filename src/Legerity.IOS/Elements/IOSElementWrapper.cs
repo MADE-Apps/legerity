@@ -27,12 +27,7 @@ namespace Legerity.IOS.Elements
         /// <summary>
         /// Gets the instance of the Appium driver for the iOS application.
         /// </summary>
-        public IOSDriver<IOSElement> Driver => AppManager.IOSApp;
-
-        /// <summary>
-        /// Gets a value indicating whether the element is enabled.
-        /// </summary>
-        public bool IsEnabled => this.Element.Enabled;
+        public IOSDriver<IOSElement> Driver => this.ElementDriver as IOSDriver<IOSElement>;
 
         /// <summary>
         /// Determines whether the specified element is shown with the specified timeout.

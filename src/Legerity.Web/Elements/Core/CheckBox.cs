@@ -34,7 +34,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets a value indicating whether the check box is in the checked state.
         /// </summary>
-        public bool IsChecked => this.Element.Selected;
+        public virtual bool IsChecked => this.Element.Selected;
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CheckBox"/> without direct casting.
@@ -53,27 +53,27 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Checks the check box on.
         /// </summary>
-        public void CheckOn()
+        public virtual void CheckOn()
         {
             if (this.IsChecked)
             {
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
 
         /// <summary>
         /// Checks the check box off.
         /// </summary>
-        public void CheckOff()
+        public virtual void CheckOff()
         {
             if (!this.IsChecked)
             {
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
     }
 }

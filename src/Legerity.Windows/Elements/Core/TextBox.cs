@@ -1,6 +1,6 @@
 namespace Legerity.Windows.Elements.Core
 {
-    using System;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
 
@@ -23,13 +23,12 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the text value of the text box.
         /// </summary>
-        public string Text => this.Element.GetAttribute("Value.Value");
+        public virtual string Text => this.GetValue();
 
         /// <summary>
         /// Gets a value indicating whether the text box is in a readonly state.
         /// </summary>
-        public bool IsReadonly =>
-            this.Element.GetAttribute("Value.IsReadonly").Equals("True", StringComparison.CurrentCultureIgnoreCase);
+        public virtual bool IsReadonly => this.IsReadonly();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="TextBox"/> without direct casting.
@@ -63,7 +62,7 @@ namespace Legerity.Windows.Elements.Core
         /// Sets the text of the text box to the specified text.
         /// </summary>
         /// <param name="text">The text to display.</param>
-        public void SetText(string text)
+        public virtual void SetText(string text)
         {
             this.ClearText();
             this.AppendText(text);
@@ -73,18 +72,18 @@ namespace Legerity.Windows.Elements.Core
         /// Appends the specified text to the text box.
         /// </summary>
         /// <param name="text">The text to append.</param>
-        public void AppendText(string text)
+        public virtual void AppendText(string text)
         {
-            this.Element.Click();
+            this.Click();
             this.Element.SendKeys(text);
         }
 
         /// <summary>
         /// Clears the text from the text box.
         /// </summary>
-        public void ClearText()
+        public virtual void ClearText()
         {
-            this.Element.Click();
+            this.Click();
             this.Element.Clear();
         }
     }

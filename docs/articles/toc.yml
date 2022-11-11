@@ -36,3 +36,5 @@
       items:
         - name: Overview
           href: features/web.md
+        - name: Authentication Helpers
+          href: features/web-authentication.md

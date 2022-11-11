@@ -16,7 +16,8 @@ namespace W3SchoolsWebTests.Tests
     {
         private const string Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_textarea";
 
-        public TextAreaTests(AppManagerOptions options) : base(options)
+        public TextAreaTests(AppManagerOptions options)
+            : base(options)
         {
         }
 
@@ -39,7 +40,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldSetText()
         {
-            TextArea review = AppManager.WebApp.FindElementById("w3review") as RemoteWebElement;
+            TextArea review = this.App.FindElementById("w3review") as RemoteWebElement;
             review.SetText("James");
             review.Text.ShouldBe("James");
         }
@@ -47,7 +48,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldAppendText()
         {
-            TextArea review = AppManager.WebApp.FindElementById("w3review") as RemoteWebElement;
+            TextArea review = this.App.FindElementById("w3review") as RemoteWebElement;
             review.SetText("James");
             review.AppendText(" Croft");
             review.Text.ShouldBe("James Croft");
@@ -56,7 +57,7 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldClearText()
         {
-            TextArea review = AppManager.WebApp.FindElementById("w3review") as RemoteWebElement;
+            TextArea review = this.App.FindElementById("w3review") as RemoteWebElement;
             review.SetText("James");
             review.ClearText();
             review.Text.ShouldBe(string.Empty);
@@ -65,14 +66,14 @@ namespace W3SchoolsWebTests.Tests
         [Test]
         public void ShouldGetRows()
         {
-            TextArea review = AppManager.WebApp.FindElementById("w3review") as RemoteWebElement;
+            TextArea review = this.App.FindElementById("w3review") as RemoteWebElement;
             review.Rows.ShouldBe(4);
         }
 
         [Test]
         public void ShouldGetCols()
         {
-            TextArea review = AppManager.WebApp.FindElementById("w3review") as RemoteWebElement;
+            TextArea review = this.App.FindElementById("w3review") as RemoteWebElement;
             review.Cols.ShouldBe(50);
         }
     }

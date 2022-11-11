@@ -26,12 +26,7 @@ namespace Legerity.Windows.Elements
         /// <summary>
         /// Gets the instance of the Appium driver for the Windows application.
         /// </summary>
-        public WindowsDriver<WindowsElement> Driver => AppManager.WindowsApp;
-
-        /// <summary>
-        /// Gets a value indicating whether the element is enabled.
-        /// </summary>
-        public bool IsEnabled => this.Element.Enabled;
+        public WindowsDriver<WindowsElement> Driver => this.ElementDriver as WindowsDriver<WindowsElement>;
 
         /// <summary>
         /// Determines whether the specified element is shown with the specified timeout.

@@ -16,9 +16,31 @@ namespace Legerity
         TElement Element { get; }
 
         /// <summary>
+        /// Gets the driver used to find this element.
+        /// </summary>
+        IWebDriver ElementDriver { get; }
+
+        /// <summary>
         /// Gets a value indicating whether the element is visible.
         /// </summary>
         bool IsVisible { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether the element is enabled.
+        /// </summary>
+        bool IsEnabled { get; }
+
+        /// <summary>
+        /// Clicks the element.
+        /// </summary>
+        void Click();
+
+        /// <summary>
+        /// Gets the value of the specified attribute for this element.
+        /// </summary>
+        /// <param name="attributeName">The name of the attribute.</param>
+        /// <returns>The attribute's current value if it exists; otherwise, null.</returns>
+        string GetAttribute(string attributeName);
 
         /// <summary>
         /// Determines whether the given element is shown.

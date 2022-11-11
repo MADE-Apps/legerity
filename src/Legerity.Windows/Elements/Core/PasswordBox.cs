@@ -22,7 +22,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the element associated with the reveal password button.
         /// </summary>
-        public ToggleButton RevealButton => this.Element.FindElement(WindowsByExtras.AutomationId("RevealButton"));
+        public virtual ToggleButton RevealButton => this.Element.FindElement(WindowsByExtras.AutomationId("RevealButton"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="PasswordBox"/> without direct casting.

@@ -2,6 +2,7 @@ namespace Legerity.Windows.Elements.Telerik
 {
     using System;
     using Legerity.Windows.Elements.Core;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -25,42 +26,42 @@ namespace Legerity.Windows.Elements.Telerik
         /// <summary>
         /// Gets the minimum value of the RadNumericBox.
         /// </summary>
-        public double Minimum => double.Parse(this.Element.GetAttribute("RangeValue.Minimum"));
+        public virtual double Minimum => this.GetRangeMinimum();
 
         /// <summary>
         /// Gets the maximum value of the RadNumericBox.
         /// </summary>
-        public double Maximum => double.Parse(this.Element.GetAttribute("RangeValue.Maximum"));
+        public virtual double Maximum => this.GetRangeMaximum();
 
         /// <summary>
         /// Gets the small change (step) value of the RadNumericBox.
         /// </summary>
-        public double SmallChange => double.Parse(this.Element.GetAttribute("RangeValue.SmallChange"));
+        public virtual double SmallChange => this.GetRangeSmallChange();
 
         /// <summary>
         /// Gets the value of the RadNumericBox.
         /// </summary>
-        public double Value => double.Parse(this.Element.GetAttribute("RangeValue.Value"));
+        public virtual double Value => this.GetRangeValue();
 
         /// <summary>
         /// Gets a value indicating whether the control is in a readonly state.
         /// </summary>
-        public bool IsReadonly => bool.Parse(this.Element.GetAttribute("RangeValue.IsReadOnly"));
+        public virtual bool IsReadonly => this.IsRangeReadonly();
 
         /// <summary>
         /// Gets the element associated with the increase button.
         /// </summary>
-        public Button Increase => this.Element.FindElement(WindowsByExtras.AutomationId("PART_IncreaseButton"));
+        public virtual Button Increase => this.Element.FindElement(WindowsByExtras.AutomationId("PART_IncreaseButton"));
 
         /// <summary>
         /// Gets the element associated with the decrease button.
         /// </summary>
-        public Button DecreaseButton => this.Element.FindElement(WindowsByExtras.AutomationId("PART_DecreaseButton"));
+        public virtual Button DecreaseButton => this.Element.FindElement(WindowsByExtras.AutomationId("PART_DecreaseButton"));
 
         /// <summary>
         /// Gets the element associated with the input text box.
         /// </summary>
-        public TextBox InputBox => this.Element.FindElement(WindowsByExtras.AutomationId("PART_TextBox"));
+        public virtual TextBox InputBox => this.Element.FindElement(WindowsByExtras.AutomationId("PART_TextBox"));
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadNumericBox"/> without direct casting.
@@ -99,7 +100,7 @@ namespace Legerity.Windows.Elements.Telerik
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown if the value is out of the minimum and maximum range of the RadNumericBox.
         /// </exception>
-        public void SetValue(double value)
+        public virtual void SetValue(double value)
         {
             double min = this.Minimum;
             double max = this.Maximum;
@@ -127,7 +128,7 @@ namespace Legerity.Windows.Elements.Telerik
         /// <summary>
         /// Increases the number box value by the <see cref="SmallChange"/> value.
         /// </summary>
-        public void Increment()
+        public virtual void Increment()
         {
             this.Increase.Click();
         }
@@ -135,7 +136,7 @@ namespace Legerity.Windows.Elements.Telerik
         /// <summary>
         /// Decreases the number box value by the <see cref="SmallChange"/> value.
         /// </summary>
-        public void Decrement()
+        public virtual void Decrement()
         {
             this.DecreaseButton.Click();
         }

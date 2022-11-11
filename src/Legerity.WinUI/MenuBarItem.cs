@@ -2,6 +2,7 @@ namespace Legerity.Windows.Elements.WinUI
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using Legerity.Extensions;
     using Legerity.Windows.Elements.Core;
@@ -47,7 +48,7 @@ namespace Legerity.Windows.Elements.WinUI
         }
 
         /// <summary>Gets the original parent <see cref="MenuBar"/> reference object.</summary>
-        public MenuBar ParentMenuBar =>
+        public virtual MenuBar ParentMenuBar =>
             this.parentMenuBarReference != null && this.parentMenuBarReference.IsAlive
                 ? this.parentMenuBarReference.Target as MenuBar
                 : null;
@@ -55,20 +56,12 @@ namespace Legerity.Windows.Elements.WinUI
         /// <summary>
         /// Gets the UI components associated with the child menu items.
         /// </summary>
-        public IEnumerable<MenuFlyoutItem> ChildMenuItems => this.GetChildMenuItems();
+        public virtual IEnumerable<MenuFlyoutItem> ChildMenuItems => this.GetChildMenuItems();
 
         /// <summary>
         /// Gets the UI components associated with the child menu sub-items.
         /// </summary>
-        public IEnumerable<MenuFlyoutSubItem> ChildMenuSubItems => this.GetChildMenuSubItems();
-
-        /// <summary>
-        /// Clicks the item.
-        /// </summary>
-        public void Click()
-        {
-            this.Element.Click();
-        }
+        public virtual IEnumerable<MenuFlyoutSubItem> ChildMenuSubItems => this.GetChildMenuSubItems();
 
         /// <summary>
         /// Clicks on a child menu option with the specified item name.
@@ -79,7 +72,7 @@ namespace Legerity.Windows.Elements.WinUI
         /// <returns>
         /// The clicked <see cref="MenuFlyoutItem"/>.
         /// </returns>
-        public MenuFlyoutItem ClickChildOption(string name)
+        public virtual MenuFlyoutItem ClickChildOption(string name)
         {
             MenuFlyoutItem item = this.ChildMenuItems.FirstOrDefault(
                 element => element.GetName()
@@ -89,15 +82,47 @@ namespace Legerity.Windows.Elements.WinUI
         }
 
         /// <summary>
+        /// Clicks on a child menu option with the specified partial item name.
+        /// </summary>
+        /// <param name="name">
+        /// The partial name of the item to click.
+        /// </param>
+        /// <returns>
+        /// The clicked <see cref="MenuFlyoutItem"/>.
+        /// </returns>
+        public virtual MenuFlyoutItem ClickChildOptionByPartialName(string name)
+        {
+            MenuFlyoutItem item = this.ChildMenuItems.FirstOrDefault(
+                element => element.GetName()
+                    .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
+            item.Click();
+            return item;
+        }
+
+        /// <summary>
         /// Clicks on a child menu sub option with the specified item name.
         /// </summary>
         /// <param name="name">The name of the sub-item to click.</param>
         /// <returns>The clicked <see cref="MenuFlyoutSubItem"/>.</returns>
-        public MenuFlyoutSubItem ClickChildSubOption(string name)
+        public virtual MenuFlyoutSubItem ClickChildSubOption(string name)
         {
             MenuFlyoutSubItem item = this.ChildMenuSubItems.FirstOrDefault(
                 element => element.GetName()
                     .Equals(name, StringComparison.CurrentCultureIgnoreCase));
+            item.Click();
+            return item;
+        }
+
+        /// <summary>
+        /// Clicks on a child menu sub option with the specified partial item name.
+        /// </summary>
+        /// <param name="name">The partial name of the sub-item to click.</param>
+        /// <returns>The clicked <see cref="MenuFlyoutSubItem"/>.</returns>
+        public virtual MenuFlyoutSubItem ClickChildSubOptionByPartialName(string name)
+        {
+            MenuFlyoutSubItem item = this.ChildMenuSubItems.FirstOrDefault(
+                element => element.GetName()
+                    .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
             item.Click();
             return item;
         }

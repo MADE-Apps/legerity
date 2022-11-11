@@ -1,7 +1,9 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Globalization;
     using System.Linq;
     using Legerity.Extensions;
     using OpenQA.Selenium;
@@ -29,7 +31,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the currently selected item.
         /// </summary>
-        public string SelectedItem => this.GetSelectedItem();
+        public virtual string SelectedItem => this.GetSelectedItem();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ComboBox"/> without direct casting.
@@ -65,16 +67,28 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="name">
         /// The name of the item to select.
         /// </param>
-        public void SelectItem(string name)
+        public virtual void SelectItem(string name)
         {
-            this.Element.Click();
-
-            this.VerifyElementsShown(this.comboBoxItemLocator, TimeSpan.FromSeconds(2));
-
-            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator);
+            IEnumerable<AppiumWebElement> listElements = this.GetItemsToSelect();
 
             AppiumWebElement item = listElements.FirstOrDefault(
                 element => element.GetName().Equals(name, StringComparison.CurrentCultureIgnoreCase));
+
+            item.Click();
+        }
+
+        /// <summary>
+        /// Selects an item in the combo-box with the specified partial item name.
+        /// </summary>
+        /// <param name="name">
+        /// The partial name of the item to select.
+        /// </param>
+        public virtual void SelectItemByPartialName(string name)
+        {
+            IEnumerable<AppiumWebElement> listElements = this.GetItemsToSelect();
+
+            AppiumWebElement item = listElements.FirstOrDefault(
+                element => element.GetName().Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 
             item.Click();
         }
@@ -83,6 +97,14 @@ namespace Legerity.Windows.Elements.Core
         {
             ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator);
             return listElements.Count == 1 ? listElements.FirstOrDefault().GetName() : null;
+        }
+
+        private IEnumerable<AppiumWebElement> GetItemsToSelect()
+        {
+            this.Click();
+            this.VerifyElementsShown(this.comboBoxItemLocator, TimeSpan.FromSeconds(2));
+            ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator);
+            return listElements;
         }
     }
 }

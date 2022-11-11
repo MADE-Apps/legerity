@@ -11,16 +11,48 @@ namespace Legerity.Windows.Extensions
     public static class WindowsElementWrapperExtensions
     {
         /// <summary>
+        /// Attempts to wait until a specified element condition is met, with an optional timeout.
+        /// </summary>
+        /// <param name="element">The element to wait on.</param>
+        /// <param name="condition">The condition of the element to wait on.</param>
+        /// <param name="timeout">The optional timeout wait on the condition being true.</param>
+        /// <param name="timeoutExceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
+        /// <typeparam name="TElementWrapper">The type of <see cref="WindowsElementWrapper"/>.</typeparam>
+        /// <returns>Whether the wait was a success.</returns>
+        public static bool TryWaitUntil<TElementWrapper>(
+            this TElementWrapper element,
+            Func<TElementWrapper, bool> condition,
+            TimeSpan? timeout = default,
+            Action<WebDriverTimeoutException> timeoutExceptionHandler = null)
+            where TElementWrapper : WindowsElementWrapper
+        {
+            try
+            {
+                WaitUntil(element, condition, timeout);
+            }
+            catch (WebDriverTimeoutException ex)
+            {
+                timeoutExceptionHandler?.Invoke(ex);
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Waits until a specified element condition is met, with an optional timeout.
         /// </summary>
         /// <param name="element">The element to wait on.</param>
         /// <param name="condition">The condition of the element to wait on.</param>
         /// <param name="timeout">The optional timeout wait on the condition being true.</param>
         /// <typeparam name="TElementWrapper">The type of <see cref="WindowsElementWrapper"/>.</typeparam>
-        public static void WaitUntil<TElementWrapper>(this TElementWrapper element, Func<TElementWrapper, bool> condition, TimeSpan? timeout = default)
+        public static void WaitUntil<TElementWrapper>(
+            this TElementWrapper element,
+            Func<TElementWrapper, bool> condition,
+            TimeSpan? timeout = default)
             where TElementWrapper : WindowsElementWrapper
         {
-            new WebDriverWait(AppManager.App, timeout ?? TimeSpan.Zero).Until(driver =>
+            new WebDriverWait(element.ElementDriver, timeout ?? TimeSpan.Zero).Until(driver =>
             {
                 try
                 {

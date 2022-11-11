@@ -1,5 +1,8 @@
 namespace Legerity
 {
+    using System;
+    using System.Collections.Generic;
+    using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
@@ -10,6 +13,8 @@ namespace Legerity
     /// </summary>
     public abstract class LegerityTestClass
     {
+        private readonly List<RemoteWebDriver> apps = new();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LegerityTestClass"/> class.
         /// <para>
@@ -35,7 +40,18 @@ namespace Legerity
         /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
         /// </para>
         /// </summary>
-        protected static RemoteWebDriver App => AppManager.App;
+        /// <remarks>
+        /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp"/> method.
+        /// </remarks>
+        protected RemoteWebDriver App { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the instances of started applications.
+        /// </summary>
+        /// <remarks>
+        /// This is useful for accessing drivers in parallelized tests.
+        /// </remarks>
+        protected IReadOnlyCollection<RemoteWebDriver> Apps => this.apps;
 
         /// <summary>
         /// Gets or sets the model that represents the configuration options for the <see cref="AppManager"/>.
@@ -45,17 +61,114 @@ namespace Legerity
         /// <summary>
         /// Starts the application ready for testing.
         /// </summary>
-        public virtual void StartApp()
+        /// <param name="waitUntil">
+        /// An optional condition of the driver to wait on until it is met.
+        /// </param>
+        /// <param name="waitUntilTimeout">
+        /// An optional timeout wait on the conditional wait until being true. If not set, the wait will run immediately, and if not valid, will throw an exception.
+        /// </param>
+        /// <param name="waitUntilRetries">
+        /// An optional count of retries after a timeout on the wait until condition before accepting the failure.
+        /// </param>
+        /// <returns>The configured and running application driver.</returns>
+        public virtual RemoteWebDriver StartApp(
+            Func<IWebDriver, bool> waitUntil = default,
+            TimeSpan? waitUntilTimeout = default,
+            int waitUntilRetries = 0)
         {
-            AppManager.StartApp(this.Options);
+            return this.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
         }
 
         /// <summary>
-        /// Stops the application.
+        /// Starts the application ready for testing.
+        /// </summary>
+        /// <param name="options">
+        /// The optional options to configure the driver with.
+        /// <para>
+        /// Settings this will override the <see cref="Options"/> if previously set.
+        /// </para>
+        /// </param>
+        /// <param name="waitUntil">
+        /// An optional condition of the driver to wait on until it is met.
+        /// </param>
+        /// <param name="waitUntilTimeout">
+        /// An optional timeout wait on the conditional wait until being true. If not set, the wait will run immediately, and if not valid, will throw an exception.
+        /// </param>
+        /// <param name="waitUntilRetries">
+        /// An optional count of retries after a timeout on the wait until condition before accepting the failure.
+        /// </param>
+        /// <returns>The configured and running application driver.</returns>
+        public virtual RemoteWebDriver StartApp(
+            AppManagerOptions options,
+            Func<IWebDriver, bool> waitUntil = default,
+            TimeSpan? waitUntilTimeout = default,
+            int waitUntilRetries = 0)
+        {
+            if (options != default && this.Options != options)
+            {
+                this.Options = options;
+            }
+
+            RemoteWebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
+            this.App = app;
+            this.apps.Add(app);
+            return app;
+        }
+
+
+        /// <summary>
+        /// Stops the <see cref="App"/> and any running Appium or WinAppDriver server.
         /// </summary>
         public virtual void StopApp()
         {
-            AppManager.StopApp();
+            this.StopApp(true);
+        }
+
+        /// <summary>
+        /// Stops the <see cref="App"/>, with an option to stop the running Appium or WinAppDriver server.
+        /// </summary>
+        /// <param name="stopServer">
+        /// An optional value indicating whether to stop the running Appium or WinAppDriver server.
+        /// </param>
+        public virtual void StopApp(bool stopServer)
+        {
+            this.StopApp(this.App, stopServer);
+        }
+
+        /// <summary>
+        /// Stops an application, with an option to stop the running Appium or WinAppDriver server.
+        /// </summary>
+        /// <param name="app">
+        /// The <see cref="IWebDriver"/> instance to stop running.
+        /// </param>
+        /// <param name="stopServer">
+        /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
+        /// </param>
+        public virtual void StopApp(RemoteWebDriver app, bool stopServer = false)
+        {
+            this.StopAppManagerApp(app, stopServer, true);
+        }
+
+        /// <summary>
+        /// Stops all running application drivers, with an option to stop the running Appium or WinAppDriver server.
+        /// </summary>
+        /// <param name="stopServer">
+        /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>true</b>.
+        /// </param>
+        public virtual void StopApps(bool stopServer = true)
+        {
+            this.apps.ForEach(app => this.StopAppManagerApp(app, stopServer, false));
+            this.apps.Clear();
+        }
+
+        private void StopAppManagerApp(RemoteWebDriver app, bool stopServer, bool removeApp)
+        {
+            if (removeApp)
+            {
+                this.apps.Remove(app);
+            }
+
+            AppManager.StopApp(app, stopServer);
         }
     }
 }

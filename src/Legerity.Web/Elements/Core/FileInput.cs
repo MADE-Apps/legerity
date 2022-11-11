@@ -1,6 +1,7 @@
 namespace Legerity.Web.Elements.Core
 {
     using Legerity.Web.Elements;
+    using Legerity.Web.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 
@@ -34,7 +35,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the file path for the selected file.
         /// </summary>
-        public string FilePath => this.Element.GetAttribute("value");
+        public virtual string FilePath => this.GetValue();
 
         /// <summary>
         /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="FileInput"/> without direct casting.
@@ -54,7 +55,7 @@ namespace Legerity.Web.Elements.Core
         /// Sets the selected file by an absolute file path.
         /// </summary>
         /// <param name="filePath">The file path.</param>
-        public void SetAbsoluteFilePath(string filePath)
+        public virtual void SetAbsoluteFilePath(string filePath)
         {
             this.ClearFile();
             this.Element.SendKeys(filePath);
@@ -63,7 +64,7 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Clears the selected file.
         /// </summary>
-        public void ClearFile()
+        public virtual void ClearFile()
         {
             this.Element.Clear();
         }

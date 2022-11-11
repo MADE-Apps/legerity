@@ -23,3 +23,9 @@ These Web element wrappers are designed to be used with applications built for t
 - [Select](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Web/Elements/Core/Select.cs)
 - [TextArea](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Web/Elements/Core/TextArea.cs)
 - [TextInput](https://github.com/MADE-Apps/legerity/blob/main/src/Legerity.Web/Elements/Core/TextInput.cs)
+
+## Additional Web library packages
+
+As well as the core Web element wrappers for out-of-the-box SDK controls, Legerity provides the following additional packages which can be used with UI test projects for web applications.
+
+- [Web Authentication page objects](web-authentication.md)

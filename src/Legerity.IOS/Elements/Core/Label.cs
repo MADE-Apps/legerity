@@ -23,7 +23,7 @@ namespace Legerity.IOS.Elements.Core
         /// <summary>
         /// Gets the text value of the label.
         /// </summary>
-        public string Text => this.Element.GetLabel();
+        public virtual string Text => this.Element.GetLabel();
 
         /// <summary>
         /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="Label"/> without direct casting.
