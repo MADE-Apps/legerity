@@ -27,9 +27,9 @@ To quickly get started with a specific platform, select one of the following qui
 
 Throughout the documentation, you may see terms that are specific to Legerity.
 
-A _page_ or _page object_ is a class that represents a single page in your app. This is typically a class that inherits from `BasePage` in Legerity and is used to interact with the UI elements on that page.
+A _page_ or _[page object](xref:using_legerity_page_objects)_ is a class that represents a single page in your app. This is typically a class that inherits from `BasePage` in Legerity and is used to interact with the UI elements on that page.
 
-An _element wrapper_ is a class that represents a single UI element, e.g. an input control. It is a wrapper around the `IWebElement` interface from Selenium, allowing Legerity to provide bespoke interaction methods for the represented UI element. This is typically a class that implements the `IElementWrapper` interface in Legerity and is used to interact with the UI element.
+An _[element wrapper](xref:using_legerity_element_wrappers)_ is a class that represents a single UI element, e.g. an input control. It is a wrapper around the `IWebElement` interface from Selenium, allowing Legerity to provide bespoke interaction methods for the represented UI element. This is typically a class that implements the `IElementWrapper` interface in Legerity and is used to interact with the UI element.
 
 ## Let's get started
 
