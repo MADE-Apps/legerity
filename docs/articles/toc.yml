@@ -1,9 +1,21 @@
-- name: Overview
-  topicHref: intro.md
-- name: Get started
+- name: Introduction
+  href: intro.md
+- name: Getting started
+  href: getting-started.md
   items:
-    - name: Installing Legerity packages
-      href: available-packages.md
+    - name: Quick starts
+      href: getting-started/quick-starts.md
+      items:
+        - name: Windows
+          href: getting-started/quick-starts/windows.md
+        - name: Android
+          href: getting-started/quick-starts/android.md
+        - name: iOS
+          href: getting-started/quick-starts/ios.md
+        - name: Web
+          href: getting-started/quick-starts/web.md
+        - name: Cross platform
+          href: getting-started/quick-starts/cross-platform.md
 - name: Building UI tests with Legerity
   href: building-with-legerity.md
 - name: Best practices for UI tests
