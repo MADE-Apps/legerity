@@ -22,6 +22,8 @@
   href: using-legerity.md
   expanded: true
   items:
+    - name: Installation
+      href: using-legerity/installation.md
     - name: Test Frameworks
       href: using-legerity/test-frameworks.md
     - name: Test Classes
