@@ -94,7 +94,7 @@ title: Legerity UI Test Framework
   <div class="hero-actions">
 <span class="button accent-button">
 
-[Learn more](articles/intro.md)
+[Learn more](xref:using_legerity_page_objects)
 
 </span>
   </div>
@@ -110,7 +110,7 @@ title: Legerity UI Test Framework
   <div class="hero-actions">
 <span class="button accent-button">
 
-[Learn more](articles/intro.md)
+[Learn more](xref:using_legerity_element_wrappers)
 
 </span>
   </div>
@@ -128,7 +128,7 @@ title: Legerity UI Test Framework
   <div class="hero-actions">
 <span class="button accent-button">
 
-[Learn more](articles/intro.md)
+[Learn more](xref:using_legerity_test_frameworks)
 
 </span>
   </div>
@@ -144,7 +144,7 @@ title: Legerity UI Test Framework
   <div class="hero-actions">
 <span class="button accent-button">
 
-[Learn more](articles/intro.md)
+[Learn more](xref:using_legerity_element_wrappers)
 
 </span>
   </div>
