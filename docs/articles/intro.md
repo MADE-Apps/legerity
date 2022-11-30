@@ -1,6 +1,6 @@
 ---
-uid: legerity-intro
-title: Overview
+uid: intro
+title: Introduction
 ---
 
 <img src="../images/ProjectBanner.png" alt="Legerity project banner" />

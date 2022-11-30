@@ -17,7 +17,7 @@ title: Legerity UI Test Framework
   <div class="hero-actions mb-5">
 <span class="button accent-button">
 
-[Explore the docs](articles/intro.md)
+[Explore the docs](xref:intro)
 
 </span>
   </div>
