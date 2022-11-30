@@ -2,9 +2,11 @@
   href: intro.md
 - name: Getting started
   href: getting-started.md
+  expanded: true
   items:
     - name: Quick starts
       href: getting-started/quick-starts.md
+      expanded: true
       items:
         - name: Windows
           href: getting-started/quick-starts/windows.md
@@ -16,37 +18,19 @@
           href: getting-started/quick-starts/web.md
         - name: Cross platform
           href: getting-started/quick-starts/cross-platform.md
-- name: Building UI tests with Legerity
-  href: building-with-legerity.md
-- name: Best practices for UI tests
-  href: best-practices.md
-- name: Building platform element wrappers
-  href: building-platform-wrappers.md
-- name: Available element wrappers
+- name: Using Legerity
+  href: using-legerity.md
+  expanded: true
   items:
-    - name: For Windows apps
-      items:
-        - name: Overview
-          href: features/windows.md
-        - name: WinUI
-          href: features/windows-ui.md
-        - name: Windows Community Toolkit
-          href: features/windows-community-toolkit.md
-        - name: MADE.NET
-          href: features/made-windows.md
-        - name: Telerik for UWP
-          href: features/telerik-for-uwp.md
-    - name: For Android apps
-      items:
-        - name: Overview
-          href: features/android.md
-    - name: For iOS apps
-      items:
-        - name: Overview
-          href: features/ios.md
-    - name: For Web apps
-      items:
-        - name: Overview
-          href: features/web.md
-        - name: Authentication Helpers
-          href: features/web-authentication.md
+    - name: Test Frameworks
+      href: using-legerity/test-frameworks.md
+    - name: Test Classes
+      href: using-legerity/test-classes.md
+    - name: App Manager
+      href: using-legerity/app-manager.md
+    - name: Element Wrappers
+      href: using-legerity/element-wrappers.md
+    - name: Page Objects
+      href: using-legerity/page-objects.md
+    - name: By Locators
+      href: using-legerity/by-locators.md
