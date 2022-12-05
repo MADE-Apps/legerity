@@ -10,7 +10,7 @@
       - InAppNotification, a popup element for displaying notifications within applications
       - RadialGauge, a graphing element for a gauge
     </Description>
-    <PackageTags>Appium Selenium WinAppDriver WindowsDriver WCT UWP Windows Community Toolkit</PackageTags>
+    <PackageTags>UI Test Appium Selenium WinAppDriver WindowsDriver WCT UWP Windows Community Toolkit</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.WCT</RootNamespace>
   </PropertyGroup>
 

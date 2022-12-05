@@ -9,7 +9,7 @@
       - DropDownList, a drop down element capable of selecting multiple options
       - InputValidator, a validation element capable of validating the state of an input element
     </Description>
-    <PackageTags>Appium Selenium WinAppDriver WindowsDriver MADE UWP Windows Android IOS Xamarin Uno</PackageTags>
+    <PackageTags>UI Test Appium Selenium WinAppDriver WindowsDriver MADE UWP Windows Android IOS Xamarin Uno</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.MADE</RootNamespace>
   </PropertyGroup>
 

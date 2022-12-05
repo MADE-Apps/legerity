@@ -11,7 +11,7 @@
       - ElementWrapper, for providing a base to build custom element wrappers for platform-specific elements
       - ByExtras, for providing additional locator constraints for finding elements
     </Description>
-    <PackageTags>Appium Selenium WinAppDriver POP Windows UWP Web Android IOS Xamarin Uno</PackageTags>
+    <PackageTags>UI Test Appium Selenium WinAppDriver POP Windows UWP Web Android IOS Xamarin Uno</PackageTags>
     <RootNamespace>Legerity</RootNamespace>
   </PropertyGroup>
 
