@@ -14,7 +14,7 @@ using OpenQA.Selenium.Chrome;
 /// </summary>
 public abstract class BaseTestClass : LegerityTestClass
 {
-    private const string LaunchUrl = "https://www.example.com";
+    public const string WebApplication = "https://www.example.com";
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseTestClass"/> class.
@@ -46,7 +46,7 @@ public abstract class BaseTestClass : LegerityTestClass
             WebAppDriverType.Chrome,
             Path.Combine(Environment.CurrentDirectory))
         {
-            Maximize = true, Url = LaunchUrl, ImplicitWait = ImplicitWait, DriverOptions = ConfigureChromeOptions()
+            Maximize = true, Url = WebApplication, ImplicitWait = ImplicitWait, DriverOptions = ConfigureChromeOptions()
         }
     };
 
