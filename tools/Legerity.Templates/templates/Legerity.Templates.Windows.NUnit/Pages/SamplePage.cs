@@ -1,8 +1,5 @@
 namespace Legerity.Templates.Windows.NUnit.Pages;
 
-using Legerity;
-using Legerity.Pages;
-using Legerity.Windows;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 

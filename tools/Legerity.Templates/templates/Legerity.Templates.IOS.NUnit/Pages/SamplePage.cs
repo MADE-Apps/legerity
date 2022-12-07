@@ -1,7 +1,5 @@
 namespace Legerity.Templates.IOS.NUnit.Pages;
 
-using Legerity;
-using Legerity.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 

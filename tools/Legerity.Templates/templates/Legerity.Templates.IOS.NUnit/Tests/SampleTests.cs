@@ -1,8 +1,7 @@
 namespace Legerity.Templates.IOS.NUnit.Tests;
 
-using Legerity;
+using Legerity.Templates.IOS.NUnit.Pages;
 using OpenQA.Selenium.Remote;
-using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 public class SampleTests : BaseTestClass

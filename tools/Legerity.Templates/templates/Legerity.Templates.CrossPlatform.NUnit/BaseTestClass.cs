@@ -3,11 +3,6 @@ namespace Legerity.Templates.CrossPlatform.NUnit;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Android;
-using IOS;
-using Legerity;
-using Web;
-using Windows;
 
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.

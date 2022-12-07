@@ -4,8 +4,6 @@ namespace Legerity.Templates.Web.NUnit;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Legerity;
-using Legerity.Web;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 

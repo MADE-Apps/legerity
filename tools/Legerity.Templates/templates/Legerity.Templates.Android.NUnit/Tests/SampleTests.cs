@@ -1,8 +1,7 @@
 namespace Legerity.Templates.Android.NUnit.Tests;
 
-using Legerity;
+using Legerity.Templates.Android.NUnit.Pages;
 using OpenQA.Selenium.Remote;
-using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 public class SampleTests : BaseTestClass

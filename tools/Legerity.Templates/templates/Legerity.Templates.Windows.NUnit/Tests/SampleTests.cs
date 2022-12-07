@@ -1,8 +1,7 @@
 namespace Legerity.Templates.Windows.NUnit.Tests;
 
-using Legerity;
+using Legerity.Templates.Windows.NUnit.Pages;
 using OpenQA.Selenium.Remote;
-using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 public class SampleTests : BaseTestClass
