@@ -1,4 +1,3 @@
-[assembly: LevelOfParallelism(5)]
 namespace Legerity.Templates.Windows.NUnit;
 
 using System;
@@ -43,7 +42,8 @@ public abstract class BaseTestClass : LegerityTestClass
         new WindowsAppManagerOptions(ApplicationId)
         {
             DriverUri = "http://127.0.0.1:4723",
-            LaunchWinAppDriver = true
+            LaunchWinAppDriver = true,
+            Maximize = true,
         }
     };
 

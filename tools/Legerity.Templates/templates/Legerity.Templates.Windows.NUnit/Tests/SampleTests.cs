@@ -5,7 +5,6 @@ using OpenQA.Selenium.Remote;
 using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
-[Parallelizable(ParallelScope.Fixtures)]
 public class SampleTests : BaseTestClass
 {
     public SampleTests(AppManagerOptions options)
