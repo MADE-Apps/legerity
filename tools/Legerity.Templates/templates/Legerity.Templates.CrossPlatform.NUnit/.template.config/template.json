@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "MADE Apps",
+  "classifications": [
+    "Legerity",
+    "NUnit",
+    "Test",
+    "Android",
+    "iOS",
+    "Windows",
+    "Web",
+    "Selenium"
+  ],
+  "identity": "Legerity.Templates.CrossPlatform.NUnit",
+  "name": "Legerity UI Test project for Cross Platform apps",
+  "shortName": "legerity-xplat",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Legerity.Templates.CrossPlatform.NUnit",
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            "**/[Bb]in/**",
+            "**/[Oo]bj/**",
+            ".template.config/**/*",
+            ".vs/**/*",
+            "**/*.filelist",
+            "**/*.user",
+            "**/*.lock.json",
+            ".git/**/*",
+            ".dotnet-new/**/*",
+            ".idea/**/*"
+          ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "path": "Legerity.Templates.CrossPlatform.NUnit.csproj"
+    }
+  ],
+  "postActions": [
+    {
+      "description": "Add projects to solution",
+      "manualInstructions": [
+        { "text": "Add generated project to solution manually." }
+      ],
+      "args": {
+        "solutionFolder": "tests"
+      },
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
+      "continueOnError": true
+    },
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [{ "text": "Run 'dotnet restore'" }],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}
