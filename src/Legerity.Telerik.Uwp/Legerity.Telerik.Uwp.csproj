@@ -11,7 +11,7 @@
       - RadBusyIndicator, a status indicator element
       - RadNumericBox, a text input element for numeric values with value stepper capabilities
     </Description>
-    <PackageTags>Appium Selenium WinAppDriver WindowsDriver Telerik UWP Windows</PackageTags>
+    <PackageTags>UI Test Appium Selenium WinAppDriver WindowsDriver Telerik UWP Windows</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.Telerik</RootNamespace>
   </PropertyGroup>
 

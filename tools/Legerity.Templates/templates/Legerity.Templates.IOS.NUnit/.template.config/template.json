@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "MADE Apps",
+  "classifications": [
+    "Legerity",
+    "NUnit",
+    "Test",
+    "iOS",
+    "Mobile",
+    "Selenium"
+  ],
+  "identity": "Legerity.Templates.IOS.NUnit",
+  "name": "Legerity UI Test project for iOS",
+  "shortName": "legerity-ios",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Legerity.Templates.IOS.NUnit",
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            "**/[Bb]in/**",
+            "**/[Oo]bj/**",
+            ".template.config/**/*",
+            ".vs/**/*",
+            "**/*.filelist",
+            "**/*.user",
+            "**/*.lock.json",
+            ".git/**/*",
+            ".dotnet-new/**/*",
+            ".idea/**/*"
+          ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "path": "Legerity.Templates.IOS.NUnit.csproj"
+    }
+  ],
+  "postActions": [
+    {
+      "description": "Add projects to solution",
+      "manualInstructions": [
+        { "text": "Add generated project to solution manually." }
+      ],
+      "args": {
+        "solutionFolder": "tests"
+      },
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
+      "continueOnError": true
+    },
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [{ "text": "Run 'dotnet restore'" }],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}

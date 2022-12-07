@@ -12,7 +12,7 @@
       - iOS core element wrappers.
       - Web core element wrappers.
     </Description>
-    <PackageTags>Appium Selenium WinAppDriver POP Windows UWP Web Android IOS Xamarin Uno</PackageTags>
+    <PackageTags>UI Test Appium Selenium WinAppDriver POP Windows UWP Web Android IOS Xamarin Uno</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

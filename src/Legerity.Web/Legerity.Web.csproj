@@ -20,7 +20,7 @@
       - TextArea, a multi-line text input element
       - TextInput, a default text input element
     </Description>
-    <PackageTags>Appium Selenium ChromeDriver FirefoxDriver OperaDriver SafariDriver EdgeDriver InternetExplorerDriver RemoteWebDriver Web</PackageTags>
+    <PackageTags>UI Test Appium Selenium ChromeDriver FirefoxDriver OperaDriver SafariDriver EdgeDriver InternetExplorerDriver RemoteWebDriver Web</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
