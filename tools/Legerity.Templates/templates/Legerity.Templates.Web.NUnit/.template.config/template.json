@@ -1,6 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/template",
-  "author": "MADE Apps ",
+  "author": "MADE Apps",
   "classifications": ["Legerity", "NUnit", "Test", "Web", "Selenium"],
   "identity": "Legerity.Templates.Web.NUnit",
   "name": "Legerity UI Test project for Web",
