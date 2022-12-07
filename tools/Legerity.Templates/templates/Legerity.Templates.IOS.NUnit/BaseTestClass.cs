@@ -45,7 +45,8 @@ public abstract class BaseTestClass : LegerityTestClass
             DeviceId = "56755E6F-741B-478F-BB1B-A48E05ACFE8A",
             OSVersion = "15.4",
             DriverUri = "http://192.168.86.172:4723/wd/hub",
-            LaunchAppiumServer = false
+            LaunchAppiumServer = false,
+            ImplicitWait = ImplicitWait,
         }
     };
 

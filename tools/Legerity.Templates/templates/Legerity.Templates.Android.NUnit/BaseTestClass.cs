@@ -45,7 +45,8 @@ public abstract class BaseTestClass : LegerityTestClass
             AppId = AndroidApplication,
             AppActivity = AndroidApplicationActivity,
             DriverUri = "http://localhost:4723/wd/hub",
-            LaunchAppiumServer = false
+            LaunchAppiumServer = false,
+            ImplicitWait = ImplicitWait,
         }
     };
 

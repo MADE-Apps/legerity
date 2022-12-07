@@ -44,6 +44,7 @@ public abstract class BaseTestClass : LegerityTestClass
             DriverUri = "http://127.0.0.1:4723",
             LaunchWinAppDriver = true,
             Maximize = true,
+            ImplicitWait = ImplicitWait,
         }
     };
 
