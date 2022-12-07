@@ -11,7 +11,7 @@ using Legerity.Windows;
 public abstract class BaseTestClass : LegerityTestClass
 {
     // This is the package family name of the Windows application that will be launched. These can be found by running Get-AppxPackage in PowerShell.
-    private const string ApplicationId = "Microsoft.WindowsAlarms_8wekyb3d8bbwe!App";
+    private const string WindowsApplication = "Microsoft.WindowsAlarms_8wekyb3d8bbwe!App";
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseTestClass"/> class.
@@ -39,7 +39,7 @@ public abstract class BaseTestClass : LegerityTestClass
     /// </summary>
     protected static IEnumerable<AppManagerOptions> PlatformOptions => new List<AppManagerOptions>
     {
-        new WindowsAppManagerOptions(ApplicationId)
+        new WindowsAppManagerOptions(WindowsApplication)
         {
             DriverUri = "http://127.0.0.1:4723",
             LaunchWinAppDriver = true,
