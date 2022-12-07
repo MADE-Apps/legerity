@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>Legerity Test Project Templates - Framework for UI testing with Selenium/Appium</Product>
+    <Description>
+      Get started with your automated UI testing with Legerity by creating new test projects with the Legerity test project templates.
+    </Description>
+    <PackageTags>UI Test Appium Selenium WinAppDriver POP Windows UWP Web Android IOS Xamarin Uno</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.0.0</Version>
+    <Authors>MADE Apps</Authors>
+    <Company>MADE Apps</Company>
+    <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/MADE-Apps/legerity</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>ProjectLogo.png</PackageIcon>
+    <PackageReleaseNotes>https://github.com/MADE-Apps/legerity/releases</PackageReleaseNotes>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\assets\ProjectLogo.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
+    <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+
+</Project>

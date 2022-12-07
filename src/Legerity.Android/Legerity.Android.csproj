@@ -18,7 +18,7 @@
       - ToggleButton, a button element with a toggle state
       - View, a base for Android elements
     </Description>
-    <PackageTags>Appium Selenium AndroidDriver Android Xamarin Uno</PackageTags>
+    <PackageTags>UI Test Appium Selenium AndroidDriver Android Xamarin Uno</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

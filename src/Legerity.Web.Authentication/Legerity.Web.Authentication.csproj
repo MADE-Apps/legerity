@@ -7,7 +7,7 @@
     <Description>
       An extension to the Legerity UI testing framework to support authenticating with common web identity providers.
     </Description>
-    <PackageTags>AzureAD Appium Selenium ChromeDriver FirefoxDriver OperaDriver SafariDriver EdgeDriver InternetExplorerDriver RemoteWebDriver Web</PackageTags>
+    <PackageTags>UI Test AzureAD Facebook Google Appium Selenium ChromeDriver FirefoxDriver OperaDriver SafariDriver EdgeDriver InternetExplorerDriver RemoteWebDriver Web</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

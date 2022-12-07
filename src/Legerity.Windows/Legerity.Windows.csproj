@@ -38,7 +38,7 @@
       - ToggleButton, a button element with a toggle state
       - ToggleSwitch, a slider element with an on/off toggle state
     </Description>
-    <PackageTags>Appium Selenium WindowsDriver WinAppDriver Windows WinUI</PackageTags>
+    <PackageTags>UI Test Appium Selenium WindowsDriver WinAppDriver Windows WinUI</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

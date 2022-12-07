@@ -13,7 +13,7 @@
       - NumberBox
       - TabView
     </Description>
-    <PackageTags>Appium Selenium WindowsDriver WinAppDriver Windows WinUI</PackageTags>
+    <PackageTags>UI Test Appium Selenium WindowsDriver WinAppDriver Windows WinUI</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.WinUI</RootNamespace>
   </PropertyGroup>
 
