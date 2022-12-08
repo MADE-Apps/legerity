@@ -36,3 +36,5 @@
       href: using-legerity/page-objects.md
     - name: By Locators
       href: using-legerity/by-locators.md
+    - name: Wait Conditions
+      href: using-legerity/wait-conditions.md
