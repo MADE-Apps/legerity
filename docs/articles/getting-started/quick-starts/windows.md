@@ -49,12 +49,12 @@ MyProject
 
 The project will include dependencies for NUnit, Appium, and Legerity for Windows (including WinUI).
 
-The `BaseTestClass` class is a simple abstraction used for all of your test classes, based on the Legerity `LegerityTestClass`. The [base test class](xref:using_legerity_base_test_class) is a great way to centralize common logic for your tests, to abstract the boilerplate code away from your tests, such as managing the application drivers.
+The `BaseTestClass` class is a simple abstraction used for all of your test classes, based on the Legerity `LegerityTestClass`. The [base test class](xref:using_legerity_test_classes#the-base-test-class) is a great way to centralize common logic for your tests, to abstract the boilerplate code away from your tests, such as managing the application drivers.
 
 > [!NOTE]
 > The `BaseTestClass` in this template is currently configured to launch the Clock application on Windows 11. This should be updated to launch your own application via the `WindowsApplication` constant.
 
-The `SamplePage` and `SampleTests` classes are used to show the basic structure of a page object and test class. In this template, they highlight the launch and verification of the landing page of the Clock application on Windows 11.
+The `SamplePage` and `SampleTests` classes are used to show the basic structure of a [page object](xref:using_legerity_page_objects) and [test class](xref:using_legerity_test_classes). In this template, they highlight the launch and verification of the landing page of the Clock application on Windows 11.
 
 > [!NOTE]
 > The `SamplePage` and `SampleTests` classes are intended to be used as a guide for structuring tests. These should be removed and replaced with your own tests and page objects.
