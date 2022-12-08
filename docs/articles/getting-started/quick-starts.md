@@ -8,7 +8,7 @@ title: Quick Starts
 These quick starts provide very minimal examples for getting your first test running on specific platforms to help you get started with using Legerity.
 
 > [!NOTE]
-> If you'd like to dive into the details, explore our articles on [using Legerity](xref:using).
+> If you'd like to dive into the details, explore our articles on [using Legerity](xref:using_legerity).
 
 - [Windows](xref:quick_starts_windows)
 - [Android](xref:quick_starts_android)
