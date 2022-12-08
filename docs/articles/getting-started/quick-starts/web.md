@@ -50,6 +50,7 @@ The project will include dependencies for NUnit, Selenium, ChromeDriver, and Leg
 
 > [!NOTE]
 > The ChromeDriver is used to demonstrate the use of the Web driver. You can run your UI tests on as many browsers as you like by installing the relevant driver NuGet package into the project and providing additional `PlatformOptions` to your `BaseTestClass`.
+> Legerity supports Chrome, Firefox, Opera, Safari, Edge, and Internet Explorer.
 
 The `BaseTestClass` class is a simple abstraction used for all of your test classes, based on the Legerity `LegerityTestClass`. The [base test class](xref:using_legerity_test_classes#the-base-test-class) is a great way to centralize common logic for your tests, to abstract the boilerplate code away from your tests, such as managing the application drivers.
 
