@@ -18,7 +18,7 @@ Here's a complete list of the `AppManagerOptions` implementations:
 - [`WindowsAppManagerOptions`](xref:Legerity.Windows.WindowsAppManagerOptions)
 - [`WebAppManagerOptions`](xref:Legerity.Web.WebAppManagerOptions)
 
-`AppManagerOptions` and `AppiumAppManagerOptions` are also available for use if you want to use the base implementations to create your own custom implementations for other platforms, as well as customising for your own needs.
+`AppManagerOptions` and [`AppiumManagerOptions`](xref:AppiumManagerOptions) are also available for use if you want to use the base implementations to create your own custom implementations for other platforms, as well as customising for your own needs.
 
 ## Configuring the app manager to start your app
 
@@ -91,7 +91,7 @@ public class MyTests
 
 ## Stopping the app
 
-When you have finished with your application, you can stop it using the `AppManager.StopApp` method. This will stop the driver, close the application, and has the ability to also stop the Appium server if it was launched by the [`AppiumAppManagerOptions`](xref:Legerity.AppiumAppManagerOptions).
+When you have finished with your application, you can stop it using the `AppManager.StopApp` method. This will stop the driver, close the application, and has the ability to also stop the Appium server if it was launched by the [`AppiumManagerOptions`](xref:Legerity.AppiumManagerOptions).
 
 ```csharp
 public class MyTests
