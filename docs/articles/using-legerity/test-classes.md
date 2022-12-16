@@ -17,6 +17,8 @@ To make this easier for you, Legerity provides a `LegerityTestClass` class that 
 
 The base test class is designed to manage the `AppManager` lifecycle for you, so you only have to call the `StartApp` and `StopApp` methods from the setup and teardown methods of your test class.
 
+This is made possible by the [`AppManagerOptions`](xref:Legerity.AppManagerOptions) object that you pass through to the [`LegerityTestClass`](xref:Legerity.LegerityTestClass) constructor.
+
 ```csharp
 public class MyTests : LegerityTestClass
 {
@@ -45,5 +47,7 @@ public class MyTests : LegerityTestClass
     }
 }
 ```
+
+Taking advantage of the constructor in the `LegerityTestClass` class, you can also use techniques with your testing framework of choice to pass through configuration values to your test classes as a source, allowing you to run the same tests across multiple browsers or platforms.
 
 To understand more about the `AppManagerOptions` object, read through our [App Manager](xref:using_legerity_app_manager#configuring-the-app-manager) documentation.
