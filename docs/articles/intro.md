@@ -1,6 +1,6 @@
 ---
-uid: legerity-intro
-title: Overview
+uid: intro
+title: Introduction
 ---
 
 <img src="../images/ProjectBanner.png" alt="Legerity project banner" />
@@ -41,10 +41,10 @@ There are many tools that are available to help you understand the layout of you
 
 Here are helpful links to each platform where you can find more information on the right tooling for the app's you're testing.
 
-- [Windows](features/windows.md)
-- [Android](features/android.md)
-- [iOS](features/ios.md)
-- [Web](features/web.md)
+- [Windows](xref:quick_starts_windows)
+- [Android](xref:quick_starts_android)
+- [iOS](xref:quick_starts_ios)
+- [Web](xref:quick_starts_web)
 
 ### How do you keep Legerity going?
 
