@@ -1,8 +1,8 @@
 namespace Legerity.Web.Tests.Tests;
 
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System;
 using Helpers;
 using OpenQA.Selenium.Remote;
 using Pages;
@@ -31,18 +31,16 @@ public class ButtonTests : BaseTestClass
     };
 
     [Test]
-    public void ShouldLocateButton()
+    public void ShouldClickButton()
     {
         // Arrange
         RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
 
         var buttonPage = new ButtonPage(app);
         buttonPage.AcceptCookies<ButtonPage>();
-
-        // Act
         buttonPage.SwitchToContentFrame<ButtonPage>();
 
-        // Assert
-        Assert.IsTrue(buttonPage.Button.IsVisible);
+        // Act & Assert
+        buttonPage.ClickButton();
     }
 }
