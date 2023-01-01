@@ -9,6 +9,7 @@ using Pages;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
+[Parallelizable(ParallelScope.Children)]
 internal class FileInputTests : BaseTestClass
 {
     private const string WebApplication = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_file";
@@ -40,9 +41,9 @@ internal class FileInputTests : BaseTestClass
 
         RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
 
-        var fileInputPage = new FileInputPage(app);
-        fileInputPage.AcceptCookies<FileInputPage>();
-        fileInputPage.SwitchToContentFrame<FileInputPage>();
+        FileInputPage fileInputPage = new FileInputPage(app)
+            .AcceptCookies<FileInputPage>()
+            .SwitchToContentFrame<FileInputPage>();
 
         // Act
         fileInputPage.SetFileInputFilePath(filePath);
@@ -60,10 +61,10 @@ internal class FileInputTests : BaseTestClass
 
         RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
 
-        var fileInputPage = new FileInputPage(app);
-        fileInputPage.AcceptCookies<FileInputPage>();
-        fileInputPage.SwitchToContentFrame<FileInputPage>();
-        fileInputPage.SetFileInputFilePath(filePath);
+        FileInputPage fileInputPage = new FileInputPage(app)
+            .AcceptCookies<FileInputPage>()
+            .SwitchToContentFrame<FileInputPage>()
+            .SetFileInputFilePath(filePath);
 
         // Act
         fileInputPage.ClearFileInput();

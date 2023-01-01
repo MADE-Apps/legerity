@@ -9,6 +9,7 @@ using Pages;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
+[Parallelizable(ParallelScope.Children)]
 internal class CheckBoxTests : BaseTestClass
 {
     private const string WebApplication =
@@ -38,10 +39,10 @@ internal class CheckBoxTests : BaseTestClass
         // Arrange
         RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
 
-        var checkBoxPage = new CheckBoxPage(app);
-        checkBoxPage.AcceptCookies<CheckBoxPage>();
-        checkBoxPage.SwitchToContentFrame<CheckBoxPage>();
-        checkBoxPage.CheckBikeOff();
+        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+            .AcceptCookies<CheckBoxPage>()
+            .SwitchToContentFrame<CheckBoxPage>()
+            .CheckBikeOff();
 
         // Act
         checkBoxPage.CheckBikeOn();
@@ -56,10 +57,10 @@ internal class CheckBoxTests : BaseTestClass
         // Arrange
         RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
 
-        var checkBoxPage = new CheckBoxPage(app);
-        checkBoxPage.AcceptCookies<CheckBoxPage>();
-        checkBoxPage.SwitchToContentFrame<CheckBoxPage>();
-        checkBoxPage.CheckBikeOn();
+        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+            .AcceptCookies<CheckBoxPage>()
+            .SwitchToContentFrame<CheckBoxPage>()
+            .CheckBikeOn();
 
         // Act
         checkBoxPage.CheckBikeOn();
@@ -74,10 +75,10 @@ internal class CheckBoxTests : BaseTestClass
         // Arrange
         RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
 
-        var checkBoxPage = new CheckBoxPage(app);
-        checkBoxPage.AcceptCookies<CheckBoxPage>();
-        checkBoxPage.SwitchToContentFrame<CheckBoxPage>();
-        checkBoxPage.CheckBikeOn();
+        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+            .AcceptCookies<CheckBoxPage>()
+            .SwitchToContentFrame<CheckBoxPage>()
+            .CheckBikeOn();
 
         // Act
         checkBoxPage.CheckBikeOff();
@@ -92,10 +93,10 @@ internal class CheckBoxTests : BaseTestClass
         // Arrange
         RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
 
-        var checkBoxPage = new CheckBoxPage(app);
-        checkBoxPage.AcceptCookies<CheckBoxPage>();
-        checkBoxPage.SwitchToContentFrame<CheckBoxPage>();
-        checkBoxPage.CheckBikeOff();
+        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+            .AcceptCookies<CheckBoxPage>()
+            .SwitchToContentFrame<CheckBoxPage>()
+            .CheckBikeOff();
 
         // Act
         checkBoxPage.CheckBikeOff();

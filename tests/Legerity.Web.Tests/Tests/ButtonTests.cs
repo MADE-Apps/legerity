@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
+[Parallelizable(ParallelScope.Children)]
 public class ButtonTests : BaseTestClass
 {
     private const string WebApplication = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_button_test";
@@ -36,9 +37,9 @@ public class ButtonTests : BaseTestClass
         // Arrange
         RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
 
-        var buttonPage = new ButtonPage(app);
-        buttonPage.AcceptCookies<ButtonPage>();
-        buttonPage.SwitchToContentFrame<ButtonPage>();
+        ButtonPage buttonPage = new ButtonPage(app)
+            .AcceptCookies<ButtonPage>()
+            .SwitchToContentFrame<ButtonPage>();
 
         // Act & Assert
         buttonPage.ClickButton();
