@@ -10,7 +10,7 @@ using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.Children)]
-internal class CheckBoxTests : BaseTestClass
+internal class CheckBoxTests : W3SchoolsBaseTestClass
 {
     private const string WebApplication =
         "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_checkbox";
@@ -37,7 +37,7 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldCheckUncheckedCheckbox()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
@@ -55,7 +55,7 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldKeepCheckedIfCheckedAgain()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
@@ -73,7 +73,7 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldUncheckCheckedCheckbox()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
@@ -91,7 +91,7 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldKeepUncheckedIfUncheckedAgain()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()

@@ -9,7 +9,7 @@ using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.Children)]
-public class ButtonTests : BaseTestClass
+internal class ButtonTests : W3SchoolsBaseTestClass
 {
     private const string WebApplication = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_button_test";
 
@@ -35,7 +35,7 @@ public class ButtonTests : BaseTestClass
     public void ShouldClickButton()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         ButtonPage buttonPage = new ButtonPage(app)
             .AcceptCookies<ButtonPage>()

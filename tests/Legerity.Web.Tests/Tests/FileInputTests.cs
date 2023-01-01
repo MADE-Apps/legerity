@@ -10,7 +10,7 @@ using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.Children)]
-internal class FileInputTests : BaseTestClass
+internal class FileInputTests : W3SchoolsBaseTestClass
 {
     private const string WebApplication = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_file";
 
@@ -39,7 +39,7 @@ internal class FileInputTests : BaseTestClass
         const string fileName = "chromedriver.exe";
         string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
 
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         FileInputPage fileInputPage = new FileInputPage(app)
             .AcceptCookies<FileInputPage>()
@@ -59,7 +59,7 @@ internal class FileInputTests : BaseTestClass
         const string fileName = "chromedriver.exe";
         string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
 
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         FileInputPage fileInputPage = new FileInputPage(app)
             .AcceptCookies<FileInputPage>()

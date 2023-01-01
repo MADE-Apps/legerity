@@ -3,14 +3,13 @@ namespace Legerity.Web.Tests.Tests;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Helpers;
 using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.Children)]
-internal class ImageTests : BaseTestClass
+internal class ImageTests : W3SchoolsBaseTestClass
 {
     private const string WebApplication = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_image_test";
 
@@ -38,7 +37,7 @@ internal class ImageTests : BaseTestClass
         // Arrange
         const string expectedImageSource = "img_girl.jpg";
 
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         ImagePage imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
@@ -57,7 +56,7 @@ internal class ImageTests : BaseTestClass
         // Arrange
         const string expectedAltText = "Girl in a jacket";
 
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         ImagePage imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
@@ -77,7 +76,7 @@ internal class ImageTests : BaseTestClass
         const double expectedHeight = 600;
         const double expectedWidth = 500;
 
-        RemoteWebDriver app = this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        RemoteWebDriver app = this.StartApp();
 
         ImagePage imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
