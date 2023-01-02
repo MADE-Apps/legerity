@@ -1,5 +1,6 @@
 namespace Legerity.Web.Tests.Pages;
 
+using Elements.Core;
 using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
@@ -12,5 +13,5 @@ internal class ListPage : W3SchoolsBasePage
     {
     }
 
-    public Legerity.Web.Elements.Core.List OrderedList => this.FindElements(this.orderedListLocator).FirstOrDefault();
+    public List OrderedList => this.FindElements(this.orderedListLocator).FirstOrDefault();
 }
