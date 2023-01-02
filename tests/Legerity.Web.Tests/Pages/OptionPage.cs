@@ -14,7 +14,7 @@ internal class OptionPage : W3SchoolsBasePage
     {
     }
 
-    public IEnumerable<Option> CarOptions => this.FindElements(this.carOptionLocator).Select(e => new Option(e));
+    public IEnumerable<Option> CarOptions => this.FindElements(this.carOptionLocator).Select(e => (Option)e);
 
     public OptionPage SelectCarOptionByDisplayValue(string option)
     {
