@@ -3,6 +3,7 @@ namespace Legerity.Web.Tests.Tests;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Pages;
@@ -81,5 +82,67 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
 
         // Assert
         visible.ShouldBeTrue();
+    }
+
+    [Test]
+    public void ShouldWaitUntilConditionMet()
+    {
+        // Arrange
+        RemoteWebDriver app = this.StartApp();
+
+        TextInputPage textInputPage = new TextInputPage(app)
+            .AcceptCookies<TextInputPage>()
+            .SwitchToContentFrame<TextInputPage>();
+
+        // Act & Assert
+        textInputPage.FirstNameInput.WaitUntil(e => e.IsVisible, TimeSpan.FromSeconds(5));
+    }
+
+    [Test]
+    public void ShouldThrowExceptionIfWaitUntilConditionNotMet()
+    {
+        // Arrange
+        RemoteWebDriver app = this.StartApp();
+
+        TextInputPage textInputPage = new TextInputPage(app)
+            .AcceptCookies<TextInputPage>()
+            .SwitchToContentFrame<TextInputPage>();
+
+        // Act & Assert
+        Should.Throw<WebDriverTimeoutException>(() => textInputPage.FirstNameInput.WaitUntil(e => !e.IsVisible));
+    }
+
+    [Test]
+    public void ShouldTryWaitUntilConditionMet()
+    {
+        // Arrange
+        RemoteWebDriver app = this.StartApp();
+
+        TextInputPage textInputPage = new TextInputPage(app)
+            .AcceptCookies<TextInputPage>()
+            .SwitchToContentFrame<TextInputPage>();
+
+        // Act
+        bool conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => e.IsVisible, TimeSpan.FromSeconds(5));
+
+        // Assert
+        conditionMet.ShouldBeTrue();
+    }
+
+    [Test]
+    public void ShouldTryWaitUntilConditionNotMet()
+    {
+        // Arrange
+        RemoteWebDriver app = this.StartApp();
+
+        TextInputPage textInputPage = new TextInputPage(app)
+            .AcceptCookies<TextInputPage>()
+            .SwitchToContentFrame<TextInputPage>();
+
+        // Act
+        bool conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => !e.IsVisible);
+
+        // Assert
+        conditionMet.ShouldBeFalse();
     }
 }
