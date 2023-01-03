@@ -14,8 +14,8 @@ internal abstract class W3SchoolsBaseTestClass : BaseTestClass
     {
     }
 
-    protected RemoteWebDriver StartApp()
+    protected RemoteWebDriver StartApp(AppManagerOptions options = default)
     {
-        return this.StartApp(this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        return this.StartApp(options ?? this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
     }
 }
