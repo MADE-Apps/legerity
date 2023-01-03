@@ -51,7 +51,8 @@ namespace Legerity.Web.Elements.Core
         /// <summary>
         /// Gets the collection of rows associated with the table only containing the data values (not headers).
         /// </summary>
-        public virtual IEnumerable<TableRow> DataRows => this.Rows.Where(x => x.FindElements(WebByExtras.TableHeaderCell()).Count == 0);
+        public virtual IEnumerable<TableRow> DataRows =>
+            this.Element.FindElements(WebByExtras.TableDataRow()).Select(e => new TableRow(e));
 
         /// <summary>
         /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="Table"/> without direct casting.
