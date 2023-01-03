@@ -1,14 +1,15 @@
-namespace Legerity.Web.Tests.Tests;
+namespace Legerity.Core.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
-using System.IO;
 using System;
 using System.Drawing;
+using System.IO;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using Shouldly;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Children)]
-internal class WebAppManagerOptionsTests : W3SchoolsBaseTestClass
+internal class WebAppManagerOptionsTests : BaseTestClass
 {
     [Test]
     public void ShouldLaunchBrowserAtDesiredSize()
@@ -21,7 +22,7 @@ internal class WebAppManagerOptionsTests : W3SchoolsBaseTestClass
             DesiredSize = new Size(1280, 800),
             Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio",
             ImplicitWait = ImplicitWait,
-            DriverOptions = ConfigureChromeOptions()
+            DriverOptions = new ChromeOptions()
         };
         
         // Act
