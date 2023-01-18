@@ -9,6 +9,7 @@ namespace Legerity.Windows.Elements.Core
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP FlipView control.
@@ -70,6 +71,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="FlipView"/>.
         /// </returns>
         public static implicit operator FlipView(AppiumWebElement element)
+        {
+            return new FlipView(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="FlipView"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="FlipView"/>.
+        /// </returns>
+        public static implicit operator FlipView(RemoteWebElement element)
         {
             return new FlipView(element as WindowsElement);
         }

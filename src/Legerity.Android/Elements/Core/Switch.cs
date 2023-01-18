@@ -3,6 +3,7 @@ namespace Legerity.Android.Elements.Core
     using System;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="AndroidElement"/> wrapper for the core Android Switch control.
@@ -49,6 +50,20 @@ namespace Legerity.Android.Elements.Core
         /// The <see cref="Switch"/>.
         /// </returns>
         public static implicit operator Switch(AppiumWebElement element)
+        {
+            return new Switch(element as AndroidElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Switch"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Switch"/>.
+        /// </returns>
+        public static implicit operator Switch(RemoteWebElement element)
         {
             return new Switch(element as AndroidElement);
         }

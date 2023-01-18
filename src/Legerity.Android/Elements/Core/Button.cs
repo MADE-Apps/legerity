@@ -3,6 +3,7 @@ namespace Legerity.Android.Elements.Core
     using Legerity.Android.Elements;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="AndroidElement"/> wrapper for the core Android Button control.
@@ -44,6 +45,20 @@ namespace Legerity.Android.Elements.Core
         /// The <see cref="Button"/>.
         /// </returns>
         public static implicit operator Button(AppiumWebElement element)
+        {
+            return new Button(element as AndroidElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Button"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Button"/>.
+        /// </returns>
+        public static implicit operator Button(RemoteWebElement element)
         {
             return new Button(element as AndroidElement);
         }

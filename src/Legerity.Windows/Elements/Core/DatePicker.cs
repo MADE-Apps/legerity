@@ -3,6 +3,7 @@ namespace Legerity.Windows.Elements.Core
     using System;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP DatePicker control.
@@ -44,6 +45,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="DatePicker"/>.
         /// </returns>
         public static implicit operator DatePicker(AppiumWebElement element)
+        {
+            return new DatePicker(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="DatePicker"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="DatePicker"/>.
+        /// </returns>
+        public static implicit operator DatePicker(RemoteWebElement element)
         {
             return new DatePicker(element as WindowsElement);
         }

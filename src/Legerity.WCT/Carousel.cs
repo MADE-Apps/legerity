@@ -8,6 +8,7 @@ namespace Legerity.Windows.Elements.WCT
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit Carousel control.
@@ -66,6 +67,20 @@ namespace Legerity.Windows.Elements.WCT
         /// The <see cref="ListView"/>.
         /// </returns>
         public static implicit operator Carousel(AppiumWebElement element)
+        {
+            return new Carousel(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Carousel"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Carousel"/>.
+        /// </returns>
+        public static implicit operator Carousel(RemoteWebElement element)
         {
             return new Carousel(element as WindowsElement);
         }

@@ -5,6 +5,7 @@ namespace Legerity.Windows.Elements.MADE
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the MADE.NET UWP DropDownList control.
@@ -51,6 +52,20 @@ namespace Legerity.Windows.Elements.MADE
         /// The <see cref="DropDownList"/>.
         /// </returns>
         public static implicit operator DropDownList(AppiumWebElement element)
+        {
+            return new DropDownList(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="DropDownList"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="DropDownList"/>.
+        /// </returns>
+        public static implicit operator DropDownList(RemoteWebElement element)
         {
             return new DropDownList(element as WindowsElement);
         }

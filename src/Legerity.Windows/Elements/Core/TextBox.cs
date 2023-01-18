@@ -3,6 +3,7 @@ namespace Legerity.Windows.Elements.Core
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP TextBox control.
@@ -54,6 +55,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="TextBox"/>.
         /// </returns>
         public static implicit operator TextBox(AppiumWebElement element)
+        {
+            return new TextBox(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TextBox"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="TextBox"/>.
+        /// </returns>
+        public static implicit operator TextBox(RemoteWebElement element)
         {
             return new TextBox(element as WindowsElement);
         }
