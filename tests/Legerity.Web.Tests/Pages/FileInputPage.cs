@@ -1,7 +1,6 @@
 namespace Legerity.Web.Tests.Pages;
 
 using Elements.Core;
-using Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 

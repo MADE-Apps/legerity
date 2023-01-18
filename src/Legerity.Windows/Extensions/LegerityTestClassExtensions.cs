@@ -2,7 +2,6 @@ namespace Legerity.Windows.Extensions
 {
     using System;
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>
