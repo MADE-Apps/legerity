@@ -1,3 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
+
+[assembly: ExcludeFromCodeCoverage]
+
 namespace Legerity.Windows.Tests.Tests;
 
 using System;
