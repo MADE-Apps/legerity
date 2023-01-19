@@ -31,6 +31,11 @@ namespace Legerity.Extensions
             CultureInfo culture,
             CompareOptions compareOption)
         {
+            if (value == null || contains == null)
+            {
+                return false;
+            }
+
             return culture.CompareInfo.IndexOf(value, contains, compareOption) >= 0;
         }
     }
