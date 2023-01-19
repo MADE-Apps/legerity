@@ -10,7 +10,7 @@ internal class AppBarToggleButtonPage : BaseNavigationPage
     {
     }
     
-    public AppBarToggleButton SymbolToggleButton => this.WindowsApp.FindElement(By.Name("SymbolIcon"));
+    public AppBarToggleButton SymbolToggleButton => this.FindElement(By.Name("SymbolIcon"));
 
     protected override By Trait => By.XPath(".//*[@Name='AppBarToggleButton'][@AutomationId='TitleTextBlock']");
 
