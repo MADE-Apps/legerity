@@ -101,8 +101,8 @@ namespace Legerity.Windows.Extensions
             string name = element.GetName();
             string automationId = element.GetAutomationId();
 
-            return partialCompare.Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase) ||
-                   partialCompare.Contains(automationId, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase);
+            return name.Contains(partialCompare, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase) ||
+                   automationId.Contains(partialCompare, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase);
         }
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Legerity.Windows.Extensions
             string name = element.GetName();
             string automationId = element.GetAutomationId();
 
-            return partialCompare.Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase) ||
-                   partialCompare.Contains(automationId, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase);
+            return name.Contains(partialCompare, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase) ||
+                   automationId.Contains(partialCompare, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase);
         }
     }
 }
