@@ -100,11 +100,12 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         /// <param name="value">The initial value to set.</param>
         /// <param name="suggestion">The suggestion to select.</param>
-        public virtual void SelectSuggestion(string value, string suggestion)
+        /// <param name="popupWaitTimeout">The timeout to wait for the suggestions popup to appear. Defaults to 2000ms.</param>
+        public virtual void SelectSuggestion(string value, string suggestion, int popupWaitTimeout = 2000)
         {
             this.SetText(value);
 
-            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
 
             this.SuggestionList.ClickItem(suggestion);
         }
@@ -114,11 +115,12 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         /// <param name="value">The initial value to set.</param>
         /// <param name="partialSuggestion">The partial suggestion match to select.</param>
-        public virtual void SelectSuggestionByPartialSuggestion(string value, string partialSuggestion)
+        /// <param name="popupWaitTimeout">The timeout to wait for the suggestions popup to appear. Defaults to 2000ms.</param>
+        public virtual void SelectSuggestionByPartialSuggestion(string value, string partialSuggestion, int popupWaitTimeout = 2000)
         {
             this.SetText(value);
 
-            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
 
             this.SuggestionList.ClickItemByPartialName(partialSuggestion);
         }
