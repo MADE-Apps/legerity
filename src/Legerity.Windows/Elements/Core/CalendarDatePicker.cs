@@ -1,6 +1,7 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
+    using Legerity.Extensions;
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
@@ -34,7 +35,12 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the value of the calendar date picker.
         /// </summary>
-        public virtual string Value => this.GetValue();
+        public virtual string Value => this.GetValue().RemoveUnicodeCharacters();
+
+        /// <summary>
+        /// Gets the value of the calendar date picker as a <see cref="DateTime"/>.
+        /// </summary>
+        public virtual DateTime? SelectedDate => this.GetSelectedDate();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
@@ -89,6 +95,13 @@ namespace Legerity.Windows.Elements.Core
             this.VerifyDriverElementShown(this.calendarPopupLocator, TimeSpan.FromSeconds(2));
 
             this.CalendarViewFlyout.SetDate(date);
+        }
+
+        private DateTime? GetSelectedDate()
+        {
+            string value = this.Value;
+            return string.IsNullOrEmpty(value) ? default :
+                DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
         }
     }
 }
