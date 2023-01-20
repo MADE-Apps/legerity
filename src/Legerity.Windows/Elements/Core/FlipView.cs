@@ -48,6 +48,11 @@ namespace Legerity.Windows.Elements.Core
         public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
 
         /// <summary>
+        /// Gets the currently selected item index.
+        /// </summary>
+        public virtual int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
+
+        /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="FlipView"/> without direct casting.
         /// </summary>
         /// <param name="element">
@@ -97,12 +102,19 @@ namespace Legerity.Windows.Elements.Core
         /// </param>
         public virtual void SelectItem(string name)
         {
-            int currentItemIdx = this.Items.IndexOf(this.SelectedItem);
-            int expectedItemIdx = this.Items.IndexOf(
-                this.Items.FirstOrDefault(
-                    x => x.Text.Contains(name, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase)));
+            int expectedItemIdx = this.Items.IndexOf(this.Items.FirstOrDefault(x =>
+                x.Text.Contains(name, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase)));
+            this.SelectItemByIndex(expectedItemIdx);
+        }
 
-            int diff = expectedItemIdx - currentItemIdx;
+        /// <summary>
+        /// Selects an items in the flip view by index.
+        /// </summary>
+        /// <param name="index">The index of the item to select.</param>
+        public virtual void SelectItemByIndex(int index)
+        {
+            int currentItemIdx = this.SelectedIndex;
+            int diff = index - currentItemIdx;
             int shifts = Math.Abs(diff);
 
             for (int i = 0; i < shifts; i++)
