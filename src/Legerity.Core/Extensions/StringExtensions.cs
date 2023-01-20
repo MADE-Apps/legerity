@@ -47,7 +47,7 @@ namespace Legerity.Extensions
         /// <returns>The string with unicode characters removed.</returns>
         public static string RemoveUnicodeCharacters(this string value)
         {
-            return new string(value.Where(c => c < 128).ToArray());
+            return value == null ? null : new string(value.Where(c => c < 128).ToArray());
         }
     }
 }
