@@ -40,6 +40,11 @@ namespace Legerity.Windows.Elements.Core
         public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
 
         /// <summary>
+        /// Gets the currently selected item index.
+        /// </summary>
+        public virtual int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
+
+        /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="GridView"/> without direct casting.
         /// </summary>
         /// <param name="element">
@@ -108,6 +113,21 @@ namespace Legerity.Windows.Elements.Core
 
             AppiumWebElement item =
                 this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
+
+            item.Click();
+        }
+
+        /// <summary>
+        /// Clicks on an item in the list view with the specified item index.
+        /// </summary>
+        /// <param name="index">
+        /// The index of the item to click.
+        /// </param>
+        public virtual void ClickItemByIndex(int index)
+        {
+            this.VerifyElementsShown(this.gridViewItemLocator, TimeSpan.FromSeconds(2));
+
+            AppiumWebElement item = this.Items[index];
 
             item.Click();
         }
