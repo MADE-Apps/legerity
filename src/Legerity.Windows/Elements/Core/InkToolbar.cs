@@ -1,6 +1,7 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
+    using Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
@@ -37,7 +38,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the currently selected ballpoint pen color.
         /// </summary>
-        public virtual string SelectedBallpointPenColor => this.BallpointPenFlyout.SelectedColor;
+        public virtual string SelectedBallpointPenColor => this.BallpointPenButton.GetHelpText();
 
         /// <summary>
         /// Gets the element associated with the pencil button.
@@ -48,7 +49,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the currently selected pencil color.
         /// </summary>
-        public virtual string SelectedPencilColor => this.PencilFlyout.SelectedColor;
+        public virtual string SelectedPencilColor => this.PencilButton.GetHelpText();
 
         /// <summary>
         /// Gets the element associated with the highlighter button.
@@ -59,7 +60,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the currently selected highlighter color.
         /// </summary>
-        public virtual string SelectedHighlighterColor => this.HighlighterFlyout.SelectedColor;
+        public virtual string SelectedHighlighterColor => this.HighlighterButton.GetHelpText();
 
         /// <summary>
         /// Gets the element associated with the ruler button.
