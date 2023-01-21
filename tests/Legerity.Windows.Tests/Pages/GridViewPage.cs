@@ -1,6 +1,5 @@
 namespace Legerity.Windows.Tests.Pages;
 
-using System.Drawing;
 using Elements.Core;
 using OpenQA.Selenium.Remote;
 
