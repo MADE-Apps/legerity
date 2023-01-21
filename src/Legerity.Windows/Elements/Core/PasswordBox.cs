@@ -1,8 +1,8 @@
 namespace Legerity.Windows.Elements.Core
 {
+    using Legerity.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
-    using OpenQA.Selenium.Interactions;
     using OpenQA.Selenium.Remote;
 
     /// <summary>
@@ -81,8 +81,7 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         public virtual void RevealPassword()
         {
-            var action = new Actions(this.Driver);
-            action.ClickAndHold(this.RevealButton.Element).Build().Perform();
+            this.RevealButton.ClickAndHold();
         }
 
         /// <summary>
@@ -90,8 +89,7 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         public virtual void HidePassword()
         {
-            var action = new Actions(this.Driver);
-            action.Release(this.RevealButton.Element).Build().Perform();
+            this.RevealButton.ReleaseHold();
         }
     }
 }
