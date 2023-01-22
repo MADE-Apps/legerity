@@ -1,5 +1,7 @@
 namespace Legerity.Windows.Elements.Core
 {
+    using Legerity.Windows.Extensions;
+    using System;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
@@ -19,6 +21,19 @@ namespace Legerity.Windows.Elements.Core
             : base(element)
         {
         }
+
+        /// <summary>
+        /// Gets the value of the progress ring.
+        /// </summary>
+        public virtual double Percentage => this.GetRangeValue();
+
+        /// <summary>
+        /// Gets a value indicating whether the control is in an indeterminate state.
+        /// </summary>
+        public bool IsIndeterminate =>
+            this.GetAttribute("IsRangeValuePatternAvailable").Equals(
+                "False",
+                StringComparison.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ProgressRing"/> without direct casting.
