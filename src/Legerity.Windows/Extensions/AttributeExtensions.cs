@@ -89,7 +89,7 @@ namespace Legerity.Windows.Extensions
         /// <returns>A value indicating whether the item is readonly.</returns>
         public static bool IsReadonly(this IWebElement element)
         {
-            return element.GetAttribute("Value.IsReadonly").Equals("True", StringComparison.CurrentCultureIgnoreCase);
+            return element.GetAttribute("Value.IsReadOnly").Equals("True", StringComparison.CurrentCultureIgnoreCase);
         }
 
         /// <summary>
