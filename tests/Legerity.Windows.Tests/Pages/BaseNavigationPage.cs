@@ -25,6 +25,7 @@ internal class BaseNavigationPage : BasePage
     public TPage NavigateTo<TPage>(string controlName)
         where TPage : BasePage
     {
+        this.ControlsSearchBox.SetText("J");
         this.ControlsSearchBox.SelectSuggestion(controlName);
         return Activator.CreateInstance(typeof(TPage), this.App) as TPage;
     }
