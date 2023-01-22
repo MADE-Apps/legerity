@@ -89,7 +89,6 @@ namespace Legerity.Windows.Elements.Core
         /// <param name="text">The text to append.</param>
         public virtual void AppendText(string text)
         {
-            this.Click();
             this.Element.SendKeys(text);
         }
 
@@ -98,7 +97,6 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         public virtual void ClearText()
         {
-            this.Click();
             this.Element.Clear();
         }
     }
