@@ -23,6 +23,7 @@ internal class ProgressBarTests : BaseTestClass
         progressBarPage.SetDeterminateProgressBarValue(50);
 
         // Assert
+        progressBarPage.DeterminateProgressBar.IsIndeterminate.ShouldBeFalse();
         progressBarPage.DeterminateProgressBar.Percentage.ShouldBe(50);
     }
 
