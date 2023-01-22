@@ -24,12 +24,12 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
-        /// Gets the value of the calendar date picker.
+        /// Gets the value of the date picker.
         /// </summary>
         public virtual string Value => this.GetValue();
 
         /// <summary>
-        /// Gets the value of the calendar date picker as a <see cref="DateTime"/>.
+        /// Gets the value of the date picker as a <see cref="DateTime"/>.
         /// </summary>
         public virtual DateTime? SelectedDate => this.GetSelectedDate();
 
