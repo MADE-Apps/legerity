@@ -1,6 +1,5 @@
 namespace Legerity.WinUI.Tests.Tests;
 
-using System;
 using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
