@@ -4,6 +4,7 @@ namespace Legerity.Windows.Elements.WinUI
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using Extensions;
     using Legerity.Extensions;
     using Legerity.Windows.Elements.Core;
     using OpenQA.Selenium;
@@ -39,6 +40,12 @@ namespace Legerity.Windows.Elements.WinUI
         public virtual IEnumerable<NavigationViewItem> MenuItems =>
             this.MenuItemsView.FindElements(By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem"))
                 .Select(element => new NavigationViewItem(this, element as WindowsElement));
+
+        /// <summary>
+        /// Gets the currently selected menu item.
+        /// </summary>
+        public virtual NavigationViewItem SelectedMenuItem =>
+            this.MenuItems.FirstOrDefault(item => item.IsSelected());
 
         /// <summary>
         /// Gets the UI component associated with the settings menu item.
