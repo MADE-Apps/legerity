@@ -60,4 +60,27 @@ public static class InteractionExtensions
     {
         ReleaseHold(element.Element as RemoteWebElement);
     }
+
+    /// <summary>
+    /// Scrolls to the element.
+    /// </summary>
+    /// <param name="element">The element to scroll to.</param>
+    public static void ScrollTo(this RemoteWebElement element)
+    {
+        var action = new Actions(element.WrappedDriver);
+        action.MoveToElement(element).Perform();
+    }
+
+    /// <summary>
+    /// Scrolls to the element.
+    /// </summary>
+    /// <typeparam name="TElement">
+    /// The type of wrapped <see cref="IWebElement"/>.
+    /// </typeparam>
+    /// <param name="element">The element to scroll to.</param>
+    public static void ScrollTo<TElement>(this IElementWrapper<TElement> element)
+        where TElement : IWebElement
+    {
+        ScrollTo(element.Element as RemoteWebElement);
+    }
 }
