@@ -50,6 +50,7 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
         "ProgressBar",
         "ProgressRing",
         "RadioButton",
+        "ScrollViewer",
         "Slider",
         "TextBlock",
         "TextBox",
