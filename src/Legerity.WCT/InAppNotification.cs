@@ -4,6 +4,7 @@ namespace Legerity.Windows.Elements.WCT
     using Legerity.Windows.Elements.Core;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit InAppNotification control.
@@ -58,6 +59,20 @@ namespace Legerity.Windows.Elements.WCT
         /// The <see cref="InAppNotification"/>.
         /// </returns>
         public static implicit operator InAppNotification(AppiumWebElement element)
+        {
+            return new InAppNotification(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InAppNotification"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="InAppNotification"/>.
+        /// </returns>
+        public static implicit operator InAppNotification(RemoteWebElement element)
         {
             return new InAppNotification(element as WindowsElement);
         }

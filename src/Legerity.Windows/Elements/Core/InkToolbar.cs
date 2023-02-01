@@ -1,9 +1,11 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
+    using Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP InkToolbar control.
@@ -36,7 +38,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the currently selected ballpoint pen color.
         /// </summary>
-        public virtual string SelectedBallpointPenColor => this.BallpointPenFlyout.SelectedColor;
+        public virtual string SelectedBallpointPenColor => this.BallpointPenButton.GetHelpText();
 
         /// <summary>
         /// Gets the element associated with the pencil button.
@@ -47,7 +49,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the currently selected pencil color.
         /// </summary>
-        public virtual string SelectedPencilColor => this.PencilFlyout.SelectedColor;
+        public virtual string SelectedPencilColor => this.PencilButton.GetHelpText();
 
         /// <summary>
         /// Gets the element associated with the highlighter button.
@@ -58,7 +60,7 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the currently selected highlighter color.
         /// </summary>
-        public virtual string SelectedHighlighterColor => this.HighlighterFlyout.SelectedColor;
+        public virtual string SelectedHighlighterColor => this.HighlighterButton.GetHelpText();
 
         /// <summary>
         /// Gets the element associated with the ruler button.
@@ -116,6 +118,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="InkToolbar"/>.
         /// </returns>
         public static implicit operator InkToolbar(AppiumWebElement element)
+        {
+            return new InkToolbar(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InkToolbar"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="InkToolbar"/>.
+        /// </returns>
+        public static implicit operator InkToolbar(RemoteWebElement element)
         {
             return new InkToolbar(element as WindowsElement);
         }

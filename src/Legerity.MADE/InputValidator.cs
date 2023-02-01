@@ -4,6 +4,7 @@ namespace Legerity.Windows.Elements.MADE
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the MADE.NET UWP InputValidator control.
@@ -55,6 +56,20 @@ namespace Legerity.Windows.Elements.MADE
         /// The <see cref="InputValidator"/>.
         /// </returns>
         public static implicit operator InputValidator(AppiumWebElement element)
+        {
+            return new InputValidator(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InputValidator"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="InputValidator"/>.
+        /// </returns>
+        public static implicit operator InputValidator(RemoteWebElement element)
         {
             return new InputValidator(element as WindowsElement);
         }

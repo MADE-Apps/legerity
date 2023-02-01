@@ -1,6 +1,7 @@
 namespace Legerity.Extensions
 {
     using System.Globalization;
+    using System.Linq;
 
     /// <summary>
     /// Defines a collection of extensions for <see cref="string"/>.
@@ -37,6 +38,16 @@ namespace Legerity.Extensions
             }
 
             return culture.CompareInfo.IndexOf(value, contains, compareOption) >= 0;
+        }
+
+        /// <summary>
+        /// Removes unicode characters from the specified string.
+        /// </summary>
+        /// <param name="value">The string to remove unicode characters from.</param>
+        /// <returns>The string with unicode characters removed.</returns>
+        public static string RemoveUnicodeCharacters(this string value)
+        {
+            return value == null ? null : new string(value.Where(c => c < 128).ToArray());
         }
     }
 }

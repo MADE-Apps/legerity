@@ -4,6 +4,7 @@ namespace Legerity.Windows.Elements.Core
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP AutoSuggestBox control.
@@ -72,6 +73,20 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="AutoSuggestBox"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AutoSuggestBox"/>.
+        /// </returns>
+        public static implicit operator AutoSuggestBox(RemoteWebElement element)
+        {
+            return new AutoSuggestBox(element as WindowsElement);
+        }
+
+        /// <summary>
         /// Selects a suggestion from the auto-suggest box.
         /// </summary>
         /// <param name="suggestion">The suggestion to select.</param>
@@ -85,11 +100,12 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         /// <param name="value">The initial value to set.</param>
         /// <param name="suggestion">The suggestion to select.</param>
-        public virtual void SelectSuggestion(string value, string suggestion)
+        /// <param name="popupWaitTimeout">The timeout to wait for the suggestions popup to appear. Defaults to 2000ms.</param>
+        public virtual void SelectSuggestion(string value, string suggestion, int popupWaitTimeout = 2000)
         {
             this.SetText(value);
 
-            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
 
             this.SuggestionList.ClickItem(suggestion);
         }
@@ -99,11 +115,12 @@ namespace Legerity.Windows.Elements.Core
         /// </summary>
         /// <param name="value">The initial value to set.</param>
         /// <param name="partialSuggestion">The partial suggestion match to select.</param>
-        public virtual void SelectSuggestionByPartialSuggestion(string value, string partialSuggestion)
+        /// <param name="popupWaitTimeout">The timeout to wait for the suggestions popup to appear. Defaults to 2000ms.</param>
+        public virtual void SelectSuggestionByPartialSuggestion(string value, string partialSuggestion, int popupWaitTimeout = 2000)
         {
             this.SetText(value);
 
-            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
 
             this.SuggestionList.ClickItemByPartialName(partialSuggestion);
         }

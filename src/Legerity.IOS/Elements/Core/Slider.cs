@@ -5,6 +5,7 @@ namespace Legerity.IOS.Elements.Core
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.iOS;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="IOSElement"/> wrapper for the core iOS Slider control.
@@ -56,6 +57,20 @@ namespace Legerity.IOS.Elements.Core
         /// The <see cref="Slider"/>.
         /// </returns>
         public static implicit operator Slider(AppiumWebElement element)
+        {
+            return new Slider(element as IOSElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Slider"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Slider"/>.
+        /// </returns>
+        public static implicit operator Slider(RemoteWebElement element)
         {
             return new Slider(element as IOSElement);
         }

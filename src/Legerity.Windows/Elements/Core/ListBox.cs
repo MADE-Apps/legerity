@@ -8,6 +8,7 @@ namespace Legerity.Windows.Elements.Core
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ListBox control.
@@ -61,6 +62,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="ListBox"/>.
         /// </returns>
         public static implicit operator ListBox(AppiumWebElement element)
+        {
+            return new ListBox(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ListBox"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ListBox"/>.
+        /// </returns>
+        public static implicit operator ListBox(RemoteWebElement element)
         {
             return new ListBox(element as WindowsElement);
         }

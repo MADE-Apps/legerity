@@ -1,10 +1,12 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
+    using Legerity.Extensions;
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP CalendarDatePicker control.
@@ -33,7 +35,12 @@ namespace Legerity.Windows.Elements.Core
         /// <summary>
         /// Gets the value of the calendar date picker.
         /// </summary>
-        public virtual string Value => this.GetValue();
+        public virtual string Value => this.GetValue().RemoveUnicodeCharacters();
+
+        /// <summary>
+        /// Gets the value of the calendar date picker as a <see cref="DateTime"/>.
+        /// </summary>
+        public virtual DateTime? SelectedDate => this.GetSelectedDate();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
@@ -64,6 +71,20 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="CalendarDatePicker"/>.
+        /// </returns>
+        public static implicit operator CalendarDatePicker(RemoteWebElement element)
+        {
+            return new CalendarDatePicker(element as WindowsElement);
+        }
+
+        /// <summary>
         /// Sets the selected date of the calendar view.
         /// </summary>
         /// <param name="date">The date to set to.</param>
@@ -74,6 +95,13 @@ namespace Legerity.Windows.Elements.Core
             this.VerifyDriverElementShown(this.calendarPopupLocator, TimeSpan.FromSeconds(2));
 
             this.CalendarViewFlyout.SetDate(date);
+        }
+
+        private DateTime? GetSelectedDate()
+        {
+            string value = this.Value;
+            return string.IsNullOrEmpty(value) ? default :
+                DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
         }
     }
 }

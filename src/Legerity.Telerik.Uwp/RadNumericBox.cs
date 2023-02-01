@@ -6,6 +6,7 @@ namespace Legerity.Windows.Elements.Telerik
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the Telerik UWP RadNumericBox control.
@@ -87,6 +88,20 @@ namespace Legerity.Windows.Elements.Telerik
         /// The <see cref="RadNumericBox"/>.
         /// </returns>
         public static implicit operator RadNumericBox(AppiumWebElement element)
+        {
+            return new RadNumericBox(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadNumericBox"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RadNumericBox"/>.
+        /// </returns>
+        public static implicit operator RadNumericBox(RemoteWebElement element)
         {
             return new RadNumericBox(element as WindowsElement);
         }

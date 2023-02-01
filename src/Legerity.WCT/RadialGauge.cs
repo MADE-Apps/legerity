@@ -5,6 +5,7 @@ namespace Legerity.Windows.Elements.WCT
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit RadialGauge control.
@@ -71,6 +72,20 @@ namespace Legerity.Windows.Elements.WCT
         /// The <see cref="RadialGauge"/>.
         /// </returns>
         public static implicit operator RadialGauge(AppiumWebElement element)
+        {
+            return new RadialGauge(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadialGauge"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RadialGauge"/>.
+        /// </returns>
+        public static implicit operator RadialGauge(RemoteWebElement element)
         {
             return new RadialGauge(element as WindowsElement);
         }

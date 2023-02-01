@@ -8,6 +8,7 @@ namespace Legerity.Windows.Elements.Core
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP Pivot control.
@@ -61,6 +62,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="Pivot"/>.
         /// </returns>
         public static implicit operator Pivot(AppiumWebElement element)
+        {
+            return new Pivot(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Pivot"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Pivot"/>.
+        /// </returns>
+        public static implicit operator Pivot(RemoteWebElement element)
         {
             return new Pivot(element as WindowsElement);
         }

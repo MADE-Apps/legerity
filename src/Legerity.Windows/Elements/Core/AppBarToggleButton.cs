@@ -3,6 +3,7 @@ namespace Legerity.Windows.Elements.Core
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP AppBarToggleButton control.
@@ -49,6 +50,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="AppBarToggleButton"/>.
         /// </returns>
         public static implicit operator AppBarToggleButton(AppiumWebElement element)
+        {
+            return new AppBarToggleButton(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="AppBarToggleButton"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AppBarToggleButton"/>.
+        /// </returns>
+        public static implicit operator AppBarToggleButton(RemoteWebElement element)
         {
             return new AppBarToggleButton(element as WindowsElement);
         }

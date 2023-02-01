@@ -3,6 +3,7 @@ namespace Legerity.Android.Elements.Core
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="AndroidElement"/> wrapper for the core Android Spinner control.
@@ -49,6 +50,20 @@ namespace Legerity.Android.Elements.Core
         /// The <see cref="Spinner"/>.
         /// </returns>
         public static implicit operator Spinner(AppiumWebElement element)
+        {
+            return new Spinner(element as AndroidElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Spinner"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Spinner"/>.
+        /// </returns>
+        public static implicit operator Spinner(RemoteWebElement element)
         {
             return new Spinner(element as AndroidElement);
         }

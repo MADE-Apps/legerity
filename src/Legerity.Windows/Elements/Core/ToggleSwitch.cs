@@ -3,6 +3,7 @@ namespace Legerity.Windows.Elements.Core
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ToggleSwitch control.
@@ -49,6 +50,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="ToggleSwitch"/>.
         /// </returns>
         public static implicit operator ToggleSwitch(AppiumWebElement element)
+        {
+            return new ToggleSwitch(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ToggleSwitch"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ToggleSwitch"/>.
+        /// </returns>
+        public static implicit operator ToggleSwitch(RemoteWebElement element)
         {
             return new ToggleSwitch(element as WindowsElement);
         }

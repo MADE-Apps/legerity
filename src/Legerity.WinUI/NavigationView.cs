@@ -4,11 +4,13 @@ namespace Legerity.Windows.Elements.WinUI
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using Extensions;
     using Legerity.Extensions;
     using Legerity.Windows.Elements.Core;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the WinUI NavigationView control.
@@ -38,6 +40,12 @@ namespace Legerity.Windows.Elements.WinUI
         public virtual IEnumerable<NavigationViewItem> MenuItems =>
             this.MenuItemsView.FindElements(By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem"))
                 .Select(element => new NavigationViewItem(this, element as WindowsElement));
+
+        /// <summary>
+        /// Gets the currently selected menu item.
+        /// </summary>
+        public virtual NavigationViewItem SelectedMenuItem =>
+            this.MenuItems.FirstOrDefault(item => item.IsSelected());
 
         /// <summary>
         /// Gets the UI component associated with the settings menu item.
@@ -91,6 +99,20 @@ namespace Legerity.Windows.Elements.WinUI
         /// The <see cref="NavigationView"/>.
         /// </returns>
         public static implicit operator NavigationView(AppiumWebElement element)
+        {
+            return new NavigationView(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NavigationView"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="NavigationView"/>.
+        /// </returns>
+        public static implicit operator NavigationView(RemoteWebElement element)
         {
             return new NavigationView(element as WindowsElement);
         }

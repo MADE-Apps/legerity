@@ -35,6 +35,30 @@ namespace Legerity.Windows.Extensions
         }
 
         /// <summary>
+        /// Retrieves the HelpText attribute from the specified element.
+        /// </summary>
+        /// <param name="element">The <see cref="IWebElement"/> to retrieve the HelpText from.</param>
+        /// <returns>The HelpText of the element.</returns>
+        public static string GetHelpText(this IWebElement element)
+        {
+            return element.GetAttribute("HelpText");
+        }
+
+        /// <summary>
+        /// Retrieves the HelpText attribute from the specified element.
+        /// </summary>
+        /// <typeparam name="TElement">
+        /// The type of <see cref="RemoteWebElement"/>.
+        /// </typeparam>
+        /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the HelpText from.</param>
+        /// <returns>The HelpText of the element.</returns>
+        public static string GetHelpText<TElement>(this IElementWrapper<TElement> element)
+            where TElement : IWebElement
+        {
+            return GetHelpText(element.Element);
+        }
+
+        /// <summary>
         /// Retrieves the Value.Value attribute from the specified element.
         /// </summary>
         /// <param name="element">The <see cref="IWebElement"/> to retrieve a value from.</param>
@@ -65,7 +89,7 @@ namespace Legerity.Windows.Extensions
         /// <returns>A value indicating whether the item is readonly.</returns>
         public static bool IsReadonly(this IWebElement element)
         {
-            return element.GetAttribute("Value.IsReadonly").Equals("True", StringComparison.CurrentCultureIgnoreCase);
+            return element.GetAttribute("Value.IsReadOnly").Equals("True", StringComparison.CurrentCultureIgnoreCase);
         }
 
         /// <summary>

@@ -1,8 +1,11 @@
 namespace Legerity.Windows.Elements.Core
 {
     using System;
+    using System.Text.RegularExpressions;
+    using Legerity.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP DatePicker control.
@@ -19,6 +22,16 @@ namespace Legerity.Windows.Elements.Core
             : base(element)
         {
         }
+
+        /// <summary>
+        /// Gets the value of the date picker.
+        /// </summary>
+        public virtual string Value => this.GetValue();
+
+        /// <summary>
+        /// Gets the value of the date picker as a <see cref="DateTime"/>.
+        /// </summary>
+        public virtual DateTime? SelectedDate => this.GetSelectedDate();
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="DatePicker"/> without direct casting.
@@ -49,6 +62,20 @@ namespace Legerity.Windows.Elements.Core
         }
 
         /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="DatePicker"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="DatePicker"/>.
+        /// </returns>
+        public static implicit operator DatePicker(RemoteWebElement element)
+        {
+            return new DatePicker(element as WindowsElement);
+        }
+
+        /// <summary>
         /// Sets the date to the specified date.
         /// </summary>
         /// <param name="date">The date to set.</param>
@@ -63,6 +90,21 @@ namespace Legerity.Windows.Elements.Core
             popup.FindElement(WindowsByExtras.AutomationId("MonthLoopingSelector")).FindElementByName(date.ToString("MMMM")).Click();
             popup.FindElement(WindowsByExtras.AutomationId("YearLoopingSelector")).FindElementByName(date.ToString("yyyy")).Click();
             popup.FindElement(WindowsByExtras.AutomationId("AcceptButton")).Click();
+        }
+
+        private string GetValue()
+        {
+            AppiumWebElement button = this.FindElement(WindowsByExtras.AutomationId("FlyoutButton"));
+            string name = button.GetName().RemoveUnicodeCharacters();
+            Match match = Regex.Match(name, @"\w+\s\d{1,2},\s\d{4}");
+            return match.Success ? match.Value : null;
+        }
+
+        private DateTime? GetSelectedDate()
+        {
+            string value = this.Value;
+            return string.IsNullOrEmpty(value) ? default :
+                DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
         }
     }
 }

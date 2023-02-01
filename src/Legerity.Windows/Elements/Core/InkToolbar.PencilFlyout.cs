@@ -2,6 +2,7 @@ namespace Legerity.Windows.Elements.Core
 {
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines the pencil flyout components of the <see cref="InkToolbar"/>.
@@ -48,6 +49,20 @@ namespace Legerity.Windows.Elements.Core
             /// The <see cref="InkToolbarPencilFlyout"/>.
             /// </returns>
             public static implicit operator InkToolbarPencilFlyout(AppiumWebElement element)
+            {
+                return new InkToolbarPencilFlyout(element as WindowsElement);
+            }
+
+            /// <summary>
+            /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InkToolbarPencilFlyout"/> without direct casting.
+            /// </summary>
+            /// <param name="element">
+            /// The <see cref="RemoteWebElement"/>.
+            /// </param>
+            /// <returns>
+            /// The <see cref="InkToolbarPencilFlyout"/>.
+            /// </returns>
+            public static implicit operator InkToolbarPencilFlyout(RemoteWebElement element)
             {
                 return new InkToolbarPencilFlyout(element as WindowsElement);
             }

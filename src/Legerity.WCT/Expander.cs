@@ -4,6 +4,7 @@ namespace Legerity.Windows.Elements.WCT
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit Expander control.
@@ -55,6 +56,20 @@ namespace Legerity.Windows.Elements.WCT
         /// The <see cref="Expander"/>.
         /// </returns>
         public static implicit operator Expander(AppiumWebElement element)
+        {
+            return new Expander(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Expander"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Expander"/>.
+        /// </returns>
+        public static implicit operator Expander(RemoteWebElement element)
         {
             return new Expander(element as WindowsElement);
         }

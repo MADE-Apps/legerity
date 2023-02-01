@@ -3,6 +3,7 @@ namespace Legerity.Android.Elements.Core
     using System;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="AndroidElement"/> wrapper for the core Android RadioButton control.
@@ -50,6 +51,20 @@ namespace Legerity.Android.Elements.Core
         /// The <see cref="RadioButton"/>.
         /// </returns>
         public static implicit operator RadioButton(AppiumWebElement element)
+        {
+            return new RadioButton(element as AndroidElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadioButton"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RadioButton"/>.
+        /// </returns>
+        public static implicit operator RadioButton(RemoteWebElement element)
         {
             return new RadioButton(element as AndroidElement);
         }

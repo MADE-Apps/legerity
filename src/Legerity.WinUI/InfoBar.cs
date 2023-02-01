@@ -3,6 +3,7 @@ namespace Legerity.Windows.Elements.WinUI
     using Legerity.Windows.Elements.Core;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the WinUI InfoBar control.
@@ -74,6 +75,20 @@ namespace Legerity.Windows.Elements.WinUI
         /// The <see cref="InfoBar"/>.
         /// </returns>
         public static implicit operator InfoBar(AppiumWebElement element)
+        {
+            return new InfoBar(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InfoBar"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="InfoBar"/>.
+        /// </returns>
+        public static implicit operator InfoBar(RemoteWebElement element)
         {
             return new InfoBar(element as WindowsElement);
         }

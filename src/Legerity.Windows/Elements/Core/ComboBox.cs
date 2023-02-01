@@ -9,6 +9,7 @@ namespace Legerity.Windows.Elements.Core
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ComboBox control.
@@ -57,6 +58,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="ComboBox"/>.
         /// </returns>
         public static implicit operator ComboBox(AppiumWebElement element)
+        {
+            return new ComboBox(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ComboBox"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ComboBox"/>.
+        /// </returns>
+        public static implicit operator ComboBox(RemoteWebElement element)
         {
             return new ComboBox(element as WindowsElement);
         }

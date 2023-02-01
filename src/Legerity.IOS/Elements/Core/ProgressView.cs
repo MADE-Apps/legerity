@@ -3,6 +3,7 @@ namespace Legerity.IOS.Elements.Core
     using Legerity.IOS.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.iOS;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="IOSElement"/> wrapper for the core iOS ProgressView control.
@@ -49,6 +50,20 @@ namespace Legerity.IOS.Elements.Core
         /// The <see cref="ProgressView"/>.
         /// </returns>
         public static implicit operator ProgressView(AppiumWebElement element)
+        {
+            return new ProgressView(element as IOSElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ProgressView"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ProgressView"/>.
+        /// </returns>
+        public static implicit operator ProgressView(RemoteWebElement element)
         {
             return new ProgressView(element as IOSElement);
         }

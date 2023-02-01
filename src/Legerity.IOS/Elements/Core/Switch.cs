@@ -3,6 +3,7 @@ namespace Legerity.IOS.Elements.Core
     using Legerity.IOS.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.iOS;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="IOSElement"/> wrapper for the core iOS Switch control.
@@ -51,6 +52,20 @@ namespace Legerity.IOS.Elements.Core
         /// The <see cref="Switch"/>.
         /// </returns>
         public static implicit operator Switch(AppiumWebElement element)
+        {
+            return new Switch(element as IOSElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Switch"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Switch"/>.
+        /// </returns>
+        public static implicit operator Switch(RemoteWebElement element)
         {
             return new Switch(element as IOSElement);
         }

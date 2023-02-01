@@ -4,6 +4,7 @@ namespace Legerity.IOS.Elements.Core
     using Legerity.IOS.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.iOS;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="IOSElement"/> wrapper for the core iOS TextField control.
@@ -53,6 +54,20 @@ namespace Legerity.IOS.Elements.Core
         /// The <see cref="TextField"/>.
         /// </returns>
         public static implicit operator TextField(AppiumWebElement element)
+        {
+            return new TextField(element as IOSElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TextField"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="TextField"/>.
+        /// </returns>
+        public static implicit operator TextField(RemoteWebElement element)
         {
             return new TextField(element as IOSElement);
         }

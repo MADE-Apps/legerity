@@ -5,6 +5,7 @@ namespace Legerity.Windows.Elements.WinUI
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the WinUI Rating control.
@@ -66,6 +67,20 @@ namespace Legerity.Windows.Elements.WinUI
         /// The <see cref="RatingControl"/>.
         /// </returns>
         public static implicit operator RatingControl(AppiumWebElement element)
+        {
+            return new RatingControl(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RatingControl"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RatingControl"/>.
+        /// </returns>
+        public static implicit operator RatingControl(RemoteWebElement element)
         {
             return new RatingControl(element as WindowsElement);
         }

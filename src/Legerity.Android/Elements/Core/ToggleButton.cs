@@ -3,6 +3,7 @@ namespace Legerity.Android.Elements.Core
     using System;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="AndroidElement"/> wrapper for the core Android ToggleButton control.
@@ -49,6 +50,20 @@ namespace Legerity.Android.Elements.Core
         /// The <see cref="ToggleButton"/>.
         /// </returns>
         public static implicit operator ToggleButton(AppiumWebElement element)
+        {
+            return new ToggleButton(element as AndroidElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ToggleButton"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ToggleButton"/>.
+        /// </returns>
+        public static implicit operator ToggleButton(RemoteWebElement element)
         {
             return new ToggleButton(element as AndroidElement);
         }

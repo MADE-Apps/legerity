@@ -6,7 +6,9 @@ namespace Legerity.Windows.Elements.Core
     using System.Linq;
     using Legerity.Extensions;
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the UWP MenuFlyoutSubItem control.
@@ -33,6 +35,48 @@ namespace Legerity.Windows.Elements.Core
         /// Gets the UI components associated with the child menu sub-items.
         /// </summary>
         public virtual IEnumerable<MenuFlyoutSubItem> ChildMenuSubItems => this.GetChildMenuSubItems();
+
+        /// <summary>
+        /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="MenuFlyoutSubItem"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="WindowsElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MenuFlyoutSubItem"/>.
+        /// </returns>
+        public static implicit operator MenuFlyoutSubItem(WindowsElement element)
+        {
+            return new MenuFlyoutSubItem(element);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="MenuFlyoutSubItem"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="AppiumWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MenuFlyoutSubItem"/>.
+        /// </returns>
+        public static implicit operator MenuFlyoutSubItem(AppiumWebElement element)
+        {
+            return new MenuFlyoutSubItem(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="MenuFlyoutSubItem"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MenuFlyoutSubItem"/>.
+        /// </returns>
+        public static implicit operator MenuFlyoutSubItem(RemoteWebElement element)
+        {
+            return new MenuFlyoutSubItem(element as WindowsElement);
+        }
 
         /// <summary>
         /// Clicks on a child menu option with the specified item name.

@@ -3,6 +3,7 @@ namespace Legerity.IOS.Elements.Core
     using Legerity.IOS.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.iOS;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="IOSElement"/> wrapper for the core iOS Button control.
@@ -49,6 +50,20 @@ namespace Legerity.IOS.Elements.Core
         /// The <see cref="Button"/>.
         /// </returns>
         public static implicit operator Button(AppiumWebElement element)
+        {
+            return new Button(element as IOSElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Button"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Button"/>.
+        /// </returns>
+        public static implicit operator Button(RemoteWebElement element)
         {
             return new Button(element as IOSElement);
         }

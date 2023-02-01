@@ -1,7 +1,10 @@
 namespace Legerity.Windows.Elements.Core
 {
+    using Legerity.Windows.Extensions;
+    using System;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ProgressRing control.
@@ -18,6 +21,19 @@ namespace Legerity.Windows.Elements.Core
             : base(element)
         {
         }
+
+        /// <summary>
+        /// Gets the value of the progress ring.
+        /// </summary>
+        public virtual double Percentage => this.GetRangeValue();
+
+        /// <summary>
+        /// Gets a value indicating whether the control is in an indeterminate state.
+        /// </summary>
+        public bool IsIndeterminate =>
+            this.GetAttribute("IsRangeValuePatternAvailable").Equals(
+                "False",
+                StringComparison.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ProgressRing"/> without direct casting.
@@ -43,6 +59,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="ProgressRing"/>.
         /// </returns>
         public static implicit operator ProgressRing(AppiumWebElement element)
+        {
+            return new ProgressRing(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ProgressRing"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ProgressRing"/>.
+        /// </returns>
+        public static implicit operator ProgressRing(RemoteWebElement element)
         {
             return new ProgressRing(element as WindowsElement);
         }

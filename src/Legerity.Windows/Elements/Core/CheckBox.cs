@@ -3,6 +3,7 @@ namespace Legerity.Windows.Elements.Core
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP CheckBox control.
@@ -54,6 +55,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="CheckBox"/>.
         /// </returns>
         public static implicit operator CheckBox(AppiumWebElement element)
+        {
+            return new CheckBox(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CheckBox"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="CheckBox"/>.
+        /// </returns>
+        public static implicit operator CheckBox(RemoteWebElement element)
         {
             return new CheckBox(element as WindowsElement);
         }

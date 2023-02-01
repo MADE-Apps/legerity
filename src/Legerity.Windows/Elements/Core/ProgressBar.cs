@@ -4,6 +4,7 @@ namespace Legerity.Windows.Elements.Core
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ProgressBar control.
@@ -58,6 +59,20 @@ namespace Legerity.Windows.Elements.Core
         /// The <see cref="ProgressBar"/>.
         /// </returns>
         public static implicit operator ProgressBar(AppiumWebElement element)
+        {
+            return new ProgressBar(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ProgressBar"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ProgressBar"/>.
+        /// </returns>
+        public static implicit operator ProgressBar(RemoteWebElement element)
         {
             return new ProgressBar(element as WindowsElement);
         }

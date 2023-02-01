@@ -6,7 +6,9 @@ namespace Legerity.Windows.Elements.WinUI
     using System.Linq;
     using Legerity.Extensions;
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="WindowsElement"/> wrapper for the WinUI NavigationViewItem control.
@@ -103,6 +105,48 @@ namespace Legerity.Windows.Elements.WinUI
         /// Gets the UI components associated with the child menu items.
         /// </summary>
         public virtual IEnumerable<NavigationViewItem> ChildMenuItems => this.GetChildMenuItems();
+
+        /// <summary>
+        /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="WindowsElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="NavigationViewItem"/>.
+        /// </returns>
+        public static implicit operator NavigationViewItem(WindowsElement element)
+        {
+            return new NavigationViewItem(element);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="AppiumWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="NavigationViewItem"/>.
+        /// </returns>
+        public static implicit operator NavigationViewItem(AppiumWebElement element)
+        {
+            return new NavigationViewItem(element as WindowsElement);
+        }
+
+        /// <summary>
+        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
+        /// </summary>
+        /// <param name="element">
+        /// The <see cref="RemoteWebElement"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="NavigationViewItem"/>.
+        /// </returns>
+        public static implicit operator NavigationViewItem(RemoteWebElement element)
+        {
+            return new NavigationViewItem(element as WindowsElement);
+        }
 
         /// <summary>
         /// Clicks on a child menu option with the specified item name.

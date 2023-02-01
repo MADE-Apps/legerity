@@ -1,0 +1,11 @@
+<Project>
+
+  <PropertyGroup>
+    <Authors>MADE Apps</Authors>
+    <Company>MADE Apps</Company>
+    <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+</Project>
