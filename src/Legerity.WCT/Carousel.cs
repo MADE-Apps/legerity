@@ -31,7 +31,8 @@ namespace Legerity.Windows.Elements.WCT
         /// <summary>
         /// Gets the collection of items associated with the carousel.
         /// </summary>
-        public virtual ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.carouselItemLocator);
+        public virtual ReadOnlyCollection<AppiumWebElement> Items =>
+            this.Element.FindElements(this.carouselItemLocator);
 
         /// <summary>
         /// Gets the element associated with the currently selected item.
@@ -95,13 +96,10 @@ namespace Legerity.Windows.Elements.WCT
         {
             this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
 
-            int index = this.Items.IndexOf(this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name)));
-            int selectedIndex = this.SelectedIndex;
-            while (Math.Abs(index - selectedIndex) > double.Epsilon)
-            {
-                this.Element.SendKeys(selectedIndex < index ? Keys.ArrowRight : Keys.ArrowLeft);
-                selectedIndex = this.SelectedIndex;
-            }
+            int index = this.Items.IndexOf(this.Items.FirstOrDefault(element =>
+                element.VerifyNameOrAutomationIdEquals(name)));
+
+            this.SelectItemAtIndex(index);
         }
 
         /// <summary>
@@ -114,32 +112,34 @@ namespace Legerity.Windows.Elements.WCT
         {
             this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
 
-            int index = this.Items.IndexOf(this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName)));
-            int selectedIndex = this.SelectedIndex;
-            while (Math.Abs(index - selectedIndex) > double.Epsilon)
-            {
-                this.Element.SendKeys(selectedIndex < index ? Keys.ArrowRight : Keys.ArrowLeft);
-                selectedIndex = this.SelectedIndex;
-            }
+            int index = this.Items.IndexOf(this.Items.FirstOrDefault(element =>
+                element.VerifyNameOrAutomationIdContains(partialName)));
+
+            this.SelectItemAtIndex(index);
         }
 
         /// <summary>
-        /// Clicks on an item in the carousel with the specified item name.
+        /// Clicks on an item in the carousel at the specified index.
         /// </summary>
         /// <param name="index">
         /// The index of the item to click.
         /// </param>
         /// <exception cref="T:System.IndexOutOfRangeException">Cannot select an element that is outside the range of items available.</exception>
-        public void SelectItem(int index)
+        public virtual void SelectItem(int index)
         {
+            this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
+
             if (index > this.Items.Count - 1)
             {
                 throw new IndexOutOfRangeException(
                     "Cannot select an element that is outside the range of items available.");
             }
 
-            this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
+            this.SelectItemAtIndex(index);
+        }
 
+        private void SelectItemAtIndex(int index)
+        {
             int selectedIndex = this.SelectedIndex;
             while (Math.Abs(index - selectedIndex) > double.Epsilon)
             {
