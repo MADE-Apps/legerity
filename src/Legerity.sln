@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.WinUI.Tests", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.WCT.Tests", "..\tests\Legerity.WCT.Tests\Legerity.WCT.Tests.csproj", "{C779A490-C926-4BF9-9165-0F407AA49A9F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Telerik.Uwp.Tests", "..\tests\Legerity.Telerik.Uwp.Tests\Legerity.Telerik.Uwp.Tests.csproj", "{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{C779A490-C926-4BF9-9165-0F407AA49A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C779A490-C926-4BF9-9165-0F407AA49A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C779A490-C926-4BF9-9165-0F407AA49A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +139,7 @@ Global
 		{C19013D7-97AF-4581-B9B3-32D128241D05} = {3024AB14-F3D4-4B9B-AF9D-64EBC00F5361}
 		{74257F8D-E2F0-4327-B672-59F0530F2FD0} = {3024AB14-F3D4-4B9B-AF9D-64EBC00F5361}
 		{C779A490-C926-4BF9-9165-0F407AA49A9F} = {3024AB14-F3D4-4B9B-AF9D-64EBC00F5361}
+		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503} = {3024AB14-F3D4-4B9B-AF9D-64EBC00F5361}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAB58D66-B3F1-408A-A96F-572170771367}
