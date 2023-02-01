@@ -52,5 +52,14 @@ namespace Legerity.Web
         {
             return By.TagName("tr");
         }
+
+        /// <summary>
+        /// Gets a mechanism to find table row elements where a HTML tr tag has HTML td elements within it.
+        /// </summary>
+        /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
+        public static By TableDataRow()
+        {
+            return By.XPath("//tr[td]");
+        }
     }
 }
