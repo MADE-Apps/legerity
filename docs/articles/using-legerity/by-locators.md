@@ -35,6 +35,9 @@ The `ByNested` locator allows you to find elements that are nested by a sequence
 RemoteWebElement element = app.FindElement(new ByNested(By.Id("PersonContainer"), By.TagName("form"), By.TagName("button")));
 ```
 
+> [!NOTE]
+> The complete nesting does not need to be known, you can provide a subset of the nesting and the locator will find the element if it is nested within the provided locators. For example, you can also find the same button in the above example by providing the `new ByNested(By.Id("PersonContainer"), By.TagName("button"))` locator too.
+
 ## Finding elements by text
 
 The Core package provides `ByExtras.Text` and `ByExtras.PartialText` locators that can be used to find elements on the page by their text content. These can be used across any app platform!
