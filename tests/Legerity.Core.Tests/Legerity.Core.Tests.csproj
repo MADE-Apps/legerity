@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Legerity.Core\Legerity.Core.csproj" />
+    <ProjectReference Include="..\..\src\Legerity.Web\Legerity.Web.csproj" />
   </ItemGroup>
 
 </Project>

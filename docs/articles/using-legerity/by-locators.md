@@ -16,6 +16,15 @@ You can find more information about the available locators in the following API 
 - [iOS By locators](xref:Legerity.IOS.IOSByExtras)
 - [Android By locators](xref:Legerity.Android.AndroidByExtras)
 - [Web By locators](xref:Legerity.Web.WebByExtras)
+- [By All locator](xref:Legerity.ByAll)
+
+## Finding elements that match all locators
+
+The `ByAll` locator allows you to find elements that match all of the provided locators. This is useful when you want to find an element that matches multiple criteria, such as a button that has a specific text.
+
+```csharp
+RemoteWebElement element = app.FindElement(new ByAll(By.TagName("button"), ByExtras.Text("Send Message")));
+```
 
 ## Finding elements by text
 
