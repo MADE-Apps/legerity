@@ -107,21 +107,23 @@ public static class ElementExtensions
     /// <param name="element">The element to wait on.</param>
     /// <param name="condition">The condition of the element to wait on.</param>
     /// <param name="timeout">The optional timeout wait on the condition being true.</param>
-    /// <param name="timeoutExceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
+    /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
+    /// <param name="exceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
     /// <returns>Whether the wait was a success.</returns>
     public static bool TryWaitUntil(
         this RemoteWebElement element,
         Func<RemoteWebElement, bool> condition,
         TimeSpan? timeout = default,
-        Action<WebDriverTimeoutException> timeoutExceptionHandler = null)
+        int retries = 0,
+        Action<Exception> exceptionHandler = null)
     {
         try
         {
-            WaitUntil(element, condition, timeout);
+            WaitUntil(element, condition, timeout, retries);
         }
-        catch (WebDriverTimeoutException ex)
+        catch (Exception ex)
         {
-            timeoutExceptionHandler?.Invoke(ex);
+            exceptionHandler?.Invoke(ex);
             return false;
         }
 
@@ -134,21 +136,38 @@ public static class ElementExtensions
     /// <param name="element">The element to wait on.</param>
     /// <param name="condition">The condition of the element to wait on.</param>
     /// <param name="timeout">The optional timeout wait on the condition being true.</param>
-    public static void WaitUntil(
+    /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
+    /// <typeparam name="TResult">The type of expected result from the wait condition.</typeparam>
+    /// <returns>The <typeparamref name="TResult"/> of the wait until operation.</returns>
+    /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
+    public static TResult WaitUntil<TResult>(
         this RemoteWebElement element,
-        Func<RemoteWebElement, bool> condition,
-        TimeSpan? timeout = default)
+        Func<RemoteWebElement, TResult> condition,
+        TimeSpan? timeout = default,
+        int retries = 0)
     {
-        new WebDriverWait(element.WrappedDriver, timeout ?? TimeSpan.Zero).Until(_ =>
+        try
         {
-            try
+            return new WebDriverWait(element.WrappedDriver, timeout ?? TimeSpan.Zero).Until(_ =>
             {
-                return condition(element);
-            }
-            catch (StaleElementReferenceException)
+                try
+                {
+                    return condition(element);
+                }
+                catch (StaleElementReferenceException)
+                {
+                    return default;
+                }
+            });
+        }
+        catch (WebDriverException)
+        {
+            if (retries <= 0)
             {
-                return false;
+                throw;
             }
-        });
+
+            return WaitUntil(element, condition, timeout, retries - 1);
+        }
     }
 }
