@@ -12,10 +12,10 @@ using Web.Elements.Core;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Children)]
-internal class WaitUntilConditionsTests : BaseTestClass
+internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
 {
     [Test]
-    public void ShouldWaitUntilElementIsVisible()
+    public void ShouldWaitUntilElementIsNotVisible()
     {
         // Arrange
         var options = new WebAppManagerOptions(
@@ -34,11 +34,11 @@ internal class WaitUntilConditionsTests : BaseTestClass
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act & Assert
-        app.WaitUntil(WaitUntilConditions.ElementIsVisible(By.TagName("input")), ImplicitWait);
+        app.WaitUntil(WaitUntilConditions.ElementIsNotVisible(By.TagName("select")), ImplicitWait);
     }
 
     [Test]
-    public void ShouldWaitUntilElementIsVisibleInElement()
+    public void ShouldWaitUntilElementIsNotVisibleInElement()
     {
         // Arrange
         var options = new WebAppManagerOptions(
@@ -59,12 +59,12 @@ internal class WaitUntilConditionsTests : BaseTestClass
         RemoteWebElement element = page.FindElement(By.TagName("form"));
 
         // Act & Assert
-        element.WaitUntil(WaitUntilConditions.ElementIsVisibleInElement<RemoteWebElement>(By.TagName("input")),
+        element.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElement<RemoteWebElement>(By.TagName("select")),
             ImplicitWait);
     }
 
     [Test]
-    public void ShouldWaitUntilElementIsVisibleInElementWrapper()
+    public void ShouldWaitUntilElementIsNotVisibleInElementWrapper()
     {
         // Arrange
         var options = new WebAppManagerOptions(
@@ -85,12 +85,12 @@ internal class WaitUntilConditionsTests : BaseTestClass
         Form form = page.FindElement(By.TagName("form"));
 
         // Act & Assert
-        form.WaitUntil(WaitUntilConditions.ElementIsVisibleInElementWrapper<RemoteWebElement>(By.TagName("input")),
+        form.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElementWrapper<RemoteWebElement>(By.TagName("select")),
             ImplicitWait);
     }
 
     [Test]
-    public void ShouldWaitUntilElementIsVisibleInPageObject()
+    public void ShouldWaitUntilElementIsNotVisibleInPageObject()
     {
         // Arrange
         var options = new WebAppManagerOptions(
@@ -109,6 +109,6 @@ internal class WaitUntilConditionsTests : BaseTestClass
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act & Assert
-        page.WaitUntil(WaitUntilConditions.ElementIsVisibleInPage<W3SchoolsPage>(By.TagName("input")), ImplicitWait);
+        page.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInPage<W3SchoolsPage>(By.TagName("select")), ImplicitWait);
     }
 }
