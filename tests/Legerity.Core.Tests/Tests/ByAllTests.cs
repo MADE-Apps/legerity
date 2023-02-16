@@ -10,7 +10,7 @@ using Pages;
 using Shouldly;
 
 [TestFixture]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class ByAllTests : BaseTestClass
 {
     [Test]

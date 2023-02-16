@@ -10,7 +10,7 @@ using Pages;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class TableTests : W3SchoolsBaseTestClass
 {
     private const string WebApplication = "https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro";

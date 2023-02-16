@@ -8,7 +8,7 @@ using System.IO;
 using Shouldly;
 
 [TestFixture]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class WebByExtraTests : W3SchoolsBaseTestClass
 {
     [Test]

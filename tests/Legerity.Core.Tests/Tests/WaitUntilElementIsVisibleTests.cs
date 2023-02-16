@@ -11,7 +11,7 @@ using Pages;
 using Web.Elements.Core;
 
 [TestFixture]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class WaitUntilElementIsVisibleTests : BaseTestClass
 {
     [Test]

@@ -10,7 +10,7 @@ using Pages;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class WebElementWrapperTests : W3SchoolsBaseTestClass
 {
     private const string WebApplication = "https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_text";

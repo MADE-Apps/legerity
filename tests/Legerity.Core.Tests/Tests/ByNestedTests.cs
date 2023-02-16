@@ -11,7 +11,7 @@ using Shouldly;
 using Web.Extensions;
 
 [TestFixture]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class ByNestedTests : BaseTestClass
 {
     [Test]

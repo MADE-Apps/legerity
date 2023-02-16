@@ -8,7 +8,7 @@ using Pages;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class CheckBoxTests : W3SchoolsBaseTestClass
 {
     private const string WebApplication =

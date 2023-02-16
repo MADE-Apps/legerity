@@ -8,7 +8,7 @@ using OpenQA.Selenium.Remote;
 using Shouldly;
 
 [TestFixture]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class WebAppManagerOptionsTests : BaseTestClass
 {
     [Test]

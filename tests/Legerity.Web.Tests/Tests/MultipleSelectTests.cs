@@ -9,7 +9,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 [TestFixtureSource(nameof(PlatformOptions))]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class MultipleSelectTests : W3SchoolsBaseTestClass
 {
     private const string WebApplication = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select_multiple";

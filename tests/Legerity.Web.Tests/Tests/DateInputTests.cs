@@ -8,7 +8,7 @@ using OpenQA.Selenium.Remote;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
-[Parallelizable(ParallelScope.Children)]
+[Parallelizable(ParallelScope.All)]
 internal class DateInputTests : W3SchoolsBaseTestClass
 {
     private const string WebApplication = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_date";
