@@ -15,7 +15,8 @@ public static class WaitUntilConditions
     /// <param name="title">The expected title, which must be an exact match.</param>
     /// <param name="comparison">The comparison for validating equality.</param>
     /// <returns>True if the title matches; otherwise, false.</returns>
-    public static Func<IWebDriver, bool> TitleIs(string title,
+    public static Func<IWebDriver, bool> TitleIs(
+        string title,
         StringComparison comparison = StringComparison.InvariantCultureIgnoreCase)
     {
         return driver => driver.Title.Equals(title, comparison);
@@ -37,7 +38,8 @@ public static class WaitUntilConditions
     /// <param name="url">The URL that the page should be on.</param>
     /// <param name="comparison">The comparison for validating equality.</param>
     /// <returns>True if the URL matches; otherwise, false.</returns>
-    public static Func<IWebDriver, bool> UrlIs(string url,
+    public static Func<IWebDriver, bool> UrlIs(
+        string url,
         StringComparison comparison = StringComparison.InvariantCultureIgnoreCase)
     {
         return driver => driver.Url.Equals(url, comparison);
@@ -193,6 +195,47 @@ public static class WaitUntilConditions
             catch (StaleElementReferenceException)
             {
                 return false;
+            }
+        };
+    }
+
+    /// <summary>
+    /// A condition for switching to a frame by its name when it is available.
+    /// </summary>
+    /// <param name="frameName">The name of the frame to switch to.</param>
+    /// <returns>The <see cref="IWebDriver"/> for the frame that has been switched to.</returns>
+    public static Func<IWebDriver, IWebDriver> FrameAvailableToSwitchTo(string frameName)
+    {
+        return driver =>
+        {
+            try
+            {
+                return driver.SwitchTo().Frame(frameName);
+            }
+            catch (NoSuchFrameException)
+            {
+                return null;
+            }
+        };
+    }
+
+    /// <summary>
+    /// A condition for switching to a frame by its name when it is available.
+    /// </summary>
+    /// <param name="frameLocator">The locator of the frame to switch to.</param>
+    /// <returns>The <see cref="IWebDriver"/> for the frame that has been switched to.</returns>
+    public static Func<IWebDriver, IWebDriver> FrameAvailableToSwitchTo(By frameLocator)
+    {
+        return driver =>
+        {
+            try
+            {
+                IWebElement frameElement = driver.FindElement(frameLocator);
+                return driver.SwitchTo().Frame(frameElement);
+            }
+            catch (NoSuchFrameException)
+            {
+                return null;
             }
         };
     }
