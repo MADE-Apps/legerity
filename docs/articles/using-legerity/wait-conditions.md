@@ -134,7 +134,89 @@ You can use the `WaitUntilConditions.ElementExistsInPage` condition to wait for 
 public void ShouldWaitForElementToExistInPage()
 {
     new HomePage(this.App).WaitUntil(
-        WaitUntilConditions.ElementExistsInPage(By.Id("input")),
+        WaitUntilConditions.ElementExistsInPage<HomePage>(By.Id("input")),
+        TimeSpan.FromSeconds(5),
+        3);
+}
+```
+
+### Checking is an element is visible with a specific locator for a driver
+
+You can use the `WaitUntilConditions.ElementIsVisible` condition to wait for an element to be visible with a specific locator.
+
+```csharp
+[Test]
+public void ShouldWaitForElementToBeVisible()
+{
+    this.App.WaitUntil(
+        WaitUntilConditions.ElementIsVisible(By.Id("input")),
+        TimeSpan.FromSeconds(5),
+        3);
+}
+```
+
+### Checking is an element is visible with a specific locator for a page object
+
+You can use the `WaitUntilConditions.ElementIsVisibleInPage` condition to wait for an element to be visible with a specific locator.
+
+```csharp
+[Test]
+public void ShouldWaitForElementToBeVisibleInPage()
+{
+    new HomePage(this.App).WaitUntil(
+        WaitUntilConditions.ElementIsVisibleInPage<HomePage>(By.Id("input")),
+        TimeSpan.FromSeconds(5),
+        3);
+}
+```
+
+### Checking is an element is not visible with a specific locator for a driver
+
+You can use the `WaitUntilConditions.ElementIsNotVisible` condition to wait for an element to be hidden (not visible) with a specific locator.
+
+```csharp
+[Test]
+public void ShouldWaitForElementToNotBeVisible()
+{
+    this.App.WaitUntil(
+        WaitUntilConditions.ElementIsNotVisible(By.Id("input")),
+        TimeSpan.FromSeconds(5),
+        3);
+}
+```
+
+### Checking is an element is not visible with a specific locator for a page object
+
+You can use the `WaitUntilConditions.ElementIsNotVisibleInPage` condition to wait for an element to be hidden (not visible) with a specific locator.
+
+```csharp
+[Test]
+public void ShouldWaitForElementToNotBeVisibleInPage()
+{
+    new HomePage(this.App).WaitUntil(
+        WaitUntilConditions.ElementIsNotVisibleInPage<HomePage>(By.Id("input")),
+        TimeSpan.FromSeconds(5),
+        3);
+}
+```
+
+### Checking a frame is available and switching to it
+
+You can use the `WaitUntilConditions.FrameAvailableToSwitchTo` condition to wait for a frame in the driver to be available and switch to it.
+
+```csharp
+[Test]
+public void ShouldWaitForFrameToBeAvailable()
+{
+    // By frame name
+    this.App.WaitUntil(
+        WaitUntilConditions.FrameAvailableToSwitchTo("frame"),
+        TimeSpan.FromSeconds(5),
+        3);
+
+    // By frame locator
+    this.App.WaitUntil(
+        WaitUntilConditions.FrameAvailableToSwitchTo(By.Id("frame")),
         TimeSpan.FromSeconds(5),
         3);
 }

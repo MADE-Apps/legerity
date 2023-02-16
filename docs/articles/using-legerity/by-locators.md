@@ -16,6 +16,27 @@ You can find more information about the available locators in the following API 
 - [iOS By locators](xref:Legerity.IOS.IOSByExtras)
 - [Android By locators](xref:Legerity.Android.AndroidByExtras)
 - [Web By locators](xref:Legerity.Web.WebByExtras)
+- [By All locator](xref:Legerity.ByAll)
+- [By Nested locator](xref:Legerity.ByNested)
+
+## Finding elements that match all locators
+
+The `ByAll` locator allows you to find elements that match all of the provided locators. This is useful when you want to find an element that matches multiple criteria, such as a button that has a specific text.
+
+```csharp
+RemoteWebElement element = app.FindElement(new ByAll(By.TagName("button"), ByExtras.Text("Send Message")));
+```
+
+## Finding elements that are nested by sequenced locators
+
+The `ByNested` locator allows you to find elements that are nested by a sequence of locators. This is useful when you want to find an element that is nested within other elements, such as a button that is inside a form, inside an ID'd element.
+
+```csharp
+RemoteWebElement element = app.FindElement(new ByNested(By.Id("PersonContainer"), By.TagName("form"), By.TagName("button")));
+```
+
+> [!NOTE]
+> The complete nesting does not need to be known, you can provide a subset of the nesting and the locator will find the element if it is nested within the provided locators. For example, you can also find the same button in the above example by providing the `new ByNested(By.Id("PersonContainer"), By.TagName("button"))` locator too.
 
 ## Finding elements by text
 
