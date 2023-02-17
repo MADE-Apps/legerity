@@ -1,25 +1,45 @@
-namespace Legerity.Exceptions
+namespace Legerity.Exceptions;
+
+using System;
+
+/// <summary>
+/// Defines an exception for when an element is shown when it shouldn't be.
+/// </summary>
+public class ElementShownException : LegerityException
 {
     /// <summary>
-    /// Defines an exception for when an element is shown when it shouldn't be.
+    /// Initializes a new instance of the <see cref="ElementShownException"/> class.
     /// </summary>
-    public class ElementShownException : LegerityException
+    /// <param name="locator">
+    /// The locator used to locate the element.
+    /// </param>
+    public ElementShownException(string locator)
+        : this(locator, null)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ElementShownException"/> class.
-        /// </summary>
-        /// <param name="elementName">
-        /// The name of the element that was shown.
-        /// </param>
-        public ElementShownException(string elementName)
-            : base($"'{elementName}' is shown when it shouldn't")
-        {
-            this.ElementName = elementName;
-        }
-
-        /// <summary>
-        /// Gets the name of the element that was shown.
-        /// </summary>
-        public string ElementName { get; }
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ElementShownException"/> class.
+    /// </summary>
+    /// <param name="locator">
+    /// The locator used to locate the element.
+    /// </param>
+    /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+    public ElementShownException(string locator, Exception innerException)
+        : base($"An element was located using locator: {locator}", innerException)
+    {
+        this.ElementName = locator;
+        this.Locator = locator;
+    }
+
+    /// <summary>
+    /// Gets the locator used to locate the element.
+    /// </summary>
+    public string Locator { get; }
+
+    /// <summary>
+    /// Gets the name of the element that was shown.
+    /// </summary>
+    [Obsolete("ElementName will be removed in a future major release. Please use the Locator instead.")]
+    public string ElementName { get; }
 }

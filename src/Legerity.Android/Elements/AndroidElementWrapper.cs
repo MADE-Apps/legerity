@@ -80,13 +80,22 @@ public class AndroidElementWrapper : ElementWrapper<AndroidElement>
     /// <param name="timeout">
     /// The amount of time the driver should wait when searching for the <paramref name="locator"/> if it is not immediately present.
     /// </param>
+    /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     protected void VerifyDriverElementShown(By locator, TimeSpan? timeout)
     {
         if (timeout == null)
         {
-            if (this.Driver.FindElement(locator) == null)
+            try
             {
-                throw new ElementNotShownException(locator.ToString());
+                if (this.Driver.FindElement(locator) == null)
+                {
+                    throw new ElementNotShownException(locator.ToString());
+                }
+            }
+            catch (NoSuchElementException ex)
+            {
+                throw new ElementNotShownException(locator.ToString(), ex);
             }
         }
         else
@@ -105,13 +114,14 @@ public class AndroidElementWrapper : ElementWrapper<AndroidElement>
     /// <param name="timeout">
     /// The amount of time the driver should wait when searching for the <paramref name="locator"/> if it is not immediately present.
     /// </param>
+    /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     protected void VerifyDriverElementsShown(By locator, TimeSpan? timeout)
     {
         if (timeout == null)
         {
             if (this.Driver.FindElements(locator).Count == 0)
             {
-                throw new ElementNotShownException(locator.ToString());
+                throw new ElementsNotShownException(locator.ToString());
             }
         }
         else

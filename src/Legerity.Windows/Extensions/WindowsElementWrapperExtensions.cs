@@ -21,6 +21,7 @@ public static class WindowsElementWrapperExtensions
     /// <typeparam name="TElementWrapper">The type of <see cref="WindowsElementWrapper"/>.</typeparam>
     /// <typeparam name="TResult">The type of expected result from the wait condition.</typeparam>
     /// <returns>Whether the wait was a success.</returns>
+    /// <exception cref="Exception">Thrown when the <paramref name="exceptionHandler"/> callback throws an exception.</exception>
     public static bool TryWaitUntil<TElementWrapper, TResult>(
         this TElementWrapper element,
         Func<TElementWrapper, TResult> condition,
@@ -52,7 +53,8 @@ public static class WindowsElementWrapperExtensions
     /// <typeparam name="TElementWrapper">The type of <see cref="WindowsElementWrapper"/>.</typeparam>
     /// <typeparam name="TResult">The type of expected result from the wait condition.</typeparam>
     /// <returns>The <typeparamref name="TResult"/> of the wait until operation.</returns>
-    /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
+    /// <exception cref="WebDriverException">Thrown when the condition is not met in the allocated timeout period.</exception>
+    /// <exception cref="Exception">Thrown when the <paramref name="condition"/> callback throws an exception.</exception>
     public static TResult WaitUntil<TElementWrapper, TResult>(
         this TElementWrapper element,
         Func<TElementWrapper, TResult> condition,

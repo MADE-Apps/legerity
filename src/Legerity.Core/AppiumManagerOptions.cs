@@ -1,46 +1,45 @@
-namespace Legerity
+namespace Legerity;
+
+using OpenQA.Selenium.Appium;
+
+/// <summary>
+/// Defines a base model that represents Appium specific configuration options for the <see cref="AppManager"/>.
+/// </summary>
+public abstract class AppiumManagerOptions : AppManagerOptions
 {
-    using OpenQA.Selenium.Appium;
+    /// <summary>
+    /// Gets or sets the additional options to apply to the <see cref="AppiumOptions"/>.
+    /// </summary>
+    public (string, object)[] AdditionalOptions { get; set; }
 
     /// <summary>
-    /// Defines a base model that represents Appium specific configuration options for the <see cref="AppManager"/>.
+    /// Gets or sets the options to configure the Appium driver.
+    /// <para>
+    /// This property is null until the <see cref="Configure"/> method is called.
+    /// <see cref="Configure"/> is called automatically when calling the <see cref="AppManager.StartApp"/> method.
+    /// </para>
     /// </summary>
-    public abstract class AppiumManagerOptions : AppManagerOptions
+    public AppiumOptions AppiumOptions
     {
-        /// <summary>
-        /// Gets or sets the additional options to apply to the <see cref="AppiumOptions"/>.
-        /// </summary>
-        public (string, object)[] AdditionalOptions { get; set; }
+        get => this.DriverOptions as AppiumOptions;
+        set => this.DriverOptions = value;
+    }
 
-        /// <summary>
-        /// Gets or sets the options to configure the Appium driver.
-        /// <para>
-        /// This property is null until the <see cref="Configure"/> method is called.
-        /// <see cref="Configure"/> is called automatically when calling the <see cref="AppManager.StartApp"/> method.
-        /// </para>
-        /// </summary>
-        public AppiumOptions AppiumOptions
+    /// <summary>
+    /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
+    /// </summary>
+    public virtual void Configure()
+    {
+        this.AppiumOptions = new AppiumOptions();
+
+        if (this.AdditionalOptions == null)
         {
-            get => this.DriverOptions as AppiumOptions;
-            set => this.DriverOptions = value;
+            return;
         }
 
-        /// <summary>
-        /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
-        /// </summary>
-        public virtual void Configure()
+        foreach ((string capabilityName, object capabilityValue) in this.AdditionalOptions)
         {
-            this.AppiumOptions = new AppiumOptions();
-
-            if (this.AdditionalOptions == null)
-            {
-                return;
-            }
-
-            foreach ((string capabilityName, object capabilityValue) in this.AdditionalOptions)
-            {
-                this.AppiumOptions.AddAdditionalCapability(capabilityName, capabilityValue);
-            }
+            this.AppiumOptions.AddAdditionalCapability(capabilityName, capabilityValue);
         }
     }
 }

@@ -18,6 +18,7 @@ public static class ElementExtensions
     /// </summary>
     /// <param name="element">The element to determine the rect for.</param>
     /// <returns>The elements bounding rectangle.</returns>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public static Rectangle GetBoundingRect(this IWebElement element)
     {
         Point location = element.Location;
@@ -31,6 +32,7 @@ public static class ElementExtensions
     /// <param name="element">The remote web element.</param>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static RemoteWebElement FindWebElement(this IWebElement element, By locator)
     {
         return element.FindElement(locator) as RemoteWebElement;
@@ -53,6 +55,7 @@ public static class ElementExtensions
     /// <param name="element">The remote web element.</param>
     /// <param name="text">The text to find.</param>
     /// <returns>A <see cref="IWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static IWebElement FindElementByText(this IWebElement element, string text)
     {
         return element.FindElement(ByExtras.Text(text));
@@ -75,6 +78,7 @@ public static class ElementExtensions
     /// <param name="element">The remote web element.</param>
     /// <param name="text">The partial text to find.</param>
     /// <returns>A <see cref="IWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static IWebElement FindElementByPartialText(this IWebElement element, string text)
     {
         return element.FindElement(ByExtras.PartialText(text));
@@ -110,6 +114,7 @@ public static class ElementExtensions
     /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
     /// <param name="exceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
     /// <returns>Whether the wait was a success.</returns>
+    /// <exception cref="Exception">Thrown when the <paramref name="exceptionHandler"/> callback throws an exception.</exception>
     public static bool TryWaitUntil(
         this RemoteWebElement element,
         Func<RemoteWebElement, bool> condition,
@@ -139,7 +144,8 @@ public static class ElementExtensions
     /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
     /// <typeparam name="TResult">The type of expected result from the wait condition.</typeparam>
     /// <returns>The <typeparamref name="TResult"/> of the wait until operation.</returns>
-    /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
+    /// <exception cref="WebDriverException">Thrown when the condition is not met in the allocated timeout period.</exception>
+    /// <exception cref="Exception">Thrown when the <paramref name="condition"/> callback throws an exception.</exception>
     public static TResult WaitUntil<TResult>(
         this RemoteWebElement element,
         Func<RemoteWebElement, TResult> condition,

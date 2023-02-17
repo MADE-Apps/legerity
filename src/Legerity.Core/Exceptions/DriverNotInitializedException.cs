@@ -1,17 +1,16 @@
-namespace Legerity.Exceptions
+namespace Legerity.Exceptions;
+
+/// <summary>
+/// Defines an exception thrown when an attempt is made to access a driver which has not been initialized.
+/// </summary>
+public class DriverNotInitializedException : LegerityException
 {
     /// <summary>
-    /// Defines an exception thrown when an attempt is made to access a driver which has not been initialized.
+    /// Initializes a new instance of the <see cref="DriverNotInitializedException"/> class.
     /// </summary>
-    public class DriverNotInitializedException : LegerityException
+    /// <param name="message">The message that describes the error.</param>
+    internal DriverNotInitializedException(string message)
+        : base(message)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DriverNotInitializedException"/> class.
-        /// </summary>
-        /// <param name="message">The message that describes the error.</param>
-        internal DriverNotInitializedException(string message)
-            : base(message)
-        {
-        }
     }
 }

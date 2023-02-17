@@ -18,6 +18,7 @@ public static class DriverExtensions
     /// <param name="driver">The remote web driver.</param>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static RemoteWebElement FindWebElement(this RemoteWebDriver driver, By locator)
     {
         return driver.FindElement(locator) as RemoteWebElement;
@@ -40,6 +41,7 @@ public static class DriverExtensions
     /// <param name="driver">The remote web driver.</param>
     /// <param name="text">The text to find.</param>
     /// <returns>A <see cref="IWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static IWebElement FindElementByText(this RemoteWebDriver driver, string text)
     {
         return driver.FindElement(ByExtras.Text(text));
@@ -62,6 +64,7 @@ public static class DriverExtensions
     /// <param name="driver">The remote web driver.</param>
     /// <param name="text">The partial text to find.</param>
     /// <returns>A <see cref="IWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static IWebElement FindElementByPartialText(this RemoteWebDriver driver, string text)
     {
         return driver.FindElement(ByExtras.PartialText(text));
@@ -109,6 +112,7 @@ public static class DriverExtensions
     /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
     /// <param name="exceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
     /// <returns>Whether the wait was a success.</returns>
+    /// <exception cref="Exception">Thrown when the <paramref name="exceptionHandler"/> callback throws an exception.</exception>
     public static bool TryWaitUntil(
         this IWebDriver appDriver,
         Func<IWebDriver, bool> condition,
@@ -138,7 +142,7 @@ public static class DriverExtensions
     /// <param name="retries">An optional count of retries after a timeout before accepting the failure.</param>
     /// <typeparam name="TResult">The type of expected result from the wait condition.</typeparam>
     /// <returns>The <typeparamref name="TResult"/> of the wait until operation.</returns>
-    /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
+    /// <exception cref="WebDriverException">Thrown when the condition is not met in the allocated timeout period.</exception>
     public static TResult WaitUntil<TResult>(
         this IWebDriver appDriver,
         Func<IWebDriver, TResult> condition,

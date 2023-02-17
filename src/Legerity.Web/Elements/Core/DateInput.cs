@@ -36,6 +36,7 @@ public class DateInput : TextInput
     /// <summary>
     /// Gets the value of the date picker.
     /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual string Value => this.GetValue();
 
     /// <summary>
@@ -61,6 +62,7 @@ public class DateInput : TextInput
     /// Sets the date to the specified date.
     /// </summary>
     /// <param name="date">The date to set.</param>
+    /// <exception cref="WebDriverException">Thrown when this <see cref="IWebDriver" /> instance does not implement <see cref="IJavaScriptExecutor" />.</exception>
     public virtual void SetDate(DateTime date)
     {
         this.ElementDriver.ExecuteJavaScript(

@@ -1,80 +1,82 @@
-namespace Legerity.Windows.Elements.Core
+namespace Legerity.Windows.Elements.Core;
+
+using System;
+using Legerity.Windows.Extensions;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Windows;
+using OpenQA.Selenium.Remote;
+
+/// <summary>
+/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ProgressBar control.
+/// </summary>
+public class ProgressBar : WindowsElementWrapper
 {
-    using System;
-    using Legerity.Windows.Extensions;
-    using OpenQA.Selenium.Appium;
-    using OpenQA.Selenium.Appium.Windows;
-    using OpenQA.Selenium.Remote;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ProgressBar"/> class.
+    /// </summary>
+    /// <param name="element">
+    /// The <see cref="WindowsElement"/> reference.
+    /// </param>
+    public ProgressBar(WindowsElement element)
+        : base(element)
+    {
+    }
 
     /// <summary>
-    /// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ProgressBar control.
+    /// Gets the value of the progress bar.
     /// </summary>
-    public class ProgressBar : WindowsElementWrapper
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    public virtual double Percentage => this.GetRangeValue();
+
+    /// <summary>
+    /// Gets a value indicating whether the control is in an indeterminate state.
+    /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    public bool IsIndeterminate =>
+        this.GetAttribute("IsRangeValuePatternAvailable").Equals(
+            "False",
+            StringComparison.CurrentCultureIgnoreCase);
+
+    /// <summary>
+    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ProgressBar"/> without direct casting.
+    /// </summary>
+    /// <param name="element">
+    /// The <see cref="WindowsElement"/>.
+    /// </param>
+    /// <returns>
+    /// The <see cref="ProgressBar"/>.
+    /// </returns>
+    public static implicit operator ProgressBar(WindowsElement element)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ProgressBar"/> class.
-        /// </summary>
-        /// <param name="element">
-        /// The <see cref="WindowsElement"/> reference.
-        /// </param>
-        public ProgressBar(WindowsElement element)
-            : base(element)
-        {
-        }
+        return new ProgressBar(element);
+    }
 
-        /// <summary>
-        /// Gets the value of the progress bar.
-        /// </summary>
-        public virtual double Percentage => this.GetRangeValue();
+    /// <summary>
+    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ProgressBar"/> without direct casting.
+    /// </summary>
+    /// <param name="element">
+    /// The <see cref="AppiumWebElement"/>.
+    /// </param>
+    /// <returns>
+    /// The <see cref="ProgressBar"/>.
+    /// </returns>
+    public static implicit operator ProgressBar(AppiumWebElement element)
+    {
+        return new ProgressBar(element as WindowsElement);
+    }
 
-        /// <summary>
-        /// Gets a value indicating whether the control is in an indeterminate state.
-        /// </summary>
-        public bool IsIndeterminate =>
-            this.GetAttribute("IsRangeValuePatternAvailable").Equals(
-                "False",
-                StringComparison.CurrentCultureIgnoreCase);
-
-        /// <summary>
-        /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ProgressBar"/> without direct casting.
-        /// </summary>
-        /// <param name="element">
-        /// The <see cref="WindowsElement"/>.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ProgressBar"/>.
-        /// </returns>
-        public static implicit operator ProgressBar(WindowsElement element)
-        {
-            return new ProgressBar(element);
-        }
-
-        /// <summary>
-        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ProgressBar"/> without direct casting.
-        /// </summary>
-        /// <param name="element">
-        /// The <see cref="AppiumWebElement"/>.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ProgressBar"/>.
-        /// </returns>
-        public static implicit operator ProgressBar(AppiumWebElement element)
-        {
-            return new ProgressBar(element as WindowsElement);
-        }
-
-        /// <summary>
-        /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ProgressBar"/> without direct casting.
-        /// </summary>
-        /// <param name="element">
-        /// The <see cref="RemoteWebElement"/>.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ProgressBar"/>.
-        /// </returns>
-        public static implicit operator ProgressBar(RemoteWebElement element)
-        {
-            return new ProgressBar(element as WindowsElement);
-        }
+    /// <summary>
+    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ProgressBar"/> without direct casting.
+    /// </summary>
+    /// <param name="element">
+    /// The <see cref="RemoteWebElement"/>.
+    /// </param>
+    /// <returns>
+    /// The <see cref="ProgressBar"/>.
+    /// </returns>
+    public static implicit operator ProgressBar(RemoteWebElement element)
+    {
+        return new ProgressBar(element as WindowsElement);
     }
 }

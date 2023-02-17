@@ -1,83 +1,92 @@
-namespace Legerity.Web.Elements.Core
+namespace Legerity.Web.Elements.Core;
+
+using Legerity.Web.Elements;
+using Legerity.Web.Extensions;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
+
+/// <summary>
+/// Defines a <see cref="IWebElement"/> wrapper for the core web Input text control.
+/// </summary>
+public class TextInput : WebElementWrapper
 {
-    using Legerity.Web.Elements;
-    using Legerity.Web.Extensions;
-    using OpenQA.Selenium;
-    using OpenQA.Selenium.Remote;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TextInput"/> class.
+    /// </summary>
+    /// <param name="element">
+    /// The <see cref="IWebElement"/> reference.
+    /// </param>
+    public TextInput(IWebElement element)
+        : this(element as RemoteWebElement)
+    {
+    }
 
     /// <summary>
-    /// Defines a <see cref="IWebElement"/> wrapper for the core web Input text control.
+    /// Initializes a new instance of the <see cref="TextInput"/> class.
     /// </summary>
-    public class TextInput : WebElementWrapper
+    /// <param name="element">
+    /// The <see cref="RemoteWebElement"/> reference.
+    /// </param>
+    public TextInput(RemoteWebElement element)
+        : base(element)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TextInput"/> class.
-        /// </summary>
-        /// <param name="element">
-        /// The <see cref="IWebElement"/> reference.
-        /// </param>
-        public TextInput(IWebElement element)
-            : this(element as RemoteWebElement)
-        {
-        }
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TextInput"/> class.
-        /// </summary>
-        /// <param name="element">
-        /// The <see cref="RemoteWebElement"/> reference.
-        /// </param>
-        public TextInput(RemoteWebElement element)
-            : base(element)
-        {
-        }
+    /// <summary>
+    /// Gets the text value of the text input.
+    /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    public virtual string Text => this.GetValue();
 
-        /// <summary>
-        /// Gets the text value of the text input.
-        /// </summary>
-        public virtual string Text => this.GetValue();
+    /// <summary>
+    /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="TextInput"/> without direct casting.
+    /// </summary>
+    /// <param name="element">
+    /// The <see cref="IWebElement"/>.
+    /// </param>
+    /// <returns>
+    /// The <see cref="TextInput"/>.
+    /// </returns>
+    public static implicit operator TextInput(RemoteWebElement element)
+    {
+        return new TextInput(element);
+    }
 
-        /// <summary>
-        /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="TextInput"/> without direct casting.
-        /// </summary>
-        /// <param name="element">
-        /// The <see cref="IWebElement"/>.
-        /// </param>
-        /// <returns>
-        /// The <see cref="TextInput"/>.
-        /// </returns>
-        public static implicit operator TextInput(RemoteWebElement element)
-        {
-            return new TextInput(element);
-        }
+    /// <summary>
+    /// Sets the text of the text box to the specified text.
+    /// </summary>
+    /// <param name="text">The text to display.</param>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    public virtual void SetText(string text)
+    {
+        this.ClearText();
+        this.AppendText(text);
+    }
 
-        /// <summary>
-        /// Sets the text of the text box to the specified text.
-        /// </summary>
-        /// <param name="text">The text to display.</param>
-        public virtual void SetText(string text)
-        {
-            this.ClearText();
-            this.AppendText(text);
-        }
+    /// <summary>
+    /// Appends the specified text to the text box.
+    /// </summary>
+    /// <param name="text">The text to append.</param>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    public virtual void AppendText(string text)
+    {
+        this.Click();
+        this.Element.SendKeys(text);
+    }
 
-        /// <summary>
-        /// Appends the specified text to the text box.
-        /// </summary>
-        /// <param name="text">The text to append.</param>
-        public virtual void AppendText(string text)
-        {
-            this.Click();
-            this.Element.SendKeys(text);
-        }
-
-        /// <summary>
-        /// Clears the text from the text box.
-        /// </summary>
-        public virtual void ClearText()
-        {
-            this.Click();
-            this.Element.Clear();
-        }
+    /// <summary>
+    /// Clears the text from the text box.
+    /// </summary>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    public virtual void ClearText()
+    {
+        this.Click();
+        this.Element.Clear();
     }
 }

@@ -66,6 +66,9 @@ public class ScrollViewer : WindowsElementWrapper
     /// <summary>
     /// Scrolls the scroll viewer to the top.
     /// </summary>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ScrollToTop()
     {
         this.Element.SendKeys(Keys.Home);
@@ -74,6 +77,9 @@ public class ScrollViewer : WindowsElementWrapper
     /// <summary>
     /// Scrolls the scroll viewer to the bottom.
     /// </summary>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ScrollToBottom()
     {
         this.Element.SendKeys(Keys.End);

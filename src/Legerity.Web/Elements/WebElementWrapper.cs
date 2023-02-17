@@ -56,11 +56,13 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <summary>
     /// Gets a value indicating whether the element is enabled.
     /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual bool IsEnabled => this.Element.Enabled;
 
     /// <summary>
     /// Gets a value indicating whether the element is visible.
     /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual bool IsVisible => this.Element.Displayed;
 
     /// <summary>
@@ -82,6 +84,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// </summary>
     /// <param name="locator">The locator to find a child element by.</param>
     /// <returns>The <see cref="RemoteWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public RemoteWebElement FindElement(By locator)
     {
         return this.Element.FindWebElement(locator);
@@ -112,11 +115,17 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
         catch (ElementNotShownException)
         {
         }
+        catch (NoSuchElementException)
+        {
+        }
     }
 
     /// <summary>
     /// Clicks the element.
     /// </summary>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Click()
     {
         this.Element.Click();
@@ -127,6 +136,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// </summary>
     /// <param name="attributeName">The name of the attribute.</param>
     /// <returns>The attribute's current value if it exists; otherwise, null.</returns>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public string GetAttribute(string attributeName)
     {
         return this.Element.GetAttribute(attributeName);
@@ -138,7 +148,8 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <param name="locator">
     /// The locator for the element to find.
     /// </param>
-    /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
+    /// <exception cref="ElementNotShownException">Thrown when the element is not shown.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void VerifyElementShown(By locator)
     {
         this.VerifyElementShown(locator, null);
@@ -151,14 +162,22 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <param name="timeout">
     /// The amount of time the driver should wait when searching for the <paramref name="locator"/> if it is not immediately present.
     /// </param>
-    /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the element is not shown.</exception>
+    /// <exception cref="ElementNotShownException">Thrown when the element is not shown.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void VerifyElementShown(By locator, TimeSpan? timeout)
     {
         if (timeout == null)
         {
-            if (this.Element.FindElement(locator) == null)
+            try
             {
-                throw new ElementNotShownException(locator.ToString());
+                if (this.Element.FindElement(locator) == null)
+                {
+                    throw new ElementNotShownException(locator.ToString());
+                }
+            }
+            catch (NoSuchElementException ex)
+            {
+                throw new ElementNotShownException(locator.ToString(), ex);
             }
         }
         else
@@ -174,7 +193,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <param name="locator">
     /// The locator for the element to find.
     /// </param>
-    /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the elements are not shown.</exception>
+    /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public void VerifyElementsShown(By locator)
     {
         this.VerifyElementsShown(locator, null);
@@ -189,14 +208,14 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <param name="timeout">
     /// The amount of time the driver should wait when searching for the <paramref name="locator"/> if it is not immediately present.
     /// </param>
-    /// <exception cref="T:Legerity.Exceptions.ElementNotShownException">Thrown if the elements are not shown.</exception>
+    /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public void VerifyElementsShown(By locator, TimeSpan? timeout)
     {
         if (timeout == null)
         {
             if (this.Element.FindElements(locator).Count == 0)
             {
-                throw new ElementNotShownException(locator.ToString());
+                throw new ElementsNotShownException(locator.ToString());
             }
         }
         else

@@ -33,13 +33,13 @@ public class ByAll : By
     /// <summary>Finds the first element matching the criteria.</summary>
     /// <param name="context">An <see cref="T:OpenQA.Selenium.ISearchContext" /> object to use to search for the elements.</param>
     /// <returns>The first matching <see cref="T:OpenQA.Selenium.IWebElement" /> on the current context.</returns>
-    /// <exception cref="NoSuchElementException">Unable to find element using the by locators.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public override IWebElement FindElement(ISearchContext context)
     {
         ReadOnlyCollection<IWebElement> elements = this.FindElements(context);
         if (elements.Count == 0)
         {
-            throw new NoSuchElementException($"Unable to find element using {this}");
+            throw new NoSuchElementException($"No element could be located using locator: {this}");
         }
 
         return elements[0];

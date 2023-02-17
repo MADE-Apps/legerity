@@ -63,6 +63,7 @@ public static class WaitUntilConditions
     /// </summary>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>True if the element exists; otherwise, false.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static Func<IWebDriver, bool> ElementExists(By locator)
     {
         return driver => driver.FindElement(locator) != null;
@@ -77,6 +78,7 @@ public static class WaitUntilConditions
     /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>True if the element exists; otherwise, false.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static Func<TElement, bool> ElementExistsInElement<TElement>(By locator)
         where TElement : IWebElement
     {
@@ -92,6 +94,7 @@ public static class WaitUntilConditions
     /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>True if the element exists; otherwise, false.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static Func<IElementWrapper<TElement>, bool> ElementExistsInElementWrapper<TElement>(By locator)
         where TElement : IWebElement
     {
@@ -107,10 +110,11 @@ public static class WaitUntilConditions
     /// <typeparam name="TPage">The type of <see cref="BasePage"/>.</typeparam>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>True if the element exists; otherwise, false.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static Func<TPage, bool> ElementExistsInPage<TPage>(By locator)
         where TPage : BasePage
     {
-        return page => page.App.FindElement(locator) != null;
+        return page => page.FindElement(locator) != null;
     }
 
     /// <summary>
@@ -118,6 +122,7 @@ public static class WaitUntilConditions
     /// </summary>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>True if the element is visible; otherwise, false.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static Func<IWebDriver, bool> ElementIsVisible(By locator)
     {
         return driver =>
@@ -139,6 +144,7 @@ public static class WaitUntilConditions
     /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>True if the element is visible; otherwise, false.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static Func<TElement, bool> ElementIsVisibleInElement<TElement>(By locator)
         where TElement : IWebElement
     {
@@ -161,6 +167,7 @@ public static class WaitUntilConditions
     /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>True if the element is visible; otherwise, false.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static Func<IElementWrapper<TElement>, bool> ElementIsVisibleInElementWrapper<TElement>(By locator)
         where TElement : IWebElement
     {
@@ -183,6 +190,7 @@ public static class WaitUntilConditions
     /// <typeparam name="TPage">The type of <see cref="BasePage"/>.</typeparam>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>True if the element is visible; otherwise, false.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static Func<TPage, bool> ElementIsVisibleInPage<TPage>(By locator)
         where TPage : BasePage
     {
@@ -190,7 +198,7 @@ public static class WaitUntilConditions
         {
             try
             {
-                return page.App.FindElement(locator).Displayed;
+                return page.FindElement(locator).Displayed;
             }
             catch (StaleElementReferenceException)
             {
@@ -294,7 +302,7 @@ public static class WaitUntilConditions
         {
             try
             {
-                return !page.App.FindElement(locator).Displayed;
+                return !page.FindElement(locator).Displayed;
             }
             catch (NoSuchElementException)
             {
@@ -334,6 +342,8 @@ public static class WaitUntilConditions
     /// </summary>
     /// <param name="frameLocator">The locator of the frame to switch to.</param>
     /// <returns>The <see cref="IWebDriver"/> for the frame that has been switched to.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid.</exception>
     public static Func<IWebDriver, IWebDriver> FrameAvailableToSwitchTo(By frameLocator)
     {
         return driver =>

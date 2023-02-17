@@ -1,23 +1,22 @@
-namespace Legerity.Windows.Exceptions
+namespace Legerity.Windows.Exceptions;
+
+/// <summary>
+/// Defines an exception for when the WinAppDriver cannot be found.
+/// </summary>
+public class WinAppDriverNotFoundException : LegerityException
 {
     /// <summary>
-    /// Defines an exception for when the WinAppDriver cannot be found.
+    /// Initializes a new instance of the <see cref="WinAppDriverNotFoundException"/> class.
     /// </summary>
-    public class WinAppDriverNotFoundException : LegerityException
+    /// <param name="path">The expected path for the WinAppDriver.</param>
+    internal WinAppDriverNotFoundException(string path)
+        : base($"The WinAppDriver could not be located at {path}. Please ensure it is installed first.")
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WinAppDriverNotFoundException"/> class.
-        /// </summary>
-        /// <param name="path">The expected path for the WinAppDriver.</param>
-        internal WinAppDriverNotFoundException(string path)
-            : base($"The WinAppDriver could not be located at {path}. Please ensure it is installed first.")
-        {
-            this.Path = path;
-        }
-
-        /// <summary>
-        /// Gets or sets the path where the WinAppDriver should be located.
-        /// </summary>
-        public string Path { get; set; }
+        this.Path = path;
     }
+
+    /// <summary>
+    /// Gets or sets the path where the WinAppDriver should be located.
+    /// </summary>
+    public string Path { get; set; }
 }

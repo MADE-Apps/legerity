@@ -20,6 +20,7 @@ public static class PageExtensions
     /// <param name="exceptionHandler">The optional exception handler thrown if an error occurs as a result of timeout.</param>
     /// <typeparam name="TPage">The type of <see cref="BasePage"/>.</typeparam>
     /// <returns>Whether the wait was a success and the instance of the page.</returns>
+    /// <exception cref="Exception">Thrown when the <paramref name="exceptionHandler"/> callback throws an exception.</exception>
     public static (bool success, TPage page) TryWaitUntil<TPage>(
         this TPage page,
         Func<TPage, bool> condition,
@@ -51,7 +52,8 @@ public static class PageExtensions
     /// <typeparam name="TPage">The type of <see cref="BasePage"/>.</typeparam>
     /// <typeparam name="TResult">The type of expected result from the wait condition.</typeparam>
     /// <returns>The instance of the page.</returns>
-    /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
+    /// <exception cref="WebDriverException">Thrown when the condition is not met in the allocated timeout period.</exception>
+    /// <exception cref="Exception">Thrown when the <paramref name="condition"/> callback throws an exception.</exception>
     public static TPage WaitUntil<TPage, TResult>(
         this TPage page,
         Func<TPage, TResult> condition,

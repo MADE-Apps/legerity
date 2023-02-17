@@ -1,53 +1,52 @@
-namespace Legerity.Helpers
+namespace Legerity.Helpers;
+
+using System;
+using Legerity.Exceptions;
+using OpenQA.Selenium.Appium.Service;
+
+/// <summary>
+/// Defines a helper class for launching a local Appium server.
+/// </summary>
+public static class AppiumServerHelper
 {
-    using System;
-    using Legerity.Exceptions;
-    using OpenQA.Selenium.Appium.Service;
+    private static AppiumLocalService AppiumServer { get; set; }
 
     /// <summary>
-    /// Defines a helper class for launching a local Appium server.
+    /// Loads an instance of the Appium server process.
     /// </summary>
-    public static class AppiumServerHelper
+    /// <exception cref="AppiumServerLoadFailedException">Thrown when the Appium server fails to load.</exception>
+    public static void Run()
     {
-        private static AppiumLocalService AppiumServer { get; set; }
+        if (AppiumServer is { IsRunning: true })
+        {
+            return;
+        }
 
-        /// <summary>
-        /// Loads an instance of the Appium server process.
-        /// </summary>
-        /// <exception cref="T:Legerity.Exceptions.AppiumServerLoadFailedException">Thrown if the Appium server failed to load.</exception>
-        public static void Run()
+        try
+        {
+            AppiumServer = AppiumLocalService.BuildDefaultService();
+            AppiumServer.Start();
+        }
+        catch (Exception ex)
+        {
+            throw new AppiumServerLoadFailedException(ex);
+        }
+    }
+
+    /// <summary>
+    /// Stops the running instance of the WinAppDriver process.
+    /// </summary>
+    public static void Stop()
+    {
+        try
         {
             if (AppiumServer is { IsRunning: true })
             {
-                return;
-            }
-
-            try
-            {
-                AppiumServer = AppiumLocalService.BuildDefaultService();
-                AppiumServer.Start();
-            }
-            catch (Exception ex)
-            {
-                throw new AppiumServerLoadFailedException(ex);
+                AppiumServer.Dispose();
             }
         }
-
-        /// <summary>
-        /// Stops the running instance of the WinAppDriver process.
-        /// </summary>
-        public static void Stop()
+        catch (Exception)
         {
-            try
-            {
-                if (AppiumServer is { IsRunning: true })
-                {
-                    AppiumServer.Dispose();
-                }
-            }
-            catch (Exception)
-            {
-            }
         }
     }
 }

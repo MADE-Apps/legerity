@@ -20,6 +20,7 @@ public static class ElementWrapperExtensions
     /// </typeparam>
     /// <param name="element">The element to determine the rect for.</param>
     /// <returns>The elements bounding rectangle.</returns>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public static Rectangle GetBoundingRect<TElement>(this IElementWrapper<TElement> element)
         where TElement : IWebElement
     {
@@ -35,6 +36,7 @@ public static class ElementWrapperExtensions
     /// <param name="element">The remote web element.</param>
     /// <param name="locator">The locator to find the element.</param>
     /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static RemoteWebElement FindWebElement<TElement>(this IElementWrapper<TElement> element, By locator)
         where TElement : IWebElement
     {
@@ -66,6 +68,7 @@ public static class ElementWrapperExtensions
     /// <param name="element">The remote web element.</param>
     /// <param name="text">The text to find.</param>
     /// <returns>A <see cref="IWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static IWebElement FindElementByText<TElement>(this IElementWrapper<TElement> element, string text)
         where TElement : IWebElement
     {
@@ -97,6 +100,7 @@ public static class ElementWrapperExtensions
     /// <param name="element">The remote web element.</param>
     /// <param name="text">The partial text to find.</param>
     /// <returns>A <see cref="IWebElement"/>.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static IWebElement FindElementByPartialText<TElement>(
         this IElementWrapper<TElement> element,
         string text)
@@ -147,6 +151,7 @@ public static class ElementWrapperExtensions
     /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
     /// <typeparam name="TResult">The type of expected result from the wait condition.</typeparam>
     /// <returns>Whether the wait was a success.</returns>
+    /// <exception cref="Exception">Thrown when the <paramref name="exceptionHandler"/> callback throws an exception.</exception>
     public static bool TryWaitUntil<TElement, TResult>(
         this IElementWrapper<TElement> element,
         Func<IElementWrapper<TElement>, TResult> condition,
@@ -178,7 +183,8 @@ public static class ElementWrapperExtensions
     /// <typeparam name="TElement">The type of <see cref="IWebElement"/>.</typeparam>
     /// <typeparam name="TResult">The type of expected result from the wait condition.</typeparam>
     /// <returns>The <typeparamref name="TResult"/> of the wait until operation.</returns>
-    /// <exception cref="WebDriverException">Thrown if the condition is not met in the allocated timeout period.</exception>
+    /// <exception cref="WebDriverException">Thrown when the condition is not met in the allocated timeout period.</exception>
+    /// <exception cref="Exception">Thrown when the <paramref name="condition"/> callback throws an exception.</exception>
     public static TResult WaitUntil<TElement, TResult>(
         this IElementWrapper<TElement> element,
         Func<IElementWrapper<TElement>, TResult> condition,
