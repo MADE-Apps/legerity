@@ -89,68 +89,6 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
     /// <param name="appActivity">
     /// The activity of the application to start, e.g. com.instagram.android.activity.MainTabActivity.
     /// </param>
-    /// <param name="osVersion">
-    /// The version of Android to run the application on.
-    /// </param>
-    /// <param name="deviceName">
-    /// The name of the Android device to run the application on.
-    /// </param>
-    /// <param name="deviceId">
-    /// The ID of the Android device to run the application on.
-    /// </param>
-    [Obsolete("This constructor will be removed in a future major release. Please use the (string appId, string appActivity) instead and provide optional parameters for configuring for the device needed.")]
-    public AndroidAppManagerOptions(
-        string appId,
-        string appActivity,
-        string osVersion,
-        string deviceName,
-        string deviceId)
-        : this(appId, appActivity, null, osVersion, deviceName, deviceId, null)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
-    /// </summary>
-    /// <param name="appId">
-    /// The ID of the application under test, e.g. com.instagram.android.
-    /// </param>
-    /// <param name="appActivity">
-    /// The activity of the application to start, e.g. com.instagram.android.activity.MainTabActivity.
-    /// </param>
-    /// <param name="osVersion">
-    /// The version of Android to run the application on.
-    /// </param>
-    /// <param name="deviceName">
-    /// The name of the Android device to run the application on.
-    /// </param>
-    /// <param name="deviceId">
-    /// The ID of the Android device to run the application on.
-    /// </param>
-    /// <param name="additionalOptions">
-    /// The additional options to apply to the <see cref="AppiumOptions"/>.
-    /// </param>
-    [Obsolete("This constructor will be removed in a future major release. Please use the (string appId, string appActivity, params (string, object)[] additionalOptions) instead and provide optional parameters for configuring for the device needed.")]
-    public AndroidAppManagerOptions(
-        string appId,
-        string appActivity,
-        string osVersion,
-        string deviceName,
-        string deviceId,
-        params (string, object)[] additionalOptions)
-        : this(appId, appActivity, null, osVersion, deviceName, deviceId, additionalOptions)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AndroidAppManagerOptions"/> class.
-    /// </summary>
-    /// <param name="appId">
-    /// The ID of the application under test, e.g. com.instagram.android.
-    /// </param>
-    /// <param name="appActivity">
-    /// The activity of the application to start, e.g. com.instagram.android.activity.MainTabActivity.
-    /// </param>
     /// <param name="appPath">
     /// The path of the application under test, e.g. c:/users/legerity/source/myapp/com.instagram.android.apk.
     /// </param>
