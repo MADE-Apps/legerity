@@ -88,14 +88,37 @@ public class DatePicker : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetDate(DateTime date)
     {
-        // Taps the time picker to show the popup.
+        DateTime? selectedDate = this.SelectedDate;
+        if (selectedDate.HasValue && selectedDate.Value.Date == date.Date)
+        {
+            return;
+        }
+
+        string selectedDay = selectedDate?.ToString("%d");
+        string selectedMonth = selectedDate?.ToString("MMMM");
+        string selectedYear = selectedDate?.ToString("yyyy");
+
+        // Taps the date picker to show the popup.
         this.Click();
 
-        // Finds the popup and changes the time.
+        // Finds the popup and changes the date.
         WindowsElementWrapper popup = this.Driver.FindElement(WindowsByExtras.AutomationId("DatePickerFlyoutPresenter"));
-        popup.FindElement(WindowsByExtras.AutomationId("DayLoopingSelector")).FindElementByName(date.ToString("%d")).Click();
-        popup.FindElement(WindowsByExtras.AutomationId("MonthLoopingSelector")).FindElementByName(date.ToString("MMMM")).Click();
-        popup.FindElement(WindowsByExtras.AutomationId("YearLoopingSelector")).FindElementByName(date.ToString("yyyy")).Click();
+
+        if (selectedDay != date.ToString("%d"))
+        {
+            popup.FindElement(WindowsByExtras.AutomationId("DayLoopingSelector")).FindElementByName(date.ToString("%d")).Click();
+        }
+
+        if (selectedMonth != date.ToString("MMMM"))
+        {
+            popup.FindElement(WindowsByExtras.AutomationId("MonthLoopingSelector")).FindElementByName(date.ToString("MMMM")).Click();
+        }
+
+        if (selectedYear != date.ToString("yyyy"))
+        {
+            popup.FindElement(WindowsByExtras.AutomationId("YearLoopingSelector")).FindElementByName(date.ToString("yyyy")).Click();
+        }
+
         popup.FindElement(WindowsByExtras.AutomationId("AcceptButton")).Click();
     }
 
