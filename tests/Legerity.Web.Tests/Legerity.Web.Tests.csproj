@@ -11,7 +11,7 @@
     <PackageReference Include="nunit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="113.0.5672.6300" />
-    <PackageReference Include="Shouldly" Version="4.2.0" />
+    <PackageReference Include="Shouldly" Version="4.2.1" />
   </ItemGroup>
 
   <ItemGroup>
