@@ -4,6 +4,7 @@ namespace Legerity.Android.Elements.Core
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Interactions;
 
     /// <summary>
     /// Defines a <see cref="AndroidElement"/> wrapper for the core Android TimePicker control.
@@ -120,6 +121,43 @@ namespace Legerity.Android.Elements.Core
         //        this.PMRadioButton.Click();;
         //    }
         //}
+        public void SetTime(int hours, int minutes)
+        {
+            this.SetTime(new TimeSpan(hours, minutes, 0));
+        }
+
+        public void SetTime(TimeSpan time)
+        {
+            if (time.Hours < 0 || time.Hours > 24)
+            {
+                throw new ArgumentOutOfRangeException(nameof(time), "Hours must be between 0 and 24.");
+            }
+
+            string hourFormat = time > noon ? "PM" : "AM";
+            int hours = time.Hours > 12 ? time.Hours - 12 : time.Hours;
+            int minutes = time.Minutes;
+
+            // Create an instance of Actions
+            Actions actions = new Actions(this.Driver);
+
+            // Click on the HourTextView and send keys
+            actions.MoveToElement((IWebElement)this.HourTextView).Click().SendKeys(hours.ToString()).Perform();
+
+            // Click on the MinutesTextView and send keys
+            actions.MoveToElement((IWebElement)this.MinutesTextView).Click().SendKeys(minutes.ToString()).Perform();
+
+            if (hourFormat.Equals("AM", StringComparison.CurrentCultureIgnoreCase))
+            {
+                this.AMRadioButton.Click();
+            }
+            else
+            {
+                this.PMRadioButton.Click();
+            }
+        }
+
+
+
 
         //private void SetByWheel(int hours, int minutes)
         //{

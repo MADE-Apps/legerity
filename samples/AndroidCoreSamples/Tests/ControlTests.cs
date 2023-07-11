@@ -145,27 +145,28 @@ namespace AndroidCoreSamples.Tests
 
             timePicker.IsEnabled.ShouldBeTrue();
 
-            int currentTimeHours = DateTime.Now.TimeOfDay.Hours;
+            int currentTimeHours = DateTime.Now.TimeOfDay.Hours;    
             int currentTimeMinutes = DateTime.Now.TimeOfDay.Minutes;
             TimeSpan currentSelectedTime = timePicker.SelectedTime;
 
             currentSelectedTime.Hours.ShouldBe(currentTimeHours);
             currentSelectedTime.Minutes.ShouldBe(currentTimeMinutes);
 
-            //var setPM = new TimeSpan(13, 59, 0);
+            var setPM = new TimeSpan(13, 59, 0);
 
-            //timePicker.SetTime(setPM);
+            timePicker.SetTime(setPM);
 
+            TimeSpan pmSelectedTime = timePicker.SelectedTime;
 
-            //pmSelectedTime.TotalMinutes.ShouldBe(setPM.TotalMinutes);
+            pmSelectedTime.TotalMinutes.ShouldBe(setPM.TotalMinutes);
 
-            //var setAM = new TimeSpan(3, 12, 0);
+            var setAM = new TimeSpan(3, 12, 0);
 
-            //timePicker.SetTime(setAM);
+            timePicker.SetTime(setAM);
 
-            //TimeSpan amSelectedTime = timePicker.SelectedTime;
+            TimeSpan amSelectedTime = timePicker.SelectedTime;
 
-            //amSelectedTime.TotalMinutes.ShouldBe(setAM.TotalMinutes);
+            amSelectedTime.TotalMinutes.ShouldBe(setAM.TotalMinutes);
         }
     }
 }
