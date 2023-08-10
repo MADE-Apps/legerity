@@ -7,10 +7,10 @@
 
   <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="4.4.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.0" />
     <PackageReference Include="nunit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="113.0.5672.6300" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="115.0.5790.17000" />
     <PackageReference Include="Shouldly" Version="4.2.1" />
   </ItemGroup>
 
