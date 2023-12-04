@@ -20,4 +20,8 @@
     <PackageReference Include="Microsoft.Edge.SeleniumTools" Version="3.141.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
+  </ItemGroup>
+
 </Project>
