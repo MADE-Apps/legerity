@@ -105,7 +105,6 @@ Even better, why not help build out your custom control wrapper elements within 
 | Package | Downloads | Description |
 | ------ | ------ | ------ |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.Uno.svg?label=Uno+Platform)](https://www.nuget.org/packages/Legerity.Uno/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Uno.svg)](https://www.nuget.org/packages/Legerity.Uno/) | Extension framework to Legerity to support cross-platform UI testing for Uno Platform |
-| [![Nuget](https://img.shields.io/nuget/v/RazorWire.Selenium.svg?label=razor-wire)](https://www.nuget.org/packages/RazorWire.Selenium/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/RazorWire.Selenium.svg)](https://www.nuget.org/packages/RazorWire.Selenium/) | Component element wrappers for the [razor-wire](https://www.npmjs.com/package/razor-wire) Vue 3 library |
 
 ### UI Automation tooling 🧰
 
