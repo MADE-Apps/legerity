@@ -1,0 +1,2698 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/a/legerity/legerity/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.AndroidAppManagerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.AndroidAppManagerOptions.html",
+          "hash": "0/K+mpQfUxOkXNRkYficjDnQkB45wm4AEGx9YCynlfc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.AndroidByExtras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.AndroidByExtras.html",
+          "hash": "B9eXmnbTfa5goI0NDYVxXZUuGOtroPLAUooVYR/d5KQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.AndroidElementWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.AndroidElementWrapper.html",
+          "hash": "ClAIwVHN6ezobyOO0Ljx8TpVfp8qCSS0WMVD9InbD7E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.Button.html",
+          "hash": "qylhzD9rNjzPkG93Oy0sTClaJhqfQc2tJVhb8LQerJM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.CheckBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.CheckBox.html",
+          "hash": "zYesRu9aXMweKhhecrahXi5G2LHVthpQSLH+vDAByPo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.DatePicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.DatePicker.html",
+          "hash": "2342AzDM7sKOSEAKcYkNMC5SFta667qXMDT247arC6g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.EditText.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.EditText.html",
+          "hash": "pKZqUFNX5XMcKbHdn10lPxavcO+phV1WX6ypWojR8xo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.RadioButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.RadioButton.html",
+          "hash": "mWfZdwChcUkMJACCvXe0lui6OUQJgSVlLX1LUmK81cc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.Spinner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.Spinner.html",
+          "hash": "KGWzBXBRGVQEzZmnod7r9XLGDO2y2tL2qez98lI7J50="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.Switch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.Switch.html",
+          "hash": "hQ/4HMLC6/LkBblX99qJdwUSUfiH0suS7ejpzaeqnSQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.TextView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.TextView.html",
+          "hash": "77VIaLFPa7uHJho5T30GvXF8hH0n7+u7EUTsVx0cmPE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.ToggleButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.ToggleButton.html",
+          "hash": "jIf71ubW5ZJfWjtyE9/p/o5up7V4ExMlVyqSTjxEXoM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.View.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.View.html",
+          "hash": "E6B4goeehAXpFDbZQ42PwiRY4q6HTJ/y8sMuxQNNf9o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.Core.html",
+          "hash": "5OiB+qVgt9EHVPLNhAfdg+pINkX4QWrHi44xh8FXnEA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Elements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Elements.html",
+          "hash": "2KKpbwOsbeq0hAxtFqzn8jm1P4zZpyYeNVN8ApPIdho="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Extensions.AndroidElementWrapperExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Extensions.AndroidElementWrapperExtensions.html",
+          "hash": "XDz4MSEq2YKy8JiRSzEWJTmtLWYOWv3Rk+PSIQXk3ao="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Extensions.AttributeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Extensions.AttributeExtensions.html",
+          "hash": "6GPapEp0isgw3PqBVqatL9OpkPQi10AZ0rQM6oKuOk0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Extensions.LegerityTestClassExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Extensions.LegerityTestClassExtensions.html",
+          "hash": "VE2W9kXzJatGRUJV0HF9UFTA5UXi1jhIbhMlBWF3WC0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.Extensions.html",
+          "hash": "tJuRQi+E7iuR7pDLDH5kHTBFq9c2NpPfZiTGDC/uzEM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Android.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Android.html",
+          "hash": "0CTCvr95oDd4vaZOCrVcZHI9MW6x3Pxk6F5gUxvbL90="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.AppManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.AppManager.html",
+          "hash": "M8+ywKhyoO3xM6J3xLzgt321/nbf7Ci8HNA13KNNPhg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.AppManagerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.AppManagerOptions.html",
+          "hash": "fhR7YwIcC2lHziasltNeXMhxZyCE5B+JOvWedh51HLA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.AppiumManagerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.AppiumManagerOptions.html",
+          "hash": "Zqp/v0KAiRDQyY5xBm5QecX9T3quMmIIViR9zlk2CkM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.ByAll.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.ByAll.html",
+          "hash": "fCm7JhXvdrSIJ6Z5OQK+jAUItQxLPVfDcADkSzv8MHI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.ByExtras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.ByExtras.html",
+          "hash": "/NDksSLNPQVCsZh6E+YrvBJdIzEiNEV5OgN6RBF16oc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.ByNested.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.ByNested.html",
+          "hash": "rliK5G5Mmx6EibjjkqwxWdSN+TlwirjGOpO6i926GtY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.ElementWrapper-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.ElementWrapper-1.html",
+          "hash": "pQmyAvs8IePnBuzaI214YfU+jP8j0jvJZBjqUC8pFzk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Exceptions.AppiumServerLoadFailedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Exceptions.AppiumServerLoadFailedException.html",
+          "hash": "XhLiygeu4fQW8rT4iFpyVjRxeaXuHN5k/7DeYgb4bbM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Exceptions.DriverLoadFailedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Exceptions.DriverLoadFailedException.html",
+          "hash": "845eMHcXwJk0HGujt9HfJPb7bl5lITV9sIlIQDQqOBo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Exceptions.DriverNotInitializedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Exceptions.DriverNotInitializedException.html",
+          "hash": "g5ZZlfyxMyPy3X5p7gPf6Ipa2Cj+pBGh+FhoQyavu4c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Exceptions.ElementNotShownException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Exceptions.ElementNotShownException.html",
+          "hash": "FLsWEBjgHTr+RN4lROanHahXy9syz6ofKIBmw0N9GvA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Exceptions.ElementShownException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Exceptions.ElementShownException.html",
+          "hash": "Voyk4yIhELO7Xu5j7o+1A1ytKuVZDH68841t9jwxgyo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Exceptions.ElementsNotShownException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Exceptions.ElementsNotShownException.html",
+          "hash": "T9KXEZrcb05ofF5FhST0YklPCYCuz/MwBMgqMd6BFNE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Exceptions.PageNotShownException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Exceptions.PageNotShownException.html",
+          "hash": "steqiVeGlfZ3qsrUbk1mSQlxExyH0za2Bra06zHQE9o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Exceptions.html",
+          "hash": "UKFa37A3PxojzZV0kj9TURZu5JjrkIezm/bkAh6hhcA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Extensions.AttributeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Extensions.AttributeExtensions.html",
+          "hash": "szyOMZibkALYzFLKdoCXcnR7RJSroROeSl3sKpPxldM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Extensions.DriverExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Extensions.DriverExtensions.html",
+          "hash": "/HmCwUeoSOkn3Y+fAoKLqzbcp28a4wv0E4sszvmailE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Extensions.ElementExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Extensions.ElementExtensions.html",
+          "hash": "MHXt93t9c0tXCAwtHhxRLbtBxvhZ8CIkLe1gVtVFn3s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Extensions.ElementWrapperExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Extensions.ElementWrapperExtensions.html",
+          "hash": "e0BJv2o9iQI6jYijNHCabsi4/UAlCp4aiuE2lnJG9uY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Extensions.InteractionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Extensions.InteractionExtensions.html",
+          "hash": "80fw7ily90g1+hsut/Rv2VTIbnmeDS0w9OH0JcrqJTU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Extensions.PageExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Extensions.PageExtensions.html",
+          "hash": "NmCUok9/1nKKUsfrlQkXRytBH3IaxkFNw3kriLQOG68="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Extensions.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Extensions.StringExtensions.html",
+          "hash": "8YHcSO/eeUwuAq/nIj72r5f80DAZWcjOzWrYRdRm79U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Extensions.html",
+          "hash": "zjI2s/SQUSmQcd7QRJW4RijlAkXqWkvyIlujCFg8b84="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Helpers.AppiumServerHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Helpers.AppiumServerHelper.html",
+          "hash": "r/+31Bc4TkPxqYZFk4osKPylTHhaFS3rPHc9l4IFDTE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Helpers.WaitUntilConditions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Helpers.WaitUntilConditions.html",
+          "hash": "nTte2pEv2vooM6kWMmV6T5wfYEbTKbNooo4OWQzuT4w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Helpers.html",
+          "hash": "7FLC62iG9GbIoKKitGiPo08uDwJtNtH+7PgIP/C3EVo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IElementWrapper-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IElementWrapper-1.html",
+          "hash": "5leTCrHDDMeLglKdGJb7MHbH+A7N31chjVQf9Mq3KCY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Elements.Core.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Elements.Core.Button.html",
+          "hash": "5HVCgzUCns5ZcymtfzfY3Tl9IRwlGN1jfdoVt1GoYjo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Elements.Core.Label.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Elements.Core.Label.html",
+          "hash": "qhZsMkW0Jp98YkWYf/aUZU34qY1GVrdRq1czjoovFyg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Elements.Core.ProgressView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Elements.Core.ProgressView.html",
+          "hash": "11khRmvuarHbsR/K6RFYy5pFgHWQFIuKSmunibq0q5s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Elements.Core.Slider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Elements.Core.Slider.html",
+          "hash": "cXJQxVQgpgSrXX/N2GdCvbw/yBQ5W6WnpL9TffsV+Ug="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Elements.Core.Switch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Elements.Core.Switch.html",
+          "hash": "0h60mFuxAYvjH1jYlyz1+9L73EvrPyWaRO3eqGM3IVw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Elements.Core.TextField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Elements.Core.TextField.html",
+          "hash": "0pWa4VciwaoSL9/i9H0LI18ysVcSJ1eqowq6CMjxil8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Elements.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Elements.Core.html",
+          "hash": "FO4W3eqztJ7G/5n/EawKZWQ4s/moMkD5vj9wwMFJYpI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Elements.IOSElementWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Elements.IOSElementWrapper.html",
+          "hash": "sZqVBwgFINSb89Ow3NU/4Lw9rB40gHfMdAK3Z2wkTeM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Elements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Elements.html",
+          "hash": "6LNsy6MG6+BuqTtMTRgyGmYmSFHTs2OMKMGooQ0L5sA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Extensions.AttributeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Extensions.AttributeExtensions.html",
+          "hash": "JA2TNVrQv4t2zCkipu3aEr05AKLj4ixpM8hZ8E9aDYI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Extensions.IOSElementWrapperExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Extensions.IOSElementWrapperExtensions.html",
+          "hash": "01XIQo++iBrVo7FAg+c2QWG4Dd4P0k2EsNXAFtCiraY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Extensions.LegerityTestClassExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Extensions.LegerityTestClassExtensions.html",
+          "hash": "2jmgjsASBH3lr43eVrcRqxC+76tAS/2sG+GVF2o6ePY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.Extensions.html",
+          "hash": "gyU8lXXslWk7yY1vmzaqUKw/Rapv8ZqC8OvlsiGey5I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.IOSAppManagerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.IOSAppManagerOptions.html",
+          "hash": "6b4JUY2ZA7Kp27gau6OshLk+VMp4hyxyi/ceU+TL5Is="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.IOSByExtras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.IOSByExtras.html",
+          "hash": "otWGANhGi5i5rQg0QTTS+LLTXeGojMN4nykp21vr5Xk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.IOS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.IOS.html",
+          "hash": "ndg6yJoC0kiF7GEVSOyrVoBxZzgI4/tRaTQmr8IZMas="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.LegerityException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.LegerityException.html",
+          "hash": "sQS8iLnUJNGMdiPaoGvx59B3xwZ0Rk3W0poHL5Ma51w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.LegerityTestClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.LegerityTestClass.html",
+          "hash": "7RQfwgMer/6UjuVStC/1hxfeMaTSWuZBScyRiRj6H68="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Pages.BasePage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Pages.BasePage.html",
+          "hash": "yCLC1AWGd/hsM9l4iZcbT+04YHP4t5VZ+Mq0WwyVr98="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Pages.html",
+          "hash": "9F2GTEKvO9NOFTiW2ZznROASEDA90dZJXzqZG1Sm1kM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Authentication.Pages.AzureAdLoginPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Authentication.Pages.AzureAdLoginPage.html",
+          "hash": "Tb0uqY1IZ4O+Oqeys6qlDGiisKqecJiMB8Zc3SeuXWM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Authentication.Pages.FacebookLoginPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Authentication.Pages.FacebookLoginPage.html",
+          "hash": "MmGv6NbPQGZVklsqNuwz2KCXKwIIL2AFlFfp/VkGnz4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Authentication.Pages.GoogleLoginPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Authentication.Pages.GoogleLoginPage.html",
+          "hash": "Dbq6miPDET3L70W5Ol6haWVQpGGOyJTmWX6f2jLdvkk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Authentication.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Authentication.Pages.html",
+          "hash": "PX794NbKJb1nM07FL2E2UNrvqJpuW1mgenwmn6XQ604="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.Button.html",
+          "hash": "Pbn7gw/fFb8WTxPFSCktMv3Fk60xWIMuz6Z2TFOIALM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.CheckBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.CheckBox.html",
+          "hash": "4GsEXAcrhZVoiQHkGmO2kVDMoUSfFCgsAtaUu9Cihh8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.DateInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.DateInput.html",
+          "hash": "V84DUACHNW2zofmnZZmzJOQuT632cGSWRA2TeDDyc2s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.FileInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.FileInput.html",
+          "hash": "cNS16D4BoV+SvP3+fCP+jiUAKXs18Ii09RQDAO9owbA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.Form.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.Form.html",
+          "hash": "03ey2b9auiepLrfakG4yTizFlzLyQxkxRDrhv5NWZY4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.Image.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.Image.html",
+          "hash": "oPNIpwYllHbNCDNK3prN3oCRoyKFAd7nYvSMYhjx4Fg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.List.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.List.html",
+          "hash": "ZZDf5amvB8cUzwHk8iP/o8v9l+AFVLYT/P3h1vjEDrI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.NumberInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.NumberInput.html",
+          "hash": "fIHG3/tqDjHh1xjsU3yFvDIT8ExFgTT6pY+d6F/7GgM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.Option.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.Option.html",
+          "hash": "8Q1Z677BRmjUxF7S8t7DezTC3+YMkKQW5URkbVPjgA8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.RadioButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.RadioButton.html",
+          "hash": "0wQHZAs0du7GZ8dpCzmjhqZQAj8aWc+ORSSpBmdnKkc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.RangeInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.RangeInput.html",
+          "hash": "m1BGDS2KMqnoUaOYSJVmvz3h8XzS12mub2H6yBglOnE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.Select.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.Select.html",
+          "hash": "pI9bgrluT6upcDcIdeuCiiejyvu/iYicH46oFfXOG6U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.Table.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.Table.html",
+          "hash": "7aBdaz9MLgmQqdwT/FoqvCKA6W4yQg0ZdFEZJlM2D7E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.TableRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.TableRow.html",
+          "hash": "rTdF3q1K0LmaWvDvcVGQBSf9sLGloK4JqyeI7507d0I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.TextArea.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.TextArea.html",
+          "hash": "hjlnLtVXAZ7br7N4TkyflAFTac63dQ7YcB40cqsmMbg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.TextInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.TextInput.html",
+          "hash": "OyB8jwflUD7jn867qCbWaG6v+uS+fSqfUtPGi6rsJ4c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.Core.html",
+          "hash": "+XFk55hlHNXinFkWqD56jO9kH5SInVshuSVKFSIFBhQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.WebElementWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.WebElementWrapper.html",
+          "hash": "Xkj7ChVoAhKxnJxq0z7M6IFMNXJzG8FoosQ+9WReIGE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Elements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Elements.html",
+          "hash": "wSOM8f45axjhXvbIqcIjCIzlOn8PK0+wRZWVV0dBuHQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Extensions.AttributeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Extensions.AttributeExtensions.html",
+          "hash": "XvpD4H+bVwBv3ICGpvlRCO1SNGwGT5BjtLYYnVTvk4s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Extensions.IWebElementExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Extensions.IWebElementExtensions.html",
+          "hash": "naZDYVti2Si3Su2jEkP2Q2VmfwUq0omuRb+Ik+HDjbY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Extensions.WebElementWrapperExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Extensions.WebElementWrapperExtensions.html",
+          "hash": "VeA2/eNMpHDHEyhtDP0hECDTQ+1LrmMfjf9L1faO0k0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.Extensions.html",
+          "hash": "PkphFlFDcAsJfQIQuWtjyHkc+8t/4DsyXgDmHfD4na4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.WebAppDriverType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.WebAppDriverType.html",
+          "hash": "BAC5raXBLsHiPS9X9CtY/HV4MAF2dcXj4yMv/95bHys="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.WebAppManagerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.WebAppManagerOptions.html",
+          "hash": "p8ulyL+sHq/tHJ51tZGsdPe6ziXOH/M+itCVfXM8cOM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.WebByExtras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.WebByExtras.html",
+          "hash": "pqd3jW8QpqjaFWSkZbKAvP+SnbSJlhGKXyHzY+ChJj8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Web.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Web.html",
+          "hash": "GCX/RIiM7QPY3nCUwHE0zMdx9d4FR13mBDxQ2IUQ6kc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.AppBarButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.AppBarButton.html",
+          "hash": "9uppRulm5YFM2VgYt/MjBl1ZeIB6Jae5GnH9Xfy50vE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.AppBarToggleButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.AppBarToggleButton.html",
+          "hash": "2b51FFgCvlXZeQLDnm8ga+EPJqPe3SUCKPJPywdiiDk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.AutoSuggestBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.AutoSuggestBox.html",
+          "hash": "GVqAEIaDGqdyVBnU9YIP/L6amcFS7kyhNsFGec3bGys="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.Button.html",
+          "hash": "KKVZizq9iiw0PHK8yZ2a2mJWHHEDJ6V8OF9iyXvtnYo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.CalendarDatePicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.CalendarDatePicker.html",
+          "hash": "u/d9pcnGwGW7dzoxNybr7EwnUVK/Jszv2Y+AABW+x6Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.CalendarView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.CalendarView.html",
+          "hash": "6e8lw+iR8ggpGp9eZZYknFwol9y4GbuewwtxoLddc4Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.CheckBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.CheckBox.html",
+          "hash": "IGawRKv5bAeJa4tl+XMEwYtOcrDJrRBieOfflnULmZY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.ComboBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.ComboBox.html",
+          "hash": "pbBBkIHU3oHf2rNv9SRF4dVpruab95SI5suMoP/Q2Uw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.CommandBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.CommandBar.html",
+          "hash": "fMXkWPMDXY78nSmZaC2Xxg5gguvVviRAFJbTPqIF67E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.DatePicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.DatePicker.html",
+          "hash": "ER/6aakJISiVttdmvLic4z9vlObv/aPUXtrVheg+sRY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.FlipView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.FlipView.html",
+          "hash": "IA85WZelYm1IMgxOP9Ju3Kwe5i9kqTW/VEau/dwhLzQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.GridView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.GridView.html",
+          "hash": "Hr4CPmxZSGy//v226yzKZvQCi8J3/h+LREboMxzpnZE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.Hub.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.Hub.html",
+          "hash": "1qWquqvUHACvtaofz2yazkvIcU5fDMEld3cnJoeEHC4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.HyperlinkButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.HyperlinkButton.html",
+          "hash": "VJ9XRWIFbkB+ffKWXz5tREV17ghVykX3XbdCYommUQM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.InkToolbarBallpointPenFlyout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.InkToolbarBallpointPenFlyout.html",
+          "hash": "W3P0UFQqWIo9ICy9I+wd0nz7+dFUsrVHiEi+KkNC4x4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.InkToolbarColorFlyoutBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.InkToolbarColorFlyoutBase.html",
+          "hash": "nS3syOZGv1uqvCvxIfWYclR05+DN7IYiKEDSgkPeiPo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.InkToolbarHighlighterFlyout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.InkToolbarHighlighterFlyout.html",
+          "hash": "HxGfWXAbSUncrf9SQs6kI9Nu2RXZp1utqXjkoC2gHZc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.InkToolbarPencilFlyout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.InkToolbarPencilFlyout.html",
+          "hash": "zTpsHw4iuvc0PEKglfW6gzIWRSNQRFIaCjuFX/AaMk8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.InkToolbar.html",
+          "hash": "Cb1TjJ4Eq/9GNE2fv4EZ/WkERJ1LKrRVwNbcso8sLG8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.ListBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.ListBox.html",
+          "hash": "OAJ82ec6V+WhMaTxArQIRAT9Zz5iuslh6y7PuiwAJ/8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.ListView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.ListView.html",
+          "hash": "n3oI0evtWl6/+PrH4Qrd/3i4joz5PL9veAGqcw8ocmc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.MenuFlyoutItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.MenuFlyoutItem.html",
+          "hash": "4r76ivdNSHCPLpfawp5sahJGUQGcUT4O8oI8G2KsaM4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.MenuFlyoutSubItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.MenuFlyoutSubItem.html",
+          "hash": "8K5wiaEz8BIG/JjITILKX6PlY06b/L6gs+A6NwOmcaw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.PasswordBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.PasswordBox.html",
+          "hash": "Hdc/oIkAaiAX885XcgkZw7SW2lyGoQ2biyQ5lgtO61Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.Pivot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.Pivot.html",
+          "hash": "MUOrKixsIgZh+7hk/4/LyvcTm/eoJby0J5KY7cISmEc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.ProgressBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.ProgressBar.html",
+          "hash": "jW4WrS0DNg0f6lCSrPWtl2rMKYWlZMdcU5sFEdokG+o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.ProgressRing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.ProgressRing.html",
+          "hash": "dnHm9B4Z2wXVUmSy6d+iZ+96VJqkzuqukl8TSGPPZNw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.RadioButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.RadioButton.html",
+          "hash": "4/Wxrs5+haKt51WJ67tsvIaU0uM9agXAS4K+XP4IsT4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.ScrollViewer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.ScrollViewer.html",
+          "hash": "IVsn5nuQ4KY4G8tDtfVt45G/46Ke/8nxkpDQcEMMtJk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.Slider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.Slider.html",
+          "hash": "oaLN/UbvwjYiiDZveBvrkE3/1i8n1sSEGhY70G1iKQM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.TextBlock.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.TextBlock.html",
+          "hash": "FjcINs5krTFfv3XzqaYcpybARul0rJjksH7o02XsIIU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.TextBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.TextBox.html",
+          "hash": "bJw43E+9sJOh5pyGxarxQXdHRaGu2kPkbtGiVlUa/+k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.TimePicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.TimePicker.html",
+          "hash": "7cVP70W+MNJT1v2+f/rMQxcXg8O7lM2HvtL4kkkleLA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.ToggleButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.ToggleButton.html",
+          "hash": "Wk5QtpizgKqh/KpnUfs7bDZDy+68QTnyN1WX1ekU2CA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.ToggleState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.ToggleState.html",
+          "hash": "sbAU51ZGB9DahrsRZWA+HMMJ4vBO466K50mR6GNBbvg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.ToggleSwitch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.ToggleSwitch.html",
+          "hash": "3SjUcQC9anYYjF1Nc1ZMlGH0zJcrqWsoQHUZuVuLTcQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Core.html",
+          "hash": "CnsRe6SdFhnsLQ9nJRN8oilFb2WGpKqJBj1xCZX0sxo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.MADE.DropDownList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.MADE.DropDownList.html",
+          "hash": "bbHkBghUeftomRSW3h5lSsX9r5NdrGEf2g+YW6Viu8A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.MADE.InputValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.MADE.InputValidator.html",
+          "hash": "5HrTkmDe3tNAx4mDUnzqhj8xwTvT1n7J9MxjpS3kb3g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.MADE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.MADE.html",
+          "hash": "SvDO4n1FJZoaF3fEcCPJFJ0GgqXrYHPh2SLO3nPYoAs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Telerik.RadAutoCompleteBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Telerik.RadAutoCompleteBox.html",
+          "hash": "BJIznGRoNqAMMmxwGkQQlBBYAPYcSUMNGVvOH8VIJos="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Telerik.RadBulletGraph.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Telerik.RadBulletGraph.html",
+          "hash": "B9yn/hXA/0Pcj8nWZ9u9/Vrx0CJ3IWJrNthfuS/fZqU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Telerik.RadBusyIndicator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Telerik.RadBusyIndicator.html",
+          "hash": "F987161yDAtq6c0hRdsuOvxNL978/ZPnp2XIy5imVHY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Telerik.RadNumericBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Telerik.RadNumericBox.html",
+          "hash": "6bh3KrPQKZntOuwT4QbsMTYCrC7dmAoSTWr5DxBJXX4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.Telerik.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.Telerik.html",
+          "hash": "2WUpQyFt8pIT5yVDEKV0lwqS7ZGODJNtqv40JvHtddg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WCT.BladeView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WCT.BladeView.html",
+          "hash": "uothDTutd7deT5Gdp4rWXnZu1dqdGYyseYcIZkeH0bE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WCT.BladeViewItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WCT.BladeViewItem.html",
+          "hash": "rx/CoZiIszwVZAVyC2GHda78ZRoPZ5O5IDsRB5kIAgw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WCT.Carousel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WCT.Carousel.html",
+          "hash": "8oQUgZtFXntght+UtJuRW0y6P7ke4iHU30c0XStJuMM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WCT.Expander.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WCT.Expander.html",
+          "hash": "+s/cAnlRYB6I1ETq6MrJG9FXY9i+2h59d5njBWJ1/JA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WCT.InAppNotification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WCT.InAppNotification.html",
+          "hash": "EQSNirwEKIOHXEbY91FAdjvhjSjkoZ0GMzTBkBumfYE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WCT.RadialGauge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WCT.RadialGauge.html",
+          "hash": "8thcxdB3+6sUCPuNP4Pl17xvMWKOJPV0BlUp4o9l1hE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WCT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WCT.html",
+          "hash": "Ca85YWXi7A7tcUEonQecK8C5nolbtmniPWtnwTg7fL0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WinUI.InfoBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WinUI.InfoBar.html",
+          "hash": "LFOWnCX7ioQ7WqiUjoCfJ6RQG1RHpFwQpbVmg6Zf/3A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WinUI.MenuBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WinUI.MenuBar.html",
+          "hash": "ZVzysJ9NeygXw6YFhLUU8xUI8YnYCX1wOAgwc6TsYMc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WinUI.MenuBarItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WinUI.MenuBarItem.html",
+          "hash": "/dC9De2XOdmJ4isz5bHjZyjxsFpfLDBcoZAd/4UwsAE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WinUI.NavigationView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WinUI.NavigationView.html",
+          "hash": "RIvKXBWP1pcpzkApS+tgVYBvpxk4wzi1o4xgOswzmJg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WinUI.NavigationViewItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WinUI.NavigationViewItem.html",
+          "hash": "NIgk0GUFVZicCtC998XuTtBoaZ76CD9OFUkIMpXegH4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WinUI.NumberBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WinUI.NumberBox.html",
+          "hash": "fvqkNo/bz+ezk1jnAEKob+h/4U9E59/E9/ASXn8OnuA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WinUI.RatingControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WinUI.RatingControl.html",
+          "hash": "TqDflyCc+/UvRY9NSb3NCTJo4OWdNUPwLbT3x5xdtmY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WinUI.TabView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WinUI.TabView.html",
+          "hash": "UxHRUIHM8C+ieT9PHd4gyM//3O8Oew6OW4ZU6OHcHi4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WinUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WinUI.html",
+          "hash": "HFZO2eHWLb+n8VhQeSRREDNQ624qda7yF7z+vygHklw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.WindowsElementWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.WindowsElementWrapper.html",
+          "hash": "c+P7afTOt7jDPgTJ3HnZkB43YsEN0PJRfk2M5Ew20KY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Elements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Elements.html",
+          "hash": "6JlwqA3ZWpcj3NMEx51nxp2TAfAEy5N/BZRF4qMptpM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Exceptions.WinAppDriverLoadFailedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Exceptions.WinAppDriverLoadFailedException.html",
+          "hash": "wpW0pGXNNOz8duPd2dcN4zSOSd0y88dJPJzYz2DrFFI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Exceptions.WinAppDriverNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Exceptions.WinAppDriverNotFoundException.html",
+          "hash": "HsPYzdhBcEo3jdtrpFDCcpji4ovEAqu3pp89fDHGbiY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Exceptions.html",
+          "hash": "akXTshdQ6gP+wSLEZ0NtYx37CqfE03hfaDzTK1UycNA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Extensions.AttributeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Extensions.AttributeExtensions.html",
+          "hash": "S2fC7r94mO/SaKgSqZeHezgu6QMNwe3Iph4v13xsSX8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Extensions.LegerityTestClassExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Extensions.LegerityTestClassExtensions.html",
+          "hash": "8pCfyvsBXrdyV2DYtVhHKTqNqVVG44eiDS7N0KJwJGw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Extensions.WindowsElementExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Extensions.WindowsElementExtensions.html",
+          "hash": "ZpkOtSpqDo+NriwVg9pQrlwlnnUyGUMFMBMU28SF2+o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Extensions.WindowsElementWrapperExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Extensions.WindowsElementWrapperExtensions.html",
+          "hash": "T0tk8IuBWsQzVm2jUHU+jQJTa/nvzY7vadXdXK5HwaA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Extensions.html",
+          "hash": "awyWF3SdyUQO84n0YVu6FNVw1XnxEM8tDuq56+NHOjs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Helpers.WinAppDriverHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Helpers.WinAppDriverHelper.html",
+          "hash": "/+SeCvrvqd5HvVEpEjnAb9bA9l5SEaad1rUKy50cDcw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.Helpers.html",
+          "hash": "ihs2yeViTxGv8ourDiUFG5+ytcxMichkk9cSWJ/0RPc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.WindowsAppManagerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.WindowsAppManagerOptions.html",
+          "hash": "istY6+DaI3+9WBrAPWtp+oRlr+09WRunwMAsFxrcxPA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.WindowsByExtras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.WindowsByExtras.html",
+          "hash": "+S/nB6HVnGu1e9AzMCjPrKBpNKRD73hNSh2XKNvvKuY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Windows.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Windows.html",
+          "hash": "XqWu2veb3Zm0WqFxhrylXep0ja8+WxQYhdwaLzmVHOE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.html",
+          "hash": "xgkPEE9qOx22FsLJs3Qqi9EzRux+jgP7pbwMFqlAdho="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "pth+Hit4hbkv97M+w3mr/vwgw+Uv7XnHVYm7JCcTA20="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "8YQLXddQ1N890bKjoLKuVHNjwqavlr4A7tZ+N13Usic="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/available-packages.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/available-packages.html",
+          "hash": "oyjh/Nt1m/GsWfiSDysKISxNHPPNHSZRBSgcxxnblvA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/best-practices.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/best-practices.html",
+          "hash": "QNUM9SundiOlcKlU3xOBeiRXflRtgHZDXE5wPg8yOv8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/building-platform-wrappers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/building-platform-wrappers.html",
+          "hash": "TCPtCI4pDXqwIQfv1GpttbZNyy8gP8VZD+c/HhCM7z4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/building-with-legerity.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/building-with-legerity.html",
+          "hash": "C3JTINU6LknQ9kl57fuqDo9MEoeCmjrLdiWnb0oBn6s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/features/android.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/features/android.html",
+          "hash": "3jY0SDPPMGZkOvhdmEMPF8cwbKUxcNc/e/74vqWwgAA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/features/ios.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/features/ios.html",
+          "hash": "Y6UWPdqhvJm3xtdW/fgAQAltf0LTsn6KWL8WbIb8JTg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/features/made-windows.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/features/made-windows.html",
+          "hash": "kNKtdf8+3Vp4cT9O7CpuIaoaJ+7iU9J7m5OzriTct0E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/features/telerik-for-uwp.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/features/telerik-for-uwp.html",
+          "hash": "/Y4NdNOYG+i5v9T9CV4YzLf10G0Vae7wQ1dAaKSzO6g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/features/web-authentication.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/features/web-authentication.html",
+          "hash": "P1NgmvYEcppqRF7tCdWRIna1DtcfW0PHRgbxfDynx2Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/features/web.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/features/web.html",
+          "hash": "nnTQ/U30bFGDAKULkpERixHRTA0nwE7Vss3sfzdNjUI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/features/windows-community-toolkit.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/features/windows-community-toolkit.html",
+          "hash": "dmnhY973XbKNRNorVvjH/yKzmDghWhtKQAPHrGRUNM4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/features/windows-ui.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/features/windows-ui.html",
+          "hash": "EaSAypExU9/7kwkGakwLQULHFX7d3uopnoExdToHaHw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/archive/features/windows.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/archive/features/windows.html",
+          "hash": "7CUE7OhO8uJyH0HDD1n/tmyxwLVjl/rfA3vuNfIadzA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started.html",
+          "hash": "znivI61vg7mRS4DyPLmv5O/Gn8qBQpdjod7EesMt1wk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/quick-starts.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/quick-starts.html",
+          "hash": "IEI+YYK+OqoCtsCi2JB7PhlPJcX+JGx+l/ZnfcRbAuw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/quick-starts/android.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/quick-starts/android.html",
+          "hash": "vlU/0Fpqkz9BV9zGcg9Y+fA19n/QnPboXQYLCSuiiPs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/quick-starts/cross-platform.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/quick-starts/cross-platform.html",
+          "hash": "aqyP9d55MkghAC7Coy+M63crg0yPSFoSkbYRYCxXKRw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/quick-starts/ios.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/quick-starts/ios.html",
+          "hash": "m93I1539P/T9e1gBQ6xGBkSJI8F/nl9TyOS0PW5bewo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/quick-starts/web.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/quick-starts/web.html",
+          "hash": "Gm6nHYh4xICK72GgWzGdsnvKkM0RgToGYA1fcQmuSRc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/quick-starts/windows.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/quick-starts/windows.html",
+          "hash": "mUtUZlLw0XTTeijBhKa7RE2geR+7/qj1Qv5Y3kQV40k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "qSXN+5V5UoUC6S2uZgJzPyS5N9k5d65X2W6Ozu57jdk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "/VHcaPxxxhn3HV2r8btBEOiQU+9hVTTqaaLOU6nccN0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/using-legerity.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/using-legerity.html",
+          "hash": "/sAbjKa9N7uxrJVBk8HWdV5d3Q/r2Z45a1twpjPvmIY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/using-legerity/app-manager.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/using-legerity/app-manager.html",
+          "hash": "vC0yF0bRgHWmqatYTTwtIFrGb0bOUZOejVpGMmCnFbI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/using-legerity/by-locators.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/using-legerity/by-locators.html",
+          "hash": "CnCo5UPPpzDpX1ypaRnWXulGcrS/B9o622RQuQmz8lE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/using-legerity/element-wrappers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/using-legerity/element-wrappers.html",
+          "hash": "fXtv8xhYerGp3aCGA/eHwewYrfm/A9LMZQLSl1Rhtag="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/using-legerity/installation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/using-legerity/installation.html",
+          "hash": "592c2Fls9y/l0dHwspT+af9voSIlrR87aQDGK7BHR2I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/using-legerity/page-objects.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/using-legerity/page-objects.html",
+          "hash": "b+83eUOeRjag1sr0xhDEBnv6UMYmVg5fC5WGszPHWIE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/using-legerity/test-classes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/using-legerity/test-classes.html",
+          "hash": "gLDZIIauv0iTehJy3sR4+9j1F/cW4d4l/w4PB2pieZg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/using-legerity/test-frameworks.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/using-legerity/test-frameworks.html",
+          "hash": "DkvY1rA/vnhEFyDs1RlqLF3eSY0Y/Z8pM4zyT6Jmp0k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/using-legerity/wait-conditions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/using-legerity/wait-conditions.html",
+          "hash": "wMrMyWWc9bqXO88gfJVm3+ChPkBHQEy6ynwpLbnyTaE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ProjectBanner.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ProjectBanner.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/element-wrapper.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/element-wrapper.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/extensible.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/extensible.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/github.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/github.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/page-object.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/page-object.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/support.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/support.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/testing.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/testing.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "w0+51i/0Pt4Ty9Uj2oTAG3G2f6Tee5Oyb5JX0qhQEkM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "3YZT+SAqJVdlXvt0usVeVbeeWL70eVRKgmb/aV1x+70="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 32,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 175,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

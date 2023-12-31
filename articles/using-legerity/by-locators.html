@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>By Locators | Legerity </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="By Locators | Legerity ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/Logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap-grid.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-87DrmpqHRiY8hPLIr7ByqhPIywuSsjuQAfMXAE0sMUpY3BM7nXjf+mLIUSvhDArs" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="using_legerity_by_locators">
+<h1 id="by-locators">By locators</h1>
+
+<p>Locators are a fundamental page of automated UI testing, allow you to find elements within your application using a variety of different strategies, such as XPath, CSS selectors, or accessibility identifiers.</p>
+<p>Built on top of the capabilities of Selenium, Legerity provides a set of extra common and platform specific <code>By</code> locators that you can use to find elements within your application.</p>
+<p>You can find more information about the available locators in the following API references:</p>
+<ul>
+<li><a class="xref" href="../../api/Legerity.ByExtras.html">Common By locators</a></li>
+<li><a class="xref" href="../../api/Legerity.Windows.WindowsByExtras.html">Windows By locators</a></li>
+<li><a class="xref" href="../../api/Legerity.IOS.IOSByExtras.html">iOS By locators</a></li>
+<li><a class="xref" href="../../api/Legerity.Android.AndroidByExtras.html">Android By locators</a></li>
+<li><a class="xref" href="../../api/Legerity.Web.WebByExtras.html">Web By locators</a></li>
+<li><a class="xref" href="../../api/Legerity.ByAll.html">By All locator</a></li>
+<li><a class="xref" href="../../api/Legerity.ByNested.html">By Nested locator</a></li>
+</ul>
+<h2 id="finding-elements-that-match-all-locators">Finding elements that match all locators</h2>
+<p>The <code>ByAll</code> locator allows you to find elements that match all of the provided locators. This is useful when you want to find an element that matches multiple criteria, such as a button that has a specific text.</p>
+<pre><code class="lang-csharp">RemoteWebElement element = app.FindElement(new ByAll(By.TagName(&quot;button&quot;), ByExtras.Text(&quot;Send Message&quot;)));
+</code></pre>
+<h2 id="finding-elements-that-are-nested-by-sequenced-locators">Finding elements that are nested by sequenced locators</h2>
+<p>The <code>ByNested</code> locator allows you to find elements that are nested by a sequence of locators. This is useful when you want to find an element that is nested within other elements, such as a button that is inside a form, inside an ID'd element.</p>
+<pre><code class="lang-csharp">RemoteWebElement element = app.FindElement(new ByNested(By.Id(&quot;PersonContainer&quot;), By.TagName(&quot;form&quot;), By.TagName(&quot;button&quot;)));
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The complete nesting does not need to be known, you can provide a subset of the nesting and the locator will find the element if it is nested within the provided locators. For example, you can also find the same button in the above example by providing the <code>new ByNested(By.Id(&quot;PersonContainer&quot;), By.TagName(&quot;button&quot;))</code> locator too.</p>
+</div>
+<h2 id="finding-elements-by-text">Finding elements by text</h2>
+<p>The Core package provides <code>ByExtras.Text</code> and <code>ByExtras.PartialText</code> locators that can be used to find elements on the page by their text content. These can be used across any app platform!</p>
+<pre><code class="lang-csharp">RemoteWebElement element1 = app.FindElement(ByExtras.Text(&quot;My text&quot;));
+RemoteWebElement element2 = app.FindElement(ByExtras.PartialText(&quot;text&quot;));
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>These locators should only be used when you are sure that the text you are searching for is unique on the page. If there are multiple elements with the same text, you may get unexpected results.</p>
+</div>
+<h2 id="finding-elements-by-label-on-ios">Finding elements by label on iOS</h2>
+<p>The iOS package provides <code>ByExtras.Label</code> and <code>ByExtras.PartialLabel</code> locators that can be used to find elements on the page by their label content for iOS applications.</p>
+<pre><code class="lang-csharp">RemoteWebElement element1 = app.FindElement(ByExtras.Label(&quot;My label&quot;));
+RemoteWebElement element2 = app.FindElement(ByExtras.PartialLabel(&quot;label&quot;));
+</code></pre>
+<h2 id="finding-elements-by-content-description-on-android">Finding elements by content description on Android</h2>
+<p>The Android package provides <code>ByExtras.ContentDescription</code> and <code>ByExtras.PartialContentDescription</code> locators that can be used to find elements on the page by their content description for Android applications. This is particularly useful for certain elements that put their text content in the content description.</p>
+<pre><code class="lang-csharp">RemoteWebElement element1 = app.FindElement(ByExtras.ContentDescription(&quot;My content description&quot;));
+RemoteWebElement element2 = app.FindElement(ByExtras.PartialContentDescription(&quot;description&quot;));
+</code></pre>
+<h2 id="finding-elements-by-value-on-ios">Finding elements by value on iOS</h2>
+<p>There are occasions where you may want to find an element by its value, such as a text field or a slider. The iOS package provides <code>ByExtras.Value</code> and <code>ByExtras.PartialValue</code> locators that can be used to find elements on the page by their value content for iOS applications.</p>
+<pre><code class="lang-csharp">RemoteWebElement element1 = app.FindElement(ByExtras.Value(&quot;50&quot;));
+RemoteWebElement element2 = app.FindElement(ByExtras.PartialValue(&quot;%&quot;));
+</code></pre>
+<h2 id="finding-web-input-element-by-type">Finding web <code>Input</code> element by type</h2>
+<p>Finding elements by their type is a common requirement when testing web applications. The Web package provides <code>ByExtras.InputType</code> locators that can be used to find input elements on the page by their type, such as <code>email</code> or <code>password</code>.</p>
+<pre><code class="lang-csharp">RemoteWebElement emailElement = app.FindElement(ByExtras.InputType(&quot;email&quot;));
+RemoteWebElement passwordElement = app.FindElement(ByExtras.InputType(&quot;password&quot;));
+</code></pre>
+<h2 id="finding-windows-elements-by-automationid">Finding Windows elements by <code>AutomationId</code></h2>
+<p>Windows UI elements often have a unique <code>AutomationId</code> property that can be used to identify elements on the page. The Windows package provides <code>ByExtras.AutomationId</code> locators that can be used to find elements on the page by this property.</p>
+<pre><code class="lang-csharp">RemoteWebElement element = app.FindElement(ByExtras.AutomationId(&quot;MyAutomationId&quot;));
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This locator exists due to the way that the Windows Application Driver works when finding elements by ID.</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/MADE-Apps/legerity/blob/main/docs/articles/using-legerity/by-locators.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) MADE Apps
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
