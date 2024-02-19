@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="nunit" Version="4.0.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="121.0.6167.8500" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="121.0.6167.18400" />
     <PackageReference Include="Shouldly" Version="4.2.1" />
   </ItemGroup>
 
