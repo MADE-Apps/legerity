@@ -1,5 +1,7 @@
 namespace Legerity.Web;
 
+using System;
+
 /// <summary>
 /// Defines the values associated with the web app driver type.
 /// </summary>
@@ -43,5 +45,6 @@ public enum WebAppDriverType
     /// <summary>
     /// Edge Chromium. Setting this will cause the application driver to launch for Microsoft's Chromium Edge.
     /// </summary>
+    [Obsolete("Use Edge instead. This will be removed in a future release.")]
     EdgeChromium,
 }

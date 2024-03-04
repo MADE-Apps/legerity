@@ -18,7 +18,6 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Opera;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Safari;
 
@@ -130,9 +129,9 @@ public static class AppManager
                         WebAppDriverType.Firefox => new FirefoxDriver(
                             webOpts.DriverUri,
                             webOpts.DriverOptions as FirefoxOptions ?? new FirefoxOptions()),
-                        WebAppDriverType.Opera => new OperaDriver(
+                        WebAppDriverType.Opera => new ChromeDriver(
                             webOpts.DriverUri,
-                            webOpts.DriverOptions as OperaOptions ?? new OperaOptions()),
+                            webOpts.DriverOptions as ChromeOptions ?? new ChromeOptions()),
                         WebAppDriverType.Safari => new SafariDriver(
                             webOpts.DriverUri,
                             webOpts.DriverOptions as SafariOptions ?? new SafariOptions()),
@@ -142,10 +141,9 @@ public static class AppManager
                         WebAppDriverType.InternetExplorer => new InternetExplorerDriver(
                             webOpts.DriverUri,
                             webOpts.DriverOptions as InternetExplorerOptions ?? new InternetExplorerOptions()),
-                        WebAppDriverType.EdgeChromium => new Microsoft.Edge.SeleniumTools.EdgeDriver(
+                        WebAppDriverType.EdgeChromium => new EdgeDriver(
                             webOpts.DriverUri,
-                            webOpts.DriverOptions as Microsoft.Edge.SeleniumTools.EdgeOptions ??
-                            new Microsoft.Edge.SeleniumTools.EdgeOptions { UseChromium = true }),
+                            webOpts.DriverOptions as EdgeOptions ?? new EdgeOptions()),
                         _ => null
                     };
 
