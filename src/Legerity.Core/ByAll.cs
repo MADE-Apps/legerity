@@ -3,7 +3,6 @@ namespace Legerity;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using OpenQA.Selenium;
 
 /// <summary>
 /// Defines a <see cref="By"/> locator that can be used to find all elements that match all locators in sequence.

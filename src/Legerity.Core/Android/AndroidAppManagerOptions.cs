@@ -1,6 +1,5 @@
 namespace Legerity.Android;
 
-using System;
 using System.Collections.Generic;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Enums;
@@ -164,36 +163,36 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
     {
         base.Configure();
 
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "Android");
+        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformName, "Android");
 
         if (!string.IsNullOrWhiteSpace(this.OSVersion))
         {
-            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
+            this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformVersion, this.OSVersion);
         }
 
         if (!string.IsNullOrWhiteSpace(this.DeviceName))
         {
-            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
+            this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.DeviceName, this.DeviceName);
         }
 
         if (!string.IsNullOrWhiteSpace(this.DeviceId))
         {
-            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
+            this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.Udid, this.DeviceId);
         }
 
         if (!string.IsNullOrWhiteSpace(this.AppId))
         {
-            this.AppiumOptions.AddAdditionalCapability("appPackage", this.AppId);
+            this.AppiumOptions.AddAdditionalAppiumOption("appPackage", this.AppId);
         }
 
         if (!string.IsNullOrWhiteSpace(this.AppActivity))
         {
-            this.AppiumOptions.AddAdditionalCapability("appActivity", this.AppActivity);
+            this.AppiumOptions.AddAdditionalAppiumOption("appActivity", this.AppActivity);
         }
 
         if (!string.IsNullOrWhiteSpace(this.AppPath))
         {
-            this.AppiumOptions.AddAdditionalCapability("app", this.AppPath);
+            this.AppiumOptions.AddAdditionalAppiumOption("app", this.AppPath);
         }
     }
 

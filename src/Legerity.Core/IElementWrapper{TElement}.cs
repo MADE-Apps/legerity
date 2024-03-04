@@ -1,7 +1,6 @@
 namespace Legerity;
 
 using System;
-using OpenQA.Selenium;
 
 /// <summary>
 /// Defines an interface for a Selenium/Appium element wrapper.

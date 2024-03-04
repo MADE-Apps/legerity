@@ -5,11 +5,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Legerity.Exceptions;
 using Legerity.Extensions;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>
@@ -29,7 +27,7 @@ public abstract class BasePage
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BasePage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within 2 seconds.
+    /// Initializes a new instance of the <see cref="BasePage"/> class using a <see cref="WebDriver"/> instance that verifies the page has loaded within 2 seconds.
     /// </summary>
     /// <param name="app">
     /// The instance of the started application driver that will be used to drive the page interaction.
@@ -37,7 +35,7 @@ public abstract class BasePage
     /// <exception cref="DriverNotInitializedException">Thrown when AppManager.StartApp() has not been called.</exception>
     /// <exception cref="PageNotShownException">Thrown when the page is not shown in 2 seconds.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    protected BasePage(RemoteWebDriver app)
+    protected BasePage(WebDriver app)
         : this(app, TimeSpan.FromSeconds(2))
     {
     }
@@ -57,7 +55,7 @@ public abstract class BasePage
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BasePage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within the given timeout.
+    /// Initializes a new instance of the <see cref="BasePage"/> class using a <see cref="WebDriver"/> instance that verifies the page has loaded within the given timeout.
     /// </summary>
     /// <param name="app">
     /// The instance of the started application driver that will be used to drive the page interaction.
@@ -68,7 +66,7 @@ public abstract class BasePage
     /// <exception cref="DriverNotInitializedException">Thrown when AppManager.StartApp() has not been called.</exception>
     /// <exception cref="PageNotShownException">Thrown when the page is not shown in the given timeout.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    protected BasePage(RemoteWebDriver app, TimeSpan? traitTimeout)
+    protected BasePage(WebDriver app, TimeSpan? traitTimeout)
     {
         this.App = app;
         this.WaitTimeout = traitTimeout ?? TimeSpan.FromSeconds(2);
@@ -81,10 +79,10 @@ public abstract class BasePage
     /// The <see cref="App"/> instance serves as base for the drivers and can be referenced for basic Selenium functions.
     /// </para>
     /// <para>
-    /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
+    /// This could be a <see cref="WindowsDriver"/>, <see cref="AndroidDriver"/>, <see cref="IOSDriver"/>, or web driver.
     /// </para>
     /// </summary>
-    public RemoteWebDriver App { get; }
+    public WebDriver App { get; }
 
     /// <summary>
     /// Gets or sets the amount of time the driver should wait when searching for elements if they are not immediately present.
@@ -94,22 +92,22 @@ public abstract class BasePage
     /// <summary>
     /// Gets the instance of the started Windows application.
     /// </summary>
-    protected WindowsDriver<WindowsElement> WindowsApp => this.App as WindowsDriver<WindowsElement>;
+    protected WindowsDriver WindowsApp => this.App as WindowsDriver;
 
     /// <summary>
     /// Gets the instance of the started Android application.
     /// </summary>
-    protected AndroidDriver<AndroidElement> AndroidApp => this.App as AndroidDriver<AndroidElement>;
+    protected AndroidDriver AndroidApp => this.App as AndroidDriver;
 
     /// <summary>
     /// Gets the instance of the started iOS application.
     /// </summary>
-    protected IOSDriver<IOSElement> IOSApp => this.App as IOSDriver<IOSElement>;
+    protected IOSDriver IOSApp => this.App as IOSDriver;
 
     /// <summary>
     /// Gets the instance of the started web application.
     /// </summary>
-    protected RemoteWebDriver WebApp => this.App;
+    protected WebDriver WebApp => this.App;
 
     /// <summary>
     /// Gets a given trait of the page to verify that the page is in view.
@@ -120,9 +118,9 @@ public abstract class BasePage
     /// Finds the first element in the page that matches the <see cref="By" /> locator.
     /// </summary>
     /// <param name="locator">The locator to find the element.</param>
-    /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <returns>A <see cref="WebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public RemoteWebElement FindElement(By locator)
+    public WebElement FindElement(By locator)
     {
         return this.App.FindWebElement(locator);
     }
@@ -131,8 +129,8 @@ public abstract class BasePage
     /// Finds all the elements in the page that matches the <see cref="By" /> locator.
     /// </summary>
     /// <param name="locator">The locator to find the elements.</param>
-    /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
-    public ReadOnlyCollection<RemoteWebElement> FindElements(By locator)
+    /// <returns>A readonly collection of <see cref="WebElement"/>.</returns>
+    public ReadOnlyCollection<WebElement> FindElements(By locator)
     {
         return this.App.FindWebElements(locator);
     }
@@ -141,43 +139,43 @@ public abstract class BasePage
     /// Finds the first element in the page that matches the specified XPath.
     /// </summary>
     /// <param name="xpath">The XPath to find the element.</param>
-    /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <returns>A <see cref="WebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public RemoteWebElement FindElementByXPath(string xpath)
+    public WebElement FindElementByXPath(string xpath)
     {
-        return this.App.FindElementByXPath(xpath) as RemoteWebElement;
+        return this.App.FindElementByXPath(xpath);
     }
 
     /// <summary>
     /// Finds all the elements in the page that matches the specified XPath.
     /// </summary>
     /// <param name="xpath">The XPath to find the elements.</param>
-    /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
-    public ReadOnlyCollection<RemoteWebElement> FindElementsByXPath(string xpath)
+    /// <returns>A readonly collection of <see cref="WebElement"/>.</returns>
+    public ReadOnlyCollection<WebElement> FindElementsByXPath(string xpath)
     {
-        return this.App.FindElementsByXPath(xpath).Cast<RemoteWebElement>().ToList().AsReadOnly();
+        return this.App.FindElementsByXPath(xpath);
     }
 
     /// <summary>
     /// Finds the first element in the page that matches the specified ID.
     /// </summary>
     /// <param name="id">The ID of the element.</param>
-    /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <returns>A <see cref="WebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public RemoteWebElement FindElementById(string id)
+    public WebElement FindElementById(string id)
     {
-        return this.App.FindElementById(id) as RemoteWebElement;
+        return this.App.FindElementById(id);
     }
 
     /// <summary>
     /// Finds the first of element in the page that matches the specified name.
     /// </summary>
     /// <param name="name">The name of the element.</param>
-    /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <returns>A <see cref="WebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public RemoteWebElement FindElementByName(string name)
+    public WebElement FindElementByName(string name)
     {
-        return this.App.FindElementByName(name) as RemoteWebElement;
+        return this.App.FindElementByName(name);
     }
 
     /// <summary>

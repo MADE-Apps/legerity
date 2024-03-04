@@ -1,8 +1,6 @@
 namespace Legerity.Extensions;
 
-using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a collection of extensions for performing interactions with elements.
@@ -16,7 +14,7 @@ public static class InteractionExtensions
     /// The element hold can be released by calling <see cref="ReleaseHold"/>.
     /// </remarks>
     /// <param name="element">The element to click and hold.</param>
-    public static void ClickAndHold(this RemoteWebElement element)
+    public static void ClickAndHold(this WebElement element)
     {
         var action = new Actions(element.WrappedDriver);
         action.ClickAndHold(element).Perform();
@@ -35,14 +33,14 @@ public static class InteractionExtensions
     public static void ClickAndHold<TElement>(this IElementWrapper<TElement> element)
         where TElement : IWebElement
     {
-        ClickAndHold(element.Element as RemoteWebElement);
+        ClickAndHold(element.Element as WebElement);
     }
 
     /// <summary>
     /// Releases the hold click from the element.
     /// </summary>
     /// <param name="element">The element to release the hold from.</param>
-    public static void ReleaseHold(this RemoteWebElement element)
+    public static void ReleaseHold(this WebElement element)
     {
         var action = new Actions(element.WrappedDriver);
         action.Release(element).Perform();
@@ -58,14 +56,14 @@ public static class InteractionExtensions
     public static void ReleaseHold<TElement>(this IElementWrapper<TElement> element)
         where TElement : IWebElement
     {
-        ReleaseHold(element.Element as RemoteWebElement);
+        ReleaseHold(element.Element as WebElement);
     }
 
     /// <summary>
     /// Scrolls to the element.
     /// </summary>
     /// <param name="element">The element to scroll to.</param>
-    public static void ScrollTo(this RemoteWebElement element)
+    public static void ScrollTo(this WebElement element)
     {
         var action = new Actions(element.WrappedDriver);
         action.MoveToElement(element).Perform();
@@ -81,6 +79,6 @@ public static class InteractionExtensions
     public static void ScrollTo<TElement>(this IElementWrapper<TElement> element)
         where TElement : IWebElement
     {
-        ScrollTo(element.Element as RemoteWebElement);
+        ScrollTo(element.Element as WebElement);
     }
 }

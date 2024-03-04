@@ -3,8 +3,6 @@ namespace Legerity.Extensions;
 using System;
 using System.Collections.ObjectModel;
 using System.Drawing;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>
@@ -35,9 +33,9 @@ public static class ElementWrapperExtensions
     /// </typeparam>
     /// <param name="element">The remote web element.</param>
     /// <param name="locator">The locator to find the element.</param>
-    /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <returns>A <see cref="WebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public static RemoteWebElement FindWebElement<TElement>(this IElementWrapper<TElement> element, By locator)
+    public static WebElement FindWebElement<TElement>(this IElementWrapper<TElement> element, By locator)
         where TElement : IWebElement
     {
         return element.Element.FindWebElement(locator);
@@ -51,8 +49,8 @@ public static class ElementWrapperExtensions
     /// </typeparam>
     /// <param name="element">The remote web element.</param>
     /// <param name="locator">The locator to find the elements.</param>
-    /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
-    public static ReadOnlyCollection<RemoteWebElement> FindWebElements<TElement>(
+    /// <returns>A readonly collection of <see cref="WebElement"/>.</returns>
+    public static ReadOnlyCollection<WebElement> FindWebElements<TElement>(
         this IElementWrapper<TElement> element, By locator)
         where TElement : IWebElement
     {

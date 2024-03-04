@@ -108,12 +108,12 @@ public class IOSAppManagerOptions : AppiumManagerOptions
     {
         base.Configure();
 
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "iOS");
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.App, this.AppId);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.AutomationName, this.AutomationName);
+        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformName, "iOS");
+        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformVersion, this.OSVersion);
+        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.DeviceName, this.DeviceName);
+        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.Udid, this.DeviceId);
+        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.App, this.AppId);
+        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.AutomationName, this.AutomationName);
     }
 
     /// <summary>

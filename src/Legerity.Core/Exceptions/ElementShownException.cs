@@ -28,7 +28,6 @@ public class ElementShownException : LegerityException
     public ElementShownException(string locator, Exception innerException)
         : base($"An element was located using locator: {locator}", innerException)
     {
-        this.ElementName = locator;
         this.Locator = locator;
     }
 
@@ -36,10 +35,4 @@ public class ElementShownException : LegerityException
     /// Gets the locator used to locate the element.
     /// </summary>
     public string Locator { get; }
-
-    /// <summary>
-    /// Gets the name of the element that was shown.
-    /// </summary>
-    [Obsolete("ElementName will be removed in a future major release. Please use the Locator instead.")]
-    public string ElementName { get; }
 }

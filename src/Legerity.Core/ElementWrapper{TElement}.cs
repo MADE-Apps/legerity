@@ -3,19 +3,16 @@ namespace Legerity;
 using System;
 
 using Legerity.Exceptions;
-
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>
 /// Defines a base wrapper for elements to expose platform element logic.
 /// </summary>
 /// <typeparam name="TElement">
-/// The type of <see cref="AppiumWebElement"/>.
+/// The type of <see cref="WebElement"/>.
 /// </typeparam>
 public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
-    where TElement : AppiumWebElement
+    where TElement : WebElement
 {
     private readonly WeakReference elementReference;
 
@@ -81,9 +78,9 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// <param name="locator">The locator to find a child element by.</param>
     /// <returns>The <typeparamref name="TElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public AppiumWebElement FindElement(By locator)
+    public WebElement FindElement(By locator)
     {
-        return this.Element.FindElement(locator);
+        return this.Element.FindElement(locator) as WebElement;
     }
 
     /// <summary>

@@ -5,11 +5,9 @@ using System.Collections.Generic;
 using Android;
 using Exceptions;
 using IOS;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 using Windows;
 
 /// <summary>
@@ -17,7 +15,7 @@ using Windows;
 /// </summary>
 public abstract class LegerityTestClass
 {
-    private readonly List<RemoteWebDriver> apps = new();
+    private readonly List<WebDriver> apps = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LegerityTestClass"/> class.
@@ -41,13 +39,13 @@ public abstract class LegerityTestClass
     /// <summary>
     /// Gets the instance of the started application.
     /// <para>
-    /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
+    /// This could be a <see cref="WindowsDriver"/>, <see cref="AndroidDriver"/>, <see cref="IOSDriver"/>, or web driver.
     /// </para>
     /// </summary>
     /// <remarks>
     /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp(Func{IWebDriver,bool},TimeSpan?,int)"/> or <see cref="StartApp(AppManagerOptions,Func{IWebDriver,bool},TimeSpan?,int)"/> method.
     /// </remarks>
-    protected RemoteWebDriver App { get; private set; }
+    protected WebDriver App { get; private set; }
 
     /// <summary>
     /// Gets or sets the instances of started applications.
@@ -55,7 +53,7 @@ public abstract class LegerityTestClass
     /// <remarks>
     /// This is useful for accessing drivers in parallelized tests.
     /// </remarks>
-    protected IReadOnlyCollection<RemoteWebDriver> Apps => this.apps;
+    protected IReadOnlyCollection<WebDriver> Apps => this.apps;
 
     /// <summary>
     /// Gets or sets the model that represents the configuration options for the <see cref="AppManager"/>.
@@ -82,7 +80,7 @@ public abstract class LegerityTestClass
     /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// </exception>
-    public virtual RemoteWebDriver StartApp(
+    public virtual WebDriver StartApp(
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
         int waitUntilRetries = 0)
@@ -116,7 +114,7 @@ public abstract class LegerityTestClass
     /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// </exception>
     /// <exception cref="WebDriverException">Thrown when the wait until condition is not met in the allocated timeout period if provided.</exception>
-    public virtual RemoteWebDriver StartApp(
+    public virtual WebDriver StartApp(
         AppManagerOptions options,
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
@@ -127,7 +125,7 @@ public abstract class LegerityTestClass
             this.Options = options;
         }
 
-        RemoteWebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
+        WebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
         this.App = app;
         this.apps.Add(app);
         return app;
@@ -161,7 +159,7 @@ public abstract class LegerityTestClass
     /// <param name="stopServer">
     /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
     /// </param>
-    public virtual void StopApp(RemoteWebDriver app, bool stopServer = false)
+    public virtual void StopApp(WebDriver app, bool stopServer = false)
     {
         this.StopAppManagerApp(app, stopServer, true);
     }
@@ -178,7 +176,7 @@ public abstract class LegerityTestClass
         this.apps.Clear();
     }
 
-    private void StopAppManagerApp(RemoteWebDriver app, bool stopServer, bool removeApp)
+    private void StopAppManagerApp(WebDriver app, bool stopServer, bool removeApp)
     {
         if (removeApp)
         {

@@ -71,7 +71,7 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     public override void Configure()
     {
         base.Configure();
-        this.AppiumOptions.AddAdditionalCapability("app", this.AppId);
+        this.AppiumOptions.AddAdditionalAppiumOption("app", this.AppId);
     }
 
     /// <summary>

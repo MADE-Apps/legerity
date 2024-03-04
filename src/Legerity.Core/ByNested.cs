@@ -3,7 +3,6 @@ namespace Legerity;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using OpenQA.Selenium;
 
 /// <summary>
 /// Defines a <see cref="By"/> locator that can be used to find elements using a sequence of locators that are continuously nested until the final locator is run.

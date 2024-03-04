@@ -4,8 +4,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>
@@ -31,11 +29,11 @@ public static class ElementExtensions
     /// </summary>
     /// <param name="element">The remote web element.</param>
     /// <param name="locator">The locator to find the element.</param>
-    /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <returns>A <see cref="WebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public static RemoteWebElement FindWebElement(this IWebElement element, By locator)
+    public static WebElement FindWebElement(this IWebElement element, By locator)
     {
-        return element.FindElement(locator) as RemoteWebElement;
+        return element.FindElement(locator) as WebElement;
     }
 
     /// <summary>
@@ -43,10 +41,10 @@ public static class ElementExtensions
     /// </summary>
     /// <param name="element">The remote web element.</param>
     /// <param name="locator">The locator to find the elements.</param>
-    /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
-    public static ReadOnlyCollection<RemoteWebElement> FindWebElements(this IWebElement element, By locator)
+    /// <returns>A readonly collection of <see cref="WebElement"/>.</returns>
+    public static ReadOnlyCollection<WebElement> FindWebElements(this IWebElement element, By locator)
     {
-        return element.FindElements(locator).Cast<RemoteWebElement>().ToList().AsReadOnly();
+        return element.FindElements(locator).Cast<WebElement>().ToList().AsReadOnly();
     }
 
     /// <summary>
@@ -116,8 +114,8 @@ public static class ElementExtensions
     /// <returns>Whether the wait was a success.</returns>
     /// <exception cref="Exception">Thrown when the <paramref name="exceptionHandler"/> callback throws an exception.</exception>
     public static bool TryWaitUntil(
-        this RemoteWebElement element,
-        Func<RemoteWebElement, bool> condition,
+        this WebElement element,
+        Func<WebElement, bool> condition,
         TimeSpan? timeout = default,
         int retries = 0,
         Action<Exception> exceptionHandler = null)
@@ -147,8 +145,8 @@ public static class ElementExtensions
     /// <exception cref="WebDriverException">Thrown when the condition is not met in the allocated timeout period.</exception>
     /// <exception cref="Exception">Thrown when the <paramref name="condition"/> callback throws an exception.</exception>
     public static TResult WaitUntil<TResult>(
-        this RemoteWebElement element,
-        Func<RemoteWebElement, TResult> condition,
+        this WebElement element,
+        Func<WebElement, TResult> condition,
         TimeSpan? timeout = default,
         int retries = 0)
     {

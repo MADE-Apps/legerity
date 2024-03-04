@@ -3,8 +3,6 @@ namespace Legerity.Extensions;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>
@@ -17,11 +15,11 @@ public static class DriverExtensions
     /// </summary>
     /// <param name="driver">The remote web driver.</param>
     /// <param name="locator">The locator to find the element.</param>
-    /// <returns>A <see cref="RemoteWebElement"/>.</returns>
+    /// <returns>A <see cref="WebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public static RemoteWebElement FindWebElement(this RemoteWebDriver driver, By locator)
+    public static WebElement FindWebElement(this WebDriver driver, By locator)
     {
-        return driver.FindElement(locator) as RemoteWebElement;
+        return driver.FindElement(locator) as WebElement;
     }
 
     /// <summary>
@@ -29,10 +27,10 @@ public static class DriverExtensions
     /// </summary>
     /// <param name="driver">The remote web driver.</param>
     /// <param name="locator">The locator to find the elements.</param>
-    /// <returns>A readonly collection of <see cref="RemoteWebElement"/>.</returns>
-    public static ReadOnlyCollection<RemoteWebElement> FindWebElements(this RemoteWebDriver driver, By locator)
+    /// <returns>A readonly collection of <see cref="WebElement"/>.</returns>
+    public static ReadOnlyCollection<WebElement> FindWebElements(this WebDriver driver, By locator)
     {
-        return driver.FindElements(locator).Cast<RemoteWebElement>().ToList().AsReadOnly();
+        return driver.FindElements(locator).Cast<WebElement>().ToList().AsReadOnly();
     }
 
     /// <summary>
@@ -42,7 +40,7 @@ public static class DriverExtensions
     /// <param name="text">The text to find.</param>
     /// <returns>A <see cref="IWebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public static IWebElement FindElementByText(this RemoteWebDriver driver, string text)
+    public static IWebElement FindElementByText(this WebDriver driver, string text)
     {
         return driver.FindElement(ByExtras.Text(text));
     }
@@ -53,7 +51,7 @@ public static class DriverExtensions
     /// <param name="driver">The remote web driver.</param>
     /// <param name="text">The text to find.</param>
     /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
-    public static ReadOnlyCollection<IWebElement> FindElementsByText(this RemoteWebDriver driver, string text)
+    public static ReadOnlyCollection<IWebElement> FindElementsByText(this WebDriver driver, string text)
     {
         return driver.FindElements(ByExtras.Text(text));
     }
@@ -65,7 +63,7 @@ public static class DriverExtensions
     /// <param name="text">The partial text to find.</param>
     /// <returns>A <see cref="IWebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public static IWebElement FindElementByPartialText(this RemoteWebDriver driver, string text)
+    public static IWebElement FindElementByPartialText(this WebDriver driver, string text)
     {
         return driver.FindElement(ByExtras.PartialText(text));
     }
@@ -77,7 +75,7 @@ public static class DriverExtensions
     /// <param name="text">The partial text to find.</param>
     /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
     public static ReadOnlyCollection<IWebElement> FindElementsByPartialText(
-        this RemoteWebDriver driver,
+        this WebDriver driver,
         string text)
     {
         return driver.FindElements(ByExtras.PartialText(text));
@@ -88,7 +86,7 @@ public static class DriverExtensions
     /// </summary>
     /// <param name="driver">The remote web driver.</param>
     /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
-    public static ReadOnlyCollection<IWebElement> GetAllElements(this RemoteWebDriver driver)
+    public static ReadOnlyCollection<IWebElement> GetAllElements(this WebDriver driver)
     {
         return driver.FindElements(By.XPath("//*"));
     }
@@ -98,7 +96,7 @@ public static class DriverExtensions
     /// </summary>
     /// <param name="driver">The remote web driver.</param>
     /// <returns>A readonly collection of <see cref="IWebElement"/>.</returns>
-    public static ReadOnlyCollection<IWebElement> GetAllChildElements(this RemoteWebDriver driver)
+    public static ReadOnlyCollection<IWebElement> GetAllChildElements(this WebDriver driver)
     {
         return driver.FindElements(By.XPath(".//*"));
     }
@@ -162,5 +160,25 @@ public static class DriverExtensions
 
             return WaitUntil(appDriver, condition, timeout, retries - 1);
         }
+    }
+
+    public static WebElement FindElementByXPath(this WebDriver driver, string xpath)
+    {
+        return driver.FindElement(By.XPath(xpath)) as WebElement;
+    }
+
+    public static ReadOnlyCollection<WebElement> FindElementsByXPath(this WebDriver driver, string xpath)
+    {
+        return driver.FindElements(By.XPath(xpath)).Cast<WebElement>().ToList().AsReadOnly();
+    }
+
+    public static WebElement FindElementById(this WebDriver driver, string id)
+    {
+        return driver.FindElement(By.Id(id)) as WebElement;
+    }
+
+    public static WebElement FindElementByName(this WebDriver driver, string name)
+    {
+        return driver.FindElement(By.Name(name)) as WebElement;
     }
 }
