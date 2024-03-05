@@ -2,8 +2,6 @@ namespace Legerity.Web.Elements.Core;
 
 using Legerity.Web.Elements;
 using Legerity.Web.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Input text control.
@@ -17,7 +15,7 @@ public class TextInput : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public TextInput(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +23,9 @@ public class TextInput : WebElementWrapper
     /// Initializes a new instance of the <see cref="TextInput"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public TextInput(RemoteWebElement element)
+    public TextInput(WebElement element)
         : base(element)
     {
     }
@@ -47,7 +45,7 @@ public class TextInput : WebElementWrapper
     /// <returns>
     /// The <see cref="TextInput"/>.
     /// </returns>
-    public static implicit operator TextInput(RemoteWebElement element)
+    public static implicit operator TextInput(WebElement element)
     {
         return new TextInput(element);
     }

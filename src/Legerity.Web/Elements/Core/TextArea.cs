@@ -1,8 +1,5 @@
 namespace Legerity.Web.Elements.Core;
 
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web TextArea control.
 /// </summary>
@@ -15,7 +12,7 @@ public class TextArea : TextInput
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public TextArea(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -23,9 +20,9 @@ public class TextArea : TextInput
     /// Initializes a new instance of the <see cref="TextArea"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public TextArea(RemoteWebElement element)
+    public TextArea(WebElement element)
         : base(element)
     {
     }
@@ -46,12 +43,12 @@ public class TextArea : TextInput
     /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="TextArea"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="TextArea"/>.
     /// </returns>
-    public static implicit operator TextArea(RemoteWebElement element)
+    public static implicit operator TextArea(WebElement element)
     {
         return new TextArea(element);
     }

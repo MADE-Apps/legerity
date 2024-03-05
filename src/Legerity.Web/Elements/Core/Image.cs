@@ -2,8 +2,6 @@ namespace Legerity.Web.Elements.Core;
 
 using Extensions;
 using Legerity.Web.Elements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Image control.
@@ -17,7 +15,7 @@ public class Image : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Image(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +23,9 @@ public class Image : WebElementWrapper
     /// Initializes a new instance of the <see cref="Image"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Image(RemoteWebElement element)
+    public Image(WebElement element)
         : base(element)
     {
     }
@@ -65,7 +63,7 @@ public class Image : WebElementWrapper
     /// <returns>
     /// The <see cref="Image"/>.
     /// </returns>
-    public static implicit operator Image(RemoteWebElement element)
+    public static implicit operator Image(WebElement element)
     {
         return new Image(element);
     }

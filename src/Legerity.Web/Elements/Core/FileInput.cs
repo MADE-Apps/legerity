@@ -2,8 +2,6 @@ namespace Legerity.Web.Elements.Core;
 
 using Legerity.Web.Elements;
 using Legerity.Web.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Input file control.
@@ -17,7 +15,7 @@ public class FileInput : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public FileInput(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +23,9 @@ public class FileInput : WebElementWrapper
     /// Initializes a new instance of the <see cref="FileInput"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public FileInput(RemoteWebElement element)
+    public FileInput(WebElement element)
         : base(element)
     {
     }
@@ -47,7 +45,7 @@ public class FileInput : WebElementWrapper
     /// <returns>
     /// The <see cref="FileInput"/>.
     /// </returns>
-    public static implicit operator FileInput(RemoteWebElement element)
+    public static implicit operator FileInput(WebElement element)
     {
         return new FileInput(element);
     }

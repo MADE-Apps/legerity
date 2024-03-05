@@ -2,8 +2,6 @@ namespace Legerity.Web.Elements.Core;
 
 using System;
 using Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.Extensions;
 
 /// <summary>
@@ -18,7 +16,7 @@ public class DateInput : TextInput
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public DateInput(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -26,9 +24,9 @@ public class DateInput : TextInput
     /// Initializes a new instance of the <see cref="DateInput"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public DateInput(RemoteWebElement element)
+    public DateInput(WebElement element)
         : base(element)
     {
     }
@@ -45,15 +43,15 @@ public class DateInput : TextInput
     public virtual DateTime? SelectedDate => this.GetSelectedDate();
 
     /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="DateInput"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="DateInput"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="DateInput"/>.
     /// </returns>
-    public static implicit operator DateInput(RemoteWebElement element)
+    public static implicit operator DateInput(WebElement element)
     {
         return new DateInput(element);
     }

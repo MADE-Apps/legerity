@@ -6,8 +6,6 @@ using System.Globalization;
 using System.Linq;
 using Legerity.Extensions;
 using Legerity.Web.Elements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Select control.
@@ -21,7 +19,7 @@ public class Select : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Select(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -29,9 +27,9 @@ public class Select : WebElementWrapper
     /// Initializes a new instance of the <see cref="Select"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Select(RemoteWebElement element)
+    public Select(WebElement element)
         : base(element)
     {
     }
@@ -69,7 +67,7 @@ public class Select : WebElementWrapper
     /// <returns>
     /// The <see cref="Select"/>.
     /// </returns>
-    public static implicit operator Select(RemoteWebElement element)
+    public static implicit operator Select(WebElement element)
     {
         return new Select(element);
     }

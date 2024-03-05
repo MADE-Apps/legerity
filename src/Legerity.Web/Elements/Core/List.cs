@@ -2,8 +2,6 @@ namespace Legerity.Web.Elements.Core;
 
 using System.Collections.ObjectModel;
 using Legerity.Web.Elements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web ol or ul control.
@@ -17,7 +15,7 @@ public class List : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public List(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +23,9 @@ public class List : WebElementWrapper
     /// Initializes a new instance of the <see cref="List"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public List(RemoteWebElement element)
+    public List(WebElement element)
         : base(element)
     {
     }
@@ -38,15 +36,15 @@ public class List : WebElementWrapper
     public virtual ReadOnlyCollection<IWebElement> Items => this.Element.FindElements(WebByExtras.ListItem());
 
     /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="List"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="List"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="List"/>.
     /// </returns>
-    public static implicit operator List(RemoteWebElement element)
+    public static implicit operator List(WebElement element)
     {
         return new List(element);
     }

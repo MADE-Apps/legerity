@@ -2,8 +2,6 @@ namespace Legerity.Web.Elements.Core;
 
 using System;
 using Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Input number control.
@@ -17,7 +15,7 @@ public class NumberInput : TextInput
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public NumberInput(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +23,9 @@ public class NumberInput : TextInput
     /// Initializes a new instance of the <see cref="NumberInput"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NumberInput(RemoteWebElement element)
+    public NumberInput(WebElement element)
         : base(element)
     {
     }
@@ -51,15 +49,15 @@ public class NumberInput : TextInput
     public virtual double Value => double.TryParse(this.Text, out double val) ? val : 0;
 
     /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NumberInput"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="NumberInput"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="NumberInput"/>.
     /// </returns>
-    public static implicit operator NumberInput(RemoteWebElement element)
+    public static implicit operator NumberInput(WebElement element)
     {
         return new NumberInput(element);
     }

@@ -2,7 +2,6 @@ namespace Legerity.Web.Extensions;
 
 using System;
 using Legerity.Web.Elements;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>

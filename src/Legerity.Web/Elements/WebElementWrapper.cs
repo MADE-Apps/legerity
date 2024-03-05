@@ -4,14 +4,12 @@ using System;
 using System.Collections.ObjectModel;
 using Legerity.Exceptions;
 using Legerity.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>
-/// Defines an element wrapper for a <see cref="RemoteWebElement"/>.
+/// Defines an element wrapper for a <see cref="WebElement"/>.
 /// </summary>
-public class WebElementWrapper : IElementWrapper<RemoteWebElement>
+public class WebElementWrapper : IElementWrapper<WebElement>
 {
     private readonly WeakReference elementReference;
 
@@ -22,7 +20,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public WebElementWrapper(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -30,17 +28,17 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// Initializes a new instance of the <see cref="WebElementWrapper"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public WebElementWrapper(RemoteWebElement element)
+    public WebElementWrapper(WebElement element)
     {
         this.elementReference = new WeakReference(element);
     }
 
-    /// <summary>Gets the original <see cref="RemoteWebElement"/> reference object.</summary>
-    public RemoteWebElement Element =>
+    /// <summary>Gets the original <see cref="WebElement"/> reference object.</summary>
+    public WebElement Element =>
         this.elementReference is { IsAlive: true }
-            ? this.elementReference.Target as RemoteWebElement
+            ? this.elementReference.Target as WebElement
             : null;
 
     /// <summary>
@@ -51,7 +49,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <summary>
     /// Gets the instance of the driver for the web application.
     /// </summary>
-    public RemoteWebDriver Driver => this.ElementDriver as RemoteWebDriver;
+    public WebDriver Driver => this.ElementDriver as WebDriver;
 
     /// <summary>
     /// Gets a value indicating whether the element is enabled.
@@ -66,15 +64,15 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     public virtual bool IsVisible => this.Element.Displayed;
 
     /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="WebElementWrapper"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="WebElementWrapper"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="WebElementWrapper"/>.
     /// </returns>
-    public static implicit operator WebElementWrapper(RemoteWebElement element)
+    public static implicit operator WebElementWrapper(WebElement element)
     {
         return new WebElementWrapper(element);
     }
@@ -83,9 +81,9 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// Finds a child element by the specified locator.
     /// </summary>
     /// <param name="locator">The locator to find a child element by.</param>
-    /// <returns>The <see cref="RemoteWebElement"/>.</returns>
+    /// <returns>The <see cref="WebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public RemoteWebElement FindElement(By locator)
+    public WebElement FindElement(By locator)
     {
         return this.Element.FindWebElement(locator);
     }
@@ -94,8 +92,8 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// Finds a collection of child elements by the specified locator.
     /// </summary>
     /// <param name="locator">The locator to find a child element by.</param>
-    /// <returns>The readonly collection of <see cref="RemoteWebElement"/>.</returns>
-    public ReadOnlyCollection<RemoteWebElement> FindElements(By locator)
+    /// <returns>The readonly collection of <see cref="WebElement"/>.</returns>
+    public ReadOnlyCollection<WebElement> FindElements(By locator)
     {
         return this.Element.FindWebElements(locator);
     }

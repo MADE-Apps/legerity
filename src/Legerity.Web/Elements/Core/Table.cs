@@ -3,8 +3,6 @@ namespace Legerity.Web.Elements.Core;
 using System.Collections.Generic;
 using System.Linq;
 using Legerity.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Table control.
@@ -18,7 +16,7 @@ public class Table : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Table(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -26,9 +24,9 @@ public class Table : WebElementWrapper
     /// Initializes a new instance of the <see cref="Table"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Table(RemoteWebElement element)
+    public Table(WebElement element)
         : base(element)
     {
     }
@@ -64,7 +62,7 @@ public class Table : WebElementWrapper
     /// <returns>
     /// The <see cref="Table"/>.
     /// </returns>
-    public static implicit operator Table(RemoteWebElement element)
+    public static implicit operator Table(WebElement element)
     {
         return new Table(element);
     }
