@@ -5,8 +5,6 @@ using Exceptions;
 using Legerity.Extensions;
 using Legerity.Pages;
 using Legerity.Web.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a page object for the Azure Active Directory login page.
@@ -29,7 +27,7 @@ public class AzureAdLoginPage : BasePage
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AzureAdLoginPage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within 2 seconds.
+    /// Initializes a new instance of the <see cref="AzureAdLoginPage"/> class using a <see cref="WebDriver"/> instance that verifies the page has loaded within 2 seconds.
     /// </summary>
     /// <param name="app">
     /// The instance of the started application driver that will be used to drive the page interaction.
@@ -37,7 +35,7 @@ public class AzureAdLoginPage : BasePage
     /// <exception cref="DriverNotInitializedException">Thrown when AppManager.StartApp() has not been called.</exception>
     /// <exception cref="PageNotShownException">Thrown when the page is not shown in 2 seconds.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public AzureAdLoginPage(RemoteWebDriver app)
+    public AzureAdLoginPage(WebDriver app)
         : base(app)
     {
     }
@@ -57,7 +55,7 @@ public class AzureAdLoginPage : BasePage
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AzureAdLoginPage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within the given timeout.
+    /// Initializes a new instance of the <see cref="AzureAdLoginPage"/> class using a <see cref="WebDriver"/> instance that verifies the page has loaded within the given timeout.
     /// </summary>
     /// <param name="app">
     /// The instance of the started application driver that will be used to drive the page interaction.
@@ -68,7 +66,7 @@ public class AzureAdLoginPage : BasePage
     /// <exception cref="DriverNotInitializedException">Thrown when AppManager.StartApp() has not been called.</exception>
     /// <exception cref="PageNotShownException">Thrown when the page is not shown in the given timeout.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public AzureAdLoginPage(RemoteWebDriver app, TimeSpan? traitTimeout)
+    public AzureAdLoginPage(WebDriver app, TimeSpan? traitTimeout)
         : base(app, traitTimeout)
     {
     }
