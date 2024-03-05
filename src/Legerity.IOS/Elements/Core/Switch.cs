@@ -1,13 +1,9 @@
 namespace Legerity.IOS.Elements.Core;
 
 using Legerity.IOS.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="IOSElement"/> wrapper for the core iOS Switch control.
+/// Defines a <see cref="WebElement"/> wrapper for the core iOS Switch control.
 /// </summary>
 public class Switch : IOSElementWrapper
 {
@@ -17,9 +13,9 @@ public class Switch : IOSElementWrapper
     /// Initializes a new instance of the <see cref="Switch"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Switch(IOSElement element)
+    public Switch(WebElement element)
         : base(element)
     {
     }
@@ -31,47 +27,19 @@ public class Switch : IOSElementWrapper
     public virtual bool IsOn => this.GetValue() == ToggleOnValue;
 
     /// <summary>
-    /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="Switch"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Switch"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Switch"/>.
     /// </returns>
-    public static implicit operator Switch(IOSElement element)
+    public static implicit operator Switch(WebElement element)
     {
         return new Switch(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="Switch"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Switch"/>.
-    /// </returns>
-    public static implicit operator Switch(AppiumWebElement element)
-    {
-        return new Switch(element as IOSElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Switch"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Switch"/>.
-    /// </returns>
-    public static implicit operator Switch(RemoteWebElement element)
-    {
-        return new Switch(element as IOSElement);
-    }
-
+    
     /// <summary>
     /// Toggles the switch on.
     /// </summary>

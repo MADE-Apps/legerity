@@ -1,13 +1,9 @@
 namespace Legerity.IOS.Elements.Core;
 
 using Legerity.IOS.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="IOSElement"/> wrapper for the core iOS Button control.
+/// Defines a <see cref="WebElement"/> wrapper for the core iOS Button control.
 /// </summary>
 public class Button : IOSElementWrapper
 {
@@ -15,9 +11,9 @@ public class Button : IOSElementWrapper
     /// Initializes a new instance of the <see cref="Button"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Button(IOSElement element)
+    public Button(WebElement element)
         : base(element)
     {
     }
@@ -29,44 +25,16 @@ public class Button : IOSElementWrapper
     public virtual string Label => this.GetLabel();
 
     /// <summary>
-    /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="Button"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Button"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Button"/>.
     /// </returns>
-    public static implicit operator Button(IOSElement element)
+    public static implicit operator Button(WebElement element)
     {
         return new Button(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="Button"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Button"/>.
-    /// </returns>
-    public static implicit operator Button(AppiumWebElement element)
-    {
-        return new Button(element as IOSElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Button"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Button"/>.
-    /// </returns>
-    public static implicit operator Button(RemoteWebElement element)
-    {
-        return new Button(element as IOSElement);
     }
 }

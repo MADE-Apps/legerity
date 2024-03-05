@@ -2,7 +2,6 @@ namespace Legerity.IOS.Extensions;
 
 using System;
 using Legerity.IOS.Elements;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>

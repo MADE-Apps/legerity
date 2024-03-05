@@ -1,8 +1,5 @@
 namespace Legerity.IOS.Extensions;
 
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-
 /// <summary>
 /// Defines a collection of extensions for retrieving element attributes.
 /// </summary>
@@ -23,7 +20,7 @@ public static class AttributeExtensions
     /// Retrieves the label attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a label from.</param>
     /// <returns>The label of the element.</returns>
@@ -49,7 +46,7 @@ public static class AttributeExtensions
     /// Retrieves the value attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a value from.</param>
     /// <returns>The value of the element.</returns>
