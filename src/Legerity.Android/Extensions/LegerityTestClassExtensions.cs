@@ -2,8 +2,6 @@ namespace Legerity.Android.Extensions;
 
 using System;
 using Exceptions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium.Android;
 
 /// <summary>
 /// Defines a collection of extensions for <see cref="LegerityTestClass"/> instances.
@@ -31,13 +29,13 @@ public static class LegerityTestClassExtensions
     /// <exception cref="LegerityException">Thrown when:
     /// - The Appium server could not be found when running with <see cref="AndroidAppManagerOptions.LaunchAppiumServer"/> true.
     /// </exception>
-    public static AndroidDriver<AndroidElement> StartAndroidApp(
+    public static AndroidDriver StartAndroidApp(
         this LegerityTestClass testClass,
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
         int waitUntilRetries = 0)
     {
-        return testClass.StartApp(waitUntil, waitUntilTimeout, waitUntilRetries) as AndroidDriver<AndroidElement>;
+        return testClass.StartApp(waitUntil, waitUntilTimeout, waitUntilRetries) as AndroidDriver;
     }
 
     /// <summary>
@@ -67,7 +65,7 @@ public static class LegerityTestClassExtensions
     /// <exception cref="LegerityException">Thrown when:
     /// - The Appium server could not be found when running with <see cref="AndroidAppManagerOptions.LaunchAppiumServer"/> true.
     /// </exception>
-    public static AndroidDriver<AndroidElement> StartAndroidApp(
+    public static AndroidDriver StartAndroidApp(
         this LegerityTestClass testClass,
         AndroidAppManagerOptions options,
         Func<IWebDriver, bool> waitUntil = default,
@@ -75,6 +73,6 @@ public static class LegerityTestClassExtensions
         int waitUntilRetries = 0)
     {
         return testClass.StartApp(options, waitUntil, waitUntilTimeout, waitUntilRetries) as
-            AndroidDriver<AndroidElement>;
+            AndroidDriver;
     }
 }

@@ -1,12 +1,7 @@
 namespace Legerity.Android.Elements.Core;
 
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
-
 /// <summary>
-/// Defines a <see cref="AndroidElement"/> wrapper for the core Android TextView control.
+/// Defines a <see cref="WebElement"/> wrapper for the core Android TextView control.
 /// </summary>
 public class TextView : AndroidElementWrapper
 {
@@ -14,9 +9,9 @@ public class TextView : AndroidElementWrapper
     /// Initializes a new instance of the <see cref="TextView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public TextView(AndroidElement element)
+    public TextView(WebElement element)
         : base(element)
     {
     }
@@ -28,44 +23,16 @@ public class TextView : AndroidElementWrapper
     public virtual string Text => this.Element.Text;
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="TextView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="TextView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="TextView"/>.
     /// </returns>
-    public static implicit operator TextView(AndroidElement element)
+    public static implicit operator TextView(WebElement element)
     {
         return new TextView(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="TextView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TextView"/>.
-    /// </returns>
-    public static implicit operator TextView(AppiumWebElement element)
-    {
-        return new TextView(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TextView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TextView"/>.
-    /// </returns>
-    public static implicit operator TextView(RemoteWebElement element)
-    {
-        return new TextView(element as AndroidElement);
     }
 }

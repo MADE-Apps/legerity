@@ -1,7 +1,5 @@
 namespace Legerity.Android;
 
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android.UiAutomator;
 
 /// <summary>

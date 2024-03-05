@@ -1,7 +1,6 @@
 namespace Legerity.Android.Extensions;
 
 using System;
-using OpenQA.Selenium;
 
 /// <summary>
 /// Defines a collection of extensions for retrieving element attributes.

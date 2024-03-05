@@ -1,20 +1,15 @@
 namespace Legerity.Android.Elements.Core;
 
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
-
 /// <summary>
-/// Defines a <see cref="AndroidElement"/> wrapper for the core Android EditText control.
+/// Defines a <see cref="WebElement"/> wrapper for the core Android EditText control.
 /// </summary>
 public class EditText : AndroidElementWrapper
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EditText"/> class.
     /// </summary>
-    /// <param name="element">The <see cref="AndroidElement"/> representing the <see cref="EditText"/> element.</param>
-    public EditText(AndroidElement element)
+    /// <param name="element">The <see cref="WebElement"/> representing the <see cref="EditText"/> element.</param>
+    public EditText(WebElement element)
         : base(element)
     {
     }
@@ -25,45 +20,17 @@ public class EditText : AndroidElementWrapper
     public virtual string Text => this.Element.Text;
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="EditText"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="EditText"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="EditText"/>.
     /// </returns>
-    public static implicit operator EditText(AndroidElement element)
+    public static implicit operator EditText(WebElement element)
     {
         return new EditText(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="EditText"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="EditText"/>.
-    /// </returns>
-    public static implicit operator EditText(AppiumWebElement element)
-    {
-        return new EditText(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="EditText"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="EditText"/>.
-    /// </returns>
-    public static implicit operator EditText(RemoteWebElement element)
-    {
-        return new EditText(element as AndroidElement);
     }
 
     /// <summary>

@@ -1,13 +1,9 @@
 namespace Legerity.Android.Elements.Core;
 
 using Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="AndroidElement"/> wrapper for the core Android ToggleButton control.
+/// Defines a <see cref="WebElement"/> wrapper for the core Android ToggleButton control.
 /// </summary>
 public class ToggleButton : Button
 {
@@ -15,9 +11,9 @@ public class ToggleButton : Button
     /// Initializes a new instance of the <see cref="ToggleButton"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public ToggleButton(AndroidElement element)
+    public ToggleButton(WebElement element)
         : base(element)
     {
     }
@@ -29,45 +25,17 @@ public class ToggleButton : Button
     public virtual bool IsOn => this.GetCheckedState();
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="ToggleButton"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ToggleButton"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="ToggleButton"/>.
     /// </returns>
-    public static implicit operator ToggleButton(AndroidElement element)
+    public static implicit operator ToggleButton(WebElement element)
     {
         return new ToggleButton(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ToggleButton"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ToggleButton"/>.
-    /// </returns>
-    public static implicit operator ToggleButton(AppiumWebElement element)
-    {
-        return new ToggleButton(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ToggleButton"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ToggleButton"/>.
-    /// </returns>
-    public static implicit operator ToggleButton(RemoteWebElement element)
-    {
-        return new ToggleButton(element as AndroidElement);
     }
 
     /// <summary>

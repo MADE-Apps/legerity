@@ -3,13 +3,10 @@ namespace Legerity.Android.Elements.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="AndroidElement"/> wrapper for the core Android DatePicker control.
+/// Defines a <see cref="WebElement"/> wrapper for the core Android DatePicker control.
 /// </summary>
 public class DatePicker : AndroidElementWrapper
 {
@@ -33,9 +30,9 @@ public class DatePicker : AndroidElementWrapper
     /// Initializes a new instance of the <see cref="DatePicker"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public DatePicker(AndroidElement element)
+    public DatePicker(WebElement element)
         : base(element)
     {
     }
@@ -84,45 +81,17 @@ public class DatePicker : AndroidElementWrapper
     public virtual DateTime SelectedDate => this.GetCurrentViewDate();
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="DatePicker"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="DatePicker"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="DatePicker"/>.
     /// </returns>
-    public static implicit operator DatePicker(AndroidElement element)
+    public static implicit operator DatePicker(WebElement element)
     {
         return new DatePicker(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="DatePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="DatePicker"/>.
-    /// </returns>
-    public static implicit operator DatePicker(AppiumWebElement element)
-    {
-        return new DatePicker(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="DatePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="DatePicker"/>.
-    /// </returns>
-    public static implicit operator DatePicker(RemoteWebElement element)
-    {
-        return new DatePicker(element as AndroidElement);
     }
 
     /// <summary>
