@@ -14,7 +14,7 @@ public class SampleTests : BaseTestClass
     [Test]
     public void ShouldLoadPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         new SamplePage(app).VerifyPageLoaded();
     }
 }

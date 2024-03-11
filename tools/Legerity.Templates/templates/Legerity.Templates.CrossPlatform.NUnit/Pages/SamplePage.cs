@@ -13,7 +13,7 @@ internal class SamplePage : BasePage
     {
     }
 
-    public SamplePage(RemoteWebDriver app)
+    public SamplePage(WebDriver app)
         : base(app, BaseTestClass.ImplicitWait)
     {
     }
@@ -33,9 +33,9 @@ internal class SamplePage : BasePage
     {
         return this.App switch
         {
-            WindowsDriver<WindowsElement> => WindowsByExtras.AutomationId("sampleButton"),
-            AndroidDriver<AndroidElement> => By.Id("sampleButton"),
-            IOSDriver<IOSElement> => By.Name("sampleButton"),
+            WindowsDriver => WindowsByExtras.AutomationId("sampleButton"),
+            AndroidDriver => By.Id("sampleButton"),
+            IOSDriver => By.Name("sampleButton"),
             _ => By.TagName("button")
         };
     }

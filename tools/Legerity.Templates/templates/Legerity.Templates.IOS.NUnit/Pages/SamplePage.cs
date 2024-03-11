@@ -10,7 +10,7 @@ internal class SamplePage : BasePage
     {
     }
 
-    public SamplePage(RemoteWebDriver app)
+    public SamplePage(WebDriver app)
         : base(app, BaseTestClass.ImplicitWait)
     {
     }
