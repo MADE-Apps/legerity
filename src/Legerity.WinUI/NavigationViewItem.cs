@@ -5,13 +5,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Legerity.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI NavigationViewItem control.
+/// Defines a <see cref="WebElement"/> wrapper for the WinUI NavigationViewItem control.
 /// </summary>
 public class NavigationViewItem : WindowsElementWrapper
 {
@@ -25,9 +21,9 @@ public class NavigationViewItem : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="NavigationViewItem"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NavigationViewItem(WindowsElement element)
+    public NavigationViewItem(WebElement element)
         : this(null, null, element)
     {
     }
@@ -39,9 +35,9 @@ public class NavigationViewItem : WindowsElementWrapper
     /// The parent <see cref="NavigationView"/>.
     /// </param>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NavigationViewItem(NavigationView parentNavigationView, WindowsElement element)
+    public NavigationViewItem(NavigationView parentNavigationView, WebElement element)
         : this(parentNavigationView, null, element)
     {
     }
@@ -53,9 +49,9 @@ public class NavigationViewItem : WindowsElementWrapper
     /// The parent <see cref="NavigationViewItem"/>.
     /// </param>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NavigationViewItem(NavigationViewItem parentItem, WindowsElement element)
+    public NavigationViewItem(NavigationViewItem parentItem, WebElement element)
         : this(null, parentItem, element)
     {
     }
@@ -70,12 +66,12 @@ public class NavigationViewItem : WindowsElementWrapper
     /// The parent <see cref="NavigationViewItem"/>.
     /// </param>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
     public NavigationViewItem(
         NavigationView parentNavigationView,
         NavigationViewItem parentItem,
-        WindowsElement element)
+        WebElement element)
         : base(element)
     {
         if (parentNavigationView != null)
@@ -108,47 +104,19 @@ public class NavigationViewItem : WindowsElementWrapper
     public virtual IEnumerable<NavigationViewItem> ChildMenuItems => this.GetChildMenuItems();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="NavigationViewItem"/>.
     /// </returns>
-    public static implicit operator NavigationViewItem(WindowsElement element)
+    public static implicit operator NavigationViewItem(WebElement element)
     {
         return new NavigationViewItem(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NavigationViewItem"/>.
-    /// </returns>
-    public static implicit operator NavigationViewItem(AppiumWebElement element)
-    {
-        return new NavigationViewItem(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NavigationViewItem"/>.
-    /// </returns>
-    public static implicit operator NavigationViewItem(RemoteWebElement element)
-    {
-        return new NavigationViewItem(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Clicks on a child menu option with the specified item name.
     /// </summary>
@@ -211,11 +179,11 @@ public class NavigationViewItem : WindowsElementWrapper
         if (this.ParentNavigationView == null || this.ParentNavigationView.IsPaneOpen)
         {
             return this.Element.FindElements(this.navigationViewItemLocator).Select(
-                element => new NavigationViewItem(this.ParentNavigationView, this, element as WindowsElement));
+                element => new NavigationViewItem(this.ParentNavigationView, this, element as WebElement));
         }
 
         return this.Driver.FindElement(WindowsByExtras.AutomationId("ChildrenFlyout"))
             .FindElements(this.navigationViewItemLocator).Select(
-                element => new NavigationViewItem(this.ParentNavigationView, this, element as WindowsElement));
+                element => new NavigationViewItem(this.ParentNavigationView, this, element));
     }
 }

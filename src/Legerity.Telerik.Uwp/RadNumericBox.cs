@@ -3,13 +3,9 @@ namespace Legerity.Windows.Elements.Telerik;
 using System;
 using Legerity.Windows.Elements.Core;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Telerik UWP RadNumericBox control.
+/// Defines a <see cref="WebElement"/> wrapper for the Telerik UWP RadNumericBox control.
 /// </summary>
 public class RadNumericBox : WindowsElementWrapper
 {
@@ -17,9 +13,9 @@ public class RadNumericBox : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="RadNumericBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public RadNumericBox(WindowsElement element)
+    public RadNumericBox(WebElement element)
         : base(element)
     {
     }
@@ -73,47 +69,19 @@ public class RadNumericBox : WindowsElementWrapper
     public virtual TextBox InputBox => this.FindElement(WindowsByExtras.AutomationId("PART_TextBox"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadNumericBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="RadNumericBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="RadNumericBox"/>.
     /// </returns>
-    public static implicit operator RadNumericBox(WindowsElement element)
+    public static implicit operator RadNumericBox(WebElement element)
     {
         return new RadNumericBox(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="RadNumericBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadNumericBox"/>.
-    /// </returns>
-    public static implicit operator RadNumericBox(AppiumWebElement element)
-    {
-        return new RadNumericBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadNumericBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadNumericBox"/>.
-    /// </returns>
-    public static implicit operator RadNumericBox(RemoteWebElement element)
-    {
-        return new RadNumericBox(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Sets the value of the RadNumericBox.
     /// </summary>

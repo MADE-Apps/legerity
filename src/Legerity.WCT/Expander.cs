@@ -2,13 +2,9 @@ namespace Legerity.Windows.Elements.WCT;
 
 using Legerity.Windows.Elements.Core;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit Expander control.
+/// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit Expander control.
 /// </summary>
 public class Expander : WindowsElementWrapper
 {
@@ -16,9 +12,9 @@ public class Expander : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="Expander"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Expander(WindowsElement element)
+    public Expander(WebElement element)
         : base(element)
     {
     }
@@ -36,45 +32,17 @@ public class Expander : WindowsElementWrapper
     public virtual ToggleButton ToggleButton => this.FindElement(WindowsByExtras.AutomationId("PART_ExpanderToggleButton"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="Expander"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Expander"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Expander"/>.
     /// </returns>
-    public static implicit operator Expander(WindowsElement element)
+    public static implicit operator Expander(WebElement element)
     {
         return new Expander(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="Expander"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Expander"/>.
-    /// </returns>
-    public static implicit operator Expander(AppiumWebElement element)
-    {
-        return new Expander(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Expander"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Expander"/>.
-    /// </returns>
-    public static implicit operator Expander(RemoteWebElement element)
-    {
-        return new Expander(element as WindowsElement);
     }
 
     /// <summary>

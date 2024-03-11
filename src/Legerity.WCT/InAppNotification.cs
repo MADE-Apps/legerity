@@ -1,14 +1,11 @@
 namespace Legerity.Windows.Elements.WCT;
 
 using System.Linq;
+using Extensions;
 using Legerity.Windows.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit InAppNotification control.
+/// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit InAppNotification control.
 /// </summary>
 public class InAppNotification : WindowsElementWrapper
 {
@@ -16,9 +13,9 @@ public class InAppNotification : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="InAppNotification"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public InAppNotification(WindowsElement element)
+    public InAppNotification(WebElement element)
         : base(element)
     {
     }
@@ -39,47 +36,19 @@ public class InAppNotification : WindowsElementWrapper
     public virtual string Message => this.Element.FindElementsByClassName("TextBlock").FirstOrDefault()?.Text;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InAppNotification"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InAppNotification"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="InAppNotification"/>.
     /// </returns>
-    public static implicit operator InAppNotification(WindowsElement element)
+    public static implicit operator InAppNotification(WebElement element)
     {
         return new InAppNotification(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="InAppNotification"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InAppNotification"/>.
-    /// </returns>
-    public static implicit operator InAppNotification(AppiumWebElement element)
-    {
-        return new InAppNotification(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InAppNotification"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InAppNotification"/>.
-    /// </returns>
-    public static implicit operator InAppNotification(RemoteWebElement element)
-    {
-        return new InAppNotification(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Dismissed the in-app notification.
     /// </summary>

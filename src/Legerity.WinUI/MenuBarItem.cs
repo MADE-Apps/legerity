@@ -6,13 +6,9 @@ using System.Globalization;
 using System.Linq;
 using Legerity.Extensions;
 using Legerity.Windows.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI MenuBarItem control.
+/// Defines a <see cref="WebElement"/> wrapper for the WinUI MenuBarItem control.
 /// </summary>
 public class MenuBarItem : WindowsElementWrapper
 {
@@ -22,9 +18,9 @@ public class MenuBarItem : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="MenuBarItem"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public MenuBarItem(WindowsElement element)
+    public MenuBarItem(WebElement element)
         : this(null, element)
     {
     }
@@ -36,11 +32,11 @@ public class MenuBarItem : WindowsElementWrapper
     /// The parent <see cref="MenuBar"/>.
     /// </param>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
     public MenuBarItem(
         MenuBar parentMenuBar,
-        WindowsElement element)
+        WebElement element)
         : base(element)
     {
         if (parentMenuBar != null)
@@ -68,47 +64,19 @@ public class MenuBarItem : WindowsElementWrapper
     public virtual IEnumerable<MenuFlyoutSubItem> ChildMenuSubItems => this.GetChildMenuSubItems();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="MenuBarItem"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="MenuBarItem"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="MenuBarItem"/>.
     /// </returns>
-    public static implicit operator MenuBarItem(WindowsElement element)
+    public static implicit operator MenuBarItem(WebElement element)
     {
         return new MenuBarItem(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="MenuBarItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="MenuBarItem"/>.
-    /// </returns>
-    public static implicit operator MenuBarItem(AppiumWebElement element)
-    {
-        return new MenuBarItem(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="MenuBarItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="MenuBarItem"/>.
-    /// </returns>
-    public static implicit operator MenuBarItem(RemoteWebElement element)
-    {
-        return new MenuBarItem(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Clicks on a child menu option with the specified item name.
     /// </summary>
@@ -218,7 +186,7 @@ public class MenuBarItem : WindowsElementWrapper
     {
         return this.Driver.FindElement(By.ClassName("MenuFlyout"))
             .FindElements(By.ClassName(nameof(MenuFlyoutItem))).Select(
-                element => new MenuFlyoutItem(element as WindowsElement));
+                element => new MenuFlyoutItem(element));
     }
 
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
@@ -226,6 +194,6 @@ public class MenuBarItem : WindowsElementWrapper
     {
         return this.Driver.FindElement(By.ClassName("MenuFlyout"))
             .FindElements(By.ClassName(nameof(MenuFlyoutSubItem))).Select(
-                element => new MenuFlyoutSubItem(element as WindowsElement));
+                element => new MenuFlyoutSubItem(element));
     }
 }

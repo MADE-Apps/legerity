@@ -7,13 +7,9 @@ using System.Linq;
 using Extensions;
 using Legerity.Extensions;
 using Legerity.Windows.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI NavigationView control.
+/// Defines a <see cref="WebElement"/> wrapper for the WinUI NavigationView control.
 /// </summary>
 public class NavigationView : WindowsElementWrapper
 {
@@ -21,9 +17,9 @@ public class NavigationView : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="NavigationView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NavigationView(WindowsElement element)
+    public NavigationView(WebElement element)
         : base(element)
     {
     }
@@ -32,7 +28,7 @@ public class NavigationView : WindowsElementWrapper
     /// Gets the UI component associated with displaying the menu items.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual AppiumWebElement MenuItemsView =>
+    public virtual WebElement MenuItemsView =>
         this.FindElement(WindowsByExtras.AutomationId("MenuItemsHost"));
 
     /// <summary>
@@ -41,7 +37,7 @@ public class NavigationView : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual IEnumerable<NavigationViewItem> MenuItems =>
         this.MenuItemsView.FindElements(By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem"))
-            .Select(element => new NavigationViewItem(this, element as WindowsElement));
+            .Select(element => new NavigationViewItem(this, element as WebElement));
 
     /// <summary>
     /// Gets the currently selected menu item.
@@ -55,7 +51,7 @@ public class NavigationView : WindowsElementWrapper
     /// Gets the UI component associated with the settings menu item.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual AppiumWebElement SettingsMenuItem =>
+    public virtual WebElement SettingsMenuItem =>
         this.FindElement(WindowsByExtras.AutomationId("SettingsItem"));
 
     /// <summary>
@@ -84,45 +80,17 @@ public class NavigationView : WindowsElementWrapper
     public virtual int ExpectedCompactPaneWidth { get; set; } = 72;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="NavigationView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="NavigationView"/>.
     /// </returns>
-    public static implicit operator NavigationView(WindowsElement element)
+    public static implicit operator NavigationView(WebElement element)
     {
         return new NavigationView(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="NavigationView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NavigationView"/>.
-    /// </returns>
-    public static implicit operator NavigationView(AppiumWebElement element)
-    {
-        return new NavigationView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NavigationView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NavigationView"/>.
-    /// </returns>
-    public static implicit operator NavigationView(RemoteWebElement element)
-    {
-        return new NavigationView(element as WindowsElement);
     }
 
     /// <summary>
@@ -248,8 +216,8 @@ public class NavigationView : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual bool VerifyPaneOpen(int expectedCompactPaneWidth)
     {
-        AppiumWebElement pane = this.FindElement(WindowsByExtras.AutomationId("PaneRoot"));
-        int paneWidth = pane.Rect.Width;
+        WebElement pane = this.FindElement(WindowsByExtras.AutomationId("PaneRoot"));
+        int paneWidth = pane.GetBoundingRect().Width;
         return paneWidth > expectedCompactPaneWidth;
     }
 }

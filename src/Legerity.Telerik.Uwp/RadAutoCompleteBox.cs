@@ -3,13 +3,9 @@ namespace Legerity.Windows.Elements.Telerik;
 using System;
 using Legerity.Exceptions;
 using Legerity.Windows.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Telerik UWP RadAutoCompleteBox control.
+/// Defines a <see cref="WebElement"/> wrapper for the Telerik UWP RadAutoCompleteBox control.
 /// </summary>
 public class RadAutoCompleteBox : WindowsElementWrapper
 {
@@ -19,9 +15,9 @@ public class RadAutoCompleteBox : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="RadAutoCompleteBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public RadAutoCompleteBox(WindowsElement element)
+    public RadAutoCompleteBox(WebElement element)
         : base(element)
     {
     }
@@ -39,47 +35,19 @@ public class RadAutoCompleteBox : WindowsElementWrapper
     public virtual string Text => this.TextBox.Text;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadAutoCompleteBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="RadAutoCompleteBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="RadAutoCompleteBox"/>.
     /// </returns>
-    public static implicit operator RadAutoCompleteBox(WindowsElement element)
+    public static implicit operator RadAutoCompleteBox(WebElement element)
     {
         return new RadAutoCompleteBox(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="RadAutoCompleteBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadAutoCompleteBox"/>.
-    /// </returns>
-    public static implicit operator RadAutoCompleteBox(AppiumWebElement element)
-    {
-        return new RadAutoCompleteBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadAutoCompleteBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadAutoCompleteBox"/>.
-    /// </returns>
-    public static implicit operator RadAutoCompleteBox(RemoteWebElement element)
-    {
-        return new RadAutoCompleteBox(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Selects a suggestion from the auto-suggest box.
     /// </summary>

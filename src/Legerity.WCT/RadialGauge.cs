@@ -2,13 +2,9 @@ namespace Legerity.Windows.Elements.WCT;
 
 using System;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit RadialGauge control.
+/// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit RadialGauge control.
 /// </summary>
 public class RadialGauge : WindowsElementWrapper
 {
@@ -16,9 +12,9 @@ public class RadialGauge : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="RadialGauge"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public RadialGauge(WindowsElement element)
+    public RadialGauge(WebElement element)
         : base(element)
     {
     }
@@ -54,47 +50,19 @@ public class RadialGauge : WindowsElementWrapper
     public virtual bool IsReadonly => this.IsRangeReadonly();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadialGauge"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="RadialGauge"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="RadialGauge"/>.
     /// </returns>
-    public static implicit operator RadialGauge(WindowsElement element)
+    public static implicit operator RadialGauge(WebElement element)
     {
         return new RadialGauge(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="RadialGauge"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadialGauge"/>.
-    /// </returns>
-    public static implicit operator RadialGauge(AppiumWebElement element)
-    {
-        return new RadialGauge(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadialGauge"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadialGauge"/>.
-    /// </returns>
-    public static implicit operator RadialGauge(RemoteWebElement element)
-    {
-        return new RadialGauge(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Sets the value of the gauge.
     /// </summary>

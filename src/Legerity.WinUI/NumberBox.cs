@@ -3,13 +3,9 @@ namespace Legerity.Windows.Elements.WinUI;
 using System;
 using Legerity.Windows.Elements.Core;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI NumberBox control.
+/// Defines a <see cref="WebElement"/> wrapper for the WinUI NumberBox control.
 /// </summary>
 public class NumberBox : WindowsElementWrapper
 {
@@ -17,9 +13,9 @@ public class NumberBox : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="NumberBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NumberBox(WindowsElement element)
+    public NumberBox(WebElement element)
         : base(element)
     {
     }
@@ -74,47 +70,19 @@ public class NumberBox : WindowsElementWrapper
     public virtual TextBox InputBox => this.FindElement(WindowsByExtras.AutomationId("InputBox"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NumberBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="NumberBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="NumberBox"/>.
     /// </returns>
-    public static implicit operator NumberBox(WindowsElement element)
+    public static implicit operator NumberBox(WebElement element)
     {
         return new NumberBox(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="NumberBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NumberBox"/>.
-    /// </returns>
-    public static implicit operator NumberBox(AppiumWebElement element)
-    {
-        return new NumberBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NumberBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NumberBox"/>.
-    /// </returns>
-    public static implicit operator NumberBox(RemoteWebElement element)
-    {
-        return new NumberBox(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Sets the value of the NumberBox.
     /// </summary>

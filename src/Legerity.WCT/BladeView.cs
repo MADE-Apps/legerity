@@ -3,13 +3,9 @@ namespace Legerity.Windows.Elements.WCT;
 using System.Collections.Generic;
 using System.Linq;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit BladeView control.
+/// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit BladeView control.
 /// </summary>
 public class BladeView : WindowsElementWrapper
 {
@@ -17,9 +13,9 @@ public class BladeView : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="BladeView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public BladeView(WindowsElement element)
+    public BladeView(WebElement element)
         : base(element)
     {
     }
@@ -29,48 +25,20 @@ public class BladeView : WindowsElementWrapper
     /// </summary>
     public virtual IEnumerable<BladeViewItem> Blades =>
         this.Element.FindElements(By.ClassName("BladeItem"))
-            .Select(element => new BladeViewItem(this, element as WindowsElement));
+            .Select(element => new BladeViewItem(this, element as WebElement));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="BladeView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="BladeView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="BladeView"/>.
     /// </returns>
-    public static implicit operator BladeView(WindowsElement element)
+    public static implicit operator BladeView(WebElement element)
     {
         return new BladeView(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="BladeView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="BladeView"/>.
-    /// </returns>
-    public static implicit operator BladeView(AppiumWebElement element)
-    {
-        return new BladeView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="BladeView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="BladeView"/>.
-    /// </returns>
-    public static implicit operator BladeView(RemoteWebElement element)
-    {
-        return new BladeView(element as WindowsElement);
     }
 
     /// <summary>

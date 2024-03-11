@@ -1,13 +1,9 @@
 namespace Legerity.Windows.Elements.MADE;
 
 using Legerity.Windows.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the MADE.NET UWP InputValidator control.
+/// Defines a <see cref="WebElement"/> wrapper for the MADE.NET UWP InputValidator control.
 /// </summary>
 public class InputValidator : WindowsElementWrapper
 {
@@ -15,9 +11,9 @@ public class InputValidator : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="InputValidator"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public InputValidator(WindowsElement element)
+    public InputValidator(WebElement element)
         : base(element)
     {
     }
@@ -36,54 +32,26 @@ public class InputValidator : WindowsElementWrapper
     public virtual string Message => this.ValidationFeedback?.Text;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InputValidator"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InputValidator"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="InputValidator"/>.
     /// </returns>
-    public static implicit operator InputValidator(WindowsElement element)
+    public static implicit operator InputValidator(WebElement element)
     {
         return new InputValidator(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="InputValidator"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InputValidator"/>.
-    /// </returns>
-    public static implicit operator InputValidator(AppiumWebElement element)
-    {
-        return new InputValidator(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InputValidator"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InputValidator"/>.
-    /// </returns>
-    public static implicit operator InputValidator(RemoteWebElement element)
-    {
-        return new InputValidator(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Retrieves the input element with the given locator.
     /// </summary>
     /// <param name="locator">The locator to find the input element.</param>
-    /// <returns>The <see cref="AppiumWebElement"/> if found; otherwise, throws <see cref="WebDriverException"/>.</returns>
+    /// <returns>The <see cref="WebElement"/> if found; otherwise, throws <see cref="WebDriverException"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public AppiumWebElement Input(By locator)
+    public WebElement Input(By locator)
     {
         return this.FindElement(locator);
     }

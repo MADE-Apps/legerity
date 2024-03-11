@@ -2,13 +2,9 @@ namespace Legerity.Windows.Elements.MADE;
 
 using Legerity.Exceptions;
 using Legerity.Windows.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the MADE.NET UWP DropDownList control.
+/// Defines a <see cref="WebElement"/> wrapper for the MADE.NET UWP DropDownList control.
 /// </summary>
 public class DropDownList : WindowsElementWrapper
 {
@@ -16,9 +12,9 @@ public class DropDownList : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="DropDownList"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public DropDownList(WindowsElement element)
+    public DropDownList(WebElement element)
         : base(element)
     {
     }
@@ -30,47 +26,19 @@ public class DropDownList : WindowsElementWrapper
     public virtual ListView DropDown => this.FindElement(WindowsByExtras.AutomationId("DropDownContent"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="DropDownList"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="DropDownList"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="DropDownList"/>.
     /// </returns>
-    public static implicit operator DropDownList(WindowsElement element)
+    public static implicit operator DropDownList(WebElement element)
     {
         return new DropDownList(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="DropDownList"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="DropDownList"/>.
-    /// </returns>
-    public static implicit operator DropDownList(AppiumWebElement element)
-    {
-        return new DropDownList(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="DropDownList"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="DropDownList"/>.
-    /// </returns>
-    public static implicit operator DropDownList(RemoteWebElement element)
-    {
-        return new DropDownList(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Selects an item in the combo-box with the specified item name.
     /// </summary>
