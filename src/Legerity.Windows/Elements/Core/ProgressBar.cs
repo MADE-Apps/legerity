@@ -2,13 +2,9 @@ namespace Legerity.Windows.Elements.Core;
 
 using System;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ProgressBar control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP ProgressBar control.
 /// </summary>
 public class ProgressBar : WindowsElementWrapper
 {
@@ -16,9 +12,9 @@ public class ProgressBar : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="ProgressBar"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public ProgressBar(WindowsElement element)
+    public ProgressBar(WebElement element)
         : base(element)
     {
     }
@@ -39,44 +35,16 @@ public class ProgressBar : WindowsElementWrapper
             StringComparison.CurrentCultureIgnoreCase);
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ProgressBar"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ProgressBar"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="ProgressBar"/>.
     /// </returns>
-    public static implicit operator ProgressBar(WindowsElement element)
+    public static implicit operator ProgressBar(WebElement element)
     {
         return new ProgressBar(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ProgressBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ProgressBar"/>.
-    /// </returns>
-    public static implicit operator ProgressBar(AppiumWebElement element)
-    {
-        return new ProgressBar(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ProgressBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ProgressBar"/>.
-    /// </returns>
-    public static implicit operator ProgressBar(RemoteWebElement element)
-    {
-        return new ProgressBar(element as WindowsElement);
     }
 }

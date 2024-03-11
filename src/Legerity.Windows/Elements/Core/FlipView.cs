@@ -6,13 +6,9 @@ using System.Globalization;
 using System.Linq;
 using Legerity.Extensions;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP FlipView control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP FlipView control.
 /// </summary>
 public class FlipView : WindowsElementWrapper
 {
@@ -20,9 +16,9 @@ public class FlipView : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="FlipView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public FlipView(WindowsElement element)
+    public FlipView(WebElement element)
         : base(element)
     {
     }
@@ -30,7 +26,7 @@ public class FlipView : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the flip view.
     /// </summary>
-    public virtual ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(By.ClassName("FlipViewItem"));
+    public virtual ReadOnlyCollection<WebElement> Items => this.Element.FindElements(By.ClassName("FlipViewItem")).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the next item button.
@@ -47,7 +43,7 @@ public class FlipView : WindowsElementWrapper
     /// <summary>
     /// Gets the currently selected item.
     /// </summary>
-    public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual WebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
 
     /// <summary>
     /// Gets the currently selected item index.
@@ -55,47 +51,19 @@ public class FlipView : WindowsElementWrapper
     public virtual int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="FlipView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="FlipView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="FlipView"/>.
     /// </returns>
-    public static implicit operator FlipView(WindowsElement element)
+    public static implicit operator FlipView(WebElement element)
     {
         return new FlipView(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="FlipView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="FlipView"/>.
-    /// </returns>
-    public static implicit operator FlipView(AppiumWebElement element)
-    {
-        return new FlipView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="FlipView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="FlipView"/>.
-    /// </returns>
-    public static implicit operator FlipView(RemoteWebElement element)
-    {
-        return new FlipView(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Selects an item in the flip view by the specified name.
     /// </summary>

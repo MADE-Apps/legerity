@@ -7,13 +7,9 @@ using System.Linq;
 using System.Threading;
 using Legerity.Extensions;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP CalendarView control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP CalendarView control.
 /// </summary>
 public class CalendarView : WindowsElementWrapper
 {
@@ -37,9 +33,9 @@ public class CalendarView : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="CalendarView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public CalendarView(WindowsElement element)
+    public CalendarView(WebElement element)
         : base(element)
     {
     }
@@ -66,8 +62,8 @@ public class CalendarView : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of days associated with the current month in the calendar view.
     /// </summary>
-    public virtual ReadOnlyCollection<AppiumWebElement> Days =>
-        this.Element.FindElements(By.ClassName("CalendarViewDayItem"));
+    public virtual ReadOnlyCollection<WebElement> Days =>
+        this.Element.FindElements(By.ClassName("CalendarViewDayItem")).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the value of the calendar view.
@@ -81,47 +77,19 @@ public class CalendarView : WindowsElementWrapper
     public virtual DateTime? SelectedDate => this.GetSelectedDate();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CalendarView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CalendarView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="CalendarView"/>.
     /// </returns>
-    public static implicit operator CalendarView(WindowsElement element)
+    public static implicit operator CalendarView(WebElement element)
     {
         return new CalendarView(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="CalendarView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarView"/>.
-    /// </returns>
-    public static implicit operator CalendarView(AppiumWebElement element)
-    {
-        return new CalendarView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CalendarView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarView"/>.
-    /// </returns>
-    public static implicit operator CalendarView(RemoteWebElement element)
-    {
-        return new CalendarView(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Sets the selected date of the calendar view.
     /// </summary>
@@ -154,7 +122,7 @@ public class CalendarView : WindowsElementWrapper
             currentHeader = this.HeaderButton.GetName();
         }
 
-        AppiumWebElement item = this.Days.FirstOrDefault(
+        WebElement item = this.Days.FirstOrDefault(
             element => element.GetName().Equals(expectedDay, StringComparison.CurrentCultureIgnoreCase));
 
         if (item == null)

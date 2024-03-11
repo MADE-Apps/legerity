@@ -5,13 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Legerity.Exceptions;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP CommandBar control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP CommandBar control.
 /// </summary>
 public class CommandBar : WindowsElementWrapper
 {
@@ -25,9 +21,9 @@ public class CommandBar : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="CommandBar"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public CommandBar(WindowsElement element)
+    public CommandBar(WebElement element)
         : base(element)
     {
     }
@@ -37,7 +33,7 @@ public class CommandBar : WindowsElementWrapper
     /// </summary>
     public virtual IEnumerable<AppBarButton> PrimaryButtons =>
         this.Element.FindElements(this.appBarButtonLocator)
-            .Select<AppiumWebElement, AppBarButton>(element => element);
+            .Select<IWebElement, AppBarButton>(element => element as WebElement);
 
     /// <summary>
     /// Gets the <see cref="AppBarButton"/> for opening the secondary button menu.
@@ -54,48 +50,20 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual IEnumerable<AppBarButton> SecondaryButtons =>
         this.Driver.FindElement(this.overflowPopupLocator).FindElements(this.appBarButtonLocator)
-            .Select<AppiumWebElement, AppBarButton>(element => element);
+            .Select<WebElement, AppBarButton>(element => element);
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CommandBar"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CommandBar"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="CommandBar"/>.
     /// </returns>
-    public static implicit operator CommandBar(WindowsElement element)
+    public static implicit operator CommandBar(WebElement element)
     {
         return new CommandBar(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="CommandBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CommandBar"/>.
-    /// </returns>
-    public static implicit operator CommandBar(AppiumWebElement element)
-    {
-        return new CommandBar(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CommandBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CommandBar"/>.
-    /// </returns>
-    public static implicit operator CommandBar(RemoteWebElement element)
-    {
-        return new CommandBar(element as WindowsElement);
     }
 
     /// <summary>

@@ -4,13 +4,9 @@ using System;
 using Legerity.Exceptions;
 using Legerity.Extensions;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP CalendarDatePicker control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP CalendarDatePicker control.
 /// </summary>
 public class CalendarDatePicker : WindowsElementWrapper
 {
@@ -20,9 +16,9 @@ public class CalendarDatePicker : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="CalendarDatePicker"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public CalendarDatePicker(WindowsElement element)
+    public CalendarDatePicker(WebElement element)
         : base(element)
     {
     }
@@ -46,47 +42,19 @@ public class CalendarDatePicker : WindowsElementWrapper
     public virtual DateTime? SelectedDate => this.GetSelectedDate();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="CalendarDatePicker"/>.
     /// </returns>
-    public static implicit operator CalendarDatePicker(WindowsElement element)
+    public static implicit operator CalendarDatePicker(WebElement element)
     {
         return new CalendarDatePicker(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarDatePicker"/>.
-    /// </returns>
-    public static implicit operator CalendarDatePicker(AppiumWebElement element)
-    {
-        return new CalendarDatePicker(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarDatePicker"/>.
-    /// </returns>
-    public static implicit operator CalendarDatePicker(RemoteWebElement element)
-    {
-        return new CalendarDatePicker(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Sets the selected date of the calendar view.
     /// </summary>

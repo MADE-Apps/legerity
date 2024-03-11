@@ -3,13 +3,9 @@ namespace Legerity.Windows.Elements.Core;
 using System;
 using Extensions;
 using Legerity.Exceptions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP InkToolbar control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP InkToolbar control.
 /// </summary>
 public partial class InkToolbar : WindowsElementWrapper
 {
@@ -23,9 +19,9 @@ public partial class InkToolbar : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="InkToolbar"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public InkToolbar(WindowsElement element)
+    public InkToolbar(WebElement element)
         : base(element)
     {
     }
@@ -109,47 +105,19 @@ public partial class InkToolbar : WindowsElementWrapper
         this.Driver.FindElement(this.highlighterFlyoutLocator);
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InkToolbar"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InkToolbar"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="InkToolbar"/>.
     /// </returns>
-    public static implicit operator InkToolbar(WindowsElement element)
+    public static implicit operator InkToolbar(WebElement element)
     {
         return new InkToolbar(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="InkToolbar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InkToolbar"/>.
-    /// </returns>
-    public static implicit operator InkToolbar(AppiumWebElement element)
-    {
-        return new InkToolbar(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InkToolbar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InkToolbar"/>.
-    /// </returns>
-    public static implicit operator InkToolbar(RemoteWebElement element)
-    {
-        return new InkToolbar(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Selects the ballpoint pen option.
     /// </summary>

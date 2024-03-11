@@ -1,13 +1,9 @@
 namespace Legerity.Windows.Elements.Core;
 
 using Legerity.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP PasswordBox control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP PasswordBox control.
 /// </summary>
 public class PasswordBox : TextBox
 {
@@ -15,9 +11,9 @@ public class PasswordBox : TextBox
     /// Initializes a new instance of the <see cref="PasswordBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public PasswordBox(WindowsElement element)
+    public PasswordBox(WebElement element)
         : base(element)
     {
     }
@@ -38,47 +34,19 @@ public class PasswordBox : TextBox
     public virtual string Password => this.Text;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="PasswordBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="PasswordBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="PasswordBox"/>.
     /// </returns>
-    public static implicit operator PasswordBox(WindowsElement element)
+    public static implicit operator PasswordBox(WebElement element)
     {
         return new PasswordBox(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="PasswordBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="PasswordBox"/>.
-    /// </returns>
-    public static implicit operator PasswordBox(AppiumWebElement element)
-    {
-        return new PasswordBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="PasswordBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="PasswordBox"/>.
-    /// </returns>
-    public static implicit operator PasswordBox(RemoteWebElement element)
-    {
-        return new PasswordBox(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Reveals the password text in the password box.
     /// </summary>

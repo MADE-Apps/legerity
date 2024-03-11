@@ -5,9 +5,6 @@ using System.Linq;
 using Legerity.Exceptions;
 using Legerity.Extensions;
 using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
 
 /// <summary>
 /// Defines the color flyout components of the <see cref="InkToolbar"/>.
@@ -25,9 +22,9 @@ public partial class InkToolbar
         /// Initializes a new instance of the <see cref="InkToolbarColorFlyoutBase"/> class.
         /// </summary>
         /// <param name="element">
-        /// The <see cref="WindowsElement"/> reference.
+        /// The <see cref="WebElement"/> reference.
         /// </param>
-        protected InkToolbarColorFlyoutBase(WindowsElement element)
+        protected InkToolbarColorFlyoutBase(WebElement element)
             : base(element)
         {
         }
@@ -89,7 +86,7 @@ public partial class InkToolbar
         /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
         /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
         /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-        private AppiumWebElement GetSelectedColor()
+        private WebElement GetSelectedColor()
         {
             this.VerifyElementShown(this.penColorPaletteLocator, TimeSpan.FromSeconds(2));
 

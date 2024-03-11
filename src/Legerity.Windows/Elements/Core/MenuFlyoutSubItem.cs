@@ -5,13 +5,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Legerity.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the UWP MenuFlyoutSubItem control.
+/// Defines a <see cref="WebElement"/> wrapper for the UWP MenuFlyoutSubItem control.
 /// </summary>
 public class MenuFlyoutSubItem : WindowsElementWrapper
 {
@@ -19,9 +15,9 @@ public class MenuFlyoutSubItem : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="MenuFlyoutSubItem"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public MenuFlyoutSubItem(WindowsElement element)
+    public MenuFlyoutSubItem(WebElement element)
         : base(element)
     {
     }
@@ -39,45 +35,17 @@ public class MenuFlyoutSubItem : WindowsElementWrapper
     public virtual IEnumerable<MenuFlyoutSubItem> ChildMenuSubItems => this.GetChildMenuSubItems();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="MenuFlyoutSubItem"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="MenuFlyoutSubItem"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="MenuFlyoutSubItem"/>.
     /// </returns>
-    public static implicit operator MenuFlyoutSubItem(WindowsElement element)
+    public static implicit operator MenuFlyoutSubItem(WebElement element)
     {
         return new MenuFlyoutSubItem(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="MenuFlyoutSubItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="MenuFlyoutSubItem"/>.
-    /// </returns>
-    public static implicit operator MenuFlyoutSubItem(AppiumWebElement element)
-    {
-        return new MenuFlyoutSubItem(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="MenuFlyoutSubItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="MenuFlyoutSubItem"/>.
-    /// </returns>
-    public static implicit operator MenuFlyoutSubItem(RemoteWebElement element)
-    {
-        return new MenuFlyoutSubItem(element as WindowsElement);
     }
 
     /// <summary>
@@ -189,7 +157,7 @@ public class MenuFlyoutSubItem : WindowsElementWrapper
     {
         return this.Driver.FindElement(By.ClassName("MenuFlyout"))
             .FindElements(By.ClassName(nameof(MenuFlyoutItem))).Select(
-                element => new MenuFlyoutItem(element as WindowsElement));
+                element => new MenuFlyoutItem(element));
     }
 
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
@@ -197,6 +165,6 @@ public class MenuFlyoutSubItem : WindowsElementWrapper
     {
         return this.Driver.FindElement(By.ClassName("MenuFlyout"))
             .FindElements(By.ClassName(nameof(MenuFlyoutSubItem))).Select(
-                element => new MenuFlyoutSubItem(element as WindowsElement));
+                element => new MenuFlyoutSubItem(element));
     }
 }

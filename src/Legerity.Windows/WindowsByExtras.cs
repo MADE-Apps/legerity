@@ -1,7 +1,6 @@
 namespace Legerity.Windows;
 
 using System;
-using OpenQA.Selenium;
 
 /// <summary>
 /// Defines a collection of extra locator constraints for <see cref="By"/>.

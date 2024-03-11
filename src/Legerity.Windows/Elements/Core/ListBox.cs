@@ -6,13 +6,8 @@ using System.Linq;
 using Legerity.Exceptions;
 using Legerity.Windows.Extensions;
 
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
-
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ListBox control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP ListBox control.
 /// </summary>
 public class ListBox : WindowsElementWrapper
 {
@@ -22,9 +17,9 @@ public class ListBox : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="ListBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public ListBox(WindowsElement element)
+    public ListBox(WebElement element)
         : base(element)
     {
     }
@@ -32,56 +27,28 @@ public class ListBox : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the list box.
     /// </summary>
-    public virtual ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.listBoxItemLocator);
+    public virtual ReadOnlyCollection<WebElement> Items => this.Element.FindElements(this.listBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual WebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ListBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ListBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="ListBox"/>.
     /// </returns>
-    public static implicit operator ListBox(WindowsElement element)
+    public static implicit operator ListBox(WebElement element)
     {
         return new ListBox(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ListBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ListBox"/>.
-    /// </returns>
-    public static implicit operator ListBox(AppiumWebElement element)
-    {
-        return new ListBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ListBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ListBox"/>.
-    /// </returns>
-    public static implicit operator ListBox(RemoteWebElement element)
-    {
-        return new ListBox(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Clicks on an item in the list box with the specified item name.
     /// </summary>
@@ -96,7 +63,7 @@ public class ListBox : WindowsElementWrapper
     public virtual void ClickItem(string name)
     {
         this.VerifyElementsShown(this.listBoxItemLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        WebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -118,7 +85,7 @@ public class ListBox : WindowsElementWrapper
     public virtual void ClickItemByPartialName(string partialName)
     {
         this.VerifyElementsShown(this.listBoxItemLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item =
+        WebElement item =
             this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
 
         if (item == null)

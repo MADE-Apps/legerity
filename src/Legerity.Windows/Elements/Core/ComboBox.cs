@@ -7,13 +7,9 @@ using System.Globalization;
 using System.Linq;
 using Legerity.Exceptions;
 using Legerity.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ComboBox control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP ComboBox control.
 /// </summary>
 public class ComboBox : WindowsElementWrapper
 {
@@ -23,9 +19,9 @@ public class ComboBox : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="ComboBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public ComboBox(WindowsElement element)
+    public ComboBox(WebElement element)
         : base(element)
     {
     }
@@ -37,47 +33,19 @@ public class ComboBox : WindowsElementWrapper
     public virtual string SelectedItem => this.GetSelectedItem();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ComboBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ComboBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="ComboBox"/>.
     /// </returns>
-    public static implicit operator ComboBox(WindowsElement element)
+    public static implicit operator ComboBox(WebElement element)
     {
         return new ComboBox(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ComboBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ComboBox"/>.
-    /// </returns>
-    public static implicit operator ComboBox(AppiumWebElement element)
-    {
-        return new ComboBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ComboBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ComboBox"/>.
-    /// </returns>
-    public static implicit operator ComboBox(RemoteWebElement element)
-    {
-        return new ComboBox(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Selects an item in the combo-box with the specified item name.
     /// </summary>
@@ -91,9 +59,9 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectItem(string name)
     {
-        IEnumerable<AppiumWebElement> listElements = this.GetItemsToSelect();
+        IEnumerable<WebElement> listElements = this.GetItemsToSelect();
 
-        AppiumWebElement item = listElements.FirstOrDefault(
+        WebElement item = listElements.FirstOrDefault(
             element => element.GetName().Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
         if (item == null)
@@ -117,9 +85,9 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectItemByPartialName(string name)
     {
-        IEnumerable<AppiumWebElement> listElements = this.GetItemsToSelect();
+        IEnumerable<WebElement> listElements = this.GetItemsToSelect();
 
-        AppiumWebElement item = listElements.FirstOrDefault(
+        WebElement item = listElements.FirstOrDefault(
             element => element.GetName().Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 
         if (item == null)
@@ -133,7 +101,7 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string GetSelectedItem()
     {
-        ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator);
+        ReadOnlyCollection<WebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
         return listElements.Count == 1 ? listElements.FirstOrDefault().GetName() : null;
     }
 
@@ -141,11 +109,11 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    private IEnumerable<AppiumWebElement> GetItemsToSelect()
+    private IEnumerable<WebElement> GetItemsToSelect()
     {
         this.Click();
         this.VerifyElementsShown(this.comboBoxItemLocator, TimeSpan.FromSeconds(2));
-        ReadOnlyCollection<AppiumWebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator);
+        ReadOnlyCollection<WebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
         return listElements;
     }
 }
