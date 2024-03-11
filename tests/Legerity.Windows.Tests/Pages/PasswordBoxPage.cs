@@ -6,7 +6,7 @@ using OpenQA.Selenium.Remote;
 
 internal class PasswordBoxPage : BaseNavigationPage
 {
-    public PasswordBoxPage(RemoteWebDriver app) : base(app)
+    public PasswordBoxPage(WebDriver app) : base(app)
     {
     }
 

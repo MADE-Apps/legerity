@@ -48,7 +48,7 @@ internal class RatingControlTests : BaseTestClass
 
     private RatingControlPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<RatingControlPage>("RatingControl");
     }
 }

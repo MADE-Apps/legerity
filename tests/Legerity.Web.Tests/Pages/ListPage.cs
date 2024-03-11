@@ -9,7 +9,7 @@ internal class ListPage : W3SchoolsBasePage
 {
     private readonly By orderedListLocator = By.TagName("ol");
 
-    public ListPage(RemoteWebDriver app) : base(app)
+    public ListPage(WebDriver app) : base(app)
     {
     }
 

@@ -3,6 +3,7 @@ namespace Legerity.Core.Tests.Tests;
 using System;
 using System.Drawing;
 using System.IO;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using Shouldly;
@@ -26,7 +27,7 @@ internal class WebAppManagerOptionsTests : BaseTestClass
         };
         
         // Act
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         // Assert
         app.Manage().Window.Size.ShouldBe(options.DesiredSize);

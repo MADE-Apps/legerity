@@ -8,7 +8,7 @@ internal class NumberInputPage : W3SchoolsBasePage
 {
     private readonly By quantityNumberInputLocator = By.Id("quantity");
 
-    public NumberInputPage(RemoteWebDriver app) : base(app)
+    public NumberInputPage(WebDriver app) : base(app)
     {
     }
 

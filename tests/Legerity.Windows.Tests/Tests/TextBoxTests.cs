@@ -63,7 +63,7 @@ internal class TextBoxTests : BaseTestClass
 
     private TextBoxPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<TextBoxPage>("TextBox");
     }
 }

@@ -12,7 +12,7 @@ internal class RadioButtonPage : W3SchoolsBasePage
 
     private readonly By cssRadioButtonLocator = By.Id("css");
 
-    public RadioButtonPage(RemoteWebDriver app) : base(app)
+    public RadioButtonPage(WebDriver app) : base(app)
     {
     }
 

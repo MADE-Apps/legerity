@@ -9,7 +9,7 @@ internal class BaseNavigationPage : BasePage
 {
     private readonly By searchBoxLocator = By.Name("Search");
 
-    public BaseNavigationPage(RemoteWebDriver app)
+    public BaseNavigationPage(WebDriver app)
         : base(app)
     {
     }
@@ -23,7 +23,7 @@ internal class BaseNavigationPage : BasePage
     {
         this.SearchBox.SetText(controlName);
 
-        RemoteWebElement item = this.FindElement(By.XPath($".//*[@ClassName='ListViewItem'][@Name='{sampleName}']"));
+        WebElement item = this.FindElement(By.XPath($".//*[@ClassName='ListViewItem'][@Name='{sampleName}']"));
         item.Click();
 
         return Activator.CreateInstance(typeof(TPage), this.App) as TPage;

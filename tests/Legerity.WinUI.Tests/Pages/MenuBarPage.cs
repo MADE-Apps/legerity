@@ -2,11 +2,12 @@ namespace Legerity.WinUI.Tests.Pages;
 
 using Legerity.Windows;
 using Legerity.Windows.Elements.WinUI;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
 internal class MenuBarPage : BaseNavigationPage
 {
-    public MenuBarPage(RemoteWebDriver app) : base(app)
+    public MenuBarPage(WebDriver app) : base(app)
     {
     }
 

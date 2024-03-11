@@ -37,7 +37,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldGetElementDriverMatchingAppDriver()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
@@ -54,7 +54,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldGetEnabledState()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
@@ -71,7 +71,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldGetVisibleState()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
@@ -88,7 +88,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldWaitUntilConditionMet()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
@@ -102,7 +102,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldThrowExceptionIfWaitUntilConditionNotMet()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
@@ -116,7 +116,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldTryWaitUntilConditionMet()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
@@ -133,7 +133,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldTryWaitUntilConditionNotMet()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()

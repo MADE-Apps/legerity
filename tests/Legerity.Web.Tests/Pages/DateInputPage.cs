@@ -7,7 +7,7 @@ using OpenQA.Selenium.Remote;
 
 internal class DateInputPage : W3SchoolsBasePage
 {
-    public DateInputPage(RemoteWebDriver app) : base(app)
+    public DateInputPage(WebDriver app) : base(app)
     {
     }
 

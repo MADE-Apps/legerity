@@ -2,6 +2,7 @@ namespace Legerity.Windows.Tests.Tests;
 
 using Elements.Core;
 using Extensions;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using Shouldly;
@@ -18,10 +19,10 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     public void ShouldFindWindowsDriverElementByAutomationId()
     {
         // Arrange
-        WindowsDriver<WindowsElement> app = this.StartWindowsApp();
+        WindowsDriver app = this.StartWindowsApp();
 
         // Act
-        WindowsElement element = app.FindElementByAutomationId("headerImage");
+        WebElement element = app.FindElementByAutomationId("headerImage");
 
         // Assert
         element.ShouldNotBeNull();
@@ -31,11 +32,11 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     public void ShouldFindNestedWrapperElementByAutomationId()
     {
         // Arrange
-        WindowsDriver<WindowsElement> app = this.StartWindowsApp();
-        WindowsElement itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
+        WindowsDriver app = this.StartWindowsApp();
+        WebElement itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
 
         // Act
-        AppiumWebElement element = itemGridView.FindElementByAutomationId("headerImage");
+        WebElement element = itemGridView.FindElementByAutomationId("headerImage");
 
         // Assert
         element.ShouldNotBeNull();
@@ -45,7 +46,7 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     public void ShouldTryWaitUntilWrapperElementConditionIsMet()
     {
         // Arrange
-        WindowsDriver<WindowsElement> app = this.StartWindowsApp();
+        WindowsDriver app = this.StartWindowsApp();
         GridView itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
 
         // Act

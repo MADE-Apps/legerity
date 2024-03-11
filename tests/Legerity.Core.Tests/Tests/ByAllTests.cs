@@ -26,14 +26,14 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        RemoteWebElement element = page.FindElement(new ByAll(By.TagName("p"), ByExtras.PartialText("Please select")));
+        WebElement element = page.FindElement(new ByAll(By.TagName("p"), ByExtras.PartialText("Please select")));
 
         // Assert
         element.ShouldNotBeNull();
@@ -53,14 +53,14 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement> elements =
+        ReadOnlyCollection<WebElement> elements =
             page.FindElements(new ByAll(By.TagName("p"), ByExtras.PartialText("Please select")));
 
         // Assert
@@ -81,7 +81,7 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -105,14 +105,14 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement> elements =
+        ReadOnlyCollection<WebElement> elements =
             page.FindElements(new ByAll(By.TagName("p"), ByExtras.PartialText("This text does not exist")));
 
         // Assert

@@ -7,7 +7,7 @@ using OpenQA.Selenium.Remote;
 
 internal class TimePickerPage : BaseNavigationPage
 {
-    public TimePickerPage(RemoteWebDriver app) : base(app)
+    public TimePickerPage(WebDriver app) : base(app)
     {
     }
 

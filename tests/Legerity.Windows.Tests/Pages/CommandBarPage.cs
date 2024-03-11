@@ -2,11 +2,12 @@ namespace Legerity.Windows.Tests.Pages;
 
 using Legerity.Windows;
 using Legerity.Windows.Elements.Core;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
 internal class CommandBarPage : BaseNavigationPage
 {
-    public CommandBarPage(RemoteWebDriver app) : base(app)
+    public CommandBarPage(WebDriver app) : base(app)
     {
     }
 

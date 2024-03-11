@@ -8,7 +8,7 @@ internal class RangeInputPage : W3SchoolsBasePage
 {
     private readonly By volumeRangeInputLocator = By.Id("vol");
 
-    public RangeInputPage(RemoteWebDriver app) : base(app)
+    public RangeInputPage(WebDriver app) : base(app)
     {
     }
 

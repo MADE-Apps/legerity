@@ -7,7 +7,7 @@ using OpenQA.Selenium.Remote;
 
 internal class CalendarViewPage : BaseNavigationPage
 {
-    public CalendarViewPage(RemoteWebDriver app) : base(app)
+    public CalendarViewPage(WebDriver app) : base(app)
     {
     }
 

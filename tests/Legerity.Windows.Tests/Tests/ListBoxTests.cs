@@ -17,7 +17,7 @@ internal class ListBoxTests : BaseTestClass
     public void ShouldClickItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ListBoxPage listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
 
         // Act
@@ -31,7 +31,7 @@ internal class ListBoxTests : BaseTestClass
     public void ShouldClickItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ListBoxPage listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
 
         // Act

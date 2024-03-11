@@ -8,7 +8,7 @@ internal class TextInputPage : W3SchoolsBasePage
 {
     private readonly By firstNameInputLocator = By.Id("fname");
 
-    public TextInputPage(RemoteWebDriver app) : base(app)
+    public TextInputPage(WebDriver app) : base(app)
     {
     }
 

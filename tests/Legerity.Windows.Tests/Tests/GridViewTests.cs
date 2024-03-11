@@ -18,11 +18,11 @@ internal class GridViewTests : BaseTestClass
     public void ShouldGetItems()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
 
         // Act
-        ReadOnlyCollection<AppiumWebElement> items = gridViewPage.BasicGridView.Items;
+        ReadOnlyCollection<WebElement> items = gridViewPage.BasicGridView.Items;
 
         // Assert
         items.Count.ShouldBe(8);
@@ -32,7 +32,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
@@ -47,7 +47,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
@@ -62,7 +62,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByIndex()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const int expected = 2;
 

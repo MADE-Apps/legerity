@@ -36,7 +36,7 @@ internal class MultipleSelectTests : W3SchoolsBaseTestClass
     public void ShouldGetIsMultipleTrue()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -53,7 +53,7 @@ internal class MultipleSelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectMultipleOptions()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()

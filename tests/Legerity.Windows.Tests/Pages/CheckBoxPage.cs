@@ -6,7 +6,7 @@ using OpenQA.Selenium.Remote;
 
 internal class CheckBoxPage : BaseNavigationPage
 {
-    public CheckBoxPage(RemoteWebDriver app) : base(app)
+    public CheckBoxPage(WebDriver app) : base(app)
     {
     }
 

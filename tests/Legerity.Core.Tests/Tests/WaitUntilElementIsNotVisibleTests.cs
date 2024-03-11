@@ -27,7 +27,7 @@ internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -50,16 +50,16 @@ internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
-        RemoteWebElement element = page.FindElement(By.TagName("form"));
+        WebElement element = page.FindElement(By.TagName("form"));
 
         // Act & Assert
-        element.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElement<RemoteWebElement>(By.TagName("select")),
+        element.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElement<WebElement>(By.TagName("select")),
             ImplicitWait);
     }
 
@@ -76,7 +76,7 @@ internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -85,7 +85,7 @@ internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
         Form form = page.FindElement(By.TagName("form"));
 
         // Act & Assert
-        form.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElementWrapper<RemoteWebElement>(By.TagName("select")),
+        form.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElementWrapper<WebElement>(By.TagName("select")),
             ImplicitWait);
     }
 
@@ -102,7 +102,7 @@ internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()

@@ -10,7 +10,7 @@ internal class OptionPage : W3SchoolsBasePage
 {
     private readonly By carOptionLocator = By.TagName("option");
 
-    public OptionPage(RemoteWebDriver app) : base(app)
+    public OptionPage(WebDriver app) : base(app)
     {
     }
 

@@ -6,7 +6,7 @@ using OpenQA.Selenium.Remote;
 
 internal class TextBoxPage : BaseNavigationPage
 {
-    public TextBoxPage(RemoteWebDriver app) : base(app)
+    public TextBoxPage(WebDriver app) : base(app)
     {
     }
 

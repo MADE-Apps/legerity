@@ -16,7 +16,7 @@ internal class ProgressBarTests : BaseTestClass
     public void ShouldGetDeterminateValue()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ProgressBarPage progressBarPage = new HomePage(app).NavigateTo<ProgressBarPage>("ProgressBar");
 
         // Act
@@ -31,7 +31,7 @@ internal class ProgressBarTests : BaseTestClass
     public void ShouldGetIndeterminateValue()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ProgressBarPage progressBarPage = new HomePage(app).NavigateTo<ProgressBarPage>("ProgressBar");
 
         // Act & Assert

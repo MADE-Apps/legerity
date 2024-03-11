@@ -3,11 +3,12 @@ namespace Legerity.WinUI.Tests.Pages;
 using Windows.Elements.Core;
 using Legerity.Windows;
 using Legerity.Windows.Elements.WinUI;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
 internal class TabViewPage : BaseNavigationPage
 {
-    public TabViewPage(RemoteWebDriver app) : base(app)
+    public TabViewPage(WebDriver app) : base(app)
     {
     }
 

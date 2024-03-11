@@ -8,7 +8,7 @@ internal class SelectPage : W3SchoolsBasePage
 {
     private readonly By carsSelectLocator = By.Id("cars");
 
-    public SelectPage(RemoteWebDriver app) : base(app)
+    public SelectPage(WebDriver app) : base(app)
     {
     }
 

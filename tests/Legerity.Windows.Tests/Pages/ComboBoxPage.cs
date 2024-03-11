@@ -8,7 +8,7 @@ internal class ComboBoxPage : BaseNavigationPage
 {
     private readonly By colorComboBox = By.Name("Colors");
 
-    public ComboBoxPage(RemoteWebDriver app) : base(app)
+    public ComboBoxPage(WebDriver app) : base(app)
     {
     }
 

@@ -7,7 +7,7 @@ using OpenQA.Selenium.Remote;
 
 internal class ProgressRingPage : BaseNavigationPage
 {
-    public ProgressRingPage(RemoteWebDriver app) : base(app)
+    public ProgressRingPage(WebDriver app) : base(app)
     {
     }
 

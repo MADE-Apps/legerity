@@ -36,7 +36,7 @@ internal class ListTests : W3SchoolsBaseTestClass
     public void ShouldContainItems()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         ListPage listPage = new ListPage(app)
             .AcceptCookies<ListPage>()

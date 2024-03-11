@@ -37,7 +37,7 @@ internal class ImageTests : W3SchoolsBaseTestClass
         // Arrange
         const string expectedImageSource = "img_girl.jpg";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         ImagePage imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
@@ -56,7 +56,7 @@ internal class ImageTests : W3SchoolsBaseTestClass
         // Arrange
         const string expectedAltText = "Girl in a jacket";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         ImagePage imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
@@ -76,7 +76,7 @@ internal class ImageTests : W3SchoolsBaseTestClass
         const double expectedHeight = 600;
         const double expectedWidth = 500;
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         ImagePage imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()

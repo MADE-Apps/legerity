@@ -10,7 +10,7 @@ internal class BaseNavigationPage : BasePage
 {
     private readonly By navigationViewLocator = WindowsByExtras.AutomationId("NavigationViewControl");
 
-    public BaseNavigationPage(RemoteWebDriver app)
+    public BaseNavigationPage(WebDriver app)
         : base(app)
     {
     }

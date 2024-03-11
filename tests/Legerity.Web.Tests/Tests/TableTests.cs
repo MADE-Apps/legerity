@@ -37,7 +37,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetTableHeaders()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -57,7 +57,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetTableRows()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -74,7 +74,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetDataTableRows()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -91,7 +91,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetRowDataByIndex()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -111,7 +111,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetColumnDataByIndex()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -134,7 +134,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetColumnDataByHeader()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()

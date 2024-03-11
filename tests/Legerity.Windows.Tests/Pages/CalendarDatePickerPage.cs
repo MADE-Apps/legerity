@@ -7,7 +7,7 @@ using OpenQA.Selenium.Remote;
 
 internal class CalendarDatePickerPage : BaseNavigationPage
 {
-    public CalendarDatePickerPage(RemoteWebDriver app) : base(app)
+    public CalendarDatePickerPage(WebDriver app) : base(app)
     {
     }
 

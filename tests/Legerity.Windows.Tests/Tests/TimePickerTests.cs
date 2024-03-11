@@ -24,7 +24,7 @@ internal class TimePickerTests : BaseTestClass
 
     private TimePickerPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<TimePickerPage>("TimePicker");
     }
 }

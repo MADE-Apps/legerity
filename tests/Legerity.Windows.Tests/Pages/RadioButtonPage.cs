@@ -6,7 +6,7 @@ using OpenQA.Selenium.Remote;
 
 internal class RadioButtonPage : BaseNavigationPage
 {
-    public RadioButtonPage(RemoteWebDriver app) : base(app)
+    public RadioButtonPage(WebDriver app) : base(app)
     {
     }
 

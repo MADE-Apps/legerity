@@ -9,7 +9,7 @@ internal class FlipViewPage : BaseNavigationPage
 {
     private readonly By flipViewLocator = By.ClassName(nameof(FlipView));
 
-    public FlipViewPage(RemoteWebDriver app) : base(app)
+    public FlipViewPage(WebDriver app) : base(app)
     {
     }
 

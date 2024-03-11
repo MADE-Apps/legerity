@@ -36,7 +36,7 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldCheckUncheckedCheckbox()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
@@ -54,7 +54,7 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldKeepCheckedIfCheckedAgain()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
@@ -72,7 +72,7 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldUncheckCheckedCheckbox()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
@@ -90,7 +90,7 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldKeepUncheckedIfUncheckedAgain()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()

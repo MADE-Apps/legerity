@@ -17,7 +17,7 @@ internal class PivotTests : BaseTestClass
     public void ShouldSelectPivotItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         PivotPage pivotPage = new HomePage(app).NavigateTo<PivotPage>("Pivot");
 
         // Act
@@ -31,7 +31,7 @@ internal class PivotTests : BaseTestClass
     public void ShouldSelectPivotItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         PivotPage pivotPage = new HomePage(app).NavigateTo<PivotPage>("Pivot");
 
         // Act

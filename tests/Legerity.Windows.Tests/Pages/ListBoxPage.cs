@@ -2,11 +2,12 @@ namespace Legerity.Windows.Tests.Pages;
 
 using Legerity.Windows;
 using Legerity.Windows.Elements.Core;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
 internal class ListBoxPage : BaseNavigationPage
 {
-    public ListBoxPage(RemoteWebDriver app) : base(app)
+    public ListBoxPage(WebDriver app) : base(app)
     {
     }
 

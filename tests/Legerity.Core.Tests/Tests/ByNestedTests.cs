@@ -27,14 +27,14 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        RemoteWebElement element = page.FindElement(new ByNested(By.TagName("form"), By.TagName("input")));
+        WebElement element = page.FindElement(new ByNested(By.TagName("form"), By.TagName("input")));
 
         // Assert
         element.ShouldNotBeNull();
@@ -54,14 +54,14 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement> elements =
+        ReadOnlyCollection<WebElement> elements =
             page.FindElements(new ByNested(By.TagName("form"), WebByExtras.InputType("radio")));
 
         // Assert
@@ -81,7 +81,7 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -105,14 +105,14 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement> elements =
+        ReadOnlyCollection<WebElement> elements =
             page.FindElements(new ByNested(By.TagName("form"), By.TagName("div")));
 
         // Assert

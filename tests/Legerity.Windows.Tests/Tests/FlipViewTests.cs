@@ -17,7 +17,7 @@ internal class FlipViewTests : BaseTestClass
     public void ShouldSelectNextItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         FlipViewPage flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView").SelectXamlFlipViewItemByIndex(1);
         int selectedItem = flipViewPage.XamlFlipView.SelectedIndex;
         int expected = selectedItem + 1;
@@ -33,7 +33,7 @@ internal class FlipViewTests : BaseTestClass
     public void ShouldSelectPreviousItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         FlipViewPage flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView").SelectXamlFlipViewItemByIndex(1);
         int selectedItem = flipViewPage.XamlFlipView.SelectedIndex;
         int expected = selectedItem - 1;
@@ -49,7 +49,7 @@ internal class FlipViewTests : BaseTestClass
     public void ShouldSelectItemByName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         FlipViewPage flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView");
         const string expected = "Grapes";
 
@@ -64,7 +64,7 @@ internal class FlipViewTests : BaseTestClass
     public void ShouldSelectItemByIndex()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         FlipViewPage flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView");
         const int expected = 2;
 

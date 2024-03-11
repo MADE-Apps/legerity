@@ -17,7 +17,7 @@ internal class TabViewTests : BaseTestClass
     public void ShouldSelectTabViewItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         TabViewPage tabViewPage = new HomePage(app).NavigateTo<TabViewPage>("TabView");
 
         // Act
@@ -31,7 +31,7 @@ internal class TabViewTests : BaseTestClass
     public void ShouldSelectTabViewItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         TabViewPage tabViewPage = new HomePage(app).NavigateTo<TabViewPage>("TabView");
 
         // Act

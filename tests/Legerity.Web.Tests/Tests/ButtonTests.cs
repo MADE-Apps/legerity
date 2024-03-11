@@ -3,6 +3,7 @@ namespace Legerity.Web.Tests.Tests;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Pages;
 
@@ -34,7 +35,7 @@ internal class ButtonTests : W3SchoolsBaseTestClass
     public void ShouldClickButton()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         ButtonPage buttonPage = new ButtonPage(app)
             .AcceptCookies<ButtonPage>()

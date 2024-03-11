@@ -8,7 +8,7 @@ internal class TextAreaPage : W3SchoolsBasePage
 {
     private readonly By reviewTextAreaLocator = By.Id("w3review");
 
-    public TextAreaPage(RemoteWebDriver app) : base(app)
+    public TextAreaPage(WebDriver app) : base(app)
     {
     }
 

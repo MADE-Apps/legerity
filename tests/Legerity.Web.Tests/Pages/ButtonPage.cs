@@ -8,7 +8,7 @@ internal class ButtonPage : W3SchoolsBasePage
 {
     private readonly By buttonLocator = By.TagName("button");
 
-    public ButtonPage(RemoteWebDriver app)
+    public ButtonPage(WebDriver app)
         : base(app)
     {
     }

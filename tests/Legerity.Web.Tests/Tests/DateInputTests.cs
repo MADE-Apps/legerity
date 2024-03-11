@@ -37,7 +37,7 @@ internal class DateInputTests : W3SchoolsBaseTestClass
         // Arrange
         DateTime expected = DateTime.Now.Date;
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         DateInputPage dateInputPage = new DateInputPage(app)
             .AcceptCookies<DateInputPage>()

@@ -73,7 +73,7 @@ internal class NumberBoxTests : BaseTestClass
 
     private NumberBoxPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<NumberBoxPage>("NumberBox");
     }
 }

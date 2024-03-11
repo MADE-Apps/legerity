@@ -16,7 +16,7 @@ internal class PasswordBoxTests : BaseTestClass
     public void ShouldSetPassword()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         PasswordBoxPage passwordBoxPage = new HomePage(app).NavigateTo<PasswordBoxPage>("PasswordBox");
 
         // Act

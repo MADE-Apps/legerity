@@ -6,7 +6,7 @@ using OpenQA.Selenium.Remote;
 
 internal class PivotPage : BaseNavigationPage
 {
-    public PivotPage(RemoteWebDriver app) : base(app)
+    public PivotPage(WebDriver app) : base(app)
     {
     }
 

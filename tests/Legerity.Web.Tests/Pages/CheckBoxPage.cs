@@ -8,7 +8,7 @@ internal class CheckBoxPage : W3SchoolsBasePage
 {
     private readonly By bikeCheckBoxLocator = By.Id("vehicle1");
 
-    public CheckBoxPage(RemoteWebDriver app) : base(app)
+    public CheckBoxPage(WebDriver app) : base(app)
     {
     }
 

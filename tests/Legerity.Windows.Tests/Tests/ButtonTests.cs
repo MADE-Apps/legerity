@@ -15,7 +15,7 @@ internal class ButtonTests : BaseTestClass
     public void ShouldClickSymbolButton()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ButtonPage buttonPage = new HomePage(app).NavigateTo<ButtonPage>("Button");
 
         // Act & Assert

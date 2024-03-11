@@ -6,7 +6,7 @@ using OpenQA.Selenium.Remote;
 
 internal class AppBarToggleButtonPage : BaseNavigationPage
 {
-    public AppBarToggleButtonPage(RemoteWebDriver app) : base(app)
+    public AppBarToggleButtonPage(WebDriver app) : base(app)
     {
     }
     

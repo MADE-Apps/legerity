@@ -11,7 +11,7 @@ internal class W3SchoolsPage : BasePage
     private readonly By contentFrameLocator = By.Id("iframeResult");
     private readonly By acceptCookiesButtonLocator = By.Id("accept-choices");
 
-    public W3SchoolsPage(RemoteWebDriver app)
+    public W3SchoolsPage(WebDriver app)
         : base(app, BaseTestClass.ImplicitWait)
     {
     }
@@ -20,7 +20,7 @@ internal class W3SchoolsPage : BasePage
 
     public Button AcceptCookiesButton => this.FindElement(this.acceptCookiesButtonLocator);
 
-    public RemoteWebElement ContentFrame => this.FindElement(this.contentFrameLocator);
+    public WebElement ContentFrame => this.FindElement(this.contentFrameLocator);
 
     public T AcceptCookies<T>() where T : W3SchoolsPage
     {

@@ -35,7 +35,7 @@ internal class TextAreaTests : W3SchoolsBaseTestClass
     public void ShouldGetSize()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextAreaPage textAreaPage = new TextAreaPage(app)
             .AcceptCookies<TextAreaPage>()
@@ -56,7 +56,7 @@ internal class TextAreaTests : W3SchoolsBaseTestClass
         // Arrange
         const string expected = "The cat was playing in the garden.";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextAreaPage textAreaPage = new TextAreaPage(app)
             .AcceptCookies<TextAreaPage>()
@@ -75,7 +75,7 @@ internal class TextAreaTests : W3SchoolsBaseTestClass
         // Arrange
         const string expected = "The cat was playing in the garden.";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextAreaPage textAreaPage = new TextAreaPage(app)
             .AcceptCookies<TextAreaPage>()
@@ -94,7 +94,7 @@ internal class TextAreaTests : W3SchoolsBaseTestClass
     public void ShouldClearText()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextAreaPage textAreaPage = new TextAreaPage(app)
             .AcceptCookies<TextAreaPage>()

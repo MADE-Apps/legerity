@@ -13,7 +13,7 @@ internal class BaseNavigationPage : BasePage
 {
     private readonly By navigationViewLocator = WindowsByExtras.AutomationId("NavView");
 
-    public BaseNavigationPage(RemoteWebDriver app)
+    public BaseNavigationPage(WebDriver app)
         : base(app)
     {
     }
@@ -33,7 +33,7 @@ internal class BaseNavigationPage : BasePage
 
         this.WaitUntil(p => p.SamplePicker.Items.Any(), this.WaitTimeout);
 
-        AppiumWebElement item = this.SamplePicker.Items.FirstOrDefault(i =>
+        WebElement item = this.SamplePicker.Items.FirstOrDefault(i =>
             i.FindElement(By.XPath($".//*[@ClassName='TextBlock'][@Name='{sampleName}']")) != null);
         item.Click();
 

@@ -8,7 +8,7 @@ internal class TablePage : W3SchoolsBasePage
 {
     private readonly By tableLocator = By.TagName("table");
 
-    public TablePage(RemoteWebDriver app) : base(app)
+    public TablePage(WebDriver app) : base(app)
     {
     }
 

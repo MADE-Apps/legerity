@@ -106,7 +106,7 @@ internal class NavigationViewTests : BaseTestClass
 
     private NavigationViewPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<NavigationViewPage>("NavigationView");
     }
 }

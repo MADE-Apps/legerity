@@ -8,7 +8,7 @@ internal class ImagePage : W3SchoolsBasePage
 {
     private readonly By imageLocator = By.TagName("img");
 
-    public ImagePage(RemoteWebDriver app) : base(app)
+    public ImagePage(WebDriver app) : base(app)
     {
     }
 

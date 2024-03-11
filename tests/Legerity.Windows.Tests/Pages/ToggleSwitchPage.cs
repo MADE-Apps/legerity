@@ -6,7 +6,7 @@ using OpenQA.Selenium.Remote;
 
 internal class ToggleSwitchPage : BaseNavigationPage
 {
-    public ToggleSwitchPage(RemoteWebDriver app) : base(app)
+    public ToggleSwitchPage(WebDriver app) : base(app)
     {
     }
 

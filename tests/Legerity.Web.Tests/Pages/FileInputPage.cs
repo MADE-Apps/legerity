@@ -8,7 +8,7 @@ internal class FileInputPage : W3SchoolsBasePage
 {
     private readonly By fileInputLocator = By.Id("myfile");
 
-    public FileInputPage(RemoteWebDriver app) : base(app)
+    public FileInputPage(WebDriver app) : base(app)
     {
     }
 

@@ -66,7 +66,7 @@ internal class ToggleSwitchTests : BaseTestClass
 
     private ToggleSwitchPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<ToggleSwitchPage>("ToggleSwitch");
     }
 }

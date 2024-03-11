@@ -16,7 +16,7 @@ internal class ComboBoxTests : BaseTestClass
     public void ShouldSelectItemByName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ComboBoxPage comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
 
         // Act
@@ -30,7 +30,7 @@ internal class ComboBoxTests : BaseTestClass
     public void ShouldSelectItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ComboBoxPage comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
 
         // Act

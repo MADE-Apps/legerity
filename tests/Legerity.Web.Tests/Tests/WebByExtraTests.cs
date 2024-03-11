@@ -17,7 +17,7 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
         // Arrange
         const int expectedCount = 6;
 
-        RemoteWebDriver app = this.StartApp(new WebAppManagerOptions(
+        WebDriver app = this.StartApp(new WebAppManagerOptions(
             WebAppDriverType.Chrome,
             Path.Combine(Environment.CurrentDirectory))
         {
@@ -32,7 +32,7 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
             .SwitchToContentFrame<RadioButtonPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement>
+        ReadOnlyCollection<WebElement>
             radioButtons = radioButtonPage.FindElements(WebByExtras.InputType("radio"));
 
         // Assert

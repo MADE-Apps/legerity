@@ -18,7 +18,7 @@ internal class CalendarDatePickerTests : BaseTestClass
     public void ShouldReturnNullSelectedDateIfNoDateSelected()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         CalendarDatePickerPage calendarDatePickerPage = new HomePage(app).NavigateTo<CalendarDatePickerPage>("CalendarDatePicker");
 
         // Act
@@ -33,7 +33,7 @@ internal class CalendarDatePickerTests : BaseTestClass
     {
         // Arrange
         DateTime expectedDate = DateTime.Now.AddDays(1).Date;
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         CalendarDatePickerPage calendarDatePickerPage =
             new HomePage(app).NavigateTo<CalendarDatePickerPage>("CalendarDatePicker");
 
@@ -49,7 +49,7 @@ internal class CalendarDatePickerTests : BaseTestClass
     {
         // Arrange
         DateTime expectedDate = DateTime.Now.AddDays(1);
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         CalendarDatePickerPage calendarDatePickerPage =
             new HomePage(app).NavigateTo<CalendarDatePickerPage>("CalendarDatePicker");
 

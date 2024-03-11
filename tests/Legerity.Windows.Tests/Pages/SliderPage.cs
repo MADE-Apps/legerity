@@ -6,7 +6,7 @@ using OpenQA.Selenium.Remote;
 
 internal class SliderPage : BaseNavigationPage
 {
-    public SliderPage(RemoteWebDriver app) : base(app)
+    public SliderPage(WebDriver app) : base(app)
     {
     }
 

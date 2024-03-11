@@ -38,7 +38,7 @@ internal class ProgressRingTests : BaseTestClass
 
     private ProgressRingPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<ProgressRingPage>("ProgressRing");
     }
 }
