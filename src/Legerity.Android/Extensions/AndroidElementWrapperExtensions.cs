@@ -1,7 +1,7 @@
 namespace Legerity.Android.Extensions;
 
 using System;
-using Legerity.Android.Elements;
+using Elements;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>

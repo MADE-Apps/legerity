@@ -1,6 +1,6 @@
 namespace Legerity.Android.Elements.Core;
 
-using Legerity.Android.Elements;
+using Elements;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the core Android View base control.

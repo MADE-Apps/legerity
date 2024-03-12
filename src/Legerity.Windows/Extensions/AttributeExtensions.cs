@@ -1,7 +1,7 @@
 namespace Legerity.Windows.Extensions;
 
 using System;
-using Legerity.Windows.Elements.Core;
+using Elements.Core;
 
 /// <summary>
 /// Defines a collection of extensions for retrieving element attributes.

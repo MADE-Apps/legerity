@@ -4,7 +4,7 @@ using System;
 using Exceptions;
 using Legerity.Extensions;
 using Legerity.Pages;
-using Legerity.Web.Elements.Core;
+using Elements.Core;
 
 /// <summary>
 /// Defines a page object for the Google login page.

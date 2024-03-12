@@ -3,7 +3,7 @@ namespace Legerity.Core.Tests.Tests;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using Legerity.Core.Tests.Pages;
+using Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;

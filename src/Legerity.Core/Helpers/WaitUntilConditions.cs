@@ -1,7 +1,7 @@
 namespace Legerity.Helpers;
 
 using System;
-using Legerity.Pages;
+using Pages;
 
 /// <summary>
 /// Defines a set of conditions that can be used with the WaitUntil methods of elements and pages.

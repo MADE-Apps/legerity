@@ -3,7 +3,7 @@ namespace Legerity.Web.Elements.Core;
 using System.Collections.Generic;
 using System.Linq;
 using Legerity.Extensions;
-using Legerity.Web.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Table Row (tr) control.

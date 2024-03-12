@@ -3,7 +3,7 @@ namespace Legerity.Windows.Elements.Core;
 using System;
 using Legerity.Exceptions;
 using Legerity.Extensions;
-using Legerity.Windows.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the core UWP CalendarDatePicker control.

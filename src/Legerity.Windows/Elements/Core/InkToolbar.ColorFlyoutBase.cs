@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using Legerity.Exceptions;
 using Legerity.Extensions;
-using Legerity.Windows.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines the color flyout components of the <see cref="InkToolbar"/>.

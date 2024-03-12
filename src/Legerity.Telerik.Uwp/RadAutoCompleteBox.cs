@@ -2,7 +2,7 @@ namespace Legerity.Windows.Elements.Telerik;
 
 using System;
 using Legerity.Exceptions;
-using Legerity.Windows.Elements.Core;
+using Core;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the Telerik UWP RadAutoCompleteBox control.

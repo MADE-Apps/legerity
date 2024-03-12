@@ -4,7 +4,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Legerity.Windows.Exceptions;
+using Exceptions;
 
 /// <summary>
 /// Defines a helper class for the WinAppDriver.

@@ -2,7 +2,7 @@ namespace Legerity.Windows.Elements.WCT;
 
 using System.Collections.Generic;
 using System.Linq;
-using Legerity.Windows.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit BladeView control.

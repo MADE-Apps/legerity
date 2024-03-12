@@ -1,6 +1,6 @@
 namespace Legerity.IOS.Elements.Core;
 
-using Legerity.IOS.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the core iOS ProgressView control.

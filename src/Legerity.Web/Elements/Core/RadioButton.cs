@@ -1,6 +1,6 @@
 namespace Legerity.Web.Elements.Core;
 
-using Legerity.Web.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Input radio control.

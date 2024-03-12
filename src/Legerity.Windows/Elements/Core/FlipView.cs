@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using Legerity.Extensions;
-using Legerity.Windows.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the core UWP FlipView control.

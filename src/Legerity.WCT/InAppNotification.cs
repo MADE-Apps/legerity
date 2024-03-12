@@ -2,7 +2,7 @@ namespace Legerity.Windows.Elements.WCT;
 
 using System.Linq;
 using Extensions;
-using Legerity.Windows.Elements.Core;
+using Core;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit InAppNotification control.

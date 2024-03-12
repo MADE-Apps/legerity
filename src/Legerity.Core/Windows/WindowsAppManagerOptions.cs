@@ -1,7 +1,7 @@
 namespace Legerity.Windows;
 
 using System.Collections.Generic;
-using Legerity.Windows.Helpers;
+using Helpers;
 using OpenQA.Selenium.Appium;
 
 /// <summary>

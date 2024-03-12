@@ -1,7 +1,7 @@
 namespace Legerity.WinUI.Tests.Pages;
 
 using Windows.Elements.Core;
-using Legerity.Windows;
+using Windows;
 using Legerity.Windows.Elements.WinUI;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;

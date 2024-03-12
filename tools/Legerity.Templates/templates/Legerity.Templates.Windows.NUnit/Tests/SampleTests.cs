@@ -1,6 +1,6 @@
 namespace Legerity.Templates.Windows.NUnit.Tests;
 
-using Legerity.Templates.Windows.NUnit.Pages;
+using Pages;
 using OpenQA.Selenium.Remote;
 
 [TestFixtureSource(nameof(PlatformOptions))]

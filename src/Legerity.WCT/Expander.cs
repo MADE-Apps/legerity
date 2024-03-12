@@ -1,7 +1,7 @@
 namespace Legerity.Windows.Elements.WCT;
 
-using Legerity.Windows.Elements.Core;
-using Legerity.Windows.Extensions;
+using Core;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit Expander control.

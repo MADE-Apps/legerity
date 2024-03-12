@@ -1,7 +1,7 @@
 namespace Legerity.Windows.Elements.WCT;
 
 using System;
-using Legerity.Windows.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit RadialGauge control.

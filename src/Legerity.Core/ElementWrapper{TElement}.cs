@@ -2,7 +2,7 @@ namespace Legerity;
 
 using System;
 
-using Legerity.Exceptions;
+using Exceptions;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>

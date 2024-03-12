@@ -1,7 +1,7 @@
 namespace Legerity.Telerik.Uwp.Tests.Pages;
 
 using System;
-using Legerity.Windows.Elements.Core;
+using Windows.Elements.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 

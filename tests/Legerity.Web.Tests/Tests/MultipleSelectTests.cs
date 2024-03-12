@@ -1,6 +1,6 @@
 namespace Legerity.Web.Tests.Tests;
 
-using Legerity.Web.Tests.Pages;
+using Pages;
 using OpenQA.Selenium.Remote;
 using Shouldly;
 using System.IO;

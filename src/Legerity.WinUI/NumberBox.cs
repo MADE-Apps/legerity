@@ -1,8 +1,8 @@
 namespace Legerity.Windows.Elements.WinUI;
 
 using System;
-using Legerity.Windows.Elements.Core;
-using Legerity.Windows.Extensions;
+using Core;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the WinUI NumberBox control.

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Legerity.Extensions;
-using Legerity.Web.Elements;
+using Elements;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Select control.

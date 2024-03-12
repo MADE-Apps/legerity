@@ -1,6 +1,6 @@
 namespace Legerity.Windows.Elements.WinUI;
 
-using Legerity.Windows.Elements.Core;
+using Core;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the WinUI InfoBar control.

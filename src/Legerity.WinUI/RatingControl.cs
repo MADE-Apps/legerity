@@ -1,7 +1,7 @@
 namespace Legerity.Windows.Elements.WinUI;
 
 using System;
-using Legerity.Windows.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the WinUI Rating control.

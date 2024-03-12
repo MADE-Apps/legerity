@@ -1,7 +1,7 @@
 namespace Legerity.Helpers;
 
 using System;
-using Legerity.Exceptions;
+using Exceptions;
 using OpenQA.Selenium.Appium.Service;
 
 /// <summary>

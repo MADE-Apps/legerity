@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using Extensions;
 using Legerity.Extensions;
-using Legerity.Windows.Elements.Core;
+using Core;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the WinUI NavigationView control.

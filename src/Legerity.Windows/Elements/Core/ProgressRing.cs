@@ -1,6 +1,6 @@
 namespace Legerity.Windows.Elements.Core;
 
-using Legerity.Windows.Extensions;
+using Extensions;
 using System;
 
 /// <summary>

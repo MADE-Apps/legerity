@@ -1,7 +1,7 @@
 namespace Legerity.IOS.Elements.Core;
 
 using System;
-using Legerity.IOS.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the core iOS Slider control.

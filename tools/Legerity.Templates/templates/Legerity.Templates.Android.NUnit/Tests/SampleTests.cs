@@ -1,6 +1,6 @@
 namespace Legerity.Templates.Android.NUnit.Tests;
 
-using Legerity.Templates.Android.NUnit.Pages;
+using Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 

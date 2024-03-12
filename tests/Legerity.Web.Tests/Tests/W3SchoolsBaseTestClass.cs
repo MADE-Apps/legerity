@@ -1,6 +1,6 @@
 namespace Legerity.Web.Tests.Tests;
 
-using Legerity.Helpers;
+using Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 

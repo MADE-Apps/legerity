@@ -1,7 +1,7 @@
 namespace Legerity.Web.Elements.Core;
 
 using Extensions;
-using Legerity.Web.Elements;
+using Elements;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Image control.

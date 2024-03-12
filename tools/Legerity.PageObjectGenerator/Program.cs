@@ -7,7 +7,7 @@ using Features.Generators.Android;
 using Features.Generators.Windows;
 using Infrastructure.Configuration;
 using Infrastructure.Logging;
-using Legerity.Features.Generators;
+using Features.Generators;
 using Serilog;
 
 public class Program

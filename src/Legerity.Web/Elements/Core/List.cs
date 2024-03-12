@@ -1,7 +1,7 @@
 namespace Legerity.Web.Elements.Core;
 
 using System.Collections.ObjectModel;
-using Legerity.Web.Elements;
+using Elements;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web ol or ul control.

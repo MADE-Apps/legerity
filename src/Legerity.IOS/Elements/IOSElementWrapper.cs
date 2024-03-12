@@ -2,7 +2,7 @@ namespace Legerity.IOS.Elements;
 
 using System;
 
-using Legerity.Exceptions;
+using Exceptions;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>

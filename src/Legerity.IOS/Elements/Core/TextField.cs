@@ -1,7 +1,7 @@
 namespace Legerity.IOS.Elements.Core;
 
-using Legerity.IOS.Elements;
-using Legerity.IOS.Extensions;
+using Elements;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the core iOS TextField control.

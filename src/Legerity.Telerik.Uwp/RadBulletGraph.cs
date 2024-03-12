@@ -1,6 +1,6 @@
 namespace Legerity.Windows.Elements.Telerik;
 
-using Legerity.Windows.Extensions;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="WebElement"/> wrapper for the Telerik UWP RadBulletGraph control.

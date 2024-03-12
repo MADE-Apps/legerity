@@ -1,7 +1,7 @@
 namespace Legerity.Extensions;
 
 using System;
-using Legerity.Pages;
+using Pages;
 using OpenQA.Selenium.Support.UI;
 
 /// <summary>
