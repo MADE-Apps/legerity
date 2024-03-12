@@ -21,8 +21,8 @@ public abstract class AppiumManagerOptions : AppManagerOptions
     /// </summary>
     public AppiumOptions AppiumOptions
     {
-        get => this.DriverOptions as AppiumOptions;
-        set => this.DriverOptions = value;
+        get => DriverOptions as AppiumOptions;
+        set => DriverOptions = value;
     }
 
     /// <summary>
@@ -30,16 +30,16 @@ public abstract class AppiumManagerOptions : AppManagerOptions
     /// </summary>
     public virtual void Configure()
     {
-        this.AppiumOptions = new AppiumOptions();
+        AppiumOptions = new AppiumOptions();
 
-        if (this.AdditionalOptions == null)
+        if (AdditionalOptions == null)
         {
             return;
         }
 
-        foreach ((string capabilityName, object capabilityValue) in this.AdditionalOptions)
+        foreach ((string capabilityName, object capabilityValue) in AdditionalOptions)
         {
-            this.AppiumOptions.AddAdditionalAppiumOption(capabilityName, capabilityValue);
+            AppiumOptions.AddAdditionalAppiumOption(capabilityName, capabilityValue);
         }
     }
 }

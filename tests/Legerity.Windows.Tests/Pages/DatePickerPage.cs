@@ -13,11 +13,11 @@ internal class DatePickerPage : BaseNavigationPage
     {
     }
 
-    public DatePicker SimpleDatePicker => this.FindElement(this.simpleDatePicker);
+    public DatePicker SimpleDatePicker => FindElement(simpleDatePicker);
 
     public DatePickerPage SetSimpleDatePickerDate(DateTime date)
     {
-        this.SimpleDatePicker.SetDate(date);
+        SimpleDatePicker.SetDate(date);
         return this;
     }
 }

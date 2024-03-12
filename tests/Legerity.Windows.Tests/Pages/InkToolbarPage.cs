@@ -11,41 +11,41 @@ internal class InkToolbarPage : BaseNavigationPage
     {
     }
 
-    public InkToolbar InkToolbar => this.FindElement(WindowsByExtras.AutomationId("inkToolbar"));
+    public InkToolbar InkToolbar => FindElement(WindowsByExtras.AutomationId("inkToolbar"));
 
     public InkToolbarPage SelectBallpointPenColor(string color)
     {
-        this.InkToolbar.SetBallpointPenColor(color);
+        InkToolbar.SetBallpointPenColor(color);
         return this;
     }
 
     public InkToolbarPage SelectBallpointPenPartialColor(string color)
     {
-        this.InkToolbar.SetBallpointPenColorByPartialName(color);
+        InkToolbar.SetBallpointPenColorByPartialName(color);
         return this;
     }
 
     public InkToolbarPage SelectPencilColor(string color)
     {
-        this.InkToolbar.SetPencilColor(color);
+        InkToolbar.SetPencilColor(color);
         return this;
     }
 
     public InkToolbarPage SelectPencilPartialColor(string color)
     {
-        this.InkToolbar.SetPencilColorByPartialName(color);
+        InkToolbar.SetPencilColorByPartialName(color);
         return this;
     }
 
     public InkToolbarPage SelectHighlighterColor(string color)
     {
-        this.InkToolbar.SetHighlighterColor(color);
+        InkToolbar.SetHighlighterColor(color);
         return this;
     }
 
     public InkToolbarPage SelectHighlighterPartialColor(string color)
     {
-        this.InkToolbar.SetHighlighterColorByPartialName(color);
+        InkToolbar.SetHighlighterColorByPartialName(color);
         return this;
     }
 }

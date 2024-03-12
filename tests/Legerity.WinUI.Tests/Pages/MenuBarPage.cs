@@ -11,11 +11,11 @@ internal class MenuBarPage : BaseNavigationPage
     {
     }
 
-    public MenuBar SimpleMenuBar => this.FindElement(WindowsByExtras.AutomationId("Example1"));
+    public MenuBar SimpleMenuBar => FindElement(WindowsByExtras.AutomationId("Example1"));
 
     public MenuBarPage SelectSimpleMenuBarOption(string name, string child = null)
     {
-        MenuBarItem option = this.SimpleMenuBar.ClickOption(name);
+        MenuBarItem option = SimpleMenuBar.ClickOption(name);
         if (!string.IsNullOrWhiteSpace(child))
         {
             option.ClickChildOption(child);
@@ -26,7 +26,7 @@ internal class MenuBarPage : BaseNavigationPage
 
     public MenuBarPage SelectSimpleMenuBarOptionPartial(string name, string child = null)
     {
-        MenuBarItem option = this.SimpleMenuBar.ClickOptionByPartialName(name);
+        MenuBarItem option = SimpleMenuBar.ClickOptionByPartialName(name);
         if (!string.IsNullOrWhiteSpace(child))
         {
             option.ClickChildOptionByPartialName(child);

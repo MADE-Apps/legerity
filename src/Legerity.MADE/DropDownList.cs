@@ -23,7 +23,7 @@ public class DropDownList : WindowsElementWrapper
     /// Gets the <see cref="ListView"/> element associated with the drop down content.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual ListView DropDown => this.FindElement(WindowsByExtras.AutomationId("DropDownContent"));
+    public virtual ListView DropDown => FindElement(WindowsByExtras.AutomationId("DropDownContent"));
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="DropDownList"/> without direct casting.
@@ -52,8 +52,8 @@ public class DropDownList : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectItem(string name)
     {
-        this.OpenDropDown();
-        this.DropDown.ClickItem(name);
+        OpenDropDown();
+        DropDown.ClickItem(name);
     }
 
     /// <summary>
@@ -67,8 +67,8 @@ public class DropDownList : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectItemByPartialName(string partialName)
     {
-        this.OpenDropDown();
-        this.DropDown.ClickItemByPartialName(partialName);
+        OpenDropDown();
+        DropDown.ClickItemByPartialName(partialName);
     }
 
     /// <summary>
@@ -79,9 +79,9 @@ public class DropDownList : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void OpenDropDown()
     {
-        if (!this.IsDropDownOpen())
+        if (!IsDropDownOpen())
         {
-            this.Click();
+            Click();
         }
     }
 
@@ -96,7 +96,7 @@ public class DropDownList : WindowsElementWrapper
 
         try
         {
-            isVisible = this.DropDown.IsVisible;
+            isVisible = DropDown.IsVisible;
         }
         catch (WebDriverException wde) when (wde.Message.Contains("element could not be located"))
         {

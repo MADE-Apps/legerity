@@ -11,29 +11,29 @@ internal class CommandBarPage : BaseNavigationPage
     {
     }
 
-    public CommandBar PrimaryCommandBar => this.FindElement(WindowsByExtras.AutomationId("PrimaryCommandBar"));
+    public CommandBar PrimaryCommandBar => FindElement(WindowsByExtras.AutomationId("PrimaryCommandBar"));
 
     public CommandBarPage ClickPrimaryAddButton()
     {
-        this.PrimaryCommandBar.ClickPrimaryButton("addButton");
+        PrimaryCommandBar.ClickPrimaryButton("addButton");
         return this;
     }
 
     public CommandBarPage ClickPrimaryButton(string name)
     {
-        this.PrimaryCommandBar.ClickPrimaryButtonByPartialName(name);
+        PrimaryCommandBar.ClickPrimaryButtonByPartialName(name);
         return this;
     }
 
     public CommandBarPage ClickSecondarySettingsButton()
     {
-        this.PrimaryCommandBar.ClickSecondaryButton("settingsButton");
+        PrimaryCommandBar.ClickSecondaryButton("settingsButton");
         return this;
     }
 
     public CommandBarPage ClickSecondaryButton(string name)
     {
-        this.PrimaryCommandBar.ClickSecondaryButtonByPartialName(name);
+        PrimaryCommandBar.ClickSecondaryButtonByPartialName(name);
         return this;
     }
 }

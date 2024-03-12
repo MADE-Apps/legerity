@@ -12,23 +12,23 @@ internal class RangeInputPage : W3SchoolsBasePage
     {
     }
 
-    public RangeInput VolumeRangeInput => this.FindElement(this.volumeRangeInputLocator);
+    public RangeInput VolumeRangeInput => FindElement(volumeRangeInputLocator);
 
     public RangeInputPage SetVolume(int volume)
     {
-        this.VolumeRangeInput.SetValue(volume);
+        VolumeRangeInput.SetValue(volume);
         return this;
     }
 
     public RangeInputPage IncrementVolume()
     {
-        this.VolumeRangeInput.Increment();
+        VolumeRangeInput.Increment();
         return this;
     }
 
     public RangeInputPage DecrementVolume()
     {
-        this.VolumeRangeInput.Decrement();
+        VolumeRangeInput.Decrement();
         return this;
     }
 }

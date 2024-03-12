@@ -11,17 +11,17 @@ internal class ListBoxPage : BaseNavigationPage
     {
     }
 
-    public ListBox ColorListBox => this.FindElement(WindowsByExtras.AutomationId("ListBox1"));
+    public ListBox ColorListBox => FindElement(WindowsByExtras.AutomationId("ListBox1"));
 
     public ListBoxPage ClickColorItem(string color)
     {
-        this.ColorListBox.ClickItem(color);
+        ColorListBox.ClickItem(color);
         return this;
     }
 
     public ListBoxPage ClickColorItemByPartialName(string color)
     {
-        this.ColorListBox.ClickItemByPartialName(color);
+        ColorListBox.ClickItemByPartialName(color);
         return this;
     }
 }

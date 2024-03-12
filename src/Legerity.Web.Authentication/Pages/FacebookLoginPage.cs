@@ -75,19 +75,19 @@ public class FacebookLoginPage : BasePage
     /// Gets the input element for providing an email address.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput EmailInput => this.FindElement(By.Id("email"));
+    public virtual TextInput EmailInput => FindElement(By.Id("email"));
 
     /// <summary>
     /// Gets the input element for providing a password.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput PasswordInput => this.FindElement(WebByExtras.InputType("password"));
+    public virtual TextInput PasswordInput => FindElement(WebByExtras.InputType("password"));
 
     /// <summary>
     /// Gets the button element for continuing the sign-in flow through the Facebook login UI.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button SignInButton => this.FindElement(By.Id("loginbutton"));
+    public virtual Button SignInButton => FindElement(By.Id("loginbutton"));
 
     /// <summary>
     /// Gets a given trait of the page to verify that the page is in view.
@@ -107,16 +107,16 @@ public class FacebookLoginPage : BasePage
     public FacebookLoginPage Login(string email, string password)
     {
         (bool hasEmailInput, FacebookLoginPage _) =
-            this.TryWaitUntil(page => page.EmailInput.IsVisible, this.WaitTimeout);
+            this.TryWaitUntil(page => page.EmailInput.IsVisible, WaitTimeout);
         if (!hasEmailInput)
         {
             // Cannot login as email address input not shown (possibly logged in already?)
             return this;
         }
 
-        this.EmailInput.SetText(email);
-        this.PasswordInput.SetText(password);
-        this.SignInButton.Click();
+        EmailInput.SetText(email);
+        PasswordInput.SetText(password);
+        SignInButton.Click();
         return this;
     }
 }

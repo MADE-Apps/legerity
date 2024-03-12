@@ -27,7 +27,7 @@ internal class WebAppManagerOptionsTests : BaseTestClass
         };
         
         // Act
-        WebDriver app = this.StartApp(options);
+        WebDriver app = StartApp(options);
 
         // Assert
         app.Manage().Window.Size.ShouldBe(options.DesiredSize);

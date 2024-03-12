@@ -44,7 +44,7 @@ public class DatePicker : AndroidElementWrapper
     /// </para>
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextView DateTextView => this.FindElement(By.Id("android:id/date_picker_header_date"));
+    public virtual TextView DateTextView => FindElement(By.Id("android:id/date_picker_header_date"));
 
     /// <summary>
     /// Gets the element associated with the year text.
@@ -53,32 +53,32 @@ public class DatePicker : AndroidElementWrapper
     /// </para>
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextView YearTextView => this.FindElement(By.Id("android:id/date_picker_header_year"));
+    public virtual TextView YearTextView => FindElement(By.Id("android:id/date_picker_header_year"));
 
     /// <summary>
     /// Gets the element associated with the day picker.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual View DayPickerView => this.FindElement(By.Id("android:id/day_picker_view_pager"));
+    public virtual View DayPickerView => FindElement(By.Id("android:id/day_picker_view_pager"));
 
     /// <summary>
     /// Gets the element associated with the next month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button NextMonthButton => this.Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Next month\")");
+    public virtual Button NextMonthButton => Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Next month\")");
 
     /// <summary>
     /// Gets the element associated with the previous month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button PreviousMonthButton => this.Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Previous month\")");
+    public virtual Button PreviousMonthButton => Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Previous month\")");
 
     /// <summary>
     /// Gets the selected date/time value.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual DateTime SelectedDate => this.GetCurrentViewDate();
+    public virtual DateTime SelectedDate => GetCurrentViewDate();
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="DatePicker"/> without direct casting.
@@ -104,7 +104,7 @@ public class DatePicker : AndroidElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetDate(DateTime date)
     {
-        DateTime currentViewDate = this.GetCurrentViewDate();
+        DateTime currentViewDate = GetCurrentViewDate();
 
         int monthDifference = ((date.Year - currentViewDate.Year) * 12) + date.Month - currentViewDate.Month;
 
@@ -112,18 +112,18 @@ public class DatePicker : AndroidElementWrapper
         {
             for (int i = 0; i < monthDifference; i++)
             {
-                this.NextMonthButton.Click();
+                NextMonthButton.Click();
             }
         }
         else
         {
             for (int i = 0; i < Math.Abs(monthDifference); i++)
             {
-                this.PreviousMonthButton.Click();
+                PreviousMonthButton.Click();
             }
         }
 
-        View item = this.DayPickerView.Element.FindElementByAndroidUIAutomator($"UiSelector().text(\"{date.Day}\")");
+        View item = DayPickerView.Element.FindElementByAndroidUIAutomator($"UiSelector().text(\"{date.Day}\")");
         item.Click();
     }
 
@@ -131,9 +131,9 @@ public class DatePicker : AndroidElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private DateTime GetCurrentViewDate()
     {
-        string currentYear = this.YearTextView.Text;
-        string currentDate = this.DateTextView.Text;
-        return this.GetCurrentViewDate(currentDate, currentYear);
+        string currentYear = YearTextView.Text;
+        string currentDate = DateTextView.Text;
+        return GetCurrentViewDate(currentDate, currentYear);
     }
 
     private DateTime GetCurrentViewDate(string currentDate, string currentYear)
@@ -143,7 +143,7 @@ public class DatePicker : AndroidElementWrapper
         var currentDateSplit = currentDate.Split(',').ToList();
         string currentMonthPart = currentDateSplit.LastOrDefault();
 
-        this.months.TryGetValue(
+        months.TryGetValue(
             string.Join(string.Empty, (currentMonthPart ?? string.Empty).Where(char.IsLetter)).Trim(),
             out string month);
 

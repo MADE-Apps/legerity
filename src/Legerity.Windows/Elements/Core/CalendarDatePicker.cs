@@ -27,7 +27,7 @@ public class CalendarDatePicker : WindowsElementWrapper
     /// Gets the element associated with the calendar flyout.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual CalendarView CalendarViewFlyout => this.Driver.FindElement(this.calendarPopupLocator)
+    public virtual CalendarView CalendarViewFlyout => Driver.FindElement(calendarPopupLocator)
         .FindElement(WindowsByExtras.AutomationId("CalendarView"));
 
     /// <summary>
@@ -39,7 +39,7 @@ public class CalendarDatePicker : WindowsElementWrapper
     /// <summary>
     /// Gets the value of the calendar date picker as a <see cref="DateTime"/>.
     /// </summary>
-    public virtual DateTime? SelectedDate => this.GetSelectedDate();
+    public virtual DateTime? SelectedDate => GetSelectedDate();
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
@@ -66,16 +66,16 @@ public class CalendarDatePicker : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetDate(DateTime date)
     {
-        this.Click();
+        Click();
 
-        this.VerifyDriverElementShown(this.calendarPopupLocator, TimeSpan.FromSeconds(2));
+        VerifyDriverElementShown(calendarPopupLocator, TimeSpan.FromSeconds(2));
 
-        this.CalendarViewFlyout.SetDate(date);
+        CalendarViewFlyout.SetDate(date);
     }
 
     private DateTime? GetSelectedDate()
     {
-        string value = this.Value;
+        string value = Value;
         return string.IsNullOrEmpty(value) ? default :
             DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
     }

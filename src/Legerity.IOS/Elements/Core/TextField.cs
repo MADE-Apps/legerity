@@ -27,7 +27,7 @@ public class TextField : IOSElementWrapper
     /// Gets the element associated with the clear text button, if shown.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button ClearTextButton => this.FindElement(IOSByExtras.Label("Clear text"));
+    public virtual Button ClearTextButton => FindElement(IOSByExtras.Label("Clear text"));
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="TextField"/> without direct casting.
@@ -52,8 +52,8 @@ public class TextField : IOSElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SetText(string text)
     {
-        this.ClearText();
-        this.AppendText(text);
+        ClearText();
+        AppendText(text);
     }
 
     /// <summary>
@@ -65,8 +65,8 @@ public class TextField : IOSElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void AppendText(string text)
     {
-        this.Click();
-        this.Element.SendKeys(text);
+        Click();
+        Element.SendKeys(text);
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public class TextField : IOSElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClearText()
     {
-        this.Click();
-        this.Element.Clear();
+        Click();
+        Element.Clear();
     }
 }

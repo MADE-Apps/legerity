@@ -26,7 +26,7 @@ public class MenuBar : WindowsElementWrapper
     /// Gets the UI components associated with the menu items.
     /// </summary>
     public virtual IEnumerable<MenuBarItem> MenuItems =>
-        this.Element.FindElements(By.ClassName("Microsoft.UI.Xaml.Controls.MenuBarItem"))
+        Element.FindElements(By.ClassName("Microsoft.UI.Xaml.Controls.MenuBarItem"))
             .Select(element => new MenuBarItem(this, element as WebElement));
 
     /// <summary>
@@ -58,7 +58,7 @@ public class MenuBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuBarItem ClickOption(string name)
     {
-        MenuBarItem item = this.MenuItems.FirstOrDefault(
+        MenuBarItem item = MenuItems.FirstOrDefault(
             element => element.GetName()
                 .Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
@@ -86,7 +86,7 @@ public class MenuBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuBarItem ClickOptionByPartialName(string name)
     {
-        MenuBarItem item = this.MenuItems.FirstOrDefault(
+        MenuBarItem item = MenuItems.FirstOrDefault(
             element => element.GetName()
                 .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 

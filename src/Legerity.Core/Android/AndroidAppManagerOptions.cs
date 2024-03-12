@@ -112,13 +112,13 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
         string deviceId,
         params (string, object)[] additionalOptions)
     {
-        this.AppId = appId;
-        this.AppActivity = appActivity;
-        this.AppPath = appPath;
-        this.OSVersion = osVersion;
-        this.DeviceName = deviceName;
-        this.DeviceId = deviceId;
-        this.AdditionalOptions = additionalOptions;
+        AppId = appId;
+        AppActivity = appActivity;
+        AppPath = appPath;
+        OSVersion = osVersion;
+        DeviceName = deviceName;
+        DeviceId = deviceId;
+        AdditionalOptions = additionalOptions;
     }
 
     /// <summary>
@@ -163,36 +163,36 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
     {
         base.Configure();
 
-        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformName, "Android");
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformName, "Android");
 
-        if (!string.IsNullOrWhiteSpace(this.OSVersion))
+        if (!string.IsNullOrWhiteSpace(OSVersion))
         {
-            this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformVersion, this.OSVersion);
+            AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformVersion, OSVersion);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceName))
+        if (!string.IsNullOrWhiteSpace(DeviceName))
         {
-            this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.DeviceName, this.DeviceName);
+            AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.DeviceName, DeviceName);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceId))
+        if (!string.IsNullOrWhiteSpace(DeviceId))
         {
-            this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.Udid, this.DeviceId);
+            AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.Udid, DeviceId);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.AppId))
+        if (!string.IsNullOrWhiteSpace(AppId))
         {
-            this.AppiumOptions.AddAdditionalAppiumOption("appPackage", this.AppId);
+            AppiumOptions.AddAdditionalAppiumOption("appPackage", AppId);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.AppActivity))
+        if (!string.IsNullOrWhiteSpace(AppActivity))
         {
-            this.AppiumOptions.AddAdditionalAppiumOption("appActivity", this.AppActivity);
+            AppiumOptions.AddAdditionalAppiumOption("appActivity", AppActivity);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.AppPath))
+        if (!string.IsNullOrWhiteSpace(AppPath))
         {
-            this.AppiumOptions.AddAdditionalAppiumOption("app", this.AppPath);
+            AppiumOptions.AddAdditionalAppiumOption("app", AppPath);
         }
     }
 
@@ -204,44 +204,44 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
     /// </param>
     public void Configure((string, object)[] additionalOptions)
     {
-        this.AdditionalOptions = additionalOptions;
-        this.Configure();
+        AdditionalOptions = additionalOptions;
+        Configure();
     }
 
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"Platform [Android], {base.ToString()}, {this.GetOptionDetails()}";
+        return $"Platform [Android], {base.ToString()}, {GetOptionDetails()}";
     }
 
     private string GetOptionDetails()
     {
         var options = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(this.AppId))
+        if (!string.IsNullOrWhiteSpace(AppId))
         {
-            options.Add($"App ID [{this.AppId}]");
+            options.Add($"App ID [{AppId}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.AppPath))
+        if (!string.IsNullOrWhiteSpace(AppPath))
         {
-            options.Add($"App Path [{this.AppPath}]");
+            options.Add($"App Path [{AppPath}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceId))
+        if (!string.IsNullOrWhiteSpace(DeviceId))
         {
-            options.Add($"Device ID [{this.DeviceId}]");
+            options.Add($"Device ID [{DeviceId}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceName))
+        if (!string.IsNullOrWhiteSpace(DeviceName))
         {
-            options.Add($"Device Name [{this.DeviceName}]");
+            options.Add($"Device Name [{DeviceName}]");
         }
 
-        if (this.AdditionalOptions != null)
+        if (AdditionalOptions != null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
+            foreach ((string name, object value) in AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

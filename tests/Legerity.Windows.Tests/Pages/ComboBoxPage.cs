@@ -14,17 +14,17 @@ internal class ComboBoxPage : BaseNavigationPage
 
     protected override By Trait => By.XPath(".//*[@Name='ComboBox'][@AutomationId='TitleTextBlock']");
 
-    public ComboBox ColorComboBox => this.FindElement(this.colorComboBox);
+    public ComboBox ColorComboBox => FindElement(colorComboBox);
 
     public ComboBoxPage SelectColorByName(string name)
     {
-        this.ColorComboBox.SelectItem(name);
+        ColorComboBox.SelectItem(name);
         return this;
     }
 
     public ComboBoxPage SelectColorByPartialName(string name)
     {
-        this.ColorComboBox.SelectItemByPartialName(name);
+        ColorComboBox.SelectItemByPartialName(name);
         return this;
     }
 }

@@ -31,49 +31,49 @@ public partial class InkToolbar : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual RadioButton BallpointPenButton =>
-        this.FindElement(WindowsByExtras.AutomationId("InkToolbarBallpointPenButton"));
+        FindElement(WindowsByExtras.AutomationId("InkToolbarBallpointPenButton"));
 
     /// <summary>
     /// Gets the currently selected ballpoint pen color.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual string SelectedBallpointPenColor => this.BallpointPenButton.GetHelpText();
+    public virtual string SelectedBallpointPenColor => BallpointPenButton.GetHelpText();
 
     /// <summary>
     /// Gets the element associated with the pencil button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual RadioButton PencilButton =>
-        this.FindElement(WindowsByExtras.AutomationId("InkToolbarPencilButton"));
+        FindElement(WindowsByExtras.AutomationId("InkToolbarPencilButton"));
 
     /// <summary>
     /// Gets the currently selected pencil color.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual string SelectedPencilColor => this.PencilButton.GetHelpText();
+    public virtual string SelectedPencilColor => PencilButton.GetHelpText();
 
     /// <summary>
     /// Gets the element associated with the highlighter button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual RadioButton HighlighterButton =>
-        this.FindElement(WindowsByExtras.AutomationId("InkToolbarHighlighterButton"));
+        FindElement(WindowsByExtras.AutomationId("InkToolbarHighlighterButton"));
 
     /// <summary>
     /// Gets the currently selected highlighter color.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string SelectedHighlighterColor => this.HighlighterButton.GetHelpText();
+    public virtual string SelectedHighlighterColor => HighlighterButton.GetHelpText();
 
     /// <summary>
     /// Gets the element associated with the ruler button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual ToggleButton RulerButton =>
-        this.FindElement(WindowsByExtras.AutomationId("InkToolbarStencilButton"));
+        FindElement(WindowsByExtras.AutomationId("InkToolbarStencilButton"));
 
     /// <summary>
     /// Gets the element associated with the ballpoint pen flyout.
@@ -83,7 +83,7 @@ public partial class InkToolbar : WindowsElementWrapper
     /// </remarks>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual InkToolbarBallpointPenFlyout BallpointPenFlyout =>
-        this.Driver.FindElement(this.ballpointPenFlyoutLocator);
+        Driver.FindElement(ballpointPenFlyoutLocator);
 
     /// <summary>
     /// Gets the element associated with the pencil flyout.
@@ -92,7 +92,7 @@ public partial class InkToolbar : WindowsElementWrapper
     /// This is only available when the pencil button is selected.
     /// </remarks>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual InkToolbarPencilFlyout PencilFlyout => this.Driver.FindElement(this.pencilFlyoutLocator);
+    public virtual InkToolbarPencilFlyout PencilFlyout => Driver.FindElement(pencilFlyoutLocator);
 
     /// <summary>
     /// Gets the element associated with the highlighter flyout.
@@ -102,7 +102,7 @@ public partial class InkToolbar : WindowsElementWrapper
     /// </remarks>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual InkToolbarHighlighterFlyout HighlighterFlyout =>
-        this.Driver.FindElement(this.highlighterFlyoutLocator);
+        Driver.FindElement(highlighterFlyoutLocator);
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InkToolbar"/> without direct casting.
@@ -127,9 +127,9 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectBallpointPen()
     {
-        if (!this.BallpointPenButton.IsSelected)
+        if (!BallpointPenButton.IsSelected)
         {
-            this.BallpointPenButton.Click();
+            BallpointPenButton.Click();
         }
     }
 
@@ -143,10 +143,10 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     public virtual void OpenBallpointPenFlyout()
     {
-        this.SelectBallpointPen();
+        SelectBallpointPen();
 
-        this.BallpointPenButton.Click();
-        this.VerifyDriverElementShown(this.ballpointPenFlyoutLocator, TimeSpan.FromSeconds(2));
+        BallpointPenButton.Click();
+        VerifyDriverElementShown(ballpointPenFlyoutLocator, TimeSpan.FromSeconds(2));
     }
 
     /// <summary>
@@ -163,8 +163,8 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SetBallpointPenColor(string color)
     {
-        this.OpenBallpointPenFlyout();
-        this.BallpointPenFlyout.SetColor(color);
+        OpenBallpointPenFlyout();
+        BallpointPenFlyout.SetColor(color);
     }
 
     /// <summary>
@@ -181,8 +181,8 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SetBallpointPenColorByPartialName(string color)
     {
-        this.OpenBallpointPenFlyout();
-        this.BallpointPenFlyout.SetColorByPartialName(color);
+        OpenBallpointPenFlyout();
+        BallpointPenFlyout.SetColorByPartialName(color);
     }
 
     /// <summary>
@@ -194,9 +194,9 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectPencil()
     {
-        if (!this.PencilButton.IsSelected)
+        if (!PencilButton.IsSelected)
         {
-            this.PencilButton.Click();
+            PencilButton.Click();
         }
     }
 
@@ -210,10 +210,10 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     public virtual void OpenPencilFlyout()
     {
-        this.SelectPencil();
+        SelectPencil();
 
-        this.PencilButton.Click();
-        this.VerifyDriverElementShown(this.pencilFlyoutLocator, TimeSpan.FromSeconds(2));
+        PencilButton.Click();
+        VerifyDriverElementShown(pencilFlyoutLocator, TimeSpan.FromSeconds(2));
     }
 
     /// <summary>
@@ -230,8 +230,8 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SetPencilColor(string color)
     {
-        this.OpenPencilFlyout();
-        this.PencilFlyout.SetColor(color);
+        OpenPencilFlyout();
+        PencilFlyout.SetColor(color);
     }
 
     /// <summary>
@@ -248,8 +248,8 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SetPencilColorByPartialName(string color)
     {
-        this.OpenPencilFlyout();
-        this.PencilFlyout.SetColorByPartialName(color);
+        OpenPencilFlyout();
+        PencilFlyout.SetColorByPartialName(color);
     }
 
     /// <summary>
@@ -261,9 +261,9 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectHighlighter()
     {
-        if (!this.HighlighterButton.IsSelected)
+        if (!HighlighterButton.IsSelected)
         {
-            this.HighlighterButton.Click();
+            HighlighterButton.Click();
         }
     }
 
@@ -277,10 +277,10 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     public virtual void OpenHighlighterFlyout()
     {
-        this.SelectHighlighter();
+        SelectHighlighter();
 
-        this.HighlighterButton.Click();
-        this.VerifyDriverElementShown(this.highlighterFlyoutLocator, TimeSpan.FromSeconds(2));
+        HighlighterButton.Click();
+        VerifyDriverElementShown(highlighterFlyoutLocator, TimeSpan.FromSeconds(2));
     }
 
     /// <summary>
@@ -297,8 +297,8 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SetHighlighterColor(string color)
     {
-        this.OpenHighlighterFlyout();
-        this.HighlighterFlyout.SetColor(color);
+        OpenHighlighterFlyout();
+        HighlighterFlyout.SetColor(color);
     }
 
     /// <summary>
@@ -315,7 +315,7 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SetHighlighterColorByPartialName(string color)
     {
-        this.OpenHighlighterFlyout();
-        this.HighlighterFlyout.SetColorByPartialName(color);
+        OpenHighlighterFlyout();
+        HighlighterFlyout.SetColorByPartialName(color);
     }
 }

@@ -11,11 +11,11 @@ internal class CalendarDatePickerPage : BaseNavigationPage
     {
     }
 
-    public CalendarDatePicker CalendarDatePicker =>this.FindElement(By.ClassName(nameof(this.CalendarDatePicker)));
+    public CalendarDatePicker CalendarDatePicker =>FindElement(By.ClassName(nameof(CalendarDatePicker)));
 
     public CalendarDatePickerPage SetCalendarDatePickerDate(DateTime date)
     {
-        this.CalendarDatePicker.SetDate(date);
+        CalendarDatePicker.SetDate(date);
         return this;
     }
 }

@@ -12,17 +12,17 @@ internal class CheckBoxPage : W3SchoolsBasePage
     {
     }
 
-    public CheckBox BikeCheckBox => this.FindElement(this.bikeCheckBoxLocator);
+    public CheckBox BikeCheckBox => FindElement(bikeCheckBoxLocator);
 
     public CheckBoxPage CheckBikeOn()
     {
-        this.BikeCheckBox.CheckOn();
+        BikeCheckBox.CheckOn();
         return this;
     }
 
     public CheckBoxPage CheckBikeOff()
     {
-        this.BikeCheckBox.CheckOff();
+        BikeCheckBox.CheckOff();
         return this;
     }
 }

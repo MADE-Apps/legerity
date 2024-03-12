@@ -16,7 +16,7 @@ internal class RatingControlTests : BaseTestClass
     public void ShouldSetValue()
     {
         // Arrange
-        RatingControlPage ratingControlPage = this.StartAndNavigateToPage();
+        RatingControlPage ratingControlPage = StartAndNavigateToPage();
 
         // Act
         ratingControlPage.SetSimpleRatingValue(3);
@@ -29,7 +29,7 @@ internal class RatingControlTests : BaseTestClass
     public void ShouldGetValueRange()
     {
         // Arrange
-        RatingControlPage ratingControlPage = this.StartAndNavigateToPage();
+        RatingControlPage ratingControlPage = StartAndNavigateToPage();
 
         // Act & Assert
         ratingControlPage.SimpleRatingControl.Minimum.ShouldBe(0);
@@ -40,7 +40,7 @@ internal class RatingControlTests : BaseTestClass
     public void ShouldGetIsReadonly()
     {
         // Arrange
-        RatingControlPage ratingControlPage = this.StartAndNavigateToPage();
+        RatingControlPage ratingControlPage = StartAndNavigateToPage();
 
         // Act & Assert
         ratingControlPage.SimpleRatingControl.IsReadonly.ShouldBeFalse();
@@ -48,7 +48,7 @@ internal class RatingControlTests : BaseTestClass
 
     private RatingControlPage StartAndNavigateToPage()
     {
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         return new HomePage(app).NavigateTo<RatingControlPage>("RatingControl");
     }
 }

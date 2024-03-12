@@ -22,7 +22,7 @@ public class PasswordBox : TextBox
     /// Gets the element associated with the reveal password button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual ToggleButton RevealButton => this.FindElement(WindowsByExtras.AutomationId("RevealButton"));
+    public virtual ToggleButton RevealButton => FindElement(WindowsByExtras.AutomationId("RevealButton"));
 
     /// <summary>
     /// Gets the password text value in the password box.
@@ -31,7 +31,7 @@ public class PasswordBox : TextBox
     /// To get the password text value, the password box must be revealed using the <see cref="RevealPassword"/> method. Otherwise, the text value will be hidden characters.
     /// </remarks>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string Password => this.Text;
+    public virtual string Password => Text;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="PasswordBox"/> without direct casting.
@@ -53,7 +53,7 @@ public class PasswordBox : TextBox
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void RevealPassword()
     {
-        this.RevealButton.ClickAndHold();
+        RevealButton.ClickAndHold();
     }
 
     /// <summary>
@@ -62,6 +62,6 @@ public class PasswordBox : TextBox
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void HidePassword()
     {
-        this.RevealButton.ReleaseHold();
+        RevealButton.ReleaseHold();
     }
 }

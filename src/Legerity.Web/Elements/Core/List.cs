@@ -33,7 +33,7 @@ public class List : WebElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the list.
     /// </summary>
-    public virtual ReadOnlyCollection<IWebElement> Items => this.Element.FindElements(WebByExtras.ListItem());
+    public virtual ReadOnlyCollection<IWebElement> Items => Element.FindElements(WebByExtras.ListItem());
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="List"/> without direct casting.

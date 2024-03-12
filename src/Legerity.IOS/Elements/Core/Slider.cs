@@ -28,7 +28,7 @@ public class Slider : IOSElementWrapper
     /// <summary>
     /// Gets a value indicating whether the control is in a readonly state.
     /// </summary>
-    public virtual bool IsReadonly => !this.IsEnabled;
+    public virtual bool IsReadonly => !IsEnabled;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Slider"/> without direct casting.
@@ -55,13 +55,13 @@ public class Slider : IOSElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SetValue(double value)
     {
-        this.Click();
+        Click();
 
-        double currentValue = this.Value;
+        double currentValue = Value;
         while (Math.Abs(currentValue - value) > double.Epsilon)
         {
-            this.Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
-            currentValue = this.Value;
+            Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
+            currentValue = Value;
         }
     }
 }

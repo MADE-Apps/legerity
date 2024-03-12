@@ -10,41 +10,41 @@ internal class NavigationViewPage : BaseNavigationPage
     {
     }
 
-    public NavigationView NavigationView => this.FindElement(WindowsByExtras.AutomationId("nvSample5"));
+    public NavigationView NavigationView => FindElement(WindowsByExtras.AutomationId("nvSample5"));
 
     public NavigationViewPage OpenNavigationView()
     {
-        this.NavigationView.OpenNavigationPane();
+        NavigationView.OpenNavigationPane();
         return this;
     }
 
     public NavigationViewPage CloseNavigationView()
     {
-        this.NavigationView.CloseNavigationPane();
+        NavigationView.CloseNavigationPane();
         return this;
     }
 
     public NavigationViewPage SelectNavigationViewMenuOption(string name)
     {
-        this.NavigationView.ClickMenuOption(name);
+        NavigationView.ClickMenuOption(name);
         return this;
     }
 
     public NavigationViewPage SelectNavigationViewMenuOptionByPartialName(string name)
     {
-        this.NavigationView.ClickMenuOptionByPartialName(name);
+        NavigationView.ClickMenuOptionByPartialName(name);
         return this;
     }
 
     public NavigationViewPage OpenNavigationViewSettings()
     {
-        this.NavigationView.OpenSettings();
+        NavigationView.OpenSettings();
         return this;
     }
 
     public NavigationViewPage GoBackInNavigationView()
     {
-        this.NavigationView.GoBack();
+        NavigationView.GoBack();
         return this;
     }
 }

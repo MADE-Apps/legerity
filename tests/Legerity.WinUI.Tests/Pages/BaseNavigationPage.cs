@@ -15,18 +15,18 @@ internal class BaseNavigationPage : BasePage
     {
     }
 
-    public NavigationView NavigationView => this.FindElement(this.navigationViewLocator);
+    public NavigationView NavigationView => FindElement(navigationViewLocator);
 
     public AutoSuggestBox ControlsSearchBox =>
-        this.NavigationView.FindElement(WindowsByExtras.AutomationId("controlsSearchBox"));
+        NavigationView.FindElement(WindowsByExtras.AutomationId("controlsSearchBox"));
 
-    protected override By Trait => this.navigationViewLocator;
+    protected override By Trait => navigationViewLocator;
 
     public TPage NavigateTo<TPage>(string controlName)
         where TPage : BasePage
     {
-        this.ControlsSearchBox.SetText("J");
-        this.ControlsSearchBox.SelectSuggestion(controlName);
-        return Activator.CreateInstance(typeof(TPage), this.App) as TPage;
+        ControlsSearchBox.SetText("J");
+        ControlsSearchBox.SelectSuggestion(controlName);
+        return Activator.CreateInstance(typeof(TPage), App) as TPage;
     }
 }

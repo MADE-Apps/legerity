@@ -40,13 +40,13 @@ public class Option : WebElementWrapper
     /// Gets the display value of the option.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string DisplayValue => this.Element.Text;
+    public virtual string DisplayValue => Element.Text;
 
     /// <summary>
     /// Gets a value indicating whether the option is selected.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsSelected => this.Element.Selected;
+    public virtual bool IsSelected => Element.Selected;
 
     /// <summary>
     /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="Option"/> without direct casting.
@@ -70,6 +70,6 @@ public class Option : WebElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void Select()
     {
-        this.Click();
+        Click();
     }
 }

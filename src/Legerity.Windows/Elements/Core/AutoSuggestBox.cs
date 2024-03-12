@@ -25,25 +25,25 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// Gets the element associated with the suggestions popup.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual WebElement SuggestionsPopup => this.FindElement(this.suggestionsPopupLocator);
+    public virtual WebElement SuggestionsPopup => FindElement(suggestionsPopupLocator);
 
     /// <summary>
     /// Gets the element associated with the suggestion list when the <see cref="SuggestionsPopup"/> is shown.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual ListView SuggestionList => this.SuggestionsPopup.FindElement(WindowsByExtras.AutomationId("SuggestionsList")) as WebElement;
+    public virtual ListView SuggestionList => SuggestionsPopup.FindElement(WindowsByExtras.AutomationId("SuggestionsList")) as WebElement;
 
     /// <summary>
     /// Gets the element associated with the text box.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextBox TextBox => this.FindElement(WindowsByExtras.AutomationId("TextBox"));
+    public virtual TextBox TextBox => FindElement(WindowsByExtras.AutomationId("TextBox"));
 
     /// <summary>
     /// Gets the value of the auto-suggest box.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string Text => this.TextBox.Text;
+    public virtual string Text => TextBox.Text;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="AutoSuggestBox"/> without direct casting.
@@ -71,7 +71,7 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectSuggestion(string suggestion)
     {
-        this.SelectSuggestion(suggestion, suggestion);
+        SelectSuggestion(suggestion, suggestion);
     }
 
     /// <summary>
@@ -88,11 +88,11 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectSuggestion(string value, string suggestion, int popupWaitTimeout = 2000)
     {
-        this.SetText(value);
+        SetText(value);
 
-        this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
+        VerifyElementShown(suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
 
-        this.SuggestionList.ClickItem(suggestion);
+        SuggestionList.ClickItem(suggestion);
     }
 
     /// <summary>
@@ -109,11 +109,11 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectSuggestionByPartialSuggestion(string value, string partialSuggestion, int popupWaitTimeout = 2000)
     {
-        this.SetText(value);
+        SetText(value);
 
-        this.VerifyElementShown(this.suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
+        VerifyElementShown(suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
 
-        this.SuggestionList.ClickItemByPartialName(partialSuggestion);
+        SuggestionList.ClickItemByPartialName(partialSuggestion);
     }
 
     /// <summary>
@@ -126,6 +126,6 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetText(string value)
     {
-        this.TextBox.SetText(value);
+        TextBox.SetText(value);
     }
 }

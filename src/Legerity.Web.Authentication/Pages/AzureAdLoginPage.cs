@@ -75,25 +75,25 @@ public class AzureAdLoginPage : BasePage
     /// Gets the input element for providing an email address.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput EmailInput => this.FindElement(WebByExtras.InputType("email"));
+    public virtual TextInput EmailInput => FindElement(WebByExtras.InputType("email"));
 
     /// <summary>
     /// Gets the input element for providing a password.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput PasswordInput => this.FindElement(WebByExtras.InputType("password"));
+    public virtual TextInput PasswordInput => FindElement(WebByExtras.InputType("password"));
 
     /// <summary>
     /// Gets the button element for continuing the sign-in flow through the Azure AD login UI.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button SignInButton => this.FindElement(By.Id("idSIButton9"));
+    public virtual Button SignInButton => FindElement(By.Id("idSIButton9"));
 
     /// <summary>
     /// Gets the optional "Use Password" button that appears when password-less authentication is enabled.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button UsePasswordButton => this.FindElement(By.Id("idA_PWD_SwitchToPassword"));
+    public virtual Button UsePasswordButton => FindElement(By.Id("idA_PWD_SwitchToPassword"));
 
     /// <summary>
     /// Gets a given trait of the page to verify that the page is in view.
@@ -113,29 +113,29 @@ public class AzureAdLoginPage : BasePage
     public AzureAdLoginPage Login(string email, string password)
     {
         (bool hasEmailInput, AzureAdLoginPage _) =
-            this.TryWaitUntil(page => page.EmailInput.IsVisible, this.WaitTimeout);
+            this.TryWaitUntil(page => page.EmailInput.IsVisible, WaitTimeout);
         if (!hasEmailInput)
         {
             // Cannot login as email address input not shown (possibly logged in already?)
             return this;
         }
 
-        this.EmailInput.SetText(email);
+        EmailInput.SetText(email);
 
         // Azure AD login uses a 2-step process for email and password.
-        this.SignInButton.Click();
+        SignInButton.Click();
 
         // Check to ensure that the user is not authenticating with password-less authentication.
         (bool isNotPasswordLogin, AzureAdLoginPage _) =
-            this.TryWaitUntil(page => page.UsePasswordButton.IsVisible, this.WaitTimeout);
+            this.TryWaitUntil(page => page.UsePasswordButton.IsVisible, WaitTimeout);
         if (isNotPasswordLogin)
         {
-            this.UsePasswordButton.Click();
-            this.TryWaitUntil(page => page.PasswordInput.IsVisible, this.WaitTimeout);
+            UsePasswordButton.Click();
+            this.TryWaitUntil(page => page.PasswordInput.IsVisible, WaitTimeout);
         }
 
-        this.PasswordInput.SetText(password);
-        this.SignInButton.Click();
+        PasswordInput.SetText(password);
+        SignInButton.Click();
 
         return this;
     }

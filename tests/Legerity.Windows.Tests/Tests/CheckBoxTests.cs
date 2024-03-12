@@ -16,7 +16,7 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldCheckOn()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
 
         // Act
@@ -30,7 +30,7 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldKeepCheckedIfCheckOn()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
 
         // Act
@@ -44,7 +44,7 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldCheckOff()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
 
         // Act
@@ -58,7 +58,7 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldKeepCheckedOffIfCheckOff()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOffTwoStateCheckBox();
 
         // Act
@@ -72,7 +72,7 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldSetIndeterminateStateIfSupported()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
 
         // Act

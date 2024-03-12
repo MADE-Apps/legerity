@@ -68,9 +68,9 @@ public abstract class BasePage
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     protected BasePage(WebDriver app, TimeSpan? traitTimeout)
     {
-        this.App = app;
-        this.WaitTimeout = traitTimeout ?? TimeSpan.FromSeconds(2);
-        this.VerifyPageShown(this.WaitTimeout);
+        App = app;
+        WaitTimeout = traitTimeout ?? TimeSpan.FromSeconds(2);
+        VerifyPageShown(WaitTimeout);
     }
 
     /// <summary>
@@ -92,22 +92,22 @@ public abstract class BasePage
     /// <summary>
     /// Gets the instance of the started Windows application.
     /// </summary>
-    protected WindowsDriver WindowsApp => this.App as WindowsDriver;
+    protected WindowsDriver WindowsApp => App as WindowsDriver;
 
     /// <summary>
     /// Gets the instance of the started Android application.
     /// </summary>
-    protected AndroidDriver AndroidApp => this.App as AndroidDriver;
+    protected AndroidDriver AndroidApp => App as AndroidDriver;
 
     /// <summary>
     /// Gets the instance of the started iOS application.
     /// </summary>
-    protected IOSDriver IOSApp => this.App as IOSDriver;
+    protected IOSDriver IOSApp => App as IOSDriver;
 
     /// <summary>
     /// Gets the instance of the started web application.
     /// </summary>
-    protected WebDriver WebApp => this.App;
+    protected WebDriver WebApp => App;
 
     /// <summary>
     /// Gets a given trait of the page to verify that the page is in view.
@@ -122,7 +122,7 @@ public abstract class BasePage
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public WebElement FindElement(By locator)
     {
-        return this.App.FindWebElement(locator);
+        return App.FindWebElement(locator);
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public abstract class BasePage
     /// <returns>A readonly collection of <see cref="WebElement"/>.</returns>
     public ReadOnlyCollection<WebElement> FindElements(By locator)
     {
-        return this.App.FindWebElements(locator);
+        return App.FindWebElements(locator);
     }
 
     /// <summary>
@@ -143,7 +143,7 @@ public abstract class BasePage
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public WebElement FindElementByXPath(string xpath)
     {
-        return this.App.FindElementByXPath(xpath);
+        return App.FindElementByXPath(xpath);
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public abstract class BasePage
     /// <returns>A readonly collection of <see cref="WebElement"/>.</returns>
     public ReadOnlyCollection<WebElement> FindElementsByXPath(string xpath)
     {
-        return this.App.FindElementsByXPath(xpath);
+        return App.FindElementsByXPath(xpath);
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public abstract class BasePage
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public WebElement FindElementById(string id)
     {
-        return this.App.FindElementById(id);
+        return App.FindElementById(id);
     }
 
     /// <summary>
@@ -175,7 +175,7 @@ public abstract class BasePage
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public WebElement FindElementByName(string name)
     {
-        return this.App.FindElementByName(name);
+        return App.FindElementByName(name);
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public abstract class BasePage
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void VerifyPageShown()
     {
-        this.VerifyPageShown(null);
+        VerifyPageShown(null);
     }
 
     /// <summary>
@@ -200,7 +200,7 @@ public abstract class BasePage
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void VerifyPageShown(TimeSpan? timeout)
     {
-        if (this.App == null)
+        if (App == null)
         {
             throw new DriverNotInitializedException(
                 $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
@@ -208,16 +208,16 @@ public abstract class BasePage
 
         if (timeout == null)
         {
-            if (this.App != null && this.App.FindElement(this.Trait) == null)
+            if (App != null && App.FindElement(Trait) == null)
             {
-                throw new PageNotShownException(this.GetType().Name);
+                throw new PageNotShownException(GetType().Name);
             }
         }
         else
         {
-            if (this.App != null)
+            if (App != null)
             {
-                AttemptWaitForDriverElement(this.Trait, timeout.Value, this.App);
+                AttemptWaitForDriverElement(Trait, timeout.Value, App);
             }
         }
     }
@@ -233,7 +233,7 @@ public abstract class BasePage
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void VerifyElementShown(By locator)
     {
-        this.VerifyElementShown(locator, null);
+        VerifyElementShown(locator, null);
     }
 
     /// <summary>
@@ -250,7 +250,7 @@ public abstract class BasePage
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void VerifyElementShown(By locator, TimeSpan? timeout)
     {
-        if (this.App == null)
+        if (App == null)
         {
             throw new DriverNotInitializedException(
                 $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
@@ -258,16 +258,16 @@ public abstract class BasePage
 
         if (timeout == null)
         {
-            if (this.App != null && this.App.FindElement(locator) == null)
+            if (App != null && App.FindElement(locator) == null)
             {
                 throw new ElementNotShownException(locator.ToString());
             }
         }
         else
         {
-            if (this.App != null)
+            if (App != null)
             {
-                AttemptWaitForDriverElement(locator, timeout.Value, this.App);
+                AttemptWaitForDriverElement(locator, timeout.Value, App);
             }
         }
     }
@@ -281,7 +281,7 @@ public abstract class BasePage
     /// <exception cref="DriverNotInitializedException">Thrown when AppManager.StartApp() has not been called.</exception>
     public void VerifyElementNotShown(By locator)
     {
-        if (this.App == null)
+        if (App == null)
         {
             throw new DriverNotInitializedException(
                 $"An app driver has not been initialized. Call 'AppManager.StartApp()' with an instance of an {nameof(AppManagerOptions)} to setup for testing.");
@@ -289,7 +289,7 @@ public abstract class BasePage
 
         try
         {
-            this.VerifyElementShown(locator);
+            VerifyElementShown(locator);
         }
         catch (ElementNotShownException)
         {

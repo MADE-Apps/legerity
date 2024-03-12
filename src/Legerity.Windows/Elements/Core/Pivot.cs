@@ -27,13 +27,13 @@ public class Pivot : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the pivot.
     /// </summary>
-    public virtual ReadOnlyCollection<WebElement> Items => this.Element.FindElements(this.pivotItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(pivotItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the currently selected item.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual WebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual WebElement SelectedItem => Items.FirstOrDefault(i => i.IsSelected());
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Pivot"/> without direct casting.
@@ -62,9 +62,9 @@ public class Pivot : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItem(string name)
     {
-        this.VerifyElementsShown(this.pivotItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(pivotItemLocator, TimeSpan.FromSeconds(2));
 
-        WebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        WebElement item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -87,9 +87,9 @@ public class Pivot : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void ClickItemByPartialName(string name)
     {
-        this.VerifyElementsShown(this.pivotItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(pivotItemLocator, TimeSpan.FromSeconds(2));
 
-        WebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
+        WebElement item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
         if (item == null)
         {

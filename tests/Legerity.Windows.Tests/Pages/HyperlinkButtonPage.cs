@@ -10,11 +10,11 @@ internal class HyperlinkButtonPage : BaseNavigationPage
     {
     }
 
-    public HyperlinkButton HyperlinkButton => this.FindElement(WindowsByExtras.AutomationId("Control1"));
+    public HyperlinkButton HyperlinkButton => FindElement(WindowsByExtras.AutomationId("Control1"));
 
     public HyperlinkButtonPage ClickHyperlinkButton()
     {
-        this.HyperlinkButton.Click();
+        HyperlinkButton.Click();
         return this;
     }
 }

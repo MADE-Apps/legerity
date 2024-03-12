@@ -23,7 +23,7 @@ public class WindowsElementWrapper : ElementWrapper<WebElement>
     /// <summary>
     /// Gets the instance of the Appium driver for the Windows application.
     /// </summary>
-    public WindowsDriver Driver => this.ElementDriver as WindowsDriver;
+    public WindowsDriver Driver => ElementDriver as WindowsDriver;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="WindowsElementWrapper"/> without direct casting.
@@ -54,7 +54,7 @@ public class WindowsElementWrapper : ElementWrapper<WebElement>
         {
             try
             {
-                if (this.Driver.FindElement(locator) == null)
+                if (Driver.FindElement(locator) == null)
                 {
                     throw new ElementNotShownException(locator.ToString());
                 }
@@ -66,7 +66,7 @@ public class WindowsElementWrapper : ElementWrapper<WebElement>
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElement(locator) != null);
         }
     }
@@ -85,14 +85,14 @@ public class WindowsElementWrapper : ElementWrapper<WebElement>
     {
         if (timeout == null)
         {
-            if (this.Driver.FindElements(locator).Count == 0)
+            if (Driver.FindElements(locator).Count == 0)
             {
                 throw new ElementsNotShownException(locator.ToString());
             }
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElements(locator).Count != 0);
         }
     }

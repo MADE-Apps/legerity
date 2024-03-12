@@ -46,12 +46,12 @@ public class CheckBox : AndroidElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOn()
     {
-        if (this.IsChecked)
+        if (IsChecked)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 
     /// <summary>
@@ -62,11 +62,11 @@ public class CheckBox : AndroidElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOff()
     {
-        if (!this.IsChecked)
+        if (!IsChecked)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 }

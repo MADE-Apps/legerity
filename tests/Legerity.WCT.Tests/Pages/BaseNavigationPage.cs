@@ -18,25 +18,25 @@ internal class BaseNavigationPage : BasePage
     {
     }
 
-    public NavigationView NavigationView => this.FindElement(this.navigationViewLocator);
+    public NavigationView NavigationView => FindElement(navigationViewLocator);
 
-    public AutoSuggestBox SampleSearchBox => this.NavigationView.FindElement(WindowsByExtras.AutomationId("SearchBox"));
+    public AutoSuggestBox SampleSearchBox => NavigationView.FindElement(WindowsByExtras.AutomationId("SearchBox"));
 
-    public GridView SamplePicker => this.FindElement(WindowsByExtras.AutomationId("SamplePickerGridView"));
+    public GridView SamplePicker => FindElement(WindowsByExtras.AutomationId("SamplePickerGridView"));
 
-    protected override By Trait => this.navigationViewLocator;
+    protected override By Trait => navigationViewLocator;
 
     public TPage NavigateTo<TPage>(string sampleName)
         where TPage : BasePage
     {
-        this.SampleSearchBox.SetText(sampleName);
+        SampleSearchBox.SetText(sampleName);
 
-        this.WaitUntil(p => p.SamplePicker.Items.Any(), this.WaitTimeout);
+        this.WaitUntil(p => p.SamplePicker.Items.Any(), WaitTimeout);
 
-        WebElement item = this.SamplePicker.Items.FirstOrDefault(i =>
+        WebElement item = SamplePicker.Items.FirstOrDefault(i =>
             i.FindElement(By.XPath($".//*[@ClassName='TextBlock'][@Name='{sampleName}']")) != null);
         item.Click();
 
-        return Activator.CreateInstance(typeof(TPage), this.App) as TPage;
+        return Activator.CreateInstance(typeof(TPage), App) as TPage;
     }
 }

@@ -59,8 +59,8 @@ public class FileInput : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SetAbsoluteFilePath(string filePath)
     {
-        this.ClearFile();
-        this.Element.SendKeys(filePath);
+        ClearFile();
+        Element.SendKeys(filePath);
     }
 
     /// <summary>
@@ -69,6 +69,6 @@ public class FileInput : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClearFile()
     {
-        this.Element.Clear();
+        Element.Clear();
     }
 }

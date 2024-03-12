@@ -75,25 +75,25 @@ public class GoogleLoginPage : BasePage
     /// Gets the input element for providing an email address.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput EmailInput => this.FindElement(WebByExtras.InputType("email"));
+    public virtual TextInput EmailInput => FindElement(WebByExtras.InputType("email"));
 
     /// <summary>
     /// Gets the input element for providing a password.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput PasswordInput => this.FindElement(WebByExtras.InputType("password"));
+    public virtual TextInput PasswordInput => FindElement(WebByExtras.InputType("password"));
 
     /// <summary>
     /// Gets the button element for continuing the sign-in flow through the Google login UI.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button NextButton => this.FindElement(By.Id("identifierNext"));
+    public virtual Button NextButton => FindElement(By.Id("identifierNext"));
 
     /// <summary>
     /// Gets the button element for completing the sign-in flow through the Google login UI.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button SignInButton => this.FindElement(By.Id("passwordNext"));
+    public virtual Button SignInButton => FindElement(By.Id("passwordNext"));
 
     /// <summary>
     /// Gets a given trait of the page to verify that the page is in view.
@@ -113,27 +113,27 @@ public class GoogleLoginPage : BasePage
     public GoogleLoginPage Login(string email, string password)
     {
         (bool hasEmailInput, GoogleLoginPage _) =
-            this.TryWaitUntil(page => page.EmailInput.IsVisible, this.WaitTimeout);
+            this.TryWaitUntil(page => page.EmailInput.IsVisible, WaitTimeout);
         if (!hasEmailInput)
         {
             // Cannot login as email address input not shown (possibly logged in already?)
             return this;
         }
 
-        this.EmailInput.SetText(email);
+        EmailInput.SetText(email);
 
         // Google login uses a 2-step process for email and password.
-        this.NextButton.Click();
+        NextButton.Click();
 
         (bool isPasswordInputVisible, GoogleLoginPage _) =
-            this.TryWaitUntil(page => page.PasswordInput.IsVisible, this.WaitTimeout);
+            this.TryWaitUntil(page => page.PasswordInput.IsVisible, WaitTimeout);
         if (!isPasswordInputVisible)
         {
             return this;
         }
 
-        this.PasswordInput.SetText(password);
-        this.SignInButton.Click();
+        PasswordInput.SetText(password);
+        SignInButton.Click();
 
         return this;
     }

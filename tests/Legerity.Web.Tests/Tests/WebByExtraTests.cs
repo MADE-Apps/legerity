@@ -17,7 +17,7 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
         // Arrange
         const int expectedCount = 6;
 
-        WebDriver app = this.StartApp(new WebAppManagerOptions(
+        WebDriver app = StartApp(new WebAppManagerOptions(
             WebAppDriverType.Chrome,
             Path.Combine(Environment.CurrentDirectory))
         {

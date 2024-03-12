@@ -32,14 +32,14 @@ public class CommandBar : WindowsElementWrapper
     /// Gets the collection of primary buttons.
     /// </summary>
     public virtual IEnumerable<AppBarButton> PrimaryButtons =>
-        this.Element.FindElements(this.appBarButtonLocator)
+        Element.FindElements(appBarButtonLocator)
             .Select<IWebElement, AppBarButton>(element => element as WebElement);
 
     /// <summary>
     /// Gets the <see cref="AppBarButton"/> for opening the secondary button menu.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual AppBarButton SecondaryMenuButton => this.FindElement(this.moreButtonLocator);
+    public virtual AppBarButton SecondaryMenuButton => FindElement(moreButtonLocator);
 
     /// <summary>
     /// Gets the collection of secondary buttons.
@@ -49,7 +49,7 @@ public class CommandBar : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual IEnumerable<AppBarButton> SecondaryButtons =>
-        this.Driver.FindElement(this.overflowPopupLocator).FindElements(this.appBarButtonLocator)
+        Driver.FindElement(overflowPopupLocator).FindElements(appBarButtonLocator)
             .Select<WebElement, AppBarButton>(element => element);
 
     /// <summary>
@@ -78,7 +78,7 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickPrimaryButton(string name)
     {
-        AppBarButton item = this.PrimaryButtons.FirstOrDefault(
+        AppBarButton item = PrimaryButtons.FirstOrDefault(
             element => element.Element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
@@ -101,7 +101,7 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickPrimaryButtonByPartialName(string partialName)
     {
-        AppBarButton item = this.PrimaryButtons.FirstOrDefault(
+        AppBarButton item = PrimaryButtons.FirstOrDefault(
             element => element.Element.VerifyNameOrAutomationIdContains(partialName));
 
         if (item == null)
@@ -125,9 +125,9 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when the more button is not shown.</exception>
     public virtual void ClickSecondaryButton(string name)
     {
-        this.OpenSecondaryButtonMenu();
+        OpenSecondaryButtonMenu();
 
-        AppBarButton secondaryButton = this.SecondaryButtons.FirstOrDefault(
+        AppBarButton secondaryButton = SecondaryButtons.FirstOrDefault(
             button => button.Element.VerifyNameOrAutomationIdEquals(name));
 
         if (secondaryButton == null)
@@ -151,9 +151,9 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when the more button is not shown.</exception>
     public virtual void ClickSecondaryButtonByPartialName(string partialName)
     {
-        this.OpenSecondaryButtonMenu();
+        OpenSecondaryButtonMenu();
 
-        AppBarButton secondaryButton = this.SecondaryButtons.FirstOrDefault(
+        AppBarButton secondaryButton = SecondaryButtons.FirstOrDefault(
             button => button.Element.VerifyNameOrAutomationIdContains(partialName));
 
         if (secondaryButton == null)
@@ -174,8 +174,8 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void OpenSecondaryButtonMenu()
     {
-        this.VerifyElementShown(this.moreButtonLocator, TimeSpan.FromSeconds(2));
-        this.SecondaryMenuButton.Click();
-        this.VerifyDriverElementShown(this.overflowPopupLocator, TimeSpan.FromSeconds(2));
+        VerifyElementShown(moreButtonLocator, TimeSpan.FromSeconds(2));
+        SecondaryMenuButton.Click();
+        VerifyDriverElementShown(overflowPopupLocator, TimeSpan.FromSeconds(2));
     }
 }

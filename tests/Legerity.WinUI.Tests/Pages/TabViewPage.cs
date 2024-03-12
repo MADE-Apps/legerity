@@ -12,42 +12,42 @@ internal class TabViewPage : BaseNavigationPage
     {
     }
 
-    public ScrollViewer ScrollViewer => this.FindElement(WindowsByExtras.AutomationId("svPanel"));
+    public ScrollViewer ScrollViewer => FindElement(WindowsByExtras.AutomationId("svPanel"));
 
-    public TabView TabView => this.FindElement(WindowsByExtras.AutomationId("TabView1"));
+    public TabView TabView => FindElement(WindowsByExtras.AutomationId("TabView1"));
     
     public TabViewPage SelectTab(string name)
     {
-        this.ScrollViewer.ScrollToTop();
-        this.TabView.SelectTab(name);
+        ScrollViewer.ScrollToTop();
+        TabView.SelectTab(name);
         return this;
     }
 
     public TabViewPage SelectTabByPartialName(string name)
     {
-        this.ScrollViewer.ScrollToTop();
-        this.TabView.SelectTabByPartialName(name);
+        ScrollViewer.ScrollToTop();
+        TabView.SelectTabByPartialName(name);
         return this;
     }
 
     public TabViewPage CloseTab(string name)
     {
-        this.ScrollViewer.ScrollToTop();
-        this.TabView.CloseTab(name);
+        ScrollViewer.ScrollToTop();
+        TabView.CloseTab(name);
         return this;
     }
 
     public TabViewPage CloseTabByPartialName(string name)
     {
-        this.ScrollViewer.ScrollToTop();
-        this.TabView.CloseTabByPartialName(name);
+        ScrollViewer.ScrollToTop();
+        TabView.CloseTabByPartialName(name);
         return this;
     }
 
     public TabViewPage CreateTab()
     {
-        this.ScrollViewer.ScrollToTop();
-        this.TabView.CreateTab();
+        ScrollViewer.ScrollToTop();
+        TabView.CreateTab();
         return this;
     }
 }

@@ -38,7 +38,7 @@ internal class OptionTests : W3SchoolsBaseTestClass
         // Arrange
         string expected = "audi";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         OptionPage optionPage = new OptionPage(app)
             .AcceptCookies<OptionPage>()
@@ -57,7 +57,7 @@ internal class OptionTests : W3SchoolsBaseTestClass
         // Arrange
         string expected = "Audi";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         OptionPage optionPage = new OptionPage(app)
             .AcceptCookies<OptionPage>()

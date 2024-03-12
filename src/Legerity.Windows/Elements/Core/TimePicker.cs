@@ -46,10 +46,10 @@ public class TimePicker : WindowsElementWrapper
     public virtual void SetTime(TimeSpan time)
     {
         // Taps the time picker to show the popup.
-        this.Click();
+        Click();
 
         // Finds the popup and changes the time.
-        WebElement popup = this.Driver.FindElement(WindowsByExtras.AutomationId("TimePickerFlyoutPresenter"));
+        WebElement popup = Driver.FindElement(WindowsByExtras.AutomationId("TimePickerFlyoutPresenter"));
         popup.FindElement(WindowsByExtras.AutomationId("HourLoopingSelector")).FindElementByName(time.ToString("%h")).Click();
         popup.FindElement(WindowsByExtras.AutomationId("MinuteLoopingSelector")).FindElementByName(time.ToString("mm")).Click();
         popup.FindElement(WindowsByExtras.AutomationId("AcceptButton")).Click();

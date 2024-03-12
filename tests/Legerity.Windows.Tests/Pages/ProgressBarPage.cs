@@ -11,15 +11,15 @@ internal class ProgressBarPage : BaseNavigationPage
     {
     }
 
-    public ProgressBar IndeterminateProgressBar => this.FindElement(By.Name("Busy"));
+    public ProgressBar IndeterminateProgressBar => FindElement(By.Name("Busy"));
 
-    public ProgressBar DeterminateProgressBar => this.FindElement(WindowsByExtras.AutomationId("ProgressBar2"));
+    public ProgressBar DeterminateProgressBar => FindElement(WindowsByExtras.AutomationId("ProgressBar2"));
 
-    public NumberBox DeterminateProgressBarValue => this.FindElement(WindowsByExtras.AutomationId("ProgressValue"));
+    public NumberBox DeterminateProgressBarValue => FindElement(WindowsByExtras.AutomationId("ProgressValue"));
 
     public ProgressBarPage SetDeterminateProgressBarValue(int value)
     {
-        this.DeterminateProgressBarValue.SetValue(value);
+        DeterminateProgressBarValue.SetValue(value);
         return this;
     }
 }

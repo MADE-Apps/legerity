@@ -11,11 +11,11 @@ internal class TimePickerPage : BaseNavigationPage
     {
     }
 
-    public TimePicker TimePicker => this.FindElement(By.Name("time picker"));
+    public TimePicker TimePicker => FindElement(By.Name("time picker"));
 
     public TimePickerPage SetTimePickerTime(TimeSpan time)
     {
-        this.TimePicker.SetTime(time);
+        TimePicker.SetTime(time);
         return this;
     }
 }

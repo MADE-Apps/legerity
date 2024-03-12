@@ -38,7 +38,7 @@ public class ScrollViewer : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ScrollToTop()
     {
-        this.Element.SendKeys(Keys.Home);
+        Element.SendKeys(Keys.Home);
     }
 
     /// <summary>
@@ -49,6 +49,6 @@ public class ScrollViewer : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ScrollToBottom()
     {
-        this.Element.SendKeys(Keys.End);
+        Element.SendKeys(Keys.End);
     }
 }

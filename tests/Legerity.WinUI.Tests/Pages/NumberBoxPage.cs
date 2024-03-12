@@ -11,23 +11,23 @@ internal class NumberBoxPage : BaseNavigationPage
     {
     }
 
-    public NumberBox SpinnerNumberBox => this.FindElement(WindowsByExtras.AutomationId("NumberBoxSpinButtonPlacementExample"));
+    public NumberBox SpinnerNumberBox => FindElement(WindowsByExtras.AutomationId("NumberBoxSpinButtonPlacementExample"));
 
     public NumberBoxPage SetSpinnerNumberBoxValue(double value)
     {
-        this.SpinnerNumberBox.SetValue(value);
+        SpinnerNumberBox.SetValue(value);
         return this;
     }
 
     public NumberBoxPage IncrementSpinnerNumberBoxValue()
     {
-        this.SpinnerNumberBox.Increment();
+        SpinnerNumberBox.Increment();
         return this;
     }
 
     public NumberBoxPage DecrementSpinnerNumberBoxValue()
     {
-        this.SpinnerNumberBox.Decrement();
+        SpinnerNumberBox.Decrement();
         return this;
     }
 }

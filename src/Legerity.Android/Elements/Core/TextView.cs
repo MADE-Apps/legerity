@@ -20,7 +20,7 @@ public class TextView : AndroidElementWrapper
     /// Gets the text value of the text view.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string Text => this.Element.Text;
+    public virtual string Text => Element.Text;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="TextView"/> without direct casting.

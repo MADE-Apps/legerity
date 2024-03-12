@@ -23,13 +23,13 @@ public class InputValidator : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual TextBlock ValidationFeedback =>
-        this.FindElement(WindowsByExtras.AutomationId("ValidatorFeedbackMessage"));
+        FindElement(WindowsByExtras.AutomationId("ValidatorFeedbackMessage"));
 
     /// <summary>
     /// Gets the validation feedback message associated with the <see cref="ValidationFeedback"/> element.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string Message => this.ValidationFeedback?.Text;
+    public virtual string Message => ValidationFeedback?.Text;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InputValidator"/> without direct casting.
@@ -53,7 +53,7 @@ public class InputValidator : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public WebElement Input(By locator)
     {
-        return this.FindElement(locator);
+        return FindElement(locator);
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public class InputValidator : WindowsElementWrapper
 
         try
         {
-            message = this.ValidationFeedback.Text;
+            message = ValidationFeedback.Text;
         }
         catch (WebDriverException ex) when (ex.Message.Contains("element could not be located"))
         {

@@ -34,13 +34,13 @@ public class Image : WebElementWrapper
     /// Gets the source URI of the image.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string Source => this.GetAttribute("src");
+    public virtual string Source => GetAttribute("src");
 
     /// <summary>
     /// Gets the alt text of the image.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string AltText => this.GetAttribute("alt");
+    public virtual string AltText => GetAttribute("alt");
 
     /// <summary>
     /// Gets the width of the image.

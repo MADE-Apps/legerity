@@ -46,12 +46,12 @@ public class ToggleSwitch : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOn()
     {
-        if (this.IsOn)
+        if (IsOn)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 
     /// <summary>
@@ -62,11 +62,11 @@ public class ToggleSwitch : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOff()
     {
-        if (!this.IsOn)
+        if (!IsOn)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 }

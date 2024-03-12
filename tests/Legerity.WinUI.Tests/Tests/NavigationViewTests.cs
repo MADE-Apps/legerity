@@ -17,7 +17,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldClickMenuOption()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage();
+        NavigationViewPage navigationViewPage = StartAndNavigateToPage();
 
         // Act
         navigationViewPage.SelectNavigationViewMenuOption("Menu Item2");
@@ -30,7 +30,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldClickMenuOptionByPartialName()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage();
+        NavigationViewPage navigationViewPage = StartAndNavigateToPage();
 
         // Act
         navigationViewPage.SelectNavigationViewMenuOptionByPartialName("Item2");
@@ -43,7 +43,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldOpenSettings()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage();
+        NavigationViewPage navigationViewPage = StartAndNavigateToPage();
 
         // Act
         navigationViewPage.OpenNavigationViewSettings();
@@ -56,7 +56,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldOpenPane()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage().CloseNavigationView();
+        NavigationViewPage navigationViewPage = StartAndNavigateToPage().CloseNavigationView();
 
         // Act
         navigationViewPage.OpenNavigationView();
@@ -69,7 +69,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldKeepPaneOpenIfOpenPane()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage().CloseNavigationView().OpenNavigationView();
+        NavigationViewPage navigationViewPage = StartAndNavigateToPage().CloseNavigationView().OpenNavigationView();
 
         // Act
         navigationViewPage.OpenNavigationView();
@@ -82,7 +82,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldClosePane()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage().OpenNavigationView();
+        NavigationViewPage navigationViewPage = StartAndNavigateToPage().OpenNavigationView();
 
         // Act
         navigationViewPage.CloseNavigationView();
@@ -95,7 +95,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldKeepPaneClosedIfClosePane()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage().OpenNavigationView().CloseNavigationView();
+        NavigationViewPage navigationViewPage = StartAndNavigateToPage().OpenNavigationView().CloseNavigationView();
 
         // Act
         navigationViewPage.CloseNavigationView();
@@ -106,7 +106,7 @@ internal class NavigationViewTests : BaseTestClass
 
     private NavigationViewPage StartAndNavigateToPage()
     {
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         return new HomePage(app).NavigateTo<NavigationViewPage>("NavigationView");
     }
 }

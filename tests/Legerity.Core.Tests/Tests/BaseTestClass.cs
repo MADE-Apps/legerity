@@ -57,6 +57,6 @@ public abstract class BaseTestClass : LegerityTestClass
     public virtual void FinalCleanup()
     {
         // Ensures that any running app driver instances being tracked are stopped.
-        this.StopApps();
+        StopApps();
     }
 }

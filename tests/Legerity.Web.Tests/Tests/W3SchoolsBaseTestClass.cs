@@ -17,6 +17,6 @@ internal abstract class W3SchoolsBaseTestClass : BaseTestClass
 
     protected WebDriver StartApp(AppManagerOptions options = default)
     {
-        return this.StartApp(options ?? this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        return StartApp(options ?? Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
     }
 }

@@ -26,12 +26,12 @@ public class DatePicker : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string Value => this.GetValue();
+    public virtual string Value => GetValue();
 
     /// <summary>
     /// Gets the value of the date picker as a <see cref="DateTime"/>.
     /// </summary>
-    public virtual DateTime? SelectedDate => this.GetSelectedDate();
+    public virtual DateTime? SelectedDate => GetSelectedDate();
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="DatePicker"/> without direct casting.
@@ -57,7 +57,7 @@ public class DatePicker : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetDate(DateTime date)
     {
-        DateTime? selectedDate = this.SelectedDate;
+        DateTime? selectedDate = SelectedDate;
         if (selectedDate.HasValue && selectedDate.Value.Date == date.Date)
         {
             return;
@@ -68,10 +68,10 @@ public class DatePicker : WindowsElementWrapper
         string selectedYear = selectedDate?.ToString("yyyy");
 
         // Taps the date picker to show the popup.
-        this.Click();
+        Click();
 
         // Finds the popup and changes the date.
-        WindowsElementWrapper popup = this.Driver.FindElement(WindowsByExtras.AutomationId("DatePickerFlyoutPresenter"));
+        WindowsElementWrapper popup = Driver.FindElement(WindowsByExtras.AutomationId("DatePickerFlyoutPresenter"));
 
         if (selectedDay != date.ToString("%d"))
         {
@@ -95,7 +95,7 @@ public class DatePicker : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string GetValue()
     {
-        WebElement button = this.FindElement(WindowsByExtras.AutomationId("FlyoutButton"));
+        WebElement button = FindElement(WindowsByExtras.AutomationId("FlyoutButton"));
         string name = button.GetName().RemoveUnicodeCharacters();
         Match match = Regex.Match(name, @"\w+\s\d{1,2},\s\d{4}");
         return match.Success ? match.Value : null;
@@ -103,7 +103,7 @@ public class DatePicker : WindowsElementWrapper
 
     private DateTime? GetSelectedDate()
     {
-        string value = this.Value;
+        string value = Value;
         return string.IsNullOrEmpty(value) ? default :
             DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
     }

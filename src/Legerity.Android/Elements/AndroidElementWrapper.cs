@@ -24,7 +24,7 @@ public class AndroidElementWrapper : ElementWrapper<WebElement>
     /// <summary>
     /// Gets the instance of the Appium driver for the Android application.
     /// </summary>
-    public AndroidDriver Driver => this.ElementDriver as AndroidDriver;
+    public AndroidDriver Driver => ElementDriver as AndroidDriver;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="AndroidElementWrapper"/> without direct casting.
@@ -55,7 +55,7 @@ public class AndroidElementWrapper : ElementWrapper<WebElement>
         {
             try
             {
-                if (this.Driver.FindElement(locator) == null)
+                if (Driver.FindElement(locator) == null)
                 {
                     throw new ElementNotShownException(locator.ToString());
                 }
@@ -67,7 +67,7 @@ public class AndroidElementWrapper : ElementWrapper<WebElement>
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElement(locator) != null);
         }
     }
@@ -86,14 +86,14 @@ public class AndroidElementWrapper : ElementWrapper<WebElement>
     {
         if (timeout == null)
         {
-            if (this.Driver.FindElements(locator).Count == 0)
+            if (Driver.FindElements(locator).Count == 0)
             {
                 throw new ElementsNotShownException(locator.ToString());
             }
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElements(locator).Count != 0);
         }
     }

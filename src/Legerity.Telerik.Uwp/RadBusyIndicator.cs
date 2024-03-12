@@ -22,7 +22,7 @@ public class RadBusyIndicator : WindowsElementWrapper
     /// Gets a value indicating whether the busy indicator is on.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsOn => this.GetAttribute("ItemStatus") == OnValue;
+    public virtual bool IsOn => GetAttribute("ItemStatus") == OnValue;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="RadBusyIndicator"/> without direct casting.

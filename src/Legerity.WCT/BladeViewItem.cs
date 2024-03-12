@@ -37,27 +37,27 @@ public class BladeViewItem : WindowsElementWrapper
     {
         if (parentBladeView != null)
         {
-            this.parentBladeViewReference = new WeakReference(parentBladeView);
+            parentBladeViewReference = new WeakReference(parentBladeView);
         }
     }
 
     /// <summary>Gets the original parent <see cref="BladeView"/> reference object.</summary>
     public BladeView ParentMenuBar =>
-        this.parentBladeViewReference is { IsAlive: true }
-            ? this.parentBladeViewReference.Target as BladeView
+        parentBladeViewReference is { IsAlive: true }
+            ? parentBladeViewReference.Target as BladeView
             : null;
 
     /// <summary>
     /// Gets the <see cref="Button"/> element associated with the blade enlarge option.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button EnlargeButton => this.FindElement(WindowsByExtras.AutomationId("EnlargeButton"));
+    public virtual Button EnlargeButton => FindElement(WindowsByExtras.AutomationId("EnlargeButton"));
 
     /// <summary>
     /// Gets the <see cref="Button"/> element associated with the blade close option.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button CloseButton => this.FindElement(WindowsByExtras.AutomationId("CloseButton"));
+    public virtual Button CloseButton => FindElement(WindowsByExtras.AutomationId("CloseButton"));
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="BladeViewItem"/> without direct casting.
@@ -82,6 +82,6 @@ public class BladeViewItem : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Close()
     {
-        this.CloseButton.Click();
+        CloseButton.Click();
     }
 }

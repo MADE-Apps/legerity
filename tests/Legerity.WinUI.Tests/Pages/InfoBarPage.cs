@@ -11,11 +11,11 @@ internal class InfoBarPage : BaseNavigationPage
     {
     }
 
-    public InfoBar CloseableInfoBar => this.FindElement(WindowsByExtras.AutomationId("TestInfoBar1"));
+    public InfoBar CloseableInfoBar => FindElement(WindowsByExtras.AutomationId("TestInfoBar1"));
 
     public InfoBarPage CloseClosableInfoBar()
     {
-        this.CloseableInfoBar.Close();
+        CloseableInfoBar.Close();
         return this;
     }
 }

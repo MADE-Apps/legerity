@@ -24,7 +24,7 @@ public class BladeView : WindowsElementWrapper
     /// Gets the UI components associated with the child blades.
     /// </summary>
     public virtual IEnumerable<BladeViewItem> Blades =>
-        this.Element.FindElements(By.ClassName("BladeItem"))
+        Element.FindElements(By.ClassName("BladeItem"))
             .Select(element => new BladeViewItem(this, element as WebElement));
 
     /// <summary>
@@ -49,7 +49,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual BladeViewItem GetBlade(string name)
     {
-        return this.Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdEquals(name));
+        return Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdEquals(name));
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual BladeViewItem GetBladeByPartialName(string partialName)
     {
-        return this.Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdContains(partialName));
+        return Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdContains(partialName));
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void CloseBlade(string name)
     {
-        BladeViewItem blade = this.GetBlade(name);
+        BladeViewItem blade = GetBlade(name);
         blade.Close();
     }
 
@@ -87,7 +87,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void CloseBladeByPartialName(string partialName)
     {
-        BladeViewItem blade = this.GetBladeByPartialName(partialName);
+        BladeViewItem blade = GetBladeByPartialName(partialName);
         blade.Close();
     }
 }

@@ -30,7 +30,7 @@ public class ProgressRing : WindowsElementWrapper
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public bool IsIndeterminate =>
-        this.GetAttribute("IsRangeValuePatternAvailable").Equals(
+        GetAttribute("IsRangeValuePatternAvailable").Equals(
             "False",
             StringComparison.CurrentCultureIgnoreCase);
 

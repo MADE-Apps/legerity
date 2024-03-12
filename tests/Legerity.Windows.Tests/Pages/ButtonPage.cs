@@ -10,11 +10,11 @@ internal class ButtonPage : BaseNavigationPage
     {
     }
 
-    public Button StandardXamlButton => this.FindElement(WindowsByExtras.AutomationId("Button1"));
+    public Button StandardXamlButton => FindElement(WindowsByExtras.AutomationId("Button1"));
 
     public ButtonPage ClickStandardXamlButton()
     {
-        this.StandardXamlButton.Click();
+        StandardXamlButton.Click();
         return this;
     }
 }

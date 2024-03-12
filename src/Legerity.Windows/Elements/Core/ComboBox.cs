@@ -30,7 +30,7 @@ public class ComboBox : WindowsElementWrapper
     /// Gets the currently selected item.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string SelectedItem => this.GetSelectedItem();
+    public virtual string SelectedItem => GetSelectedItem();
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ComboBox"/> without direct casting.
@@ -59,7 +59,7 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectItem(string name)
     {
-        IEnumerable<WebElement> listElements = this.GetItemsToSelect();
+        IEnumerable<WebElement> listElements = GetItemsToSelect();
 
         WebElement item = listElements.FirstOrDefault(
             element => element.GetName().Equals(name, StringComparison.CurrentCultureIgnoreCase));
@@ -85,7 +85,7 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectItemByPartialName(string name)
     {
-        IEnumerable<WebElement> listElements = this.GetItemsToSelect();
+        IEnumerable<WebElement> listElements = GetItemsToSelect();
 
         WebElement item = listElements.FirstOrDefault(
             element => element.GetName().Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
@@ -101,7 +101,7 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string GetSelectedItem()
     {
-        ReadOnlyCollection<WebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        ReadOnlyCollection<WebElement> listElements = Element.FindElements(comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
         return listElements.Count == 1 ? listElements.FirstOrDefault().GetName() : null;
     }
 
@@ -111,9 +111,9 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private IEnumerable<WebElement> GetItemsToSelect()
     {
-        this.Click();
-        this.VerifyElementsShown(this.comboBoxItemLocator, TimeSpan.FromSeconds(2));
-        ReadOnlyCollection<WebElement> listElements = this.Element.FindElements(this.comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        Click();
+        VerifyElementsShown(comboBoxItemLocator, TimeSpan.FromSeconds(2));
+        ReadOnlyCollection<WebElement> listElements = Element.FindElements(comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
         return listElements;
     }
 }

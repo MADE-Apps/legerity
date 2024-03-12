@@ -13,41 +13,41 @@ internal class FlipViewPage : BaseNavigationPage
     {
     }
 
-    public FlipView XamlFlipView => this.FindElements(this.flipViewLocator).LastOrDefault();
+    public FlipView XamlFlipView => FindElements(flipViewLocator).LastOrDefault();
 
     public FlipViewPage SelectXamlFlipViewItem(string name)
     {
-        this.XamlFlipView.SelectItem(name);
+        XamlFlipView.SelectItem(name);
         return this;
     }
 
     public FlipViewPage SelectXamlFlipViewItemByIndex(int index)
     {
-        this.XamlFlipView.SelectItemByIndex(index);
+        XamlFlipView.SelectItemByIndex(index);
         return this;
     }
 
     public FlipViewPage SelectNextXamlFlipViewItem()
     {
-        this.XamlFlipView.SelectNext();
+        XamlFlipView.SelectNext();
         return this;
     }
 
     public FlipViewPage SelectPreviousXamlFlipViewItem()
     {
-        this.XamlFlipView.SelectPrevious();
+        XamlFlipView.SelectPrevious();
         return this;
     }
 
     public FlipViewPage ClickNextXamlFlipViewItem()
     {
-        this.XamlFlipView.NextButton.Click();
+        XamlFlipView.NextButton.Click();
         return this;
     }
 
     public FlipViewPage ClickPreviousXamlFlipViewItem()
     {
-        this.XamlFlipView.PreviousButton.Click();
+        XamlFlipView.PreviousButton.Click();
         return this;
     }
 }

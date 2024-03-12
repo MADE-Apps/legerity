@@ -40,7 +40,7 @@ public class DateInput : TextInput
     /// <summary>
     /// Gets the value of the date picker as a <see cref="DateTime"/>.
     /// </summary>
-    public virtual DateTime? SelectedDate => this.GetSelectedDate();
+    public virtual DateTime? SelectedDate => GetSelectedDate();
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="DateInput"/> without direct casting.
@@ -63,15 +63,15 @@ public class DateInput : TextInput
     /// <exception cref="WebDriverException">Thrown when this <see cref="IWebDriver" /> instance does not implement <see cref="IJavaScriptExecutor" />.</exception>
     public virtual void SetDate(DateTime date)
     {
-        this.ElementDriver.ExecuteJavaScript(
+        ElementDriver.ExecuteJavaScript(
             "arguments[0].setAttribute('value', arguments[1])",
-            this.Element,
+            Element,
             date.ToString("yyyy-MM-dd"));
     }
 
     private DateTime? GetSelectedDate()
     {
-        string value = this.Value;
+        string value = Value;
         return string.IsNullOrEmpty(value) ? default :
             DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
     }

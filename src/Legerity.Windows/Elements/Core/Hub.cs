@@ -22,7 +22,7 @@ public class Hub : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the hub.
     /// </summary>
-    public virtual ReadOnlyCollection<WebElement> Items => this.Element.FindElements(By.ClassName("HubSection")).Cast<WebElement>().ToList().AsReadOnly();
+    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(By.ClassName("HubSection")).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Hub"/> without direct casting.

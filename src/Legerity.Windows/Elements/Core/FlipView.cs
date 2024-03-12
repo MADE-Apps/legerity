@@ -26,29 +26,29 @@ public class FlipView : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the flip view.
     /// </summary>
-    public virtual ReadOnlyCollection<WebElement> Items => this.Element.FindElements(By.ClassName("FlipViewItem")).Cast<WebElement>().ToList().AsReadOnly();
+    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(By.ClassName("FlipViewItem")).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the next item button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button NextButton => this.FindElement(WindowsByExtras.AutomationId("NextButtonHorizontal"));
+    public virtual Button NextButton => FindElement(WindowsByExtras.AutomationId("NextButtonHorizontal"));
 
     /// <summary>
     /// Gets the element associated with the previous item button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button PreviousButton => this.FindElement(WindowsByExtras.AutomationId("PreviousButtonHorizontal"));
+    public virtual Button PreviousButton => FindElement(WindowsByExtras.AutomationId("PreviousButtonHorizontal"));
 
     /// <summary>
     /// Gets the currently selected item.
     /// </summary>
-    public virtual WebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual WebElement SelectedItem => Items.FirstOrDefault(i => i.IsSelected());
 
     /// <summary>
     /// Gets the currently selected item index.
     /// </summary>
-    public virtual int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
+    public virtual int SelectedIndex => Items.IndexOf(SelectedItem);
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="FlipView"/> without direct casting.
@@ -75,9 +75,9 @@ public class FlipView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectItem(string name)
     {
-        int expectedItemIdx = this.Items.IndexOf(this.Items.FirstOrDefault(x =>
+        int expectedItemIdx = Items.IndexOf(Items.FirstOrDefault(x =>
             x.Text.Contains(name, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase)));
-        this.SelectItemByIndex(expectedItemIdx);
+        SelectItemByIndex(expectedItemIdx);
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class FlipView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectItemByIndex(int index)
     {
-        int currentItemIdx = this.SelectedIndex;
+        int currentItemIdx = SelectedIndex;
         int diff = index - currentItemIdx;
         int shifts = Math.Abs(diff);
 
@@ -97,11 +97,11 @@ public class FlipView : WindowsElementWrapper
         {
             if (diff > 0)
             {
-                this.SelectNext();
+                SelectNext();
             }
             else
             {
-                this.SelectPrevious();
+                SelectPrevious();
             }
         }
     }
@@ -114,8 +114,8 @@ public class FlipView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectNext()
     {
-        this.Click();
-        this.Element.SendKeys(Keys.ArrowRight);
+        Click();
+        Element.SendKeys(Keys.ArrowRight);
     }
 
     /// <summary>
@@ -126,7 +126,7 @@ public class FlipView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectPrevious()
     {
-        this.Click();
-        this.Element.SendKeys(Keys.ArrowLeft);
+        Click();
+        Element.SendKeys(Keys.ArrowLeft);
     }
 }

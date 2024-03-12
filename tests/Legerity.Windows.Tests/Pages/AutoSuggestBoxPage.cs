@@ -12,31 +12,31 @@ internal class AutoSuggestBoxPage : BaseNavigationPage
     {
     }
 
-    public AutoSuggestBox BasicAutoSuggestBox => this.FindElement(this.basicAutoSuggestBoxLocator);
+    public AutoSuggestBox BasicAutoSuggestBox => FindElement(basicAutoSuggestBoxLocator);
 
     protected override By Trait => By.XPath(".//*[@Name='AutoSuggestBox'][@AutomationId='TitleTextBlock']");
 
     public AutoSuggestBoxPage SetBasicSuggestionText(string text)
     {
-        this.BasicAutoSuggestBox.SetText(text);
+        BasicAutoSuggestBox.SetText(text);
         return this;
     }
 
     public AutoSuggestBoxPage SelectBasicSuggestion(string suggestion)
     {
-        this.BasicAutoSuggestBox.SelectSuggestion(suggestion);
+        BasicAutoSuggestBox.SelectSuggestion(suggestion);
         return this;
     }
 
     public AutoSuggestBoxPage SelectBasicSuggestionByValue(string searchValue, string suggestion)
     {
-        this.BasicAutoSuggestBox.SelectSuggestion(searchValue, suggestion);
+        BasicAutoSuggestBox.SelectSuggestion(searchValue, suggestion);
         return this;
     }
 
     public AutoSuggestBoxPage SelectBasicSuggestionByPartialSuggestion(string searchValue, string partialSuggestion)
     {
-        this.BasicAutoSuggestBox.SelectSuggestionByPartialSuggestion(searchValue, partialSuggestion);
+        BasicAutoSuggestBox.SelectSuggestionByPartialSuggestion(searchValue, partialSuggestion);
         return this;
     }
 }

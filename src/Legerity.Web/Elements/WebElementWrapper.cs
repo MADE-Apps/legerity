@@ -32,36 +32,36 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     /// </param>
     public WebElementWrapper(WebElement element)
     {
-        this.elementReference = new WeakReference(element);
+        elementReference = new WeakReference(element);
     }
 
     /// <summary>Gets the original <see cref="WebElement"/> reference object.</summary>
     public WebElement Element =>
-        this.elementReference is { IsAlive: true }
-            ? this.elementReference.Target as WebElement
+        elementReference is { IsAlive: true }
+            ? elementReference.Target as WebElement
             : null;
 
     /// <summary>
     /// Gets the driver used to find this element.
     /// </summary>
-    public IWebDriver ElementDriver => this.Element.WrappedDriver;
+    public IWebDriver ElementDriver => Element.WrappedDriver;
 
     /// <summary>
     /// Gets the instance of the driver for the web application.
     /// </summary>
-    public WebDriver Driver => this.ElementDriver as WebDriver;
+    public WebDriver Driver => ElementDriver as WebDriver;
 
     /// <summary>
     /// Gets a value indicating whether the element is enabled.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsEnabled => this.Element.Enabled;
+    public virtual bool IsEnabled => Element.Enabled;
 
     /// <summary>
     /// Gets a value indicating whether the element is visible.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsVisible => this.Element.Displayed;
+    public virtual bool IsVisible => Element.Displayed;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="WebElementWrapper"/> without direct casting.
@@ -85,7 +85,7 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public WebElement FindElement(By locator)
     {
-        return this.Element.FindWebElement(locator);
+        return Element.FindWebElement(locator);
     }
 
     /// <summary>
@@ -95,7 +95,7 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     /// <returns>The readonly collection of <see cref="WebElement"/>.</returns>
     public ReadOnlyCollection<WebElement> FindElements(By locator)
     {
-        return this.Element.FindWebElements(locator);
+        return Element.FindWebElements(locator);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     {
         try
         {
-            this.VerifyElementShown(locator);
+            VerifyElementShown(locator);
         }
         catch (ElementNotShownException)
         {
@@ -126,7 +126,7 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Click()
     {
-        this.Element.Click();
+        Element.Click();
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public string GetAttribute(string attributeName)
     {
-        return this.Element.GetAttribute(attributeName);
+        return Element.GetAttribute(attributeName);
     }
 
     /// <summary>
@@ -150,7 +150,7 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void VerifyElementShown(By locator)
     {
-        this.VerifyElementShown(locator, null);
+        VerifyElementShown(locator, null);
     }
 
     /// <summary>
@@ -168,7 +168,7 @@ public class WebElementWrapper : IElementWrapper<WebElement>
         {
             try
             {
-                if (this.Element.FindElement(locator) == null)
+                if (Element.FindElement(locator) == null)
                 {
                     throw new ElementNotShownException(locator.ToString());
                 }
@@ -180,7 +180,7 @@ public class WebElementWrapper : IElementWrapper<WebElement>
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElement(locator) != null);
         }
     }
@@ -194,7 +194,7 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public void VerifyElementsShown(By locator)
     {
-        this.VerifyElementsShown(locator, null);
+        VerifyElementsShown(locator, null);
     }
 
     /// <summary>
@@ -211,14 +211,14 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     {
         if (timeout == null)
         {
-            if (this.Element.FindElements(locator).Count == 0)
+            if (Element.FindElements(locator).Count == 0)
             {
                 throw new ElementsNotShownException(locator.ToString());
             }
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElements(locator).Count != 0);
         }
     }

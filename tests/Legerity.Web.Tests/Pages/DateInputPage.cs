@@ -11,11 +11,11 @@ internal class DateInputPage : W3SchoolsBasePage
     {
     }
 
-    public DateInput DateInput => this.FindElement(By.Id("birthday"));
+    public DateInput DateInput => FindElement(By.Id("birthday"));
 
     public DateInputPage SetBirthdayDate(DateTime date)
     {
-        this.DateInput.SetDate(date);
+        DateInput.SetDate(date);
         return this;
     }
 }

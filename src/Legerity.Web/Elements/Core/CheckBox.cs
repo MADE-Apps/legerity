@@ -33,7 +33,7 @@ public class CheckBox : WebElementWrapper
     /// Gets a value indicating whether the check box is in the checked state.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsChecked => this.Element.Selected;
+    public virtual bool IsChecked => Element.Selected;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CheckBox"/> without direct casting.
@@ -57,12 +57,12 @@ public class CheckBox : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOn()
     {
-        if (this.IsChecked)
+        if (IsChecked)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 
     /// <summary>
@@ -73,11 +73,11 @@ public class CheckBox : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOff()
     {
-        if (!this.IsChecked)
+        if (!IsChecked)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 }

@@ -27,13 +27,13 @@ public class ListView : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the list view.
     /// </summary>
-    public virtual ReadOnlyCollection<WebElement> Items => this.Element.FindElements(this.listViewItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(listViewItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual WebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual WebElement SelectedItem => Items.FirstOrDefault(i => i.IsSelected());
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ListView"/> without direct casting.
@@ -62,8 +62,8 @@ public class ListView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItem(string name)
     {
-        this.VerifyElementsShown(this.listViewItemLocator, TimeSpan.FromSeconds(2));
-        WebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        VerifyElementsShown(listViewItemLocator, TimeSpan.FromSeconds(2));
+        WebElement item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -84,9 +84,9 @@ public class ListView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItemByPartialName(string partialName)
     {
-        this.VerifyElementsShown(this.listViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(listViewItemLocator, TimeSpan.FromSeconds(2));
         WebElement item =
-            this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
+            Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
 
         if (item == null)
         {

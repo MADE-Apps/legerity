@@ -17,13 +17,13 @@ internal class RadioButtonPage : W3SchoolsBasePage
     }
 
     public IEnumerable<RadioButton> LanguageGroupRadioButtons =>
-        this.FindElements(this.languageGroupRadioButtonLocator).Select(e => (RadioButton)e);
+        FindElements(languageGroupRadioButtonLocator).Select(e => (RadioButton)e);
 
-    public RadioButton CssRadioButton => this.FindElement(this.cssRadioButtonLocator);
+    public RadioButton CssRadioButton => FindElement(cssRadioButtonLocator);
 
     public RadioButtonPage SelectCssRadioButton()
     {
-        this.CssRadioButton.Click();
+        CssRadioButton.Click();
         return this;
     }
 }

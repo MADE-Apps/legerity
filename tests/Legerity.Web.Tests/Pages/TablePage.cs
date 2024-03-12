@@ -12,5 +12,5 @@ internal class TablePage : W3SchoolsBasePage
     {
     }
 
-    public Table Table => this.FindElement(this.tableLocator);
+    public Table Table => FindElement(tableLocator);
 }

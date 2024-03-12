@@ -62,7 +62,7 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
 
                 Log.Information($"Generating template for {templateData}...");
 
-                IEnumerable<XElement> elements = this.FlattenElements(axml.Root.Elements());
+                IEnumerable<XElement> elements = FlattenElements(axml.Root.Elements());
                 foreach (XElement element in elements)
                 {
                     string? id = RemoveAndroidIdReference(element.Attribute(XName.Get("id", AndroidNamespace))?.Value);
@@ -161,6 +161,6 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
 
     private IEnumerable<XElement> FlattenElements(IEnumerable<XElement> elements)
     {
-        return elements.SelectMany(c => this.FlattenElements(c.Elements())).Concat(elements);
+        return elements.SelectMany(c => FlattenElements(c.Elements())).Concat(elements);
     }
 }

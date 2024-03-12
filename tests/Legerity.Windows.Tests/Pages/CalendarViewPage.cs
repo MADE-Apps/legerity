@@ -11,11 +11,11 @@ internal class CalendarViewPage : BaseNavigationPage
     {
     }
 
-    public CalendarView CalendarView => this.FindElement(By.ClassName(nameof(this.CalendarView)));
+    public CalendarView CalendarView => FindElement(By.ClassName(nameof(CalendarView)));
     
     public CalendarViewPage SetCalendarViewDate(DateTime date)
     {
-        this.CalendarView.SetDate(date);
+        CalendarView.SetDate(date);
         return this;
     }
 }

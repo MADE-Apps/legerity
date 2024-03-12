@@ -16,7 +16,7 @@ internal class TimePickerTests : BaseTestClass
     public void ShouldSetTime()
     {
         // Arrange
-        TimePickerPage timePickerPage = this.StartAndNavigateToPage();
+        TimePickerPage timePickerPage = StartAndNavigateToPage();
 
         // Act & Assert
         timePickerPage.SetTimePickerTime(new TimeSpan(12, 30, 0));
@@ -24,7 +24,7 @@ internal class TimePickerTests : BaseTestClass
 
     private TimePickerPage StartAndNavigateToPage()
     {
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         return new HomePage(app).NavigateTo<TimePickerPage>("TimePicker");
     }
 }

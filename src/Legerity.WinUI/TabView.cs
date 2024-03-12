@@ -29,23 +29,23 @@ public class TabView : WindowsElementWrapper
     /// Gets the element associated with the add tab button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button AddTabButton => this.FindElement(WindowsByExtras.AutomationId("AddButton"));
+    public virtual Button AddTabButton => FindElement(WindowsByExtras.AutomationId("AddButton"));
 
     /// <summary>
     /// Gets the collection of items associated with the pivot.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual ReadOnlyCollection<WebElement> Tabs => this.TabsListView.Items;
+    public virtual ReadOnlyCollection<WebElement> Tabs => TabsListView.Items;
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual WebElement SelectedItem => this.TabsListView.SelectedItem;
+    public virtual WebElement SelectedItem => TabsListView.SelectedItem;
 
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    private ListView TabsListView => this.FindElement(this.tabListViewLocator);
+    private ListView TabsListView => FindElement(tabListViewLocator);
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="TabView"/> without direct casting.
@@ -71,8 +71,8 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CreateTab()
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        this.AddTabButton.Click();
+        VerifyElementShown(tabListViewLocator, TimeSpan.FromSeconds(2));
+        AddTabButton.Click();
     }
 
     /// <summary>
@@ -88,8 +88,8 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectTab(string name)
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        WebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        VerifyElementShown(tabListViewLocator, TimeSpan.FromSeconds(2));
+        WebElement item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -112,8 +112,8 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectTabByPartialName(string name)
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        WebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
+        VerifyElementShown(tabListViewLocator, TimeSpan.FromSeconds(2));
+        WebElement item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
         if (item == null)
         {
@@ -134,8 +134,8 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void CloseTab(string name)
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        WebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        VerifyElementShown(tabListViewLocator, TimeSpan.FromSeconds(2));
+        WebElement item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -157,8 +157,8 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CloseTabByPartialName(string name)
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        WebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
+        VerifyElementShown(tabListViewLocator, TimeSpan.FromSeconds(2));
+        WebElement item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
         if (item == null)
         {

@@ -14,18 +14,18 @@ internal class BaseNavigationPage : BasePage
     {
     }
 
-    public TextBox SearchBox => this.FindElement(this.searchBoxLocator);
+    public TextBox SearchBox => FindElement(searchBoxLocator);
 
-    protected override By Trait => this.searchBoxLocator;
+    protected override By Trait => searchBoxLocator;
 
     public TPage NavigateTo<TPage>(string controlName, string sampleName)
         where TPage : BasePage
     {
-        this.SearchBox.SetText(controlName);
+        SearchBox.SetText(controlName);
 
-        WebElement item = this.FindElement(By.XPath($".//*[@ClassName='ListViewItem'][@Name='{sampleName}']"));
+        WebElement item = FindElement(By.XPath($".//*[@ClassName='ListViewItem'][@Name='{sampleName}']"));
         item.Click();
 
-        return Activator.CreateInstance(typeof(TPage), this.App) as TPage;
+        return Activator.CreateInstance(typeof(TPage), App) as TPage;
     }
 }

@@ -54,20 +54,20 @@ public class NumberBox : WindowsElementWrapper
     /// Gets the element associated with the inline up button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button InlineUpButton => this.FindElement(WindowsByExtras.AutomationId("UpSpinButton"));
+    public virtual Button InlineUpButton => FindElement(WindowsByExtras.AutomationId("UpSpinButton"));
 
     /// <summary>
     /// Gets the element associated with the inline down button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual Button InlineDownButton =>
-        this.FindElement(WindowsByExtras.AutomationId("DownSpinButton"));
+        FindElement(WindowsByExtras.AutomationId("DownSpinButton"));
 
     /// <summary>
     /// Gets the element associated with the input text box.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextBox InputBox => this.FindElement(WindowsByExtras.AutomationId("InputBox"));
+    public virtual TextBox InputBox => FindElement(WindowsByExtras.AutomationId("InputBox"));
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="NumberBox"/> without direct casting.
@@ -98,10 +98,10 @@ public class NumberBox : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SetValue(double value)
     {
-        double min = this.Minimum;
-        double max = this.Maximum;
+        double min = Minimum;
+        double max = Maximum;
 
-        if (value < this.Minimum)
+        if (value < Minimum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -109,7 +109,7 @@ public class NumberBox : WindowsElementWrapper
                 $"Value must be greater than or equal to the minimum value {min}");
         }
 
-        if (value > this.Maximum)
+        if (value > Maximum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -117,8 +117,8 @@ public class NumberBox : WindowsElementWrapper
                 $"Value must be less than or equal to the maximum value {max}");
         }
 
-        this.InputBox.SetText(value.ToString());
-        this.InputBox.Element.SendKeys(Keys.Enter);
+        InputBox.SetText(value.ToString());
+        InputBox.Element.SendKeys(Keys.Enter);
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ public class NumberBox : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void Increment()
     {
-        this.Element.SendKeys(Keys.ArrowUp);
+        Element.SendKeys(Keys.ArrowUp);
     }
 
     /// <summary>
@@ -140,6 +140,6 @@ public class NumberBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Decrement()
     {
-        this.Element.SendKeys(Keys.ArrowDown);
+        Element.SendKeys(Keys.ArrowDown);
     }
 }

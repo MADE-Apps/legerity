@@ -16,23 +16,23 @@ internal abstract class W3SchoolsBasePage : BasePage
     {
     }
 
-    protected override By Trait => this.contentFrameLocator;
+    protected override By Trait => contentFrameLocator;
 
-    public Button AcceptCookiesButton => this.FindElement(this.acceptCookiesButtonLocator);
+    public Button AcceptCookiesButton => FindElement(acceptCookiesButtonLocator);
 
-    public WebElement ContentFrame => this.FindElement(this.contentFrameLocator);
+    public WebElement ContentFrame => FindElement(contentFrameLocator);
 
     public T AcceptCookies<T>() where T : W3SchoolsBasePage
     {
-        this.WaitUntil(page => page.AcceptCookiesButton.IsVisible, this.WaitTimeout);
-        this.AcceptCookiesButton.Click();
+        this.WaitUntil(page => page.AcceptCookiesButton.IsVisible, WaitTimeout);
+        AcceptCookiesButton.Click();
         return (T)this;
     }
 
     public T SwitchToContentFrame<T>() where T : W3SchoolsBasePage
     {
-        this.WaitUntil(page => page.ContentFrame.Displayed, this.WaitTimeout);
-        this.App.SwitchTo().Frame(this.ContentFrame);
+        this.WaitUntil(page => page.ContentFrame.Displayed, WaitTimeout);
+        App.SwitchTo().Frame(ContentFrame);
         return (T)this;
     }
 }

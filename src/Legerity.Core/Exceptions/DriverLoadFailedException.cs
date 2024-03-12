@@ -28,7 +28,7 @@ public class DriverLoadFailedException : LegerityException
     internal DriverLoadFailedException(AppManagerOptions opts, Exception innerException)
         : base($"The application driver could not be initialized with the specified app manager options: {opts}", innerException)
     {
-        this.AppManagerOptions = opts;
+        AppManagerOptions = opts;
     }
 
     /// <summary>

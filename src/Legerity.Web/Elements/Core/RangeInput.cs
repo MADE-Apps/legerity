@@ -46,7 +46,7 @@ public class RangeInput : TextInput
     /// Gets the value of the range input.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual double Value => double.TryParse(this.Text, out double val) ? val : 0;
+    public virtual double Value => double.TryParse(Text, out double val) ? val : 0;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="RangeInput"/> without direct casting.
@@ -76,10 +76,10 @@ public class RangeInput : TextInput
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SetValue(double value)
     {
-        double min = this.Minimum;
-        double max = this.Maximum;
+        double min = Minimum;
+        double max = Maximum;
 
-        if (value < this.Minimum)
+        if (value < Minimum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -87,7 +87,7 @@ public class RangeInput : TextInput
                 $"Value must be greater than or equal to the minimum value {min}");
         }
 
-        if (value > this.Maximum)
+        if (value > Maximum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -95,13 +95,13 @@ public class RangeInput : TextInput
                 $"Value must be less than or equal to the maximum value {max}");
         }
 
-        this.Click();
+        Click();
 
-        double currentValue = this.Value;
+        double currentValue = Value;
         while (Math.Abs(currentValue - value) > double.Epsilon)
         {
-            this.Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
-            currentValue = this.Value;
+            Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
+            currentValue = Value;
         }
     }
 
@@ -113,7 +113,7 @@ public class RangeInput : TextInput
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Increment()
     {
-        this.Element.SendKeys(Keys.ArrowUp);
+        Element.SendKeys(Keys.ArrowUp);
     }
 
     /// <summary>
@@ -124,6 +124,6 @@ public class RangeInput : TextInput
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Decrement()
     {
-        this.Element.SendKeys(Keys.ArrowDown);
+        Element.SendKeys(Keys.ArrowDown);
     }
 }

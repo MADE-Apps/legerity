@@ -36,7 +36,7 @@ internal class RadioButtonTests : W3SchoolsBaseTestClass
     public void ShouldSelectRadioButton()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         RadioButtonPage radioButtonPage = new RadioButtonPage(app)
             .AcceptCookies<RadioButtonPage>()
@@ -55,7 +55,7 @@ internal class RadioButtonTests : W3SchoolsBaseTestClass
         // Arrange
         const string expectedGroupName = "fav_language";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         RadioButtonPage radioButtonPage = new RadioButtonPage(app)
             .AcceptCookies<RadioButtonPage>()

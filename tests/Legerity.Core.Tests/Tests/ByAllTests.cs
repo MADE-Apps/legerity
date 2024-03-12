@@ -26,7 +26,7 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = this.StartApp(options);
+        WebDriver app = StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -53,7 +53,7 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = this.StartApp(options);
+        WebDriver app = StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -81,7 +81,7 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = this.StartApp(options);
+        WebDriver app = StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -105,7 +105,7 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = this.StartApp(options);
+        WebDriver app = StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()

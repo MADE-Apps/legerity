@@ -4,10 +4,10 @@ internal class UiElement
 {
     public UiElement(string type, string name, string by, string value)
     {
-        this.Type = type;
-        this.Name = name;
-        this.By = by;
-        this.Value = value;
+        Type = type;
+        Name = name;
+        By = by;
+        Value = value;
     }
 
     public string Type { get; set; }
@@ -20,6 +20,6 @@ internal class UiElement
 
     public override string ToString()
     {
-        return $"[Type] {this.Type}; [Name] {this.Name}; [By] {this.By}; [Value] {this.Value};";
+        return $"[Type] {Type}; [Name] {Name}; [By] {By}; [Value] {Value};";
     }
 }

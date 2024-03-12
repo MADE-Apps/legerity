@@ -29,7 +29,7 @@ public class Expander : WindowsElementWrapper
     /// Gets the <see cref="ToggleButton"/> associated with the expander.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual ToggleButton ToggleButton => this.FindElement(WindowsByExtras.AutomationId("PART_ExpanderToggleButton"));
+    public virtual ToggleButton ToggleButton => FindElement(WindowsByExtras.AutomationId("PART_ExpanderToggleButton"));
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Expander"/> without direct casting.
@@ -54,12 +54,12 @@ public class Expander : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Expand()
     {
-        if (this.IsExpanded)
+        if (IsExpanded)
         {
             return;
         }
 
-        this.ToggleButton.Click();
+        ToggleButton.Click();
     }
 
     /// <summary>
@@ -71,11 +71,11 @@ public class Expander : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Collapse()
     {
-        if (!this.IsExpanded)
+        if (!IsExpanded)
         {
             return;
         }
 
-        this.ToggleButton.Click();
+        ToggleButton.Click();
     }
 }

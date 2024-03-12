@@ -33,14 +33,14 @@ public partial class InkToolbar
         /// Gets the element associated with the color grid.
         /// </summary>
         /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-        public virtual GridView ColorGridView => this.Driver.FindElement(this.penColorPaletteLocator);
+        public virtual GridView ColorGridView => Driver.FindElement(penColorPaletteLocator);
 
         /// <summary>
         /// Gets the element associated with the size of the ink.
         /// </summary>
         /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
         public virtual Slider SizeSlider =>
-            this.Driver.FindElement(WindowsByExtras.AutomationId("PenStrokeWidthSlider"));
+            Driver.FindElement(WindowsByExtras.AutomationId("PenStrokeWidthSlider"));
 
         /// <summary>
         /// Gets the currently selected color.
@@ -48,12 +48,12 @@ public partial class InkToolbar
         /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
         /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
         /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
-        public virtual string SelectedColor => this.GetSelectedColor().GetName();
+        public virtual string SelectedColor => GetSelectedColor().GetName();
 
         /// <summary>
         /// Gets the currently selected size.
         /// </summary>
-        public virtual double SelectedSize => this.SizeSlider.Value;
+        public virtual double SelectedSize => SizeSlider.Value;
 
         /// <summary>
         /// Sets the color of the ink.
@@ -66,7 +66,7 @@ public partial class InkToolbar
         /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
         public virtual void SetColor(string color)
         {
-            this.ColorGridView.ClickItem(color);
+            ColorGridView.ClickItem(color);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ public partial class InkToolbar
         /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
         public virtual void SetColorByPartialName(string partialColor)
         {
-            this.ColorGridView.ClickItemByPartialName(partialColor);
+            ColorGridView.ClickItemByPartialName(partialColor);
         }
 
         /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
@@ -88,9 +88,9 @@ public partial class InkToolbar
         /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
         private WebElement GetSelectedColor()
         {
-            this.VerifyElementShown(this.penColorPaletteLocator, TimeSpan.FromSeconds(2));
+            VerifyElementShown(penColorPaletteLocator, TimeSpan.FromSeconds(2));
 
-            return this.ColorGridView.Items.FirstOrDefault(i => i.IsSelected());
+            return ColorGridView.Items.FirstOrDefault(i => i.IsSelected());
         }
     }
 }

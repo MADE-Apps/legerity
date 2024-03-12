@@ -44,26 +44,26 @@ public class CalendarView : WindowsElementWrapper
     /// Gets the element associated with the header button (change month, year).
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button HeaderButton => this.FindElement(WindowsByExtras.AutomationId("HeaderButton"));
+    public virtual Button HeaderButton => FindElement(WindowsByExtras.AutomationId("HeaderButton"));
 
     /// <summary>
     /// Gets the element associated with the next month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button NextMonthButton => this.FindElement(WindowsByExtras.AutomationId("NextButton"));
+    public virtual Button NextMonthButton => FindElement(WindowsByExtras.AutomationId("NextButton"));
 
     /// <summary>
     /// Gets the element associated with the previous month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual Button PreviousMonthButton =>
-        this.FindElement(WindowsByExtras.AutomationId("PreviousButton"));
+        FindElement(WindowsByExtras.AutomationId("PreviousButton"));
 
     /// <summary>
     /// Gets the collection of days associated with the current month in the calendar view.
     /// </summary>
     public virtual ReadOnlyCollection<WebElement> Days =>
-        this.Element.FindElements(By.ClassName("CalendarViewDayItem")).Cast<WebElement>().ToList().AsReadOnly();
+        Element.FindElements(By.ClassName("CalendarViewDayItem")).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the value of the calendar view.
@@ -74,7 +74,7 @@ public class CalendarView : WindowsElementWrapper
     /// <summary>
     /// Gets the value of the calendar view as a <see cref="DateTime"/>.
     /// </summary>
-    public virtual DateTime? SelectedDate => this.GetSelectedDate();
+    public virtual DateTime? SelectedDate => GetSelectedDate();
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CalendarView"/> without direct casting.
@@ -103,26 +103,26 @@ public class CalendarView : WindowsElementWrapper
         string expectedDay = date.ToString("%d");
         string expectedHeader = date.ToString("MMMM yyyy");
 
-        string currentHeader = this.HeaderButton.GetName();
-        DateTime currentViewDate = this.GetCurrentViewDate(currentHeader);
+        string currentHeader = HeaderButton.GetName();
+        DateTime currentViewDate = GetCurrentViewDate(currentHeader);
 
         while (!expectedHeader.Equals(currentHeader, StringComparison.CurrentCultureIgnoreCase))
         {
             if (currentViewDate.Date > date.Date)
             {
-                this.PreviousMonthButton.Click();
+                PreviousMonthButton.Click();
             }
             else
             {
-                this.NextMonthButton.Click();
+                NextMonthButton.Click();
             }
 
             Thread.Sleep(10);
 
-            currentHeader = this.HeaderButton.GetName();
+            currentHeader = HeaderButton.GetName();
         }
 
-        WebElement item = this.Days.FirstOrDefault(
+        WebElement item = Days.FirstOrDefault(
             element => element.GetName().Equals(expectedDay, StringComparison.CurrentCultureIgnoreCase));
 
         if (item == null)
@@ -135,7 +135,7 @@ public class CalendarView : WindowsElementWrapper
 
     private DateTime GetCurrentViewDate(string currentHeader)
     {
-        this.months.TryGetValue(
+        months.TryGetValue(
             string.Join(string.Empty, currentHeader.Where(char.IsLetter)).Trim(),
             out string month);
 
@@ -147,7 +147,7 @@ public class CalendarView : WindowsElementWrapper
 
     private DateTime? GetSelectedDate()
     {
-        string value = this.Value;
+        string value = Value;
         return string.IsNullOrEmpty(value) ? default :
             DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
     }

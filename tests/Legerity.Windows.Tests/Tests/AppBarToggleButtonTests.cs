@@ -16,7 +16,7 @@ internal class AppBarToggleButtonTests : BaseTestClass
     public void ShouldToggleOn()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         AppBarToggleButtonPage appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton");
 
         // Act
@@ -30,7 +30,7 @@ internal class AppBarToggleButtonTests : BaseTestClass
     public void ShouldKeepToggledOnIfToggledOn()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         AppBarToggleButtonPage appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton").ToggleSymbolOn();
 
         // Act
@@ -44,7 +44,7 @@ internal class AppBarToggleButtonTests : BaseTestClass
     public void ShouldToggleOff()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         AppBarToggleButtonPage appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton").ToggleSymbolOn();
 
         // Act
@@ -58,7 +58,7 @@ internal class AppBarToggleButtonTests : BaseTestClass
     public void ShouldKeepToggledOffIfToggledOff()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         AppBarToggleButtonPage appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton").ToggleSymbolOff();
 
         // Act

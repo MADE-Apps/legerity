@@ -26,13 +26,13 @@ public class RadAutoCompleteBox : WindowsElementWrapper
     /// Gets the element associated with the text box.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextBox TextBox => this.FindElement(By.ClassName("TextBox"));
+    public virtual TextBox TextBox => FindElement(By.ClassName("TextBox"));
 
     /// <summary>
     /// Gets the value of the auto-suggest box.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string Text => this.TextBox.Text;
+    public virtual string Text => TextBox.Text;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="RadAutoCompleteBox"/> without direct casting.
@@ -60,7 +60,7 @@ public class RadAutoCompleteBox : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectSuggestion(string suggestion)
     {
-        this.SelectSuggestion(suggestion, suggestion);
+        SelectSuggestion(suggestion, suggestion);
     }
 
     /// <summary>
@@ -76,11 +76,11 @@ public class RadAutoCompleteBox : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectSuggestion(string value, string suggestion)
     {
-        this.SetText(value);
+        SetText(value);
 
-        this.VerifyElementShown(this.suggestionsControlLocator, TimeSpan.FromSeconds(2));
+        VerifyElementShown(suggestionsControlLocator, TimeSpan.FromSeconds(2));
 
-        ListBox suggestionList = this.FindElement(this.suggestionsControlLocator);
+        ListBox suggestionList = FindElement(suggestionsControlLocator);
         suggestionList.ClickItem(suggestion);
     }
 
@@ -97,11 +97,11 @@ public class RadAutoCompleteBox : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectSuggestionByPartialSuggestion(string value, string partialSuggestion)
     {
-        this.SetText(value);
+        SetText(value);
 
-        this.VerifyElementShown(this.suggestionsControlLocator, TimeSpan.FromSeconds(2));
+        VerifyElementShown(suggestionsControlLocator, TimeSpan.FromSeconds(2));
 
-        ListBox suggestionList = this.FindElement(this.suggestionsControlLocator);
+        ListBox suggestionList = FindElement(suggestionsControlLocator);
         suggestionList.ClickItemByPartialName(partialSuggestion);
     }
 
@@ -115,6 +115,6 @@ public class RadAutoCompleteBox : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SetText(string value)
     {
-        this.TextBox.SetText(value);
+        TextBox.SetText(value);
     }
 }

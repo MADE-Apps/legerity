@@ -28,17 +28,17 @@ public class GridView : WindowsElementWrapper
     /// Gets the collection of items associated with the grid view.
     /// </summary>
     public virtual ReadOnlyCollection<WebElement> Items =>
-        this.Element.FindElements(this.gridViewItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        Element.FindElements(gridViewItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
     /// </summary>
-    public virtual WebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual WebElement SelectedItem => Items.FirstOrDefault(i => i.IsSelected());
 
     /// <summary>
     /// Gets the currently selected item index.
     /// </summary>
-    public virtual int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
+    public virtual int SelectedIndex => Items.IndexOf(SelectedItem);
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="GridView"/> without direct casting.
@@ -67,9 +67,9 @@ public class GridView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void ClickItem(string name)
     {
-        this.VerifyElementsShown(this.gridViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(gridViewItemLocator, TimeSpan.FromSeconds(2));
 
-        WebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        WebElement item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -92,10 +92,10 @@ public class GridView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItemByPartialName(string partialName)
     {
-        this.VerifyElementsShown(this.gridViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(gridViewItemLocator, TimeSpan.FromSeconds(2));
 
         WebElement item =
-            this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
+            Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
 
         if (item == null)
         {
@@ -118,9 +118,9 @@ public class GridView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItemByIndex(int index)
     {
-        this.VerifyElementsShown(this.gridViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(gridViewItemLocator, TimeSpan.FromSeconds(2));
 
-        WebElement item = this.Items[index];
+        WebElement item = Items[index];
 
         if (item == null)
         {

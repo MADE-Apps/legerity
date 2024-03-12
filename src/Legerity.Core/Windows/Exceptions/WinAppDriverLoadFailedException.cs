@@ -15,7 +15,7 @@ public class WinAppDriverLoadFailedException : LegerityException
     internal WinAppDriverLoadFailedException(string path, Exception exception)
         : base($"The WinAppDriver could not be loaded at {path}.", exception)
     {
-        this.Path = path;
+        Path = path;
     }
 
     /// <summary>

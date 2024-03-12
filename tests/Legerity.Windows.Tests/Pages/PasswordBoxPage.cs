@@ -10,11 +10,11 @@ internal class PasswordBoxPage : BaseNavigationPage
     {
     }
 
-    public PasswordBox PasswordBox => this.FindElement(By.Name("Password"));
+    public PasswordBox PasswordBox => FindElement(By.Name("Password"));
 
     public PasswordBoxPage SetPassword(string password)
     {
-        this.PasswordBox.SetText(password);
+        PasswordBox.SetText(password);
         return this;
     }
 }

@@ -38,7 +38,7 @@ internal class FileInputTests : W3SchoolsBaseTestClass
         const string fileName = "chromedriver.exe";
         string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         FileInputPage fileInputPage = new FileInputPage(app)
             .AcceptCookies<FileInputPage>()
@@ -58,7 +58,7 @@ internal class FileInputTests : W3SchoolsBaseTestClass
         const string fileName = "chromedriver.exe";
         string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         FileInputPage fileInputPage = new FileInputPage(app)
             .AcceptCookies<FileInputPage>()

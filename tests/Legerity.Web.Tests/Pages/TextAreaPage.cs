@@ -12,23 +12,23 @@ internal class TextAreaPage : W3SchoolsBasePage
     {
     }
 
-    public TextArea ReviewTextArea => this.FindElement(this.reviewTextAreaLocator);
+    public TextArea ReviewTextArea => FindElement(reviewTextAreaLocator);
 
     public TextAreaPage SetReview(string review)
     {
-        this.ReviewTextArea.SetText(review);
+        ReviewTextArea.SetText(review);
         return this;
     }
 
     public TextAreaPage AppendReview(string review)
     {
-        this.ReviewTextArea.AppendText(review);
+        ReviewTextArea.AppendText(review);
         return this;
     }
 
     public TextAreaPage ClearReview()
     {
-        this.ReviewTextArea.ClearText();
+        ReviewTextArea.ClearText();
         return this;
     }
 }

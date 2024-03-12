@@ -10,17 +10,17 @@ internal class PivotPage : BaseNavigationPage
     {
     }
 
-    public Pivot EmailPivot => this.FindElement(By.Name("EMAIL"));
+    public Pivot EmailPivot => FindElement(By.Name("EMAIL"));
 
     public PivotPage ClickEmailTab(string name)
     {
-        this.EmailPivot.ClickItem(name);
+        EmailPivot.ClickItem(name);
         return this;
     }
 
     public PivotPage ClickEmailTabByPartialName(string name)
     {
-        this.EmailPivot.ClickItemByPartialName(name);
+        EmailPivot.ClickItemByPartialName(name);
         return this;
     }
 }

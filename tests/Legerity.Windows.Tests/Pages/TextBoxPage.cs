@@ -10,25 +10,25 @@ internal class TextBoxPage : BaseNavigationPage
     {
     }
 
-    public TextBox SimpleTextBox => this.FindElement(By.Name("simple TextBox"));
+    public TextBox SimpleTextBox => FindElement(By.Name("simple TextBox"));
 
-    public TextBox ReadonlyTextBox => this.FindElement(By.Name("customized TextBox"));
+    public TextBox ReadonlyTextBox => FindElement(By.Name("customized TextBox"));
 
     public TextBoxPage SetSimpleTextBox(string text)
     {
-        this.SimpleTextBox.SetText(text);
+        SimpleTextBox.SetText(text);
         return this;
     }
 
     public TextBoxPage AppendSimpleTextBoxText(string text)
     {
-        this.SimpleTextBox.AppendText(text);
+        SimpleTextBox.AppendText(text);
         return this;
     }
 
     public TextBoxPage ClearSimpleTextBox()
     {
-        this.SimpleTextBox.ClearText();
+        SimpleTextBox.ClearText();
         return this;
     }
 }

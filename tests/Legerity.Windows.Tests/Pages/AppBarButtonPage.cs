@@ -10,11 +10,11 @@ internal class AppBarButtonPage : BaseNavigationPage
     {
     }
 
-    public AppBarButton SymbolButton => this.FindElement(By.Name("SymbolIcon"));
+    public AppBarButton SymbolButton => FindElement(By.Name("SymbolIcon"));
 
     public AppBarButtonPage ClickSymbolButton()
     {
-        this.SymbolButton.Click();
+        SymbolButton.Click();
         return this;
     }
 }

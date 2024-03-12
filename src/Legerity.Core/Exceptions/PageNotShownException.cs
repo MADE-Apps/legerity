@@ -14,7 +14,7 @@ public class PageNotShownException : LegerityException
     internal PageNotShownException(string pageName)
         : base($"No page could be located for page: {pageName}")
     {
-        this.PageName = pageName;
+        PageName = pageName;
     }
 
     /// <summary>

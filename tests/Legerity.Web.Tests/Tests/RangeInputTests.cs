@@ -35,7 +35,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldGetValueRange()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
@@ -54,7 +54,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldSetValue()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
@@ -71,7 +71,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldThrowOutOfRangeExceptionIfValueIsLessThanMinimum()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
@@ -85,7 +85,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldThrowOutOfRangeExceptionIfValueIsGreaterThanMaximum()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
@@ -99,7 +99,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldIncrementValue()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
@@ -118,7 +118,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldDecrementValue()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()

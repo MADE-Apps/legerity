@@ -31,13 +31,13 @@ public class TextArea : TextInput
     /// Gets the number of visible text lines.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual int Rows => int.Parse(this.GetAttribute("rows"));
+    public virtual int Rows => int.Parse(GetAttribute("rows"));
 
     /// <summary>
     /// Gets the visible width.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual int Cols => int.Parse(this.GetAttribute("cols"));
+    public virtual int Cols => int.Parse(GetAttribute("cols"));
 
     /// <summary>
     /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="TextArea"/> without direct casting.

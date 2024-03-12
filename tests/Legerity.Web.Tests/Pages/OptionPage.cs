@@ -14,17 +14,17 @@ internal class OptionPage : W3SchoolsBasePage
     {
     }
 
-    public IEnumerable<Option> CarOptions => this.FindElements(this.carOptionLocator).Select(e => (Option)e);
+    public IEnumerable<Option> CarOptions => FindElements(carOptionLocator).Select(e => (Option)e);
 
     public OptionPage SelectCarOptionByDisplayValue(string option)
     {
-        this.CarOptions.FirstOrDefault(o => o.DisplayValue == option).Select();
+        CarOptions.FirstOrDefault(o => o.DisplayValue == option).Select();
         return this;
     }
 
     public OptionPage SelectCarOptionByValue(string option)
     {
-        this.CarOptions.FirstOrDefault(o => o.Value == option).Select();
+        CarOptions.FirstOrDefault(o => o.Value == option).Select();
         return this;
     }
 }

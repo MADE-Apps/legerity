@@ -17,7 +17,7 @@ public class EditText : AndroidElementWrapper
     /// <summary>
     /// Gets the text value of the text box.
     /// </summary>
-    public virtual string Text => this.Element.Text;
+    public virtual string Text => Element.Text;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="EditText"/> without direct casting.
@@ -42,8 +42,8 @@ public class EditText : AndroidElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SetText(string text)
     {
-        this.ClearText();
-        this.AppendText(text);
+        ClearText();
+        AppendText(text);
     }
 
     /// <summary>
@@ -55,8 +55,8 @@ public class EditText : AndroidElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void AppendText(string text)
     {
-        this.Click();
-        this.Element.SendKeys(text);
+        Click();
+        Element.SendKeys(text);
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class EditText : AndroidElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClearText()
     {
-        this.Click();
-        this.Element.Clear();
+        Click();
+        Element.Clear();
     }
 }

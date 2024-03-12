@@ -29,19 +29,19 @@ public class Carousel : WindowsElementWrapper
     /// Gets the collection of items associated with the carousel.
     /// </summary>
     public virtual ReadOnlyCollection<WebElement> Items =>
-        this.Element.FindElements(this.carouselItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        Element.FindElements(carouselItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual WebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual WebElement SelectedItem => Items.FirstOrDefault(i => i.IsSelected());
 
     /// <summary>
     /// Gets the index of the element associated with the currently selected item.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
+    public virtual int SelectedIndex => Items.IndexOf(SelectedItem);
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ListView"/> without direct casting.
@@ -69,12 +69,12 @@ public class Carousel : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectItem(string name)
     {
-        this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(carouselItemLocator, TimeSpan.FromSeconds(2));
 
-        int index = this.Items.IndexOf(this.Items.FirstOrDefault(element =>
+        int index = Items.IndexOf(Items.FirstOrDefault(element =>
             element.VerifyNameOrAutomationIdEquals(name)));
 
-        this.SelectItemAtIndex(index);
+        SelectItemAtIndex(index);
     }
 
     /// <summary>
@@ -89,12 +89,12 @@ public class Carousel : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectItemByPartialName(string partialName)
     {
-        this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(carouselItemLocator, TimeSpan.FromSeconds(2));
 
-        int index = this.Items.IndexOf(this.Items.FirstOrDefault(element =>
+        int index = Items.IndexOf(Items.FirstOrDefault(element =>
             element.VerifyNameOrAutomationIdContains(partialName)));
 
-        this.SelectItemAtIndex(index);
+        SelectItemAtIndex(index);
     }
 
     /// <summary>
@@ -110,15 +110,15 @@ public class Carousel : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectItem(int index)
     {
-        this.VerifyElementsShown(this.carouselItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(carouselItemLocator, TimeSpan.FromSeconds(2));
 
-        if (index > this.Items.Count - 1)
+        if (index > Items.Count - 1)
         {
             throw new IndexOutOfRangeException(
                 "Cannot select an element that is outside the range of items available.");
         }
 
-        this.SelectItemAtIndex(index);
+        SelectItemAtIndex(index);
     }
 
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
@@ -126,11 +126,11 @@ public class Carousel : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     private void SelectItemAtIndex(int index)
     {
-        int selectedIndex = this.SelectedIndex;
+        int selectedIndex = SelectedIndex;
         while (Math.Abs(index - selectedIndex) > double.Epsilon)
         {
-            this.Element.SendKeys(selectedIndex < index ? Keys.ArrowRight : Keys.ArrowLeft);
-            selectedIndex = this.SelectedIndex;
+            Element.SendKeys(selectedIndex < index ? Keys.ArrowRight : Keys.ArrowLeft);
+            selectedIndex = SelectedIndex;
         }
     }
 }

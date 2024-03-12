@@ -59,8 +59,8 @@ public class TextInput : WebElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SetText(string text)
     {
-        this.ClearText();
-        this.AppendText(text);
+        ClearText();
+        AppendText(text);
     }
 
     /// <summary>
@@ -72,8 +72,8 @@ public class TextInput : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void AppendText(string text)
     {
-        this.Click();
-        this.Element.SendKeys(text);
+        Click();
+        Element.SendKeys(text);
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public class TextInput : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClearText()
     {
-        this.Click();
-        this.Element.Clear();
+        Click();
+        Element.Clear();
     }
 }

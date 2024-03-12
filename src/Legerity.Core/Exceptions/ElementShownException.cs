@@ -28,7 +28,7 @@ public class ElementShownException : LegerityException
     public ElementShownException(string locator, Exception innerException)
         : base($"An element was located using locator: {locator}", innerException)
     {
-        this.Locator = locator;
+        Locator = locator;
     }
 
     /// <summary>

@@ -10,5 +10,5 @@ internal class TextBlockPage : BaseNavigationPage
     {
     }
 
-    public TextBlock TextBlock => this.FindElement(By.Name("I am a TextBlock."));
+    public TextBlock TextBlock => FindElement(By.Name("I am a TextBlock."));
 }

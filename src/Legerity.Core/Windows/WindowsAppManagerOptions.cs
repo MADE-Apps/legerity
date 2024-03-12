@@ -38,8 +38,8 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     /// </param>
     public WindowsAppManagerOptions(string appId, params (string, object)[] additionalOptions)
     {
-        this.AppId = appId;
-        this.AdditionalOptions = additionalOptions;
+        AppId = appId;
+        AdditionalOptions = additionalOptions;
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     public override void Configure()
     {
         base.Configure();
-        this.AppiumOptions.AddAdditionalAppiumOption("app", this.AppId);
+        AppiumOptions.AddAdditionalAppiumOption("app", AppId);
     }
 
     /// <summary>
@@ -82,29 +82,29 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     /// </param>
     public void Configure((string, object)[] additionalOptions)
     {
-        this.AdditionalOptions = additionalOptions;
-        this.Configure();
+        AdditionalOptions = additionalOptions;
+        Configure();
     }
 
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"Platform [Windows], {base.ToString()}, {this.GetOptionDetails()}";
+        return $"Platform [Windows], {base.ToString()}, {GetOptionDetails()}";
     }
 
     private string GetOptionDetails()
     {
         var options = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(this.AppId))
+        if (!string.IsNullOrWhiteSpace(AppId))
         {
-            options.Add($"App ID [{this.AppId}]");
+            options.Add($"App ID [{AppId}]");
         }
 
-        if (this.AdditionalOptions != null)
+        if (AdditionalOptions != null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
+            foreach ((string name, object value) in AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

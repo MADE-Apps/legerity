@@ -18,7 +18,7 @@ internal class AutoSuggestBoxTests : BaseTestClass
         // Arrange
         const string expectedText = "British Shorthair";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
@@ -34,7 +34,7 @@ internal class AutoSuggestBoxTests : BaseTestClass
         // Arrange
         const string expectedText = "British Shorthair";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
@@ -50,7 +50,7 @@ internal class AutoSuggestBoxTests : BaseTestClass
         // Arrange
         const string expectedText = "British Shorthair";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
@@ -64,7 +64,7 @@ internal class AutoSuggestBoxTests : BaseTestClass
     public void ShouldSelectSuggestionByPartialSuggestion()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act

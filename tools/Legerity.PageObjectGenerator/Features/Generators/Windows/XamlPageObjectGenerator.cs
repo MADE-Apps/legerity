@@ -83,7 +83,7 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
 
                 Log.Information($"Generating template for {templateData}...");
 
-                IEnumerable<XElement> elements = this.FlattenElements(xaml.Root.Elements());
+                IEnumerable<XElement> elements = FlattenElements(xaml.Root.Elements());
                 foreach (XElement element in elements)
                 {
                     string? automationId = element.Attribute("AutomationProperties.AutomationId")?.Value;
@@ -179,6 +179,6 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
 
     private IEnumerable<XElement> FlattenElements(IEnumerable<XElement> elements)
     {
-        return elements.SelectMany(c => this.FlattenElements(c.Elements())).Concat(elements);
+        return elements.SelectMany(c => FlattenElements(c.Elements())).Concat(elements);
     }
 }

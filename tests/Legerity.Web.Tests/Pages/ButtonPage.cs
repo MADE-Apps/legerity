@@ -13,11 +13,11 @@ internal class ButtonPage : W3SchoolsBasePage
     {
     }
 
-    public Button Button => this.FindElement(this.buttonLocator);
+    public Button Button => FindElement(buttonLocator);
 
     public ButtonPage ClickButton()
     {
-        this.Button.Click();
+        Button.Click();
         return this;
     }
 }

@@ -10,13 +10,13 @@ internal class SliderPage : BaseNavigationPage
     {
     }
 
-    public Slider SimpleSlider => this.FindElement(By.Name("simple slider"));
+    public Slider SimpleSlider => FindElement(By.Name("simple slider"));
 
-    public Slider RangeStepSlider => this.FindElement(WindowsByExtras.AutomationId("Slider2"));
+    public Slider RangeStepSlider => FindElement(WindowsByExtras.AutomationId("Slider2"));
 
     public SliderPage SetSimpleSliderValue(double value)
     {
-        this.SimpleSlider.SetValue(value);
+        SimpleSlider.SetValue(value);
         return this;
     }
 }

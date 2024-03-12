@@ -11,15 +11,15 @@ internal class ProgressRingPage : BaseNavigationPage
     {
     }
 
-    public ProgressRing IndeterminateProgressRing => this.FindElement(By.Name("Busy Progress image"));
+    public ProgressRing IndeterminateProgressRing => FindElement(By.Name("Busy Progress image"));
 
-    public ProgressRing DeterminateProgressRing => this.FindElement(WindowsByExtras.AutomationId("ProgressRing2"));
+    public ProgressRing DeterminateProgressRing => FindElement(WindowsByExtras.AutomationId("ProgressRing2"));
 
-    public NumberBox DeterminateProgressRingValue => this.FindElement(WindowsByExtras.AutomationId("ProgressValue"));
+    public NumberBox DeterminateProgressRingValue => FindElement(WindowsByExtras.AutomationId("ProgressValue"));
 
     public ProgressRingPage SetDeterminateProgressRingValue(int value)
     {
-        this.DeterminateProgressRingValue.SetValue(value);
+        DeterminateProgressRingValue.SetValue(value);
         return this;
     }
 }

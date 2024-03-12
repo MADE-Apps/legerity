@@ -13,5 +13,5 @@ internal class ListPage : W3SchoolsBasePage
     {
     }
 
-    public List OrderedList => this.FindElements(this.orderedListLocator).FirstOrDefault();
+    public List OrderedList => FindElements(orderedListLocator).FirstOrDefault();
 }

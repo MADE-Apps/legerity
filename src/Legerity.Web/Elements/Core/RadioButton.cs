@@ -33,7 +33,7 @@ public class RadioButton : Button
     /// Gets a value indicating whether the radio button is selected.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsSelected => this.Element.Selected;
+    public virtual bool IsSelected => Element.Selected;
 
     /// <summary>
     /// Gets the name of the group for the radio button.

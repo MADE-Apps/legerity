@@ -12,5 +12,5 @@ internal class ImagePage : W3SchoolsBasePage
     {
     }
 
-    public Image Image => this.FindElement(this.imageLocator);
+    public Image Image => FindElement(imageLocator);
 }

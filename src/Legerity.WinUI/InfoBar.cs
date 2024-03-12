@@ -21,36 +21,36 @@ public class InfoBar : WindowsElementWrapper
     /// <summary>
     /// Gets the title of the info bar.
     /// </summary>
-    public virtual string Title => this.TitleTextBlock.Text;
+    public virtual string Title => TitleTextBlock.Text;
 
     /// <summary>
     /// Gets the message of the info bar.
     /// </summary>
-    public virtual string Message => this.MessageTextBlock.Text;
+    public virtual string Message => MessageTextBlock.Text;
 
     /// <summary>
     /// Gets a value indicating whether the info bar is open.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsOpen => !bool.Parse(this.GetAttribute("IsOffscreen"));
+    public virtual bool IsOpen => !bool.Parse(GetAttribute("IsOffscreen"));
 
     /// <summary>
     /// Gets the element associated with the title <see cref="TextBlock"/>.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextBlock TitleTextBlock => this.FindElement(WindowsByExtras.AutomationId("Title"));
+    public virtual TextBlock TitleTextBlock => FindElement(WindowsByExtras.AutomationId("Title"));
 
     /// <summary>
     /// Gets the element associated with the message <see cref="TextBlock"/>.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextBlock MessageTextBlock => this.FindElement(WindowsByExtras.AutomationId("Message"));
+    public virtual TextBlock MessageTextBlock => FindElement(WindowsByExtras.AutomationId("Message"));
 
     /// <summary>
     /// Gets the element associated with the close <see cref="Button"/>.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button CloseButton => this.FindElement(WindowsByExtras.AutomationId("CloseButton"));
+    public virtual Button CloseButton => FindElement(WindowsByExtras.AutomationId("CloseButton"));
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InfoBar"/> without direct casting.
@@ -75,6 +75,6 @@ public class InfoBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Close()
     {
-        this.CloseButton.Click();
+        CloseButton.Click();
     }
 }

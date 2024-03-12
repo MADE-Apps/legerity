@@ -10,17 +10,17 @@ internal class ToggleSwitchPage : BaseNavigationPage
     {
     }
 
-    public ToggleSwitch SimpleToggleSwitch => this.FindElement(By.Name("simple ToggleSwitch"));
+    public ToggleSwitch SimpleToggleSwitch => FindElement(By.Name("simple ToggleSwitch"));
 
     public ToggleSwitchPage ToggleSwitchOn()
     {
-        this.SimpleToggleSwitch.ToggleOn();
+        SimpleToggleSwitch.ToggleOn();
         return this;
     }
 
     public ToggleSwitchPage ToggleSwitchOff()
     {
-        this.SimpleToggleSwitch.ToggleOff();
+        SimpleToggleSwitch.ToggleOff();
         return this;
     }
 }

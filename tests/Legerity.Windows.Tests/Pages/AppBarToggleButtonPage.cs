@@ -10,19 +10,19 @@ internal class AppBarToggleButtonPage : BaseNavigationPage
     {
     }
     
-    public AppBarToggleButton SymbolToggleButton => this.FindElement(By.Name("SymbolIcon"));
+    public AppBarToggleButton SymbolToggleButton => FindElement(By.Name("SymbolIcon"));
 
     protected override By Trait => By.XPath(".//*[@Name='AppBarToggleButton'][@AutomationId='TitleTextBlock']");
 
     public AppBarToggleButtonPage ToggleSymbolOn()
     {
-        this.SymbolToggleButton.ToggleOn();
+        SymbolToggleButton.ToggleOn();
         return this;
     }
 
     public AppBarToggleButtonPage ToggleSymbolOff()
     {
-        this.SymbolToggleButton.ToggleOff();
+        SymbolToggleButton.ToggleOff();
         return this;
     }
 }

@@ -11,11 +11,11 @@ internal class RatingControlPage : BaseNavigationPage
     {
     }
 
-    public RatingControl SimpleRatingControl => this.FindElement(WindowsByExtras.AutomationId("RatingControl1"));
+    public RatingControl SimpleRatingControl => FindElement(WindowsByExtras.AutomationId("RatingControl1"));
 
     public RatingControlPage SetSimpleRatingValue(double value)
     {
-        this.SimpleRatingControl.SetValue(value);
+        SimpleRatingControl.SetValue(value);
         return this;
     }
 }

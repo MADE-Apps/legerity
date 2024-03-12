@@ -24,7 +24,7 @@ public class InAppNotification : WindowsElementWrapper
     /// Gets the dismiss button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button DismissButton => this.FindElement(WindowsByExtras.AutomationId("PART_DismissButton"));
+    public virtual Button DismissButton => FindElement(WindowsByExtras.AutomationId("PART_DismissButton"));
 
     /// <summary>
     /// Gets the message displayed.
@@ -33,7 +33,7 @@ public class InAppNotification : WindowsElementWrapper
     /// </para>
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string Message => this.Element.FindElementsByClassName("TextBlock").FirstOrDefault()?.Text;
+    public virtual string Message => Element.FindElementsByClassName("TextBlock").FirstOrDefault()?.Text;
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InAppNotification"/> without direct casting.
@@ -58,6 +58,6 @@ public class InAppNotification : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Dismiss()
     {
-        this.DismissButton.Click();
+        DismissButton.Click();
     }
 }

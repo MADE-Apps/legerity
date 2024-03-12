@@ -32,6 +32,6 @@ public abstract class AppManagerOptions
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"Driver URI [{this.DriverUri}]";
+        return $"Driver URI [{DriverUri}]";
     }
 }

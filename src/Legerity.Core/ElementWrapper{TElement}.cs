@@ -24,31 +24,31 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// </param>
     protected ElementWrapper(TElement element)
     {
-        this.elementReference = new WeakReference(element);
+        elementReference = new WeakReference(element);
     }
 
     /// <summary>Gets the original <typeparamref name="TElement"/> reference object.</summary>
     public TElement Element =>
-        this.elementReference is { IsAlive: true }
-            ? this.elementReference.Target as TElement
+        elementReference is { IsAlive: true }
+            ? elementReference.Target as TElement
             : null;
 
     /// <summary>
     /// Gets the driver used to find this element.
     /// </summary>
-    public IWebDriver ElementDriver => this.Element.WrappedDriver;
+    public IWebDriver ElementDriver => Element.WrappedDriver;
 
     /// <summary>
     /// Gets a value indicating whether the element is visible.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsVisible => this.Element.Displayed;
+    public virtual bool IsVisible => Element.Displayed;
 
     /// <summary>
     /// Gets a value indicating whether the element is enabled.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsEnabled => this.Element.Enabled;
+    public virtual bool IsEnabled => Element.Enabled;
 
     /// <summary>
     /// Clicks the element.
@@ -58,7 +58,7 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Click()
     {
-        this.Element.Click();
+        Element.Click();
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public string GetAttribute(string attributeName)
     {
-        return this.Element.GetAttribute(attributeName);
+        return Element.GetAttribute(attributeName);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public WebElement FindElement(By locator)
     {
-        return this.Element.FindElement(locator) as WebElement;
+        return Element.FindElement(locator) as WebElement;
     }
 
     /// <summary>
@@ -95,7 +95,7 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     {
         try
         {
-            this.VerifyElementShown(locator);
+            VerifyElementShown(locator);
             throw new ElementShownException(locator.ToString());
         }
         catch (ElementNotShownException)
@@ -113,7 +113,7 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void VerifyElementShown(By locator)
     {
-        this.VerifyElementShown(locator, null);
+        VerifyElementShown(locator, null);
     }
 
     /// <summary>
@@ -131,7 +131,7 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
         {
             try
             {
-                if (this.Element.FindElement(locator) == null)
+                if (Element.FindElement(locator) == null)
                 {
                     throw new ElementNotShownException(locator.ToString());
                 }
@@ -143,7 +143,7 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
         }
         else
         {
-            var wait = new WebDriverWait(this.Element.WrappedDriver, timeout.Value);
+            var wait = new WebDriverWait(Element.WrappedDriver, timeout.Value);
             wait.Until(driver => driver.FindElement(locator) != null);
         }
     }
@@ -157,7 +157,7 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public void VerifyElementsShown(By locator)
     {
-        this.VerifyElementsShown(locator, null);
+        VerifyElementsShown(locator, null);
     }
 
     /// <summary>
@@ -174,14 +174,14 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     {
         if (timeout == null)
         {
-            if (this.Element.FindElements(locator).Count == 0)
+            if (Element.FindElements(locator).Count == 0)
             {
                 throw new ElementsNotShownException(locator.ToString());
             }
         }
         else
         {
-            var wait = new WebDriverWait(this.Element.WrappedDriver, timeout.Value);
+            var wait = new WebDriverWait(Element.WrappedDriver, timeout.Value);
             wait.Until(driver => driver.FindElements(locator).Count != 0);
         }
     }

@@ -12,23 +12,23 @@ internal class TextInputPage : W3SchoolsBasePage
     {
     }
 
-    public TextInput FirstNameInput => this.FindElement(this.firstNameInputLocator);
+    public TextInput FirstNameInput => FindElement(firstNameInputLocator);
 
     public TextInputPage SetFirstName(string firstName)
     {
-        this.FirstNameInput.SetText(firstName);
+        FirstNameInput.SetText(firstName);
         return this;
     }
 
     public TextInputPage AppendFirstName(string firstName)
     {
-        this.FirstNameInput.AppendText(firstName);
+        FirstNameInput.AppendText(firstName);
         return this;
     }
 
     public TextInputPage ClearFirstName()
     {
-        this.FirstNameInput.ClearText();
+        FirstNameInput.ClearText();
         return this;
     }
 }

@@ -12,23 +12,23 @@ internal class NumberInputPage : W3SchoolsBasePage
     {
     }
 
-    public NumberInput QuantityNumberInput => this.FindElement(this.quantityNumberInputLocator);
+    public NumberInput QuantityNumberInput => FindElement(quantityNumberInputLocator);
 
     public NumberInputPage SetQuantity(int quantity)
     {
-        this.QuantityNumberInput.SetValue(quantity);
+        QuantityNumberInput.SetValue(quantity);
         return this;
     }
 
     public NumberInputPage IncrementQuantity()
     {
-        this.QuantityNumberInput.Increment();
+        QuantityNumberInput.Increment();
         return this;
     }
 
     public NumberInputPage DecrementQuantity()
     {
-        this.QuantityNumberInput.Decrement();
+        QuantityNumberInput.Decrement();
         return this;
     }
 }

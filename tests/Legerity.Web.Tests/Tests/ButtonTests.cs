@@ -35,7 +35,7 @@ internal class ButtonTests : W3SchoolsBaseTestClass
     public void ShouldClickButton()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         ButtonPage buttonPage = new ButtonPage(app)
             .AcceptCookies<ButtonPage>()

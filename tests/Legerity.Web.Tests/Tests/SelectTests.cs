@@ -36,7 +36,7 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldGetOptions()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -57,7 +57,7 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldGetIsMultipleFalse()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -76,7 +76,7 @@ internal class SelectTests : W3SchoolsBaseTestClass
         // Arrange
         string expected = "audi";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -95,7 +95,7 @@ internal class SelectTests : W3SchoolsBaseTestClass
         // Arrange
         string expected = "Audi";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -114,7 +114,7 @@ internal class SelectTests : W3SchoolsBaseTestClass
         // Arrange
         string expected = "audi";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -133,7 +133,7 @@ internal class SelectTests : W3SchoolsBaseTestClass
         // Arrange
         string expected = "Audi";
 
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()

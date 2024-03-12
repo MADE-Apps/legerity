@@ -15,7 +15,7 @@ using Windows;
 /// </summary>
 public abstract class LegerityTestClass
 {
-    private readonly List<WebDriver> apps = new();
+    private readonly List<WebDriver> _apps = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LegerityTestClass"/> class.
@@ -33,7 +33,7 @@ public abstract class LegerityTestClass
     /// <param name="options">The application launch options.</param>
     protected LegerityTestClass(AppManagerOptions options)
     {
-        this.Options = options;
+        Options = options;
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public abstract class LegerityTestClass
     /// <remarks>
     /// This is useful for accessing drivers in parallelized tests.
     /// </remarks>
-    protected IReadOnlyCollection<WebDriver> Apps => this.apps;
+    protected IReadOnlyCollection<WebDriver> Apps => _apps;
 
     /// <summary>
     /// Gets or sets the model that represents the configuration options for the <see cref="AppManager"/>.
@@ -85,7 +85,7 @@ public abstract class LegerityTestClass
         TimeSpan? waitUntilTimeout = default,
         int waitUntilRetries = 0)
     {
-        return this.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
+        return StartApp(Options, waitUntil, waitUntilTimeout, waitUntilRetries);
     }
 
     /// <summary>
@@ -120,14 +120,14 @@ public abstract class LegerityTestClass
         TimeSpan? waitUntilTimeout = default,
         int waitUntilRetries = 0)
     {
-        if (options != default && this.Options != options)
+        if (options != default && Options != options)
         {
-            this.Options = options;
+            Options = options;
         }
 
-        WebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
-        this.App = app;
-        this.apps.Add(app);
+        WebDriver app = AppManager.StartApp(Options, waitUntil, waitUntilTimeout, waitUntilRetries);
+        App = app;
+        _apps.Add(app);
         return app;
     }
 
@@ -136,7 +136,7 @@ public abstract class LegerityTestClass
     /// </summary>
     public virtual void StopApp()
     {
-        this.StopApp(true);
+        StopApp(true);
     }
 
     /// <summary>
@@ -147,7 +147,7 @@ public abstract class LegerityTestClass
     /// </param>
     public virtual void StopApp(bool stopServer)
     {
-        this.StopApp(this.App, stopServer);
+        StopApp(App, stopServer);
     }
 
     /// <summary>
@@ -161,7 +161,7 @@ public abstract class LegerityTestClass
     /// </param>
     public virtual void StopApp(WebDriver app, bool stopServer = false)
     {
-        this.StopAppManagerApp(app, stopServer, true);
+        StopAppManagerApp(app, stopServer, true);
     }
 
     /// <summary>
@@ -172,15 +172,15 @@ public abstract class LegerityTestClass
     /// </param>
     public virtual void StopApps(bool stopServer = true)
     {
-        this.apps.ForEach(app => this.StopAppManagerApp(app, stopServer, false));
-        this.apps.Clear();
+        _apps.ForEach(app => StopAppManagerApp(app, stopServer, false));
+        _apps.Clear();
     }
 
     private void StopAppManagerApp(WebDriver app, bool stopServer, bool removeApp)
     {
         if (removeApp)
         {
-            this.apps.Remove(app);
+            _apps.Remove(app);
         }
 
         AppManager.StopApp(app, stopServer);

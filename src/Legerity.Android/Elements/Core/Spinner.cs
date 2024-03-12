@@ -20,7 +20,7 @@ public class Spinner : AndroidElementWrapper
     /// Gets the currently selected item.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual string SelectedItem => this.GetSelectedItem();
+    public virtual string SelectedItem => GetSelectedItem();
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Spinner"/> without direct casting.
@@ -48,12 +48,12 @@ public class Spinner : AndroidElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SelectItem(string name)
     {
-        this.Click();
+        Click();
 
         var locator =
             new ByAndroidUIAutomator(
                 $"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\"{name}\"));");
-        WebElement item = this.Driver.FindElement(locator);
+        WebElement item = Driver.FindElement(locator);
 
         item.Click();
     }
@@ -68,12 +68,12 @@ public class Spinner : AndroidElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SelectItemByPartialName(string partialName)
     {
-        this.Click();
+        Click();
 
         var locator =
             new ByAndroidUIAutomator(
                 $"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().textContains(\"{partialName}\"));");
-        WebElement item = this.Driver.FindElement(locator);
+        WebElement item = Driver.FindElement(locator);
 
         item.Click();
     }
@@ -81,7 +81,7 @@ public class Spinner : AndroidElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     private string GetSelectedItem()
     {
-        TextView textElement = this.FindElement(By.ClassName("android.widget.TextView"));
+        TextView textElement = FindElement(By.ClassName("android.widget.TextView"));
         return textElement.Text;
     }
 }

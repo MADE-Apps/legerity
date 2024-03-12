@@ -61,11 +61,11 @@ public class IOSAppManagerOptions : AppiumManagerOptions
         string deviceId,
         params (string, object)[] additionalOptions)
     {
-        this.AppId = appId;
-        this.OSVersion = osVersion;
-        this.DeviceName = deviceName;
-        this.DeviceId = deviceId;
-        this.AdditionalOptions = additionalOptions;
+        AppId = appId;
+        OSVersion = osVersion;
+        DeviceName = deviceName;
+        DeviceId = deviceId;
+        AdditionalOptions = additionalOptions;
     }
 
     /// <summary>
@@ -108,12 +108,12 @@ public class IOSAppManagerOptions : AppiumManagerOptions
     {
         base.Configure();
 
-        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformName, "iOS");
-        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformVersion, this.OSVersion);
-        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.DeviceName, this.DeviceName);
-        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.Udid, this.DeviceId);
-        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.App, this.AppId);
-        this.AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.AutomationName, this.AutomationName);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformName, "iOS");
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformVersion, OSVersion);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.DeviceName, DeviceName);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.Udid, DeviceId);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.App, AppId);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.AutomationName, AutomationName);
     }
 
     /// <summary>
@@ -124,39 +124,39 @@ public class IOSAppManagerOptions : AppiumManagerOptions
     /// </param>
     public void Configure((string, object)[] additionalOptions)
     {
-        this.AdditionalOptions = additionalOptions;
-        this.Configure();
+        AdditionalOptions = additionalOptions;
+        Configure();
     }
 
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"Platform [IOS], {base.ToString()}, {this.GetOptionDetails()}";
+        return $"Platform [IOS], {base.ToString()}, {GetOptionDetails()}";
     }
 
     private string GetOptionDetails()
     {
         var options = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(this.AppId))
+        if (!string.IsNullOrWhiteSpace(AppId))
         {
-            options.Add($"App ID [{this.AppId}]");
+            options.Add($"App ID [{AppId}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceId))
+        if (!string.IsNullOrWhiteSpace(DeviceId))
         {
-            options.Add($"Device ID [{this.DeviceId}]");
+            options.Add($"Device ID [{DeviceId}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceName))
+        if (!string.IsNullOrWhiteSpace(DeviceName))
         {
-            options.Add($"Device Name [{this.DeviceName}]");
+            options.Add($"Device Name [{DeviceName}]");
         }
 
-        if (this.AdditionalOptions != null)
+        if (AdditionalOptions != null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
+            foreach ((string name, object value) in AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

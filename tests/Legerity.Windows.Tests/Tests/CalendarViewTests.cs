@@ -21,7 +21,7 @@ internal class CalendarViewTests : BaseTestClass
     {
         // Arrange
         var expectedDate = DateTime.Parse(dateString, CultureInfo.InvariantCulture);
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         CalendarViewPage calendarViewPage = new HomePage(app).NavigateTo<CalendarViewPage>("CalendarView");
 
         // Act
@@ -36,7 +36,7 @@ internal class CalendarViewTests : BaseTestClass
     {
         // Arrange
         DateTime expectedDate = DateTime.Now.AddDays(1);
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         CalendarViewPage calendarViewPage = new HomePage(app).NavigateTo<CalendarViewPage>("CalendarView");
 
         // Act

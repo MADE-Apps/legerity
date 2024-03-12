@@ -18,7 +18,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldGetItems()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
 
         // Act
@@ -32,7 +32,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByName()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
@@ -47,7 +47,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByPartialName()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
@@ -62,7 +62,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByIndex()
     {
         // Arrange
-        WebDriver app = this.StartApp();
+        WebDriver app = StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const int expected = 2;
 

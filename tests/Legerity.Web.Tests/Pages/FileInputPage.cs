@@ -12,17 +12,17 @@ internal class FileInputPage : W3SchoolsBasePage
     {
     }
 
-    public FileInput FileInput => this.FindElement(this.fileInputLocator);
+    public FileInput FileInput => FindElement(fileInputLocator);
 
     public FileInputPage SetFileInputFilePath(string filePath)
     {
-        this.FileInput.SetAbsoluteFilePath(filePath);
+        FileInput.SetAbsoluteFilePath(filePath);
         return this;
     }
 
     public FileInputPage ClearFileInput()
     {
-        this.FileInput.ClearFile();
+        FileInput.ClearFile();
         return this;
     }
 }
