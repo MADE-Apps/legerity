@@ -37,14 +37,14 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetTableHeaders()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TablePage tablePage = new TablePage(app)
+        var tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
             .SwitchToContentFrame<TablePage>();
 
         // Act
-        IEnumerable<string> headers = tablePage.Table.Headers;
+        var headers = tablePage.Table.Headers;
 
         // Assert
         headers.Count().ShouldBe(3);
@@ -57,14 +57,14 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetTableRows()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TablePage tablePage = new TablePage(app)
+        var tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
             .SwitchToContentFrame<TablePage>();
 
         // Act
-        IEnumerable<TableRow> rows = tablePage.Table.Rows;
+        var rows = tablePage.Table.Rows;
 
         // Assert
         rows.Count().ShouldBe(7);
@@ -74,14 +74,14 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetDataTableRows()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TablePage tablePage = new TablePage(app)
+        var tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
             .SwitchToContentFrame<TablePage>();
 
         // Act
-        IEnumerable<TableRow> rows = tablePage.Table.DataRows;
+        var rows = tablePage.Table.DataRows;
 
         // Assert
         rows.Count().ShouldBe(6);
@@ -91,14 +91,14 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetRowDataByIndex()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TablePage tablePage = new TablePage(app)
+        var tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
             .SwitchToContentFrame<TablePage>();
 
         // Act
-        IReadOnlyDictionary<string, string> rowData = tablePage.Table.GetRowDataByIndex(0);
+        var rowData = tablePage.Table.GetRowDataByIndex(0);
 
         // Assert
         rowData.Count.ShouldBe(3);
@@ -111,14 +111,14 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetColumnDataByIndex()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TablePage tablePage = new TablePage(app)
+        var tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
             .SwitchToContentFrame<TablePage>();
 
         // Act
-        IEnumerable<string> columnData = tablePage.Table.GetColumnDataByIndex(0);
+        var columnData = tablePage.Table.GetColumnDataByIndex(0);
 
         // Assert
         columnData.Count().ShouldBe(6);
@@ -134,14 +134,14 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetColumnDataByHeader()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TablePage tablePage = new TablePage(app)
+        var tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
             .SwitchToContentFrame<TablePage>();
 
         // Act
-        IEnumerable<string> columnData = tablePage.Table.GetColumnDataByHeader("Company");
+        var columnData = tablePage.Table.GetColumnDataByHeader("Company");
 
         // Assert
         columnData.Count().ShouldBe(6);

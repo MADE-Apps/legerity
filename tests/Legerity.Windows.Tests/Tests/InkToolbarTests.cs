@@ -16,8 +16,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetBallpointPenColor()
     {
         // Arrange
-        WebDriver app = StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectBallpointPenColor("Red");
@@ -30,8 +30,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetPencilColor()
     {
         // Arrange
-        WebDriver app = StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectPencilColor("Red");
@@ -44,8 +44,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetHighlighterColor()
     {
         // Arrange
-        WebDriver app = StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectHighlighterColor("Pink");
@@ -58,8 +58,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetBallpointPenColorByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectBallpointPenPartialColor("Yell");
@@ -72,8 +72,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetPencilColorByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectPencilPartialColor("Yell");
@@ -86,8 +86,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetHighlighterColorByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectHighlighterPartialColor("Yell");

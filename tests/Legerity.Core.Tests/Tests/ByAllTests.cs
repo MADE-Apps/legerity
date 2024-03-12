@@ -26,14 +26,14 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        WebElement element = page.FindElement(new ByAll(By.TagName("p"), ByExtras.PartialText("Please select")));
+        var element = page.FindElement(new ByAll(By.TagName("p"), ByExtras.PartialText("Please select")));
 
         // Assert
         element.ShouldNotBeNull();
@@ -53,14 +53,14 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<WebElement> elements =
+        var elements =
             page.FindElements(new ByAll(By.TagName("p"), ByExtras.PartialText("Please select")));
 
         // Assert
@@ -81,9 +81,9 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
@@ -105,14 +105,14 @@ internal class ByAllTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<WebElement> elements =
+        var elements =
             page.FindElements(new ByAll(By.TagName("p"), ByExtras.PartialText("This text does not exist")));
 
         // Assert

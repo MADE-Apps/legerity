@@ -59,9 +59,9 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectItem(string name)
     {
-        IEnumerable<WebElement> listElements = GetItemsToSelect();
+        var listElements = GetItemsToSelect();
 
-        WebElement item = listElements.FirstOrDefault(
+        var item = listElements.FirstOrDefault(
             element => element.GetName().Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
         if (item == null)
@@ -85,9 +85,9 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SelectItemByPartialName(string name)
     {
-        IEnumerable<WebElement> listElements = GetItemsToSelect();
+        var listElements = GetItemsToSelect();
 
-        WebElement item = listElements.FirstOrDefault(
+        var item = listElements.FirstOrDefault(
             element => element.GetName().Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 
         if (item == null)
@@ -101,7 +101,7 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string GetSelectedItem()
     {
-        ReadOnlyCollection<WebElement> listElements = Element.FindElements(comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        var listElements = Element.FindElements(comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
         return listElements.Count == 1 ? listElements.FirstOrDefault().GetName() : null;
     }
 
@@ -113,7 +113,7 @@ public class ComboBox : WindowsElementWrapper
     {
         Click();
         VerifyElementsShown(comboBoxItemLocator, TimeSpan.FromSeconds(2));
-        ReadOnlyCollection<WebElement> listElements = Element.FindElements(comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        var listElements = Element.FindElements(comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
         return listElements;
     }
 }

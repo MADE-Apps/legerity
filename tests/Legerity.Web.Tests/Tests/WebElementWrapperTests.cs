@@ -37,14 +37,14 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldGetElementDriverMatchingAppDriver()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
         // Act
-        IWebDriver elementDriver = textInputPage.FirstNameInput.ElementDriver;
+        var elementDriver = textInputPage.FirstNameInput.ElementDriver;
 
         // Assert
         elementDriver.ShouldBe(app);
@@ -54,14 +54,14 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldGetEnabledState()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
         // Act
-        bool enabled = textInputPage.FirstNameInput.IsEnabled;
+        var enabled = textInputPage.FirstNameInput.IsEnabled;
 
         // Assert
         enabled.ShouldBeTrue();
@@ -71,14 +71,14 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldGetVisibleState()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
         // Act
-        bool visible = textInputPage.FirstNameInput.IsVisible;
+        var visible = textInputPage.FirstNameInput.IsVisible;
 
         // Assert
         visible.ShouldBeTrue();
@@ -88,9 +88,9 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldWaitUntilConditionMet()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
@@ -102,9 +102,9 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldThrowExceptionIfWaitUntilConditionNotMet()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
@@ -116,14 +116,14 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldTryWaitUntilConditionMet()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
         // Act
-        bool conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => e.IsVisible, TimeSpan.FromSeconds(5));
+        var conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => e.IsVisible, TimeSpan.FromSeconds(5));
 
         // Assert
         conditionMet.ShouldBeTrue();
@@ -133,14 +133,14 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldTryWaitUntilConditionNotMet()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
         // Act
-        bool conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => !e.IsVisible);
+        var conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => !e.IsVisible);
 
         // Assert
         conditionMet.ShouldBeFalse();

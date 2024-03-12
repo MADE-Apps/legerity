@@ -16,8 +16,8 @@ internal class RadioButtonTests : BaseTestClass
     public void ShouldSelectRadioButton()
     {
         // Arrange
-        WebDriver app = StartApp();
-        RadioButtonPage radioButtonPage = new HomePage(app).NavigateTo<RadioButtonPage>("RadioButton");
+        var app = StartApp();
+        var radioButtonPage = new HomePage(app).NavigateTo<RadioButtonPage>("RadioButton");
 
         // Act
         radioButtonPage.ClickOptionOneRadioButton();

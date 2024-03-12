@@ -19,8 +19,8 @@ internal class DatePickerTests : BaseTestClass
     public void ShouldSelectDate(DateTime expectedDate)
     {
         // Arrange
-        WebDriver app = StartApp();
-        DatePickerPage datePickerPage = new HomePage(app).NavigateTo<DatePickerPage>("DatePicker");
+        var app = StartApp();
+        var datePickerPage = new HomePage(app).NavigateTo<DatePickerPage>("DatePicker");
 
         // Act
         datePickerPage.SetSimpleDatePickerDate(expectedDate);
@@ -33,9 +33,9 @@ internal class DatePickerTests : BaseTestClass
     public void ShouldSelectDateWithFormat()
     {
         // Arrange
-        DateTime expectedDate = DateTime.Now.AddDays(1);
-        WebDriver app = StartApp();
-        DatePickerPage datePickerPage = new HomePage(app).NavigateTo<DatePickerPage>("DatePicker");
+        var expectedDate = DateTime.Now.AddDays(1);
+        var app = StartApp();
+        var datePickerPage = new HomePage(app).NavigateTo<DatePickerPage>("DatePicker");
 
         // Act
         datePickerPage.SetSimpleDatePickerDate(expectedDate);

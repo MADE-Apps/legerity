@@ -125,7 +125,7 @@ public abstract class LegerityTestClass
             Options = options;
         }
 
-        WebDriver app = AppManager.StartApp(Options, waitUntil, waitUntilTimeout, waitUntilRetries);
+        var app = AppManager.StartApp(Options, waitUntil, waitUntilTimeout, waitUntilRetries);
         App = app;
         _apps.Add(app);
         return app;

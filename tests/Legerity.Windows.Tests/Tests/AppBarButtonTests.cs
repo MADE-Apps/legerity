@@ -15,8 +15,8 @@ internal class AppBarButtonTests : BaseTestClass
     public void ShouldClickSymbolButton()
     {
         // Arrange
-        WebDriver app = StartApp();
-        AppBarButtonPage appBarButtonPage = new HomePage(app).NavigateTo<AppBarButtonPage>("AppBarButton");
+        var app = StartApp();
+        var appBarButtonPage = new HomePage(app).NavigateTo<AppBarButtonPage>("AppBarButton");
 
         // Act & Assert
         appBarButtonPage.ClickSymbolButton();

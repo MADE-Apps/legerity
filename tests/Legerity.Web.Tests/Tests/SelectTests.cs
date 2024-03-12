@@ -36,14 +36,14 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldGetOptions()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 
         // Act
-        IEnumerable<string> options = selectPage.CarsSelect.Options.Select(o => o.DisplayValue);
+        var options = selectPage.CarsSelect.Options.Select(o => o.DisplayValue);
 
         // Assert
         options.Count().ShouldBe(4);
@@ -57,14 +57,14 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldGetIsMultipleFalse()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 
         // Act
-        bool isMultiple = selectPage.CarsSelect.IsMultiple;
+        var isMultiple = selectPage.CarsSelect.IsMultiple;
 
         // Assert
         isMultiple.ShouldBeFalse();
@@ -74,11 +74,11 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByValue()
     {
         // Arrange
-        string expected = "audi";
+        var expected = "audi";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 
@@ -93,11 +93,11 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByDisplayValue()
     {
         // Arrange
-        string expected = "Audi";
+        var expected = "Audi";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 
@@ -112,11 +112,11 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByPartialValue()
     {
         // Arrange
-        string expected = "audi";
+        var expected = "audi";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 
@@ -131,11 +131,11 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByPartialDisplayValue()
     {
         // Arrange
-        string expected = "Audi";
+        var expected = "Audi";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 

@@ -15,8 +15,8 @@ internal class CommandBarTests : BaseTestClass
     public void ShouldClickPrimaryButtonByName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        CommandBarPage commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
+        var app = StartApp();
+        var commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
 
         // Act & Assert
         commandBarPage.ClickPrimaryAddButton();
@@ -26,8 +26,8 @@ internal class CommandBarTests : BaseTestClass
     public void ShouldClickPrimaryButtonByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        CommandBarPage commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
+        var app = StartApp();
+        var commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
 
         // Act & Assert
         commandBarPage.ClickPrimaryButton("Add");
@@ -37,8 +37,8 @@ internal class CommandBarTests : BaseTestClass
     public void ShouldClickSecondaryButtonByName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        CommandBarPage commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
+        var app = StartApp();
+        var commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
 
         // Act & Assert
         commandBarPage.ClickSecondarySettingsButton();
@@ -48,8 +48,8 @@ internal class CommandBarTests : BaseTestClass
     public void ShouldClickSecondaryButtonByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        CommandBarPage commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
+        var app = StartApp();
+        var commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
 
         // Act & Assert
         commandBarPage.ClickSecondaryButton("Setting");

@@ -112,7 +112,7 @@ public class GoogleLoginPage : BasePage
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public GoogleLoginPage Login(string email, string password)
     {
-        (bool hasEmailInput, GoogleLoginPage _) =
+        (var hasEmailInput, var _) =
             this.TryWaitUntil(page => page.EmailInput.IsVisible, WaitTimeout);
         if (!hasEmailInput)
         {
@@ -125,7 +125,7 @@ public class GoogleLoginPage : BasePage
         // Google login uses a 2-step process for email and password.
         NextButton.Click();
 
-        (bool isPasswordInputVisible, GoogleLoginPage _) =
+        (var isPasswordInputVisible, var _) =
             this.TryWaitUntil(page => page.PasswordInput.IsVisible, WaitTimeout);
         if (!isPasswordInputVisible)
         {

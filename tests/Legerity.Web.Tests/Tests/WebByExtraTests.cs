@@ -17,7 +17,7 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
         // Arrange
         const int expectedCount = 6;
 
-        WebDriver app = StartApp(new WebAppManagerOptions(
+        var app = StartApp(new WebAppManagerOptions(
             WebAppDriverType.Chrome,
             Path.Combine(Environment.CurrentDirectory))
         {
@@ -27,12 +27,12 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
             DriverOptions = ConfigureChromeOptions()
         });
 
-        RadioButtonPage radioButtonPage = new RadioButtonPage(app)
+        var radioButtonPage = new RadioButtonPage(app)
             .AcceptCookies<RadioButtonPage>()
             .SwitchToContentFrame<RadioButtonPage>();
 
         // Act
-        ReadOnlyCollection<WebElement>
+        var
             radioButtons = radioButtonPage.FindElements(WebByExtras.InputType("radio"));
 
         // Assert

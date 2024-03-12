@@ -157,7 +157,7 @@ public class NavigationView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual NavigationViewItem ClickMenuOption(string name)
     {
-        NavigationViewItem item = MenuItems.FirstOrDefault(
+        var item = MenuItems.FirstOrDefault(
             element => element.GetName().Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
         if (item == null)
@@ -184,7 +184,7 @@ public class NavigationView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual NavigationViewItem ClickMenuOptionByPartialName(string name)
     {
-        NavigationViewItem item = MenuItems.FirstOrDefault(
+        var item = MenuItems.FirstOrDefault(
             element => element.GetName().Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 
         if (item == null)
@@ -216,8 +216,8 @@ public class NavigationView : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual bool VerifyPaneOpen(int expectedCompactPaneWidth)
     {
-        WebElement pane = FindElement(WindowsByExtras.AutomationId("PaneRoot"));
-        int paneWidth = pane.GetBoundingRect().Width;
+        var pane = FindElement(WindowsByExtras.AutomationId("PaneRoot"));
+        var paneWidth = pane.GetBoundingRect().Width;
         return paneWidth > expectedCompactPaneWidth;
     }
 }

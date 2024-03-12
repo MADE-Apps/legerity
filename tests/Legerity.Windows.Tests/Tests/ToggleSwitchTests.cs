@@ -16,7 +16,7 @@ internal class ToggleSwitchTests : BaseTestClass
     public void ShouldToggleOn()
     {
         // Arrange
-        ToggleSwitchPage toggleSwitchPage = StartAndNavigateToPage();
+        var toggleSwitchPage = StartAndNavigateToPage();
 
         // Act
         toggleSwitchPage.ToggleSwitchOn();
@@ -29,7 +29,7 @@ internal class ToggleSwitchTests : BaseTestClass
     public void ShouldKeepToggledOnIfToggledOn()
     {
         // Arrange
-        ToggleSwitchPage toggleSwitchPage = StartAndNavigateToPage().ToggleSwitchOn();
+        var toggleSwitchPage = StartAndNavigateToPage().ToggleSwitchOn();
 
         // Act
         toggleSwitchPage.ToggleSwitchOn();
@@ -42,7 +42,7 @@ internal class ToggleSwitchTests : BaseTestClass
     public void ShouldToggleOff()
     {
         // Arrange
-        ToggleSwitchPage toggleSwitchPage = StartAndNavigateToPage().ToggleSwitchOn();
+        var toggleSwitchPage = StartAndNavigateToPage().ToggleSwitchOn();
 
         // Act
         toggleSwitchPage.ToggleSwitchOff();
@@ -55,7 +55,7 @@ internal class ToggleSwitchTests : BaseTestClass
     public void ShouldKeepToggledOffIfToggledOff()
     {
         // Arrange
-        ToggleSwitchPage toggleSwitchPage = StartAndNavigateToPage().ToggleSwitchOff();
+        var toggleSwitchPage = StartAndNavigateToPage().ToggleSwitchOff();
 
         // Act
         toggleSwitchPage.ToggleSwitchOff();
@@ -66,7 +66,7 @@ internal class ToggleSwitchTests : BaseTestClass
 
     private ToggleSwitchPage StartAndNavigateToPage()
     {
-        WebDriver app = StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<ToggleSwitchPage>("ToggleSwitch");
     }
 }

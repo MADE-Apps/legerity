@@ -36,9 +36,9 @@ internal class RadioButtonTests : W3SchoolsBaseTestClass
     public void ShouldSelectRadioButton()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        RadioButtonPage radioButtonPage = new RadioButtonPage(app)
+        var radioButtonPage = new RadioButtonPage(app)
             .AcceptCookies<RadioButtonPage>()
             .SwitchToContentFrame<RadioButtonPage>();
 
@@ -55,14 +55,14 @@ internal class RadioButtonTests : W3SchoolsBaseTestClass
         // Arrange
         const string expectedGroupName = "fav_language";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        RadioButtonPage radioButtonPage = new RadioButtonPage(app)
+        var radioButtonPage = new RadioButtonPage(app)
             .AcceptCookies<RadioButtonPage>()
             .SwitchToContentFrame<RadioButtonPage>();
 
         // Act
-        string groupName = radioButtonPage.LanguageGroupRadioButtons.FirstOrDefault().Group;
+        var groupName = radioButtonPage.LanguageGroupRadioButtons.FirstOrDefault().Group;
 
         // Assert
         groupName.ShouldBe(expectedGroupName);

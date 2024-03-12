@@ -64,7 +64,7 @@ public class Pivot : WindowsElementWrapper
     {
         VerifyElementsShown(pivotItemLocator, TimeSpan.FromSeconds(2));
 
-        WebElement item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -89,7 +89,7 @@ public class Pivot : WindowsElementWrapper
     {
         VerifyElementsShown(pivotItemLocator, TimeSpan.FromSeconds(2));
 
-        WebElement item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
+        var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
         if (item == null)
         {

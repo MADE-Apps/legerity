@@ -57,7 +57,7 @@ public class Slider : IOSElementWrapper
     {
         Click();
 
-        double currentValue = Value;
+        var currentValue = Value;
         while (Math.Abs(currentValue - value) > double.Epsilon)
         {
             Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);

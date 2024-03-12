@@ -35,15 +35,15 @@ internal class TextAreaTests : W3SchoolsBaseTestClass
     public void ShouldGetSize()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextAreaPage textAreaPage = new TextAreaPage(app)
+        var textAreaPage = new TextAreaPage(app)
             .AcceptCookies<TextAreaPage>()
             .SwitchToContentFrame<TextAreaPage>();
 
         // Act
-        int rows = textAreaPage.ReviewTextArea.Rows;
-        int columns = textAreaPage.ReviewTextArea.Cols;
+        var rows = textAreaPage.ReviewTextArea.Rows;
+        var columns = textAreaPage.ReviewTextArea.Cols;
 
         // Assert
         rows.ShouldBe(4);
@@ -56,9 +56,9 @@ internal class TextAreaTests : W3SchoolsBaseTestClass
         // Arrange
         const string expected = "The cat was playing in the garden.";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextAreaPage textAreaPage = new TextAreaPage(app)
+        var textAreaPage = new TextAreaPage(app)
             .AcceptCookies<TextAreaPage>()
             .SwitchToContentFrame<TextAreaPage>();
 
@@ -75,9 +75,9 @@ internal class TextAreaTests : W3SchoolsBaseTestClass
         // Arrange
         const string expected = "The cat was playing in the garden.";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextAreaPage textAreaPage = new TextAreaPage(app)
+        var textAreaPage = new TextAreaPage(app)
             .AcceptCookies<TextAreaPage>()
             .SwitchToContentFrame<TextAreaPage>();
 
@@ -94,9 +94,9 @@ internal class TextAreaTests : W3SchoolsBaseTestClass
     public void ShouldClearText()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextAreaPage textAreaPage = new TextAreaPage(app)
+        var textAreaPage = new TextAreaPage(app)
             .AcceptCookies<TextAreaPage>()
             .SwitchToContentFrame<TextAreaPage>();
 

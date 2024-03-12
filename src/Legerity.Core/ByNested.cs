@@ -32,7 +32,7 @@ public class ByNested : By
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public override IWebElement FindElement(ISearchContext context)
     {
-        ReadOnlyCollection<IWebElement> elements = FindElements(context);
+        var elements = FindElements(context);
         if (elements.Count == 0)
         {
             throw new NoSuchElementException($"No element could be located using locator: {this}");
@@ -53,7 +53,7 @@ public class ByNested : By
         }
 
         IEnumerable<IWebElement> elements = null;
-        foreach (By locator in locators)
+        foreach (var locator in locators)
         {
             var nestedElements = new List<IWebElement>();
 
@@ -63,7 +63,7 @@ public class ByNested : By
             }
             else
             {
-                foreach (IWebElement element in elements)
+                foreach (var element in elements)
                 {
                     nestedElements.AddRange(element.FindElements(locator));
                 }

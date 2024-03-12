@@ -16,7 +16,7 @@ internal class ProgressRingTests : BaseTestClass
     public void ShouldGetDeterminatePercentage()
     {
         // Arrange
-        ProgressRingPage progressRingPage = StartAndNavigateToPage();
+        var progressRingPage = StartAndNavigateToPage();
 
         // Act
         progressRingPage.SetDeterminateProgressRingValue(50);
@@ -30,7 +30,7 @@ internal class ProgressRingTests : BaseTestClass
     public void ShouldGetIsIndeterminate()
     {
         // Arrange
-        ProgressRingPage progressBarPage = StartAndNavigateToPage();
+        var progressBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         progressBarPage.IndeterminateProgressRing.IsIndeterminate.ShouldBeTrue();
@@ -38,7 +38,7 @@ internal class ProgressRingTests : BaseTestClass
 
     private ProgressRingPage StartAndNavigateToPage()
     {
-        WebDriver app = StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<ProgressRingPage>("ProgressRing");
     }
 }

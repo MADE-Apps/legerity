@@ -92,7 +92,7 @@ public class MenuBarItem : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuFlyoutItem ClickChildOption(string name)
     {
-        MenuFlyoutItem item = ChildMenuItems.FirstOrDefault(
+        var item = ChildMenuItems.FirstOrDefault(
             element => element.GetName()
                 .Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
@@ -120,7 +120,7 @@ public class MenuBarItem : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual MenuFlyoutItem ClickChildOptionByPartialName(string name)
     {
-        MenuFlyoutItem item = ChildMenuItems.FirstOrDefault(
+        var item = ChildMenuItems.FirstOrDefault(
             element => element.GetName()
                 .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 
@@ -144,7 +144,7 @@ public class MenuBarItem : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuFlyoutSubItem ClickChildSubOption(string name)
     {
-        MenuFlyoutSubItem item = ChildMenuSubItems.FirstOrDefault(
+        var item = ChildMenuSubItems.FirstOrDefault(
             element => element.GetName()
                 .Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
@@ -168,7 +168,7 @@ public class MenuBarItem : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual MenuFlyoutSubItem ClickChildSubOptionByPartialName(string name)
     {
-        MenuFlyoutSubItem item = ChildMenuSubItems.FirstOrDefault(
+        var item = ChildMenuSubItems.FirstOrDefault(
             element => element.GetName()
                 .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 

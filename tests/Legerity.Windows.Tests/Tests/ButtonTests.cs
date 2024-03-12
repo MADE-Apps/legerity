@@ -15,8 +15,8 @@ internal class ButtonTests : BaseTestClass
     public void ShouldClickSymbolButton()
     {
         // Arrange
-        WebDriver app = StartApp();
-        ButtonPage buttonPage = new HomePage(app).NavigateTo<ButtonPage>("Button");
+        var app = StartApp();
+        var buttonPage = new HomePage(app).NavigateTo<ButtonPage>("Button");
 
         // Act & Assert
         buttonPage.ClickStandardXamlButton();

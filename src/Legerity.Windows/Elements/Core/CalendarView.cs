@@ -100,11 +100,11 @@ public class CalendarView : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void SetDate(DateTime date)
     {
-        string expectedDay = date.ToString("%d");
-        string expectedHeader = date.ToString("MMMM yyyy");
+        var expectedDay = date.ToString("%d");
+        var expectedHeader = date.ToString("MMMM yyyy");
 
-        string currentHeader = HeaderButton.GetName();
-        DateTime currentViewDate = GetCurrentViewDate(currentHeader);
+        var currentHeader = HeaderButton.GetName();
+        var currentViewDate = GetCurrentViewDate(currentHeader);
 
         while (!expectedHeader.Equals(currentHeader, StringComparison.CurrentCultureIgnoreCase))
         {
@@ -122,7 +122,7 @@ public class CalendarView : WindowsElementWrapper
             currentHeader = HeaderButton.GetName();
         }
 
-        WebElement item = Days.FirstOrDefault(
+        var item = Days.FirstOrDefault(
             element => element.GetName().Equals(expectedDay, StringComparison.CurrentCultureIgnoreCase));
 
         if (item == null)
@@ -137,18 +137,18 @@ public class CalendarView : WindowsElementWrapper
     {
         months.TryGetValue(
             string.Join(string.Empty, currentHeader.Where(char.IsLetter)).Trim(),
-            out string month);
+            out var month);
 
-        string year = string.Join(string.Empty, currentHeader.Where(char.IsDigit)).Trim();
+        var year = string.Join(string.Empty, currentHeader.Where(char.IsDigit)).Trim();
 
-        string dateString = $"01/{month}/{year}";
+        var dateString = $"01/{month}/{year}";
         return DateTime.ParseExact(dateString, @"d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
     }
 
     private DateTime? GetSelectedDate()
     {
-        string value = Value;
+        var value = Value;
         return string.IsNullOrEmpty(value) ? default :
-            DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
+            DateTime.TryParse(value, out var date) ? date : default(DateTime?);
     }
 }

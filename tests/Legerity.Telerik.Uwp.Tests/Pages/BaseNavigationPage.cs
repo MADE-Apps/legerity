@@ -23,7 +23,7 @@ internal class BaseNavigationPage : BasePage
     {
         SearchBox.SetText(controlName);
 
-        WebElement item = FindElement(By.XPath($".//*[@ClassName='ListViewItem'][@Name='{sampleName}']"));
+        var item = FindElement(By.XPath($".//*[@ClassName='ListViewItem'][@Name='{sampleName}']"));
         item.Click();
 
         return Activator.CreateInstance(typeof(TPage), App) as TPage;

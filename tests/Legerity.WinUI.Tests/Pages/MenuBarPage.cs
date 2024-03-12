@@ -15,7 +15,7 @@ internal class MenuBarPage : BaseNavigationPage
 
     public MenuBarPage SelectSimpleMenuBarOption(string name, string child = null)
     {
-        MenuBarItem option = SimpleMenuBar.ClickOption(name);
+        var option = SimpleMenuBar.ClickOption(name);
         if (!string.IsNullOrWhiteSpace(child))
         {
             option.ClickChildOption(child);
@@ -26,7 +26,7 @@ internal class MenuBarPage : BaseNavigationPage
 
     public MenuBarPage SelectSimpleMenuBarOptionPartial(string name, string child = null)
     {
-        MenuBarItem option = SimpleMenuBar.ClickOptionByPartialName(name);
+        var option = SimpleMenuBar.ClickOptionByPartialName(name);
         if (!string.IsNullOrWhiteSpace(child))
         {
             option.ClickChildOptionByPartialName(child);

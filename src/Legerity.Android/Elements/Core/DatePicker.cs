@@ -104,20 +104,20 @@ public class DatePicker : AndroidElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetDate(DateTime date)
     {
-        DateTime currentViewDate = GetCurrentViewDate();
+        var currentViewDate = GetCurrentViewDate();
 
-        int monthDifference = ((date.Year - currentViewDate.Year) * 12) + date.Month - currentViewDate.Month;
+        var monthDifference = ((date.Year - currentViewDate.Year) * 12) + date.Month - currentViewDate.Month;
 
         if (monthDifference > 0)
         {
-            for (int i = 0; i < monthDifference; i++)
+            for (var i = 0; i < monthDifference; i++)
             {
                 NextMonthButton.Click();
             }
         }
         else
         {
-            for (int i = 0; i < Math.Abs(monthDifference); i++)
+            for (var i = 0; i < Math.Abs(monthDifference); i++)
             {
                 PreviousMonthButton.Click();
             }
@@ -131,25 +131,25 @@ public class DatePicker : AndroidElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private DateTime GetCurrentViewDate()
     {
-        string currentYear = YearTextView.Text;
-        string currentDate = DateTextView.Text;
+        var currentYear = YearTextView.Text;
+        var currentDate = DateTextView.Text;
         return GetCurrentViewDate(currentDate, currentYear);
     }
 
     private DateTime GetCurrentViewDate(string currentDate, string currentYear)
     {
-        string day = string.Join(string.Empty, currentDate.Where(char.IsDigit)).Trim();
+        var day = string.Join(string.Empty, currentDate.Where(char.IsDigit)).Trim();
 
         var currentDateSplit = currentDate.Split(',').ToList();
-        string currentMonthPart = currentDateSplit.LastOrDefault();
+        var currentMonthPart = currentDateSplit.LastOrDefault();
 
         months.TryGetValue(
             string.Join(string.Empty, (currentMonthPart ?? string.Empty).Where(char.IsLetter)).Trim(),
-            out string month);
+            out var month);
 
-        string year = string.Join(string.Empty, currentYear.Where(char.IsDigit)).Trim();
+        var year = string.Join(string.Empty, currentYear.Where(char.IsDigit)).Trim();
 
-        string dateString = $"{day}/{month}/{year}";
+        var dateString = $"{day}/{month}/{year}";
         return DateTime.ParseExact(dateString, @"d/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
     }
 }

@@ -98,8 +98,8 @@ public class NumberBox : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SetValue(double value)
     {
-        double min = Minimum;
-        double max = Maximum;
+        var min = Minimum;
+        var max = Maximum;
 
         if (value < Minimum)
         {

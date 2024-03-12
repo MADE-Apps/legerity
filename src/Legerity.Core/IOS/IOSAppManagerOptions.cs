@@ -156,7 +156,7 @@ public class IOSAppManagerOptions : AppiumManagerOptions
 
         if (AdditionalOptions != null)
         {
-            foreach ((string name, object value) in AdditionalOptions)
+            foreach ((var name, var value) in AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

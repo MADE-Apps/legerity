@@ -84,7 +84,7 @@ public class Select : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectOptionByDisplayValue(string displayValue)
     {
-        Option item =
+        var item =
             Options.FirstOrDefault(e =>
                 e.DisplayValue.Equals(displayValue, StringComparison.CurrentCultureIgnoreCase));
 
@@ -108,7 +108,7 @@ public class Select : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectOptionByPartialDisplayValue(string partialDisplayValue)
     {
-        Option item =
+        var item =
             Options.FirstOrDefault(e =>
                 e.DisplayValue.Contains(
                     partialDisplayValue,
@@ -135,7 +135,7 @@ public class Select : WebElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectOptionByValue(string value)
     {
-        Option item =
+        var item =
             Options.FirstOrDefault(e =>
                 e.Value.Equals(value, StringComparison.CurrentCultureIgnoreCase));
 
@@ -159,7 +159,7 @@ public class Select : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectOptionByPartialValue(string partialValue)
     {
-        Option item =
+        var item =
             Options.FirstOrDefault(e =>
                 e.Value.Contains(
                     partialValue,
@@ -177,12 +177,12 @@ public class Select : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private bool GetIsMultiple()
     {
-        string multipleAttr = GetAttribute("multiple");
+        var multipleAttr = GetAttribute("multiple");
         if (multipleAttr == null)
         {
             return false;
         }
 
-        return bool.TryParse(multipleAttr, out bool isMultiple) && isMultiple;
+        return bool.TryParse(multipleAttr, out var isMultiple) && isMultiple;
     }
 }

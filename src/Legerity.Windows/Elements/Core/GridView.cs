@@ -69,7 +69,7 @@ public class GridView : WindowsElementWrapper
     {
         VerifyElementsShown(gridViewItemLocator, TimeSpan.FromSeconds(2));
 
-        WebElement item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -94,7 +94,7 @@ public class GridView : WindowsElementWrapper
     {
         VerifyElementsShown(gridViewItemLocator, TimeSpan.FromSeconds(2));
 
-        WebElement item =
+        var item =
             Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
 
         if (item == null)
@@ -120,7 +120,7 @@ public class GridView : WindowsElementWrapper
     {
         VerifyElementsShown(gridViewItemLocator, TimeSpan.FromSeconds(2));
 
-        WebElement item = Items[index];
+        var item = Items[index];
 
         if (item == null)
         {

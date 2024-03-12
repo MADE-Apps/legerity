@@ -63,7 +63,7 @@ public class ListBox : WindowsElementWrapper
     public virtual void ClickItem(string name)
     {
         VerifyElementsShown(listBoxItemLocator, TimeSpan.FromSeconds(2));
-        WebElement item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -85,7 +85,7 @@ public class ListBox : WindowsElementWrapper
     public virtual void ClickItemByPartialName(string partialName)
     {
         VerifyElementsShown(listBoxItemLocator, TimeSpan.FromSeconds(2));
-        WebElement item =
+        var item =
             Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
 
         if (item == null)

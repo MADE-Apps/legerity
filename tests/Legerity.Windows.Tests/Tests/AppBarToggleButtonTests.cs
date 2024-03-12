@@ -16,8 +16,8 @@ internal class AppBarToggleButtonTests : BaseTestClass
     public void ShouldToggleOn()
     {
         // Arrange
-        WebDriver app = StartApp();
-        AppBarToggleButtonPage appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton");
+        var app = StartApp();
+        var appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton");
 
         // Act
         appBarToggleButtonPage.ToggleSymbolOn();
@@ -30,8 +30,8 @@ internal class AppBarToggleButtonTests : BaseTestClass
     public void ShouldKeepToggledOnIfToggledOn()
     {
         // Arrange
-        WebDriver app = StartApp();
-        AppBarToggleButtonPage appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton").ToggleSymbolOn();
+        var app = StartApp();
+        var appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton").ToggleSymbolOn();
 
         // Act
         appBarToggleButtonPage.ToggleSymbolOn();
@@ -44,8 +44,8 @@ internal class AppBarToggleButtonTests : BaseTestClass
     public void ShouldToggleOff()
     {
         // Arrange
-        WebDriver app = StartApp();
-        AppBarToggleButtonPage appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton").ToggleSymbolOn();
+        var app = StartApp();
+        var appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton").ToggleSymbolOn();
 
         // Act
         appBarToggleButtonPage.ToggleSymbolOff();
@@ -58,8 +58,8 @@ internal class AppBarToggleButtonTests : BaseTestClass
     public void ShouldKeepToggledOffIfToggledOff()
     {
         // Arrange
-        WebDriver app = StartApp();
-        AppBarToggleButtonPage appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton").ToggleSymbolOff();
+        var app = StartApp();
+        var appBarToggleButtonPage = new HomePage(app).NavigateTo<AppBarToggleButtonPage>("AppBarToggleButton").ToggleSymbolOff();
 
         // Act
         appBarToggleButtonPage.ToggleSymbolOff();

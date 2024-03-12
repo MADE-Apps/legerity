@@ -17,8 +17,8 @@ internal class PivotTests : BaseTestClass
     public void ShouldSelectPivotItem()
     {
         // Arrange
-        WebDriver app = StartApp();
-        PivotPage pivotPage = new HomePage(app).NavigateTo<PivotPage>("Pivot");
+        var app = StartApp();
+        var pivotPage = new HomePage(app).NavigateTo<PivotPage>("Pivot");
 
         // Act
         pivotPage.ClickEmailTab("Flagged");
@@ -31,8 +31,8 @@ internal class PivotTests : BaseTestClass
     public void ShouldSelectPivotItemByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        PivotPage pivotPage = new HomePage(app).NavigateTo<PivotPage>("Pivot");
+        var app = StartApp();
+        var pivotPage = new HomePage(app).NavigateTo<PivotPage>("Pivot");
 
         // Act
         pivotPage.ClickEmailTabByPartialName("Flag");

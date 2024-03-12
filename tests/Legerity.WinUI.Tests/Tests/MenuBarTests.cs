@@ -15,8 +15,8 @@ internal class MenuBarTests : BaseTestClass
     public void ShouldClickOption()
     {
         // Arrange
-        WebDriver app = StartApp();
-        MenuBarPage menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
+        var app = StartApp();
+        var menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
 
         // Act & Assert
         menuBarPage.SelectSimpleMenuBarOption("File");
@@ -26,8 +26,8 @@ internal class MenuBarTests : BaseTestClass
     public void ShouldClickOptionByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        MenuBarPage menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
+        var app = StartApp();
+        var menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
 
         // Act & Assert
         menuBarPage.SelectSimpleMenuBarOptionPartial("Fil");
@@ -37,8 +37,8 @@ internal class MenuBarTests : BaseTestClass
     public void ShouldClickChildOption()
     {
         // Arrange
-        WebDriver app = StartApp();
-        MenuBarPage menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
+        var app = StartApp();
+        var menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
 
         // Act & Assert
         menuBarPage.SelectSimpleMenuBarOption("File", "Open");
@@ -48,8 +48,8 @@ internal class MenuBarTests : BaseTestClass
     public void ShouldClickChildOptionByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        MenuBarPage menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
+        var app = StartApp();
+        var menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
 
         // Act & Assert
         menuBarPage.SelectSimpleMenuBarOptionPartial("Fil", "Ope");

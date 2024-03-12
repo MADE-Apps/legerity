@@ -35,11 +35,11 @@ internal class DateInputTests : W3SchoolsBaseTestClass
     public void ShouldSetDate()
     {
         // Arrange
-        DateTime expected = DateTime.Now.Date;
+        var expected = DateTime.Now.Date;
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        DateInputPage dateInputPage = new DateInputPage(app)
+        var dateInputPage = new DateInputPage(app)
             .AcceptCookies<DateInputPage>()
             .SwitchToContentFrame<DateInputPage>();
 

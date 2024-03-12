@@ -19,8 +19,8 @@ public static class ElementExtensions
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public static Rectangle GetBoundingRect(this IWebElement element)
     {
-        Point location = element.Location;
-        Size size = element.Size;
+        var location = element.Location;
+        var size = element.Size;
         return new Rectangle(location.X, location.Y, size.Width, size.Height);
     }
 

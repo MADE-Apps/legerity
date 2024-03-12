@@ -18,8 +18,8 @@ internal class AutoSuggestBoxTests : BaseTestClass
         // Arrange
         const string expectedText = "British Shorthair";
 
-        WebDriver app = StartApp();
-        AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
+        var app = StartApp();
+        var autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
         autoSuggestBoxPage.SetBasicSuggestionText(expectedText);
@@ -34,8 +34,8 @@ internal class AutoSuggestBoxTests : BaseTestClass
         // Arrange
         const string expectedText = "British Shorthair";
 
-        WebDriver app = StartApp();
-        AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
+        var app = StartApp();
+        var autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
         autoSuggestBoxPage.SelectBasicSuggestion(expectedText);
@@ -50,8 +50,8 @@ internal class AutoSuggestBoxTests : BaseTestClass
         // Arrange
         const string expectedText = "British Shorthair";
 
-        WebDriver app = StartApp();
-        AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
+        var app = StartApp();
+        var autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
         autoSuggestBoxPage.SelectBasicSuggestionByValue("British", expectedText);
@@ -64,8 +64,8 @@ internal class AutoSuggestBoxTests : BaseTestClass
     public void ShouldSelectSuggestionByPartialSuggestion()
     {
         // Arrange
-        WebDriver app = StartApp();
-        AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
+        var app = StartApp();
+        var autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
         autoSuggestBoxPage.SelectBasicSuggestionByPartialSuggestion("British", "Shorthair");

@@ -35,7 +35,7 @@ public class ByAll : By
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public override IWebElement FindElement(ISearchContext context)
     {
-        ReadOnlyCollection<IWebElement> elements = FindElements(context);
+        var elements = FindElements(context);
         if (elements.Count == 0)
         {
             throw new NoSuchElementException($"No element could be located using locator: {this}");
@@ -56,9 +56,9 @@ public class ByAll : By
         }
 
         IEnumerable<IWebElement> elements = null;
-        foreach (By locator in locators)
+        foreach (var locator in locators)
         {
-            ReadOnlyCollection<IWebElement> foundElements = locator.FindElements(context);
+            var foundElements = locator.FindElements(context);
             if (foundElements.Count == 0)
             {
                 return new List<IWebElement>().AsReadOnly();

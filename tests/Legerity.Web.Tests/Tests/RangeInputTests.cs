@@ -35,15 +35,15 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldGetValueRange()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        RangeInputPage rangeInputPage = new RangeInputPage(app)
+        var rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
             .SwitchToContentFrame<RangeInputPage>();
 
         // Act
-        double minValue = rangeInputPage.VolumeRangeInput.Minimum;
-        double maxValue = rangeInputPage.VolumeRangeInput.Maximum;
+        var minValue = rangeInputPage.VolumeRangeInput.Minimum;
+        var maxValue = rangeInputPage.VolumeRangeInput.Maximum;
 
         // Assert
         minValue.ShouldBe(0);
@@ -54,9 +54,9 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldSetValue()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        RangeInputPage rangeInputPage = new RangeInputPage(app)
+        var rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
             .SwitchToContentFrame<RangeInputPage>();
 
@@ -71,9 +71,9 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldThrowOutOfRangeExceptionIfValueIsLessThanMinimum()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        RangeInputPage rangeInputPage = new RangeInputPage(app)
+        var rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
             .SwitchToContentFrame<RangeInputPage>();
 
@@ -85,9 +85,9 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldThrowOutOfRangeExceptionIfValueIsGreaterThanMaximum()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        RangeInputPage rangeInputPage = new RangeInputPage(app)
+        var rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
             .SwitchToContentFrame<RangeInputPage>();
 
@@ -99,9 +99,9 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldIncrementValue()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        RangeInputPage rangeInputPage = new RangeInputPage(app)
+        var rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
             .SwitchToContentFrame<RangeInputPage>();
 
@@ -118,9 +118,9 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldDecrementValue()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        RangeInputPage rangeInputPage = new RangeInputPage(app)
+        var rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
             .SwitchToContentFrame<RangeInputPage>();
 

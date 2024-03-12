@@ -132,7 +132,7 @@ public class NavigationViewItem : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual NavigationViewItem ClickChildOption(string name)
     {
-        NavigationViewItem item = ChildMenuItems.FirstOrDefault(
+        var item = ChildMenuItems.FirstOrDefault(
             element => element.GetName()
                 .Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
@@ -160,7 +160,7 @@ public class NavigationViewItem : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual NavigationViewItem ClickChildOptionByPartialName(string name)
     {
-        NavigationViewItem item = ChildMenuItems.FirstOrDefault(
+        var item = ChildMenuItems.FirstOrDefault(
             element => element.GetName()
                 .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 

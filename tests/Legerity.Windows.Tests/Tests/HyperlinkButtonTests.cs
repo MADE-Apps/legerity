@@ -15,8 +15,8 @@ internal class HyperlinkButtonTests : BaseTestClass
     public void ShouldClickHyperlinkButton()
     {
         // Arrange
-        WebDriver app = StartApp();
-        HyperlinkButtonPage hyperlinkButtonPage = new HomePage(app).NavigateTo<HyperlinkButtonPage>("HyperlinkButton");
+        var app = StartApp();
+        var hyperlinkButtonPage = new HomePage(app).NavigateTo<HyperlinkButtonPage>("HyperlinkButton");
 
         // Act & Assert
         hyperlinkButtonPage.ClickHyperlinkButton();

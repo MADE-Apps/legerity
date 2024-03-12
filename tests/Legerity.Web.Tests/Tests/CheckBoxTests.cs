@@ -36,9 +36,9 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldCheckUncheckedCheckbox()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+        var checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
             .SwitchToContentFrame<CheckBoxPage>()
             .CheckBikeOff();
@@ -54,9 +54,9 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldKeepCheckedIfCheckedAgain()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+        var checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
             .SwitchToContentFrame<CheckBoxPage>()
             .CheckBikeOn();
@@ -72,9 +72,9 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldUncheckCheckedCheckbox()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+        var checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
             .SwitchToContentFrame<CheckBoxPage>()
             .CheckBikeOn();
@@ -90,9 +90,9 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldKeepUncheckedIfUncheckedAgain()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+        var checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
             .SwitchToContentFrame<CheckBoxPage>()
             .CheckBikeOff();

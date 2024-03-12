@@ -89,7 +89,7 @@ public class TabView : WindowsElementWrapper
     public virtual void SelectTab(string name)
     {
         VerifyElementShown(tabListViewLocator, TimeSpan.FromSeconds(2));
-        WebElement item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        var item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -113,7 +113,7 @@ public class TabView : WindowsElementWrapper
     public virtual void SelectTabByPartialName(string name)
     {
         VerifyElementShown(tabListViewLocator, TimeSpan.FromSeconds(2));
-        WebElement item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
+        var item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
         if (item == null)
         {
@@ -135,7 +135,7 @@ public class TabView : WindowsElementWrapper
     public virtual void CloseTab(string name)
     {
         VerifyElementShown(tabListViewLocator, TimeSpan.FromSeconds(2));
-        WebElement item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        var item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -158,7 +158,7 @@ public class TabView : WindowsElementWrapper
     public virtual void CloseTabByPartialName(string name)
     {
         VerifyElementShown(tabListViewLocator, TimeSpan.FromSeconds(2));
-        WebElement item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
+        var item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
         if (item == null)
         {

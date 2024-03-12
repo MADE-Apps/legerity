@@ -77,8 +77,8 @@ public class RadialGauge : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SetValue(double value)
     {
-        double min = Minimum;
-        double max = Maximum;
+        var min = Minimum;
+        var max = Maximum;
 
         if (value < Minimum)
         {
@@ -98,7 +98,7 @@ public class RadialGauge : WindowsElementWrapper
 
         Click();
 
-        double currentValue = Value;
+        var currentValue = Value;
         while (Math.Abs(currentValue - value) > double.Epsilon)
         {
             Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);

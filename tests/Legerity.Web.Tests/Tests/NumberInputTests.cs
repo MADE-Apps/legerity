@@ -35,15 +35,15 @@ internal class NumberInputTests : W3SchoolsBaseTestClass
     public void ShouldGetValueRange()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        NumberInputPage numberInputPage = new NumberInputPage(app)
+        var numberInputPage = new NumberInputPage(app)
             .AcceptCookies<NumberInputPage>()
             .SwitchToContentFrame<NumberInputPage>();
 
         // Act
-        double minValue = numberInputPage.QuantityNumberInput.Minimum;
-        double maxValue = numberInputPage.QuantityNumberInput.Maximum;
+        var minValue = numberInputPage.QuantityNumberInput.Minimum;
+        var maxValue = numberInputPage.QuantityNumberInput.Maximum;
 
         // Assert
         minValue.ShouldBe(1);
@@ -54,9 +54,9 @@ internal class NumberInputTests : W3SchoolsBaseTestClass
     public void ShouldSetValue()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        NumberInputPage numberInputPage = new NumberInputPage(app)
+        var numberInputPage = new NumberInputPage(app)
             .AcceptCookies<NumberInputPage>()
             .SwitchToContentFrame<NumberInputPage>();
 
@@ -71,9 +71,9 @@ internal class NumberInputTests : W3SchoolsBaseTestClass
     public void ShouldThrowOutOfRangeExceptionIfValueIsLessThanMinimum()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        NumberInputPage numberInputPage = new NumberInputPage(app)
+        var numberInputPage = new NumberInputPage(app)
             .AcceptCookies<NumberInputPage>()
             .SwitchToContentFrame<NumberInputPage>();
 
@@ -85,9 +85,9 @@ internal class NumberInputTests : W3SchoolsBaseTestClass
     public void ShouldThrowOutOfRangeExceptionIfValueIsGreaterThanMaximum()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        NumberInputPage numberInputPage = new NumberInputPage(app)
+        var numberInputPage = new NumberInputPage(app)
             .AcceptCookies<NumberInputPage>()
             .SwitchToContentFrame<NumberInputPage>();
 
@@ -99,9 +99,9 @@ internal class NumberInputTests : W3SchoolsBaseTestClass
     public void ShouldIncrementValue()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        NumberInputPage numberInputPage = new NumberInputPage(app)
+        var numberInputPage = new NumberInputPage(app)
             .AcceptCookies<NumberInputPage>()
             .SwitchToContentFrame<NumberInputPage>();
 
@@ -118,9 +118,9 @@ internal class NumberInputTests : W3SchoolsBaseTestClass
     public void ShouldDecrementValue()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        NumberInputPage numberInputPage = new NumberInputPage(app)
+        var numberInputPage = new NumberInputPage(app)
             .AcceptCookies<NumberInputPage>()
             .SwitchToContentFrame<NumberInputPage>();
 

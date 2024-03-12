@@ -33,7 +33,7 @@ internal class BaseNavigationPage : BasePage
 
         this.WaitUntil(p => p.SamplePicker.Items.Any(), WaitTimeout);
 
-        WebElement item = SamplePicker.Items.FirstOrDefault(i =>
+        var item = SamplePicker.Items.FirstOrDefault(i =>
             i.FindElement(By.XPath($".//*[@ClassName='TextBlock'][@Name='{sampleName}']")) != null);
         item.Click();
 

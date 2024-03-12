@@ -7,7 +7,7 @@ namespace Legerity.Infrastructure.IO
         internal static Task<string?> ReadAsync(string fileName)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            using Stream? stream = assembly.GetManifestResourceStream(fileName);
+            using var stream = assembly.GetManifestResourceStream(fileName);
             if (stream == null)
             {
                 return Task.FromResult(default(string));

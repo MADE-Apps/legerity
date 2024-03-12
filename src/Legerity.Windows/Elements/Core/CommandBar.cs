@@ -78,7 +78,7 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickPrimaryButton(string name)
     {
-        AppBarButton item = PrimaryButtons.FirstOrDefault(
+        var item = PrimaryButtons.FirstOrDefault(
             element => element.Element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
@@ -101,7 +101,7 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickPrimaryButtonByPartialName(string partialName)
     {
-        AppBarButton item = PrimaryButtons.FirstOrDefault(
+        var item = PrimaryButtons.FirstOrDefault(
             element => element.Element.VerifyNameOrAutomationIdContains(partialName));
 
         if (item == null)
@@ -127,7 +127,7 @@ public class CommandBar : WindowsElementWrapper
     {
         OpenSecondaryButtonMenu();
 
-        AppBarButton secondaryButton = SecondaryButtons.FirstOrDefault(
+        var secondaryButton = SecondaryButtons.FirstOrDefault(
             button => button.Element.VerifyNameOrAutomationIdEquals(name));
 
         if (secondaryButton == null)
@@ -153,7 +153,7 @@ public class CommandBar : WindowsElementWrapper
     {
         OpenSecondaryButtonMenu();
 
-        AppBarButton secondaryButton = SecondaryButtons.FirstOrDefault(
+        var secondaryButton = SecondaryButtons.FirstOrDefault(
             button => button.Element.VerifyNameOrAutomationIdContains(partialName));
 
         if (secondaryButton == null)

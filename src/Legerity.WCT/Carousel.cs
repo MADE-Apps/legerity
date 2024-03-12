@@ -71,7 +71,7 @@ public class Carousel : WindowsElementWrapper
     {
         VerifyElementsShown(carouselItemLocator, TimeSpan.FromSeconds(2));
 
-        int index = Items.IndexOf(Items.FirstOrDefault(element =>
+        var index = Items.IndexOf(Items.FirstOrDefault(element =>
             element.VerifyNameOrAutomationIdEquals(name)));
 
         SelectItemAtIndex(index);
@@ -91,7 +91,7 @@ public class Carousel : WindowsElementWrapper
     {
         VerifyElementsShown(carouselItemLocator, TimeSpan.FromSeconds(2));
 
-        int index = Items.IndexOf(Items.FirstOrDefault(element =>
+        var index = Items.IndexOf(Items.FirstOrDefault(element =>
             element.VerifyNameOrAutomationIdContains(partialName)));
 
         SelectItemAtIndex(index);
@@ -126,7 +126,7 @@ public class Carousel : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     private void SelectItemAtIndex(int index)
     {
-        int selectedIndex = SelectedIndex;
+        var selectedIndex = SelectedIndex;
         while (Math.Abs(index - selectedIndex) > double.Epsilon)
         {
             Element.SendKeys(selectedIndex < index ? Keys.ArrowRight : Keys.ArrowLeft);

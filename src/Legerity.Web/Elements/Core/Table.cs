@@ -82,21 +82,21 @@ public class Table : WebElementWrapper
 
         var headers = Headers.ToList();
 
-        int dataRowIdx = IsFirstRowHeaders ? idx + 1 : idx;
-        TableRow dataRow = Rows.ElementAt(dataRowIdx);
+        var dataRowIdx = IsFirstRowHeaders ? idx + 1 : idx;
+        var dataRow = Rows.ElementAt(dataRowIdx);
 
         var rowValues = new Dictionary<string, string>();
 
         if (headers.Any())
         {
-            for (int i = 0; i < headers.Count; i++)
+            for (var i = 0; i < headers.Count; i++)
             {
                 AddRowData(rowValues, headers.ElementAt(i), dataRow, i);
             }
         }
         else
         {
-            for (int i = 0; i < dataRow.Values.Count(); i++)
+            for (var i = 0; i < dataRow.Values.Count(); i++)
             {
                 AddRowData(rowValues, $"Col{i}", dataRow, i);
             }
@@ -114,7 +114,7 @@ public class Table : WebElementWrapper
     public virtual IEnumerable<string> GetColumnDataByHeader(string header)
     {
         var headers = Headers.ToList();
-        int idx = headers.IndexOf(header);
+        var idx = headers.IndexOf(header);
         return GetColumnDataByIndex(idx);
     }
 

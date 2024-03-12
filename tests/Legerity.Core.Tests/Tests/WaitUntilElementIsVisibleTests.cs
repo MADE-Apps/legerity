@@ -27,7 +27,7 @@ internal class WaitUntilElementIsVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
         new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -50,13 +50,13 @@ internal class WaitUntilElementIsVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
-        WebElement element = page.FindElement(By.TagName("form"));
+        var element = page.FindElement(By.TagName("form"));
 
         // Act & Assert
         element.WaitUntil(WaitUntilConditions.ElementIsVisibleInElement<WebElement>(By.TagName("input")),
@@ -76,9 +76,9 @@ internal class WaitUntilElementIsVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
@@ -102,9 +102,9 @@ internal class WaitUntilElementIsVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 

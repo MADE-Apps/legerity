@@ -17,8 +17,8 @@ internal class ListBoxTests : BaseTestClass
     public void ShouldClickItem()
     {
         // Arrange
-        WebDriver app = StartApp();
-        ListBoxPage listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
+        var app = StartApp();
+        var listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
 
         // Act
         listBoxPage.ClickColorItem("Red");
@@ -31,8 +31,8 @@ internal class ListBoxTests : BaseTestClass
     public void ShouldClickItemByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        ListBoxPage listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
+        var app = StartApp();
+        var listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
 
         // Act
         listBoxPage.ClickColorItemByPartialName("Gre");

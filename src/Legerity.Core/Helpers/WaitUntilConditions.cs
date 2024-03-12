@@ -349,7 +349,7 @@ public static class WaitUntilConditions
         {
             try
             {
-                IWebElement frameElement = driver.FindElement(frameLocator);
+                var frameElement = driver.FindElement(frameLocator);
                 return driver.SwitchTo().Frame(frameElement);
             }
             catch (NoSuchFrameException)

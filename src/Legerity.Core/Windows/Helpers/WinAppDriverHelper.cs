@@ -43,7 +43,7 @@ public static class WinAppDriverHelper
             return;
         }
 
-        bool isInstalled = IsInstalled(path);
+        var isInstalled = IsInstalled(path);
         if (!isInstalled)
         {
             throw new WinAppDriverNotFoundException(path);

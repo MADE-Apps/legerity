@@ -37,9 +37,9 @@ internal class TextInputTests : W3SchoolsBaseTestClass
         // Arrange
         const string expected = "James";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
@@ -56,9 +56,9 @@ internal class TextInputTests : W3SchoolsBaseTestClass
         // Arrange
         const string expected = "James";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
@@ -75,9 +75,9 @@ internal class TextInputTests : W3SchoolsBaseTestClass
     public void ShouldClearText()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 

@@ -18,11 +18,11 @@ internal class GridViewTests : BaseTestClass
     public void ShouldGetItems()
     {
         // Arrange
-        WebDriver app = StartApp();
-        GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
+        var app = StartApp();
+        var gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
 
         // Act
-        ReadOnlyCollection<WebElement> items = gridViewPage.BasicGridView.Items;
+        var items = gridViewPage.BasicGridView.Items;
 
         // Assert
         items.Count.ShouldBe(8);
@@ -32,8 +32,8 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
+        var app = StartApp();
+        var gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
         // Act
@@ -47,8 +47,8 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
+        var app = StartApp();
+        var gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
         // Act
@@ -62,8 +62,8 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByIndex()
     {
         // Arrange
-        WebDriver app = StartApp();
-        GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
+        var app = StartApp();
+        var gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const int expected = 2;
 
         // Act

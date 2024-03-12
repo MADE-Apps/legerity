@@ -16,8 +16,8 @@ internal class ComboBoxTests : BaseTestClass
     public void ShouldSelectItemByName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        ComboBoxPage comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
+        var app = StartApp();
+        var comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
 
         // Act
         comboBoxPage.SelectColorByName("Red");
@@ -30,8 +30,8 @@ internal class ComboBoxTests : BaseTestClass
     public void ShouldSelectItemByPartialName()
     {
         // Arrange
-        WebDriver app = StartApp();
-        ComboBoxPage comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
+        var app = StartApp();
+        var comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
 
         // Act
         comboBoxPage.SelectColorByPartialName("Yell");

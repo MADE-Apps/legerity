@@ -73,7 +73,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void CloseBlade(string name)
     {
-        BladeViewItem blade = GetBlade(name);
+        var blade = GetBlade(name);
         blade.Close();
     }
 
@@ -87,7 +87,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void CloseBladeByPartialName(string partialName)
     {
-        BladeViewItem blade = GetBladeByPartialName(partialName);
+        var blade = GetBladeByPartialName(partialName);
         blade.Close();
     }
 }

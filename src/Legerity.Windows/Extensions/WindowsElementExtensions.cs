@@ -52,8 +52,8 @@ public static class WindowsElementExtensions
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public static bool VerifyNameOrAutomationIdEquals(this WebElement element, string compare)
     {
-        string name = element.GetName();
-        string automationId = element.GetAutomationId();
+        var name = element.GetName();
+        var automationId = element.GetAutomationId();
 
         return string.Equals(compare, name, StringComparison.CurrentCultureIgnoreCase) || string.Equals(
             compare,
@@ -74,8 +74,8 @@ public static class WindowsElementExtensions
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public static bool VerifyNameOrAutomationIdContains(this WebElement element, string partialCompare)
     {
-        string name = element.GetName();
-        string automationId = element.GetAutomationId();
+        var name = element.GetName();
+        var automationId = element.GetAutomationId();
 
         return name.Contains(partialCompare, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase) ||
                automationId.Contains(partialCompare, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase);

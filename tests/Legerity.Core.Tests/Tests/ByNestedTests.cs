@@ -27,14 +27,14 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        WebElement element = page.FindElement(new ByNested(By.TagName("form"), By.TagName("input")));
+        var element = page.FindElement(new ByNested(By.TagName("form"), By.TagName("input")));
 
         // Assert
         element.ShouldNotBeNull();
@@ -54,14 +54,14 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<WebElement> elements =
+        var elements =
             page.FindElements(new ByNested(By.TagName("form"), WebByExtras.InputType("radio")));
 
         // Assert
@@ -81,9 +81,9 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
@@ -105,14 +105,14 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        WebDriver app = StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<WebElement> elements =
+        var elements =
             page.FindElements(new ByNested(By.TagName("form"), By.TagName("div")));
 
         // Assert

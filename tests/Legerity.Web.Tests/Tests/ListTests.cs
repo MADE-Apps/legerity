@@ -36,14 +36,14 @@ internal class ListTests : W3SchoolsBaseTestClass
     public void ShouldContainItems()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        ListPage listPage = new ListPage(app)
+        var listPage = new ListPage(app)
             .AcceptCookies<ListPage>()
             .SwitchToContentFrame<ListPage>();
 
         // Act 
-        IEnumerable<string> items = listPage.OrderedList.Items.Select(i => i.Text);
+        var items = listPage.OrderedList.Items.Select(i => i.Text);
 
         // Assert
         items.ShouldContain("Coffee");

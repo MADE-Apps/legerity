@@ -75,8 +75,8 @@ public class CalendarDatePicker : WindowsElementWrapper
 
     private DateTime? GetSelectedDate()
     {
-        string value = Value;
+        var value = Value;
         return string.IsNullOrEmpty(value) ? default :
-            DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
+            DateTime.TryParse(value, out var date) ? date : default(DateTime?);
     }
 }

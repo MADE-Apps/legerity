@@ -16,8 +16,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldCheckOn()
     {
         // Arrange
-        WebDriver app = StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
 
         // Act
         checkBoxPage.CheckOnTwoStateCheckBox();
@@ -30,8 +30,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldKeepCheckedIfCheckOn()
     {
         // Arrange
-        WebDriver app = StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
 
         // Act
         checkBoxPage.CheckOnTwoStateCheckBox();
@@ -44,8 +44,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldCheckOff()
     {
         // Arrange
-        WebDriver app = StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
 
         // Act
         checkBoxPage.CheckOffTwoStateCheckBox();
@@ -58,8 +58,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldKeepCheckedOffIfCheckOff()
     {
         // Arrange
-        WebDriver app = StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOffTwoStateCheckBox();
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOffTwoStateCheckBox();
 
         // Act
         checkBoxPage.CheckOffTwoStateCheckBox();
@@ -72,8 +72,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldSetIndeterminateStateIfSupported()
     {
         // Arrange
-        WebDriver app = StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
 
         // Act
         checkBoxPage.CheckIndeterminateThreeStateCheckBox();

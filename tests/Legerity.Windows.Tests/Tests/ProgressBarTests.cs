@@ -16,8 +16,8 @@ internal class ProgressBarTests : BaseTestClass
     public void ShouldGetDeterminateValue()
     {
         // Arrange
-        WebDriver app = StartApp();
-        ProgressBarPage progressBarPage = new HomePage(app).NavigateTo<ProgressBarPage>("ProgressBar");
+        var app = StartApp();
+        var progressBarPage = new HomePage(app).NavigateTo<ProgressBarPage>("ProgressBar");
 
         // Act
         progressBarPage.SetDeterminateProgressBarValue(50);
@@ -31,8 +31,8 @@ internal class ProgressBarTests : BaseTestClass
     public void ShouldGetIndeterminateValue()
     {
         // Arrange
-        WebDriver app = StartApp();
-        ProgressBarPage progressBarPage = new HomePage(app).NavigateTo<ProgressBarPage>("ProgressBar");
+        var app = StartApp();
+        var progressBarPage = new HomePage(app).NavigateTo<ProgressBarPage>("ProgressBar");
 
         // Act & Assert
         progressBarPage.IndeterminateProgressBar.IsIndeterminate.ShouldBeTrue();

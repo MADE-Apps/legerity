@@ -36,11 +36,11 @@ internal class OptionTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByValue()
     {
         // Arrange
-        string expected = "audi";
+        var expected = "audi";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        OptionPage optionPage = new OptionPage(app)
+        var optionPage = new OptionPage(app)
             .AcceptCookies<OptionPage>()
             .SwitchToContentFrame<OptionPage>();
 
@@ -55,11 +55,11 @@ internal class OptionTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByDisplayValue()
     {
         // Arrange
-        string expected = "Audi";
+        var expected = "Audi";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        OptionPage optionPage = new OptionPage(app)
+        var optionPage = new OptionPage(app)
             .AcceptCookies<OptionPage>()
             .SwitchToContentFrame<OptionPage>();
 

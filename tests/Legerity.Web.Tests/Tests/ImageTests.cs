@@ -37,14 +37,14 @@ internal class ImageTests : W3SchoolsBaseTestClass
         // Arrange
         const string expectedImageSource = "img_girl.jpg";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        ImagePage imagePage = new ImagePage(app)
+        var imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
             .SwitchToContentFrame<ImagePage>();
 
         // Act
-        string imageSource = imagePage.Image.Source;
+        var imageSource = imagePage.Image.Source;
 
         // Assert
         imageSource.ShouldContain(expectedImageSource);
@@ -56,14 +56,14 @@ internal class ImageTests : W3SchoolsBaseTestClass
         // Arrange
         const string expectedAltText = "Girl in a jacket";
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        ImagePage imagePage = new ImagePage(app)
+        var imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
             .SwitchToContentFrame<ImagePage>();
 
         // Act
-        string altText = imagePage.Image.AltText;
+        var altText = imagePage.Image.AltText;
 
         // Assert
         altText.ShouldBe(expectedAltText);
@@ -76,15 +76,15 @@ internal class ImageTests : W3SchoolsBaseTestClass
         const double expectedHeight = 600;
         const double expectedWidth = 500;
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        ImagePage imagePage = new ImagePage(app)
+        var imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
             .SwitchToContentFrame<ImagePage>();
 
         // Act
-        double height = imagePage.Image.Height;
-        double width = imagePage.Image.Width;
+        var height = imagePage.Image.Height;
+        var width = imagePage.Image.Width;
 
         // Assert
         height.ShouldBe(expectedHeight);

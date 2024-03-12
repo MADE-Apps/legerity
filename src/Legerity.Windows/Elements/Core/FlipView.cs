@@ -75,7 +75,7 @@ public class FlipView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectItem(string name)
     {
-        int expectedItemIdx = Items.IndexOf(Items.FirstOrDefault(x =>
+        var expectedItemIdx = Items.IndexOf(Items.FirstOrDefault(x =>
             x.Text.Contains(name, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase)));
         SelectItemByIndex(expectedItemIdx);
     }
@@ -89,11 +89,11 @@ public class FlipView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectItemByIndex(int index)
     {
-        int currentItemIdx = SelectedIndex;
-        int diff = index - currentItemIdx;
-        int shifts = Math.Abs(diff);
+        var currentItemIdx = SelectedIndex;
+        var diff = index - currentItemIdx;
+        var shifts = Math.Abs(diff);
 
-        for (int i = 0; i < shifts; i++)
+        for (var i = 0; i < shifts; i++)
         {
             if (diff > 0)
             {

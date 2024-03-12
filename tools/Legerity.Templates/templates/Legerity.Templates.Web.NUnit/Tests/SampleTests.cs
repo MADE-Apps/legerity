@@ -15,7 +15,7 @@ public class SampleTests : BaseTestClass
     [Test]
     public void ShouldLoadPage()
     {
-        WebDriver app = this.StartApp();
+        var app = this.StartApp();
         new SamplePage(app).VerifyPageLoaded();
     }
 }

@@ -18,7 +18,7 @@ public class Program
         await Parser.Default.ParseArguments<Options>(args)
             .WithNotParsed(errors =>
             {
-                foreach (Error error in errors)
+                foreach (var error in errors)
                 {
                     if (error.Tag == ErrorType.MissingRequiredOptionError)
                     {

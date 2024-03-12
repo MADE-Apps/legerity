@@ -97,8 +97,8 @@ public class RadNumericBox : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetValue(double value)
     {
-        double min = Minimum;
-        double max = Maximum;
+        var min = Minimum;
+        var max = Maximum;
 
         if (value < Minimum)
         {

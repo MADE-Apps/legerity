@@ -16,7 +16,7 @@ internal class InfoBarTests : BaseTestClass
     public void ShouldGetTitle()
     {
         // Arrange
-        InfoBarPage infoBarPage = StartAndNavigateToPage();
+        var infoBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         infoBarPage.CloseableInfoBar.Title.ShouldBe("Title");
@@ -26,7 +26,7 @@ internal class InfoBarTests : BaseTestClass
     public void ShouldGetMessage()
     {
         // Arrange
-        InfoBarPage infoBarPage = StartAndNavigateToPage();
+        var infoBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         infoBarPage.CloseableInfoBar.Message.ShouldBe("Essential app message for your users to be informed of, acknowledge, or take action on.");
@@ -36,7 +36,7 @@ internal class InfoBarTests : BaseTestClass
     public void ShouldGetIsOpen()
     {
         // Arrange
-        InfoBarPage infoBarPage = StartAndNavigateToPage();
+        var infoBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         infoBarPage.CloseableInfoBar.IsOpen.ShouldBeTrue();
@@ -46,7 +46,7 @@ internal class InfoBarTests : BaseTestClass
     public void ShouldClose()
     {
         // Arrange
-        InfoBarPage infoBarPage = StartAndNavigateToPage();
+        var infoBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         infoBarPage.CloseClosableInfoBar();
@@ -54,7 +54,7 @@ internal class InfoBarTests : BaseTestClass
 
     private InfoBarPage StartAndNavigateToPage()
     {
-        WebDriver app = StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<InfoBarPage>("InfoBar");
     }
 }

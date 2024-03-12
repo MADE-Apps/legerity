@@ -36,14 +36,14 @@ internal class MultipleSelectTests : W3SchoolsBaseTestClass
     public void ShouldGetIsMultipleTrue()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 
         // Act
-        bool isMultiple = selectPage.CarsSelect.IsMultiple;
+        var isMultiple = selectPage.CarsSelect.IsMultiple;
 
         // Act & Assert
         isMultiple.ShouldBeTrue();
@@ -53,9 +53,9 @@ internal class MultipleSelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectMultipleOptions()
     {
         // Arrange
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 

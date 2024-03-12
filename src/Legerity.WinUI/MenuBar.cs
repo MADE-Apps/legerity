@@ -58,7 +58,7 @@ public class MenuBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuBarItem ClickOption(string name)
     {
-        MenuBarItem item = MenuItems.FirstOrDefault(
+        var item = MenuItems.FirstOrDefault(
             element => element.GetName()
                 .Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
@@ -86,7 +86,7 @@ public class MenuBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuBarItem ClickOptionByPartialName(string name)
     {
-        MenuBarItem item = MenuItems.FirstOrDefault(
+        var item = MenuItems.FirstOrDefault(
             element => element.GetName()
                 .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 

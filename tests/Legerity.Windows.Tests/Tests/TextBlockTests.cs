@@ -16,8 +16,8 @@ internal class TextBlockTests : BaseTestClass
     public void ShouldGetText()
     {
         // Arrange
-        WebDriver app = StartApp();
-        TextBlockPage textBlockPage = new HomePage(app).NavigateTo<TextBlockPage>("TextBlock");
+        var app = StartApp();
+        var textBlockPage = new HomePage(app).NavigateTo<TextBlockPage>("TextBlock");
 
         // Act & Assert
         textBlockPage.TextBlock.Text.ShouldBe("I am a TextBlock.");

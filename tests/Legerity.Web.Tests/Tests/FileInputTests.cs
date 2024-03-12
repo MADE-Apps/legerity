@@ -36,11 +36,11 @@ internal class FileInputTests : W3SchoolsBaseTestClass
     {
         // Arrange
         const string fileName = "chromedriver.exe";
-        string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
+        var filePath = Path.Combine(Environment.CurrentDirectory, fileName);
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        FileInputPage fileInputPage = new FileInputPage(app)
+        var fileInputPage = new FileInputPage(app)
             .AcceptCookies<FileInputPage>()
             .SwitchToContentFrame<FileInputPage>();
 
@@ -56,11 +56,11 @@ internal class FileInputTests : W3SchoolsBaseTestClass
     {
         // Arrange
         const string fileName = "chromedriver.exe";
-        string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
+        var filePath = Path.Combine(Environment.CurrentDirectory, fileName);
 
-        WebDriver app = StartApp();
+        var app = StartApp();
 
-        FileInputPage fileInputPage = new FileInputPage(app)
+        var fileInputPage = new FileInputPage(app)
             .AcceptCookies<FileInputPage>()
             .SwitchToContentFrame<FileInputPage>()
             .SetFileInputFilePath(filePath);

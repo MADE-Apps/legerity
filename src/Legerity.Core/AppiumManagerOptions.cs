@@ -37,7 +37,7 @@ public abstract class AppiumManagerOptions : AppManagerOptions
             return;
         }
 
-        foreach ((string capabilityName, object capabilityValue) in AdditionalOptions)
+        foreach ((var capabilityName, var capabilityValue) in AdditionalOptions)
         {
             AppiumOptions.AddAdditionalAppiumOption(capabilityName, capabilityValue);
         }

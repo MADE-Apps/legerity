@@ -19,10 +19,10 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     public void ShouldFindWindowsDriverElementByAutomationId()
     {
         // Arrange
-        WindowsDriver app = this.StartWindowsApp();
+        var app = this.StartWindowsApp();
 
         // Act
-        WebElement element = app.FindElementByAutomationId("headerImage");
+        var element = app.FindElementByAutomationId("headerImage");
 
         // Assert
         element.ShouldNotBeNull();
@@ -32,11 +32,11 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     public void ShouldFindNestedWrapperElementByAutomationId()
     {
         // Arrange
-        WindowsDriver app = this.StartWindowsApp();
+        var app = this.StartWindowsApp();
         WebElement itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
 
         // Act
-        WebElement element = itemGridView.FindElementByAutomationId("headerImage");
+        var element = itemGridView.FindElementByAutomationId("headerImage");
 
         // Assert
         element.ShouldNotBeNull();
@@ -46,11 +46,11 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     public void ShouldTryWaitUntilWrapperElementConditionIsMet()
     {
         // Arrange
-        WindowsDriver app = this.StartWindowsApp();
+        var app = this.StartWindowsApp();
         GridView itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
 
         // Act
-        bool success = itemGridView.TryWaitUntil(gridView => gridView.IsVisible);
+        var success = itemGridView.TryWaitUntil(gridView => gridView.IsVisible);
 
         // Assert
         success.ShouldBeTrue();
