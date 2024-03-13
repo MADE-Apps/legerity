@@ -35,7 +35,7 @@ public class Spinner : AndroidElementWrapper
     {
         return new Spinner(element);
     }
-    
+
     /// <summary>
     /// Selects an item in the combo-box with the specified item name.
     /// </summary>
@@ -53,7 +53,7 @@ public class Spinner : AndroidElementWrapper
         var locator =
             new ByAndroidUIAutomator(
                 $"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\"{name}\"));");
-        WebElement item = Driver.FindElement(locator);
+        var item = Driver.FindElement(locator);
 
         item.Click();
     }
@@ -73,7 +73,7 @@ public class Spinner : AndroidElementWrapper
         var locator =
             new ByAndroidUIAutomator(
                 $"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().textContains(\"{partialName}\"));");
-        WebElement item = Driver.FindElement(locator);
+        var item = Driver.FindElement(locator);
 
         item.Click();
     }

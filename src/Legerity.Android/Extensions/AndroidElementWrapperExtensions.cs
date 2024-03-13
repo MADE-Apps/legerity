@@ -2,7 +2,6 @@ namespace Legerity.Android.Extensions;
 
 using System;
 using Elements;
-using OpenQA.Selenium.Support.UI;
 
 /// <summary>
 /// Defines a collection of extensions for <see cref="AndroidElementWrapper"/> objects.

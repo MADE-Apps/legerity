@@ -10,7 +10,7 @@ using Extensions;
 /// </summary>
 public class DatePicker : AndroidElementWrapper
 {
-    private readonly Dictionary<string, string> months = new()
+    private readonly Dictionary<string, string> _months = new()
     {
         { "Jan", "01" },
         { "Feb", "02" },
@@ -65,13 +65,15 @@ public class DatePicker : AndroidElementWrapper
     /// Gets the element associated with the next month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button NextMonthButton => Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Next month\")");
+    public virtual Button NextMonthButton =>
+        Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Next month\")");
 
     /// <summary>
     /// Gets the element associated with the previous month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button PreviousMonthButton => Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Previous month\")");
+    public virtual Button PreviousMonthButton =>
+        Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Previous month\")");
 
     /// <summary>
     /// Gets the selected date/time value.
@@ -143,7 +145,7 @@ public class DatePicker : AndroidElementWrapper
         var currentDateSplit = currentDate.Split(',').ToList();
         var currentMonthPart = currentDateSplit.LastOrDefault();
 
-        months.TryGetValue(
+        _months.TryGetValue(
             string.Join(string.Empty, (currentMonthPart ?? string.Empty).Where(char.IsLetter)).Trim(),
             out var month);
 

@@ -1,8 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using System.Collections.ObjectModel;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 

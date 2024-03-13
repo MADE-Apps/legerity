@@ -1,9 +1,7 @@
 namespace Legerity.Android.Elements;
 
 using System;
-
 using Exceptions;
-using OpenQA.Selenium.Support.UI;
 
 /// <summary>
 /// Defines an element wrapper for an Android <see cref="WebElement"/>.

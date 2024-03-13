@@ -2,7 +2,6 @@ namespace Legerity.Windows;
 
 using System.Collections.Generic;
 using Helpers;
-using OpenQA.Selenium.Appium;
 
 /// <summary>
 /// Defines a specific <see cref="AppiumManagerOptions"/> for a Windows application.
@@ -102,12 +101,14 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
             options.Add($"App ID [{AppId}]");
         }
 
-        if (AdditionalOptions != null)
+        if (AdditionalOptions == null)
         {
-            foreach ((var name, var value) in AdditionalOptions)
-            {
-                options.Add($"{name} [{value}]");
-            }
+            return string.Join(", ", options);
+        }
+
+        foreach (var (name, value) in AdditionalOptions)
+        {
+            options.Add($"{name} [{value}]");
         }
 
         return string.Join(", ", options);

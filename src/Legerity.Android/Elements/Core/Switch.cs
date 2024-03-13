@@ -37,7 +37,7 @@ public class Switch : AndroidElementWrapper
     {
         return new Switch(element);
     }
-    
+
     /// <summary>
     /// Toggles the switch on.
     /// </summary>

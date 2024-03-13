@@ -11,11 +11,11 @@ using Extensions;
 /// </summary>
 public class CommandBar : WindowsElementWrapper
 {
-    private readonly By moreButtonLocator = WindowsByExtras.AutomationId("MoreButton");
+    private readonly By _moreButtonLocator = WindowsByExtras.AutomationId("MoreButton");
 
-    private readonly By overflowPopupLocator = WindowsByExtras.AutomationId("OverflowPopup");
+    private readonly By _overflowPopupLocator = WindowsByExtras.AutomationId("OverflowPopup");
 
-    private readonly By appBarButtonLocator = By.ClassName(nameof(AppBarButton));
+    private readonly By _appBarButtonLocator = By.ClassName(nameof(AppBarButton));
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandBar"/> class.
@@ -32,14 +32,14 @@ public class CommandBar : WindowsElementWrapper
     /// Gets the collection of primary buttons.
     /// </summary>
     public virtual IEnumerable<AppBarButton> PrimaryButtons =>
-        Element.FindElements(appBarButtonLocator)
+        Element.FindElements(_appBarButtonLocator)
             .Select<IWebElement, AppBarButton>(element => element as WebElement);
 
     /// <summary>
     /// Gets the <see cref="AppBarButton"/> for opening the secondary button menu.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual AppBarButton SecondaryMenuButton => FindElement(moreButtonLocator);
+    public virtual AppBarButton SecondaryMenuButton => FindElement(_moreButtonLocator);
 
     /// <summary>
     /// Gets the collection of secondary buttons.
@@ -49,7 +49,7 @@ public class CommandBar : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual IEnumerable<AppBarButton> SecondaryButtons =>
-        Driver.FindElement(overflowPopupLocator).FindElements(appBarButtonLocator)
+        Driver.FindElement(_overflowPopupLocator).FindElements(_appBarButtonLocator)
             .Select<WebElement, AppBarButton>(element => element);
 
     /// <summary>
@@ -174,8 +174,8 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void OpenSecondaryButtonMenu()
     {
-        VerifyElementShown(moreButtonLocator, TimeSpan.FromSeconds(2));
+        VerifyElementShown(_moreButtonLocator, TimeSpan.FromSeconds(2));
         SecondaryMenuButton.Click();
-        VerifyDriverElementShown(overflowPopupLocator, TimeSpan.FromSeconds(2));
+        VerifyDriverElementShown(_overflowPopupLocator, TimeSpan.FromSeconds(2));
     }
 }

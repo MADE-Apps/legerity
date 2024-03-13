@@ -10,7 +10,7 @@ using Extensions;
 /// </summary>
 public class CalendarDatePicker : WindowsElementWrapper
 {
-    private readonly By calendarPopupLocator = By.XPath(".//*[@ClassName='Popup'][@Name='Popup']");
+    private readonly By _calendarPopupLocator = By.XPath(".//*[@ClassName='Popup'][@Name='Popup']");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CalendarDatePicker"/> class.
@@ -27,7 +27,7 @@ public class CalendarDatePicker : WindowsElementWrapper
     /// Gets the element associated with the calendar flyout.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual CalendarView CalendarViewFlyout => Driver.FindElement(calendarPopupLocator)
+    public virtual CalendarView CalendarViewFlyout => Driver.FindElement(_calendarPopupLocator)
         .FindElement(WindowsByExtras.AutomationId("CalendarView"));
 
     /// <summary>
@@ -68,7 +68,7 @@ public class CalendarDatePicker : WindowsElementWrapper
     {
         Click();
 
-        VerifyDriverElementShown(calendarPopupLocator, TimeSpan.FromSeconds(2));
+        VerifyDriverElementShown(_calendarPopupLocator, TimeSpan.FromSeconds(2));
 
         CalendarViewFlyout.SetDate(date);
     }

@@ -8,7 +8,7 @@ using System;
 /// <typeparam name="TElement">
 /// The type of <see cref="IWebElement"/>.
 /// </typeparam>
-public interface IElementWrapper<TElement>
+public interface IElementWrapper<out TElement>
     where TElement : IWebElement
 {
     /// <summary>Gets the original <typeparamref name="TElement"/> reference object.</summary>

@@ -11,7 +11,7 @@ using Extensions;
 /// </summary>
 public class ListBox : WindowsElementWrapper
 {
-    private readonly By listBoxItemLocator = By.ClassName("ListBoxItem");
+    private readonly By _listBoxItemLocator = By.ClassName("ListBoxItem");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ListBox"/> class.
@@ -27,7 +27,7 @@ public class ListBox : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the list box.
     /// </summary>
-    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(listBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(_listBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
@@ -62,7 +62,7 @@ public class ListBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItem(string name)
     {
-        VerifyElementsShown(listBoxItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_listBoxItemLocator, TimeSpan.FromSeconds(2));
         var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
@@ -84,7 +84,7 @@ public class ListBox : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void ClickItemByPartialName(string partialName)
     {
-        VerifyElementsShown(listBoxItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_listBoxItemLocator, TimeSpan.FromSeconds(2));
         var item =
             Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
 

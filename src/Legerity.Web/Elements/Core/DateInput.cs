@@ -2,7 +2,6 @@ namespace Legerity.Web.Elements.Core;
 
 using System;
 using Extensions;
-using OpenQA.Selenium.Support.Extensions;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Input date control.

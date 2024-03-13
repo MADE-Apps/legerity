@@ -15,7 +15,7 @@ using System.Linq;
 /// </example>
 public class ByNested : By
 {
-    private readonly By[] locators;
+    private readonly By[] _locators;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ByNested"/> class.
@@ -23,7 +23,7 @@ public class ByNested : By
     /// <param name="locators">The locators in nesting sequence to find references of.</param>
     public ByNested(params By[] locators)
     {
-        this.locators = locators;
+        _locators = locators;
     }
 
     /// <summary>Finds the first element matching the criteria.</summary>
@@ -47,13 +47,13 @@ public class ByNested : By
     /// matching the current criteria, or an empty list if nothing matches.</returns>
     public override ReadOnlyCollection<IWebElement> FindElements(ISearchContext context)
     {
-        if (locators.Length == 0)
+        if (_locators.Length == 0)
         {
             return new List<IWebElement>().AsReadOnly();
         }
 
         IEnumerable<IWebElement> elements = null;
-        foreach (var locator in locators)
+        foreach (var locator in _locators)
         {
             var nestedElements = new List<IWebElement>();
 

@@ -1,18 +1,17 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class RangeInputPage : W3SchoolsBasePage
 {
-    private readonly By volumeRangeInputLocator = By.Id("vol");
+    private readonly By _volumeRangeInputLocator = By.Id("vol");
 
     public RangeInputPage(WebDriver app) : base(app)
     {
     }
 
-    public RangeInput VolumeRangeInput => FindElement(volumeRangeInputLocator);
+    public RangeInput VolumeRangeInput => FindElement(_volumeRangeInputLocator);
 
     public RangeInputPage SetVolume(int volume)
     {

@@ -8,7 +8,7 @@ using Legerity.Exceptions;
 /// </summary>
 public class AutoSuggestBox : WindowsElementWrapper
 {
-    private readonly By suggestionsPopupLocator = WindowsByExtras.AutomationId("SuggestionsPopup");
+    private readonly By _suggestionsPopupLocator = WindowsByExtras.AutomationId("SuggestionsPopup");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AutoSuggestBox"/> class.
@@ -25,7 +25,7 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// Gets the element associated with the suggestions popup.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual WebElement SuggestionsPopup => FindElement(suggestionsPopupLocator);
+    public virtual WebElement SuggestionsPopup => FindElement(_suggestionsPopupLocator);
 
     /// <summary>
     /// Gets the element associated with the suggestion list when the <see cref="SuggestionsPopup"/> is shown.
@@ -90,7 +90,7 @@ public class AutoSuggestBox : WindowsElementWrapper
     {
         SetText(value);
 
-        VerifyElementShown(suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
+        VerifyElementShown(_suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
 
         SuggestionList.ClickItem(suggestion);
     }
@@ -111,7 +111,7 @@ public class AutoSuggestBox : WindowsElementWrapper
     {
         SetText(value);
 
-        VerifyElementShown(suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
+        VerifyElementShown(_suggestionsPopupLocator, TimeSpan.FromMilliseconds(popupWaitTimeout));
 
         SuggestionList.ClickItemByPartialName(partialSuggestion);
     }

@@ -12,7 +12,7 @@ using Extensions;
 /// </summary>
 public class Carousel : WindowsElementWrapper
 {
-    private readonly By carouselItemLocator = By.ClassName("CarouselItem");
+    private readonly By _carouselItemLocator = By.ClassName("CarouselItem");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Carousel"/> class.
@@ -29,7 +29,7 @@ public class Carousel : WindowsElementWrapper
     /// Gets the collection of items associated with the carousel.
     /// </summary>
     public virtual ReadOnlyCollection<WebElement> Items =>
-        Element.FindElements(carouselItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        Element.FindElements(_carouselItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
@@ -69,7 +69,7 @@ public class Carousel : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectItem(string name)
     {
-        VerifyElementsShown(carouselItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_carouselItemLocator, TimeSpan.FromSeconds(2));
 
         var index = Items.IndexOf(Items.FirstOrDefault(element =>
             element.VerifyNameOrAutomationIdEquals(name)));
@@ -89,7 +89,7 @@ public class Carousel : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectItemByPartialName(string partialName)
     {
-        VerifyElementsShown(carouselItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_carouselItemLocator, TimeSpan.FromSeconds(2));
 
         var index = Items.IndexOf(Items.FirstOrDefault(element =>
             element.VerifyNameOrAutomationIdContains(partialName)));
@@ -110,7 +110,7 @@ public class Carousel : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectItem(int index)
     {
-        VerifyElementsShown(carouselItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_carouselItemLocator, TimeSpan.FromSeconds(2));
 
         if (index > Items.Count - 1)
         {

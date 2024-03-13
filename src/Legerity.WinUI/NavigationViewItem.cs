@@ -11,11 +11,11 @@ using Legerity.Extensions;
 /// </summary>
 public class NavigationViewItem : WindowsElementWrapper
 {
-    private readonly By navigationViewItemLocator = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+    private readonly By _navigationViewItemLocator = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
 
-    private readonly WeakReference parentNavigationViewReference;
+    private readonly WeakReference _parentNavigationViewReference;
 
-    private readonly WeakReference parentItemReference;
+    private readonly WeakReference _parentItemReference;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="NavigationViewItem"/> class.
@@ -76,25 +76,25 @@ public class NavigationViewItem : WindowsElementWrapper
     {
         if (parentNavigationView != null)
         {
-            parentNavigationViewReference = new WeakReference(parentNavigationView);
+            _parentNavigationViewReference = new WeakReference(parentNavigationView);
         }
 
         if (parentItem != null)
         {
-            parentItemReference = new WeakReference(parentItem);
+            _parentItemReference = new WeakReference(parentItem);
         }
     }
 
     /// <summary>Gets the original parent <see cref="NavigationView"/> reference object.</summary>
     public NavigationView ParentNavigationView =>
-        parentNavigationViewReference is { IsAlive: true }
-            ? parentNavigationViewReference.Target as NavigationView
+        _parentNavigationViewReference is { IsAlive: true }
+            ? _parentNavigationViewReference.Target as NavigationView
             : null;
 
     /// <summary>Gets the original parent <see cref="NavigationViewItem"/> reference object.</summary>
     public NavigationViewItem ParentItem =>
-        parentItemReference is { IsAlive: true }
-            ? parentItemReference.Target as NavigationViewItem
+        _parentItemReference is { IsAlive: true }
+            ? _parentItemReference.Target as NavigationViewItem
             : null;
 
     /// <summary>
@@ -178,12 +178,12 @@ public class NavigationViewItem : WindowsElementWrapper
     {
         if (ParentNavigationView == null || ParentNavigationView.IsPaneOpen)
         {
-            return Element.FindElements(navigationViewItemLocator).Select(
+            return Element.FindElements(_navigationViewItemLocator).Select(
                 element => new NavigationViewItem(ParentNavigationView, this, element as WebElement));
         }
 
         return Driver.FindElement(WindowsByExtras.AutomationId("ChildrenFlyout"))
-            .FindElements(navigationViewItemLocator).Select(
+            .FindElements(_navigationViewItemLocator).Select(
                 element => new NavigationViewItem(ParentNavigationView, this, element));
     }
 }

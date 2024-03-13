@@ -1,7 +1,6 @@
 namespace Legerity.WinUI.Tests.Pages;
 
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 internal class HomePage : BaseNavigationPage
 {

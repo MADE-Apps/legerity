@@ -1,7 +1,6 @@
-namespace Legerity.WCT.Tests.Pages;
-
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.WCT.Tests.Pages;
 
 internal class HomePage : BaseNavigationPage
 {

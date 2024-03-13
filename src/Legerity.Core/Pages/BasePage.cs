@@ -2,13 +2,8 @@ namespace Legerity.Pages;
 
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Exceptions;
 using Extensions;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Support.UI;
 
 /// <summary>
 /// Defines a base page for creating tests following the page object pattern.

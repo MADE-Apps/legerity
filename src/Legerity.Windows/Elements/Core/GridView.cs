@@ -11,7 +11,7 @@ using Extensions;
 /// </summary>
 public class GridView : WindowsElementWrapper
 {
-    private readonly By gridViewItemLocator = By.ClassName("GridViewItem");
+    private readonly By _gridViewItemLocator = By.ClassName("GridViewItem");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GridView"/> class.
@@ -28,7 +28,7 @@ public class GridView : WindowsElementWrapper
     /// Gets the collection of items associated with the grid view.
     /// </summary>
     public virtual ReadOnlyCollection<WebElement> Items =>
-        Element.FindElements(gridViewItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        Element.FindElements(_gridViewItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
@@ -67,7 +67,7 @@ public class GridView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void ClickItem(string name)
     {
-        VerifyElementsShown(gridViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_gridViewItemLocator, TimeSpan.FromSeconds(2));
 
         var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
@@ -92,7 +92,7 @@ public class GridView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItemByPartialName(string partialName)
     {
-        VerifyElementsShown(gridViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_gridViewItemLocator, TimeSpan.FromSeconds(2));
 
         var item =
             Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
@@ -118,7 +118,7 @@ public class GridView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItemByIndex(int index)
     {
-        VerifyElementsShown(gridViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_gridViewItemLocator, TimeSpan.FromSeconds(2));
 
         var item = Items[index];
 

@@ -3,7 +3,6 @@ namespace Legerity.Windows.Tests.Pages;
 using System;
 using Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 internal class TimePickerPage : BaseNavigationPage
 {

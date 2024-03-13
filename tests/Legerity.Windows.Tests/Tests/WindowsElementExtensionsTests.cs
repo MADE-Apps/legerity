@@ -2,9 +2,6 @@ namespace Legerity.Windows.Tests.Tests;
 
 using Elements.Core;
 using Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
@@ -33,7 +30,7 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     {
         // Arrange
         var app = this.StartWindowsApp();
-        WebElement itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
+        var itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
 
         // Act
         var element = itemGridView.FindElementByAutomationId("headerImage");

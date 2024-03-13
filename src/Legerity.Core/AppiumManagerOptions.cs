@@ -1,7 +1,5 @@
 namespace Legerity;
 
-using OpenQA.Selenium.Appium;
-
 /// <summary>
 /// Defines a base model that represents Appium specific configuration options for the <see cref="AppManager"/>.
 /// </summary>
@@ -37,7 +35,7 @@ public abstract class AppiumManagerOptions : AppManagerOptions
             return;
         }
 
-        foreach ((var capabilityName, var capabilityValue) in AdditionalOptions)
+        foreach (var (capabilityName, capabilityValue) in AdditionalOptions)
         {
             AppiumOptions.AddAdditionalAppiumOption(capabilityName, capabilityValue);
         }

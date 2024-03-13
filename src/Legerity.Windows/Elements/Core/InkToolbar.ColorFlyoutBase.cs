@@ -16,7 +16,7 @@ public partial class InkToolbar
     /// </summary>
     public abstract class InkToolbarColorFlyoutBase : WindowsElementWrapper
     {
-        private readonly By penColorPaletteLocator = WindowsByExtras.AutomationId("PenColorPalette");
+        private readonly By _penColorPaletteLocator = WindowsByExtras.AutomationId("PenColorPalette");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InkToolbarColorFlyoutBase"/> class.
@@ -33,7 +33,7 @@ public partial class InkToolbar
         /// Gets the element associated with the color grid.
         /// </summary>
         /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-        public virtual GridView ColorGridView => Driver.FindElement(penColorPaletteLocator);
+        public virtual GridView ColorGridView => Driver.FindElement(_penColorPaletteLocator);
 
         /// <summary>
         /// Gets the element associated with the size of the ink.
@@ -88,7 +88,7 @@ public partial class InkToolbar
         /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
         private WebElement GetSelectedColor()
         {
-            VerifyElementShown(penColorPaletteLocator, TimeSpan.FromSeconds(2));
+            VerifyElementShown(_penColorPaletteLocator, TimeSpan.FromSeconds(2));
 
             return ColorGridView.Items.FirstOrDefault(i => i.IsSelected());
         }

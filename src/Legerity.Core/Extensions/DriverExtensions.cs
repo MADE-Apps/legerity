@@ -3,7 +3,6 @@ namespace Legerity.Extensions;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using OpenQA.Selenium.Support.UI;
 
 /// <summary>
 /// Defines a collection of extensions for a driver.

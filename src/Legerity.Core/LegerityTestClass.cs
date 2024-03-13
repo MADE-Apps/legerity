@@ -5,9 +5,6 @@ using System.Collections.Generic;
 using Android;
 using Exceptions;
 using IOS;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Appium.Windows;
 using Windows;
 
 /// <summary>

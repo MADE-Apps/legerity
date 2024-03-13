@@ -4,14 +4,13 @@ using System;
 using System.Collections.ObjectModel;
 using Exceptions;
 using Legerity.Extensions;
-using OpenQA.Selenium.Support.UI;
 
 /// <summary>
 /// Defines an element wrapper for a <see cref="WebElement"/>.
 /// </summary>
 public class WebElementWrapper : IElementWrapper<WebElement>
 {
-    private readonly WeakReference elementReference;
+    private readonly WeakReference _elementReference;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="WebElementWrapper"/> class.
@@ -32,13 +31,13 @@ public class WebElementWrapper : IElementWrapper<WebElement>
     /// </param>
     public WebElementWrapper(WebElement element)
     {
-        elementReference = new WeakReference(element);
+        _elementReference = new WeakReference(element);
     }
 
     /// <summary>Gets the original <see cref="WebElement"/> reference object.</summary>
     public WebElement Element =>
-        elementReference is { IsAlive: true }
-            ? elementReference.Target as WebElement
+        _elementReference is { IsAlive: true }
+            ? _elementReference.Target as WebElement
             : null;
 
     /// <summary>

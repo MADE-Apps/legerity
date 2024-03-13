@@ -1,17 +1,16 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
 using System.Linq;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class ListPage : W3SchoolsBasePage
 {
-    private readonly By orderedListLocator = By.TagName("ol");
+    private readonly By _orderedListLocator = By.TagName("ol");
 
     public ListPage(WebDriver app) : base(app)
     {
     }
 
-    public List OrderedList => FindElements(orderedListLocator).FirstOrDefault();
+    public List OrderedList => FindElements(_orderedListLocator).FirstOrDefault();
 }

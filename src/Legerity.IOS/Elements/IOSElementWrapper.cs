@@ -1,9 +1,7 @@
 namespace Legerity.IOS.Elements;
 
 using System;
-
 using Exceptions;
-using OpenQA.Selenium.Support.UI;
 
 /// <summary>
 /// Defines an element wrapper for an iOS <see cref="WebElement"/>.

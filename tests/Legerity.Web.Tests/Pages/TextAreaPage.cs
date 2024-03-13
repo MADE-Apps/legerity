@@ -1,18 +1,17 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class TextAreaPage : W3SchoolsBasePage
 {
-    private readonly By reviewTextAreaLocator = By.Id("w3review");
+    private readonly By _reviewTextAreaLocator = By.Id("w3review");
 
     public TextAreaPage(WebDriver app) : base(app)
     {
     }
 
-    public TextArea ReviewTextArea => FindElement(reviewTextAreaLocator);
+    public TextArea ReviewTextArea => FindElement(_reviewTextAreaLocator);
 
     public TextAreaPage SetReview(string review)
     {

@@ -3,7 +3,6 @@ namespace Legerity.Windows.Tests.Pages;
 using Elements.Core;
 using Elements.WinUI;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 internal class ProgressBarPage : BaseNavigationPage
 {

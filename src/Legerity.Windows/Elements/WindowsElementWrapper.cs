@@ -2,7 +2,6 @@ namespace Legerity.Windows.Elements;
 
 using System;
 using Legerity.Exceptions;
-using OpenQA.Selenium.Support.UI;
 
 /// <summary>
 /// Defines an element wrapper for a Windows <see cref="WebElement"/>.

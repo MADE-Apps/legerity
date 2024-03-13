@@ -11,7 +11,7 @@ public partial class InkToolbar
     public class InkToolbarBallpointPenFlyout : InkToolbarColorFlyoutBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Legerity.Windows.Elements.Core.InkToolbar.InkToolbarBallpointPenFlyout"/> class.
+        /// Initializes a new instance of the <see cref="InkToolbarBallpointPenFlyout"/> class.
         /// </summary>
         /// <param name="element">
         /// The <see cref="WebElement"/> reference.

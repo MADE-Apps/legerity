@@ -8,7 +8,7 @@ using Core;
 /// </summary>
 public class BladeViewItem : WindowsElementWrapper
 {
-    private readonly WeakReference parentBladeViewReference;
+    private readonly WeakReference _parentBladeViewReference;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BladeViewItem"/> class.
@@ -37,14 +37,14 @@ public class BladeViewItem : WindowsElementWrapper
     {
         if (parentBladeView != null)
         {
-            parentBladeViewReference = new WeakReference(parentBladeView);
+            _parentBladeViewReference = new WeakReference(parentBladeView);
         }
     }
 
     /// <summary>Gets the original parent <see cref="BladeView"/> reference object.</summary>
     public BladeView ParentMenuBar =>
-        parentBladeViewReference is { IsAlive: true }
-            ? parentBladeViewReference.Target as BladeView
+        _parentBladeViewReference is { IsAlive: true }
+            ? _parentBladeViewReference.Target as BladeView
             : null;
 
     /// <summary>

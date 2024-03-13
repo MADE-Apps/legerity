@@ -214,6 +214,7 @@ public class NavigationView : WindowsElementWrapper
     /// <param name="expectedCompactPaneWidth">The expected compact pane width when closed.</param>
     /// <returns>True if the pane is open; otherwise, false.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual bool VerifyPaneOpen(int expectedCompactPaneWidth)
     {
         var pane = FindElement(WindowsByExtras.AutomationId("PaneRoot"));

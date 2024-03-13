@@ -1,12 +1,11 @@
-namespace Legerity.Web.Tests.Tests;
-
-using Pages;
-using OpenQA.Selenium.Remote;
-using Shouldly;
-using System.IO;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Legerity.Web.Tests.Pages;
+using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]

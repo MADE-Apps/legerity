@@ -12,7 +12,7 @@ using Core;
 /// </summary>
 public class MenuBarItem : WindowsElementWrapper
 {
-    private readonly WeakReference parentMenuBarReference;
+    private readonly WeakReference _parentMenuBarReference;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MenuBarItem"/> class.
@@ -41,14 +41,14 @@ public class MenuBarItem : WindowsElementWrapper
     {
         if (parentMenuBar != null)
         {
-            parentMenuBarReference = new WeakReference(parentMenuBar);
+            _parentMenuBarReference = new WeakReference(parentMenuBar);
         }
     }
 
     /// <summary>Gets the original parent <see cref="MenuBar"/> reference object.</summary>
     public virtual MenuBar ParentMenuBar =>
-        parentMenuBarReference is { IsAlive: true }
-            ? parentMenuBarReference.Target as MenuBar
+        _parentMenuBarReference is { IsAlive: true }
+            ? _parentMenuBarReference.Target as MenuBar
             : null;
 
     /// <summary>

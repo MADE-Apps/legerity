@@ -20,9 +20,9 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
 {
     private const string XamlNamespace = "http://schemas.microsoft.com/winfx/2006/xaml";
 
-    private const string BaseElementType = "WindowsElement";
+    private const string BaseElementType = "WebElement";
 
-    private static readonly GenericEqualityComparer<string> SimpleStringComparer = new(s => s.ToLower());
+    private static readonly GenericEqualityComparer<string> s_simpleStringComparer = new(s => s.ToLower());
 
     public static IEnumerable<string> SupportedCoreWindowsElements => new List<string>
     {
@@ -40,18 +40,26 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
         "GridView",
         "Hub",
         "HyperlinkButton",
+        "InfoBar",
         "InkToolbar",
         "ListBox",
         "ListView",
+        "MenuBar",
+        "MenuBarItem",
         "MenuFlyoutItem",
         "MenuFlyoutSubItem",
+        "NavigationView",
+        "NavigationViewItem",
+        "NumberBox",
         "PasswordBox",
         "Pivot",
         "ProgressBar",
         "ProgressRing",
         "RadioButton",
+        "RatingControl",
         "ScrollViewer",
         "Slider",
+        "TabView",
         "TextBlock",
         "TextBox",
         "TimePicker",
@@ -83,7 +91,7 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
 
                 Log.Information($"Generating template for {templateData}...");
 
-                IEnumerable<XElement> elements = FlattenElements(xaml.Root.Elements());
+                var elements = FlattenElements(xaml.Root.Elements());
                 foreach (var element in elements)
                 {
                     var automationId = element.Attribute("AutomationProperties.AutomationId")?.Value;
@@ -174,7 +182,7 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
 
     private static string GetElementWrapperType(string elementName)
     {
-        return SupportedCoreWindowsElements.Contains(elementName, SimpleStringComparer) ? elementName : BaseElementType;
+        return SupportedCoreWindowsElements.Contains(elementName, s_simpleStringComparer) ? elementName : BaseElementType;
     }
 
     private IEnumerable<XElement> FlattenElements(IEnumerable<XElement> elements)

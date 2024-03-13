@@ -13,7 +13,7 @@ using Extensions;
 /// </summary>
 public class CalendarView : WindowsElementWrapper
 {
-    private readonly Dictionary<string, string> months = new()
+    private readonly Dictionary<string, string> _months = new()
     {
         { "January", "01" },
         { "February", "02" },
@@ -135,7 +135,7 @@ public class CalendarView : WindowsElementWrapper
 
     private DateTime GetCurrentViewDate(string currentHeader)
     {
-        months.TryGetValue(
+        _months.TryGetValue(
             string.Join(string.Empty, currentHeader.Where(char.IsLetter)).Trim(),
             out var month);
 

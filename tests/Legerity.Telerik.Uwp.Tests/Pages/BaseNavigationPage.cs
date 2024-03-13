@@ -1,22 +1,22 @@
-namespace Legerity.Telerik.Uwp.Tests.Pages;
-
 using System;
-using Windows.Elements.Core;
+using Legerity.Pages;
+using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Telerik.Uwp.Tests.Pages;
 
 internal class BaseNavigationPage : BasePage
 {
-    private readonly By searchBoxLocator = By.Name("Search");
+    private readonly By _searchBoxLocator = By.Name("Search");
 
     public BaseNavigationPage(WebDriver app)
         : base(app)
     {
     }
 
-    public TextBox SearchBox => FindElement(searchBoxLocator);
+    public TextBox SearchBox => FindElement(_searchBoxLocator);
 
-    protected override By Trait => searchBoxLocator;
+    protected override By Trait => _searchBoxLocator;
 
     public TPage NavigateTo<TPage>(string controlName, string sampleName)
         where TPage : BasePage

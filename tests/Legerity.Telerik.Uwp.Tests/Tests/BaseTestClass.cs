@@ -1,13 +1,11 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Legerity.Windows;
 
 [assembly: ExcludeFromCodeCoverage]
 
 namespace Legerity.Telerik.Uwp.Tests.Tests;
-
-using System;
-using System.Collections.Generic;
-using Legerity;
-using Windows;
 
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.

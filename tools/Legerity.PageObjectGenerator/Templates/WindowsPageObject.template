@@ -5,12 +5,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using Legerity.Pages;
 using Legerity.Windows;
+using Legerity.Windows.Elements;
 using Legerity.Windows.Elements.Core;
+using Legerity.Windows.Elements.WinUI;
 using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.UI;
 
 namespace {{namespace}}
 {

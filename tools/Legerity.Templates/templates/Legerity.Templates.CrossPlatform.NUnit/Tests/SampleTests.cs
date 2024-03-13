@@ -1,7 +1,6 @@
 namespace Legerity.Templates.CrossPlatform.NUnit.Tests;
 
 using Pages;
-using OpenQA.Selenium.Remote;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 public class SampleTests : BaseTestClass

@@ -1,9 +1,7 @@
 namespace Legerity;
 
 using System;
-
 using Exceptions;
-using OpenQA.Selenium.Support.UI;
 
 /// <summary>
 /// Defines a base wrapper for elements to expose platform element logic.
@@ -14,7 +12,7 @@ using OpenQA.Selenium.Support.UI;
 public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     where TElement : WebElement
 {
-    private readonly WeakReference elementReference;
+    private readonly WeakReference _elementReference;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ElementWrapper{TElement}"/> class.
@@ -24,13 +22,13 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// </param>
     protected ElementWrapper(TElement element)
     {
-        elementReference = new WeakReference(element);
+        _elementReference = new WeakReference(element);
     }
 
     /// <summary>Gets the original <typeparamref name="TElement"/> reference object.</summary>
     public TElement Element =>
-        elementReference is { IsAlive: true }
-            ? elementReference.Target as TElement
+        _elementReference is { IsAlive: true }
+            ? _elementReference.Target as TElement
             : null;
 
     /// <summary>

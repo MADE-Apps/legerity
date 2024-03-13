@@ -106,7 +106,7 @@ public class FacebookLoginPage : BasePage
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public FacebookLoginPage Login(string email, string password)
     {
-        (var hasEmailInput, var _) =
+        var (hasEmailInput, _) =
             this.TryWaitUntil(page => page.EmailInput.IsVisible, WaitTimeout);
         if (!hasEmailInput)
         {

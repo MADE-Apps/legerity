@@ -1,9 +1,8 @@
-namespace Legerity.Web.Tests.Pages;
-
 using System;
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class DateInputPage : W3SchoolsBasePage
 {

@@ -11,7 +11,7 @@ using Extensions;
 /// </summary>
 public class Pivot : WindowsElementWrapper
 {
-    private readonly By pivotItemLocator = By.ClassName("PivotItem");
+    private readonly By _pivotItemLocator = By.ClassName("PivotItem");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Pivot"/> class.
@@ -27,7 +27,7 @@ public class Pivot : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the pivot.
     /// </summary>
-    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(pivotItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(_pivotItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the currently selected item.
@@ -62,7 +62,7 @@ public class Pivot : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItem(string name)
     {
-        VerifyElementsShown(pivotItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_pivotItemLocator, TimeSpan.FromSeconds(2));
 
         var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
@@ -87,7 +87,7 @@ public class Pivot : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void ClickItemByPartialName(string name)
     {
-        VerifyElementsShown(pivotItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_pivotItemLocator, TimeSpan.FromSeconds(2));
 
         var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 

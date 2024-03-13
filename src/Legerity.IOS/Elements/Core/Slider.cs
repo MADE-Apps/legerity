@@ -43,7 +43,7 @@ public class Slider : IOSElementWrapper
     {
         return new Slider(element);
     }
-    
+
     /// <summary>
     /// Sets the value of the slider.
     /// </summary>

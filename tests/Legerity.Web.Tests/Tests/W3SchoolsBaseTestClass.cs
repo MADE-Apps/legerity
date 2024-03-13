@@ -1,8 +1,7 @@
-namespace Legerity.Web.Tests.Tests;
-
-using Helpers;
+using Legerity.Helpers;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Tests;
 
 internal abstract class W3SchoolsBaseTestClass : BaseTestClass
 {

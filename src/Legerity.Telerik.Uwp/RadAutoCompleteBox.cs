@@ -9,7 +9,7 @@ using Core;
 /// </summary>
 public class RadAutoCompleteBox : WindowsElementWrapper
 {
-    private readonly By suggestionsControlLocator = WindowsByExtras.AutomationId("PART_SuggestionsControl");
+    private readonly By _suggestionsControlLocator = WindowsByExtras.AutomationId("PART_SuggestionsControl");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RadAutoCompleteBox"/> class.
@@ -78,9 +78,9 @@ public class RadAutoCompleteBox : WindowsElementWrapper
     {
         SetText(value);
 
-        VerifyElementShown(suggestionsControlLocator, TimeSpan.FromSeconds(2));
+        VerifyElementShown(_suggestionsControlLocator, TimeSpan.FromSeconds(2));
 
-        ListBox suggestionList = FindElement(suggestionsControlLocator);
+        ListBox suggestionList = FindElement(_suggestionsControlLocator);
         suggestionList.ClickItem(suggestion);
     }
 
@@ -99,9 +99,9 @@ public class RadAutoCompleteBox : WindowsElementWrapper
     {
         SetText(value);
 
-        VerifyElementShown(suggestionsControlLocator, TimeSpan.FromSeconds(2));
+        VerifyElementShown(_suggestionsControlLocator, TimeSpan.FromSeconds(2));
 
-        ListBox suggestionList = FindElement(suggestionsControlLocator);
+        ListBox suggestionList = FindElement(_suggestionsControlLocator);
         suggestionList.ClickItemByPartialName(partialSuggestion);
     }
 

@@ -11,7 +11,7 @@ using Extensions;
 /// </summary>
 public class ListView : WindowsElementWrapper
 {
-    private readonly By listViewItemLocator = By.ClassName("ListViewItem");
+    private readonly By _listViewItemLocator = By.ClassName("ListViewItem");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ListView"/> class.
@@ -27,7 +27,7 @@ public class ListView : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the list view.
     /// </summary>
-    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(listViewItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(_listViewItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
@@ -62,7 +62,7 @@ public class ListView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItem(string name)
     {
-        VerifyElementsShown(listViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_listViewItemLocator, TimeSpan.FromSeconds(2));
         var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
@@ -84,7 +84,7 @@ public class ListView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItemByPartialName(string partialName)
     {
-        VerifyElementsShown(listViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_listViewItemLocator, TimeSpan.FromSeconds(2));
         var item =
             Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
 

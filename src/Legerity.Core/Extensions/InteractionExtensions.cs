@@ -1,7 +1,5 @@
 namespace Legerity.Extensions;
 
-using OpenQA.Selenium.Interactions;
-
 /// <summary>
 /// Defines a collection of extensions for performing interactions with elements.
 /// </summary>

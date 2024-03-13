@@ -112,7 +112,7 @@ public class AzureAdLoginPage : BasePage
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public AzureAdLoginPage Login(string email, string password)
     {
-        (var hasEmailInput, var _) =
+        var (hasEmailInput, _) =
             this.TryWaitUntil(page => page.EmailInput.IsVisible, WaitTimeout);
         if (!hasEmailInput)
         {
@@ -126,7 +126,7 @@ public class AzureAdLoginPage : BasePage
         SignInButton.Click();
 
         // Check to ensure that the user is not authenticating with password-less authentication.
-        (var isNotPasswordLogin, var _) =
+        var (isNotPasswordLogin, _) =
             this.TryWaitUntil(page => page.UsePasswordButton.IsVisible, WaitTimeout);
         if (isNotPasswordLogin)
         {

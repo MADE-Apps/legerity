@@ -3,17 +3,16 @@ namespace Legerity.Windows.Tests.Pages;
 using System.Linq;
 using Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 internal class FlipViewPage : BaseNavigationPage
 {
-    private readonly By flipViewLocator = By.ClassName(nameof(FlipView));
+    private readonly By _flipViewLocator = By.ClassName(nameof(FlipView));
 
     public FlipViewPage(WebDriver app) : base(app)
     {
     }
 
-    public FlipView XamlFlipView => FindElements(flipViewLocator).LastOrDefault();
+    public FlipView XamlFlipView => FindElements(_flipViewLocator).LastOrDefault();
 
     public FlipViewPage SelectXamlFlipViewItem(string name)
     {

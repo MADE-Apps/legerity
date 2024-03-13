@@ -1,26 +1,27 @@
-namespace Legerity.Core.Tests.Pages;
-
-using Extensions;
+using Legerity.Core.Tests.Tests;
+using Legerity.Extensions;
+using Legerity.Pages;
 using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-using Tests;
+
+namespace Legerity.Core.Tests.Pages;
+
 
 internal class W3SchoolsPage : BasePage
 {
-    private readonly By contentFrameLocator = By.Id("iframeResult");
-    private readonly By acceptCookiesButtonLocator = By.Id("accept-choices");
+    private readonly By _contentFrameLocator = By.Id("iframeResult");
+    private readonly By _acceptCookiesButtonLocator = By.Id("accept-choices");
 
     public W3SchoolsPage(WebDriver app)
         : base(app, BaseTestClass.ImplicitWait)
     {
     }
 
-    protected override By Trait => contentFrameLocator;
+    protected override By Trait => _contentFrameLocator;
 
-    public Button AcceptCookiesButton => FindElement(acceptCookiesButtonLocator);
+    public Button AcceptCookiesButton => FindElement(_acceptCookiesButtonLocator);
 
-    public WebElement ContentFrame => FindElement(contentFrameLocator);
+    public WebElement ContentFrame => FindElement(_contentFrameLocator);
 
     public T AcceptCookies<T>() where T : W3SchoolsPage
     {

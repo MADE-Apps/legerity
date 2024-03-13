@@ -2,17 +2,16 @@ namespace Legerity.Windows.Tests.Pages;
 
 using Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 internal class AutoSuggestBoxPage : BaseNavigationPage
 {
-    private readonly By basicAutoSuggestBoxLocator = By.Name("Basic AutoSuggestBox");
+    private readonly By _basicAutoSuggestBoxLocator = By.Name("Basic AutoSuggestBox");
 
     public AutoSuggestBoxPage(WebDriver app) : base(app)
     {
     }
 
-    public AutoSuggestBox BasicAutoSuggestBox => FindElement(basicAutoSuggestBoxLocator);
+    public AutoSuggestBox BasicAutoSuggestBox => FindElement(_basicAutoSuggestBoxLocator);
 
     protected override By Trait => By.XPath(".//*[@Name='AutoSuggestBox'][@AutomationId='TitleTextBlock']");
 

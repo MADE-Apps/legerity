@@ -1,20 +1,19 @@
-namespace Legerity.Web.Tests.Pages;
-
 using System.Collections.Generic;
 using System.Linq;
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class OptionPage : W3SchoolsBasePage
 {
-    private readonly By carOptionLocator = By.TagName("option");
+    private readonly By _carOptionLocator = By.TagName("option");
 
     public OptionPage(WebDriver app) : base(app)
     {
     }
 
-    public IEnumerable<Option> CarOptions => FindElements(carOptionLocator).Select(e => (Option)e);
+    public IEnumerable<Option> CarOptions => FindElements(_carOptionLocator).Select(e => (Option)e);
 
     public OptionPage SelectCarOptionByDisplayValue(string option)
     {

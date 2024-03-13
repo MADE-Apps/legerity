@@ -39,7 +39,7 @@ public class Switch : IOSElementWrapper
     {
         return new Switch(element);
     }
-    
+
     /// <summary>
     /// Toggles the switch on.
     /// </summary>

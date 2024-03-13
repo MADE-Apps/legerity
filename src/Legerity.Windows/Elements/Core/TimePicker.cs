@@ -49,7 +49,7 @@ public class TimePicker : WindowsElementWrapper
         Click();
 
         // Finds the popup and changes the time.
-        WebElement popup = Driver.FindElement(WindowsByExtras.AutomationId("TimePickerFlyoutPresenter"));
+        var popup = Driver.FindElement(WindowsByExtras.AutomationId("TimePickerFlyoutPresenter"));
         popup.FindElement(WindowsByExtras.AutomationId("HourLoopingSelector")).FindElementByName(time.ToString("%h")).Click();
         popup.FindElement(WindowsByExtras.AutomationId("MinuteLoopingSelector")).FindElementByName(time.ToString("mm")).Click();
         popup.FindElement(WindowsByExtras.AutomationId("AcceptButton")).Click();

@@ -1,6 +1,5 @@
 namespace Legerity.WinUI.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]

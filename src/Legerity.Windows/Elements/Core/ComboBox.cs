@@ -2,7 +2,6 @@ namespace Legerity.Windows.Elements.Core;
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using Legerity.Exceptions;
@@ -13,7 +12,7 @@ using Legerity.Extensions;
 /// </summary>
 public class ComboBox : WindowsElementWrapper
 {
-    private readonly By comboBoxItemLocator = By.ClassName("ComboBoxItem");
+    private readonly By _comboBoxItemLocator = By.ClassName("ComboBoxItem");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ComboBox"/> class.
@@ -101,7 +100,7 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string GetSelectedItem()
     {
-        var listElements = Element.FindElements(comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        var listElements = Element.FindElements(_comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
         return listElements.Count == 1 ? listElements.FirstOrDefault().GetName() : null;
     }
 
@@ -112,8 +111,8 @@ public class ComboBox : WindowsElementWrapper
     private IEnumerable<WebElement> GetItemsToSelect()
     {
         Click();
-        VerifyElementsShown(comboBoxItemLocator, TimeSpan.FromSeconds(2));
-        var listElements = Element.FindElements(comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
+        VerifyElementsShown(_comboBoxItemLocator, TimeSpan.FromSeconds(2));
+        var listElements = Element.FindElements(_comboBoxItemLocator).Cast<WebElement>().ToList().AsReadOnly();
         return listElements;
     }
 }

@@ -1,12 +1,11 @@
-namespace Legerity.Core.Tests.Tests;
-
 using System;
 using System.Drawing;
 using System.IO;
-using OpenQA.Selenium;
+using Legerity.Web;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 using Shouldly;
+
+namespace Legerity.Core.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]
@@ -25,7 +24,7 @@ internal class WebAppManagerOptionsTests : BaseTestClass
             ImplicitWait = ImplicitWait,
             DriverOptions = new ChromeOptions()
         };
-        
+
         // Act
         var app = StartApp(options);
 

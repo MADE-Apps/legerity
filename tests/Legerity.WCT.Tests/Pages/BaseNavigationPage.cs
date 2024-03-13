@@ -1,30 +1,30 @@
-namespace Legerity.WCT.Tests.Pages;
-
 using System;
 using System.Linq;
-using Extensions;
-using Windows.Elements.Core;
-using Windows.Elements.WinUI;
+using Legerity.Extensions;
+using Legerity.Pages;
+using Legerity.Windows;
+using Legerity.Windows.Elements.Core;
+using Legerity.Windows.Elements.WinUI;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.WCT.Tests.Pages;
 
 internal class BaseNavigationPage : BasePage
 {
-    private readonly By navigationViewLocator = WindowsByExtras.AutomationId("NavView");
+    private readonly By _navigationViewLocator = WindowsByExtras.AutomationId("NavView");
 
     public BaseNavigationPage(WebDriver app)
         : base(app)
     {
     }
 
-    public NavigationView NavigationView => FindElement(navigationViewLocator);
+    public NavigationView NavigationView => FindElement(_navigationViewLocator);
 
     public AutoSuggestBox SampleSearchBox => NavigationView.FindElement(WindowsByExtras.AutomationId("SearchBox"));
 
     public GridView SamplePicker => FindElement(WindowsByExtras.AutomationId("SamplePickerGridView"));
 
-    protected override By Trait => navigationViewLocator;
+    protected override By Trait => _navigationViewLocator;
 
     public TPage NavigateTo<TPage>(string sampleName)
         where TPage : BasePage

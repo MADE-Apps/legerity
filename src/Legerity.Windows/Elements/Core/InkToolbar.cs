@@ -9,11 +9,11 @@ using Legerity.Exceptions;
 /// </summary>
 public partial class InkToolbar : WindowsElementWrapper
 {
-    private readonly By ballpointPenFlyoutLocator = By.Name("Ballpoint pen flyout");
+    private readonly By _ballpointPenFlyoutLocator = By.Name("Ballpoint pen flyout");
 
-    private readonly By pencilFlyoutLocator = By.Name("Pencil flyout");
+    private readonly By _pencilFlyoutLocator = By.Name("Pencil flyout");
 
-    private readonly By highlighterFlyoutLocator = By.Name("Highlighter flyout");
+    private readonly By _highlighterFlyoutLocator = By.Name("Highlighter flyout");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="InkToolbar"/> class.
@@ -83,7 +83,7 @@ public partial class InkToolbar : WindowsElementWrapper
     /// </remarks>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual InkToolbarBallpointPenFlyout BallpointPenFlyout =>
-        Driver.FindElement(ballpointPenFlyoutLocator);
+        Driver.FindElement(_ballpointPenFlyoutLocator);
 
     /// <summary>
     /// Gets the element associated with the pencil flyout.
@@ -92,7 +92,7 @@ public partial class InkToolbar : WindowsElementWrapper
     /// This is only available when the pencil button is selected.
     /// </remarks>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual InkToolbarPencilFlyout PencilFlyout => Driver.FindElement(pencilFlyoutLocator);
+    public virtual InkToolbarPencilFlyout PencilFlyout => Driver.FindElement(_pencilFlyoutLocator);
 
     /// <summary>
     /// Gets the element associated with the highlighter flyout.
@@ -102,7 +102,7 @@ public partial class InkToolbar : WindowsElementWrapper
     /// </remarks>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual InkToolbarHighlighterFlyout HighlighterFlyout =>
-        Driver.FindElement(highlighterFlyoutLocator);
+        Driver.FindElement(_highlighterFlyoutLocator);
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InkToolbar"/> without direct casting.
@@ -146,7 +146,7 @@ public partial class InkToolbar : WindowsElementWrapper
         SelectBallpointPen();
 
         BallpointPenButton.Click();
-        VerifyDriverElementShown(ballpointPenFlyoutLocator, TimeSpan.FromSeconds(2));
+        VerifyDriverElementShown(_ballpointPenFlyoutLocator, TimeSpan.FromSeconds(2));
     }
 
     /// <summary>
@@ -213,7 +213,7 @@ public partial class InkToolbar : WindowsElementWrapper
         SelectPencil();
 
         PencilButton.Click();
-        VerifyDriverElementShown(pencilFlyoutLocator, TimeSpan.FromSeconds(2));
+        VerifyDriverElementShown(_pencilFlyoutLocator, TimeSpan.FromSeconds(2));
     }
 
     /// <summary>
@@ -280,7 +280,7 @@ public partial class InkToolbar : WindowsElementWrapper
         SelectHighlighter();
 
         HighlighterButton.Click();
-        VerifyDriverElementShown(highlighterFlyoutLocator, TimeSpan.FromSeconds(2));
+        VerifyDriverElementShown(_highlighterFlyoutLocator, TimeSpan.FromSeconds(2));
     }
 
     /// <summary>

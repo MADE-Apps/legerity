@@ -42,7 +42,7 @@ public class TextField : IOSElementWrapper
     {
         return new TextField(element);
     }
-    
+
     /// <summary>
     /// Sets the text of the text field to the specified text.
     /// </summary>

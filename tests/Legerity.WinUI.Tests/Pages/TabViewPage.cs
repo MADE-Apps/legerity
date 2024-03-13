@@ -4,7 +4,6 @@ using Windows.Elements.Core;
 using Windows;
 using Legerity.Windows.Elements.WinUI;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 internal class TabViewPage : BaseNavigationPage
 {

@@ -1,14 +1,14 @@
-namespace Legerity.Core.Tests.Tests;
-
 using System;
 using System.IO;
-using Extensions;
-using Helpers;
+using Legerity.Core.Tests.Pages;
+using Legerity.Extensions;
+using Legerity.Helpers;
+using Legerity.Web;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using Pages;
-using Web.Elements.Core;
+
+namespace Legerity.Core.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]

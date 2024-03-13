@@ -1,8 +1,6 @@
 namespace Legerity.Android;
 
 using System.Collections.Generic;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Enums;
 
 /// <summary>
 /// Defines a specific <see cref="AppiumManagerOptions"/> for an Android application.
@@ -241,7 +239,7 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
 
         if (AdditionalOptions != null)
         {
-            foreach ((var name, var value) in AdditionalOptions)
+            foreach (var (name, value) in AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

@@ -1,7 +1,6 @@
 namespace Legerity.Templates.IOS.NUnit.Pages;
 
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 internal class SamplePage : BasePage
 {

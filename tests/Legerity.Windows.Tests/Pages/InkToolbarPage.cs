@@ -3,7 +3,6 @@ namespace Legerity.Windows.Tests.Pages;
 using Windows;
 using Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 internal class InkToolbarPage : BaseNavigationPage
 {

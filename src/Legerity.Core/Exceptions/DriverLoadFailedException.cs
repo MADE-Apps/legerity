@@ -26,7 +26,8 @@ public class DriverLoadFailedException : LegerityException
     /// </param>
     /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
     internal DriverLoadFailedException(AppManagerOptions opts, Exception innerException)
-        : base($"The application driver could not be initialized with the specified app manager options: {opts}", innerException)
+        : base($"The application driver could not be initialized with the specified app manager options: {opts}",
+            innerException)
     {
         AppManagerOptions = opts;
     }

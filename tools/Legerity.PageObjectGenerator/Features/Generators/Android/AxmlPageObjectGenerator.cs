@@ -20,9 +20,9 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
 {
     private const string AndroidNamespace = "http://schemas.android.com/apk/res/android";
 
-    private const string BaseElementType = "AndroidElement";
+    private const string BaseElementType = "WebElement";
 
-    private static readonly GenericEqualityComparer<string> SimpleStringComparer = new(s => s.ToLower());
+    private static readonly GenericEqualityComparer<string> s_simpleStringComparer = new(s => s.ToLower());
 
     public static IEnumerable<string> SupportedCoreAndroidElements => new List<string>
     {
@@ -62,7 +62,7 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
 
                 Log.Information($"Generating template for {templateData}...");
 
-                IEnumerable<XElement> elements = FlattenElements(axml.Root.Elements());
+                var elements = FlattenElements(axml.Root.Elements());
                 foreach (var element in elements)
                 {
                     var id = RemoveAndroidIdReference(element.Attribute(XName.Get("id", AndroidNamespace))?.Value);
@@ -156,7 +156,7 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
 
     private static string GetElementWrapperType(string elementName)
     {
-        return SupportedCoreAndroidElements.Contains(elementName, SimpleStringComparer) ? elementName : BaseElementType;
+        return SupportedCoreAndroidElements.Contains(elementName, s_simpleStringComparer) ? elementName : BaseElementType;
     }
 
     private IEnumerable<XElement> FlattenElements(IEnumerable<XElement> elements)

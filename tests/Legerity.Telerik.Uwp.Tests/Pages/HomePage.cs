@@ -1,7 +1,6 @@
-namespace Legerity.Telerik.Uwp.Tests.Pages;
-
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Telerik.Uwp.Tests.Pages;
 
 internal class HomePage : BaseNavigationPage
 {

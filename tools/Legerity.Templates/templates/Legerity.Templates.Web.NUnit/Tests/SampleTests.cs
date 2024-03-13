@@ -1,7 +1,6 @@
 namespace Legerity.Templates.Web.NUnit.Tests;
 
 using Pages;
-using OpenQA.Selenium.Remote;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.Fixtures)]

@@ -1,13 +1,12 @@
-namespace Legerity.Core.Tests.Tests;
-
 using System;
-using System.Collections.ObjectModel;
 using System.IO;
+using Legerity.Core.Tests.Pages;
+using Legerity.Web;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using Pages;
 using Shouldly;
+
+namespace Legerity.Core.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]

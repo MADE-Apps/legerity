@@ -1,18 +1,17 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class TextInputPage : W3SchoolsBasePage
 {
-    private readonly By firstNameInputLocator = By.Id("fname");
+    private readonly By _firstNameInputLocator = By.Id("fname");
 
     public TextInputPage(WebDriver app) : base(app)
     {
     }
 
-    public TextInput FirstNameInput => FindElement(firstNameInputLocator);
+    public TextInput FirstNameInput => FindElement(_firstNameInputLocator);
 
     public TextInputPage SetFirstName(string firstName)
     {

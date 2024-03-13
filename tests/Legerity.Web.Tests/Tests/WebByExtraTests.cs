@@ -1,11 +1,9 @@
-namespace Legerity.Web.Tests.Tests;
-
 using System;
-using Pages;
-using OpenQA.Selenium.Remote;
-using System.Collections.ObjectModel;
 using System.IO;
+using Legerity.Web.Tests.Pages;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]
@@ -32,8 +30,7 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
             .SwitchToContentFrame<RadioButtonPage>();
 
         // Act
-        var
-            radioButtons = radioButtonPage.FindElements(WebByExtras.InputType("radio"));
+        var radioButtons = radioButtonPage.FindElements(WebByExtras.InputType("radio"));
 
         // Assert
         radioButtons.Count.ShouldBe(expectedCount);

@@ -1,7 +1,5 @@
 namespace Legerity.Android;
 
-using OpenQA.Selenium.Appium.Android.UiAutomator;
-
 /// <summary>
 /// Defines a collection of extra locator constraints for <see cref="By"/>.
 /// </summary>
