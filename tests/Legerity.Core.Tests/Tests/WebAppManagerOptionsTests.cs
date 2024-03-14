@@ -2,7 +2,6 @@ using System;
 using System.Drawing;
 using System.IO;
 using Legerity.Web;
-using OpenQA.Selenium.Chrome;
 using Shouldly;
 
 namespace Legerity.Core.Tests.Tests;
@@ -11,24 +10,26 @@ namespace Legerity.Core.Tests.Tests;
 [Parallelizable(ParallelScope.All)]
 internal class WebAppManagerOptionsTests : BaseTestClass
 {
-    [Test]
-    public void ShouldLaunchBrowserAtDesiredSize()
+    [TestCase(WebAppDriverType.Chrome)]
+    [TestCase(WebAppDriverType.Firefox)]
+    [TestCase(WebAppDriverType.Opera)]
+    public void ShouldLaunchBrowserAtDesiredSize(WebAppDriverType driverType)
     {
         // Arrange
         var options = new WebAppManagerOptions(
-            WebAppDriverType.Chrome,
+            driverType,
             Path.Combine(Environment.CurrentDirectory))
         {
             DesiredSize = new Size(1280, 800),
             Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio",
-            ImplicitWait = ImplicitWait,
-            DriverOptions = new ChromeOptions()
+            ImplicitWait = ImplicitWait
         };
 
         // Act
         var app = StartApp(options);
 
         // Assert
-        app.Manage().Window.Size.ShouldBe(options.DesiredSize);
+        var size = app.Manage().Window.Size;
+        size.ShouldBe(options.DesiredSize);
     }
 }
