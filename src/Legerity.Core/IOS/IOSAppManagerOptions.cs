@@ -95,11 +95,6 @@ public class IOSAppManagerOptions : AppiumManagerOptions
     public string AutomationName { get; set; } = "XCUITest";
 
     /// <summary>
-    /// Gets or sets a value indicating whether to launch the Appium server instance.
-    /// </summary>
-    public bool LaunchAppiumServer { get; set; }
-
-    /// <summary>
     /// Configures the <see cref="AppiumManagerOptions.AppiumOptions"/> with the specified additional options.
     /// </summary>
     public override void Configure()

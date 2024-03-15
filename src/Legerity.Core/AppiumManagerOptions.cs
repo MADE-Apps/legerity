@@ -24,6 +24,11 @@ public abstract class AppiumManagerOptions : AppManagerOptions
     }
 
     /// <summary>
+    /// Gets or sets a value indicating whether to launch the Appium server instance.
+    /// </summary>
+    public bool LaunchAppiumServer { get; set; }
+
+    /// <summary>
     /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
     /// </summary>
     public virtual void Configure()

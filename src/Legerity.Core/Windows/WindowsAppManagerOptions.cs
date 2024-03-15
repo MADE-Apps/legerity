@@ -1,3 +1,5 @@
+using System;
+
 namespace Legerity.Windows;
 
 using System.Collections.Generic;
@@ -49,6 +51,7 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     /// <summary>
     /// Gets or sets a value indicating whether to launch the WinAppDriver if it is not already running.
     /// </summary>
+    [Obsolete("Please use LaunchAppiumServer instead. LaunchWinAppDriver will continue to function, however, the WinAppDriver will not be launched directly due to no direct support by the W3C standard implemented in Appium 5. This property will be removed in a future release.")]
     public bool LaunchWinAppDriver { get; set; }
 
     /// <summary>
@@ -70,7 +73,8 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     public override void Configure()
     {
         base.Configure();
-        AppiumOptions.AddAdditionalAppiumOption("app", AppId);
+        AppiumOptions.App = AppId;
+        AppiumOptions.AutomationName = "Windows";
     }
 
     /// <summary>

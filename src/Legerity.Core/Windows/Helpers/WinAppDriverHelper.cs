@@ -9,6 +9,7 @@ using Exceptions;
 /// <summary>
 /// Defines a helper class for the WinAppDriver.
 /// </summary>
+[Obsolete("WinAppDriver is not well maintained and is not supported directly by Appium 5 due to W3C standards. Instead, install the appium-windows-driver for the Appium CLI, and use the AppiumServerHelper to initialize.")]
 public static class WinAppDriverHelper
 {
     /// <summary>

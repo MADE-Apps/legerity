@@ -223,9 +223,9 @@ public static class AppManager
 
     private static WebDriver StartWindowsApp(WindowsAppManagerOptions winOpts)
     {
-        if (winOpts.LaunchWinAppDriver)
+        if (winOpts.LaunchAppiumServer || winOpts.LaunchWinAppDriver)
         {
-            WinAppDriverHelper.Run();
+            AppiumServerHelper.Run();
         }
 
         var app = new WindowsDriver(
