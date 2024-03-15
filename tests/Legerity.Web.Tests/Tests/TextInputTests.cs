@@ -1,11 +1,10 @@
-namespace Legerity.Web.Tests.Tests;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
 using Legerity.Web.Tests.Pages;
-using OpenQA.Selenium.Remote;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -37,9 +36,9 @@ internal class TextInputTests : W3SchoolsBaseTestClass
         // Arrange
         const string expected = "James";
 
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
@@ -56,9 +55,9 @@ internal class TextInputTests : W3SchoolsBaseTestClass
         // Arrange
         const string expected = "James";
 
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
@@ -75,9 +74,9 @@ internal class TextInputTests : W3SchoolsBaseTestClass
     public void ShouldClearText()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        TextInputPage textInputPage = new TextInputPage(app)
+        var textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 

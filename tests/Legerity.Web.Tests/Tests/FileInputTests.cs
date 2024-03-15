@@ -1,11 +1,10 @@
-namespace Legerity.Web.Tests.Tests;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -36,11 +35,11 @@ internal class FileInputTests : W3SchoolsBaseTestClass
     {
         // Arrange
         const string fileName = "chromedriver.exe";
-        string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
+        var filePath = Path.Combine(Environment.CurrentDirectory, fileName);
 
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        FileInputPage fileInputPage = new FileInputPage(app)
+        var fileInputPage = new FileInputPage(app)
             .AcceptCookies<FileInputPage>()
             .SwitchToContentFrame<FileInputPage>();
 
@@ -56,11 +55,11 @@ internal class FileInputTests : W3SchoolsBaseTestClass
     {
         // Arrange
         const string fileName = "chromedriver.exe";
-        string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
+        var filePath = Path.Combine(Environment.CurrentDirectory, fileName);
 
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        FileInputPage fileInputPage = new FileInputPage(app)
+        var fileInputPage = new FileInputPage(app)
             .AcceptCookies<FileInputPage>()
             .SwitchToContentFrame<FileInputPage>()
             .SetFileInputFilePath(filePath);

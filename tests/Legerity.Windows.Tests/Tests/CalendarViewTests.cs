@@ -1,7 +1,6 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using Legerity.Windows.Tests.Pages;
-using OpenQA.Selenium.Remote;
+using Pages;
 using Shouldly;
 using System.Globalization;
 using System;
@@ -21,8 +20,8 @@ internal class CalendarViewTests : BaseTestClass
     {
         // Arrange
         var expectedDate = DateTime.Parse(dateString, CultureInfo.InvariantCulture);
-        RemoteWebDriver app = this.StartApp();
-        CalendarViewPage calendarViewPage = new HomePage(app).NavigateTo<CalendarViewPage>("CalendarView");
+        var app = StartApp();
+        var calendarViewPage = new HomePage(app).NavigateTo<CalendarViewPage>("CalendarView");
 
         // Act
         calendarViewPage.SetCalendarViewDate(expectedDate);
@@ -35,9 +34,9 @@ internal class CalendarViewTests : BaseTestClass
     public void ShouldSelectDateWithFormat()
     {
         // Arrange
-        DateTime expectedDate = DateTime.Now.AddDays(1);
-        RemoteWebDriver app = this.StartApp();
-        CalendarViewPage calendarViewPage = new HomePage(app).NavigateTo<CalendarViewPage>("CalendarView");
+        var expectedDate = DateTime.Now.AddDays(1);
+        var app = StartApp();
+        var calendarViewPage = new HomePage(app).NavigateTo<CalendarViewPage>("CalendarView");
 
         // Act
         calendarViewPage.SetCalendarViewDate(expectedDate);

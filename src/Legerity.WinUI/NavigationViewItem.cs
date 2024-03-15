@@ -5,29 +5,25 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Legerity.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI NavigationViewItem control.
+/// Defines a <see cref="WebElement"/> wrapper for the WinUI NavigationViewItem control.
 /// </summary>
 public class NavigationViewItem : WindowsElementWrapper
 {
-    private readonly By navigationViewItemLocator = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+    private readonly By _navigationViewItemLocator = By.ClassName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
 
-    private readonly WeakReference parentNavigationViewReference;
+    private readonly WeakReference _parentNavigationViewReference;
 
-    private readonly WeakReference parentItemReference;
+    private readonly WeakReference _parentItemReference;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="NavigationViewItem"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NavigationViewItem(WindowsElement element)
+    public NavigationViewItem(WebElement element)
         : this(null, null, element)
     {
     }
@@ -39,9 +35,9 @@ public class NavigationViewItem : WindowsElementWrapper
     /// The parent <see cref="NavigationView"/>.
     /// </param>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NavigationViewItem(NavigationView parentNavigationView, WindowsElement element)
+    public NavigationViewItem(NavigationView parentNavigationView, WebElement element)
         : this(parentNavigationView, null, element)
     {
     }
@@ -53,9 +49,9 @@ public class NavigationViewItem : WindowsElementWrapper
     /// The parent <see cref="NavigationViewItem"/>.
     /// </param>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NavigationViewItem(NavigationViewItem parentItem, WindowsElement element)
+    public NavigationViewItem(NavigationViewItem parentItem, WebElement element)
         : this(null, parentItem, element)
     {
     }
@@ -70,85 +66,57 @@ public class NavigationViewItem : WindowsElementWrapper
     /// The parent <see cref="NavigationViewItem"/>.
     /// </param>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
     public NavigationViewItem(
         NavigationView parentNavigationView,
         NavigationViewItem parentItem,
-        WindowsElement element)
+        WebElement element)
         : base(element)
     {
         if (parentNavigationView != null)
         {
-            this.parentNavigationViewReference = new WeakReference(parentNavigationView);
+            _parentNavigationViewReference = new WeakReference(parentNavigationView);
         }
 
         if (parentItem != null)
         {
-            this.parentItemReference = new WeakReference(parentItem);
+            _parentItemReference = new WeakReference(parentItem);
         }
     }
 
     /// <summary>Gets the original parent <see cref="NavigationView"/> reference object.</summary>
     public NavigationView ParentNavigationView =>
-        this.parentNavigationViewReference is { IsAlive: true }
-            ? this.parentNavigationViewReference.Target as NavigationView
+        _parentNavigationViewReference is { IsAlive: true }
+            ? _parentNavigationViewReference.Target as NavigationView
             : null;
 
     /// <summary>Gets the original parent <see cref="NavigationViewItem"/> reference object.</summary>
     public NavigationViewItem ParentItem =>
-        this.parentItemReference is { IsAlive: true }
-            ? this.parentItemReference.Target as NavigationViewItem
+        _parentItemReference is { IsAlive: true }
+            ? _parentItemReference.Target as NavigationViewItem
             : null;
 
     /// <summary>
     /// Gets the UI components associated with the child menu items.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual IEnumerable<NavigationViewItem> ChildMenuItems => this.GetChildMenuItems();
+    public virtual IEnumerable<NavigationViewItem> ChildMenuItems => GetChildMenuItems();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="NavigationViewItem"/>.
     /// </returns>
-    public static implicit operator NavigationViewItem(WindowsElement element)
+    public static implicit operator NavigationViewItem(WebElement element)
     {
         return new NavigationViewItem(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NavigationViewItem"/>.
-    /// </returns>
-    public static implicit operator NavigationViewItem(AppiumWebElement element)
-    {
-        return new NavigationViewItem(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NavigationViewItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NavigationViewItem"/>.
-    /// </returns>
-    public static implicit operator NavigationViewItem(RemoteWebElement element)
-    {
-        return new NavigationViewItem(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Clicks on a child menu option with the specified item name.
     /// </summary>
@@ -164,7 +132,7 @@ public class NavigationViewItem : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual NavigationViewItem ClickChildOption(string name)
     {
-        NavigationViewItem item = this.ChildMenuItems.FirstOrDefault(
+        var item = ChildMenuItems.FirstOrDefault(
             element => element.GetName()
                 .Equals(name, StringComparison.CurrentCultureIgnoreCase));
 
@@ -192,7 +160,7 @@ public class NavigationViewItem : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual NavigationViewItem ClickChildOptionByPartialName(string name)
     {
-        NavigationViewItem item = this.ChildMenuItems.FirstOrDefault(
+        var item = ChildMenuItems.FirstOrDefault(
             element => element.GetName()
                 .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
 
@@ -208,14 +176,14 @@ public class NavigationViewItem : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     private IEnumerable<NavigationViewItem> GetChildMenuItems()
     {
-        if (this.ParentNavigationView == null || this.ParentNavigationView.IsPaneOpen)
+        if (ParentNavigationView == null || ParentNavigationView.IsPaneOpen)
         {
-            return this.Element.FindElements(this.navigationViewItemLocator).Select(
-                element => new NavigationViewItem(this.ParentNavigationView, this, element as WindowsElement));
+            return Element.FindElements(_navigationViewItemLocator).Select(
+                element => new NavigationViewItem(ParentNavigationView, this, element as WebElement));
         }
 
-        return this.Driver.FindElement(WindowsByExtras.AutomationId("ChildrenFlyout"))
-            .FindElements(this.navigationViewItemLocator).Select(
-                element => new NavigationViewItem(this.ParentNavigationView, this, element as WindowsElement));
+        return Driver.FindElement(WindowsByExtras.AutomationId("ChildrenFlyout"))
+            .FindElements(_navigationViewItemLocator).Select(
+                element => new NavigationViewItem(ParentNavigationView, this, element));
     }
 }

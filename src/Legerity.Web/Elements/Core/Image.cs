@@ -1,9 +1,7 @@
 namespace Legerity.Web.Elements.Core;
 
 using Extensions;
-using Legerity.Web.Elements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+using Elements;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Image control.
@@ -17,7 +15,7 @@ public class Image : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Image(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +23,9 @@ public class Image : WebElementWrapper
     /// Initializes a new instance of the <see cref="Image"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Image(RemoteWebElement element)
+    public Image(WebElement element)
         : base(element)
     {
     }
@@ -36,13 +34,13 @@ public class Image : WebElementWrapper
     /// Gets the source URI of the image.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string Source => this.GetAttribute("src");
+    public virtual string Source => GetAttribute("src");
 
     /// <summary>
     /// Gets the alt text of the image.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string AltText => this.GetAttribute("alt");
+    public virtual string AltText => GetAttribute("alt");
 
     /// <summary>
     /// Gets the width of the image.
@@ -65,7 +63,7 @@ public class Image : WebElementWrapper
     /// <returns>
     /// The <see cref="Image"/>.
     /// </returns>
-    public static implicit operator Image(RemoteWebElement element)
+    public static implicit operator Image(WebElement element)
     {
         return new Image(element);
     }

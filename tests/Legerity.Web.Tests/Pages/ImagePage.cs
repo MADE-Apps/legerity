@@ -1,16 +1,15 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class ImagePage : W3SchoolsBasePage
 {
-    private readonly By imageLocator = By.TagName("img");
+    private readonly By _imageLocator = By.TagName("img");
 
-    public ImagePage(RemoteWebDriver app) : base(app)
+    public ImagePage(WebDriver app) : base(app)
     {
     }
 
-    public Image Image => this.FindElement(this.imageLocator);
+    public Image Image => FindElement(_imageLocator);
 }

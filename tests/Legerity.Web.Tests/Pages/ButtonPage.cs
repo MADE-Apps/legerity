@@ -1,23 +1,22 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class ButtonPage : W3SchoolsBasePage
 {
-    private readonly By buttonLocator = By.TagName("button");
+    private readonly By _buttonLocator = By.TagName("button");
 
-    public ButtonPage(RemoteWebDriver app)
+    public ButtonPage(WebDriver app)
         : base(app)
     {
     }
 
-    public Button Button => this.FindElement(this.buttonLocator);
+    public Button Button => FindElement(_buttonLocator);
 
     public ButtonPage ClickButton()
     {
-        this.Button.Click();
+        Button.Click();
         return this;
     }
 }

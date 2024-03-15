@@ -1,6 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -16,8 +15,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldCheckOn()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
 
         // Act
         checkBoxPage.CheckOnTwoStateCheckBox();
@@ -30,8 +29,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldKeepCheckedIfCheckOn()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
 
         // Act
         checkBoxPage.CheckOnTwoStateCheckBox();
@@ -44,8 +43,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldCheckOff()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOnTwoStateCheckBox();
 
         // Act
         checkBoxPage.CheckOffTwoStateCheckBox();
@@ -58,8 +57,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldKeepCheckedOffIfCheckOff()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOffTwoStateCheckBox();
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox").CheckOffTwoStateCheckBox();
 
         // Act
         checkBoxPage.CheckOffTwoStateCheckBox();
@@ -72,8 +71,8 @@ internal class CheckBoxTests : BaseTestClass
     public void ShouldSetIndeterminateStateIfSupported()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        CheckBoxPage checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
+        var app = StartApp();
+        var checkBoxPage = new HomePage(app).NavigateTo<CheckBoxPage>("CheckBox");
 
         // Act
         checkBoxPage.CheckIndeterminateThreeStateCheckBox();

@@ -1,14 +1,13 @@
-namespace Legerity.Core.Tests.Tests;
-
 using System;
-using System.Collections.ObjectModel;
 using System.IO;
 using Legerity.Core.Tests.Pages;
+using Legerity.Web;
+using Legerity.Web.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 using Shouldly;
-using Web.Extensions;
+
+namespace Legerity.Core.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]
@@ -27,14 +26,14 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        RemoteWebElement element = page.FindElement(new ByNested(By.TagName("form"), By.TagName("input")));
+        var element = page.FindElement(new ByNested(By.TagName("form"), By.TagName("input")));
 
         // Assert
         element.ShouldNotBeNull();
@@ -54,14 +53,14 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement> elements =
+        var elements =
             page.FindElements(new ByNested(By.TagName("form"), WebByExtras.InputType("radio")));
 
         // Assert
@@ -81,9 +80,9 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
@@ -105,14 +104,14 @@ internal class ByNestedTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement> elements =
+        var elements =
             page.FindElements(new ByNested(By.TagName("form"), By.TagName("div")));
 
         // Assert

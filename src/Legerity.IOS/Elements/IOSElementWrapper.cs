@@ -1,27 +1,20 @@
 namespace Legerity.IOS.Elements;
 
 using System;
-
-using Legerity.Exceptions;
-
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.UI;
+using Exceptions;
 
 /// <summary>
-/// Defines an element wrapper for a <see cref="IOSElement"/>.
+/// Defines an element wrapper for an iOS <see cref="WebElement"/>.
 /// </summary>
-public class IOSElementWrapper : ElementWrapper<IOSElement>
+public class IOSElementWrapper : ElementWrapper<WebElement>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="IOSElementWrapper"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public IOSElementWrapper(IOSElement element)
+    public IOSElementWrapper(WebElement element)
         : base(element)
     {
     }
@@ -29,48 +22,20 @@ public class IOSElementWrapper : ElementWrapper<IOSElement>
     /// <summary>
     /// Gets the instance of the Appium driver for the iOS application.
     /// </summary>
-    public IOSDriver<IOSElement> Driver => this.ElementDriver as IOSDriver<IOSElement>;
+    public IOSDriver Driver => ElementDriver as IOSDriver;
 
     /// <summary>
-    /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="IOSElementWrapper"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="IOSElementWrapper"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="IOSElementWrapper"/>.
     /// </returns>
-    public static implicit operator IOSElementWrapper(IOSElement element)
+    public static implicit operator IOSElementWrapper(WebElement element)
     {
         return new IOSElementWrapper(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="IOSElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="IOSElementWrapper"/>.
-    /// </returns>
-    public static implicit operator IOSElementWrapper(AppiumWebElement element)
-    {
-        return new IOSElementWrapper(element as IOSElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="IOSElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="IOSElementWrapper"/>.
-    /// </returns>
-    public static implicit operator IOSElementWrapper(RemoteWebElement element)
-    {
-        return new IOSElementWrapper(element as IOSElement);
     }
 
     /// <summary>
@@ -88,7 +53,7 @@ public class IOSElementWrapper : ElementWrapper<IOSElement>
         {
             try
             {
-                if (this.Driver.FindElement(locator) == null)
+                if (Driver.FindElement(locator) == null)
                 {
                     throw new ElementNotShownException(locator.ToString());
                 }
@@ -100,7 +65,7 @@ public class IOSElementWrapper : ElementWrapper<IOSElement>
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElement(locator) != null);
         }
     }
@@ -119,14 +84,14 @@ public class IOSElementWrapper : ElementWrapper<IOSElement>
     {
         if (timeout == null)
         {
-            if (this.Driver.FindElements(locator).Count == 0)
+            if (Driver.FindElements(locator).Count == 0)
             {
                 throw new ElementsNotShownException(locator.ToString());
             }
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElements(locator).Count != 0);
         }
     }

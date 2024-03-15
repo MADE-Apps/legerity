@@ -6,18 +6,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using Legerity.Extensions;
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP CalendarView control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP CalendarView control.
 /// </summary>
 public class CalendarView : WindowsElementWrapper
 {
-    private readonly Dictionary<string, string> months = new()
+    private readonly Dictionary<string, string> _months = new()
     {
         { "January", "01" },
         { "February", "02" },
@@ -37,9 +33,9 @@ public class CalendarView : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="CalendarView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public CalendarView(WindowsElement element)
+    public CalendarView(WebElement element)
         : base(element)
     {
     }
@@ -48,26 +44,26 @@ public class CalendarView : WindowsElementWrapper
     /// Gets the element associated with the header button (change month, year).
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button HeaderButton => this.FindElement(WindowsByExtras.AutomationId("HeaderButton"));
+    public virtual Button HeaderButton => FindElement(WindowsByExtras.AutomationId("HeaderButton"));
 
     /// <summary>
     /// Gets the element associated with the next month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button NextMonthButton => this.FindElement(WindowsByExtras.AutomationId("NextButton"));
+    public virtual Button NextMonthButton => FindElement(WindowsByExtras.AutomationId("NextButton"));
 
     /// <summary>
     /// Gets the element associated with the previous month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual Button PreviousMonthButton =>
-        this.FindElement(WindowsByExtras.AutomationId("PreviousButton"));
+        FindElement(WindowsByExtras.AutomationId("PreviousButton"));
 
     /// <summary>
     /// Gets the collection of days associated with the current month in the calendar view.
     /// </summary>
-    public virtual ReadOnlyCollection<AppiumWebElement> Days =>
-        this.Element.FindElements(By.ClassName("CalendarViewDayItem"));
+    public virtual ReadOnlyCollection<WebElement> Days =>
+        Element.FindElements(By.ClassName("CalendarViewDayItem")).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the value of the calendar view.
@@ -78,50 +74,22 @@ public class CalendarView : WindowsElementWrapper
     /// <summary>
     /// Gets the value of the calendar view as a <see cref="DateTime"/>.
     /// </summary>
-    public virtual DateTime? SelectedDate => this.GetSelectedDate();
+    public virtual DateTime? SelectedDate => GetSelectedDate();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CalendarView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CalendarView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="CalendarView"/>.
     /// </returns>
-    public static implicit operator CalendarView(WindowsElement element)
+    public static implicit operator CalendarView(WebElement element)
     {
         return new CalendarView(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="CalendarView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarView"/>.
-    /// </returns>
-    public static implicit operator CalendarView(AppiumWebElement element)
-    {
-        return new CalendarView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CalendarView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarView"/>.
-    /// </returns>
-    public static implicit operator CalendarView(RemoteWebElement element)
-    {
-        return new CalendarView(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Sets the selected date of the calendar view.
     /// </summary>
@@ -132,29 +100,29 @@ public class CalendarView : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void SetDate(DateTime date)
     {
-        string expectedDay = date.ToString("%d");
-        string expectedHeader = date.ToString("MMMM yyyy");
+        var expectedDay = date.ToString("%d");
+        var expectedHeader = date.ToString("MMMM yyyy");
 
-        string currentHeader = this.HeaderButton.GetName();
-        DateTime currentViewDate = this.GetCurrentViewDate(currentHeader);
+        var currentHeader = HeaderButton.GetName();
+        var currentViewDate = GetCurrentViewDate(currentHeader);
 
         while (!expectedHeader.Equals(currentHeader, StringComparison.CurrentCultureIgnoreCase))
         {
             if (currentViewDate.Date > date.Date)
             {
-                this.PreviousMonthButton.Click();
+                PreviousMonthButton.Click();
             }
             else
             {
-                this.NextMonthButton.Click();
+                NextMonthButton.Click();
             }
 
             Thread.Sleep(10);
 
-            currentHeader = this.HeaderButton.GetName();
+            currentHeader = HeaderButton.GetName();
         }
 
-        AppiumWebElement item = this.Days.FirstOrDefault(
+        var item = Days.FirstOrDefault(
             element => element.GetName().Equals(expectedDay, StringComparison.CurrentCultureIgnoreCase));
 
         if (item == null)
@@ -167,20 +135,20 @@ public class CalendarView : WindowsElementWrapper
 
     private DateTime GetCurrentViewDate(string currentHeader)
     {
-        this.months.TryGetValue(
+        _months.TryGetValue(
             string.Join(string.Empty, currentHeader.Where(char.IsLetter)).Trim(),
-            out string month);
+            out var month);
 
-        string year = string.Join(string.Empty, currentHeader.Where(char.IsDigit)).Trim();
+        var year = string.Join(string.Empty, currentHeader.Where(char.IsDigit)).Trim();
 
-        string dateString = $"01/{month}/{year}";
+        var dateString = $"01/{month}/{year}";
         return DateTime.ParseExact(dateString, @"d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
     }
 
     private DateTime? GetSelectedDate()
     {
-        string value = this.Value;
+        var value = Value;
         return string.IsNullOrEmpty(value) ? default :
-            DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
+            DateTime.TryParse(value, out var date) ? date : default(DateTime?);
     }
 }

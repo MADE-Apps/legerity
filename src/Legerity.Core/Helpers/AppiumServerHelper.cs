@@ -1,8 +1,7 @@
 namespace Legerity.Helpers;
 
 using System;
-using Legerity.Exceptions;
-using OpenQA.Selenium.Appium.Service;
+using Exceptions;
 
 /// <summary>
 /// Defines a helper class for launching a local Appium server.

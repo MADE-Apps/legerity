@@ -2,14 +2,10 @@ namespace Legerity.Windows.Elements.WCT;
 
 using System.Collections.Generic;
 using System.Linq;
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit BladeView control.
+/// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit BladeView control.
 /// </summary>
 public class BladeView : WindowsElementWrapper
 {
@@ -17,9 +13,9 @@ public class BladeView : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="BladeView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public BladeView(WindowsElement element)
+    public BladeView(WebElement element)
         : base(element)
     {
     }
@@ -28,49 +24,21 @@ public class BladeView : WindowsElementWrapper
     /// Gets the UI components associated with the child blades.
     /// </summary>
     public virtual IEnumerable<BladeViewItem> Blades =>
-        this.Element.FindElements(By.ClassName("BladeItem"))
-            .Select(element => new BladeViewItem(this, element as WindowsElement));
+        Element.FindElements(By.ClassName("BladeItem"))
+            .Select(element => new BladeViewItem(this, element as WebElement));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="BladeView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="BladeView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="BladeView"/>.
     /// </returns>
-    public static implicit operator BladeView(WindowsElement element)
+    public static implicit operator BladeView(WebElement element)
     {
         return new BladeView(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="BladeView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="BladeView"/>.
-    /// </returns>
-    public static implicit operator BladeView(AppiumWebElement element)
-    {
-        return new BladeView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="BladeView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="BladeView"/>.
-    /// </returns>
-    public static implicit operator BladeView(RemoteWebElement element)
-    {
-        return new BladeView(element as WindowsElement);
     }
 
     /// <summary>
@@ -81,7 +49,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual BladeViewItem GetBlade(string name)
     {
-        return this.Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdEquals(name));
+        return Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdEquals(name));
     }
 
     /// <summary>
@@ -92,7 +60,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual BladeViewItem GetBladeByPartialName(string partialName)
     {
-        return this.Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdContains(partialName));
+        return Blades.FirstOrDefault(element => element.Element.VerifyNameOrAutomationIdContains(partialName));
     }
 
     /// <summary>
@@ -105,7 +73,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void CloseBlade(string name)
     {
-        BladeViewItem blade = this.GetBlade(name);
+        var blade = GetBlade(name);
         blade.Close();
     }
 
@@ -119,7 +87,7 @@ public class BladeView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void CloseBladeByPartialName(string partialName)
     {
-        BladeViewItem blade = this.GetBladeByPartialName(partialName);
+        var blade = GetBladeByPartialName(partialName);
         blade.Close();
     }
 }

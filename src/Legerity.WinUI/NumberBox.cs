@@ -1,15 +1,11 @@
 namespace Legerity.Windows.Elements.WinUI;
 
 using System;
-using Legerity.Windows.Elements.Core;
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Core;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI NumberBox control.
+/// Defines a <see cref="WebElement"/> wrapper for the WinUI NumberBox control.
 /// </summary>
 public class NumberBox : WindowsElementWrapper
 {
@@ -17,9 +13,9 @@ public class NumberBox : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="NumberBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public NumberBox(WindowsElement element)
+    public NumberBox(WebElement element)
         : base(element)
     {
     }
@@ -58,63 +54,35 @@ public class NumberBox : WindowsElementWrapper
     /// Gets the element associated with the inline up button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button InlineUpButton => this.FindElement(WindowsByExtras.AutomationId("UpSpinButton"));
+    public virtual Button InlineUpButton => FindElement(WindowsByExtras.AutomationId("UpSpinButton"));
 
     /// <summary>
     /// Gets the element associated with the inline down button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual Button InlineDownButton =>
-        this.FindElement(WindowsByExtras.AutomationId("DownSpinButton"));
+        FindElement(WindowsByExtras.AutomationId("DownSpinButton"));
 
     /// <summary>
     /// Gets the element associated with the input text box.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextBox InputBox => this.FindElement(WindowsByExtras.AutomationId("InputBox"));
+    public virtual TextBox InputBox => FindElement(WindowsByExtras.AutomationId("InputBox"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NumberBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="NumberBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="NumberBox"/>.
     /// </returns>
-    public static implicit operator NumberBox(WindowsElement element)
+    public static implicit operator NumberBox(WebElement element)
     {
         return new NumberBox(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="NumberBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NumberBox"/>.
-    /// </returns>
-    public static implicit operator NumberBox(AppiumWebElement element)
-    {
-        return new NumberBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NumberBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NumberBox"/>.
-    /// </returns>
-    public static implicit operator NumberBox(RemoteWebElement element)
-    {
-        return new NumberBox(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Sets the value of the NumberBox.
     /// </summary>
@@ -130,10 +98,10 @@ public class NumberBox : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SetValue(double value)
     {
-        double min = this.Minimum;
-        double max = this.Maximum;
+        var min = Minimum;
+        var max = Maximum;
 
-        if (value < this.Minimum)
+        if (value < Minimum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -141,7 +109,7 @@ public class NumberBox : WindowsElementWrapper
                 $"Value must be greater than or equal to the minimum value {min}");
         }
 
-        if (value > this.Maximum)
+        if (value > Maximum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -149,8 +117,8 @@ public class NumberBox : WindowsElementWrapper
                 $"Value must be less than or equal to the maximum value {max}");
         }
 
-        this.InputBox.SetText(value.ToString());
-        this.InputBox.Element.SendKeys(Keys.Enter);
+        InputBox.SetText(value.ToString());
+        InputBox.Element.SendKeys(Keys.Enter);
     }
 
     /// <summary>
@@ -161,7 +129,7 @@ public class NumberBox : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void Increment()
     {
-        this.Element.SendKeys(Keys.ArrowUp);
+        Element.SendKeys(Keys.ArrowUp);
     }
 
     /// <summary>
@@ -172,6 +140,6 @@ public class NumberBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Decrement()
     {
-        this.Element.SendKeys(Keys.ArrowDown);
+        Element.SendKeys(Keys.ArrowDown);
     }
 }

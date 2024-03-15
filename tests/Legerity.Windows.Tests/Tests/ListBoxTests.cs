@@ -1,7 +1,6 @@
 namespace Legerity.Windows.Tests.Tests;
 
 using Extensions;
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -17,8 +16,8 @@ internal class ListBoxTests : BaseTestClass
     public void ShouldClickItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        ListBoxPage listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
+        var app = StartApp();
+        var listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
 
         // Act
         listBoxPage.ClickColorItem("Red");
@@ -31,8 +30,8 @@ internal class ListBoxTests : BaseTestClass
     public void ShouldClickItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        ListBoxPage listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
+        var app = StartApp();
+        var listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
 
         // Act
         listBoxPage.ClickColorItemByPartialName("Gre");

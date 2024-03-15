@@ -2,32 +2,21 @@ namespace Legerity;
 
 using System;
 using System.Collections.Generic;
-using Legerity.Android;
-using Legerity.Exceptions;
-using Legerity.Extensions;
-using Legerity.Helpers;
-using Legerity.IOS;
-using Legerity.Web;
-using Legerity.Windows;
+using Android;
+using Exceptions;
+using Extensions;
+using Helpers;
+using IOS;
 using Legerity.Windows.Helpers;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Opera;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Safari;
+using Web;
+using Windows;
 
 /// <summary>
 /// Defines a manager for the application under test.
 /// </summary>
 public static class AppManager
 {
-    private static readonly List<RemoteWebDriver> StartedApps = new();
+    private static readonly List<WebDriver> s_startedApps = new();
 
     /// <summary>
     /// Gets the instance of the started Windows application.
@@ -35,7 +24,7 @@ public static class AppManager
     /// <remarks>
     /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp"/> method.
     /// </remarks>
-    public static WindowsDriver<WindowsElement> WindowsApp => App as WindowsDriver<WindowsElement>;
+    public static WindowsDriver WindowsApp => App as WindowsDriver;
 
     /// <summary>
     /// Gets the instance of the started Android application.
@@ -43,7 +32,7 @@ public static class AppManager
     /// <remarks>
     /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp"/> method.
     /// </remarks>
-    public static AndroidDriver<AndroidElement> AndroidApp => App as AndroidDriver<AndroidElement>;
+    public static AndroidDriver AndroidApp => App as AndroidDriver;
 
     /// <summary>
     /// Gets the instance of the started iOS application.
@@ -51,7 +40,7 @@ public static class AppManager
     /// <remarks>
     /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp"/> method.
     /// </remarks>
-    public static IOSDriver<IOSElement> IOSApp => App as IOSDriver<IOSElement>;
+    public static IOSDriver IOSApp => App as IOSDriver;
 
     /// <summary>
     /// Gets the instance of the started web application.
@@ -59,23 +48,23 @@ public static class AppManager
     /// <remarks>
     /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp"/> method.
     /// </remarks>
-    public static RemoteWebDriver WebApp => App;
+    public static WebDriver WebApp => App;
 
     /// <summary>
     /// Gets or sets the instance of the started application.
     /// <para>
-    /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
+    /// This could be a <see cref="WindowsDriver"/>, <see cref="AndroidDriver"/>, <see cref="IOSDriver"/>, or web driver.
     /// </para>
     /// </summary>
     /// <remarks>
     /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp"/> method.
     /// </remarks>
-    public static RemoteWebDriver App { get; set; }
+    public static WebDriver App { get; set; }
 
     /// <summary>
     /// Gets the instances of started applications.
     /// </summary>
-    public static IReadOnlyCollection<RemoteWebDriver> Apps => StartedApps;
+    public static IReadOnlyCollection<WebDriver> Apps => s_startedApps;
 
     /// <summary>
     /// Starts the application ready for testing.
@@ -103,13 +92,13 @@ public static class AppManager
     /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// </exception>
-    public static RemoteWebDriver StartApp(
+    public static WebDriver StartApp(
         AppManagerOptions opts,
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
         int waitUntilRetries = 0)
     {
-        RemoteWebDriver app = null;
+        WebDriver app = null;
 
         if (opts is AppiumManagerOptions appiumOpts)
         {
@@ -121,98 +110,17 @@ public static class AppManager
             switch (opts)
             {
                 case WebAppManagerOptions webOpts:
-                {
-                    app = webOpts.DriverType switch
-                    {
-                        WebAppDriverType.Chrome => new ChromeDriver(
-                            webOpts.DriverUri,
-                            webOpts.DriverOptions as ChromeOptions ?? new ChromeOptions()),
-                        WebAppDriverType.Firefox => new FirefoxDriver(
-                            webOpts.DriverUri,
-                            webOpts.DriverOptions as FirefoxOptions ?? new FirefoxOptions()),
-                        WebAppDriverType.Opera => new OperaDriver(
-                            webOpts.DriverUri,
-                            webOpts.DriverOptions as OperaOptions ?? new OperaOptions()),
-                        WebAppDriverType.Safari => new SafariDriver(
-                            webOpts.DriverUri,
-                            webOpts.DriverOptions as SafariOptions ?? new SafariOptions()),
-                        WebAppDriverType.Edge => new EdgeDriver(
-                            webOpts.DriverUri,
-                            webOpts.DriverOptions as EdgeOptions ?? new EdgeOptions()),
-                        WebAppDriverType.InternetExplorer => new InternetExplorerDriver(
-                            webOpts.DriverUri,
-                            webOpts.DriverOptions as InternetExplorerOptions ?? new InternetExplorerOptions()),
-                        WebAppDriverType.EdgeChromium => new Microsoft.Edge.SeleniumTools.EdgeDriver(
-                            webOpts.DriverUri,
-                            webOpts.DriverOptions as Microsoft.Edge.SeleniumTools.EdgeOptions ??
-                            new Microsoft.Edge.SeleniumTools.EdgeOptions { UseChromium = true }),
-                        _ => null
-                    };
-
-                    VerifyAppDriver(app, webOpts);
-
-                    if (webOpts.Maximize)
-                    {
-                        app.Manage().Window.Maximize();
-                    }
-                    else
-                    {
-                        app.Manage().Window.Size = webOpts.DesiredSize;
-                    }
-
-                    app.Url = webOpts.Url;
+                    app = StartWebApp(webOpts);
                     break;
-                }
-
                 case WindowsAppManagerOptions winOpts:
-                {
-                    if (winOpts.LaunchWinAppDriver)
-                    {
-                        WinAppDriverHelper.Run();
-                    }
-
-                    app = new WindowsDriver<WindowsElement>(
-                        new Uri(winOpts.DriverUri),
-                        winOpts.AppiumOptions);
-
-                    VerifyAppDriver(app, winOpts);
-
-                    if (winOpts.Maximize)
-                    {
-                        app.Manage().Window.Maximize();
-                    }
-
+                    app = StartWindowsApp(winOpts);
                     break;
-                }
-
                 case AndroidAppManagerOptions androidOpts:
-                {
-                    if (androidOpts.LaunchAppiumServer)
-                    {
-                        AppiumServerHelper.Run();
-                    }
-
-                    app = new AndroidDriver<AndroidElement>(
-                        new Uri(androidOpts.DriverUri),
-                        androidOpts.AppiumOptions);
-
-                    VerifyAppDriver(app, androidOpts);
+                    app = StartAndroidApp(androidOpts);
                     break;
-                }
-
                 case IOSAppManagerOptions iosOpts:
-                {
-                    if (iosOpts.LaunchAppiumServer)
-                    {
-                        AppiumServerHelper.Run();
-                    }
-
-                    app = new IOSDriver<IOSElement>(new Uri(iosOpts.DriverUri), iosOpts.AppiumOptions);
-
-                    VerifyAppDriver(app, iosOpts);
+                    app = StartIOSApp(iosOpts);
                     break;
-                }
-
                 default:
                     VerifyAppDriver(null, opts);
                     break;
@@ -236,7 +144,7 @@ public static class AppManager
         }
 
         App = app;
-        StartedApps.Add(app);
+        s_startedApps.Add(app);
         return app;
     }
 
@@ -261,10 +169,10 @@ public static class AppManager
     /// <param name="stopServer">
     /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
     /// </param>
-    public static void StopApp(RemoteWebDriver app, bool stopServer = false)
+    public static void StopApp(WebDriver app, bool stopServer = false)
     {
         app?.Quit();
-        StartedApps.Remove(app);
+        s_startedApps.Remove(app);
 
         if (!stopServer)
         {
@@ -280,19 +188,112 @@ public static class AppManager
     /// </summary>
     public static void StopApps()
     {
-        StartedApps.ForEach(driver => driver?.Quit());
-        StartedApps.Clear();
+        s_startedApps.ForEach(driver => driver?.Quit());
+        s_startedApps.Clear();
+    }
+
+
+    private static WebDriver StartIOSApp(IOSAppManagerOptions iosOpts)
+    {
+        if (iosOpts.LaunchAppiumServer)
+        {
+            AppiumServerHelper.Run();
+        }
+
+        var app = new IOSDriver(new Uri(iosOpts.DriverUri), iosOpts.AppiumOptions);
+
+        VerifyAppDriver(app, iosOpts);
+        return app;
+    }
+
+    private static WebDriver StartAndroidApp(AndroidAppManagerOptions androidOpts)
+    {
+        if (androidOpts.LaunchAppiumServer)
+        {
+            AppiumServerHelper.Run();
+        }
+
+        var app = new AndroidDriver(
+            new Uri(androidOpts.DriverUri),
+            androidOpts.AppiumOptions);
+
+        VerifyAppDriver(app, androidOpts);
+        return app;
+    }
+
+    private static WebDriver StartWindowsApp(WindowsAppManagerOptions winOpts)
+    {
+        if (winOpts.LaunchAppiumServer || winOpts.LaunchWinAppDriver)
+        {
+            AppiumServerHelper.Run();
+        }
+
+        var app = new WindowsDriver(
+            new Uri(winOpts.DriverUri),
+            winOpts.AppiumOptions);
+
+        VerifyAppDriver(app, winOpts);
+
+        if (winOpts.Maximize)
+        {
+            app.Manage().Window.Maximize();
+        }
+
+        return app;
+    }
+
+    private static WebDriver StartWebApp(WebAppManagerOptions webOpts)
+    {
+        WebDriver app = webOpts.DriverType switch
+        {
+            WebAppDriverType.Chrome => new ChromeDriver(
+                webOpts.DriverUri,
+                webOpts.DriverOptions as ChromeOptions ?? new ChromeOptions()),
+            WebAppDriverType.Firefox => new FirefoxDriver(
+                webOpts.DriverUri,
+                webOpts.DriverOptions as FirefoxOptions ?? new FirefoxOptions()),
+            WebAppDriverType.Opera => new ChromeDriver(
+                webOpts.DriverUri,
+                webOpts.DriverOptions as OperaChromiumOptions ?? new OperaChromiumOptions()),
+            WebAppDriverType.Safari => new SafariDriver(
+                webOpts.DriverUri,
+                webOpts.DriverOptions as SafariOptions ?? new SafariOptions()),
+            WebAppDriverType.Edge => new EdgeDriver(
+                webOpts.DriverUri,
+                webOpts.DriverOptions as EdgeOptions ?? new EdgeOptions()),
+            WebAppDriverType.InternetExplorer => new InternetExplorerDriver(
+                webOpts.DriverUri,
+                webOpts.DriverOptions as InternetExplorerOptions ?? new InternetExplorerOptions()),
+            WebAppDriverType.EdgeChromium => new EdgeDriver(
+                webOpts.DriverUri,
+                webOpts.DriverOptions as EdgeOptions ?? new EdgeOptions()),
+            _ => null
+        };
+
+        VerifyAppDriver(app, webOpts);
+
+        if (webOpts.Maximize)
+        {
+            app!.Manage().Window.Maximize();
+        }
+        else
+        {
+            app!.Manage().Window.Size = webOpts.DesiredSize;
+        }
+
+        app.Url = webOpts.Url;
+        return app;
     }
 
     /// <exception cref="T:Legerity.Exceptions.DriverLoadFailedException">Thrown when the driver could not be verified.</exception>
-    private static void VerifyAppDriver(RemoteWebDriver app, AppManagerOptions opts)
+    private static void VerifyAppDriver(WebDriver app, AppManagerOptions opts)
     {
         if (app?.SessionId == null)
         {
             throw new DriverLoadFailedException(opts);
         }
 
-        // Set implicit timeout to 2 seconds to make element search to retry every 500 ms for at most three times.
+        // Set implicit timeout to make element search retry every x ms.
         app.Manage().Timeouts().ImplicitWait = opts.ImplicitWait;
     }
 }

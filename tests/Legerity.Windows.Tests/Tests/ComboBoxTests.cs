@@ -1,6 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -16,8 +15,8 @@ internal class ComboBoxTests : BaseTestClass
     public void ShouldSelectItemByName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        ComboBoxPage comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
+        var app = StartApp();
+        var comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
 
         // Act
         comboBoxPage.SelectColorByName("Red");
@@ -30,8 +29,8 @@ internal class ComboBoxTests : BaseTestClass
     public void ShouldSelectItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        ComboBoxPage comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
+        var app = StartApp();
+        var comboBoxPage = new HomePage(app).NavigateTo<ComboBoxPage>("ComboBox");
 
         // Act
         comboBoxPage.SelectColorByPartialName("Yell");

@@ -1,14 +1,10 @@
 namespace Legerity.IOS.Elements.Core;
 
 using System;
-using Legerity.IOS.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="IOSElement"/> wrapper for the core iOS Slider control.
+/// Defines a <see cref="WebElement"/> wrapper for the core iOS Slider control.
 /// </summary>
 public class Slider : IOSElementWrapper
 {
@@ -16,9 +12,9 @@ public class Slider : IOSElementWrapper
     /// Initializes a new instance of the <see cref="Slider"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Slider(IOSElement element)
+    public Slider(WebElement element)
         : base(element)
     {
     }
@@ -32,48 +28,20 @@ public class Slider : IOSElementWrapper
     /// <summary>
     /// Gets a value indicating whether the control is in a readonly state.
     /// </summary>
-    public virtual bool IsReadonly => !this.IsEnabled;
+    public virtual bool IsReadonly => !IsEnabled;
 
     /// <summary>
-    /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="Slider"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Slider"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Slider"/>.
     /// </returns>
-    public static implicit operator Slider(IOSElement element)
+    public static implicit operator Slider(WebElement element)
     {
         return new Slider(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="Slider"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Slider"/>.
-    /// </returns>
-    public static implicit operator Slider(AppiumWebElement element)
-    {
-        return new Slider(element as IOSElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Slider"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Slider"/>.
-    /// </returns>
-    public static implicit operator Slider(RemoteWebElement element)
-    {
-        return new Slider(element as IOSElement);
     }
 
     /// <summary>
@@ -87,13 +55,13 @@ public class Slider : IOSElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SetValue(double value)
     {
-        this.Click();
+        Click();
 
-        double currentValue = this.Value;
+        var currentValue = Value;
         while (Math.Abs(currentValue - value) > double.Epsilon)
         {
-            this.Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
-            currentValue = this.Value;
+            Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
+            currentValue = Value;
         }
     }
 }

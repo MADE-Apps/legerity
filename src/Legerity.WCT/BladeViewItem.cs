@@ -1,26 +1,22 @@
 namespace Legerity.Windows.Elements.WCT;
 
 using System;
-using Legerity.Windows.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Core;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit BladeViewItem control.
+/// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit BladeViewItem control.
 /// </summary>
 public class BladeViewItem : WindowsElementWrapper
 {
-    private readonly WeakReference parentBladeViewReference;
+    private readonly WeakReference _parentBladeViewReference;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BladeViewItem"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public BladeViewItem(WindowsElement element)
+    public BladeViewItem(WebElement element)
         : this(null, element)
     {
     }
@@ -32,77 +28,49 @@ public class BladeViewItem : WindowsElementWrapper
     /// The parent <see cref="BladeView"/>.
     /// </param>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
     public BladeViewItem(
         BladeView parentBladeView,
-        WindowsElement element)
+        WebElement element)
         : base(element)
     {
         if (parentBladeView != null)
         {
-            this.parentBladeViewReference = new WeakReference(parentBladeView);
+            _parentBladeViewReference = new WeakReference(parentBladeView);
         }
     }
 
     /// <summary>Gets the original parent <see cref="BladeView"/> reference object.</summary>
     public BladeView ParentMenuBar =>
-        this.parentBladeViewReference is { IsAlive: true }
-            ? this.parentBladeViewReference.Target as BladeView
+        _parentBladeViewReference is { IsAlive: true }
+            ? _parentBladeViewReference.Target as BladeView
             : null;
 
     /// <summary>
     /// Gets the <see cref="Button"/> element associated with the blade enlarge option.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button EnlargeButton => this.FindElement(WindowsByExtras.AutomationId("EnlargeButton"));
+    public virtual Button EnlargeButton => FindElement(WindowsByExtras.AutomationId("EnlargeButton"));
 
     /// <summary>
     /// Gets the <see cref="Button"/> element associated with the blade close option.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button CloseButton => this.FindElement(WindowsByExtras.AutomationId("CloseButton"));
+    public virtual Button CloseButton => FindElement(WindowsByExtras.AutomationId("CloseButton"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="BladeViewItem"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="BladeViewItem"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="BladeViewItem"/>.
     /// </returns>
-    public static implicit operator BladeViewItem(WindowsElement element)
+    public static implicit operator BladeViewItem(WebElement element)
     {
         return new BladeViewItem(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="BladeViewItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="BladeViewItem"/>.
-    /// </returns>
-    public static implicit operator BladeViewItem(AppiumWebElement element)
-    {
-        return new BladeViewItem(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="BladeViewItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="BladeViewItem"/>.
-    /// </returns>
-    public static implicit operator BladeViewItem(RemoteWebElement element)
-    {
-        return new BladeViewItem(element as WindowsElement);
     }
 
     /// <summary>
@@ -114,6 +82,6 @@ public class BladeViewItem : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Close()
     {
-        this.CloseButton.Click();
+        CloseButton.Click();
     }
 }

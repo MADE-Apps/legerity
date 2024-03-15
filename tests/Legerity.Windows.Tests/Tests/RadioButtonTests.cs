@@ -1,6 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -16,8 +15,8 @@ internal class RadioButtonTests : BaseTestClass
     public void ShouldSelectRadioButton()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        RadioButtonPage radioButtonPage = new HomePage(app).NavigateTo<RadioButtonPage>("RadioButton");
+        var app = StartApp();
+        var radioButtonPage = new HomePage(app).NavigateTo<RadioButtonPage>("RadioButton");
 
         // Act
         radioButtonPage.ClickOptionOneRadioButton();

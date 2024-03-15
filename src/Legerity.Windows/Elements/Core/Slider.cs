@@ -1,14 +1,10 @@
 namespace Legerity.Windows.Elements.Core;
 
 using System;
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP Slider control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP Slider control.
 /// </summary>
 public class Slider : WindowsElementWrapper
 {
@@ -16,9 +12,9 @@ public class Slider : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="Slider"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Slider(WindowsElement element)
+    public Slider(WebElement element)
         : base(element)
     {
     }
@@ -54,45 +50,17 @@ public class Slider : WindowsElementWrapper
     public virtual bool IsReadonly => this.IsRangeReadonly();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="Slider"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Slider"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Slider"/>.
     /// </returns>
-    public static implicit operator Slider(WindowsElement element)
+    public static implicit operator Slider(WebElement element)
     {
         return new Slider(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="Slider"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Slider"/>.
-    /// </returns>
-    public static implicit operator Slider(AppiumWebElement element)
-    {
-        return new Slider(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Slider"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Slider"/>.
-    /// </returns>
-    public static implicit operator Slider(RemoteWebElement element)
-    {
-        return new Slider(element as WindowsElement);
     }
 
     /// <summary>
@@ -109,10 +77,10 @@ public class Slider : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SetValue(double value)
     {
-        double min = this.Minimum;
-        double max = this.Maximum;
+        var min = Minimum;
+        var max = Maximum;
 
-        if (value < this.Minimum)
+        if (value < Minimum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -120,7 +88,7 @@ public class Slider : WindowsElementWrapper
                 $"Value must be greater than or equal to the minimum value {min}");
         }
 
-        if (value > this.Maximum)
+        if (value > Maximum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -128,13 +96,13 @@ public class Slider : WindowsElementWrapper
                 $"Value must be less than or equal to the maximum value {max}");
         }
 
-        this.Click();
+        Click();
 
-        double currentValue = this.Value;
+        var currentValue = Value;
         while (Math.Abs(currentValue - value) > double.Epsilon)
         {
-            this.Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
-            currentValue = this.Value;
+            Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
+            currentValue = Value;
         }
     }
 }

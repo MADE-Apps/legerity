@@ -1,9 +1,6 @@
 namespace Legerity.Android;
 
-using System;
 using System.Collections.Generic;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Enums;
 
 /// <summary>
 /// Defines a specific <see cref="AppiumManagerOptions"/> for an Android application.
@@ -113,13 +110,13 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
         string deviceId,
         params (string, object)[] additionalOptions)
     {
-        this.AppId = appId;
-        this.AppActivity = appActivity;
-        this.AppPath = appPath;
-        this.OSVersion = osVersion;
-        this.DeviceName = deviceName;
-        this.DeviceId = deviceId;
-        this.AdditionalOptions = additionalOptions;
+        AppId = appId;
+        AppActivity = appActivity;
+        AppPath = appPath;
+        OSVersion = osVersion;
+        DeviceName = deviceName;
+        DeviceId = deviceId;
+        AdditionalOptions = additionalOptions;
     }
 
     /// <summary>
@@ -153,47 +150,42 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
     public string DeviceId { get; set; }
 
     /// <summary>
-    /// Gets or sets a value indicating whether to launch the Appium server instance.
-    /// </summary>
-    public bool LaunchAppiumServer { get; set; }
-
-    /// <summary>
     /// Configures the <see cref="AppiumManagerOptions.AppiumOptions"/> with the specified additional options.
     /// </summary>
     public override void Configure()
     {
         base.Configure();
 
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "Android");
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformName, "Android");
 
-        if (!string.IsNullOrWhiteSpace(this.OSVersion))
+        if (!string.IsNullOrWhiteSpace(OSVersion))
         {
-            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
+            AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformVersion, OSVersion);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceName))
+        if (!string.IsNullOrWhiteSpace(DeviceName))
         {
-            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
+            AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.DeviceName, DeviceName);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceId))
+        if (!string.IsNullOrWhiteSpace(DeviceId))
         {
-            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
+            AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.Udid, DeviceId);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.AppId))
+        if (!string.IsNullOrWhiteSpace(AppId))
         {
-            this.AppiumOptions.AddAdditionalCapability("appPackage", this.AppId);
+            AppiumOptions.AddAdditionalAppiumOption("appPackage", AppId);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.AppActivity))
+        if (!string.IsNullOrWhiteSpace(AppActivity))
         {
-            this.AppiumOptions.AddAdditionalCapability("appActivity", this.AppActivity);
+            AppiumOptions.AddAdditionalAppiumOption("appActivity", AppActivity);
         }
 
-        if (!string.IsNullOrWhiteSpace(this.AppPath))
+        if (!string.IsNullOrWhiteSpace(AppPath))
         {
-            this.AppiumOptions.AddAdditionalCapability("app", this.AppPath);
+            AppiumOptions.AddAdditionalAppiumOption("app", AppPath);
         }
     }
 
@@ -205,44 +197,44 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
     /// </param>
     public void Configure((string, object)[] additionalOptions)
     {
-        this.AdditionalOptions = additionalOptions;
-        this.Configure();
+        AdditionalOptions = additionalOptions;
+        Configure();
     }
 
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"Platform [Android], {base.ToString()}, {this.GetOptionDetails()}";
+        return $"Platform [Android], {base.ToString()}, {GetOptionDetails()}";
     }
 
     private string GetOptionDetails()
     {
         var options = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(this.AppId))
+        if (!string.IsNullOrWhiteSpace(AppId))
         {
-            options.Add($"App ID [{this.AppId}]");
+            options.Add($"App ID [{AppId}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.AppPath))
+        if (!string.IsNullOrWhiteSpace(AppPath))
         {
-            options.Add($"App Path [{this.AppPath}]");
+            options.Add($"App Path [{AppPath}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceId))
+        if (!string.IsNullOrWhiteSpace(DeviceId))
         {
-            options.Add($"Device ID [{this.DeviceId}]");
+            options.Add($"Device ID [{DeviceId}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceName))
+        if (!string.IsNullOrWhiteSpace(DeviceName))
         {
-            options.Add($"Device Name [{this.DeviceName}]");
+            options.Add($"Device Name [{DeviceName}]");
         }
 
-        if (this.AdditionalOptions != null)
+        if (AdditionalOptions != null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
+            foreach (var (name, value) in AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

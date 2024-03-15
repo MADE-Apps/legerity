@@ -1,40 +1,39 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class SelectPage : W3SchoolsBasePage
 {
-    private readonly By carsSelectLocator = By.Id("cars");
+    private readonly By _carsSelectLocator = By.Id("cars");
 
-    public SelectPage(RemoteWebDriver app) : base(app)
+    public SelectPage(WebDriver app) : base(app)
     {
     }
 
-    public Select CarsSelect => this.FindElement(this.carsSelectLocator);
+    public Select CarsSelect => FindElement(_carsSelectLocator);
 
     public SelectPage SelectCarByDisplayValue(string car)
     {
-        this.CarsSelect.SelectOptionByDisplayValue(car);
+        CarsSelect.SelectOptionByDisplayValue(car);
         return this;
     }
 
     public SelectPage SelectCarByValue(string car)
     {
-        this.CarsSelect.SelectOptionByValue(car);
+        CarsSelect.SelectOptionByValue(car);
         return this;
     }
 
     public SelectPage SelectCarByPartialDisplayValue(string car)
     {
-        this.CarsSelect.SelectOptionByPartialDisplayValue(car);
+        CarsSelect.SelectOptionByPartialDisplayValue(car);
         return this;
     }
 
     public SelectPage SelectCarByPartialValue(string car)
     {
-        this.CarsSelect.SelectOptionByPartialValue(car);
+        CarsSelect.SelectOptionByPartialValue(car);
         return this;
     }
 }

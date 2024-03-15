@@ -6,9 +6,9 @@ internal class GeneratorTemplateData
 {
     public GeneratorTemplateData(string ns, string page, string baseElementType)
     {
-        this.Namespace = ns;
-        this.Page = page;
-        this.Type = baseElementType;
+        Namespace = ns;
+        Page = page;
+        Type = baseElementType;
     }
 
     public string Page { get; set; }
@@ -23,6 +23,6 @@ internal class GeneratorTemplateData
 
     public override string ToString()
     {
-        return $"[Page] {this.Page};";
+        return $"[Page] {Page};";
     }
 }

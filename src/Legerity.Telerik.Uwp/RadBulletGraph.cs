@@ -1,13 +1,9 @@
 namespace Legerity.Windows.Elements.Telerik;
 
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Telerik UWP RadBulletGraph control.
+/// Defines a <see cref="WebElement"/> wrapper for the Telerik UWP RadBulletGraph control.
 /// </summary>
 public class RadBulletGraph : WindowsElementWrapper
 {
@@ -15,9 +11,9 @@ public class RadBulletGraph : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="RadBulletGraph"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public RadBulletGraph(WindowsElement element)
+    public RadBulletGraph(WebElement element)
         : base(element)
     {
     }
@@ -41,44 +37,16 @@ public class RadBulletGraph : WindowsElementWrapper
     public virtual double Value => this.GetRangeValue();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadBulletGraph"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="RadBulletGraph"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="RadBulletGraph"/>.
     /// </returns>
-    public static implicit operator RadBulletGraph(WindowsElement element)
+    public static implicit operator RadBulletGraph(WebElement element)
     {
         return new RadBulletGraph(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="RadBulletGraph"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadBulletGraph"/>.
-    /// </returns>
-    public static implicit operator RadBulletGraph(AppiumWebElement element)
-    {
-        return new RadBulletGraph(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadBulletGraph"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadBulletGraph"/>.
-    /// </returns>
-    public static implicit operator RadBulletGraph(RemoteWebElement element)
-    {
-        return new RadBulletGraph(element as WindowsElement);
     }
 }

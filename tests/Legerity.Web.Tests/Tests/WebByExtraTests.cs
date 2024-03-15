@@ -1,11 +1,9 @@
-namespace Legerity.Web.Tests.Tests;
-
 using System;
-using Legerity.Web.Tests.Pages;
-using OpenQA.Selenium.Remote;
-using System.Collections.ObjectModel;
 using System.IO;
+using Legerity.Web.Tests.Pages;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]
@@ -17,7 +15,7 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
         // Arrange
         const int expectedCount = 6;
 
-        RemoteWebDriver app = this.StartApp(new WebAppManagerOptions(
+        var app = StartApp(new WebAppManagerOptions(
             WebAppDriverType.Chrome,
             Path.Combine(Environment.CurrentDirectory))
         {
@@ -27,13 +25,12 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
             DriverOptions = ConfigureChromeOptions()
         });
 
-        RadioButtonPage radioButtonPage = new RadioButtonPage(app)
+        var radioButtonPage = new RadioButtonPage(app)
             .AcceptCookies<RadioButtonPage>()
             .SwitchToContentFrame<RadioButtonPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement>
-            radioButtons = radioButtonPage.FindElements(WebByExtras.InputType("radio"));
+        var radioButtons = radioButtonPage.FindElements(WebByExtras.InputType("radio"));
 
         // Assert
         radioButtons.Count.ShouldBe(expectedCount);

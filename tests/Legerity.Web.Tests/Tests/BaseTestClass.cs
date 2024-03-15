@@ -1,14 +1,12 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 [assembly: LevelOfParallelism(5)]
 [assembly: ExcludeFromCodeCoverage]
 
 namespace Legerity.Web.Tests.Tests;
-
-using System;
-using Legerity;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.
@@ -59,7 +57,7 @@ public abstract class BaseTestClass : LegerityTestClass
     public virtual void FinalCleanup()
     {
         // Ensures that any running app driver instances being tracked are stopped.
-        this.StopApps();
+        StopApps();
     }
 
     protected static DriverOptions ConfigureChromeOptions()

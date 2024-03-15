@@ -1,14 +1,10 @@
 namespace Legerity.Windows.Elements.WCT;
 
 using System;
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Windows Community Toolkit RadialGauge control.
+/// Defines a <see cref="WebElement"/> wrapper for the Windows Community Toolkit RadialGauge control.
 /// </summary>
 public class RadialGauge : WindowsElementWrapper
 {
@@ -16,9 +12,9 @@ public class RadialGauge : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="RadialGauge"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public RadialGauge(WindowsElement element)
+    public RadialGauge(WebElement element)
         : base(element)
     {
     }
@@ -54,47 +50,19 @@ public class RadialGauge : WindowsElementWrapper
     public virtual bool IsReadonly => this.IsRangeReadonly();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadialGauge"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="RadialGauge"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="RadialGauge"/>.
     /// </returns>
-    public static implicit operator RadialGauge(WindowsElement element)
+    public static implicit operator RadialGauge(WebElement element)
     {
         return new RadialGauge(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="RadialGauge"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadialGauge"/>.
-    /// </returns>
-    public static implicit operator RadialGauge(AppiumWebElement element)
-    {
-        return new RadialGauge(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadialGauge"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadialGauge"/>.
-    /// </returns>
-    public static implicit operator RadialGauge(RemoteWebElement element)
-    {
-        return new RadialGauge(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Sets the value of the gauge.
     /// </summary>
@@ -109,10 +77,10 @@ public class RadialGauge : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SetValue(double value)
     {
-        double min = this.Minimum;
-        double max = this.Maximum;
+        var min = Minimum;
+        var max = Maximum;
 
-        if (value < this.Minimum)
+        if (value < Minimum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -120,7 +88,7 @@ public class RadialGauge : WindowsElementWrapper
                 $"Value must be greater than or equal to the minimum value {min}");
         }
 
-        if (value > this.Maximum)
+        if (value > Maximum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -128,13 +96,13 @@ public class RadialGauge : WindowsElementWrapper
                 $"Value must be less than or equal to the maximum value {max}");
         }
 
-        this.Click();
+        Click();
 
-        double currentValue = this.Value;
+        var currentValue = Value;
         while (Math.Abs(currentValue - value) > double.Epsilon)
         {
-            this.Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
-            currentValue = this.Value;
+            Element.SendKeys(currentValue < value ? Keys.ArrowRight : Keys.ArrowLeft);
+            currentValue = Value;
         }
     }
 }

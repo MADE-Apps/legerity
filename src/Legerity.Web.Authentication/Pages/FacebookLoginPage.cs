@@ -4,9 +4,7 @@ using System;
 using Exceptions;
 using Legerity.Extensions;
 using Legerity.Pages;
-using Legerity.Web.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+using Elements.Core;
 
 /// <summary>
 /// Defines a page object for the Facebook login page.
@@ -29,7 +27,7 @@ public class FacebookLoginPage : BasePage
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FacebookLoginPage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within 2 seconds.
+    /// Initializes a new instance of the <see cref="FacebookLoginPage"/> class using a <see cref="WebDriver"/> instance that verifies the page has loaded within 2 seconds.
     /// </summary>
     /// <param name="app">
     /// The instance of the started application driver that will be used to drive the page interaction.
@@ -37,7 +35,7 @@ public class FacebookLoginPage : BasePage
     /// <exception cref="DriverNotInitializedException">Thrown when AppManager.StartApp() has not been called.</exception>
     /// <exception cref="PageNotShownException">Thrown when the page is not shown in 2 seconds.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public FacebookLoginPage(RemoteWebDriver app)
+    public FacebookLoginPage(WebDriver app)
         : base(app)
     {
     }
@@ -57,7 +55,7 @@ public class FacebookLoginPage : BasePage
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FacebookLoginPage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within the given timeout.
+    /// Initializes a new instance of the <see cref="FacebookLoginPage"/> class using a <see cref="WebDriver"/> instance that verifies the page has loaded within the given timeout.
     /// </summary>
     /// <param name="app">
     /// The instance of the started application driver that will be used to drive the page interaction.
@@ -68,7 +66,7 @@ public class FacebookLoginPage : BasePage
     /// <exception cref="DriverNotInitializedException">Thrown when AppManager.StartApp() has not been called.</exception>
     /// <exception cref="PageNotShownException">Thrown when the page is not shown in the given timeout.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public FacebookLoginPage(RemoteWebDriver app, TimeSpan? traitTimeout)
+    public FacebookLoginPage(WebDriver app, TimeSpan? traitTimeout)
         : base(app, traitTimeout)
     {
     }
@@ -77,19 +75,19 @@ public class FacebookLoginPage : BasePage
     /// Gets the input element for providing an email address.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput EmailInput => this.FindElement(By.Id("email"));
+    public virtual TextInput EmailInput => FindElement(By.Id("email"));
 
     /// <summary>
     /// Gets the input element for providing a password.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput PasswordInput => this.FindElement(WebByExtras.InputType("password"));
+    public virtual TextInput PasswordInput => FindElement(WebByExtras.InputType("password"));
 
     /// <summary>
     /// Gets the button element for continuing the sign-in flow through the Facebook login UI.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button SignInButton => this.FindElement(By.Id("loginbutton"));
+    public virtual Button SignInButton => FindElement(By.Id("loginbutton"));
 
     /// <summary>
     /// Gets a given trait of the page to verify that the page is in view.
@@ -108,17 +106,17 @@ public class FacebookLoginPage : BasePage
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public FacebookLoginPage Login(string email, string password)
     {
-        (bool hasEmailInput, FacebookLoginPage _) =
-            this.TryWaitUntil(page => page.EmailInput.IsVisible, this.WaitTimeout);
+        var (hasEmailInput, _) =
+            this.TryWaitUntil(page => page.EmailInput.IsVisible, WaitTimeout);
         if (!hasEmailInput)
         {
             // Cannot login as email address input not shown (possibly logged in already?)
             return this;
         }
 
-        this.EmailInput.SetText(email);
-        this.PasswordInput.SetText(password);
-        this.SignInButton.Click();
+        EmailInput.SetText(email);
+        PasswordInput.SetText(password);
+        SignInButton.Click();
         return this;
     }
 }

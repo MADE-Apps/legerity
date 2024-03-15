@@ -3,17 +3,14 @@ namespace Legerity.Android.Elements.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="AndroidElement"/> wrapper for the core Android DatePicker control.
+/// Defines a <see cref="WebElement"/> wrapper for the core Android DatePicker control.
 /// </summary>
 public class DatePicker : AndroidElementWrapper
 {
-    private readonly Dictionary<string, string> months = new()
+    private readonly Dictionary<string, string> _months = new()
     {
         { "Jan", "01" },
         { "Feb", "02" },
@@ -33,9 +30,9 @@ public class DatePicker : AndroidElementWrapper
     /// Initializes a new instance of the <see cref="DatePicker"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public DatePicker(AndroidElement element)
+    public DatePicker(WebElement element)
         : base(element)
     {
     }
@@ -47,7 +44,7 @@ public class DatePicker : AndroidElementWrapper
     /// </para>
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextView DateTextView => this.FindElement(By.Id("android:id/date_picker_header_date"));
+    public virtual TextView DateTextView => FindElement(By.Id("android:id/date_picker_header_date"));
 
     /// <summary>
     /// Gets the element associated with the year text.
@@ -56,73 +53,47 @@ public class DatePicker : AndroidElementWrapper
     /// </para>
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextView YearTextView => this.FindElement(By.Id("android:id/date_picker_header_year"));
+    public virtual TextView YearTextView => FindElement(By.Id("android:id/date_picker_header_year"));
 
     /// <summary>
     /// Gets the element associated with the day picker.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual View DayPickerView => this.FindElement(By.Id("android:id/day_picker_view_pager"));
+    public virtual View DayPickerView => FindElement(By.Id("android:id/day_picker_view_pager"));
 
     /// <summary>
     /// Gets the element associated with the next month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button NextMonthButton => this.Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Next month\")");
+    public virtual Button NextMonthButton =>
+        Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Next month\")");
 
     /// <summary>
     /// Gets the element associated with the previous month button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button PreviousMonthButton => this.Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Previous month\")");
+    public virtual Button PreviousMonthButton =>
+        Element.FindElementByAndroidUIAutomator("UiSelector().description(\"Previous month\")");
 
     /// <summary>
     /// Gets the selected date/time value.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual DateTime SelectedDate => this.GetCurrentViewDate();
+    public virtual DateTime SelectedDate => GetCurrentViewDate();
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="DatePicker"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="DatePicker"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="DatePicker"/>.
     /// </returns>
-    public static implicit operator DatePicker(AndroidElement element)
+    public static implicit operator DatePicker(WebElement element)
     {
         return new DatePicker(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="DatePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="DatePicker"/>.
-    /// </returns>
-    public static implicit operator DatePicker(AppiumWebElement element)
-    {
-        return new DatePicker(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="DatePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="DatePicker"/>.
-    /// </returns>
-    public static implicit operator DatePicker(RemoteWebElement element)
-    {
-        return new DatePicker(element as AndroidElement);
     }
 
     /// <summary>
@@ -135,26 +106,26 @@ public class DatePicker : AndroidElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetDate(DateTime date)
     {
-        DateTime currentViewDate = this.GetCurrentViewDate();
+        var currentViewDate = GetCurrentViewDate();
 
-        int monthDifference = ((date.Year - currentViewDate.Year) * 12) + date.Month - currentViewDate.Month;
+        var monthDifference = ((date.Year - currentViewDate.Year) * 12) + date.Month - currentViewDate.Month;
 
         if (monthDifference > 0)
         {
-            for (int i = 0; i < monthDifference; i++)
+            for (var i = 0; i < monthDifference; i++)
             {
-                this.NextMonthButton.Click();
+                NextMonthButton.Click();
             }
         }
         else
         {
-            for (int i = 0; i < Math.Abs(monthDifference); i++)
+            for (var i = 0; i < Math.Abs(monthDifference); i++)
             {
-                this.PreviousMonthButton.Click();
+                PreviousMonthButton.Click();
             }
         }
 
-        View item = this.DayPickerView.Element.FindElementByAndroidUIAutomator($"UiSelector().text(\"{date.Day}\")");
+        View item = DayPickerView.Element.FindElementByAndroidUIAutomator($"UiSelector().text(\"{date.Day}\")");
         item.Click();
     }
 
@@ -162,25 +133,25 @@ public class DatePicker : AndroidElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private DateTime GetCurrentViewDate()
     {
-        string currentYear = this.YearTextView.Text;
-        string currentDate = this.DateTextView.Text;
-        return this.GetCurrentViewDate(currentDate, currentYear);
+        var currentYear = YearTextView.Text;
+        var currentDate = DateTextView.Text;
+        return GetCurrentViewDate(currentDate, currentYear);
     }
 
     private DateTime GetCurrentViewDate(string currentDate, string currentYear)
     {
-        string day = string.Join(string.Empty, currentDate.Where(char.IsDigit)).Trim();
+        var day = string.Join(string.Empty, currentDate.Where(char.IsDigit)).Trim();
 
         var currentDateSplit = currentDate.Split(',').ToList();
-        string currentMonthPart = currentDateSplit.LastOrDefault();
+        var currentMonthPart = currentDateSplit.LastOrDefault();
 
-        this.months.TryGetValue(
+        _months.TryGetValue(
             string.Join(string.Empty, (currentMonthPart ?? string.Empty).Where(char.IsLetter)).Trim(),
-            out string month);
+            out var month);
 
-        string year = string.Join(string.Empty, currentYear.Where(char.IsDigit)).Trim();
+        var year = string.Join(string.Empty, currentYear.Where(char.IsDigit)).Trim();
 
-        string dateString = $"{day}/{month}/{year}";
+        var dateString = $"{day}/{month}/{year}";
         return DateTime.ParseExact(dateString, @"d/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
     }
 }

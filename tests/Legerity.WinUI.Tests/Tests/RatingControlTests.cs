@@ -1,6 +1,5 @@
 namespace Legerity.WinUI.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -16,7 +15,7 @@ internal class RatingControlTests : BaseTestClass
     public void ShouldSetValue()
     {
         // Arrange
-        RatingControlPage ratingControlPage = this.StartAndNavigateToPage();
+        var ratingControlPage = StartAndNavigateToPage();
 
         // Act
         ratingControlPage.SetSimpleRatingValue(3);
@@ -29,7 +28,7 @@ internal class RatingControlTests : BaseTestClass
     public void ShouldGetValueRange()
     {
         // Arrange
-        RatingControlPage ratingControlPage = this.StartAndNavigateToPage();
+        var ratingControlPage = StartAndNavigateToPage();
 
         // Act & Assert
         ratingControlPage.SimpleRatingControl.Minimum.ShouldBe(0);
@@ -40,7 +39,7 @@ internal class RatingControlTests : BaseTestClass
     public void ShouldGetIsReadonly()
     {
         // Arrange
-        RatingControlPage ratingControlPage = this.StartAndNavigateToPage();
+        var ratingControlPage = StartAndNavigateToPage();
 
         // Act & Assert
         ratingControlPage.SimpleRatingControl.IsReadonly.ShouldBeFalse();
@@ -48,7 +47,7 @@ internal class RatingControlTests : BaseTestClass
 
     private RatingControlPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<RatingControlPage>("RatingControl");
     }
 }

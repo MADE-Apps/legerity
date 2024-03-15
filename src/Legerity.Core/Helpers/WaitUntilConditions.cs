@@ -1,8 +1,7 @@
 namespace Legerity.Helpers;
 
 using System;
-using Legerity.Pages;
-using OpenQA.Selenium;
+using Pages;
 
 /// <summary>
 /// Defines a set of conditions that can be used with the WaitUntil methods of elements and pages.
@@ -350,7 +349,7 @@ public static class WaitUntilConditions
         {
             try
             {
-                IWebElement frameElement = driver.FindElement(frameLocator);
+                var frameElement = driver.FindElement(frameLocator);
                 return driver.SwitchTo().Frame(frameElement);
             }
             catch (NoSuchFrameException)

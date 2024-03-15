@@ -1,8 +1,6 @@
 namespace Legerity.IOS;
 
 using System.Collections.Generic;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Enums;
 
 /// <summary>
 /// Defines a specific <see cref="AppiumManagerOptions"/> for an iOS application.
@@ -61,11 +59,11 @@ public class IOSAppManagerOptions : AppiumManagerOptions
         string deviceId,
         params (string, object)[] additionalOptions)
     {
-        this.AppId = appId;
-        this.OSVersion = osVersion;
-        this.DeviceName = deviceName;
-        this.DeviceId = deviceId;
-        this.AdditionalOptions = additionalOptions;
+        AppId = appId;
+        OSVersion = osVersion;
+        DeviceName = deviceName;
+        DeviceId = deviceId;
+        AdditionalOptions = additionalOptions;
     }
 
     /// <summary>
@@ -97,23 +95,18 @@ public class IOSAppManagerOptions : AppiumManagerOptions
     public string AutomationName { get; set; } = "XCUITest";
 
     /// <summary>
-    /// Gets or sets a value indicating whether to launch the Appium server instance.
-    /// </summary>
-    public bool LaunchAppiumServer { get; set; }
-
-    /// <summary>
     /// Configures the <see cref="AppiumManagerOptions.AppiumOptions"/> with the specified additional options.
     /// </summary>
     public override void Configure()
     {
         base.Configure();
 
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "iOS");
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.App, this.AppId);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.AutomationName, this.AutomationName);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformName, "iOS");
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.PlatformVersion, OSVersion);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.DeviceName, DeviceName);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.Udid, DeviceId);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.App, AppId);
+        AppiumOptions.AddAdditionalAppiumOption(MobileCapabilityType.AutomationName, AutomationName);
     }
 
     /// <summary>
@@ -124,39 +117,39 @@ public class IOSAppManagerOptions : AppiumManagerOptions
     /// </param>
     public void Configure((string, object)[] additionalOptions)
     {
-        this.AdditionalOptions = additionalOptions;
-        this.Configure();
+        AdditionalOptions = additionalOptions;
+        Configure();
     }
 
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"Platform [IOS], {base.ToString()}, {this.GetOptionDetails()}";
+        return $"Platform [IOS], {base.ToString()}, {GetOptionDetails()}";
     }
 
     private string GetOptionDetails()
     {
         var options = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(this.AppId))
+        if (!string.IsNullOrWhiteSpace(AppId))
         {
-            options.Add($"App ID [{this.AppId}]");
+            options.Add($"App ID [{AppId}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceId))
+        if (!string.IsNullOrWhiteSpace(DeviceId))
         {
-            options.Add($"Device ID [{this.DeviceId}]");
+            options.Add($"Device ID [{DeviceId}]");
         }
 
-        if (!string.IsNullOrWhiteSpace(this.DeviceName))
+        if (!string.IsNullOrWhiteSpace(DeviceName))
         {
-            options.Add($"Device Name [{this.DeviceName}]");
+            options.Add($"Device Name [{DeviceName}]");
         }
 
-        if (this.AdditionalOptions != null)
+        if (AdditionalOptions != null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
+            foreach (var (name, value) in AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

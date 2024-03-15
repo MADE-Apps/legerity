@@ -1,9 +1,7 @@
 namespace Legerity.Web.Extensions;
 
 using System;
-using Legerity.Web.Elements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using Elements;
 
 /// <summary>
 /// Defines a collection of extensions for <see cref="WebElementWrapper"/> objects.

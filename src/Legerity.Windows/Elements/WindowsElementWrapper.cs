@@ -3,24 +3,18 @@ namespace Legerity.Windows.Elements;
 using System;
 using Legerity.Exceptions;
 
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.UI;
-
 /// <summary>
-/// Defines an element wrapper for a <see cref="WindowsElement"/>.
+/// Defines an element wrapper for a Windows <see cref="WebElement"/>.
 /// </summary>
-public class WindowsElementWrapper : ElementWrapper<WindowsElement>
+public class WindowsElementWrapper : ElementWrapper<WebElement>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="WindowsElementWrapper"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public WindowsElementWrapper(WindowsElement element)
+    public WindowsElementWrapper(WebElement element)
         : base(element)
     {
     }
@@ -28,48 +22,20 @@ public class WindowsElementWrapper : ElementWrapper<WindowsElement>
     /// <summary>
     /// Gets the instance of the Appium driver for the Windows application.
     /// </summary>
-    public WindowsDriver<WindowsElement> Driver => this.ElementDriver as WindowsDriver<WindowsElement>;
+    public WindowsDriver Driver => ElementDriver as WindowsDriver;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="WindowsElementWrapper"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="WindowsElementWrapper"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="WindowsElementWrapper"/>.
     /// </returns>
-    public static implicit operator WindowsElementWrapper(WindowsElement element)
+    public static implicit operator WindowsElementWrapper(WebElement element)
     {
         return new WindowsElementWrapper(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="WindowsElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="WindowsElementWrapper"/>.
-    /// </returns>
-    public static implicit operator WindowsElementWrapper(AppiumWebElement element)
-    {
-        return new WindowsElementWrapper(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="WindowsElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="WindowsElementWrapper"/>.
-    /// </returns>
-    public static implicit operator WindowsElementWrapper(RemoteWebElement element)
-    {
-        return new WindowsElementWrapper(element as WindowsElement);
     }
 
     /// <summary>
@@ -87,7 +53,7 @@ public class WindowsElementWrapper : ElementWrapper<WindowsElement>
         {
             try
             {
-                if (this.Driver.FindElement(locator) == null)
+                if (Driver.FindElement(locator) == null)
                 {
                     throw new ElementNotShownException(locator.ToString());
                 }
@@ -99,7 +65,7 @@ public class WindowsElementWrapper : ElementWrapper<WindowsElement>
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElement(locator) != null);
         }
     }
@@ -118,14 +84,14 @@ public class WindowsElementWrapper : ElementWrapper<WindowsElement>
     {
         if (timeout == null)
         {
-            if (this.Driver.FindElements(locator).Count == 0)
+            if (Driver.FindElements(locator).Count == 0)
             {
                 throw new ElementsNotShownException(locator.ToString());
             }
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElements(locator).Count != 0);
         }
     }

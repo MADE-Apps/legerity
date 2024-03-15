@@ -1,6 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -16,7 +15,7 @@ internal class ToggleSwitchTests : BaseTestClass
     public void ShouldToggleOn()
     {
         // Arrange
-        ToggleSwitchPage toggleSwitchPage = this.StartAndNavigateToPage();
+        var toggleSwitchPage = StartAndNavigateToPage();
 
         // Act
         toggleSwitchPage.ToggleSwitchOn();
@@ -29,7 +28,7 @@ internal class ToggleSwitchTests : BaseTestClass
     public void ShouldKeepToggledOnIfToggledOn()
     {
         // Arrange
-        ToggleSwitchPage toggleSwitchPage = this.StartAndNavigateToPage().ToggleSwitchOn();
+        var toggleSwitchPage = StartAndNavigateToPage().ToggleSwitchOn();
 
         // Act
         toggleSwitchPage.ToggleSwitchOn();
@@ -42,7 +41,7 @@ internal class ToggleSwitchTests : BaseTestClass
     public void ShouldToggleOff()
     {
         // Arrange
-        ToggleSwitchPage toggleSwitchPage = this.StartAndNavigateToPage().ToggleSwitchOn();
+        var toggleSwitchPage = StartAndNavigateToPage().ToggleSwitchOn();
 
         // Act
         toggleSwitchPage.ToggleSwitchOff();
@@ -55,7 +54,7 @@ internal class ToggleSwitchTests : BaseTestClass
     public void ShouldKeepToggledOffIfToggledOff()
     {
         // Arrange
-        ToggleSwitchPage toggleSwitchPage = this.StartAndNavigateToPage().ToggleSwitchOff();
+        var toggleSwitchPage = StartAndNavigateToPage().ToggleSwitchOff();
 
         // Act
         toggleSwitchPage.ToggleSwitchOff();
@@ -66,7 +65,7 @@ internal class ToggleSwitchTests : BaseTestClass
 
     private ToggleSwitchPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<ToggleSwitchPage>("ToggleSwitch");
     }
 }

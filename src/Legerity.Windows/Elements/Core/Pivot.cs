@@ -4,27 +4,22 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Legerity.Exceptions;
-using Legerity.Windows.Extensions;
-
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP Pivot control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP Pivot control.
 /// </summary>
 public class Pivot : WindowsElementWrapper
 {
-    private readonly By pivotItemLocator = By.ClassName("PivotItem");
+    private readonly By _pivotItemLocator = By.ClassName("PivotItem");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Pivot"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Pivot(WindowsElement element)
+    public Pivot(WebElement element)
         : base(element)
     {
     }
@@ -32,56 +27,28 @@ public class Pivot : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the pivot.
     /// </summary>
-    public virtual ReadOnlyCollection<AppiumWebElement> Items => this.Element.FindElements(this.pivotItemLocator);
+    public virtual ReadOnlyCollection<WebElement> Items => Element.FindElements(_pivotItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the currently selected item.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual WebElement SelectedItem => Items.FirstOrDefault(i => i.IsSelected());
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="Pivot"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Pivot"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Pivot"/>.
     /// </returns>
-    public static implicit operator Pivot(WindowsElement element)
+    public static implicit operator Pivot(WebElement element)
     {
         return new Pivot(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="Pivot"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Pivot"/>.
-    /// </returns>
-    public static implicit operator Pivot(AppiumWebElement element)
-    {
-        return new Pivot(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Pivot"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Pivot"/>.
-    /// </returns>
-    public static implicit operator Pivot(RemoteWebElement element)
-    {
-        return new Pivot(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Clicks on an item in the pivot with the specified item name.
     /// </summary>
@@ -95,9 +62,9 @@ public class Pivot : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItem(string name)
     {
-        this.VerifyElementsShown(this.pivotItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_pivotItemLocator, TimeSpan.FromSeconds(2));
 
-        AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -120,9 +87,9 @@ public class Pivot : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void ClickItemByPartialName(string name)
     {
-        this.VerifyElementsShown(this.pivotItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_pivotItemLocator, TimeSpan.FromSeconds(2));
 
-        AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
+        var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
         if (item == null)
         {

@@ -1,7 +1,6 @@
 namespace Legerity.Templates.Web.NUnit.Tests;
 
-using Legerity.Templates.Web.NUnit.Pages;
-using OpenQA.Selenium.Remote;
+using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.Fixtures)]
@@ -15,7 +14,7 @@ public class SampleTests : BaseTestClass
     [Test]
     public void ShouldLoadPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = this.StartApp();
         new SamplePage(app).VerifyPageLoaded();
     }
 }

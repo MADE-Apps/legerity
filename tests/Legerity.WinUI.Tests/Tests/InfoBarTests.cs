@@ -1,7 +1,6 @@
 namespace Legerity.WinUI.Tests.Tests;
 
-using Legerity.WinUI.Tests.Pages;
-using OpenQA.Selenium.Remote;
+using Pages;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
@@ -16,7 +15,7 @@ internal class InfoBarTests : BaseTestClass
     public void ShouldGetTitle()
     {
         // Arrange
-        InfoBarPage infoBarPage = this.StartAndNavigateToPage();
+        var infoBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         infoBarPage.CloseableInfoBar.Title.ShouldBe("Title");
@@ -26,7 +25,7 @@ internal class InfoBarTests : BaseTestClass
     public void ShouldGetMessage()
     {
         // Arrange
-        InfoBarPage infoBarPage = this.StartAndNavigateToPage();
+        var infoBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         infoBarPage.CloseableInfoBar.Message.ShouldBe("Essential app message for your users to be informed of, acknowledge, or take action on.");
@@ -36,7 +35,7 @@ internal class InfoBarTests : BaseTestClass
     public void ShouldGetIsOpen()
     {
         // Arrange
-        InfoBarPage infoBarPage = this.StartAndNavigateToPage();
+        var infoBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         infoBarPage.CloseableInfoBar.IsOpen.ShouldBeTrue();
@@ -46,7 +45,7 @@ internal class InfoBarTests : BaseTestClass
     public void ShouldClose()
     {
         // Arrange
-        InfoBarPage infoBarPage = this.StartAndNavigateToPage();
+        var infoBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         infoBarPage.CloseClosableInfoBar();
@@ -54,7 +53,7 @@ internal class InfoBarTests : BaseTestClass
 
     private InfoBarPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<InfoBarPage>("InfoBar");
     }
 }

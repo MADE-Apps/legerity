@@ -1,6 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
@@ -15,8 +14,8 @@ internal class ButtonTests : BaseTestClass
     public void ShouldClickSymbolButton()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        ButtonPage buttonPage = new HomePage(app).NavigateTo<ButtonPage>("Button");
+        var app = StartApp();
+        var buttonPage = new HomePage(app).NavigateTo<ButtonPage>("Button");
 
         // Act & Assert
         buttonPage.ClickStandardXamlButton();

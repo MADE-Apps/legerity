@@ -1,20 +1,20 @@
 namespace Legerity.WinUI.Tests.Pages;
 
-using Legerity.Windows;
+using Windows;
 using Legerity.Windows.Elements.WinUI;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 
 internal class InfoBarPage : BaseNavigationPage
 {
-    public InfoBarPage(RemoteWebDriver app) : base(app)
+    public InfoBarPage(WebDriver app) : base(app)
     {
     }
 
-    public InfoBar CloseableInfoBar => this.FindElement(WindowsByExtras.AutomationId("TestInfoBar1"));
+    public InfoBar CloseableInfoBar => FindElement(WindowsByExtras.AutomationId("TestInfoBar1"));
 
     public InfoBarPage CloseClosableInfoBar()
     {
-        this.CloseableInfoBar.Close();
+        CloseableInfoBar.Close();
         return this;
     }
 }

@@ -1,7 +1,6 @@
 namespace Legerity;
 
 using System;
-using OpenQA.Selenium;
 
 /// <summary>
 /// Defines an interface for a Selenium/Appium element wrapper.
@@ -9,7 +8,7 @@ using OpenQA.Selenium;
 /// <typeparam name="TElement">
 /// The type of <see cref="IWebElement"/>.
 /// </typeparam>
-public interface IElementWrapper<TElement>
+public interface IElementWrapper<out TElement>
     where TElement : IWebElement
 {
     /// <summary>Gets the original <typeparamref name="TElement"/> reference object.</summary>

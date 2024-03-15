@@ -4,27 +4,22 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Legerity.Exceptions;
-using Legerity.Windows.Extensions;
-
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP GridView control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP GridView control.
 /// </summary>
 public class GridView : WindowsElementWrapper
 {
-    private readonly By gridViewItemLocator = By.ClassName("GridViewItem");
+    private readonly By _gridViewItemLocator = By.ClassName("GridViewItem");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GridView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public GridView(WindowsElement element)
+    public GridView(WebElement element)
         : base(element)
     {
     }
@@ -32,61 +27,33 @@ public class GridView : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of items associated with the grid view.
     /// </summary>
-    public virtual ReadOnlyCollection<AppiumWebElement> Items =>
-        this.Element.FindElements(this.gridViewItemLocator);
+    public virtual ReadOnlyCollection<WebElement> Items =>
+        Element.FindElements(_gridViewItemLocator).Cast<WebElement>().ToList().AsReadOnly();
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
     /// </summary>
-    public virtual AppiumWebElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual WebElement SelectedItem => Items.FirstOrDefault(i => i.IsSelected());
 
     /// <summary>
     /// Gets the currently selected item index.
     /// </summary>
-    public virtual int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
+    public virtual int SelectedIndex => Items.IndexOf(SelectedItem);
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="GridView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="GridView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="GridView"/>.
     /// </returns>
-    public static implicit operator GridView(WindowsElement element)
+    public static implicit operator GridView(WebElement element)
     {
         return new GridView(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="GridView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="GridView"/>.
-    /// </returns>
-    public static implicit operator GridView(AppiumWebElement element)
-    {
-        return new GridView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="GridView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="GridView"/>.
-    /// </returns>
-    public static implicit operator GridView(RemoteWebElement element)
-    {
-        return new GridView(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Clicks on an item in the list view with the specified item name.
     /// </summary>
@@ -100,9 +67,9 @@ public class GridView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void ClickItem(string name)
     {
-        this.VerifyElementsShown(this.gridViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_gridViewItemLocator, TimeSpan.FromSeconds(2));
 
-        AppiumWebElement item = this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        var item = Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -125,10 +92,10 @@ public class GridView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItemByPartialName(string partialName)
     {
-        this.VerifyElementsShown(this.gridViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_gridViewItemLocator, TimeSpan.FromSeconds(2));
 
-        AppiumWebElement item =
-            this.Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
+        var item =
+            Items.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(partialName));
 
         if (item == null)
         {
@@ -151,9 +118,9 @@ public class GridView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickItemByIndex(int index)
     {
-        this.VerifyElementsShown(this.gridViewItemLocator, TimeSpan.FromSeconds(2));
+        VerifyElementsShown(_gridViewItemLocator, TimeSpan.FromSeconds(2));
 
-        AppiumWebElement item = this.Items[index];
+        var item = Items[index];
 
         if (item == null)
         {

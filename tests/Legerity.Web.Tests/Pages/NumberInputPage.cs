@@ -1,34 +1,33 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class NumberInputPage : W3SchoolsBasePage
 {
-    private readonly By quantityNumberInputLocator = By.Id("quantity");
+    private readonly By _quantityNumberInputLocator = By.Id("quantity");
 
-    public NumberInputPage(RemoteWebDriver app) : base(app)
+    public NumberInputPage(WebDriver app) : base(app)
     {
     }
 
-    public NumberInput QuantityNumberInput => this.FindElement(this.quantityNumberInputLocator);
+    public NumberInput QuantityNumberInput => FindElement(_quantityNumberInputLocator);
 
     public NumberInputPage SetQuantity(int quantity)
     {
-        this.QuantityNumberInput.SetValue(quantity);
+        QuantityNumberInput.SetValue(quantity);
         return this;
     }
 
     public NumberInputPage IncrementQuantity()
     {
-        this.QuantityNumberInput.Increment();
+        QuantityNumberInput.Increment();
         return this;
     }
 
     public NumberInputPage DecrementQuantity()
     {
-        this.QuantityNumberInput.Decrement();
+        QuantityNumberInput.Decrement();
         return this;
     }
 }

@@ -1,8 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using System.Collections.ObjectModel;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -18,11 +15,11 @@ internal class GridViewTests : BaseTestClass
     public void ShouldGetItems()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
+        var app = StartApp();
+        var gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
 
         // Act
-        ReadOnlyCollection<AppiumWebElement> items = gridViewPage.BasicGridView.Items;
+        var items = gridViewPage.BasicGridView.Items;
 
         // Assert
         items.Count.ShouldBe(8);
@@ -32,8 +29,8 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
+        var app = StartApp();
+        var gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
         // Act
@@ -47,8 +44,8 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
+        var app = StartApp();
+        var gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
         // Act
@@ -62,8 +59,8 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByIndex()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
+        var app = StartApp();
+        var gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const int expected = 2;
 
         // Act

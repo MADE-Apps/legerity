@@ -1,28 +1,27 @@
 namespace Legerity.Windows.Tests.Pages;
 
-using Legerity.Windows.Elements.Core;
+using Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 internal class AppBarToggleButtonPage : BaseNavigationPage
 {
-    public AppBarToggleButtonPage(RemoteWebDriver app) : base(app)
+    public AppBarToggleButtonPage(WebDriver app) : base(app)
     {
     }
     
-    public AppBarToggleButton SymbolToggleButton => this.FindElement(By.Name("SymbolIcon"));
+    public AppBarToggleButton SymbolToggleButton => FindElement(By.Name("SymbolIcon"));
 
     protected override By Trait => By.XPath(".//*[@Name='AppBarToggleButton'][@AutomationId='TitleTextBlock']");
 
     public AppBarToggleButtonPage ToggleSymbolOn()
     {
-        this.SymbolToggleButton.ToggleOn();
+        SymbolToggleButton.ToggleOn();
         return this;
     }
 
     public AppBarToggleButtonPage ToggleSymbolOff()
     {
-        this.SymbolToggleButton.ToggleOff();
+        SymbolToggleButton.ToggleOff();
         return this;
     }
 }

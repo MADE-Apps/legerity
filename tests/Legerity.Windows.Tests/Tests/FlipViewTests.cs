@@ -1,7 +1,6 @@
 namespace Legerity.Windows.Tests.Tests;
 
 using Legerity.Extensions;
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -17,10 +16,10 @@ internal class FlipViewTests : BaseTestClass
     public void ShouldSelectNextItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        FlipViewPage flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView").SelectXamlFlipViewItemByIndex(1);
-        int selectedItem = flipViewPage.XamlFlipView.SelectedIndex;
-        int expected = selectedItem + 1;
+        var app = StartApp();
+        var flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView").SelectXamlFlipViewItemByIndex(1);
+        var selectedItem = flipViewPage.XamlFlipView.SelectedIndex;
+        var expected = selectedItem + 1;
 
         // Act
         flipViewPage.SelectNextXamlFlipViewItem();
@@ -33,10 +32,10 @@ internal class FlipViewTests : BaseTestClass
     public void ShouldSelectPreviousItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        FlipViewPage flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView").SelectXamlFlipViewItemByIndex(1);
-        int selectedItem = flipViewPage.XamlFlipView.SelectedIndex;
-        int expected = selectedItem - 1;
+        var app = StartApp();
+        var flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView").SelectXamlFlipViewItemByIndex(1);
+        var selectedItem = flipViewPage.XamlFlipView.SelectedIndex;
+        var expected = selectedItem - 1;
 
         // Act
         flipViewPage.SelectPreviousXamlFlipViewItem();
@@ -49,8 +48,8 @@ internal class FlipViewTests : BaseTestClass
     public void ShouldSelectItemByName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        FlipViewPage flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView");
+        var app = StartApp();
+        var flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView");
         const string expected = "Grapes";
 
         // Act
@@ -64,8 +63,8 @@ internal class FlipViewTests : BaseTestClass
     public void ShouldSelectItemByIndex()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        FlipViewPage flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView");
+        var app = StartApp();
+        var flipViewPage = new HomePage(app).NavigateTo<FlipViewPage>("FlipView");
         const int expected = 2;
 
         // Act

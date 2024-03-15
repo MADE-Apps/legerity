@@ -7,3 +7,5 @@ global using Legerity.Web;
 global using Legerity.Windows;
 global using Legerity.Pages;
 global using NUnit.Framework;
+global using OpenQA.Selenium;
+global using OpenQA.Selenium.Remote;

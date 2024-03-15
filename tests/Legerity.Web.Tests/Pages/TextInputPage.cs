@@ -1,34 +1,33 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class TextInputPage : W3SchoolsBasePage
 {
-    private readonly By firstNameInputLocator = By.Id("fname");
+    private readonly By _firstNameInputLocator = By.Id("fname");
 
-    public TextInputPage(RemoteWebDriver app) : base(app)
+    public TextInputPage(WebDriver app) : base(app)
     {
     }
 
-    public TextInput FirstNameInput => this.FindElement(this.firstNameInputLocator);
+    public TextInput FirstNameInput => FindElement(_firstNameInputLocator);
 
     public TextInputPage SetFirstName(string firstName)
     {
-        this.FirstNameInput.SetText(firstName);
+        FirstNameInput.SetText(firstName);
         return this;
     }
 
     public TextInputPage AppendFirstName(string firstName)
     {
-        this.FirstNameInput.AppendText(firstName);
+        FirstNameInput.AppendText(firstName);
         return this;
     }
 
     public TextInputPage ClearFirstName()
     {
-        this.FirstNameInput.ClearText();
+        FirstNameInput.ClearText();
         return this;
     }
 }

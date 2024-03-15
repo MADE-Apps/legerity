@@ -7,7 +7,7 @@ using Features.Generators.Android;
 using Features.Generators.Windows;
 using Infrastructure.Configuration;
 using Infrastructure.Logging;
-using Legerity.Features.Generators;
+using Features.Generators;
 using Serilog;
 
 public class Program
@@ -18,7 +18,7 @@ public class Program
         await Parser.Default.ParseArguments<Options>(args)
             .WithNotParsed(errors =>
             {
-                foreach (Error error in errors)
+                foreach (var error in errors)
                 {
                     if (error.Tag == ErrorType.MissingRequiredOptionError)
                     {

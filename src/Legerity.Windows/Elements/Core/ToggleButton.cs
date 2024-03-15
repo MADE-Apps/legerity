@@ -1,13 +1,9 @@
 namespace Legerity.Windows.Elements.Core;
 
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ToggleButton control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP ToggleButton control.
 /// </summary>
 public class ToggleButton : Button
 {
@@ -15,9 +11,9 @@ public class ToggleButton : Button
     /// Initializes a new instance of the <see cref="ToggleButton"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public ToggleButton(WindowsElement element)
+    public ToggleButton(WebElement element)
         : base(element)
     {
     }
@@ -29,47 +25,19 @@ public class ToggleButton : Button
     public virtual bool IsOn => this.GetToggleState() == ToggleState.Checked;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ToggleButton"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ToggleButton"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="ToggleButton"/>.
     /// </returns>
-    public static implicit operator ToggleButton(WindowsElement element)
+    public static implicit operator ToggleButton(WebElement element)
     {
         return new ToggleButton(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ToggleButton"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ToggleButton"/>.
-    /// </returns>
-    public static implicit operator ToggleButton(AppiumWebElement element)
-    {
-        return new ToggleButton(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ToggleButton"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ToggleButton"/>.
-    /// </returns>
-    public static implicit operator ToggleButton(RemoteWebElement element)
-    {
-        return new ToggleButton(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Toggles the button on.
     /// </summary>
@@ -78,12 +46,12 @@ public class ToggleButton : Button
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOn()
     {
-        if (this.IsOn)
+        if (IsOn)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 
     /// <summary>
@@ -94,11 +62,11 @@ public class ToggleButton : Button
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOff()
     {
-        if (!this.IsOn)
+        if (!IsOn)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 }

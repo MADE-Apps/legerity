@@ -13,7 +13,7 @@ internal class Options
     [Option('o', "output",
         HelpText =
             "The path to the folder where the generated class files should be stored. Default to the 'Generated' folder in the executing folder.")]
-    public string OutputPath { get; set; } = System.IO.Path.Combine(Environment.CurrentDirectory, "Generated");
+    public string OutputPath { get; set; } = Path.Combine(Environment.CurrentDirectory, "Generated");
 
     [Option('n', "namespace",
         HelpText =

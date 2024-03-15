@@ -1,11 +1,10 @@
-namespace Legerity.Web.Tests.Tests;
-
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System;
 using Legerity.Web.Tests.Pages;
-using OpenQA.Selenium.Remote;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -35,11 +34,11 @@ internal class DateInputTests : W3SchoolsBaseTestClass
     public void ShouldSetDate()
     {
         // Arrange
-        DateTime expected = DateTime.Now.Date;
+        var expected = DateTime.Now.Date;
 
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        DateInputPage dateInputPage = new DateInputPage(app)
+        var dateInputPage = new DateInputPage(app)
             .AcceptCookies<DateInputPage>()
             .SwitchToContentFrame<DateInputPage>();
 

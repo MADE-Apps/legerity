@@ -1,11 +1,10 @@
-namespace Legerity.Web.Tests.Tests;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -37,14 +36,14 @@ internal class ImageTests : W3SchoolsBaseTestClass
         // Arrange
         const string expectedImageSource = "img_girl.jpg";
 
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        ImagePage imagePage = new ImagePage(app)
+        var imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
             .SwitchToContentFrame<ImagePage>();
 
         // Act
-        string imageSource = imagePage.Image.Source;
+        var imageSource = imagePage.Image.Source;
 
         // Assert
         imageSource.ShouldContain(expectedImageSource);
@@ -56,14 +55,14 @@ internal class ImageTests : W3SchoolsBaseTestClass
         // Arrange
         const string expectedAltText = "Girl in a jacket";
 
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        ImagePage imagePage = new ImagePage(app)
+        var imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
             .SwitchToContentFrame<ImagePage>();
 
         // Act
-        string altText = imagePage.Image.AltText;
+        var altText = imagePage.Image.AltText;
 
         // Assert
         altText.ShouldBe(expectedAltText);
@@ -76,15 +75,15 @@ internal class ImageTests : W3SchoolsBaseTestClass
         const double expectedHeight = 600;
         const double expectedWidth = 500;
 
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        ImagePage imagePage = new ImagePage(app)
+        var imagePage = new ImagePage(app)
             .AcceptCookies<ImagePage>()
             .SwitchToContentFrame<ImagePage>();
 
         // Act
-        double height = imagePage.Image.Height;
-        double width = imagePage.Image.Width;
+        var height = imagePage.Image.Height;
+        var width = imagePage.Image.Width;
 
         // Assert
         height.ShouldBe(expectedHeight);

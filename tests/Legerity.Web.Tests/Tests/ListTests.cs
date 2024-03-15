@@ -1,12 +1,11 @@
-namespace Legerity.Web.Tests.Tests;
-
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System;
 using System.Linq;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -36,14 +35,14 @@ internal class ListTests : W3SchoolsBaseTestClass
     public void ShouldContainItems()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        ListPage listPage = new ListPage(app)
+        var listPage = new ListPage(app)
             .AcceptCookies<ListPage>()
             .SwitchToContentFrame<ListPage>();
 
         // Act 
-        IEnumerable<string> items = listPage.OrderedList.Items.Select(i => i.Text);
+        var items = listPage.OrderedList.Items.Select(i => i.Text);
 
         // Assert
         items.ShouldContain("Coffee");

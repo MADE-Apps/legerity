@@ -1,6 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -16,7 +15,7 @@ internal class TextBoxTests : BaseTestClass
     public void ShouldSetText()
     {
         // Arrange
-        TextBoxPage textBoxPage = this.StartAndNavigateToPage();
+        var textBoxPage = StartAndNavigateToPage();
 
         // Act
         textBoxPage.SetSimpleTextBox("MADE Apps");
@@ -29,7 +28,7 @@ internal class TextBoxTests : BaseTestClass
     public void ShouldAppendText()
     {
         // Arrange
-        TextBoxPage textBoxPage = this.StartAndNavigateToPage().SetSimpleTextBox("MADE ");
+        var textBoxPage = StartAndNavigateToPage().SetSimpleTextBox("MADE ");
 
         // Act
         textBoxPage.AppendSimpleTextBoxText("Apps");
@@ -42,7 +41,7 @@ internal class TextBoxTests : BaseTestClass
     public void ShouldClearText()
     {
         // Arrange
-        TextBoxPage textBoxPage = this.StartAndNavigateToPage().SetSimpleTextBox("MADE Apps");
+        var textBoxPage = StartAndNavigateToPage().SetSimpleTextBox("MADE Apps");
 
         // Act
         textBoxPage.ClearSimpleTextBox();
@@ -55,7 +54,7 @@ internal class TextBoxTests : BaseTestClass
     public void ShouldGetIsReadonly()
     {
         // Arrange
-        TextBoxPage textBoxPage = this.StartAndNavigateToPage();
+        var textBoxPage = StartAndNavigateToPage();
 
         // Act & Assert
         textBoxPage.ReadonlyTextBox.IsReadonly.ShouldBeTrue();
@@ -63,7 +62,7 @@ internal class TextBoxTests : BaseTestClass
 
     private TextBoxPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<TextBoxPage>("TextBox");
     }
 }

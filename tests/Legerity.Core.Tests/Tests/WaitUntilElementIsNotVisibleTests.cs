@@ -1,14 +1,14 @@
-namespace Legerity.Core.Tests.Tests;
-
 using System;
 using System.IO;
-using Extensions;
-using Helpers;
+using Legerity.Core.Tests.Pages;
+using Legerity.Extensions;
+using Legerity.Helpers;
+using Legerity.Web;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using Pages;
-using Web.Elements.Core;
+
+namespace Legerity.Core.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]
@@ -27,7 +27,7 @@ internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        var app = StartApp(options);
 
         new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -50,16 +50,16 @@ internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
-        RemoteWebElement element = page.FindElement(By.TagName("form"));
+        var element = page.FindElement(By.TagName("form"));
 
         // Act & Assert
-        element.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElement<RemoteWebElement>(By.TagName("select")),
+        element.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElement<WebElement>(By.TagName("select")),
             ImplicitWait);
     }
 
@@ -76,16 +76,16 @@ internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         Form form = page.FindElement(By.TagName("form"));
 
         // Act & Assert
-        form.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElementWrapper<RemoteWebElement>(By.TagName("select")),
+        form.WaitUntil(WaitUntilConditions.ElementIsNotVisibleInElementWrapper<WebElement>(By.TagName("select")),
             ImplicitWait);
     }
 
@@ -102,9 +102,9 @@ internal class WaitUntilElementIsNotVisibleTests : BaseTestClass
             DriverOptions = new ChromeOptions()
         };
 
-        RemoteWebDriver app = this.StartApp(options);
+        var app = StartApp(options);
 
-        W3SchoolsPage page = new W3SchoolsPage(app)
+        var page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 

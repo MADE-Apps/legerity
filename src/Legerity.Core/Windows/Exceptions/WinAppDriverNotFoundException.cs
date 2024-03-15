@@ -12,7 +12,7 @@ public class WinAppDriverNotFoundException : LegerityException
     internal WinAppDriverNotFoundException(string path)
         : base($"The WinAppDriver could not be located at {path}. Please ensure it is installed first.")
     {
-        this.Path = path;
+        Path = path;
     }
 
     /// <summary>

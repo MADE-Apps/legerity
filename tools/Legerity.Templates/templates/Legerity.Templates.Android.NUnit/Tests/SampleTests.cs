@@ -1,7 +1,6 @@
 namespace Legerity.Templates.Android.NUnit.Tests;
 
-using Legerity.Templates.Android.NUnit.Pages;
-using OpenQA.Selenium.Remote;
+using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 public class SampleTests : BaseTestClass
@@ -14,7 +13,7 @@ public class SampleTests : BaseTestClass
     [Test]
     public void ShouldLoadPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = this.StartApp();
         new SamplePage(app).VerifyPageLoaded();
     }
 }

@@ -2,18 +2,15 @@ namespace Legerity.Web.Elements;
 
 using System;
 using System.Collections.ObjectModel;
-using Legerity.Exceptions;
+using Exceptions;
 using Legerity.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.UI;
 
 /// <summary>
-/// Defines an element wrapper for a <see cref="RemoteWebElement"/>.
+/// Defines an element wrapper for a <see cref="WebElement"/>.
 /// </summary>
-public class WebElementWrapper : IElementWrapper<RemoteWebElement>
+public class WebElementWrapper : IElementWrapper<WebElement>
 {
-    private readonly WeakReference elementReference;
+    private readonly WeakReference _elementReference;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="WebElementWrapper"/> class.
@@ -22,7 +19,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public WebElementWrapper(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -30,51 +27,51 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// Initializes a new instance of the <see cref="WebElementWrapper"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public WebElementWrapper(RemoteWebElement element)
+    public WebElementWrapper(WebElement element)
     {
-        this.elementReference = new WeakReference(element);
+        _elementReference = new WeakReference(element);
     }
 
-    /// <summary>Gets the original <see cref="RemoteWebElement"/> reference object.</summary>
-    public RemoteWebElement Element =>
-        this.elementReference is { IsAlive: true }
-            ? this.elementReference.Target as RemoteWebElement
+    /// <summary>Gets the original <see cref="WebElement"/> reference object.</summary>
+    public WebElement Element =>
+        _elementReference is { IsAlive: true }
+            ? _elementReference.Target as WebElement
             : null;
 
     /// <summary>
     /// Gets the driver used to find this element.
     /// </summary>
-    public IWebDriver ElementDriver => this.Element.WrappedDriver;
+    public IWebDriver ElementDriver => Element.WrappedDriver;
 
     /// <summary>
     /// Gets the instance of the driver for the web application.
     /// </summary>
-    public RemoteWebDriver Driver => this.ElementDriver as RemoteWebDriver;
+    public WebDriver Driver => ElementDriver as WebDriver;
 
     /// <summary>
     /// Gets a value indicating whether the element is enabled.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsEnabled => this.Element.Enabled;
+    public virtual bool IsEnabled => Element.Enabled;
 
     /// <summary>
     /// Gets a value indicating whether the element is visible.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsVisible => this.Element.Displayed;
+    public virtual bool IsVisible => Element.Displayed;
 
     /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="WebElementWrapper"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="WebElementWrapper"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="WebElementWrapper"/>.
     /// </returns>
-    public static implicit operator WebElementWrapper(RemoteWebElement element)
+    public static implicit operator WebElementWrapper(WebElement element)
     {
         return new WebElementWrapper(element);
     }
@@ -83,21 +80,21 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// Finds a child element by the specified locator.
     /// </summary>
     /// <param name="locator">The locator to find a child element by.</param>
-    /// <returns>The <see cref="RemoteWebElement"/>.</returns>
+    /// <returns>The <see cref="WebElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public RemoteWebElement FindElement(By locator)
+    public WebElement FindElement(By locator)
     {
-        return this.Element.FindWebElement(locator);
+        return Element.FindWebElement(locator);
     }
 
     /// <summary>
     /// Finds a collection of child elements by the specified locator.
     /// </summary>
     /// <param name="locator">The locator to find a child element by.</param>
-    /// <returns>The readonly collection of <see cref="RemoteWebElement"/>.</returns>
-    public ReadOnlyCollection<RemoteWebElement> FindElements(By locator)
+    /// <returns>The readonly collection of <see cref="WebElement"/>.</returns>
+    public ReadOnlyCollection<WebElement> FindElements(By locator)
     {
-        return this.Element.FindWebElements(locator);
+        return Element.FindWebElements(locator);
     }
 
     /// <summary>
@@ -110,7 +107,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     {
         try
         {
-            this.VerifyElementShown(locator);
+            VerifyElementShown(locator);
         }
         catch (ElementNotShownException)
         {
@@ -128,7 +125,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Click()
     {
-        this.Element.Click();
+        Element.Click();
     }
 
     /// <summary>
@@ -139,7 +136,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public string GetAttribute(string attributeName)
     {
-        return this.Element.GetAttribute(attributeName);
+        return Element.GetAttribute(attributeName);
     }
 
     /// <summary>
@@ -152,7 +149,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void VerifyElementShown(By locator)
     {
-        this.VerifyElementShown(locator, null);
+        VerifyElementShown(locator, null);
     }
 
     /// <summary>
@@ -170,7 +167,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
         {
             try
             {
-                if (this.Element.FindElement(locator) == null)
+                if (Element.FindElement(locator) == null)
                 {
                     throw new ElementNotShownException(locator.ToString());
                 }
@@ -182,7 +179,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElement(locator) != null);
         }
     }
@@ -196,7 +193,7 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public void VerifyElementsShown(By locator)
     {
-        this.VerifyElementsShown(locator, null);
+        VerifyElementsShown(locator, null);
     }
 
     /// <summary>
@@ -213,14 +210,14 @@ public class WebElementWrapper : IElementWrapper<RemoteWebElement>
     {
         if (timeout == null)
         {
-            if (this.Element.FindElements(locator).Count == 0)
+            if (Element.FindElements(locator).Count == 0)
             {
                 throw new ElementsNotShownException(locator.ToString());
             }
         }
         else
         {
-            var wait = new WebDriverWait(this.Driver, timeout.Value);
+            var wait = new WebDriverWait(Driver, timeout.Value);
             wait.Until(driver => driver.FindElements(locator).Count != 0);
         }
     }

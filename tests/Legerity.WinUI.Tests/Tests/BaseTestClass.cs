@@ -7,7 +7,7 @@ namespace Legerity.WinUI.Tests.Tests;
 using System;
 using System.Collections.Generic;
 using Legerity;
-using Legerity.Windows;
+using Windows;
 
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.
@@ -75,6 +75,6 @@ public abstract class BaseTestClass : LegerityTestClass
     public virtual void FinalCleanup()
     {
         // Ensures that any running app driver instances being tracked are stopped.
-        this.StopApps();
+        StopApps();
     }
 }

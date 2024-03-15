@@ -1,13 +1,10 @@
 namespace Legerity.Windows.Elements.Core;
 
 using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP TimePicker control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP TimePicker control.
 /// </summary>
 public class TimePicker : WindowsElementWrapper
 {
@@ -15,53 +12,25 @@ public class TimePicker : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="TimePicker"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public TimePicker(WindowsElement element)
+    public TimePicker(WebElement element)
         : base(element)
     {
     }
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="TimePicker"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="TimePicker"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="TimePicker"/>.
     /// </returns>
-    public static implicit operator TimePicker(WindowsElement element)
+    public static implicit operator TimePicker(WebElement element)
     {
         return new TimePicker(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="TimePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TimePicker"/>.
-    /// </returns>
-    public static implicit operator TimePicker(AppiumWebElement element)
-    {
-        return new TimePicker(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TimePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TimePicker"/>.
-    /// </returns>
-    public static implicit operator TimePicker(RemoteWebElement element)
-    {
-        return new TimePicker(element as WindowsElement);
     }
 
     /// <summary>
@@ -77,10 +46,10 @@ public class TimePicker : WindowsElementWrapper
     public virtual void SetTime(TimeSpan time)
     {
         // Taps the time picker to show the popup.
-        this.Click();
+        Click();
 
         // Finds the popup and changes the time.
-        WindowsElement popup = this.Driver.FindElement(WindowsByExtras.AutomationId("TimePickerFlyoutPresenter"));
+        var popup = Driver.FindElement(WindowsByExtras.AutomationId("TimePickerFlyoutPresenter"));
         popup.FindElement(WindowsByExtras.AutomationId("HourLoopingSelector")).FindElementByName(time.ToString("%h")).Click();
         popup.FindElement(WindowsByExtras.AutomationId("MinuteLoopingSelector")).FindElementByName(time.ToString("mm")).Click();
         popup.FindElement(WindowsByExtras.AutomationId("AcceptButton")).Click();

@@ -1,38 +1,38 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
 using Legerity.Extensions;
+using Legerity.Pages;
+using Legerity.Web.Elements.Core;
 using Legerity.Web.Tests.Tests;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal abstract class W3SchoolsBasePage : BasePage
 {
-    private readonly By contentFrameLocator = By.Id("iframeResult");
-    private readonly By acceptCookiesButtonLocator = By.Id("accept-choices");
+    private readonly By _contentFrameLocator = By.Id("iframeResult");
+    private readonly By _acceptCookiesButtonLocator = By.Id("accept-choices");
 
-    protected W3SchoolsBasePage(RemoteWebDriver app)
+    protected W3SchoolsBasePage(WebDriver app)
         : base(app, BaseTestClass.ImplicitWait)
     {
     }
 
-    protected override By Trait => this.contentFrameLocator;
+    protected override By Trait => _contentFrameLocator;
 
-    public Button AcceptCookiesButton => this.FindElement(this.acceptCookiesButtonLocator);
+    public Button AcceptCookiesButton => FindElement(_acceptCookiesButtonLocator);
 
-    public RemoteWebElement ContentFrame => this.FindElement(this.contentFrameLocator);
+    public WebElement ContentFrame => FindElement(_contentFrameLocator);
 
     public T AcceptCookies<T>() where T : W3SchoolsBasePage
     {
-        this.WaitUntil(page => page.AcceptCookiesButton.IsVisible, this.WaitTimeout);
-        this.AcceptCookiesButton.Click();
+        this.WaitUntil(page => page.AcceptCookiesButton.IsVisible, WaitTimeout);
+        AcceptCookiesButton.Click();
         return (T)this;
     }
 
     public T SwitchToContentFrame<T>() where T : W3SchoolsBasePage
     {
-        this.WaitUntil(page => page.ContentFrame.Displayed, this.WaitTimeout);
-        this.App.SwitchTo().Frame(this.ContentFrame);
+        this.WaitUntil(page => page.ContentFrame.Displayed, WaitTimeout);
+        App.SwitchTo().Frame(ContentFrame);
         return (T)this;
     }
 }

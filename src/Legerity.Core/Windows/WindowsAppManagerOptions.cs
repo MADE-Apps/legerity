@@ -1,8 +1,9 @@
+using System;
+
 namespace Legerity.Windows;
 
 using System.Collections.Generic;
-using Legerity.Windows.Helpers;
-using OpenQA.Selenium.Appium;
+using Helpers;
 
 /// <summary>
 /// Defines a specific <see cref="AppiumManagerOptions"/> for a Windows application.
@@ -38,8 +39,8 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     /// </param>
     public WindowsAppManagerOptions(string appId, params (string, object)[] additionalOptions)
     {
-        this.AppId = appId;
-        this.AdditionalOptions = additionalOptions;
+        AppId = appId;
+        AdditionalOptions = additionalOptions;
     }
 
     /// <summary>
@@ -50,6 +51,7 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     /// <summary>
     /// Gets or sets a value indicating whether to launch the WinAppDriver if it is not already running.
     /// </summary>
+    [Obsolete("Please use LaunchAppiumServer instead. LaunchWinAppDriver will continue to function, however, the WinAppDriver will not be launched directly due to no direct support by the W3C standard implemented in Appium 5. This property will be removed in a future release.")]
     public bool LaunchWinAppDriver { get; set; }
 
     /// <summary>
@@ -71,7 +73,8 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     public override void Configure()
     {
         base.Configure();
-        this.AppiumOptions.AddAdditionalCapability("app", this.AppId);
+        AppiumOptions.App = AppId;
+        AppiumOptions.AutomationName = "Windows";
     }
 
     /// <summary>
@@ -82,32 +85,34 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     /// </param>
     public void Configure((string, object)[] additionalOptions)
     {
-        this.AdditionalOptions = additionalOptions;
-        this.Configure();
+        AdditionalOptions = additionalOptions;
+        Configure();
     }
 
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"Platform [Windows], {base.ToString()}, {this.GetOptionDetails()}";
+        return $"Platform [Windows], {base.ToString()}, {GetOptionDetails()}";
     }
 
     private string GetOptionDetails()
     {
         var options = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(this.AppId))
+        if (!string.IsNullOrWhiteSpace(AppId))
         {
-            options.Add($"App ID [{this.AppId}]");
+            options.Add($"App ID [{AppId}]");
         }
 
-        if (this.AdditionalOptions != null)
+        if (AdditionalOptions == null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
-            {
-                options.Add($"{name} [{value}]");
-            }
+            return string.Join(", ", options);
+        }
+
+        foreach (var (name, value) in AdditionalOptions)
+        {
+            options.Add($"{name} [{value}]");
         }
 
         return string.Join(", ", options);

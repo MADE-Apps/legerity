@@ -1,20 +1,20 @@
 namespace Legerity.WinUI.Tests.Pages;
 
-using Legerity.Windows;
+using Windows;
 using Legerity.Windows.Elements.WinUI;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 
 internal class MenuBarPage : BaseNavigationPage
 {
-    public MenuBarPage(RemoteWebDriver app) : base(app)
+    public MenuBarPage(WebDriver app) : base(app)
     {
     }
 
-    public MenuBar SimpleMenuBar => this.FindElement(WindowsByExtras.AutomationId("Example1"));
+    public MenuBar SimpleMenuBar => FindElement(WindowsByExtras.AutomationId("Example1"));
 
     public MenuBarPage SelectSimpleMenuBarOption(string name, string child = null)
     {
-        MenuBarItem option = this.SimpleMenuBar.ClickOption(name);
+        var option = SimpleMenuBar.ClickOption(name);
         if (!string.IsNullOrWhiteSpace(child))
         {
             option.ClickChildOption(child);
@@ -25,7 +25,7 @@ internal class MenuBarPage : BaseNavigationPage
 
     public MenuBarPage SelectSimpleMenuBarOptionPartial(string name, string child = null)
     {
-        MenuBarItem option = this.SimpleMenuBar.ClickOptionByPartialName(name);
+        var option = SimpleMenuBar.ClickOptionByPartialName(name);
         if (!string.IsNullOrWhiteSpace(child))
         {
             option.ClickChildOptionByPartialName(child);

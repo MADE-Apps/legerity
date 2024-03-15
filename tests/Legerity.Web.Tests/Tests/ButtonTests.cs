@@ -1,10 +1,9 @@
-namespace Legerity.Web.Tests.Tests;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -27,6 +26,24 @@ internal class ButtonTests : W3SchoolsBaseTestClass
             Path.Combine(Environment.CurrentDirectory))
         {
             Maximize = true, Url = WebApplication, ImplicitWait = ImplicitWait, DriverOptions = ConfigureChromeOptions()
+        },
+        new WebAppManagerOptions(
+            WebAppDriverType.Edge,
+            Path.Combine(Environment.CurrentDirectory))
+        {
+            Maximize = true, Url = WebApplication, ImplicitWait = ImplicitWait
+        },
+        new WebAppManagerOptions(
+            WebAppDriverType.Firefox,
+            Path.Combine(Environment.CurrentDirectory))
+        {
+            Maximize = true, Url = WebApplication, ImplicitWait = ImplicitWait
+        },
+        new WebAppManagerOptions(
+            WebAppDriverType.Opera,
+            Path.Combine(Environment.CurrentDirectory))
+        {
+            Maximize = true, Url = WebApplication, ImplicitWait = ImplicitWait
         }
     };
 
@@ -34,9 +51,9 @@ internal class ButtonTests : W3SchoolsBaseTestClass
     public void ShouldClickButton()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        ButtonPage buttonPage = new ButtonPage(app)
+        var buttonPage = new ButtonPage(app)
             .AcceptCookies<ButtonPage>()
             .SwitchToContentFrame<ButtonPage>();
 

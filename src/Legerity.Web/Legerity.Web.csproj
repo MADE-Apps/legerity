@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>Legerity for Web - Framework for UI testing with Selenium/Appium</Product>
     <Description>
@@ -20,11 +20,11 @@
       - TextArea, a multi-line text input element
       - TextInput, a default text input element
     </Description>
-    <PackageTags>UI Test Appium Selenium ChromeDriver FirefoxDriver OperaDriver SafariDriver EdgeDriver InternetExplorerDriver RemoteWebDriver Web</PackageTags>
+    <PackageTags>UI Test Appium Selenium ChromeDriver FirefoxDriver OperaDriver SafariDriver EdgeDriver InternetExplorerDriver WebDriver Web</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
+    <PackageReference Include="Appium.WebDriver" Version="5.0.0-rc.6" />
   </ItemGroup>
 
   <ItemGroup>

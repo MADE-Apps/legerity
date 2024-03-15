@@ -28,18 +28,11 @@ public class ElementNotShownException : LegerityException
     public ElementNotShownException(string locator, Exception innerException)
         : base($"No element could be located using locator: {locator}", innerException)
     {
-        this.ElementName = locator;
-        this.Locator = locator;
+        Locator = locator;
     }
 
     /// <summary>
     /// Gets the locator used to locate the element.
     /// </summary>
     public string Locator { get; }
-
-    /// <summary>
-    /// Gets the name of the element that was not shown.
-    /// </summary>
-    [Obsolete("ElementName will be removed in a future major release. Please use the Locator instead.")]
-    public string ElementName { get; }
 }

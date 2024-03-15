@@ -1,7 +1,5 @@
 namespace Legerity;
 
-using OpenQA.Selenium.Appium;
-
 /// <summary>
 /// Defines a base model that represents Appium specific configuration options for the <see cref="AppManager"/>.
 /// </summary>
@@ -21,25 +19,30 @@ public abstract class AppiumManagerOptions : AppManagerOptions
     /// </summary>
     public AppiumOptions AppiumOptions
     {
-        get => this.DriverOptions as AppiumOptions;
-        set => this.DriverOptions = value;
+        get => DriverOptions as AppiumOptions;
+        set => DriverOptions = value;
     }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether to launch the Appium server instance.
+    /// </summary>
+    public bool LaunchAppiumServer { get; set; }
 
     /// <summary>
     /// Configures the <see cref="AppiumOptions"/> with the specified additional options.
     /// </summary>
     public virtual void Configure()
     {
-        this.AppiumOptions = new AppiumOptions();
+        AppiumOptions = new AppiumOptions();
 
-        if (this.AdditionalOptions == null)
+        if (AdditionalOptions == null)
         {
             return;
         }
 
-        foreach ((string capabilityName, object capabilityValue) in this.AdditionalOptions)
+        foreach (var (capabilityName, capabilityValue) in AdditionalOptions)
         {
-            this.AppiumOptions.AddAdditionalCapability(capabilityName, capabilityValue);
+            AppiumOptions.AddAdditionalAppiumOption(capabilityName, capabilityValue);
         }
     }
 }

@@ -3,8 +3,6 @@ namespace Legerity.Web.Elements.Core;
 using System.Collections.Generic;
 using System.Linq;
 using Legerity.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Table control.
@@ -18,7 +16,7 @@ public class Table : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Table(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -26,9 +24,9 @@ public class Table : WebElementWrapper
     /// Initializes a new instance of the <see cref="Table"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Table(RemoteWebElement element)
+    public Table(WebElement element)
         : base(element)
     {
     }
@@ -42,18 +40,18 @@ public class Table : WebElementWrapper
     /// Gets the header names for the table.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when the target element is no longer valid in the document DOM.</exception>
-    public virtual IEnumerable<string> Headers => this.IsFirstRowHeaders ? this.Rows.FirstOrDefault().GetAllChildElements().Select(x => x.Text) : this.Element.FindElements(WebByExtras.TableHeaderCell()).Select(x => x.Text);
+    public virtual IEnumerable<string> Headers => IsFirstRowHeaders ? Rows.FirstOrDefault().GetAllChildElements().Select(x => x.Text) : Element.FindElements(WebByExtras.TableHeaderCell()).Select(x => x.Text);
 
     /// <summary>
     /// Gets the collection of rows associated with the table. If a header row exists, that will be included.
     /// </summary>
-    public virtual IEnumerable<TableRow> Rows => this.Element.FindElements(WebByExtras.TableRow()).Select(e => new TableRow(e));
+    public virtual IEnumerable<TableRow> Rows => Element.FindElements(WebByExtras.TableRow()).Select(e => new TableRow(e));
 
     /// <summary>
     /// Gets the collection of rows associated with the table only containing the data values (not headers).
     /// </summary>
     public virtual IEnumerable<TableRow> DataRows =>
-        this.Element.FindElements(WebByExtras.TableDataRow()).Select(e => new TableRow(e));
+        Element.FindElements(WebByExtras.TableDataRow()).Select(e => new TableRow(e));
 
     /// <summary>
     /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="Table"/> without direct casting.
@@ -64,7 +62,7 @@ public class Table : WebElementWrapper
     /// <returns>
     /// The <see cref="Table"/>.
     /// </returns>
-    public static implicit operator Table(RemoteWebElement element)
+    public static implicit operator Table(WebElement element)
     {
         return new Table(element);
     }
@@ -82,23 +80,23 @@ public class Table : WebElementWrapper
             dictionary.Add(header, tableRow.Values.ElementAt(valueIdx));
         }
 
-        var headers = this.Headers.ToList();
+        var headers = Headers.ToList();
 
-        int dataRowIdx = this.IsFirstRowHeaders ? idx + 1 : idx;
-        TableRow dataRow = this.Rows.ElementAt(dataRowIdx);
+        var dataRowIdx = IsFirstRowHeaders ? idx + 1 : idx;
+        var dataRow = Rows.ElementAt(dataRowIdx);
 
         var rowValues = new Dictionary<string, string>();
 
         if (headers.Any())
         {
-            for (int i = 0; i < headers.Count; i++)
+            for (var i = 0; i < headers.Count; i++)
             {
                 AddRowData(rowValues, headers.ElementAt(i), dataRow, i);
             }
         }
         else
         {
-            for (int i = 0; i < dataRow.Values.Count(); i++)
+            for (var i = 0; i < dataRow.Values.Count(); i++)
             {
                 AddRowData(rowValues, $"Col{i}", dataRow, i);
             }
@@ -115,9 +113,9 @@ public class Table : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when the target element is no longer valid in the document DOM.</exception>
     public virtual IEnumerable<string> GetColumnDataByHeader(string header)
     {
-        var headers = this.Headers.ToList();
-        int idx = headers.IndexOf(header);
-        return this.GetColumnDataByIndex(idx);
+        var headers = Headers.ToList();
+        var idx = headers.IndexOf(header);
+        return GetColumnDataByIndex(idx);
     }
 
     /// <summary>
@@ -133,7 +131,7 @@ public class Table : WebElementWrapper
             return null;
         }
 
-        var dataRows = this.DataRows.ToList();
+        var dataRows = DataRows.ToList();
         return dataRows.Select(row => row.Values.ElementAt(idx)).ToList();
     }
 }

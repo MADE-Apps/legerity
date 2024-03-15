@@ -1,9 +1,7 @@
 namespace Legerity.Windows.Extensions;
 
 using System;
-using Legerity.Windows.Elements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using Elements;
 
 /// <summary>
 /// Defines a collection of extensions for <see cref="WindowsElementWrapper"/> objects.

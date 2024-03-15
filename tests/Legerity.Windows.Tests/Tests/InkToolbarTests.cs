@@ -1,6 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -16,8 +15,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetBallpointPenColor()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectBallpointPenColor("Red");
@@ -30,8 +29,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetPencilColor()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectPencilColor("Red");
@@ -44,8 +43,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetHighlighterColor()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectHighlighterColor("Pink");
@@ -58,8 +57,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetBallpointPenColorByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectBallpointPenPartialColor("Yell");
@@ -72,8 +71,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetPencilColorByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectPencilPartialColor("Yell");
@@ -86,8 +85,8 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetHighlighterColorByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
+        var app = StartApp();
+        var inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
         inkToolbarPage.SelectHighlighterPartialColor("Yell");

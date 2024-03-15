@@ -3,7 +3,6 @@ namespace Legerity;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using OpenQA.Selenium;
 
 /// <summary>
 /// Defines a <see cref="By"/> locator that can be used to find elements using a sequence of locators that are continuously nested until the final locator is run.
@@ -16,7 +15,7 @@ using OpenQA.Selenium;
 /// </example>
 public class ByNested : By
 {
-    private readonly By[] locators;
+    private readonly By[] _locators;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ByNested"/> class.
@@ -24,7 +23,7 @@ public class ByNested : By
     /// <param name="locators">The locators in nesting sequence to find references of.</param>
     public ByNested(params By[] locators)
     {
-        this.locators = locators;
+        _locators = locators;
     }
 
     /// <summary>Finds the first element matching the criteria.</summary>
@@ -33,7 +32,7 @@ public class ByNested : By
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public override IWebElement FindElement(ISearchContext context)
     {
-        ReadOnlyCollection<IWebElement> elements = this.FindElements(context);
+        var elements = FindElements(context);
         if (elements.Count == 0)
         {
             throw new NoSuchElementException($"No element could be located using locator: {this}");
@@ -48,13 +47,13 @@ public class ByNested : By
     /// matching the current criteria, or an empty list if nothing matches.</returns>
     public override ReadOnlyCollection<IWebElement> FindElements(ISearchContext context)
     {
-        if (this.locators.Length == 0)
+        if (_locators.Length == 0)
         {
             return new List<IWebElement>().AsReadOnly();
         }
 
         IEnumerable<IWebElement> elements = null;
-        foreach (By locator in this.locators)
+        foreach (var locator in _locators)
         {
             var nestedElements = new List<IWebElement>();
 
@@ -64,7 +63,7 @@ public class ByNested : By
             }
             else
             {
-                foreach (IWebElement element in elements)
+                foreach (var element in elements)
                 {
                     nestedElements.AddRange(element.FindElements(locator));
                 }

@@ -1,7 +1,6 @@
 namespace Legerity.Windows.Tests.Tests;
 
 using System;
-using OpenQA.Selenium.Remote;
 using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
@@ -16,7 +15,7 @@ internal class TimePickerTests : BaseTestClass
     public void ShouldSetTime()
     {
         // Arrange
-        TimePickerPage timePickerPage = this.StartAndNavigateToPage();
+        var timePickerPage = StartAndNavigateToPage();
 
         // Act & Assert
         timePickerPage.SetTimePickerTime(new TimeSpan(12, 30, 0));
@@ -24,7 +23,7 @@ internal class TimePickerTests : BaseTestClass
 
     private TimePickerPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<TimePickerPage>("TimePicker");
     }
 }

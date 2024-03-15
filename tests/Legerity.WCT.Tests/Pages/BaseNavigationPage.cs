@@ -1,42 +1,42 @@
-namespace Legerity.WCT.Tests.Pages;
-
 using System;
 using System.Linq;
-using Extensions;
+using Legerity.Extensions;
+using Legerity.Pages;
+using Legerity.Windows;
 using Legerity.Windows.Elements.Core;
 using Legerity.Windows.Elements.WinUI;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.WCT.Tests.Pages;
 
 internal class BaseNavigationPage : BasePage
 {
-    private readonly By navigationViewLocator = WindowsByExtras.AutomationId("NavView");
+    private readonly By _navigationViewLocator = WindowsByExtras.AutomationId("NavView");
 
-    public BaseNavigationPage(RemoteWebDriver app)
+    public BaseNavigationPage(WebDriver app)
         : base(app)
     {
     }
 
-    public NavigationView NavigationView => this.FindElement(this.navigationViewLocator);
+    public NavigationView NavigationView => FindElement(_navigationViewLocator);
 
-    public AutoSuggestBox SampleSearchBox => this.NavigationView.FindElement(WindowsByExtras.AutomationId("SearchBox"));
+    public AutoSuggestBox SampleSearchBox => NavigationView.FindElement(WindowsByExtras.AutomationId("SearchBox"));
 
-    public GridView SamplePicker => this.FindElement(WindowsByExtras.AutomationId("SamplePickerGridView"));
+    public GridView SamplePicker => FindElement(WindowsByExtras.AutomationId("SamplePickerGridView"));
 
-    protected override By Trait => this.navigationViewLocator;
+    protected override By Trait => _navigationViewLocator;
 
     public TPage NavigateTo<TPage>(string sampleName)
         where TPage : BasePage
     {
-        this.SampleSearchBox.SetText(sampleName);
+        SampleSearchBox.SetText(sampleName);
 
-        this.WaitUntil(p => p.SamplePicker.Items.Any(), this.WaitTimeout);
+        this.WaitUntil(p => p.SamplePicker.Items.Any(), WaitTimeout);
 
-        AppiumWebElement item = this.SamplePicker.Items.FirstOrDefault(i =>
+        var item = SamplePicker.Items.FirstOrDefault(i =>
             i.FindElement(By.XPath($".//*[@ClassName='TextBlock'][@Name='{sampleName}']")) != null);
         item.Click();
 
-        return Activator.CreateInstance(typeof(TPage), this.App) as TPage;
+        return Activator.CreateInstance(typeof(TPage), App) as TPage;
     }
 }

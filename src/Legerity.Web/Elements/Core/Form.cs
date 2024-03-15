@@ -1,8 +1,5 @@
 namespace Legerity.Web.Elements.Core;
 
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Form control.
 /// </summary>
@@ -23,9 +20,9 @@ public class Form : WebElementWrapper
     /// Initializes a new instance of the <see cref="Form"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Form(RemoteWebElement element)
+    public Form(WebElement element)
         : base(element)
     {
     }
@@ -39,7 +36,7 @@ public class Form : WebElementWrapper
     /// <returns>
     /// The <see cref="Form"/>.
     /// </returns>
-    public static implicit operator Form(RemoteWebElement element)
+    public static implicit operator Form(WebElement element)
     {
         return new Form(element);
     }

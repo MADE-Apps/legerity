@@ -1,16 +1,15 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class TablePage : W3SchoolsBasePage
 {
-    private readonly By tableLocator = By.TagName("table");
+    private readonly By _tableLocator = By.TagName("table");
 
-    public TablePage(RemoteWebDriver app) : base(app)
+    public TablePage(WebDriver app) : base(app)
     {
     }
 
-    public Table Table => this.FindElement(this.tableLocator);
+    public Table Table => FindElement(_tableLocator);
 }

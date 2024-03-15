@@ -1,29 +1,28 @@
-namespace Legerity.Web.Tests.Pages;
-
 using System.Collections.Generic;
 using System.Linq;
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class RadioButtonPage : W3SchoolsBasePage
 {
-    private readonly By languageGroupRadioButtonLocator = By.XPath("//input[@name='fav_language']");
+    private readonly By _languageGroupRadioButtonLocator = By.XPath("//input[@name='fav_language']");
 
-    private readonly By cssRadioButtonLocator = By.Id("css");
+    private readonly By _cssRadioButtonLocator = By.Id("css");
 
-    public RadioButtonPage(RemoteWebDriver app) : base(app)
+    public RadioButtonPage(WebDriver app) : base(app)
     {
     }
 
     public IEnumerable<RadioButton> LanguageGroupRadioButtons =>
-        this.FindElements(this.languageGroupRadioButtonLocator).Select(e => (RadioButton)e);
+        FindElements(_languageGroupRadioButtonLocator).Select(e => (RadioButton)e);
 
-    public RadioButton CssRadioButton => this.FindElement(this.cssRadioButtonLocator);
+    public RadioButton CssRadioButton => FindElement(_cssRadioButtonLocator);
 
     public RadioButtonPage SelectCssRadioButton()
     {
-        this.CssRadioButton.Click();
+        CssRadioButton.Click();
         return this;
     }
 }

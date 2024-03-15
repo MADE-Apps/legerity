@@ -3,7 +3,6 @@ namespace Legerity;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using OpenQA.Selenium;
 
 /// <summary>
 /// Defines a <see cref="By"/> locator that can be used to find all elements that match all locators in sequence.
@@ -19,7 +18,7 @@ using OpenQA.Selenium;
 /// </example>
 public class ByAll : By
 {
-    private readonly By[] locators;
+    private readonly By[] _locators;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ByAll"/> class.
@@ -27,7 +26,7 @@ public class ByAll : By
     /// <param name="locators">The locators to find all references of.</param>
     public ByAll(params By[] locators)
     {
-        this.locators = locators;
+        _locators = locators;
     }
 
     /// <summary>Finds the first element matching the criteria.</summary>
@@ -36,7 +35,7 @@ public class ByAll : By
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public override IWebElement FindElement(ISearchContext context)
     {
-        ReadOnlyCollection<IWebElement> elements = this.FindElements(context);
+        var elements = FindElements(context);
         if (elements.Count == 0)
         {
             throw new NoSuchElementException($"No element could be located using locator: {this}");
@@ -51,15 +50,15 @@ public class ByAll : By
     /// matching the current criteria, or an empty list if nothing matches.</returns>
     public override ReadOnlyCollection<IWebElement> FindElements(ISearchContext context)
     {
-        if (this.locators.Length == 0)
+        if (_locators.Length == 0)
         {
             return new List<IWebElement>().AsReadOnly();
         }
 
         IEnumerable<IWebElement> elements = null;
-        foreach (By locator in this.locators)
+        foreach (var locator in _locators)
         {
-            ReadOnlyCollection<IWebElement> foundElements = locator.FindElements(context);
+            var foundElements = locator.FindElements(context);
             if (foundElements.Count == 0)
             {
                 return new List<IWebElement>().AsReadOnly();

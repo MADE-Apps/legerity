@@ -2,7 +2,6 @@ namespace Legerity.Windows.Tests.Tests;
 
 using System;
 using System.Globalization;
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -18,11 +17,11 @@ internal class CalendarDatePickerTests : BaseTestClass
     public void ShouldReturnNullSelectedDateIfNoDateSelected()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        CalendarDatePickerPage calendarDatePickerPage = new HomePage(app).NavigateTo<CalendarDatePickerPage>("CalendarDatePicker");
+        var app = StartApp();
+        var calendarDatePickerPage = new HomePage(app).NavigateTo<CalendarDatePickerPage>("CalendarDatePicker");
 
         // Act
-        DateTime? selectedDate = calendarDatePickerPage.CalendarDatePicker.SelectedDate;
+        var selectedDate = calendarDatePickerPage.CalendarDatePicker.SelectedDate;
 
         // Assert
         selectedDate.ShouldBeNull();
@@ -32,9 +31,9 @@ internal class CalendarDatePickerTests : BaseTestClass
     public void ShouldSelectDate()
     {
         // Arrange
-        DateTime expectedDate = DateTime.Now.AddDays(1).Date;
-        RemoteWebDriver app = this.StartApp();
-        CalendarDatePickerPage calendarDatePickerPage =
+        var expectedDate = DateTime.Now.AddDays(1).Date;
+        var app = StartApp();
+        var calendarDatePickerPage =
             new HomePage(app).NavigateTo<CalendarDatePickerPage>("CalendarDatePicker");
 
         // Act
@@ -48,9 +47,9 @@ internal class CalendarDatePickerTests : BaseTestClass
     public void ShouldSelectDateWithFormat()
     {
         // Arrange
-        DateTime expectedDate = DateTime.Now.AddDays(1);
-        RemoteWebDriver app = this.StartApp();
-        CalendarDatePickerPage calendarDatePickerPage =
+        var expectedDate = DateTime.Now.AddDays(1);
+        var app = StartApp();
+        var calendarDatePickerPage =
             new HomePage(app).NavigateTo<CalendarDatePickerPage>("CalendarDatePicker");
 
         // Act

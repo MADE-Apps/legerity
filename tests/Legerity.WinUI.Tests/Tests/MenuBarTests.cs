@@ -1,6 +1,5 @@
 namespace Legerity.WinUI.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 
 [TestFixtureSource(nameof(PlatformOptions))]
@@ -15,8 +14,8 @@ internal class MenuBarTests : BaseTestClass
     public void ShouldClickOption()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        MenuBarPage menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
+        var app = StartApp();
+        var menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
 
         // Act & Assert
         menuBarPage.SelectSimpleMenuBarOption("File");
@@ -26,8 +25,8 @@ internal class MenuBarTests : BaseTestClass
     public void ShouldClickOptionByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        MenuBarPage menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
+        var app = StartApp();
+        var menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
 
         // Act & Assert
         menuBarPage.SelectSimpleMenuBarOptionPartial("Fil");
@@ -37,8 +36,8 @@ internal class MenuBarTests : BaseTestClass
     public void ShouldClickChildOption()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        MenuBarPage menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
+        var app = StartApp();
+        var menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
 
         // Act & Assert
         menuBarPage.SelectSimpleMenuBarOption("File", "Open");
@@ -48,8 +47,8 @@ internal class MenuBarTests : BaseTestClass
     public void ShouldClickChildOptionByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        MenuBarPage menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
+        var app = StartApp();
+        var menuBarPage = new HomePage(app).NavigateTo<MenuBarPage>("MenuBar");
 
         // Act & Assert
         menuBarPage.SelectSimpleMenuBarOptionPartial("Fil", "Ope");

@@ -1,6 +1,5 @@
 namespace Legerity.WinUI.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -16,7 +15,7 @@ internal class NumberBoxTests : BaseTestClass
     public void ShouldSetValue()
     {
         // Arrange
-        NumberBoxPage numberBoxPage = this.StartAndNavigateToPage();
+        var numberBoxPage = StartAndNavigateToPage();
 
         // Act
         numberBoxPage.SetSpinnerNumberBoxValue(10);
@@ -29,7 +28,7 @@ internal class NumberBoxTests : BaseTestClass
     public void ShouldGetIsReadonly()
     {
         // Arrange
-        NumberBoxPage numberBoxPage = this.StartAndNavigateToPage();
+        var numberBoxPage = StartAndNavigateToPage();
 
         // Act & Assert
         numberBoxPage.SpinnerNumberBox.IsReadonly.ShouldBeFalse();
@@ -39,7 +38,7 @@ internal class NumberBoxTests : BaseTestClass
     public void ShouldGetSmallChangeValue()
     {
         // Arrange
-        NumberBoxPage numberBoxPage = this.StartAndNavigateToPage();
+        var numberBoxPage = StartAndNavigateToPage();
 
         // Act & Assert
         numberBoxPage.SpinnerNumberBox.SmallChange.ShouldBe(10);
@@ -49,7 +48,7 @@ internal class NumberBoxTests : BaseTestClass
     public void ShouldIncrementValue()
     {
         // Arrange
-        NumberBoxPage numberBoxPage = this.StartAndNavigateToPage().SetSpinnerNumberBoxValue(0);
+        var numberBoxPage = StartAndNavigateToPage().SetSpinnerNumberBoxValue(0);
 
         // Act
         numberBoxPage.IncrementSpinnerNumberBoxValue();
@@ -62,7 +61,7 @@ internal class NumberBoxTests : BaseTestClass
     public void ShouldDecrementValue()
     {
         // Arrange
-        NumberBoxPage numberBoxPage = this.StartAndNavigateToPage().SetSpinnerNumberBoxValue(0);
+        var numberBoxPage = StartAndNavigateToPage().SetSpinnerNumberBoxValue(0);
 
         // Act
         numberBoxPage.DecrementSpinnerNumberBoxValue();
@@ -73,7 +72,7 @@ internal class NumberBoxTests : BaseTestClass
 
     private NumberBoxPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<NumberBoxPage>("NumberBox");
     }
 }

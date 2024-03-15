@@ -1,12 +1,10 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: LevelOfParallelism(5)]
 [assembly: ExcludeFromCodeCoverage]
 
 namespace Legerity.Core.Tests.Tests;
-
-using System;
-using Legerity;
 
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.
@@ -57,6 +55,6 @@ public abstract class BaseTestClass : LegerityTestClass
     public virtual void FinalCleanup()
     {
         // Ensures that any running app driver instances being tracked are stopped.
-        this.StopApps();
+        StopApps();
     }
 }

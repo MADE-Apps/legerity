@@ -1,10 +1,10 @@
 namespace Legerity.WinUI.Tests.Pages;
 
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 
 internal class HomePage : BaseNavigationPage
 {
-    public HomePage(RemoteWebDriver app) : base(app)
+    public HomePage(WebDriver app) : base(app)
     {
     }
 }

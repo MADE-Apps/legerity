@@ -1,8 +1,6 @@
 namespace Legerity.Web.Elements.Core;
 
-using Legerity.Web.Elements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+using Elements;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Input checkbox control.
@@ -16,7 +14,7 @@ public class CheckBox : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public CheckBox(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -24,9 +22,9 @@ public class CheckBox : WebElementWrapper
     /// Initializes a new instance of the <see cref="CheckBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public CheckBox(RemoteWebElement element)
+    public CheckBox(WebElement element)
         : base(element)
     {
     }
@@ -35,18 +33,18 @@ public class CheckBox : WebElementWrapper
     /// Gets a value indicating whether the check box is in the checked state.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsChecked => this.Element.Selected;
+    public virtual bool IsChecked => Element.Selected;
 
     /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CheckBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CheckBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="CheckBox"/>.
     /// </returns>
-    public static implicit operator CheckBox(RemoteWebElement element)
+    public static implicit operator CheckBox(WebElement element)
     {
         return new CheckBox(element);
     }
@@ -59,12 +57,12 @@ public class CheckBox : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOn()
     {
-        if (this.IsChecked)
+        if (IsChecked)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 
     /// <summary>
@@ -75,11 +73,11 @@ public class CheckBox : WebElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOff()
     {
-        if (!this.IsChecked)
+        if (!IsChecked)
         {
             return;
         }
 
-        this.Click();
+        Click();
     }
 }

@@ -1,6 +1,5 @@
 namespace Legerity.Windows.Tests.Tests;
 
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -16,7 +15,7 @@ internal class ProgressRingTests : BaseTestClass
     public void ShouldGetDeterminatePercentage()
     {
         // Arrange
-        ProgressRingPage progressRingPage = this.StartAndNavigateToPage();
+        var progressRingPage = StartAndNavigateToPage();
 
         // Act
         progressRingPage.SetDeterminateProgressRingValue(50);
@@ -30,7 +29,7 @@ internal class ProgressRingTests : BaseTestClass
     public void ShouldGetIsIndeterminate()
     {
         // Arrange
-        ProgressRingPage progressBarPage = this.StartAndNavigateToPage();
+        var progressBarPage = StartAndNavigateToPage();
 
         // Act & Assert
         progressBarPage.IndeterminateProgressRing.IsIndeterminate.ShouldBeTrue();
@@ -38,7 +37,7 @@ internal class ProgressRingTests : BaseTestClass
 
     private ProgressRingPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<ProgressRingPage>("ProgressRing");
     }
 }

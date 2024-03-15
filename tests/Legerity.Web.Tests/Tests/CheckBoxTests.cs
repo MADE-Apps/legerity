@@ -1,11 +1,10 @@
-namespace Legerity.Web.Tests.Tests;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -36,9 +35,9 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldCheckUncheckedCheckbox()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+        var checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
             .SwitchToContentFrame<CheckBoxPage>()
             .CheckBikeOff();
@@ -54,9 +53,9 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldKeepCheckedIfCheckedAgain()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+        var checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
             .SwitchToContentFrame<CheckBoxPage>()
             .CheckBikeOn();
@@ -72,9 +71,9 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldUncheckCheckedCheckbox()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+        var checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
             .SwitchToContentFrame<CheckBoxPage>()
             .CheckBikeOn();
@@ -90,9 +89,9 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldKeepUncheckedIfUncheckedAgain()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        CheckBoxPage checkBoxPage = new CheckBoxPage(app)
+        var checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
             .SwitchToContentFrame<CheckBoxPage>()
             .CheckBikeOff();

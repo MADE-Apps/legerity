@@ -1,7 +1,6 @@
 namespace Legerity.WinUI.Tests.Tests;
 
 using Windows.Extensions;
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -17,7 +16,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldClickMenuOption()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage();
+        var navigationViewPage = StartAndNavigateToPage();
 
         // Act
         navigationViewPage.SelectNavigationViewMenuOption("Menu Item2");
@@ -30,7 +29,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldClickMenuOptionByPartialName()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage();
+        var navigationViewPage = StartAndNavigateToPage();
 
         // Act
         navigationViewPage.SelectNavigationViewMenuOptionByPartialName("Item2");
@@ -43,7 +42,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldOpenSettings()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage();
+        var navigationViewPage = StartAndNavigateToPage();
 
         // Act
         navigationViewPage.OpenNavigationViewSettings();
@@ -56,7 +55,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldOpenPane()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage().CloseNavigationView();
+        var navigationViewPage = StartAndNavigateToPage().CloseNavigationView();
 
         // Act
         navigationViewPage.OpenNavigationView();
@@ -69,7 +68,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldKeepPaneOpenIfOpenPane()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage().CloseNavigationView().OpenNavigationView();
+        var navigationViewPage = StartAndNavigateToPage().CloseNavigationView().OpenNavigationView();
 
         // Act
         navigationViewPage.OpenNavigationView();
@@ -82,7 +81,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldClosePane()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage().OpenNavigationView();
+        var navigationViewPage = StartAndNavigateToPage().OpenNavigationView();
 
         // Act
         navigationViewPage.CloseNavigationView();
@@ -95,7 +94,7 @@ internal class NavigationViewTests : BaseTestClass
     public void ShouldKeepPaneClosedIfClosePane()
     {
         // Arrange
-        NavigationViewPage navigationViewPage = this.StartAndNavigateToPage().OpenNavigationView().CloseNavigationView();
+        var navigationViewPage = StartAndNavigateToPage().OpenNavigationView().CloseNavigationView();
 
         // Act
         navigationViewPage.CloseNavigationView();
@@ -106,7 +105,7 @@ internal class NavigationViewTests : BaseTestClass
 
     private NavigationViewPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<NavigationViewPage>("NavigationView");
     }
 }

@@ -1,22 +1,18 @@
 namespace Legerity.IOS.Elements.Core;
 
-using Legerity.IOS.Elements;
-using Legerity.IOS.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Remote;
+using Elements;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="IOSElement"/> wrapper for the core iOS TextField control.
+/// Defines a <see cref="WebElement"/> wrapper for the core iOS TextField control.
 /// </summary>
 public class TextField : IOSElementWrapper
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="TextField"/> class.
     /// </summary>
-    /// <param name="element">The <see cref="IOSElement"/> representing the <see cref="TextField"/> element.</param>
-    public TextField(IOSElement element)
+    /// <param name="element">The <see cref="WebElement"/> representing the <see cref="TextField"/> element.</param>
+    public TextField(WebElement element)
         : base(element)
     {
     }
@@ -31,48 +27,20 @@ public class TextField : IOSElementWrapper
     /// Gets the element associated with the clear text button, if shown.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button ClearTextButton => this.FindElement(IOSByExtras.Label("Clear text"));
+    public virtual Button ClearTextButton => FindElement(IOSByExtras.Label("Clear text"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="TextField"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="TextField"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="TextField"/>.
     /// </returns>
-    public static implicit operator TextField(IOSElement element)
+    public static implicit operator TextField(WebElement element)
     {
         return new TextField(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="TextField"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TextField"/>.
-    /// </returns>
-    public static implicit operator TextField(AppiumWebElement element)
-    {
-        return new TextField(element as IOSElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TextField"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TextField"/>.
-    /// </returns>
-    public static implicit operator TextField(RemoteWebElement element)
-    {
-        return new TextField(element as IOSElement);
     }
 
     /// <summary>
@@ -84,8 +52,8 @@ public class TextField : IOSElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SetText(string text)
     {
-        this.ClearText();
-        this.AppendText(text);
+        ClearText();
+        AppendText(text);
     }
 
     /// <summary>
@@ -97,8 +65,8 @@ public class TextField : IOSElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void AppendText(string text)
     {
-        this.Click();
-        this.Element.SendKeys(text);
+        Click();
+        Element.SendKeys(text);
     }
 
     /// <summary>
@@ -109,7 +77,7 @@ public class TextField : IOSElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClearText()
     {
-        this.Click();
-        this.Element.Clear();
+        Click();
+        Element.Clear();
     }
 }

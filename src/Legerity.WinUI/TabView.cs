@@ -4,27 +4,23 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Legerity.Exceptions;
-using Legerity.Windows.Elements.Core;
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Core;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI TabView control.
+/// Defines a <see cref="WebElement"/> wrapper for the WinUI TabView control.
 /// </summary>
 public class TabView : WindowsElementWrapper
 {
-    private readonly By tabListViewLocator = WindowsByExtras.AutomationId("TabListView");
+    private readonly By _tabListViewLocator = WindowsByExtras.AutomationId("TabListView");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TabView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public TabView(WindowsElement element)
+    public TabView(WebElement element)
         : base(element)
     {
     }
@@ -33,64 +29,36 @@ public class TabView : WindowsElementWrapper
     /// Gets the element associated with the add tab button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button AddTabButton => this.FindElement(WindowsByExtras.AutomationId("AddButton"));
+    public virtual Button AddTabButton => FindElement(WindowsByExtras.AutomationId("AddButton"));
 
     /// <summary>
     /// Gets the collection of items associated with the pivot.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual ReadOnlyCollection<AppiumWebElement> Tabs => this.TabsListView.Items;
+    public virtual ReadOnlyCollection<WebElement> Tabs => TabsListView.Items;
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual AppiumWebElement SelectedItem => this.TabsListView.SelectedItem;
+    public virtual WebElement SelectedItem => TabsListView.SelectedItem;
 
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    private ListView TabsListView => this.FindElement(this.tabListViewLocator);
+    private ListView TabsListView => FindElement(_tabListViewLocator);
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="TabView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="TabView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="TabView"/>.
     /// </returns>
-    public static implicit operator TabView(WindowsElement element)
+    public static implicit operator TabView(WebElement element)
     {
         return new TabView(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="TabView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TabView"/>.
-    /// </returns>
-    public static implicit operator TabView(AppiumWebElement element)
-    {
-        return new TabView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TabView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TabView"/>.
-    /// </returns>
-    public static implicit operator TabView(RemoteWebElement element)
-    {
-        return new TabView(element as WindowsElement);
     }
 
     /// <summary>
@@ -103,8 +71,8 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CreateTab()
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        this.AddTabButton.Click();
+        VerifyElementShown(_tabListViewLocator, TimeSpan.FromSeconds(2));
+        AddTabButton.Click();
     }
 
     /// <summary>
@@ -120,8 +88,8 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectTab(string name)
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        VerifyElementShown(_tabListViewLocator, TimeSpan.FromSeconds(2));
+        var item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
@@ -144,8 +112,8 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectTabByPartialName(string name)
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
+        VerifyElementShown(_tabListViewLocator, TimeSpan.FromSeconds(2));
+        var item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
         if (item == null)
         {
@@ -166,15 +134,15 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void CloseTab(string name)
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
+        VerifyElementShown(_tabListViewLocator, TimeSpan.FromSeconds(2));
+        var item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
         {
             throw new NoSuchElementException($"Unable to locate element by {name}");
         }
 
-        Button closeButton = item.FindElement(WindowsByExtras.AutomationId("CloseButton"));
+        Button closeButton = item.FindElement(WindowsByExtras.AutomationId("CloseButton")) as WebElement;
         closeButton.Click();
     }
 
@@ -189,15 +157,15 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CloseTabByPartialName(string name)
     {
-        this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
+        VerifyElementShown(_tabListViewLocator, TimeSpan.FromSeconds(2));
+        var item = Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
 
         if (item == null)
         {
             throw new NoSuchElementException($"Unable to locate element by {name}");
         }
 
-        Button closeButton = item.FindElement(WindowsByExtras.AutomationId("CloseButton"));
+        Button closeButton = item.FindElement(WindowsByExtras.AutomationId("CloseButton")) as WebElement;
         closeButton.Click();
     }
 }

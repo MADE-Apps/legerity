@@ -1,8 +1,7 @@
 namespace Legerity.Windows.Tests.Tests;
 
 using System;
-using Legerity.Windows.Tests.Pages;
-using OpenQA.Selenium.Remote;
+using Pages;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
@@ -17,7 +16,7 @@ internal class SliderTests : BaseTestClass
     public void ShouldSetValue()
     {
         // Arrange
-        SliderPage sliderPage = this.StartAndNavigateToPage();
+        var sliderPage = StartAndNavigateToPage();
 
         // Act
         sliderPage.SetSimpleSliderValue(10);
@@ -31,7 +30,7 @@ internal class SliderTests : BaseTestClass
     public void ShouldThrowArgumentOutOfRangeExceptionWhenSettingValueOutOfRange(int value)
     {
         // Arrange
-        SliderPage sliderPage = this.StartAndNavigateToPage();
+        var sliderPage = StartAndNavigateToPage();
 
         // Act & Assert
         Should.Throw<ArgumentOutOfRangeException>(() => sliderPage.SetSimpleSliderValue(value));
@@ -41,7 +40,7 @@ internal class SliderTests : BaseTestClass
     public void ShouldGetIsReadonly()
     {
         // Arrange
-        SliderPage sliderPage = this.StartAndNavigateToPage();
+        var sliderPage = StartAndNavigateToPage();
 
         // Act & Assert
         sliderPage.SimpleSlider.IsReadonly.ShouldBeFalse();
@@ -51,7 +50,7 @@ internal class SliderTests : BaseTestClass
     public void ShouldGetValueRange()
     {
         // Arrange
-        SliderPage sliderPage = this.StartAndNavigateToPage();
+        var sliderPage = StartAndNavigateToPage();
 
         // Act & Assert
         sliderPage.RangeStepSlider.Minimum.ShouldBe(500);
@@ -62,7 +61,7 @@ internal class SliderTests : BaseTestClass
     public void ShouldGetSmallChangeValue()
     {
         // Arrange
-        SliderPage sliderPage = this.StartAndNavigateToPage();
+        var sliderPage = StartAndNavigateToPage();
 
         // Act & Assert
         sliderPage.RangeStepSlider.SmallChange.ShouldBe(10);
@@ -70,7 +69,7 @@ internal class SliderTests : BaseTestClass
 
     private SliderPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
         return new HomePage(app).NavigateTo<SliderPage>("Slider");
     }
 }

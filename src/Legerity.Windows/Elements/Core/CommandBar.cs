@@ -4,30 +4,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Legerity.Exceptions;
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP CommandBar control.
+/// Defines a <see cref="WebElement"/> wrapper for the core UWP CommandBar control.
 /// </summary>
 public class CommandBar : WindowsElementWrapper
 {
-    private readonly By moreButtonLocator = WindowsByExtras.AutomationId("MoreButton");
+    private readonly By _moreButtonLocator = WindowsByExtras.AutomationId("MoreButton");
 
-    private readonly By overflowPopupLocator = WindowsByExtras.AutomationId("OverflowPopup");
+    private readonly By _overflowPopupLocator = WindowsByExtras.AutomationId("OverflowPopup");
 
-    private readonly By appBarButtonLocator = By.ClassName(nameof(AppBarButton));
+    private readonly By _appBarButtonLocator = By.ClassName(nameof(AppBarButton));
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandBar"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public CommandBar(WindowsElement element)
+    public CommandBar(WebElement element)
         : base(element)
     {
     }
@@ -36,14 +32,14 @@ public class CommandBar : WindowsElementWrapper
     /// Gets the collection of primary buttons.
     /// </summary>
     public virtual IEnumerable<AppBarButton> PrimaryButtons =>
-        this.Element.FindElements(this.appBarButtonLocator)
-            .Select<AppiumWebElement, AppBarButton>(element => element);
+        Element.FindElements(_appBarButtonLocator)
+            .Select<IWebElement, AppBarButton>(element => element as WebElement);
 
     /// <summary>
     /// Gets the <see cref="AppBarButton"/> for opening the secondary button menu.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual AppBarButton SecondaryMenuButton => this.FindElement(this.moreButtonLocator);
+    public virtual AppBarButton SecondaryMenuButton => FindElement(_moreButtonLocator);
 
     /// <summary>
     /// Gets the collection of secondary buttons.
@@ -53,49 +49,21 @@ public class CommandBar : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual IEnumerable<AppBarButton> SecondaryButtons =>
-        this.Driver.FindElement(this.overflowPopupLocator).FindElements(this.appBarButtonLocator)
-            .Select<AppiumWebElement, AppBarButton>(element => element);
+        Driver.FindElement(_overflowPopupLocator).FindElements(_appBarButtonLocator)
+            .Select<WebElement, AppBarButton>(element => element);
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CommandBar"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CommandBar"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="CommandBar"/>.
     /// </returns>
-    public static implicit operator CommandBar(WindowsElement element)
+    public static implicit operator CommandBar(WebElement element)
     {
         return new CommandBar(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="CommandBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CommandBar"/>.
-    /// </returns>
-    public static implicit operator CommandBar(AppiumWebElement element)
-    {
-        return new CommandBar(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CommandBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CommandBar"/>.
-    /// </returns>
-    public static implicit operator CommandBar(RemoteWebElement element)
-    {
-        return new CommandBar(element as WindowsElement);
     }
 
     /// <summary>
@@ -110,7 +78,7 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickPrimaryButton(string name)
     {
-        AppBarButton item = this.PrimaryButtons.FirstOrDefault(
+        var item = PrimaryButtons.FirstOrDefault(
             element => element.Element.VerifyNameOrAutomationIdEquals(name));
 
         if (item == null)
@@ -133,7 +101,7 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClickPrimaryButtonByPartialName(string partialName)
     {
-        AppBarButton item = this.PrimaryButtons.FirstOrDefault(
+        var item = PrimaryButtons.FirstOrDefault(
             element => element.Element.VerifyNameOrAutomationIdContains(partialName));
 
         if (item == null)
@@ -157,9 +125,9 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when the more button is not shown.</exception>
     public virtual void ClickSecondaryButton(string name)
     {
-        this.OpenSecondaryButtonMenu();
+        OpenSecondaryButtonMenu();
 
-        AppBarButton secondaryButton = this.SecondaryButtons.FirstOrDefault(
+        var secondaryButton = SecondaryButtons.FirstOrDefault(
             button => button.Element.VerifyNameOrAutomationIdEquals(name));
 
         if (secondaryButton == null)
@@ -183,9 +151,9 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when the more button is not shown.</exception>
     public virtual void ClickSecondaryButtonByPartialName(string partialName)
     {
-        this.OpenSecondaryButtonMenu();
+        OpenSecondaryButtonMenu();
 
-        AppBarButton secondaryButton = this.SecondaryButtons.FirstOrDefault(
+        var secondaryButton = SecondaryButtons.FirstOrDefault(
             button => button.Element.VerifyNameOrAutomationIdContains(partialName));
 
         if (secondaryButton == null)
@@ -206,8 +174,8 @@ public class CommandBar : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void OpenSecondaryButtonMenu()
     {
-        this.VerifyElementShown(this.moreButtonLocator, TimeSpan.FromSeconds(2));
-        this.SecondaryMenuButton.Click();
-        this.VerifyDriverElementShown(this.overflowPopupLocator, TimeSpan.FromSeconds(2));
+        VerifyElementShown(_moreButtonLocator, TimeSpan.FromSeconds(2));
+        SecondaryMenuButton.Click();
+        VerifyDriverElementShown(_overflowPopupLocator, TimeSpan.FromSeconds(2));
     }
 }

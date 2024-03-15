@@ -1,12 +1,7 @@
 namespace Legerity.Windows.Elements.Core;
 
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
-
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Windows ScrollViewer control.
+/// Defines a <see cref="WebElement"/> wrapper for the Windows ScrollViewer control.
 /// </summary>
 public class ScrollViewer : WindowsElementWrapper
 {
@@ -14,55 +9,27 @@ public class ScrollViewer : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="ScrollViewer"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public ScrollViewer(WindowsElement element)
+    public ScrollViewer(WebElement element)
         : base(element)
     {
     }
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ScrollViewer"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ScrollViewer"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="ScrollViewer"/>.
     /// </returns>
-    public static implicit operator ScrollViewer(WindowsElement element)
+    public static implicit operator ScrollViewer(WebElement element)
     {
         return new ScrollViewer(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ScrollViewer"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ScrollViewer"/>.
-    /// </returns>
-    public static implicit operator ScrollViewer(AppiumWebElement element)
-    {
-        return new ScrollViewer(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ScrollViewer"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ScrollViewer"/>.
-    /// </returns>
-    public static implicit operator ScrollViewer(RemoteWebElement element)
-    {
-        return new ScrollViewer(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Scrolls the scroll viewer to the top.
     /// </summary>
@@ -71,7 +38,7 @@ public class ScrollViewer : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ScrollToTop()
     {
-        this.Element.SendKeys(Keys.Home);
+        Element.SendKeys(Keys.Home);
     }
 
     /// <summary>
@@ -82,6 +49,6 @@ public class ScrollViewer : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ScrollToBottom()
     {
-        this.Element.SendKeys(Keys.End);
+        Element.SendKeys(Keys.End);
     }
 }

@@ -1,28 +1,27 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class CheckBoxPage : W3SchoolsBasePage
 {
-    private readonly By bikeCheckBoxLocator = By.Id("vehicle1");
+    private readonly By _bikeCheckBoxLocator = By.Id("vehicle1");
 
-    public CheckBoxPage(RemoteWebDriver app) : base(app)
+    public CheckBoxPage(WebDriver app) : base(app)
     {
     }
 
-    public CheckBox BikeCheckBox => this.FindElement(this.bikeCheckBoxLocator);
+    public CheckBox BikeCheckBox => FindElement(_bikeCheckBoxLocator);
 
     public CheckBoxPage CheckBikeOn()
     {
-        this.BikeCheckBox.CheckOn();
+        BikeCheckBox.CheckOn();
         return this;
     }
 
     public CheckBoxPage CheckBikeOff()
     {
-        this.BikeCheckBox.CheckOff();
+        BikeCheckBox.CheckOff();
         return this;
     }
 }

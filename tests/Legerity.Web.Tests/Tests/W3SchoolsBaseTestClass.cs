@@ -1,7 +1,7 @@
-namespace Legerity.Web.Tests.Tests;
-
 using Legerity.Helpers;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
+
+namespace Legerity.Web.Tests.Tests;
 
 internal abstract class W3SchoolsBaseTestClass : BaseTestClass
 {
@@ -14,8 +14,8 @@ internal abstract class W3SchoolsBaseTestClass : BaseTestClass
     {
     }
 
-    protected RemoteWebDriver StartApp(AppManagerOptions options = default)
+    protected WebDriver StartApp(AppManagerOptions options = default)
     {
-        return this.StartApp(options ?? this.Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
+        return StartApp(options ?? Options, WaitUntilConditions.TitleContains("W3Schools"), ImplicitWait);
     }
 }

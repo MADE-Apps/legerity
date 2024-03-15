@@ -5,13 +5,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using Legerity.Pages;
 using Legerity.Android;
+using Legerity.Android.Elements;
 using Legerity.Android.Elements.Core;
 using Legerity.Android.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Android.UiAutomator;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.UI;
 
 namespace {{namespace}}
 {

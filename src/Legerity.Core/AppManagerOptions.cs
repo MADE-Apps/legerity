@@ -1,7 +1,6 @@
 namespace Legerity;
 
 using System;
-using OpenQA.Selenium;
 
 /// <summary>
 /// Defines a base model that represents configuration options for the <see cref="AppManager"/>.
@@ -33,6 +32,6 @@ public abstract class AppManagerOptions
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"Driver URI [{this.DriverUri}]";
+        return $"Driver URI [{DriverUri}]";
     }
 }

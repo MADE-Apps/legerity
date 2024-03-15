@@ -1,7 +1,6 @@
 namespace Legerity.WinUI.Tests.Tests;
 
 using Windows.Extensions;
-using OpenQA.Selenium.Remote;
 using Pages;
 using Shouldly;
 
@@ -17,8 +16,8 @@ internal class TabViewTests : BaseTestClass
     public void ShouldSelectTabViewItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        TabViewPage tabViewPage = new HomePage(app).NavigateTo<TabViewPage>("TabView");
+        var app = StartApp();
+        var tabViewPage = new HomePage(app).NavigateTo<TabViewPage>("TabView");
 
         // Act
         tabViewPage.SelectTab("Document 1");
@@ -31,8 +30,8 @@ internal class TabViewTests : BaseTestClass
     public void ShouldSelectTabViewItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
-        TabViewPage tabViewPage = new HomePage(app).NavigateTo<TabViewPage>("TabView");
+        var app = StartApp();
+        var tabViewPage = new HomePage(app).NavigateTo<TabViewPage>("TabView");
 
         // Act
         tabViewPage.SelectTabByPartialName("1");

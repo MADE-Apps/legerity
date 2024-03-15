@@ -1,32 +1,32 @@
 namespace Legerity.WinUI.Tests.Pages;
 
-using Legerity.Windows;
+using Windows;
 using Legerity.Windows.Elements.WinUI;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 
 internal class NumberBoxPage : BaseNavigationPage
 {
-    public NumberBoxPage(RemoteWebDriver app) : base(app)
+    public NumberBoxPage(WebDriver app) : base(app)
     {
     }
 
-    public NumberBox SpinnerNumberBox => this.FindElement(WindowsByExtras.AutomationId("NumberBoxSpinButtonPlacementExample"));
+    public NumberBox SpinnerNumberBox => FindElement(WindowsByExtras.AutomationId("NumberBoxSpinButtonPlacementExample"));
 
     public NumberBoxPage SetSpinnerNumberBoxValue(double value)
     {
-        this.SpinnerNumberBox.SetValue(value);
+        SpinnerNumberBox.SetValue(value);
         return this;
     }
 
     public NumberBoxPage IncrementSpinnerNumberBoxValue()
     {
-        this.SpinnerNumberBox.Increment();
+        SpinnerNumberBox.Increment();
         return this;
     }
 
     public NumberBoxPage DecrementSpinnerNumberBoxValue()
     {
-        this.SpinnerNumberBox.Decrement();
+        SpinnerNumberBox.Decrement();
         return this;
     }
 }

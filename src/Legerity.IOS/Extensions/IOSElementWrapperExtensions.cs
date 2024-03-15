@@ -1,9 +1,7 @@
 namespace Legerity.IOS.Extensions;
 
 using System;
-using Legerity.IOS.Elements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using Elements;
 
 /// <summary>
 /// Defines a collection of extensions for <see cref="IOSElementWrapper"/> objects.

@@ -4,9 +4,7 @@ using System;
 using Exceptions;
 using Legerity.Extensions;
 using Legerity.Pages;
-using Legerity.Web.Elements.Core;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+using Elements.Core;
 
 /// <summary>
 /// Defines a page object for the Azure Active Directory login page.
@@ -29,7 +27,7 @@ public class AzureAdLoginPage : BasePage
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AzureAdLoginPage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within 2 seconds.
+    /// Initializes a new instance of the <see cref="AzureAdLoginPage"/> class using a <see cref="WebDriver"/> instance that verifies the page has loaded within 2 seconds.
     /// </summary>
     /// <param name="app">
     /// The instance of the started application driver that will be used to drive the page interaction.
@@ -37,7 +35,7 @@ public class AzureAdLoginPage : BasePage
     /// <exception cref="DriverNotInitializedException">Thrown when AppManager.StartApp() has not been called.</exception>
     /// <exception cref="PageNotShownException">Thrown when the page is not shown in 2 seconds.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public AzureAdLoginPage(RemoteWebDriver app)
+    public AzureAdLoginPage(WebDriver app)
         : base(app)
     {
     }
@@ -57,7 +55,7 @@ public class AzureAdLoginPage : BasePage
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AzureAdLoginPage"/> class using a <see cref="RemoteWebDriver"/> instance that verifies the page has loaded within the given timeout.
+    /// Initializes a new instance of the <see cref="AzureAdLoginPage"/> class using a <see cref="WebDriver"/> instance that verifies the page has loaded within the given timeout.
     /// </summary>
     /// <param name="app">
     /// The instance of the started application driver that will be used to drive the page interaction.
@@ -68,7 +66,7 @@ public class AzureAdLoginPage : BasePage
     /// <exception cref="DriverNotInitializedException">Thrown when AppManager.StartApp() has not been called.</exception>
     /// <exception cref="PageNotShownException">Thrown when the page is not shown in the given timeout.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public AzureAdLoginPage(RemoteWebDriver app, TimeSpan? traitTimeout)
+    public AzureAdLoginPage(WebDriver app, TimeSpan? traitTimeout)
         : base(app, traitTimeout)
     {
     }
@@ -77,25 +75,25 @@ public class AzureAdLoginPage : BasePage
     /// Gets the input element for providing an email address.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput EmailInput => this.FindElement(WebByExtras.InputType("email"));
+    public virtual TextInput EmailInput => FindElement(WebByExtras.InputType("email"));
 
     /// <summary>
     /// Gets the input element for providing a password.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextInput PasswordInput => this.FindElement(WebByExtras.InputType("password"));
+    public virtual TextInput PasswordInput => FindElement(WebByExtras.InputType("password"));
 
     /// <summary>
     /// Gets the button element for continuing the sign-in flow through the Azure AD login UI.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button SignInButton => this.FindElement(By.Id("idSIButton9"));
+    public virtual Button SignInButton => FindElement(By.Id("idSIButton9"));
 
     /// <summary>
     /// Gets the optional "Use Password" button that appears when password-less authentication is enabled.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button UsePasswordButton => this.FindElement(By.Id("idA_PWD_SwitchToPassword"));
+    public virtual Button UsePasswordButton => FindElement(By.Id("idA_PWD_SwitchToPassword"));
 
     /// <summary>
     /// Gets a given trait of the page to verify that the page is in view.
@@ -114,30 +112,30 @@ public class AzureAdLoginPage : BasePage
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public AzureAdLoginPage Login(string email, string password)
     {
-        (bool hasEmailInput, AzureAdLoginPage _) =
-            this.TryWaitUntil(page => page.EmailInput.IsVisible, this.WaitTimeout);
+        var (hasEmailInput, _) =
+            this.TryWaitUntil(page => page.EmailInput.IsVisible, WaitTimeout);
         if (!hasEmailInput)
         {
             // Cannot login as email address input not shown (possibly logged in already?)
             return this;
         }
 
-        this.EmailInput.SetText(email);
+        EmailInput.SetText(email);
 
         // Azure AD login uses a 2-step process for email and password.
-        this.SignInButton.Click();
+        SignInButton.Click();
 
         // Check to ensure that the user is not authenticating with password-less authentication.
-        (bool isNotPasswordLogin, AzureAdLoginPage _) =
-            this.TryWaitUntil(page => page.UsePasswordButton.IsVisible, this.WaitTimeout);
+        var (isNotPasswordLogin, _) =
+            this.TryWaitUntil(page => page.UsePasswordButton.IsVisible, WaitTimeout);
         if (isNotPasswordLogin)
         {
-            this.UsePasswordButton.Click();
-            this.TryWaitUntil(page => page.PasswordInput.IsVisible, this.WaitTimeout);
+            UsePasswordButton.Click();
+            this.TryWaitUntil(page => page.PasswordInput.IsVisible, WaitTimeout);
         }
 
-        this.PasswordInput.SetText(password);
-        this.SignInButton.Click();
+        PasswordInput.SetText(password);
+        SignInButton.Click();
 
         return this;
     }

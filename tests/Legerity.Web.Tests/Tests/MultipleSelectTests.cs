@@ -1,12 +1,11 @@
-namespace Legerity.Web.Tests.Tests;
-
-using Legerity.Web.Tests.Pages;
-using OpenQA.Selenium.Remote;
-using Shouldly;
-using System.IO;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Legerity.Web.Tests.Pages;
+using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -36,14 +35,14 @@ internal class MultipleSelectTests : W3SchoolsBaseTestClass
     public void ShouldGetIsMultipleTrue()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 
         // Act
-        bool isMultiple = selectPage.CarsSelect.IsMultiple;
+        var isMultiple = selectPage.CarsSelect.IsMultiple;
 
         // Act & Assert
         isMultiple.ShouldBeTrue();
@@ -53,9 +52,9 @@ internal class MultipleSelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectMultipleOptions()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        var app = StartApp();
 
-        SelectPage selectPage = new SelectPage(app)
+        var selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 

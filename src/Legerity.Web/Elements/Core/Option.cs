@@ -1,9 +1,7 @@
 namespace Legerity.Web.Elements.Core;
 
-using Legerity.Web.Elements;
-using Legerity.Web.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+using Elements;
+using Extensions;
 
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Option control.
@@ -17,7 +15,7 @@ public class Option : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Option(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +23,9 @@ public class Option : WebElementWrapper
     /// Initializes a new instance of the <see cref="Option"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Option(RemoteWebElement element)
+    public Option(WebElement element)
         : base(element)
     {
     }
@@ -42,13 +40,13 @@ public class Option : WebElementWrapper
     /// Gets the display value of the option.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual string DisplayValue => this.Element.Text;
+    public virtual string DisplayValue => Element.Text;
 
     /// <summary>
     /// Gets a value indicating whether the option is selected.
     /// </summary>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual bool IsSelected => this.Element.Selected;
+    public virtual bool IsSelected => Element.Selected;
 
     /// <summary>
     /// Allows conversion of a <see cref="IWebElement"/> to the <see cref="Option"/> without direct casting.
@@ -59,7 +57,7 @@ public class Option : WebElementWrapper
     /// <returns>
     /// The <see cref="Option"/>.
     /// </returns>
-    public static implicit operator Option(RemoteWebElement element)
+    public static implicit operator Option(WebElement element)
     {
         return new Option(element);
     }
@@ -72,6 +70,6 @@ public class Option : WebElementWrapper
     /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void Select()
     {
-        this.Click();
+        Click();
     }
 }

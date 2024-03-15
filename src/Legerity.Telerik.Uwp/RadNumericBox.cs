@@ -1,15 +1,11 @@
 namespace Legerity.Windows.Elements.Telerik;
 
 using System;
-using Legerity.Windows.Elements.Core;
-using Legerity.Windows.Extensions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
+using Core;
+using Extensions;
 
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the Telerik UWP RadNumericBox control.
+/// Defines a <see cref="WebElement"/> wrapper for the Telerik UWP RadNumericBox control.
 /// </summary>
 public class RadNumericBox : WindowsElementWrapper
 {
@@ -17,9 +13,9 @@ public class RadNumericBox : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="RadNumericBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public RadNumericBox(WindowsElement element)
+    public RadNumericBox(WebElement element)
         : base(element)
     {
     }
@@ -58,62 +54,34 @@ public class RadNumericBox : WindowsElementWrapper
     /// Gets the element associated with the increase button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button Increase => this.FindElement(WindowsByExtras.AutomationId("PART_IncreaseButton"));
+    public virtual Button Increase => FindElement(WindowsByExtras.AutomationId("PART_IncreaseButton"));
 
     /// <summary>
     /// Gets the element associated with the decrease button.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual Button DecreaseButton => this.FindElement(WindowsByExtras.AutomationId("PART_DecreaseButton"));
+    public virtual Button DecreaseButton => FindElement(WindowsByExtras.AutomationId("PART_DecreaseButton"));
 
     /// <summary>
     /// Gets the element associated with the input text box.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual TextBox InputBox => this.FindElement(WindowsByExtras.AutomationId("PART_TextBox"));
+    public virtual TextBox InputBox => FindElement(WindowsByExtras.AutomationId("PART_TextBox"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="RadNumericBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="RadNumericBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="RadNumericBox"/>.
     /// </returns>
-    public static implicit operator RadNumericBox(WindowsElement element)
+    public static implicit operator RadNumericBox(WebElement element)
     {
         return new RadNumericBox(element);
     }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="RadNumericBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadNumericBox"/>.
-    /// </returns>
-    public static implicit operator RadNumericBox(AppiumWebElement element)
-    {
-        return new RadNumericBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="RadNumericBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="RadNumericBox"/>.
-    /// </returns>
-    public static implicit operator RadNumericBox(RemoteWebElement element)
-    {
-        return new RadNumericBox(element as WindowsElement);
-    }
-
+    
     /// <summary>
     /// Sets the value of the RadNumericBox.
     /// </summary>
@@ -129,10 +97,10 @@ public class RadNumericBox : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetValue(double value)
     {
-        double min = this.Minimum;
-        double max = this.Maximum;
+        var min = Minimum;
+        var max = Maximum;
 
-        if (value < this.Minimum)
+        if (value < Minimum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -140,7 +108,7 @@ public class RadNumericBox : WindowsElementWrapper
                 $"Value must be greater than or equal to the minimum value {min}");
         }
 
-        if (value > this.Maximum)
+        if (value > Maximum)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(value),
@@ -148,8 +116,8 @@ public class RadNumericBox : WindowsElementWrapper
                 $"Value must be less than or equal to the maximum value {max}");
         }
 
-        this.InputBox.SetText(value.ToString());
-        this.InputBox.Element.SendKeys(Keys.Enter);
+        InputBox.SetText(value.ToString());
+        InputBox.Element.SendKeys(Keys.Enter);
     }
 
     /// <summary>
@@ -161,7 +129,7 @@ public class RadNumericBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Increment()
     {
-        this.Increase.Click();
+        Increase.Click();
     }
 
     /// <summary>
@@ -173,6 +141,6 @@ public class RadNumericBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Decrement()
     {
-        this.DecreaseButton.Click();
+        DecreaseButton.Click();
     }
 }

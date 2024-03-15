@@ -22,8 +22,8 @@ public class WebAppManagerOptions : AppManagerOptions
     /// <param name="driverDirectoryPath">The path to the web application driver directory.</param>
     public WebAppManagerOptions(WebAppDriverType driverType, string driverDirectoryPath)
     {
-        this.DriverType = driverType;
-        this.DriverUri = driverDirectoryPath;
+        DriverType = driverType;
+        DriverUri = driverDirectoryPath;
     }
 
     /// <summary>
@@ -56,16 +56,16 @@ public class WebAppManagerOptions : AppManagerOptions
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"Platform [{this.DriverType}], {base.ToString()}, {this.GetOptionDetails()}";
+        return $"Platform [{DriverType}], {base.ToString()}, {GetOptionDetails()}";
     }
 
     private string GetOptionDetails()
     {
         var options = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(this.Url))
+        if (!string.IsNullOrWhiteSpace(Url))
         {
-            options.Add($"URL [{this.Url}]");
+            options.Add($"URL [{Url}]");
         }
 
         return string.Join(", ", options);

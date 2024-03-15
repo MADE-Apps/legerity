@@ -1,28 +1,27 @@
-namespace Legerity.Web.Tests.Pages;
-
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class FileInputPage : W3SchoolsBasePage
 {
-    private readonly By fileInputLocator = By.Id("myfile");
+    private readonly By _fileInputLocator = By.Id("myfile");
 
-    public FileInputPage(RemoteWebDriver app) : base(app)
+    public FileInputPage(WebDriver app) : base(app)
     {
     }
 
-    public FileInput FileInput => this.FindElement(this.fileInputLocator);
+    public FileInput FileInput => FindElement(_fileInputLocator);
 
     public FileInputPage SetFileInputFilePath(string filePath)
     {
-        this.FileInput.SetAbsoluteFilePath(filePath);
+        FileInput.SetAbsoluteFilePath(filePath);
         return this;
     }
 
     public FileInputPage ClearFileInput()
     {
-        this.FileInput.ClearFile();
+        FileInput.ClearFile();
         return this;
     }
 }

@@ -2,8 +2,6 @@ namespace Legerity.Windows.Tests.Tests;
 
 using Elements.Core;
 using Extensions;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
 using Shouldly;
 
 [TestFixtureSource(nameof(PlatformOptions))]
@@ -18,10 +16,10 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     public void ShouldFindWindowsDriverElementByAutomationId()
     {
         // Arrange
-        WindowsDriver<WindowsElement> app = this.StartWindowsApp();
+        var app = this.StartWindowsApp();
 
         // Act
-        WindowsElement element = app.FindElementByAutomationId("headerImage");
+        var element = app.FindElementByAutomationId("headerImage");
 
         // Assert
         element.ShouldNotBeNull();
@@ -31,11 +29,11 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     public void ShouldFindNestedWrapperElementByAutomationId()
     {
         // Arrange
-        WindowsDriver<WindowsElement> app = this.StartWindowsApp();
-        WindowsElement itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
+        var app = this.StartWindowsApp();
+        var itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
 
         // Act
-        AppiumWebElement element = itemGridView.FindElementByAutomationId("headerImage");
+        var element = itemGridView.FindElementByAutomationId("headerImage");
 
         // Assert
         element.ShouldNotBeNull();
@@ -45,11 +43,11 @@ internal class WindowsElementExtensionsTests : BaseTestClass
     public void ShouldTryWaitUntilWrapperElementConditionIsMet()
     {
         // Arrange
-        WindowsDriver<WindowsElement> app = this.StartWindowsApp();
+        var app = this.StartWindowsApp();
         GridView itemGridView = app.FindElement(WindowsByExtras.AutomationId("ItemGridView"));
 
         // Act
-        bool success = itemGridView.TryWaitUntil(gridView => gridView.IsVisible);
+        var success = itemGridView.TryWaitUntil(gridView => gridView.IsVisible);
 
         // Assert
         success.ShouldBeTrue();
