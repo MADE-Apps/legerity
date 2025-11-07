@@ -69,7 +69,7 @@ while(Math.Abs(currentSliderValue - 3) > double.Epsilon)
 
 As you can see, the element wrapper makes it much easier to interact with the element, and also makes the code much more maintainable and readable.
 
-## Finding elements withing element wrappers
+## Finding elements within element wrappers
 
 Element wrappers also expose a `FindElement` method that allows you to find elements within the element wrapper. This is a common scenario where you have a complex UI element that contains other elements.
 
