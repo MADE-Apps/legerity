@@ -156,6 +156,10 @@ public static class ElementInteraction
             "selection.isselectionrequired" => element.Patterns.Selection.IsSupported
                 ? element.Patterns.Selection.Pattern.IsSelectionRequired.ValueOrDefault.ToString().ToLowerInvariant()
                 : null,
+            "selection.selection" => element.Patterns.Selection.IsSupported
+                ? string.Join(", ", element.Patterns.Selection.Pattern.Selection.ValueOrDefault
+                    ?.Select(e => e.Properties.Name.ValueOrDefault ?? string.Empty) ?? [])
+                : null,
             "selectionitem.isselected" or "isselected" => element.Patterns.SelectionItem.IsSupported
                 ? element.Patterns.SelectionItem.Pattern.IsSelected.ValueOrDefault.ToString().ToLowerInvariant()
                 : null,

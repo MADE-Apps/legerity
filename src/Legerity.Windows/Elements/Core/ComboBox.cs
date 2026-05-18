@@ -88,6 +88,12 @@ public class ComboBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string GetSelectedItem()
     {
+        var selection = this.Element.GetAttribute("Selection.Selection");
+        if (!string.IsNullOrEmpty(selection))
+        {
+            return selection;
+        }
+
         ReadOnlyCollection<AppiumElement> listElements = this.Element.FindElements(this.comboBoxItemLocator);
         return listElements.Count == 1 ? listElements.FirstOrDefault().GetName() : null;
     }

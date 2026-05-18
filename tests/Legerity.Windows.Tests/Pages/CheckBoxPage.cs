@@ -10,9 +10,9 @@ internal class CheckBoxPage : BaseNavigationPage
     {
     }
 
-    public CheckBox TwoStateCheckBox => this.FindElement(By.Name("Two-state CheckBox"));
+    public CheckBox TwoStateCheckBox => this.FindElement(By.Name("Two-state"));
 
-    public CheckBox ThreeStateCheckBox => this.FindElement(By.Name("Three-state CheckBox"));
+    public CheckBox ThreeStateCheckBox => this.FindElement(By.Name("Three-state"));
 
     public CheckBoxPage CheckOnTwoStateCheckBox()
     {
