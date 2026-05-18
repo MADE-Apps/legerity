@@ -3,10 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity for iOS - Framework for UI testing with Selenium/Appium</Product>
-    <Description>
-      This package is an iOS core extension to the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      - IOSElementWrapper, for creating element wrappers for custom controls
-    </Description>
+    <Description>iOS platform extension for the Legerity UI testing framework. Provides IOSElementWrapper and typed element wrappers for iOS UI controls.</Description>
     <PackageTags>UI Test Appium Selenium IOSDriver IOS Xamarin MAUI Uno</PackageTags>
   </PropertyGroup>
 

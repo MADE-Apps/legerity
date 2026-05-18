@@ -3,14 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity - Framework for UI testing with Selenium/Appium</Product>
-    <Description>
-      This is a meta-package for the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      - Page object pattern framework.
-      - Windows core element wrappers.
-      - Android core element wrappers.
-      - iOS core element wrappers.
-      - Web core element wrappers.
-    </Description>
+    <Description>Meta-package for the Legerity UI testing framework. Includes core, Windows, Android, iOS, and Web element wrapper packages.</Description>
     <PackageTags>UI Test Appium Selenium WinAppDriver LegerityWindowsDriver POP Windows UWP WinUI Web Android IOS Xamarin MAUI Uno</PackageTags>
   </PropertyGroup>
 

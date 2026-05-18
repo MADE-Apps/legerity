@@ -3,13 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity Core - Framework for UI testing with Selenium/Appium</Product>
-    <Description>
-      This package is the core framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      - Page Object Pattern classes, for providing the base framework to build maintainable UI tests
-      - AppManager, for configuring, launching, and managing the lifecycle of the application driver
-      - ElementWrapper, for providing a base to build custom element wrappers for platform-specific elements
-      - ByExtras, for providing additional locator constraints for finding elements
-    </Description>
+    <Description>Core framework for building maintainable automated UI tests with Selenium and Appium. Provides BasePage, AppManager, ElementWrapper, and ByExtras locator extensions.</Description>
     <PackageTags>UI Test Appium Selenium WinAppDriver LegerityWindowsDriver POP Windows WinUI Web Android IOS</PackageTags>
     <RootNamespace>Legerity</RootNamespace>
   </PropertyGroup>

@@ -10,7 +10,7 @@ Legerity ships three developer tools that complement the test framework. These a
 | Tool | Package | Command | Description |
 |------|---------|---------|-------------|
 | Project templates | `Legerity.Templates` | `dotnet new legerity-*` | Scaffold test projects for each platform. | 
-| Page object generator | `Legerity.PageObjectGenerator` | `legerity-pop` | Generate page object classes from XAML/AXML layout files. |
+| Page object generator | `Legerity.PageObjectGenerator` | `legerity-pop` | Generate page object classes from layout files (XAML, AXML, Storyboard/XIB, HTML). |
 | Windows Driver | `Legerity.WindowsDriver` | `Legerity.WindowsDriver.exe` | W3C WebDriver server for Windows UI Automation. |
 
 ## Guides
