@@ -82,6 +82,13 @@ public static class WebDriverEndpoints
         {
             sessionManager.GetSession(sessionId); // Validates session exists
             sessionManager.DeleteSession(sessionId);
+
+            if (!sessionManager.HasActiveSessions)
+            {
+                var lifetime = app.Services.GetRequiredService<IHostApplicationLifetime>();
+                sessionManager.ScheduleShutdown(lifetime, TimeSpan.FromSeconds(10));
+            }
+
             return Results.Json(new WebDriverResponse { Value = null });
         });
     }
