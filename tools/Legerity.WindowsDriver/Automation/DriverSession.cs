@@ -216,6 +216,7 @@ public sealed class DriverSession : IDisposable
             "class name" or "className" => searchRoot.FindFirstDescendant(cf => cf.ByClassName(value)),
             "tag name" or "tagName" => searchRoot.FindFirstDescendant(cf => cf.ByLocalizedControlType(value)),
             "xpath" => FindByXPath(searchRoot, value, single: true)?.FirstOrDefault(),
+            "css selector" => CssSelectorTranslator.FindFirst(searchRoot, value),
             _ => throw new WebDriverException(WebDriverErrors.InvalidArgument,
                 $"Unsupported locator strategy: {strategy}", 400),
         };
@@ -230,6 +231,7 @@ public sealed class DriverSession : IDisposable
             "class name" or "className" => searchRoot.FindAllDescendants(cf => cf.ByClassName(value)),
             "tag name" or "tagName" => searchRoot.FindAllDescendants(cf => cf.ByLocalizedControlType(value)),
             "xpath" => FindByXPath(searchRoot, value, single: false) ?? [],
+            "css selector" => CssSelectorTranslator.FindAll(searchRoot, value),
             _ => throw new WebDriverException(WebDriverErrors.InvalidArgument,
                 $"Unsupported locator strategy: {strategy}", 400),
         };

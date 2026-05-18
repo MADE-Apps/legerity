@@ -12,8 +12,6 @@ internal class ComboBoxPage : BaseNavigationPage
     {
     }
 
-    protected override By Trait => By.XPath(".//*[@Name='ComboBox'][@AutomationId='TitleTextBlock']");
-
     public ComboBox ColorComboBox => this.FindElement(this.colorComboBox);
 
     public ComboBoxPage SelectColorByName(string name)

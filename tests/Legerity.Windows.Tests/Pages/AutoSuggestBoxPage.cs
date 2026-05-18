@@ -14,8 +14,6 @@ internal class AutoSuggestBoxPage : BaseNavigationPage
 
     public AutoSuggestBox BasicAutoSuggestBox => this.FindElement(this.basicAutoSuggestBoxLocator);
 
-    protected override By Trait => By.XPath(".//*[@Name='AutoSuggestBox'][@AutomationId='TitleTextBlock']");
-
     public AutoSuggestBoxPage SetBasicSuggestionText(string text)
     {
         this.BasicAutoSuggestBox.SetText(text);

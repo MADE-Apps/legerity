@@ -1,4 +1,5 @@
 
+using Legerity.Extensions;
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
 
@@ -10,9 +11,7 @@ internal class AppBarToggleButtonPage : BaseNavigationPage
     {
     }
 
-    public AppBarToggleButton SymbolToggleButton => this.FindElement(By.Name("SymbolIcon"));
-
-    protected override By Trait => By.XPath(".//*[@Name='AppBarToggleButton'][@AutomationId='TitleTextBlock']");
+    public AppBarToggleButton SymbolToggleButton => this.FindElement(Trait);
 
     public AppBarToggleButtonPage ToggleSymbolOn()
     {
