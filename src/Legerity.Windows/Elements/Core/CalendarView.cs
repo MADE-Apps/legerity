@@ -101,14 +101,13 @@ public class CalendarView : WindowsElementWrapper
     public void SetDate(DateTime date)
     {
         var expectedDay = date.ToString("%d");
-        var expectedHeader = date.ToString("MMMM yyyy");
 
         var currentHeader = this.HeaderButton.GetName();
         DateTime currentViewDate = this.GetCurrentViewDate(currentHeader);
 
-        while (!expectedHeader.Equals(currentHeader, StringComparison.CurrentCultureIgnoreCase))
+        while (currentViewDate.Year != date.Year || currentViewDate.Month != date.Month)
         {
-            if (currentViewDate.Date > date.Date)
+            if (currentViewDate > date)
             {
                 this.PreviousMonthButton.Click();
             }
@@ -120,6 +119,7 @@ public class CalendarView : WindowsElementWrapper
             Thread.Sleep(10);
 
             currentHeader = this.HeaderButton.GetName();
+            currentViewDate = this.GetCurrentViewDate(currentHeader);
         }
 
         AppiumElement item = this.Days.FirstOrDefault(

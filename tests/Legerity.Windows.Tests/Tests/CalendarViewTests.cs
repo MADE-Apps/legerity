@@ -13,13 +13,12 @@ internal class CalendarViewTests : BaseTestClass
     {
     }
 
-    [TestCase("12/12/2022")]
-    [TestCase("01/01/2023")]
-    [TestCase("02/02/2023")]
-    public void ShouldSelectDate(string dateString)
+    [TestCase(-30)]
+    [TestCase(30)]
+    public void ShouldSelectDate(int daysFromToday)
     {
         // Arrange
-        var expectedDate = DateTime.Parse(dateString, CultureInfo.InvariantCulture);
+        var expectedDate = DateTime.Now.Date.AddDays(daysFromToday);
         WebDriver app = this.StartApp();
         CalendarViewPage calendarViewPage = new HomePage(app).NavigateTo<CalendarViewPage>("CalendarView");
 
