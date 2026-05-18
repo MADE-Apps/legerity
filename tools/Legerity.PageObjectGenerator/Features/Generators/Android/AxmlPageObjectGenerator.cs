@@ -14,7 +14,7 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
 {
     private const string AndroidNamespace = "http://schemas.android.com/apk/res/android";
 
-    private const string BaseElementType = "AndroidElement";
+    private const string BaseElementType = "AndroidElementWrapper";
 
     private static readonly GenericEqualityComparer<string> SimpleStringComparer = new(s => s.ToLower());
 

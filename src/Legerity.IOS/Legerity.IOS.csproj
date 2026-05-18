@@ -7,7 +7,7 @@
       This package is an iOS core extension to the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
       - IOSElementWrapper, for creating element wrappers for custom controls
     </Description>
-    <PackageTags>UI Test Appium Selenium IOSDriver IOS Xamarin Uno</PackageTags>
+    <PackageTags>UI Test Appium Selenium IOSDriver IOS Xamarin MAUI Uno</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

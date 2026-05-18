@@ -19,6 +19,8 @@ internal class GeneratorTemplateData
 
     public List<UiElement> Elements { get; set; } = new();
 
+    public List<string> AdditionalUsings { get; set; } = new();
+
     public override string ToString()
     {
         return $"[Page] {this.Page};";

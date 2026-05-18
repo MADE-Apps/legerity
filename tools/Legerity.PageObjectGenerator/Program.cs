@@ -1,6 +1,8 @@
 using CommandLine;
 using Legerity.Features.Generators;
 using Legerity.Features.Generators.Android;
+using Legerity.Features.Generators.IOS;
+using Legerity.Features.Generators.Web;
 using Legerity.Features.Generators.Windows;
 using Legerity.Infrastructure.Configuration;
 using Legerity.Infrastructure.Logging;
@@ -39,10 +41,10 @@ public class Program
                         pageObjectGenerator = new AxmlPageObjectGenerator();
                         break;
                     case PlatformType.Web:
-                        Log.Warning("Web page object generation is not currently supported!");
+                        pageObjectGenerator = new HtmlPageObjectGenerator();
                         break;
                     case PlatformType.IOS:
-                        Log.Warning("iOS page object generation is not currently supported!");
+                        pageObjectGenerator = new StoryboardPageObjectGenerator();
                         break;
                     default:
                         Log.Warning("Cannot generate Legerity page objects for an unsupported platform type!");

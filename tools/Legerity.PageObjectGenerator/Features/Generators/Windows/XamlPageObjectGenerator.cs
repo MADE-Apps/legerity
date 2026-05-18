@@ -14,7 +14,7 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
 {
     private const string XamlNamespace = "http://schemas.microsoft.com/winfx/2006/xaml";
 
-    private const string BaseElementType = "WindowsElement";
+    private const string BaseElementType = "WindowsElementWrapper";
 
     private static readonly GenericEqualityComparer<string> SimpleStringComparer = new(s => s.ToLower());
 
@@ -51,6 +51,18 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
         "TimePicker",
         "ToggleButton",
         "ToggleSwitch"
+    };
+
+    public static IEnumerable<string> SupportedWinUIElements => new List<string>
+    {
+        "InfoBar",
+        "MenuBar",
+        "MenuBarItem",
+        "NavigationView",
+        "NavigationViewItem",
+        "NumberBox",
+        "RatingControl",
+        "TabView"
     };
 
     public async Task GenerateAsync(string ns, string inputPath, string outputPath)
@@ -111,6 +123,11 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
                     templateData.Elements.Add(uiElement);
                 }
 
+                if (templateData.Elements.Any(e => SupportedWinUIElements.Contains(e.Type, SimpleStringComparer)))
+                {
+                    templateData.AdditionalUsings.Add("Legerity.Windows.Elements.WinUI");
+                }
+
                 await GeneratePageObjectClassFileAsync(templateData, outputPath).ConfigureAwait(false);
             }
             else
@@ -168,7 +185,17 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
 
     private static string GetElementWrapperType(string elementName)
     {
-        return SupportedCoreWindowsElements.Contains(elementName, SimpleStringComparer) ? elementName : BaseElementType;
+        if (SupportedCoreWindowsElements.Contains(elementName, SimpleStringComparer))
+        {
+            return elementName;
+        }
+
+        if (SupportedWinUIElements.Contains(elementName, SimpleStringComparer))
+        {
+            return elementName;
+        }
+
+        return BaseElementType;
     }
 
     private static IEnumerable<XElement> FlattenElements(IEnumerable<XElement> elements)

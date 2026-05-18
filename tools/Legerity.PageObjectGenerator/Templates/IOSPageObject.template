@@ -1,7 +1,7 @@
 using Legerity.Pages;
-using Legerity.Android;
-using Legerity.Android.Elements;
-using Legerity.Android.Elements.Core;
+using Legerity.IOS;
+using Legerity.IOS.Elements;
+using Legerity.IOS.Elements.Core;
 using OpenQA.Selenium;
 
 namespace {{namespace}}
@@ -30,12 +30,12 @@ namespace {{namespace}}
         /// <summary>
         /// Gets a given trait of the page to verify that the page is in view.
         /// </summary>
-        protected override By Trait => {{- if string.contains trait.by "Id"}} By.Id("{{trait.value}}"); {{- else if string.contains trait.by "AndroidContentDesc"}} AndroidByExtras.ContentDescription("{{trait.value}}"); {{- end}}
+        protected override By Trait => {{- if string.contains trait.by "AccessibilityId"}} By.Name("{{trait.value}}"); {{- else if string.contains trait.by "Label"}} IOSByExtras.Label("{{trait.value}}"); {{- end}}
         {{~ for element in elements }}
         /// <summary>
         /// Gets the {{element.type}} that represents the {{element.name}} UI element of the page.
         /// </summary>
-        public {{element.type}} {{element.name}} => FindElement({{- if string.contains element.by "Id"}}By.Id("{{element.value}}") {{- else if string.contains element.by "AndroidContentDesc"}}AndroidByExtras.ContentDescription("{{element.value}}") {{- end}});
+        public {{element.type}} {{element.name}} => FindElement({{- if string.contains element.by "AccessibilityId"}}By.Name("{{element.value}}") {{- else if string.contains element.by "Label"}}IOSByExtras.Label("{{element.value}}") {{- end}});
         {{~ end ~}}
     }
 }

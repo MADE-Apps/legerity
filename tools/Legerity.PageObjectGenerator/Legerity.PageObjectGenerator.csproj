@@ -12,17 +12,25 @@
     <Description>A command line tool for auto generating page objects from Windows, Android, iOS, and web pages for UI tests using the Legerity framework</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RootNamespace>Legerity</RootNamespace>
-    <PackageTags>PageObject Appium Selenium WinAppDriver LegerityWindowsDriver Windows WinUI Web Android IOS</PackageTags>
+    <PackageTags>PageObject Appium Selenium WinAppDriver LegerityWindowsDriver Windows WinUI Web Android IOS Xamarin MAUI Uno</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="" />
     <None Remove="Templates\AndroidPageObject.template" />
+    <None Remove="Templates\IOSPageObject.template" />
+    <None Remove="Templates\WebPageObject.template" />
     <None Remove="Templates\WindowsPageObject.template" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Templates\AndroidPageObject.template">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\IOSPageObject.template">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\WebPageObject.template">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\WindowsPageObject.template">
@@ -32,6 +40,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.2" />
     <PackageReference Include="MADE.Collections" Version="3.0.0" />
     <PackageReference Include="MADE.Data.Validation" Version="3.0.0" />
     <PackageReference Include="Scriban" Version="7.2.0" />
