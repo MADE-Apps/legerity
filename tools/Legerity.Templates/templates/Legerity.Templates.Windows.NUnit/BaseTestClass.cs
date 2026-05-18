@@ -40,7 +40,7 @@ public abstract class BaseTestClass : LegerityTestClass
         new WindowsAppManagerOptions(WindowsApplication)
         {
             DriverUri = "http://127.0.0.1:4723",
-            LaunchWinAppDriver = true,
+            LaunchDriver = true,
             Maximize = true,
             ImplicitWait = ImplicitWait,
         }

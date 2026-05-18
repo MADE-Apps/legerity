@@ -29,10 +29,7 @@ public static class LegerityTestClassExtensions
     /// <returns>The configured and running application driver.</returns>
     /// <exception cref="WebDriverException">Thrown when the wait until condition is not met in the allocated timeout period if provided.</exception>
     /// <exception cref="DriverLoadFailedException">Thrown when the application is null, the session ID is null once initialized, or the driver fails to configure correctly before returning.</exception>
-    /// <exception cref="LegerityException">Thrown when:
-    /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
-    /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
-    /// </exception>
+    /// <exception cref="LegerityException">Thrown when the Legerity Windows Driver failed to start when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.</exception>
     public static WindowsDriver StartWindowsApp(
         this LegerityTestClass testClass,
         Func<IWebDriver, bool> waitUntil = default,
@@ -65,9 +62,7 @@ public static class LegerityTestClassExtensions
     /// </param>
     /// <returns>The configured and running application driver.</returns>
     /// <exception cref="DriverLoadFailedException">Thrown when the application is null, the session ID is null once initialized, or the driver fails to configure correctly before returning.</exception>
-    /// <exception cref="LegerityException">Thrown when:
-    /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
-    /// </exception>
+    /// <exception cref="LegerityException">Thrown when the Legerity Windows Driver failed to start when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.</exception>
     /// <exception cref="WebDriverException">Thrown when the wait until condition is not met in the allocated timeout period if provided.</exception>
     public static WindowsDriver StartWindowsApp(
         this LegerityTestClass testClass,

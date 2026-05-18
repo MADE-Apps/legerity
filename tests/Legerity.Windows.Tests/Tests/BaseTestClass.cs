@@ -10,7 +10,7 @@ namespace Legerity.Windows.Tests.Tests;
 public abstract class BaseTestClass : LegerityTestClass
 {
     // This is the package family name of the Windows application that will be launched. These can be found by running Get-AppxPackage in PowerShell.
-    private const string WindowsApplication = "Microsoft.XAMLControlsGallery_8wekyb3d8bbwe!App";
+    private const string WindowsApplication = "Microsoft.WinUI3ControlsGallery_8wekyb3d8bbwe!App";
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseTestClass"/> class.
@@ -41,7 +41,7 @@ public abstract class BaseTestClass : LegerityTestClass
         new WindowsAppManagerOptions(WindowsApplication)
         {
             DriverUri = "http://127.0.0.1:4723",
-            LaunchWinAppDriver = true,
+            LaunchDriver = true,
             Maximize = true,
             ImplicitWait = ImplicitWait,
         }

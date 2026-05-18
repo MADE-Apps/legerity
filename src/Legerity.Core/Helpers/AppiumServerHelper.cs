@@ -35,7 +35,7 @@ public static class AppiumServerHelper
     }
 
     /// <summary>
-    /// Stops the running instance of the WinAppDriver process.
+    /// Stops the running instance of the Appium or LegerityWindowsDriver process.
     /// </summary>
     public static void Stop()
     {

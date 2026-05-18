@@ -16,7 +16,7 @@ internal class BaseNavigationPage : BasePage
     public NavigationView NavigationView => this.FindElement(this.navigationViewLocator);
 
     public AutoSuggestBox ControlsSearchBox =>
-        this.NavigationView.FindElement(WindowsByExtras.AutomationId("controlsSearchBox"));
+        this.FindElement(WindowsByExtras.AutomationId("controlsSearchBox"));
 
     protected override By Trait => this.navigationViewLocator;
 

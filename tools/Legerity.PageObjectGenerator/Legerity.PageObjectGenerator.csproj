@@ -12,7 +12,7 @@
     <Description>A command line tool for auto generating page objects from Windows, Android, iOS, and web pages for UI tests using the Legerity framework</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RootNamespace>Legerity</RootNamespace>
-    <PackageTags>PageObject Appium Selenium WindowsDriver WinAppDriver Windows UWP Web Android IOS Xamarin Uno</PackageTags>
+    <PackageTags>PageObject Appium Selenium WinAppDriver LegerityWindowsDriver Windows WinUI Web Android IOS</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

@@ -103,8 +103,7 @@ public static class AppManager
     /// <exception cref="LegerityException">
     /// Thrown when:
     /// - The Appium server could not be found when running with <see cref="AndroidAppManagerOptions.LaunchAppiumServer"/> or <see cref="IOSAppManagerOptions.LaunchAppiumServer"/> true.
-    /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
-    /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
+    /// - The Legerity Windows Driver failed to start when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.
     /// </exception>
     public static WebDriver StartApp(
         AppManagerOptions opts,
@@ -159,9 +158,15 @@ public static class AppManager
 
                 case WindowsAppManagerOptions winOpts:
                 {
-                    if (winOpts.LaunchWinAppDriver)
+                    if (winOpts.LaunchDriver)
                     {
-                        WinAppDriverHelper.Run();
+                        var port = 4723;
+                        if (Uri.TryCreate(winOpts.DriverUri, UriKind.Absolute, out var driverUri))
+                        {
+                            port = driverUri.Port;
+                        }
+
+                        LegerityWindowsDriverHelper.Run(port);
                     }
 
                     app = new WindowsDriver(
@@ -234,10 +239,10 @@ public static class AppManager
     }
 
     /// <summary>
-    /// Stops the <see cref="App"/>, with an option to stop the running Appium or WinAppDriver server.
+    /// Stops the <see cref="App"/>, with an option to stop the running driver server.
     /// </summary>
     /// <param name="stopServer">
-    /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>true</b>.
+    /// An optional value indicating whether to stop the running driver server. Default, <b>true</b>.
     /// </param>
     public static void StopApp(bool stopServer = true)
     {
@@ -246,13 +251,13 @@ public static class AppManager
     }
 
     /// <summary>
-    /// Stops an application driver, with an option to stop the running Appium or WinAppDriver server.
+    /// Stops an application driver, with an option to stop the running driver server.
     /// </summary>
     /// <param name="app">
     /// The <see cref="IWebDriver"/> instance to stop running.
     /// </param>
     /// <param name="stopServer">
-    /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
+    /// An optional value indicating whether to stop the running driver server. Default, <b>false</b>.
     /// </param>
     public static void StopApp(WebDriver app, bool stopServer = false)
     {
@@ -281,7 +286,7 @@ public static class AppManager
             return;
         }
 
-        WinAppDriverHelper.Stop();
+        LegerityWindowsDriverHelper.Stop();
         AppiumServerHelper.Stop();
     }
 

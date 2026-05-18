@@ -82,8 +82,8 @@ public abstract class LegerityTestClass
     /// <exception cref="DriverLoadFailedException">Thrown when the application is null, the session ID is null once initialized, or the driver fails to configure correctly before returning.</exception>
     /// <exception cref="LegerityException">Thrown when:
     /// - The Appium server could not be found when running with <see cref="AndroidAppManagerOptions.LaunchAppiumServer"/> or <see cref="IOSAppManagerOptions.LaunchAppiumServer"/> true.
-    /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
-    /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
+    /// - The LegerityWindowsDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.
+    /// - The LegerityWindowsDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.
     /// </exception>
     public virtual WebDriver StartApp(
         Func<IWebDriver, bool> waitUntil = default,
@@ -115,8 +115,8 @@ public abstract class LegerityTestClass
     /// <exception cref="DriverLoadFailedException">Thrown when the application is null, the session ID is null once initialized, or the driver fails to configure correctly before returning.</exception>
     /// <exception cref="LegerityException">Thrown when:
     /// - The Appium server could not be found when running with <see cref="AndroidAppManagerOptions.LaunchAppiumServer"/> or <see cref="IOSAppManagerOptions.LaunchAppiumServer"/> true.
-    /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
-    /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
+    /// - The LegerityWindowsDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.
+    /// - The LegerityWindowsDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.
     /// </exception>
     /// <exception cref="WebDriverException">Thrown when the wait until condition is not met in the allocated timeout period if provided.</exception>
     public virtual WebDriver StartApp(
@@ -137,7 +137,7 @@ public abstract class LegerityTestClass
     }
 
     /// <summary>
-    /// Stops the <see cref="App"/> and any running Appium or WinAppDriver server.
+    /// Stops the <see cref="App"/> and any running Appium or LegerityWindowsDriver server.
     /// </summary>
     public virtual void StopApp()
     {
@@ -145,10 +145,10 @@ public abstract class LegerityTestClass
     }
 
     /// <summary>
-    /// Stops the <see cref="App"/>, with an option to stop the running Appium or WinAppDriver server.
+    /// Stops the <see cref="App"/>, with an option to stop the running Appium or LegerityWindowsDriver server.
     /// </summary>
     /// <param name="stopServer">
-    /// An optional value indicating whether to stop the running Appium or WinAppDriver server.
+    /// An optional value indicating whether to stop the running Appium or LegerityWindowsDriver server.
     /// </param>
     public virtual void StopApp(bool stopServer)
     {
@@ -156,13 +156,13 @@ public abstract class LegerityTestClass
     }
 
     /// <summary>
-    /// Stops an application, with an option to stop the running Appium or WinAppDriver server.
+    /// Stops an application, with an option to stop the running Appium or LegerityWindowsDriver server.
     /// </summary>
     /// <param name="app">
     /// The <see cref="IWebDriver"/> instance to stop running.
     /// </param>
     /// <param name="stopServer">
-    /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
+    /// An optional value indicating whether to stop the running Appium or LegerityWindowsDriver server. Default, <b>false</b>.
     /// </param>
     public virtual void StopApp(WebDriver app, bool stopServer = false)
     {
@@ -170,10 +170,10 @@ public abstract class LegerityTestClass
     }
 
     /// <summary>
-    /// Stops all running application drivers, with an option to stop the running Appium or WinAppDriver server.
+    /// Stops all running application drivers, with an option to stop the running Appium or LegerityWindowsDriver server.
     /// </summary>
     /// <param name="stopServer">
-    /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>true</b>.
+    /// An optional value indicating whether to stop the running Appium or LegerityWindowsDriver server. Default, <b>true</b>.
     /// </param>
     public virtual void StopApps(bool stopServer = true)
     {
