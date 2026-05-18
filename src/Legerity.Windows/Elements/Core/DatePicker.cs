@@ -4,6 +4,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Legerity.Extensions;
+using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 
@@ -91,6 +92,12 @@ public class DatePicker : WindowsElementWrapper
         }
 
         popup.FindElement(WindowsByExtras.AutomationId("AcceptButton")).Click();
+    }
+
+    /// <inheritdoc/>
+    public override void Click()
+    {
+        this.Element.FindElementByAutomationId("FlyoutButton").Click();
     }
 
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
