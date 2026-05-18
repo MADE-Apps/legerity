@@ -1,5 +1,5 @@
 using Legerity.Templates.CrossPlatform.NUnit.Pages;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 
 namespace Legerity.Templates.CrossPlatform.NUnit.Tests;
 
@@ -14,7 +14,7 @@ public class SampleTests : BaseTestClass
     [Test]
     public void ShouldLoadPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         new SamplePage(app).VerifyPageLoaded();
     }
 }
