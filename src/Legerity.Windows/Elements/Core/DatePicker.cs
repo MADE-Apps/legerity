@@ -1,6 +1,7 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.Globalization;
 using System.Text.RegularExpressions;
 using Legerity.Extensions;
 using OpenQA.Selenium;
@@ -106,6 +107,6 @@ public class DatePicker : WindowsElementWrapper
     {
         var value = this.Value;
         return string.IsNullOrEmpty(value) ? default :
-            DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
+            DateTime.TryParse(value, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces, out DateTime date) ? date : default(DateTime?);
     }
 }

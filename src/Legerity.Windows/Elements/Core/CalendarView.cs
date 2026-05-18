@@ -2,6 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.ObjectModel;
+using System.Globalization;
 using Legerity.Extensions;
 using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
@@ -142,6 +143,6 @@ public class CalendarView : WindowsElementWrapper
     {
         var value = this.Value;
         return string.IsNullOrEmpty(value) ? default :
-            DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
+            DateTime.TryParse(value, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces, out DateTime date) ? date : default(DateTime?);
     }
 }

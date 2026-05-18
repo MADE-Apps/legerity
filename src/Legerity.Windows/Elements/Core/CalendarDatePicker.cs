@@ -1,6 +1,7 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.Globalization;
 using Legerity.Exceptions;
 using Legerity.Extensions;
 using Legerity.Windows.Extensions;
@@ -13,7 +14,7 @@ namespace Legerity.Windows.Elements.Core;
 /// </summary>
 public class CalendarDatePicker : WindowsElementWrapper
 {
-    private readonly By calendarPopupLocator = By.XPath(".//*[@ClassName='Popup'][@Name='Popup']");
+    private readonly By calendarPopupLocator = By.XPath(".//*[@Name='Pop-up']");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CalendarDatePicker"/> class.
@@ -79,6 +80,6 @@ public class CalendarDatePicker : WindowsElementWrapper
     {
         var value = this.Value;
         return string.IsNullOrEmpty(value) ? default :
-            DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
+            DateTime.TryParse(value, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces, out DateTime date) ? date : default(DateTime?);
     }
 }
