@@ -1,9 +1,9 @@
-namespace Legerity.Web.Extensions;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Web.Extensions;
 /// <summary>
 /// Defines a collection of extensions for the <see cref="IWebElement"/> class.
 /// </summary>
@@ -24,7 +24,7 @@ public static class IWebElementExtensions
     /// Retrieves the value attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the inner HTML from.</param>
     /// <returns>The inner HTML of the element.</returns>
@@ -52,7 +52,7 @@ public static class IWebElementExtensions
     /// Determines whether the specified <see cref="IElementWrapper{TElement}"/> has the specified <paramref name="className">class</paramref>.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to check.</param>
     /// <param name="className">The name of the class the element should have.</param>

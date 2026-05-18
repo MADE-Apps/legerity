@@ -1,3 +1,6 @@
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 namespace Legerity.Web;
 
 /// <summary>
@@ -21,27 +24,12 @@ public enum WebAppDriverType
     Firefox,
 
     /// <summary>
-    /// Opera. Setting this will cause the application driver to launch for Opera.
-    /// </summary>
-    Opera,
-
-    /// <summary>
     /// Safari. Setting this will cause the application driver to launch for Apple's Safari.
     /// </summary>
     Safari,
 
     /// <summary>
-    /// Edge. Setting this will cause the application driver to launch for Microsoft's Legacy Edge.
+    /// Edge. Setting this will cause the application driver to launch for Microsoft Edge.
     /// </summary>
     Edge,
-
-    /// <summary>
-    /// Internet Explorer. This will cause the application driver to launch for Microsoft's Internet Explorer.
-    /// </summary>
-    InternetExplorer,
-
-    /// <summary>
-    /// Edge Chromium. Setting this will cause the application driver to launch for Microsoft's Chromium Edge.
-    /// </summary>
-    EdgeChromium,
 }

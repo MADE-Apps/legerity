@@ -1,9 +1,10 @@
-namespace Legerity.Windows;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
 using Legerity.Windows.Helpers;
 using OpenQA.Selenium.Appium;
 
+namespace Legerity.Windows;
 /// <summary>
 /// Defines a specific <see cref="AppiumManagerOptions"/> for a Windows application.
 /// </summary>
@@ -71,7 +72,8 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     public override void Configure()
     {
         base.Configure();
-        this.AppiumOptions.AddAdditionalCapability("app", this.AppId);
+        this.AppiumOptions.PlatformName = "Windows";
+        this.AppiumOptions.App = this.AppId;
     }
 
     /// <summary>
@@ -104,7 +106,7 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
 
         if (this.AdditionalOptions != null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
+            foreach ((var name, var value) in this.AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

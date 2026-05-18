@@ -1,17 +1,15 @@
-namespace Legerity.Windows.Tests.Pages;
-
-using System;
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class CalendarDatePickerPage : BaseNavigationPage
 {
-    public CalendarDatePickerPage(RemoteWebDriver app) : base(app)
+    public CalendarDatePickerPage(WebDriver app) : base(app)
     {
     }
 
-    public CalendarDatePicker CalendarDatePicker =>this.FindElement(By.ClassName(nameof(this.CalendarDatePicker)));
+    public CalendarDatePicker CalendarDatePicker => this.FindElement(By.ClassName(nameof(this.CalendarDatePicker)));
 
     public CalendarDatePickerPage SetCalendarDatePickerDate(DateTime date)
     {

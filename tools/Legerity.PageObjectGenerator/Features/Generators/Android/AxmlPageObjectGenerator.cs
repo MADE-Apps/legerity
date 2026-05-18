@@ -1,20 +1,14 @@
-namespace Legerity.Features.Generators.Android;
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using Infrastructure.IO;
-using Legerity.Features.Generators;
 using Legerity.Features.Generators.Models;
 using Legerity.Infrastructure.Extensions;
+using Legerity.Infrastructure.IO;
 using MADE.Collections.Compare;
 using MADE.Data.Validation.Extensions;
 using Scriban;
 using Serilog;
+
+namespace Legerity.Features.Generators.Android;
 
 internal class AxmlPageObjectGenerator : IPageObjectGenerator
 {
@@ -48,7 +42,7 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
             return;
         }
 
-        foreach (string filePath in filePaths)
+        foreach (var filePath in filePaths)
         {
             Log.Information($"Processing {filePath}...");
 
@@ -62,19 +56,19 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
 
                 Log.Information($"Generating template for {templateData}...");
 
-                IEnumerable<XElement> elements = this.FlattenElements(axml.Root.Elements());
+                IEnumerable<XElement> elements = FlattenElements(axml.Root.Elements());
                 foreach (XElement element in elements)
                 {
-                    string? id = RemoveAndroidIdReference(element.Attribute(XName.Get("id", AndroidNamespace))?.Value);
-                    string? contentDesc = element.Attribute(XName.Get("contentDescription", AndroidNamespace))?.Value;
+                    var id = RemoveAndroidIdReference(element.Attribute(XName.Get("id", AndroidNamespace))?.Value);
+                    var contentDesc = element.Attribute(XName.Get("contentDescription", AndroidNamespace))?.Value;
 
-                    string? byLocatorType = GetByLocatorType(id, contentDesc);
+                    var byLocatorType = GetByLocatorType(id, contentDesc);
                     if (byLocatorType == null || byLocatorType.IsNullOrWhiteSpace())
                     {
                         continue;
                     }
 
-                    string? byQueryValue = id ?? contentDesc;
+                    var byQueryValue = id ?? contentDesc;
                     if (byQueryValue == null || byQueryValue.IsNullOrWhiteSpace())
                     {
                         continue;
@@ -92,7 +86,7 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
                     templateData.Elements.Add(uiElement);
                 }
 
-                await GeneratePageObjectClassFileAsync(templateData, outputPath);
+                await GeneratePageObjectClassFileAsync(templateData, outputPath).ConfigureAwait(false);
             }
             else
             {
@@ -112,19 +106,19 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
         GeneratorTemplateData templateData,
         string outputFolder)
     {
-        var pageObjectTemplate = Template.Parse(await EmbeddedResourceLoader.ReadAsync("Legerity.Templates.AndroidPageObject.template"));
+        var pageObjectTemplate = Template.Parse(await EmbeddedResourceLoader.ReadAsync("Legerity.Templates.AndroidPageObject.template").ConfigureAwait(false));
 
-        string outputFile = $"{templateData.Page}.cs";
+        var outputFile = $"{templateData.Page}.cs";
 
         Log.Information($"Generating {outputFile} page object file...");
-        string result = await pageObjectTemplate.RenderAsync(templateData);
+        var result = await pageObjectTemplate.RenderAsync(templateData).ConfigureAwait(false);
 
         FileStream output = File.Create(Path.Combine(outputFolder, outputFile));
         var outputWriter = new StreamWriter(output, Encoding.UTF8);
 
         await using (outputWriter)
         {
-            await outputWriter.WriteAsync(result);
+            await outputWriter.WriteAsync(result).ConfigureAwait(false);
         }
     }
 
@@ -159,8 +153,8 @@ internal class AxmlPageObjectGenerator : IPageObjectGenerator
         return SupportedCoreAndroidElements.Contains(elementName, SimpleStringComparer) ? elementName : BaseElementType;
     }
 
-    private IEnumerable<XElement> FlattenElements(IEnumerable<XElement> elements)
+    private static IEnumerable<XElement> FlattenElements(IEnumerable<XElement> elements)
     {
-        return elements.SelectMany(c => this.FlattenElements(c.Elements())).Concat(elements);
+        return elements.SelectMany(c => FlattenElements(c.Elements())).Concat(elements);
     }
 }

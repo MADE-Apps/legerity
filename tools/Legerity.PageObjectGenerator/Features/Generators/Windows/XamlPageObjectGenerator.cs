@@ -1,20 +1,14 @@
-namespace Legerity.Features.Generators.Windows;
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using Infrastructure.IO;
-using Legerity.Features.Generators;
 using Legerity.Features.Generators.Models;
 using Legerity.Infrastructure.Extensions;
+using Legerity.Infrastructure.IO;
 using MADE.Collections.Compare;
 using MADE.Data.Validation.Extensions;
 using Scriban;
 using Serilog;
+
+namespace Legerity.Features.Generators.Windows;
 
 internal class XamlPageObjectGenerator : IPageObjectGenerator
 {
@@ -69,7 +63,7 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
             return;
         }
 
-        foreach (string filePath in filePaths)
+        foreach (var filePath in filePaths)
         {
             Log.Information($"Processing {filePath}...");
 
@@ -83,22 +77,22 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
 
                 Log.Information($"Generating template for {templateData}...");
 
-                IEnumerable<XElement> elements = this.FlattenElements(xaml.Root.Elements());
+                IEnumerable<XElement> elements = FlattenElements(xaml.Root.Elements());
                 foreach (XElement element in elements)
                 {
-                    string? automationId = element.Attribute("AutomationProperties.AutomationId")?.Value;
-                    string? uid = element.Attribute(XName.Get("Uid", XamlNamespace))?.Value;
-                    string? name = element.Attribute(XName.Get("Name", XamlNamespace))?.Value;
+                    var automationId = element.Attribute("AutomationProperties.AutomationId")?.Value;
+                    var uid = element.Attribute(XName.Get("Uid", XamlNamespace))?.Value;
+                    var name = element.Attribute(XName.Get("Name", XamlNamespace))?.Value;
 
-                    string? byLocatorType = GetByLocatorType(uid, automationId, name);
+                    var byLocatorType = GetByLocatorType(uid, automationId, name);
 
                     if (byLocatorType == null || byLocatorType.IsNullOrWhiteSpace())
                     {
                         continue;
                     }
 
-                    string? wrapperAutomationId = uid ?? automationId;
-                    string? byQueryValue = wrapperAutomationId ?? name;
+                    var wrapperAutomationId = uid ?? automationId;
+                    var byQueryValue = wrapperAutomationId ?? name;
 
                     if (byQueryValue == null || byQueryValue.IsNullOrWhiteSpace())
                     {
@@ -117,7 +111,7 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
                     templateData.Elements.Add(uiElement);
                 }
 
-                await GeneratePageObjectClassFileAsync(templateData, outputPath);
+                await GeneratePageObjectClassFileAsync(templateData, outputPath).ConfigureAwait(false);
             }
             else
             {
@@ -130,19 +124,19 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
         GeneratorTemplateData templateData,
         string outputFolder)
     {
-        var pageObjectTemplate = Template.Parse(await EmbeddedResourceLoader.ReadAsync("Legerity.Templates.WindowsPageObject.template"));
+        var pageObjectTemplate = Template.Parse(await EmbeddedResourceLoader.ReadAsync("Legerity.Templates.WindowsPageObject.template").ConfigureAwait(false));
 
-        string outputFile = $"{templateData.Page}.cs";
+        var outputFile = $"{templateData.Page}.cs";
 
         Log.Information($"Generating {outputFile} page object file...");
-        string result = await pageObjectTemplate.RenderAsync(templateData);
+        var result = await pageObjectTemplate.RenderAsync(templateData).ConfigureAwait(false);
 
         FileStream output = File.Create(Path.Combine(outputFolder, outputFile));
         var outputWriter = new StreamWriter(output, Encoding.UTF8);
 
         await using (outputWriter)
         {
-            await outputWriter.WriteAsync(result);
+            await outputWriter.WriteAsync(result).ConfigureAwait(false);
         }
     }
 
@@ -177,8 +171,8 @@ internal class XamlPageObjectGenerator : IPageObjectGenerator
         return SupportedCoreWindowsElements.Contains(elementName, SimpleStringComparer) ? elementName : BaseElementType;
     }
 
-    private IEnumerable<XElement> FlattenElements(IEnumerable<XElement> elements)
+    private static IEnumerable<XElement> FlattenElements(IEnumerable<XElement> elements)
     {
-        return elements.SelectMany(c => this.FlattenElements(c.Elements())).Concat(elements);
+        return elements.SelectMany(c => FlattenElements(c.Elements())).Concat(elements);
     }
 }

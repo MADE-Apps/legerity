@@ -1,14 +1,12 @@
-namespace Legerity;
-
-using System.IO;
-using System.Threading.Tasks;
 using CommandLine;
-using Features.Generators.Android;
-using Features.Generators.Windows;
-using Infrastructure.Configuration;
-using Infrastructure.Logging;
 using Legerity.Features.Generators;
+using Legerity.Features.Generators.Android;
+using Legerity.Features.Generators.Windows;
+using Legerity.Infrastructure.Configuration;
+using Legerity.Infrastructure.Logging;
 using Serilog;
+
+namespace Legerity;
 
 public class Program
 {
@@ -61,9 +59,9 @@ public class Program
                     Directory.CreateDirectory(options.OutputPath);
                 }
 
-                await pageObjectGenerator.GenerateAsync(options.Namespace, options.InputPath, options.OutputPath);
+                await pageObjectGenerator.GenerateAsync(options.Namespace, options.InputPath, options.OutputPath).ConfigureAwait(false);
 
                 Log.Information("Finished generating Legerity page objects!");
-            });
+            }).ConfigureAwait(false);
     }
 }

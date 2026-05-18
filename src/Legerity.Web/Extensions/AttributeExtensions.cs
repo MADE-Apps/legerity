@@ -1,8 +1,9 @@
-namespace Legerity.Web.Extensions;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Web.Extensions;
 /// <summary>
 /// Defines a collection of extensions for retrieving element attributes.
 /// </summary>
@@ -23,7 +24,7 @@ public static class AttributeExtensions
     /// Retrieves the name attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a name from.</param>
     /// <returns>The name of the element.</returns>
@@ -49,7 +50,7 @@ public static class AttributeExtensions
     /// Retrieves the value attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a value from.</param>
     /// <returns>The value of the element.</returns>
@@ -75,7 +76,7 @@ public static class AttributeExtensions
     /// Retrieves the class attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a class from.</param>
     /// <returns>The class of the element.</returns>
@@ -101,7 +102,7 @@ public static class AttributeExtensions
     /// Retrieves the width attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a width from.</param>
     /// <returns>The width of the element.</returns>
@@ -127,7 +128,7 @@ public static class AttributeExtensions
     /// Retrieves the height attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a height from.</param>
     /// <returns>The height of the element.</returns>
@@ -153,7 +154,7 @@ public static class AttributeExtensions
     /// Retrieves the minimum attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a minimum from.</param>
     /// <returns>The minimum value of the element.</returns>
@@ -179,7 +180,7 @@ public static class AttributeExtensions
     /// Retrieves the maximum attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a maximum from.</param>
     /// <returns>The maximum value of the element.</returns>

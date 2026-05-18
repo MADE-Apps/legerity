@@ -1,7 +1,7 @@
-namespace Legerity.Templates.Windows.NUnit.Pages;
-
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+
+namespace Legerity.Templates.Windows.NUnit.Pages;
 
 internal class SamplePage : BasePage
 {

@@ -1,8 +1,8 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class AutoSuggestBoxTests : BaseTestClass
@@ -18,7 +18,7 @@ internal class AutoSuggestBoxTests : BaseTestClass
         // Arrange
         const string expectedText = "British Shorthair";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
@@ -34,7 +34,7 @@ internal class AutoSuggestBoxTests : BaseTestClass
         // Arrange
         const string expectedText = "British Shorthair";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
@@ -50,7 +50,7 @@ internal class AutoSuggestBoxTests : BaseTestClass
         // Arrange
         const string expectedText = "British Shorthair";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act
@@ -64,7 +64,7 @@ internal class AutoSuggestBoxTests : BaseTestClass
     public void ShouldSelectSuggestionByPartialSuggestion()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         AutoSuggestBoxPage autoSuggestBoxPage = new HomePage(app).NavigateTo<AutoSuggestBoxPage>("AutoSuggestBox");
 
         // Act

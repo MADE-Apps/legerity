@@ -1,20 +1,19 @@
-namespace Legerity.WinUI.Tests.Pages;
-
-using Windows.Elements.Core;
-using Legerity.Windows;
+using Legerity.Windows.Elements.Core;
 using Legerity.Windows.Elements.WinUI;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
+
+namespace Legerity.WinUI.Tests.Pages;
 
 internal class TabViewPage : BaseNavigationPage
 {
-    public TabViewPage(RemoteWebDriver app) : base(app)
+    public TabViewPage(WebDriver app) : base(app)
     {
     }
 
     public ScrollViewer ScrollViewer => this.FindElement(WindowsByExtras.AutomationId("svPanel"));
 
     public TabView TabView => this.FindElement(WindowsByExtras.AutomationId("TabView1"));
-    
+
     public TabViewPage SelectTab(string name)
     {
         this.ScrollViewer.ScrollToTop();

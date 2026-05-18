@@ -1,8 +1,9 @@
-namespace Legerity.Web;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
 using System.Drawing;
 
+namespace Legerity.Web;
 /// <summary>
 /// Defines a specific <see cref="AppManagerOptions"/> for a Web application.
 /// </summary>

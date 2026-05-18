@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity for Web Authentication - Framework for UI testing with Selenium/Appium</Product>
     <Description>
       An extension to the Legerity UI testing framework to support authenticating with common web identity providers.
@@ -11,15 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Legerity.Web\Legerity.Web.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,10 @@
-namespace Legerity.Web.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
-using System.Linq;
 using Legerity.Extensions;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Web.Elements.Core;
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Table control.
 /// </summary>
@@ -18,7 +17,7 @@ public class Table : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Table(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -26,9 +25,9 @@ public class Table : WebElementWrapper
     /// Initializes a new instance of the <see cref="Table"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Table(RemoteWebElement element)
+    public Table(WebElement element)
         : base(element)
     {
     }
@@ -64,7 +63,7 @@ public class Table : WebElementWrapper
     /// <returns>
     /// The <see cref="Table"/>.
     /// </returns>
-    public static implicit operator Table(RemoteWebElement element)
+    public static implicit operator Table(WebElement element)
     {
         return new Table(element);
     }
@@ -84,21 +83,21 @@ public class Table : WebElementWrapper
 
         var headers = this.Headers.ToList();
 
-        int dataRowIdx = this.IsFirstRowHeaders ? idx + 1 : idx;
+        var dataRowIdx = this.IsFirstRowHeaders ? idx + 1 : idx;
         TableRow dataRow = this.Rows.ElementAt(dataRowIdx);
 
         var rowValues = new Dictionary<string, string>();
 
-        if (headers.Any())
+        if (headers.Count != 0)
         {
-            for (int i = 0; i < headers.Count; i++)
+            for (var i = 0; i < headers.Count; i++)
             {
                 AddRowData(rowValues, headers.ElementAt(i), dataRow, i);
             }
         }
         else
         {
-            for (int i = 0; i < dataRow.Values.Count(); i++)
+            for (var i = 0; i < dataRow.Values.Count(); i++)
             {
                 AddRowData(rowValues, $"Col{i}", dataRow, i);
             }
@@ -116,7 +115,7 @@ public class Table : WebElementWrapper
     public virtual IEnumerable<string> GetColumnDataByHeader(string header)
     {
         var headers = this.Headers.ToList();
-        int idx = headers.IndexOf(header);
+        var idx = headers.IndexOf(header);
         return this.GetColumnDataByIndex(idx);
     }
 

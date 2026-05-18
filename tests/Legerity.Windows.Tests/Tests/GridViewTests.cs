@@ -1,10 +1,10 @@
-namespace Legerity.Windows.Tests.Tests;
-
 using System.Collections.ObjectModel;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Remote;
-using Pages;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class GridViewTests : BaseTestClass
@@ -18,11 +18,11 @@ internal class GridViewTests : BaseTestClass
     public void ShouldGetItems()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
 
         // Act
-        ReadOnlyCollection<AppiumWebElement> items = gridViewPage.BasicGridView.Items;
+        ReadOnlyCollection<AppiumElement> items = gridViewPage.BasicGridView.Items;
 
         // Assert
         items.Count.ShouldBe(8);
@@ -32,7 +32,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
@@ -47,7 +47,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const string expected = "Item 2";
 
@@ -62,7 +62,7 @@ internal class GridViewTests : BaseTestClass
     public void ShouldClickItemByIndex()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         GridViewPage gridViewPage = new HomePage(app).NavigateTo<GridViewPage>("GridView");
         const int expected = 2;
 

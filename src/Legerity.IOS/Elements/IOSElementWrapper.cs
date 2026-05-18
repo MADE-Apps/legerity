@@ -1,27 +1,26 @@
-namespace Legerity.IOS.Elements;
-
-using System;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using Legerity.Exceptions;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
+namespace Legerity.IOS.Elements;
 /// <summary>
-/// Defines an element wrapper for a <see cref="IOSElement"/>.
+/// Defines an element wrapper for a <see cref="AppiumElement"/>.
 /// </summary>
-public class IOSElementWrapper : ElementWrapper<IOSElement>
+public class IOSElementWrapper : ElementWrapper<AppiumElement>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="IOSElementWrapper"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public IOSElementWrapper(IOSElement element)
+    public IOSElementWrapper(AppiumElement element)
         : base(element)
     {
     }
@@ -29,48 +28,20 @@ public class IOSElementWrapper : ElementWrapper<IOSElement>
     /// <summary>
     /// Gets the instance of the Appium driver for the iOS application.
     /// </summary>
-    public IOSDriver<IOSElement> Driver => this.ElementDriver as IOSDriver<IOSElement>;
+    public IOSDriver Driver => this.ElementDriver as IOSDriver;
 
     /// <summary>
-    /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="IOSElementWrapper"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="IOSElementWrapper"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="IOSElementWrapper"/>.
     /// </returns>
-    public static implicit operator IOSElementWrapper(IOSElement element)
+    public static implicit operator IOSElementWrapper(WebElement element)
     {
-        return new IOSElementWrapper(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="IOSElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="IOSElementWrapper"/>.
-    /// </returns>
-    public static implicit operator IOSElementWrapper(AppiumWebElement element)
-    {
-        return new IOSElementWrapper(element as IOSElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="IOSElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="IOSElementWrapper"/>.
-    /// </returns>
-    public static implicit operator IOSElementWrapper(RemoteWebElement element)
-    {
-        return new IOSElementWrapper(element as IOSElement);
+        return new IOSElementWrapper(element as AppiumElement);
     }
 
     /// <summary>

@@ -1,7 +1,7 @@
-namespace Legerity.Windows.Tests.Tests;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 
-using OpenQA.Selenium.Remote;
-using Pages;
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class CommandBarTests : BaseTestClass
@@ -15,7 +15,7 @@ internal class CommandBarTests : BaseTestClass
     public void ShouldClickPrimaryButtonByName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         CommandBarPage commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
 
         // Act & Assert
@@ -26,7 +26,7 @@ internal class CommandBarTests : BaseTestClass
     public void ShouldClickPrimaryButtonByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         CommandBarPage commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
 
         // Act & Assert
@@ -37,7 +37,7 @@ internal class CommandBarTests : BaseTestClass
     public void ShouldClickSecondaryButtonByName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         CommandBarPage commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
 
         // Act & Assert
@@ -48,7 +48,7 @@ internal class CommandBarTests : BaseTestClass
     public void ShouldClickSecondaryButtonByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         CommandBarPage commandBarPage = new HomePage(app).NavigateTo<CommandBarPage>("CommandBar");
 
         // Act & Assert

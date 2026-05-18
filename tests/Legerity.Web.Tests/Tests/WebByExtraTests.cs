@@ -1,11 +1,9 @@
-namespace Legerity.Web.Tests.Tests;
-
-using System;
-using Legerity.Web.Tests.Pages;
-using OpenQA.Selenium.Remote;
 using System.Collections.ObjectModel;
-using System.IO;
+using Legerity.Web.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]
@@ -17,7 +15,7 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
         // Arrange
         const int expectedCount = 6;
 
-        RemoteWebDriver app = this.StartApp(new WebAppManagerOptions(
+        WebDriver app = this.StartApp(new WebAppManagerOptions(
             WebAppDriverType.Chrome,
             Path.Combine(Environment.CurrentDirectory))
         {
@@ -32,7 +30,7 @@ internal class WebByExtraTests : W3SchoolsBaseTestClass
             .SwitchToContentFrame<RadioButtonPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement>
+        ReadOnlyCollection<WebElement>
             radioButtons = radioButtonPage.FindElements(WebByExtras.InputType("radio"));
 
         // Assert

@@ -1,15 +1,14 @@
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 using System.Diagnostics.CodeAnalysis;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 [assembly: LevelOfParallelism(5)]
 [assembly: ExcludeFromCodeCoverage]
 
 namespace Legerity.Web.Tests.Tests;
-
-using System;
-using Legerity;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.
 /// </summary>
@@ -50,6 +49,7 @@ public abstract class BaseTestClass : LegerityTestClass
     [TearDown]
     public virtual void Cleanup()
     {
+        this.StopApp(false);
     }
 
     /// <summary>
@@ -65,6 +65,7 @@ public abstract class BaseTestClass : LegerityTestClass
     protected static DriverOptions ConfigureChromeOptions()
     {
         var options = new ChromeOptions();
+        options.AddArgument("--headless=new");
         return options;
     }
 }

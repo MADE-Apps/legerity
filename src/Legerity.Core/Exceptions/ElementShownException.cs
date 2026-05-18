@@ -1,7 +1,7 @@
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 namespace Legerity.Exceptions;
-
-using System;
-
 /// <summary>
 /// Defines an exception for when an element is shown when it shouldn't be.
 /// </summary>
@@ -28,7 +28,6 @@ public class ElementShownException : LegerityException
     public ElementShownException(string locator, Exception innerException)
         : base($"An element was located using locator: {locator}", innerException)
     {
-        this.ElementName = locator;
         this.Locator = locator;
     }
 
@@ -36,10 +35,4 @@ public class ElementShownException : LegerityException
     /// Gets the locator used to locate the element.
     /// </summary>
     public string Locator { get; }
-
-    /// <summary>
-    /// Gets the name of the element that was shown.
-    /// </summary>
-    [Obsolete("ElementName will be removed in a future major release. Please use the Locator instead.")]
-    public string ElementName { get; }
 }

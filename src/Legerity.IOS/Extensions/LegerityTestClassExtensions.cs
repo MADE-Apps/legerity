@@ -1,10 +1,11 @@
-namespace Legerity.IOS.Extensions;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using Exceptions;
+using Legerity.Exceptions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.iOS;
 
+namespace Legerity.IOS.Extensions;
 /// <summary>
 /// Defines a collection of extensions for <see cref="LegerityTestClass"/> instances.
 /// </summary>
@@ -31,13 +32,13 @@ public static class LegerityTestClassExtensions
     /// <exception cref="LegerityException">Thrown when:
     /// - The Appium server could not be found when running with <see cref="IOSAppManagerOptions.LaunchAppiumServer"/> true.
     /// </exception>
-    public static IOSDriver<IOSElement> StartIOSApp(
+    public static IOSDriver StartIOSApp(
         this LegerityTestClass testClass,
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
         int waitUntilRetries = 0)
     {
-        return testClass.StartApp(waitUntil, waitUntilTimeout, waitUntilRetries) as IOSDriver<IOSElement>;
+        return testClass.StartApp(waitUntil, waitUntilTimeout, waitUntilRetries) as IOSDriver;
     }
 
     /// <summary>
@@ -67,7 +68,7 @@ public static class LegerityTestClassExtensions
     /// <exception cref="LegerityException">Thrown when:
     /// - The Appium server could not be found when running with <see cref="IOSAppManagerOptions.LaunchAppiumServer"/> true.
     /// </exception>
-    public static IOSDriver<IOSElement> StartIOSApp(
+    public static IOSDriver StartIOSApp(
         this LegerityTestClass testClass,
         IOSAppManagerOptions options,
         Func<IWebDriver, bool> waitUntil = default,
@@ -75,6 +76,6 @@ public static class LegerityTestClassExtensions
         int waitUntilRetries = 0)
     {
         return testClass.StartApp(options, waitUntil, waitUntilTimeout, waitUntilRetries) as
-            IOSDriver<IOSElement>;
+            IOSDriver;
     }
 }

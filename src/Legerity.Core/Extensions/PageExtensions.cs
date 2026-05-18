@@ -1,10 +1,11 @@
-namespace Legerity.Extensions;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using Legerity.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
+namespace Legerity.Extensions;
 /// <summary>
 /// Defines a collection of extensions for page objects.
 /// </summary>

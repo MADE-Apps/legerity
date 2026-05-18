@@ -1,12 +1,12 @@
-namespace Legerity.Windows.Tests.Pages;
 
-using Elements.Core;
+using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class CheckBoxPage : BaseNavigationPage
 {
-    public CheckBoxPage(RemoteWebDriver app) : base(app)
+    public CheckBoxPage(WebDriver app) : base(app)
     {
     }
 

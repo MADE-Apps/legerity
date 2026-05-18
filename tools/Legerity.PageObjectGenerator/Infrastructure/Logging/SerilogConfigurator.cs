@@ -1,8 +1,9 @@
-namespace Legerity.Infrastructure.Logging;
 
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
+
+namespace Legerity.Infrastructure.Logging;
 
 internal static class SerilogConfigurator
 {

@@ -1,10 +1,11 @@
-namespace Legerity.Windows.Extensions;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using Legerity.Exceptions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 
+namespace Legerity.Windows.Extensions;
 /// <summary>
 /// Defines a collection of extensions for <see cref="LegerityTestClass"/> instances.
 /// </summary>
@@ -32,13 +33,13 @@ public static class LegerityTestClassExtensions
     /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// </exception>
-    public static WindowsDriver<WindowsElement> StartWindowsApp(
+    public static WindowsDriver StartWindowsApp(
         this LegerityTestClass testClass,
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
         int waitUntilRetries = 0)
     {
-        return testClass.StartApp(waitUntil, waitUntilTimeout, waitUntilRetries) as WindowsDriver<WindowsElement>;
+        return testClass.StartApp(waitUntil, waitUntilTimeout, waitUntilRetries) as WindowsDriver;
     }
 
     /// <summary>
@@ -68,7 +69,7 @@ public static class LegerityTestClassExtensions
     /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// </exception>
     /// <exception cref="WebDriverException">Thrown when the wait until condition is not met in the allocated timeout period if provided.</exception>
-    public static WindowsDriver<WindowsElement> StartWindowsApp(
+    public static WindowsDriver StartWindowsApp(
         this LegerityTestClass testClass,
         WindowsAppManagerOptions options,
         Func<IWebDriver, bool> waitUntil = default,
@@ -76,6 +77,6 @@ public static class LegerityTestClassExtensions
         int waitUntilRetries = 0)
     {
         return testClass.StartApp(options, waitUntil, waitUntilTimeout, waitUntilRetries) as
-            WindowsDriver<WindowsElement>;
+            WindowsDriver;
     }
 }

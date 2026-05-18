@@ -1,7 +1,7 @@
-namespace Legerity.Templates.Windows.NUnit;
-
 using System;
 using System.Collections.Generic;
+
+namespace Legerity.Templates.Windows.NUnit;
 
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.

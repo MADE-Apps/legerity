@@ -1,8 +1,9 @@
-namespace Legerity;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using OpenQA.Selenium;
 
+namespace Legerity;
 /// <summary>
 /// Defines an interface for a Selenium/Appium element wrapper.
 /// </summary>

@@ -1,13 +1,11 @@
-namespace Legerity.Windows.Tests.Pages;
-
-using System;
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class TimePickerPage : BaseNavigationPage
 {
-    public TimePickerPage(RemoteWebDriver app) : base(app)
+    public TimePickerPage(WebDriver app) : base(app)
     {
     }
 

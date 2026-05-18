@@ -1,9 +1,9 @@
-namespace Legerity.WinUI.Tests.Tests;
-
-using Windows.Extensions;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Extensions;
+using Legerity.WinUI.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.WinUI.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class NavigationViewTests : BaseTestClass
@@ -106,7 +106,7 @@ internal class NavigationViewTests : BaseTestClass
 
     private NavigationViewPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<NavigationViewPage>("NavigationView");
     }
 }

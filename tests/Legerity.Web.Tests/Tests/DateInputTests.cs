@@ -1,11 +1,11 @@
-namespace Legerity.Web.Tests.Tests;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
-using System.IO;
-using System;
 using Legerity.Web.Tests.Pages;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -37,7 +37,7 @@ internal class DateInputTests : W3SchoolsBaseTestClass
         // Arrange
         DateTime expected = DateTime.Now.Date;
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         DateInputPage dateInputPage = new DateInputPage(app)
             .AcceptCookies<DateInputPage>()

@@ -1,13 +1,13 @@
-namespace Legerity.Android.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Extensions;
+using Legerity.Android.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Android.Elements.Core;
 /// <summary>
-/// Defines a <see cref="AndroidElement"/> wrapper for the core Android CheckBox control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core Android CheckBox control.
 /// </summary>
 public class CheckBox : AndroidElementWrapper
 {
@@ -15,9 +15,9 @@ public class CheckBox : AndroidElementWrapper
     /// Initializes a new instance of the <see cref="CheckBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public CheckBox(AndroidElement element)
+    public CheckBox(AppiumElement element)
         : base(element)
     {
     }
@@ -29,52 +29,23 @@ public class CheckBox : AndroidElementWrapper
     public virtual bool IsChecked => this.GetCheckedState();
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="CheckBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CheckBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="CheckBox"/>.
     /// </returns>
-    public static implicit operator CheckBox(AndroidElement element)
+    public static implicit operator CheckBox(WebElement element)
     {
-        return new CheckBox(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="CheckBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CheckBox"/>.
-    /// </returns>
-    public static implicit operator CheckBox(AppiumWebElement element)
-    {
-        return new CheckBox(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CheckBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CheckBox"/>.
-    /// </returns>
-    public static implicit operator CheckBox(RemoteWebElement element)
-    {
-        return new CheckBox(element as AndroidElement);
+        return new CheckBox(element as AppiumElement);
     }
 
     /// <summary>
     /// Checks the check box on.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOn()
     {
@@ -90,7 +61,6 @@ public class CheckBox : AndroidElementWrapper
     /// Checks the check box off.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOff()
     {

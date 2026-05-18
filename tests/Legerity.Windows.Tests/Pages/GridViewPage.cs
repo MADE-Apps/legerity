@@ -1,11 +1,11 @@
-namespace Legerity.Windows.Tests.Pages;
+using Legerity.Windows.Elements.Core;
+using OpenQA.Selenium;
 
-using Elements.Core;
-using OpenQA.Selenium.Remote;
+namespace Legerity.Windows.Tests.Pages;
 
 internal class GridViewPage : BaseNavigationPage
 {
-    public GridViewPage(RemoteWebDriver app) : base(app)
+    public GridViewPage(WebDriver app) : base(app)
     {
     }
 

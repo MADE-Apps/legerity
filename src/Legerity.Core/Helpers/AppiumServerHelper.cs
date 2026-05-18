@@ -1,9 +1,10 @@
-namespace Legerity.Helpers;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using Legerity.Exceptions;
 using OpenQA.Selenium.Appium.Service;
 
+namespace Legerity.Helpers;
 /// <summary>
 /// Defines a helper class for launching a local Appium server.
 /// </summary>

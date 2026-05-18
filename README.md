@@ -100,12 +100,6 @@ Do you have a collection of custom components that you'd like to see added to th
 
 Even better, why not help build out your custom control wrapper elements within the framework and help out the community!
 
-### Additional component extensions
-
-| Package | Downloads | Description |
-| ------ | ------ | ------ |
-| [![Nuget](https://img.shields.io/nuget/v/Legerity.Uno.svg?label=Uno+Platform)](https://www.nuget.org/packages/Legerity.Uno/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Uno.svg)](https://www.nuget.org/packages/Legerity.Uno/) | Extension framework to Legerity to support cross-platform UI testing for Uno Platform |
-
 ### UI Automation tooling 🧰
 
 When contributing to new element wrappers, we recommended using the [Accessibility Insights tool](https://accessibilityinsights.io/en/). The tool is capable of inspecting and providing property values for Android, Web, and Windows applications.

@@ -1,13 +1,9 @@
-namespace Legerity.Web.Tests.Tests;
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using Extensions;
+using Legerity.Web.Extensions;
+using Legerity.Web.Tests.Pages;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-using Pages;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -37,7 +33,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldGetElementDriverMatchingAppDriver()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
@@ -54,14 +50,14 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldGetEnabledState()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
         // Act
-        bool enabled = textInputPage.FirstNameInput.IsEnabled;
+        var enabled = textInputPage.FirstNameInput.IsEnabled;
 
         // Assert
         enabled.ShouldBeTrue();
@@ -71,14 +67,14 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldGetVisibleState()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
         // Act
-        bool visible = textInputPage.FirstNameInput.IsVisible;
+        var visible = textInputPage.FirstNameInput.IsVisible;
 
         // Assert
         visible.ShouldBeTrue();
@@ -88,7 +84,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldWaitUntilConditionMet()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
@@ -102,7 +98,7 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldThrowExceptionIfWaitUntilConditionNotMet()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
@@ -116,14 +112,14 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldTryWaitUntilConditionMet()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
         // Act
-        bool conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => e.IsVisible, TimeSpan.FromSeconds(5));
+        var conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => e.IsVisible, TimeSpan.FromSeconds(5));
 
         // Assert
         conditionMet.ShouldBeTrue();
@@ -133,14 +129,14 @@ internal class WebElementWrapperTests : W3SchoolsBaseTestClass
     public void ShouldTryWaitUntilConditionNotMet()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TextInputPage textInputPage = new TextInputPage(app)
             .AcceptCookies<TextInputPage>()
             .SwitchToContentFrame<TextInputPage>();
 
         // Act
-        bool conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => !e.IsVisible);
+        var conditionMet = textInputPage.FirstNameInput.TryWaitUntil(e => !e.IsVisible);
 
         // Assert
         conditionMet.ShouldBeFalse();

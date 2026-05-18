@@ -1,14 +1,16 @@
-namespace Legerity.Web.Tests.Pages;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class TextInputPage : W3SchoolsBasePage
 {
     private readonly By firstNameInputLocator = By.Id("fname");
 
-    public TextInputPage(RemoteWebDriver app) : base(app)
+    public TextInputPage(WebDriver app) : base(app)
     {
     }
 

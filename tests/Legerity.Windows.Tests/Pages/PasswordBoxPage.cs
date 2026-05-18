@@ -1,12 +1,12 @@
-namespace Legerity.Windows.Tests.Pages;
 
-using Elements.Core;
+using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class PasswordBoxPage : BaseNavigationPage
 {
-    public PasswordBoxPage(RemoteWebDriver app) : base(app)
+    public PasswordBoxPage(WebDriver app) : base(app)
     {
     }
 

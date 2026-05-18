@@ -1,8 +1,8 @@
-namespace Legerity.WinUI.Tests.Tests;
-
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.WinUI.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.WinUI.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class RatingControlTests : BaseTestClass
@@ -48,7 +48,7 @@ internal class RatingControlTests : BaseTestClass
 
     private RatingControlPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<RatingControlPage>("RatingControl");
     }
 }

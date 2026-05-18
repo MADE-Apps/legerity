@@ -1,13 +1,12 @@
-namespace Legerity.Core.Tests.Tests;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using System.Collections.ObjectModel;
-using System.IO;
+using Legerity.Core.Tests.Pages;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using Pages;
 using Shouldly;
+
+namespace Legerity.Core.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]
@@ -17,23 +16,16 @@ internal class ByAllTests : BaseTestClass
     public void ShouldFindElementByAll()
     {
         // Arrange
-        var options = new WebAppManagerOptions(
-            WebAppDriverType.Chrome,
-            Path.Combine(Environment.CurrentDirectory))
-        {
-            Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio",
-            ImplicitWait = ImplicitWait,
-            DriverOptions = new ChromeOptions()
-        };
+        var options = CreateChromeOptions("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio");
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        RemoteWebElement element = page.FindElement(new ByAll(By.TagName("p"), ByExtras.PartialText("Please select")));
+        WebElement element = page.FindElement(new ByAll(By.TagName("p"), ByExtras.PartialText("Please select")));
 
         // Assert
         element.ShouldNotBeNull();
@@ -44,23 +36,16 @@ internal class ByAllTests : BaseTestClass
     public void ShouldFindElementsByAll()
     {
         // Arrange
-        var options = new WebAppManagerOptions(
-            WebAppDriverType.Chrome,
-            Path.Combine(Environment.CurrentDirectory))
-        {
-            Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio",
-            ImplicitWait = ImplicitWait,
-            DriverOptions = new ChromeOptions()
-        };
+        var options = CreateChromeOptions("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio");
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement> elements =
+        ReadOnlyCollection<WebElement> elements =
             page.FindElements(new ByAll(By.TagName("p"), ByExtras.PartialText("Please select")));
 
         // Assert
@@ -72,16 +57,9 @@ internal class ByAllTests : BaseTestClass
     public void ShouldThrowNoSuchElementExceptionIfFindElementReturnsNoResult()
     {
         // Arrange
-        var options = new WebAppManagerOptions(
-            WebAppDriverType.Chrome,
-            Path.Combine(Environment.CurrentDirectory))
-        {
-            Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio",
-            ImplicitWait = ImplicitWait,
-            DriverOptions = new ChromeOptions()
-        };
+        var options = CreateChromeOptions("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio");
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
@@ -96,23 +74,16 @@ internal class ByAllTests : BaseTestClass
     public void ShouldReturnEmptyCollectionIfFindElementsReturnsNoResult()
     {
         // Arrange
-        var options = new WebAppManagerOptions(
-            WebAppDriverType.Chrome,
-            Path.Combine(Environment.CurrentDirectory))
-        {
-            Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio",
-            ImplicitWait = ImplicitWait,
-            DriverOptions = new ChromeOptions()
-        };
+        var options = CreateChromeOptions("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio");
 
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         W3SchoolsPage page = new W3SchoolsPage(app)
             .AcceptCookies<W3SchoolsPage>()
             .SwitchToContentFrame<W3SchoolsPage>();
 
         // Act
-        ReadOnlyCollection<RemoteWebElement> elements =
+        ReadOnlyCollection<WebElement> elements =
             page.FindElements(new ByAll(By.TagName("p"), ByExtras.PartialText("This text does not exist")));
 
         // Assert

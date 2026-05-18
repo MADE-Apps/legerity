@@ -1,8 +1,7 @@
-namespace Legerity.Windows.Tests.Tests;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 
-using System;
-using OpenQA.Selenium.Remote;
-using Pages;
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class TimePickerTests : BaseTestClass
@@ -24,7 +23,7 @@ internal class TimePickerTests : BaseTestClass
 
     private TimePickerPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<TimePickerPage>("TimePicker");
     }
 }

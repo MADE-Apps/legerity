@@ -1,10 +1,9 @@
-namespace Legerity.Android;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Enums;
 
+namespace Legerity.Android;
 /// <summary>
 /// Defines a specific <see cref="AppiumManagerOptions"/> for an Android application.
 /// </summary>
@@ -164,36 +163,36 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
     {
         base.Configure();
 
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "Android");
+        this.AppiumOptions.PlatformName = "Android";
 
         if (!string.IsNullOrWhiteSpace(this.OSVersion))
         {
-            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
+            this.AppiumOptions.PlatformVersion = this.OSVersion;
         }
 
         if (!string.IsNullOrWhiteSpace(this.DeviceName))
         {
-            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
+            this.AppiumOptions.DeviceName = this.DeviceName;
         }
 
         if (!string.IsNullOrWhiteSpace(this.DeviceId))
         {
-            this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
+            this.AppiumOptions.AddAdditionalAppiumOption("udid", this.DeviceId);
         }
 
         if (!string.IsNullOrWhiteSpace(this.AppId))
         {
-            this.AppiumOptions.AddAdditionalCapability("appPackage", this.AppId);
+            this.AppiumOptions.AddAdditionalAppiumOption("appPackage", this.AppId);
         }
 
         if (!string.IsNullOrWhiteSpace(this.AppActivity))
         {
-            this.AppiumOptions.AddAdditionalCapability("appActivity", this.AppActivity);
+            this.AppiumOptions.AddAdditionalAppiumOption("appActivity", this.AppActivity);
         }
 
         if (!string.IsNullOrWhiteSpace(this.AppPath))
         {
-            this.AppiumOptions.AddAdditionalCapability("app", this.AppPath);
+            this.AppiumOptions.App = this.AppPath;
         }
     }
 
@@ -242,7 +241,7 @@ public class AndroidAppManagerOptions : AppiumManagerOptions
 
         if (this.AdditionalOptions != null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
+            foreach ((var name, var value) in this.AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

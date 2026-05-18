@@ -1,18 +1,15 @@
-namespace Legerity.Windows.Elements.WinUI;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using Legerity.Extensions;
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.WinUI;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI MenuBarItem control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the WinUI MenuBarItem control.
 /// </summary>
 public class MenuBarItem : WindowsElementWrapper
 {
@@ -22,9 +19,9 @@ public class MenuBarItem : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="MenuBarItem"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public MenuBarItem(WindowsElement element)
+    public MenuBarItem(AppiumElement element)
         : this(null, element)
     {
     }
@@ -36,11 +33,11 @@ public class MenuBarItem : WindowsElementWrapper
     /// The parent <see cref="MenuBar"/>.
     /// </param>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
     public MenuBarItem(
         MenuBar parentMenuBar,
-        WindowsElement element)
+        AppiumElement element)
         : base(element)
     {
         if (parentMenuBar != null)
@@ -68,45 +65,17 @@ public class MenuBarItem : WindowsElementWrapper
     public virtual IEnumerable<MenuFlyoutSubItem> ChildMenuSubItems => this.GetChildMenuSubItems();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="MenuBarItem"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="MenuBarItem"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="MenuBarItem"/>.
     /// </returns>
-    public static implicit operator MenuBarItem(WindowsElement element)
+    public static implicit operator MenuBarItem(WebElement element)
     {
-        return new MenuBarItem(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="MenuBarItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="MenuBarItem"/>.
-    /// </returns>
-    public static implicit operator MenuBarItem(AppiumWebElement element)
-    {
-        return new MenuBarItem(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="MenuBarItem"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="MenuBarItem"/>.
-    /// </returns>
-    public static implicit operator MenuBarItem(RemoteWebElement element)
-    {
-        return new MenuBarItem(element as WindowsElement);
+        return new MenuBarItem(element as AppiumElement);
     }
 
     /// <summary>
@@ -120,19 +89,12 @@ public class MenuBarItem : WindowsElementWrapper
     /// </returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuFlyoutItem ClickChildOption(string name)
     {
         MenuFlyoutItem item = this.ChildMenuItems.FirstOrDefault(
             element => element.GetName()
-                .Equals(name, StringComparison.CurrentCultureIgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find element by {name}");
-        }
-
+                .Equals(name, StringComparison.CurrentCultureIgnoreCase)) ?? throw new NoSuchElementException($"Unable to find element by {name}");
         item.Click();
         return item;
     }
@@ -149,18 +111,11 @@ public class MenuBarItem : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual MenuFlyoutItem ClickChildOptionByPartialName(string name)
     {
         MenuFlyoutItem item = this.ChildMenuItems.FirstOrDefault(
             element => element.GetName()
-                .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find element by {name}");
-        }
-
+                .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase)) ?? throw new NoSuchElementException($"Unable to find element by {name}");
         item.Click();
         return item;
     }
@@ -172,19 +127,12 @@ public class MenuBarItem : WindowsElementWrapper
     /// <returns>The clicked <see cref="MenuFlyoutSubItem"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuFlyoutSubItem ClickChildSubOption(string name)
     {
         MenuFlyoutSubItem item = this.ChildMenuSubItems.FirstOrDefault(
             element => element.GetName()
-                .Equals(name, StringComparison.CurrentCultureIgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find element by {name}");
-        }
-
+                .Equals(name, StringComparison.CurrentCultureIgnoreCase)) ?? throw new NoSuchElementException($"Unable to find element by {name}");
         item.Click();
         return item;
     }
@@ -197,18 +145,11 @@ public class MenuBarItem : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual MenuFlyoutSubItem ClickChildSubOptionByPartialName(string name)
     {
         MenuFlyoutSubItem item = this.ChildMenuSubItems.FirstOrDefault(
             element => element.GetName()
-                .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find element by {name}");
-        }
-
+                .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase)) ?? throw new NoSuchElementException($"Unable to find element by {name}");
         item.Click();
         return item;
     }
@@ -218,7 +159,7 @@ public class MenuBarItem : WindowsElementWrapper
     {
         return this.Driver.FindElement(By.ClassName("MenuFlyout"))
             .FindElements(By.ClassName(nameof(MenuFlyoutItem))).Select(
-                element => new MenuFlyoutItem(element as WindowsElement));
+                element => new MenuFlyoutItem(element as AppiumElement));
     }
 
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
@@ -226,6 +167,6 @@ public class MenuBarItem : WindowsElementWrapper
     {
         return this.Driver.FindElement(By.ClassName("MenuFlyout"))
             .FindElements(By.ClassName(nameof(MenuFlyoutSubItem))).Select(
-                element => new MenuFlyoutSubItem(element as WindowsElement));
+                element => new MenuFlyoutSubItem(element as AppiumElement));
     }
 }

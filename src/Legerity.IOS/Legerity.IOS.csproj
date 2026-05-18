@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity for iOS - Framework for UI testing with Selenium/Appium</Product>
     <Description>
       This package is an iOS core extension to the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
@@ -12,15 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Legerity.Core\Legerity.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

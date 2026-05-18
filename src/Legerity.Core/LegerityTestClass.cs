@@ -1,23 +1,24 @@
-namespace Legerity;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
-using Android;
-using Exceptions;
-using IOS;
+using System.Collections.Concurrent;
+using Legerity.Android;
+using Legerity.Exceptions;
+using Legerity.IOS;
+using Legerity.Windows;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
-using Windows;
 
+namespace Legerity;
 /// <summary>
 /// Defines a base class for running tests with the Legerity framework.
 /// </summary>
 public abstract class LegerityTestClass
 {
-    private readonly List<RemoteWebDriver> apps = new();
+    private static readonly AsyncLocal<WebDriver> CurrentApp = new();
+    private readonly ConcurrentBag<WebDriver> apps = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LegerityTestClass"/> class.
@@ -39,23 +40,25 @@ public abstract class LegerityTestClass
     }
 
     /// <summary>
-    /// Gets the instance of the started application.
+    /// Gets the instance of the started application for the current test.
     /// <para>
-    /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
+    /// This could be a <see cref="WindowsDriver"/>, <see cref="AndroidDriver"/>, <see cref="IOSDriver"/>, or web driver.
     /// </para>
     /// </summary>
     /// <remarks>
-    /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp(Func{IWebDriver,bool},TimeSpan?,int)"/> or <see cref="StartApp(AppManagerOptions,Func{IWebDriver,bool},TimeSpan?,int)"/> method.
+    /// This property is thread-safe and returns the driver for the current test execution context,
+    /// making it safe for use in parallelized test runs.
     /// </remarks>
-    protected RemoteWebDriver App { get; private set; }
+    protected static WebDriver App
+    {
+        get => CurrentApp.Value;
+        private set => CurrentApp.Value = value;
+    }
 
     /// <summary>
-    /// Gets or sets the instances of started applications.
+    /// Gets the instances of all started applications across this fixture.
     /// </summary>
-    /// <remarks>
-    /// This is useful for accessing drivers in parallelized tests.
-    /// </remarks>
-    protected IReadOnlyCollection<RemoteWebDriver> Apps => this.apps;
+    protected IReadOnlyCollection<WebDriver> Apps => this.apps.ToArray();
 
     /// <summary>
     /// Gets or sets the model that represents the configuration options for the <see cref="AppManager"/>.
@@ -82,7 +85,7 @@ public abstract class LegerityTestClass
     /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// </exception>
-    public virtual RemoteWebDriver StartApp(
+    public virtual WebDriver StartApp(
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
         int waitUntilRetries = 0)
@@ -116,7 +119,7 @@ public abstract class LegerityTestClass
     /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
     /// </exception>
     /// <exception cref="WebDriverException">Thrown when the wait until condition is not met in the allocated timeout period if provided.</exception>
-    public virtual RemoteWebDriver StartApp(
+    public virtual WebDriver StartApp(
         AppManagerOptions options,
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
@@ -127,8 +130,8 @@ public abstract class LegerityTestClass
             this.Options = options;
         }
 
-        RemoteWebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
-        this.App = app;
+        WebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
+        App = app;
         this.apps.Add(app);
         return app;
     }
@@ -149,7 +152,7 @@ public abstract class LegerityTestClass
     /// </param>
     public virtual void StopApp(bool stopServer)
     {
-        this.StopApp(this.App, stopServer);
+        this.StopApp(App, stopServer);
     }
 
     /// <summary>
@@ -161,9 +164,9 @@ public abstract class LegerityTestClass
     /// <param name="stopServer">
     /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
     /// </param>
-    public virtual void StopApp(RemoteWebDriver app, bool stopServer = false)
+    public virtual void StopApp(WebDriver app, bool stopServer = false)
     {
-        this.StopAppManagerApp(app, stopServer, true);
+        StopAppManagerApp(app, stopServer);
     }
 
     /// <summary>
@@ -174,17 +177,14 @@ public abstract class LegerityTestClass
     /// </param>
     public virtual void StopApps(bool stopServer = true)
     {
-        this.apps.ForEach(app => this.StopAppManagerApp(app, stopServer, false));
-        this.apps.Clear();
+        while (this.apps.TryTake(out WebDriver app))
+        {
+            AppManager.StopApp(app, stopServer);
+        }
     }
 
-    private void StopAppManagerApp(RemoteWebDriver app, bool stopServer, bool removeApp)
+    private static void StopAppManagerApp(WebDriver app, bool stopServer)
     {
-        if (removeApp)
-        {
-            this.apps.Remove(app);
-        }
-
         AppManager.StopApp(app, stopServer);
     }
 }

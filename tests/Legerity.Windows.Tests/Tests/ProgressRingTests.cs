@@ -1,8 +1,8 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class ProgressRingTests : BaseTestClass
@@ -38,7 +38,7 @@ internal class ProgressRingTests : BaseTestClass
 
     private ProgressRingPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<ProgressRingPage>("ProgressRing");
     }
 }

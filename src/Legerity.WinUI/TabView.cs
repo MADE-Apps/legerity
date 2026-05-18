@@ -1,18 +1,16 @@
-namespace Legerity.Windows.Elements.WinUI;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Legerity.Exceptions;
 using Legerity.Windows.Elements.Core;
 using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.WinUI;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI TabView control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the WinUI TabView control.
 /// </summary>
 public class TabView : WindowsElementWrapper
 {
@@ -22,9 +20,9 @@ public class TabView : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="TabView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public TabView(WindowsElement element)
+    public TabView(AppiumElement element)
         : base(element)
     {
     }
@@ -39,58 +37,30 @@ public class TabView : WindowsElementWrapper
     /// Gets the collection of items associated with the pivot.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual ReadOnlyCollection<AppiumWebElement> Tabs => this.TabsListView.Items;
+    public virtual ReadOnlyCollection<AppiumElement> Tabs => this.TabsListView.Items;
 
     /// <summary>
     /// Gets the element associated with the currently selected item.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    public virtual AppiumWebElement SelectedItem => this.TabsListView.SelectedItem;
+    public virtual AppiumElement SelectedItem => this.TabsListView.SelectedItem;
 
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     private ListView TabsListView => this.FindElement(this.tabListViewLocator);
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="TabView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="TabView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="TabView"/>.
     /// </returns>
-    public static implicit operator TabView(WindowsElement element)
+    public static implicit operator TabView(WebElement element)
     {
-        return new TabView(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="TabView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TabView"/>.
-    /// </returns>
-    public static implicit operator TabView(AppiumWebElement element)
-    {
-        return new TabView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TabView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="TabView"/>.
-    /// </returns>
-    public static implicit operator TabView(RemoteWebElement element)
-    {
-        return new TabView(element as WindowsElement);
+        return new TabView(element as AppiumElement);
     }
 
     /// <summary>
@@ -99,7 +69,6 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CreateTab()
     {
@@ -116,18 +85,11 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectTab(string name)
     {
         this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to locate element by {name}");
-        }
-
+        AppiumElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name)) ?? throw new NoSuchElementException($"Unable to locate element by {name}");
         item.Click();
     }
 
@@ -141,17 +103,10 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectTabByPartialName(string name)
     {
         this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to locate element by {name}");
-        }
-
+        AppiumElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name)) ?? throw new NoSuchElementException($"Unable to locate element by {name}");
         item.Click();
     }
 
@@ -163,17 +118,10 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void CloseTab(string name)
     {
         this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to locate element by {name}");
-        }
-
+        AppiumElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdEquals(name)) ?? throw new NoSuchElementException($"Unable to locate element by {name}");
         Button closeButton = item.FindElement(WindowsByExtras.AutomationId("CloseButton"));
         closeButton.Click();
     }
@@ -185,18 +133,11 @@ public class TabView : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CloseTabByPartialName(string name)
     {
         this.VerifyElementShown(this.tabListViewLocator, TimeSpan.FromSeconds(2));
-        AppiumWebElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to locate element by {name}");
-        }
-
+        AppiumElement item = this.Tabs.FirstOrDefault(element => element.VerifyNameOrAutomationIdContains(name)) ?? throw new NoSuchElementException($"Unable to locate element by {name}");
         Button closeButton = item.FindElement(WindowsByExtras.AutomationId("CloseButton"));
         closeButton.Click();
     }

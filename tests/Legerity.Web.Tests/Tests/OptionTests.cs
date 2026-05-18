@@ -1,12 +1,8 @@
-namespace Legerity.Web.Tests.Tests;
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -36,9 +32,9 @@ internal class OptionTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByValue()
     {
         // Arrange
-        string expected = "audi";
+        var expected = "audi";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         OptionPage optionPage = new OptionPage(app)
             .AcceptCookies<OptionPage>()
@@ -55,9 +51,9 @@ internal class OptionTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByDisplayValue()
     {
         // Arrange
-        string expected = "Audi";
+        var expected = "Audi";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         OptionPage optionPage = new OptionPage(app)
             .AcceptCookies<OptionPage>()

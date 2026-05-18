@@ -1,10 +1,10 @@
-namespace Legerity;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using OpenQA.Selenium;
 
+namespace Legerity;
 /// <summary>
 /// Defines a <see cref="By"/> locator that can be used to find elements using a sequence of locators that are continuously nested until the final locator is run.
 /// </summary>

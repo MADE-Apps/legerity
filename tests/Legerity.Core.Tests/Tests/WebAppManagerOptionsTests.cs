@@ -1,11 +1,12 @@
-namespace Legerity.Core.Tests.Tests;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using System.Drawing;
-using System.IO;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 using Shouldly;
+
+namespace Legerity.Core.Tests.Tests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.All)]
@@ -24,9 +25,9 @@ internal class WebAppManagerOptionsTests : BaseTestClass
             ImplicitWait = ImplicitWait,
             DriverOptions = new ChromeOptions()
         };
-        
+
         // Act
-        RemoteWebDriver app = this.StartApp(options);
+        WebDriver app = this.StartApp(options);
 
         // Assert
         app.Manage().Window.Size.ShouldBe(options.DesiredSize);

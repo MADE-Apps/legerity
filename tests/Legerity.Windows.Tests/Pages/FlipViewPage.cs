@@ -1,15 +1,13 @@
-namespace Legerity.Windows.Tests.Pages;
-
-using System.Linq;
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class FlipViewPage : BaseNavigationPage
 {
     private readonly By flipViewLocator = By.ClassName(nameof(FlipView));
 
-    public FlipViewPage(RemoteWebDriver app) : base(app)
+    public FlipViewPage(WebDriver app) : base(app)
     {
     }
 

@@ -1,13 +1,13 @@
-namespace Legerity.IOS.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using Legerity.IOS.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.IOS.Elements.Core;
 /// <summary>
-/// Defines a <see cref="IOSElement"/> wrapper for the core iOS Label control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core iOS Label control.
 /// </summary>
 public class Label : IOSElementWrapper
 {
@@ -15,9 +15,9 @@ public class Label : IOSElementWrapper
     /// Initializes a new instance of the <see cref="Label"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public Label(IOSElement element)
+    public Label(AppiumElement element)
         : base(element)
     {
     }
@@ -29,44 +29,16 @@ public class Label : IOSElementWrapper
     public virtual string Text => this.GetLabel();
 
     /// <summary>
-    /// Allows conversion of a <see cref="IOSElement"/> to the <see cref="Label"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Label"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="IOSElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Label"/>.
     /// </returns>
-    public static implicit operator Label(IOSElement element)
+    public static implicit operator Label(WebElement element)
     {
-        return new Label(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="Label"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Label"/>.
-    /// </returns>
-    public static implicit operator Label(AppiumWebElement element)
-    {
-        return new Label(element as IOSElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Label"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Label"/>.
-    /// </returns>
-    public static implicit operator Label(RemoteWebElement element)
-    {
-        return new Label(element as IOSElement);
+        return new Label(element as AppiumElement);
     }
 }

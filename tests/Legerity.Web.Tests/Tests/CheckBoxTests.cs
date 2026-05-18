@@ -1,11 +1,11 @@
-namespace Legerity.Web.Tests.Tests;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -36,7 +36,7 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldCheckUncheckedCheckbox()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
@@ -54,7 +54,7 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldKeepCheckedIfCheckedAgain()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
@@ -72,7 +72,7 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldUncheckCheckedCheckbox()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()
@@ -90,7 +90,7 @@ internal class CheckBoxTests : W3SchoolsBaseTestClass
     public void ShouldKeepUncheckedIfUncheckedAgain()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         CheckBoxPage checkBoxPage = new CheckBoxPage(app)
             .AcceptCookies<CheckBoxPage>()

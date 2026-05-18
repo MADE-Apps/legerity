@@ -1,38 +1,61 @@
-namespace Legerity.Web.Tests.Pages;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Elements.Core;
 using Legerity.Extensions;
 using Legerity.Web.Tests.Tests;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal abstract class W3SchoolsBasePage : BasePage
 {
     private readonly By contentFrameLocator = By.Id("iframeResult");
-    private readonly By acceptCookiesButtonLocator = By.Id("accept-choices");
+    private readonly By cmpFrameLocator = By.Id("fast-cmp-iframe");
+    private readonly By acceptCookiesButtonLocator = By.TagName("button").WithText("Accept");
 
-    protected W3SchoolsBasePage(RemoteWebDriver app)
+    protected W3SchoolsBasePage(WebDriver app)
         : base(app, BaseTestClass.ImplicitWait)
     {
     }
 
-    protected override By Trait => this.contentFrameLocator;
-
-    public Button AcceptCookiesButton => this.FindElement(this.acceptCookiesButtonLocator);
-
-    public RemoteWebElement ContentFrame => this.FindElement(this.contentFrameLocator);
+    protected override By Trait => this.cmpFrameLocator;
 
     public T AcceptCookies<T>() where T : W3SchoolsBasePage
     {
-        this.WaitUntil(page => page.AcceptCookiesButton.IsVisible, this.WaitTimeout);
-        this.AcceptCookiesButton.Click();
+        try
+        {
+            WebElement cmpFrame = this.FindElement(this.cmpFrameLocator);
+            this.App.SwitchTo().Frame(cmpFrame);
+
+            var wait = new OpenQA.Selenium.Support.UI.WebDriverWait(this.App, this.WaitTimeout);
+            wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(WebDriverException));
+            wait.Until(_ => this.App.FindElement(this.acceptCookiesButtonLocator).Displayed);
+
+            this.App.FindElement(this.acceptCookiesButtonLocator).Click();
+        }
+        catch (Exception)
+        {
+            // Cookie banner may not appear or driver may be unresponsive; continue.
+        }
+
+        try
+        {
+            this.App.SwitchTo().DefaultContent();
+        }
+        catch (Exception)
+        {
+            // Driver may already be disposed.
+        }
+
         return (T)this;
     }
 
     public T SwitchToContentFrame<T>() where T : W3SchoolsBasePage
     {
-        this.WaitUntil(page => page.ContentFrame.Displayed, this.WaitTimeout);
-        this.App.SwitchTo().Frame(this.ContentFrame);
+        this.WaitUntil(
+            _ => this.App.FindElement(this.contentFrameLocator).Displayed,
+            this.WaitTimeout);
+        this.App.SwitchTo().Frame(this.App.FindElement(this.contentFrameLocator));
         return (T)this;
     }
 }

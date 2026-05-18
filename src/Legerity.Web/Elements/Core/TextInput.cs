@@ -1,10 +1,10 @@
-namespace Legerity.Web.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Legerity.Web.Elements;
 using Legerity.Web.Extensions;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Web.Elements.Core;
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Input text control.
 /// </summary>
@@ -17,7 +17,7 @@ public class TextInput : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public TextInput(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +25,9 @@ public class TextInput : WebElementWrapper
     /// Initializes a new instance of the <see cref="TextInput"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public TextInput(RemoteWebElement element)
+    public TextInput(WebElement element)
         : base(element)
     {
     }
@@ -47,7 +47,7 @@ public class TextInput : WebElementWrapper
     /// <returns>
     /// The <see cref="TextInput"/>.
     /// </returns>
-    public static implicit operator TextInput(RemoteWebElement element)
+    public static implicit operator TextInput(WebElement element)
     {
         return new TextInput(element);
     }
@@ -58,7 +58,6 @@ public class TextInput : WebElementWrapper
     /// <param name="text">The text to display.</param>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SetText(string text)
     {
         this.ClearText();
@@ -70,7 +69,6 @@ public class TextInput : WebElementWrapper
     /// </summary>
     /// <param name="text">The text to append.</param>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void AppendText(string text)
     {
@@ -82,7 +80,6 @@ public class TextInput : WebElementWrapper
     /// Clears the text from the text box.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ClearText()
     {

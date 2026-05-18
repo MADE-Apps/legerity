@@ -1,15 +1,14 @@
-namespace Legerity.Windows.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using Extensions;
 using Legerity.Exceptions;
+using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.Core;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP InkToolbar control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core UWP InkToolbar control.
 /// </summary>
 public partial class InkToolbar : WindowsElementWrapper
 {
@@ -23,9 +22,9 @@ public partial class InkToolbar : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="InkToolbar"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public InkToolbar(WindowsElement element)
+    public InkToolbar(AppiumElement element)
         : base(element)
     {
     }
@@ -109,45 +108,17 @@ public partial class InkToolbar : WindowsElementWrapper
         this.Driver.FindElement(this.highlighterFlyoutLocator);
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InkToolbar"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InkToolbar"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="InkToolbar"/>.
     /// </returns>
-    public static implicit operator InkToolbar(WindowsElement element)
+    public static implicit operator InkToolbar(WebElement element)
     {
-        return new InkToolbar(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="InkToolbar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InkToolbar"/>.
-    /// </returns>
-    public static implicit operator InkToolbar(AppiumWebElement element)
-    {
-        return new InkToolbar(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InkToolbar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InkToolbar"/>.
-    /// </returns>
-    public static implicit operator InkToolbar(RemoteWebElement element)
-    {
-        return new InkToolbar(element as WindowsElement);
+        return new InkToolbar(element as AppiumElement);
     }
 
     /// <summary>
@@ -156,7 +127,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectBallpointPen()
     {
         if (!this.BallpointPenButton.IsSelected)
@@ -171,7 +141,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     public virtual void OpenBallpointPenFlyout()
     {
@@ -187,7 +156,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <param name="color">
     /// The color to set.
     /// </param>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
@@ -205,7 +173,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <param name="color">
     /// The partial color name to set.
     /// </param>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
@@ -222,7 +189,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectPencil()
     {
@@ -237,7 +203,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     public virtual void OpenPencilFlyout()
@@ -256,7 +221,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// </param>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
@@ -275,7 +239,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     public virtual void SetPencilColorByPartialName(string color)
@@ -289,7 +252,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectHighlighter()
     {
@@ -302,7 +264,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <summary>
     /// Opens the pencil flyout.
     /// </summary>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
@@ -322,7 +283,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// The color to set.
     /// </param>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
@@ -339,7 +299,6 @@ public partial class InkToolbar : WindowsElementWrapper
     /// <param name="color">
     /// The color to set.
     /// </param>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>

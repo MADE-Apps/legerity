@@ -1,14 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 
+[assembly: LevelOfParallelism(5)]
 [assembly: ExcludeFromCodeCoverage]
 
 namespace Legerity.WinUI.Tests.Tests;
-
-using System;
-using System.Collections.Generic;
-using Legerity;
-using Legerity.Windows;
-
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.
 /// </summary>
@@ -66,6 +61,7 @@ public abstract class BaseTestClass : LegerityTestClass
     [TearDown]
     public virtual void Cleanup()
     {
+        this.StopApp(false);
     }
 
     /// <summary>

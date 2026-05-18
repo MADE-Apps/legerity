@@ -1,12 +1,12 @@
-namespace Legerity.Windows.Tests.Pages;
 
-using Elements.Core;
+using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class PivotPage : BaseNavigationPage
 {
-    public PivotPage(RemoteWebDriver app) : base(app)
+    public PivotPage(WebDriver app) : base(app)
     {
     }
 

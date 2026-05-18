@@ -1,14 +1,13 @@
-namespace Legerity.Windows.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Linq;
 using Legerity.Exceptions;
 using Legerity.Extensions;
 using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
 
+namespace Legerity.Windows.Elements.Core;
 /// <summary>
 /// Defines the color flyout components of the <see cref="InkToolbar"/>.
 /// </summary>
@@ -25,9 +24,9 @@ public partial class InkToolbar
         /// Initializes a new instance of the <see cref="InkToolbarColorFlyoutBase"/> class.
         /// </summary>
         /// <param name="element">
-        /// The <see cref="WindowsElement"/> reference.
+        /// The <see cref="AppiumElement"/> reference.
         /// </param>
-        protected InkToolbarColorFlyoutBase(WindowsElement element)
+        protected InkToolbarColorFlyoutBase(AppiumElement element)
             : base(element)
         {
         }
@@ -62,7 +61,6 @@ public partial class InkToolbar
         /// Sets the color of the ink.
         /// </summary>
         /// <param name="color">The color to select.</param>
-        /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
         /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
         /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
         /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
@@ -79,7 +77,6 @@ public partial class InkToolbar
         /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
         /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
         /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-        /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
         /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
         public virtual void SetColorByPartialName(string partialColor)
         {
@@ -89,7 +86,7 @@ public partial class InkToolbar
         /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
         /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
         /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-        private AppiumWebElement GetSelectedColor()
+        private AppiumElement GetSelectedColor()
         {
             this.VerifyElementShown(this.penColorPaletteLocator, TimeSpan.FromSeconds(2));
 

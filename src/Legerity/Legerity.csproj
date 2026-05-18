@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity - Framework for UI testing with Selenium/Appium</Product>
     <Description>
       This is a meta-package for the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
@@ -16,19 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Legerity.Android\Legerity.Android.csproj" />
     <ProjectReference Include="..\Legerity.Core\Legerity.Core.csproj" />
     <ProjectReference Include="..\Legerity.IOS\Legerity.IOS.csproj" />
     <ProjectReference Include="..\Legerity.Web\Legerity.Web.csproj" />
     <ProjectReference Include="..\Legerity.Windows\Legerity.Windows.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

@@ -1,14 +1,13 @@
-namespace Legerity.Windows.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using Legerity.Exceptions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.Core;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP AutoSuggestBox control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core UWP AutoSuggestBox control.
 /// </summary>
 public class AutoSuggestBox : WindowsElementWrapper
 {
@@ -18,9 +17,9 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="AutoSuggestBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public AutoSuggestBox(WindowsElement element)
+    public AutoSuggestBox(AppiumElement element)
         : base(element)
     {
     }
@@ -29,7 +28,7 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// Gets the element associated with the suggestions popup.
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public virtual AppiumWebElement SuggestionsPopup => this.FindElement(this.suggestionsPopupLocator);
+    public virtual AppiumElement SuggestionsPopup => this.FindElement(this.suggestionsPopupLocator);
 
     /// <summary>
     /// Gets the element associated with the suggestion list when the <see cref="SuggestionsPopup"/> is shown.
@@ -50,45 +49,17 @@ public class AutoSuggestBox : WindowsElementWrapper
     public virtual string Text => this.TextBox.Text;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="AutoSuggestBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="AutoSuggestBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="AutoSuggestBox"/>.
     /// </returns>
-    public static implicit operator AutoSuggestBox(WindowsElement element)
+    public static implicit operator AutoSuggestBox(WebElement element)
     {
-        return new AutoSuggestBox(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="AutoSuggestBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="AutoSuggestBox"/>.
-    /// </returns>
-    public static implicit operator AutoSuggestBox(AppiumWebElement element)
-    {
-        return new AutoSuggestBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="AutoSuggestBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="AutoSuggestBox"/>.
-    /// </returns>
-    public static implicit operator AutoSuggestBox(RemoteWebElement element)
-    {
-        return new AutoSuggestBox(element as WindowsElement);
+        return new AutoSuggestBox(element as AppiumElement);
     }
 
     /// <summary>
@@ -99,7 +70,6 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectSuggestion(string suggestion)
     {
@@ -116,7 +86,6 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectSuggestion(string value, string suggestion, int popupWaitTimeout = 2000)
     {
@@ -137,7 +106,6 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="ElementsNotShownException">Thrown when no elements are shown for the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectSuggestionByPartialSuggestion(string value, string partialSuggestion, int popupWaitTimeout = 2000)
     {
@@ -154,7 +122,6 @@ public class AutoSuggestBox : WindowsElementWrapper
     /// <param name="value">The value to set.</param>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetText(string value)
     {

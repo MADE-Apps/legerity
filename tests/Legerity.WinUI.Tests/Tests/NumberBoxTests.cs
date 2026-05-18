@@ -1,8 +1,8 @@
-namespace Legerity.WinUI.Tests.Tests;
-
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.WinUI.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.WinUI.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class NumberBoxTests : BaseTestClass
@@ -73,7 +73,7 @@ internal class NumberBoxTests : BaseTestClass
 
     private NumberBoxPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<NumberBoxPage>("NumberBox");
     }
 }

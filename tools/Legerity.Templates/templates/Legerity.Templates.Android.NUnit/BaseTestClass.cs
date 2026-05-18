@@ -1,7 +1,7 @@
-namespace Legerity.Templates.Android.NUnit;
-
 using System;
 using System.Collections.Generic;
+
+namespace Legerity.Templates.Android.NUnit;
 
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.

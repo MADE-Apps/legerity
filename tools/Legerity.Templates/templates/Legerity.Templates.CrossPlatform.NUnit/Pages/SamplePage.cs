@@ -1,10 +1,10 @@
-namespace Legerity.Templates.CrossPlatform.NUnit.Pages;
-
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
+
+namespace Legerity.Templates.CrossPlatform.NUnit.Pages;
 
 internal class SamplePage : BasePage
 {

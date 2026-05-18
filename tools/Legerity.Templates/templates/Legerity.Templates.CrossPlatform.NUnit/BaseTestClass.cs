@@ -1,8 +1,8 @@
-namespace Legerity.Templates.CrossPlatform.NUnit;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
+
+namespace Legerity.Templates.CrossPlatform.NUnit;
 
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.

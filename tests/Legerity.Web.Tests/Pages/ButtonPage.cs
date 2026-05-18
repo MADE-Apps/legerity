@@ -1,14 +1,17 @@
-namespace Legerity.Web.Tests.Pages;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Elements.Core;
+using Legerity.Extensions;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class ButtonPage : W3SchoolsBasePage
 {
-    private readonly By buttonLocator = By.TagName("button");
+    private readonly By buttonLocator = By.TagName("button").WithText("Click Me!");
 
-    public ButtonPage(RemoteWebDriver app)
+    public ButtonPage(WebDriver app)
         : base(app)
     {
     }

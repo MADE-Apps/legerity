@@ -1,26 +1,26 @@
-namespace Legerity.Windows.Elements;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using Legerity.Exceptions;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
+namespace Legerity.Windows.Elements;
 /// <summary>
-/// Defines an element wrapper for a <see cref="WindowsElement"/>.
+/// Defines an element wrapper for a <see cref="AppiumElement"/>.
 /// </summary>
-public class WindowsElementWrapper : ElementWrapper<WindowsElement>
+public class WindowsElementWrapper : ElementWrapper<AppiumElement>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="WindowsElementWrapper"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public WindowsElementWrapper(WindowsElement element)
+    public WindowsElementWrapper(AppiumElement element)
         : base(element)
     {
     }
@@ -28,48 +28,20 @@ public class WindowsElementWrapper : ElementWrapper<WindowsElement>
     /// <summary>
     /// Gets the instance of the Appium driver for the Windows application.
     /// </summary>
-    public WindowsDriver<WindowsElement> Driver => this.ElementDriver as WindowsDriver<WindowsElement>;
+    public WindowsDriver Driver => this.ElementDriver as WindowsDriver;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="WindowsElementWrapper"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="WindowsElementWrapper"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="WindowsElementWrapper"/>.
     /// </returns>
-    public static implicit operator WindowsElementWrapper(WindowsElement element)
+    public static implicit operator WindowsElementWrapper(WebElement element)
     {
-        return new WindowsElementWrapper(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="WindowsElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="WindowsElementWrapper"/>.
-    /// </returns>
-    public static implicit operator WindowsElementWrapper(AppiumWebElement element)
-    {
-        return new WindowsElementWrapper(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="WindowsElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="WindowsElementWrapper"/>.
-    /// </returns>
-    public static implicit operator WindowsElementWrapper(RemoteWebElement element)
-    {
-        return new WindowsElementWrapper(element as WindowsElement);
+        return new WindowsElementWrapper(element as AppiumElement);
     }
 
     /// <summary>

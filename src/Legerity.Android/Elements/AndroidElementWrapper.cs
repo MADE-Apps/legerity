@@ -1,27 +1,26 @@
-namespace Legerity.Android.Elements;
-
-using System;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using Legerity.Exceptions;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
+namespace Legerity.Android.Elements;
 /// <summary>
-/// Defines an element wrapper for a <see cref="AndroidElement"/>.
+/// Defines an element wrapper for a <see cref="AppiumElement"/>.
 /// </summary>
-public class AndroidElementWrapper : ElementWrapper<AndroidElement>
+public class AndroidElementWrapper : ElementWrapper<AppiumElement>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AndroidElementWrapper"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public AndroidElementWrapper(AndroidElement element)
+    public AndroidElementWrapper(AppiumElement element)
         : base(element)
     {
     }
@@ -29,48 +28,20 @@ public class AndroidElementWrapper : ElementWrapper<AndroidElement>
     /// <summary>
     /// Gets the instance of the Appium driver for the Android application.
     /// </summary>
-    public AndroidDriver<AndroidElement> Driver => this.ElementDriver as AndroidDriver<AndroidElement>;
+    public AndroidDriver Driver => this.ElementDriver as AndroidDriver;
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="AndroidElementWrapper"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="AndroidElementWrapper"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="AndroidElementWrapper"/>.
     /// </returns>
-    public static implicit operator AndroidElementWrapper(AndroidElement element)
+    public static implicit operator AndroidElementWrapper(WebElement element)
     {
-        return new AndroidElementWrapper(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="AndroidElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="AndroidElementWrapper"/>.
-    /// </returns>
-    public static implicit operator AndroidElementWrapper(AppiumWebElement element)
-    {
-        return new AndroidElementWrapper(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="AndroidElementWrapper"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="AndroidElementWrapper"/>.
-    /// </returns>
-    public static implicit operator AndroidElementWrapper(RemoteWebElement element)
-    {
-        return new AndroidElementWrapper(element as AndroidElement);
+        return new AndroidElementWrapper(element as AppiumElement);
     }
 
     /// <summary>

@@ -1,11 +1,10 @@
-namespace Legerity.Windows.Helpers;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using Legerity.Windows.Exceptions;
 
+namespace Legerity.Windows.Helpers;
 /// <summary>
 /// Defines a helper class for the WinAppDriver.
 /// </summary>
@@ -43,7 +42,7 @@ public static class WinAppDriverHelper
             return;
         }
 
-        bool isInstalled = IsInstalled(path);
+        var isInstalled = IsInstalled(path);
         if (!isInstalled)
         {
             throw new WinAppDriverNotFoundException(path);

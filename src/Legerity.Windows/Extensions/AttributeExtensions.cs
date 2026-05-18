@@ -1,10 +1,10 @@
-namespace Legerity.Windows.Extensions;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Extensions;
 /// <summary>
 /// Defines a collection of extensions for retrieving element attributes.
 /// </summary>
@@ -25,7 +25,7 @@ public static class AttributeExtensions
     /// Retrieves the AutomationId attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve an AutomationId from.</param>
     /// <returns>The AutomationId of the element.</returns>
@@ -51,7 +51,7 @@ public static class AttributeExtensions
     /// Retrieves the HelpText attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the HelpText from.</param>
     /// <returns>The HelpText of the element.</returns>
@@ -77,7 +77,7 @@ public static class AttributeExtensions
     /// Retrieves the Value.Value attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a value from.</param>
     /// <returns>The value of the element.</returns>
@@ -103,7 +103,7 @@ public static class AttributeExtensions
     /// Retrieves the Value.IsReadonly attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the readonly state from.</param>
     /// <returns>A value indicating whether the item is readonly.</returns>
@@ -134,7 +134,7 @@ public static class AttributeExtensions
     /// Retrieves the Toggle.ToggleState attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a toggle state from.</param>
     /// <returns>The <see cref="ToggleState"/> of the element.</returns>
@@ -161,7 +161,7 @@ public static class AttributeExtensions
     /// Retrieves the SelectionItem.IsSelected attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the selected state from.</param>
     /// <returns>A value indicating whether the item is selected.</returns>
@@ -187,7 +187,7 @@ public static class AttributeExtensions
     /// Retrieves the RangeValue.Value attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the range value from.</param>
     /// <returns>The range value of the element.</returns>
@@ -213,7 +213,7 @@ public static class AttributeExtensions
     /// Retrieves the RangeValue.Maximum attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the range max value from.</param>
     /// <returns>The range max value of the element.</returns>
@@ -239,7 +239,7 @@ public static class AttributeExtensions
     /// Retrieves the RangeValue.Minimum attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the range min value from.</param>
     /// <returns>The range min value of the element.</returns>
@@ -265,7 +265,7 @@ public static class AttributeExtensions
     /// Retrieves the RangeValue.SmallChange attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the range step value from.</param>
     /// <returns>The range step value of the element.</returns>
@@ -291,7 +291,7 @@ public static class AttributeExtensions
     /// Retrieves the RangeValue.IsReadOnly attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve the readonly state from.</param>
     /// <returns>A value indicating whether the item is readonly.</returns>

@@ -1,9 +1,11 @@
-namespace Legerity.Android;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android.UiAutomator;
 
+namespace Legerity.Android;
 /// <summary>
 /// Defines a collection of extra locator constraints for <see cref="By"/>.
 /// </summary>
