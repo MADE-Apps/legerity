@@ -107,6 +107,7 @@ public sealed class DriverSession : IDisposable
                 var existingId = value.Properties.RuntimeId.ValueOrDefault;
                 if (existingId != null && string.Join(".", existingId) == runtimeIdStr)
                 {
+                    _knownElements[key] = element;
                     return key;
                 }
             }

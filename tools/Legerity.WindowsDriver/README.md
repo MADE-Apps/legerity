@@ -9,18 +9,29 @@ A W3C WebDriver compliant server for Windows desktop application UI testing, bui
 - **Session management** - Launch and manage Windows application sessions
 - **Element finding** - Supports AutomationId, Name, ClassName, XPath, and TagName locator strategies
 - **Element interaction** - Click, send keys, get text, get attributes, and more
-- **.NET tool** - Install and run with `dotnet tool install`
+- **Self-contained** - Single executable, no .NET runtime installation required
 
 ## Installation
 
-```bash
-dotnet tool install --global Legerity.WindowsDriver
-```
+Download the latest release from [GitHub Releases](https://github.com/MADE-Apps/legerity/releases) for your platform:
+
+- **win-x64** - 64-bit Intel/AMD Windows
+- **win-arm64** - ARM64 Windows (Surface Pro X, etc.)
+
+Extract the zip and add the folder to your system `PATH`. The Legerity test framework will automatically discover `Legerity.WindowsDriver.exe` on the PATH.
+
+### Automatic discovery
+
+`LegerityWindowsDriverHelper` resolves the driver in this order:
+
+1. **Explicit path** - `LegerityWindowsDriverHelper.DriverPath` if set
+2. **System PATH** - Searches for `Legerity.WindowsDriver.exe` on PATH
+3. **Local build output** - Searches `tools/Legerity.WindowsDriver/bin/` in the repository (for development)
 
 ## Usage
 
 ```bash
-legerity-windows-driver --port 4723
+Legerity.WindowsDriver --port 4723
 ```
 
 The server starts on `http://localhost:4723` by default and accepts standard W3C WebDriver requests.

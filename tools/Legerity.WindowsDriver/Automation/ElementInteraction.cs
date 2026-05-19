@@ -2,6 +2,7 @@ namespace Legerity.WindowsDriver.Automation;
 
 using FlaUI.Core.AutomationElements;
 using FlaUI.Core.Definitions;
+using FlaUI.Core.WindowsAPI;
 using Legerity.WindowsDriver.Exceptions;
 using Legerity.WindowsDriver.Models;
 
@@ -62,15 +63,27 @@ public static class ElementInteraction
     {
         try
         {
-            if (element.Patterns.Value.IsSupported)
+            var containsSpecialKeys = text.Any(c => c >= '\uE000' && c <= '\uE050');
+
+            if (!containsSpecialKeys && element.Patterns.Value.IsSupported)
             {
                 element.Patterns.Value.Pattern.SetValue(text);
                 return;
             }
 
-            // Fallback to keyboard input
             element.Focus();
-            FlaUI.Core.Input.Keyboard.Type(text);
+
+            foreach (var ch in text)
+            {
+                if (TryMapSpecialKey(ch, out var vk))
+                {
+                    FlaUI.Core.Input.Keyboard.Type(vk);
+                }
+                else
+                {
+                    FlaUI.Core.Input.Keyboard.Type(ch.ToString());
+                }
+            }
         }
         catch (WebDriverException)
         {
@@ -81,6 +94,66 @@ public static class ElementInteraction
             throw new WebDriverException(WebDriverErrors.ElementNotInteractable,
                 $"Failed to send keys to element: {ex.Message}", 400);
         }
+    }
+
+    private static bool TryMapSpecialKey(char ch, out VirtualKeyShort vk)
+    {
+        vk = ch switch
+        {
+            '\uE003' => VirtualKeyShort.BACK,
+            '\uE004' => VirtualKeyShort.TAB,
+            '\uE005' => VirtualKeyShort.CLEAR,
+            '\uE006' => VirtualKeyShort.RETURN,
+            '\uE007' => VirtualKeyShort.RETURN,
+            '\uE008' => VirtualKeyShort.SHIFT,
+            '\uE009' => VirtualKeyShort.CONTROL,
+            '\uE00A' => VirtualKeyShort.ALT,
+            '\uE00B' => VirtualKeyShort.PAUSE,
+            '\uE00C' => VirtualKeyShort.ESCAPE,
+            '\uE00D' => VirtualKeyShort.SPACE,
+            '\uE00E' => VirtualKeyShort.PRIOR,
+            '\uE00F' => VirtualKeyShort.NEXT,
+            '\uE010' => VirtualKeyShort.END,
+            '\uE011' => VirtualKeyShort.HOME,
+            '\uE012' => VirtualKeyShort.LEFT,
+            '\uE013' => VirtualKeyShort.UP,
+            '\uE014' => VirtualKeyShort.RIGHT,
+            '\uE015' => VirtualKeyShort.DOWN,
+            '\uE016' => VirtualKeyShort.INSERT,
+            '\uE017' => VirtualKeyShort.DELETE,
+            '\uE031' => VirtualKeyShort.F1,
+            '\uE032' => VirtualKeyShort.F2,
+            '\uE033' => VirtualKeyShort.F3,
+            '\uE034' => VirtualKeyShort.F4,
+            '\uE035' => VirtualKeyShort.F5,
+            '\uE036' => VirtualKeyShort.F6,
+            '\uE037' => VirtualKeyShort.F7,
+            '\uE038' => VirtualKeyShort.F8,
+            '\uE039' => VirtualKeyShort.F9,
+            '\uE03A' => VirtualKeyShort.F10,
+            '\uE03B' => VirtualKeyShort.F11,
+            '\uE03C' => VirtualKeyShort.F12,
+            '\uE03D' => VirtualKeyShort.LWIN,
+            '\uE01A' => VirtualKeyShort.NUMPAD0,
+            '\uE01B' => VirtualKeyShort.NUMPAD1,
+            '\uE01C' => VirtualKeyShort.NUMPAD2,
+            '\uE01D' => VirtualKeyShort.NUMPAD3,
+            '\uE01E' => VirtualKeyShort.NUMPAD4,
+            '\uE01F' => VirtualKeyShort.NUMPAD5,
+            '\uE020' => VirtualKeyShort.NUMPAD6,
+            '\uE021' => VirtualKeyShort.NUMPAD7,
+            '\uE022' => VirtualKeyShort.NUMPAD8,
+            '\uE023' => VirtualKeyShort.NUMPAD9,
+            '\uE024' => VirtualKeyShort.MULTIPLY,
+            '\uE025' => VirtualKeyShort.ADD,
+            '\uE026' => VirtualKeyShort.SEPARATOR,
+            '\uE027' => VirtualKeyShort.SUBTRACT,
+            '\uE028' => VirtualKeyShort.DECIMAL,
+            '\uE029' => VirtualKeyShort.DIVIDE,
+            _ => 0,
+        };
+
+        return vk != 0;
     }
 
     public static void Clear(AutomationElement element)
@@ -157,11 +230,10 @@ public static class ElementInteraction
                 ? element.Patterns.Selection.Pattern.IsSelectionRequired.ValueOrDefault.ToString().ToLowerInvariant()
                 : null,
             "selection.selection" => element.Patterns.Selection.IsSupported
-                ? string.Join(", ", element.Patterns.Selection.Pattern.Selection.ValueOrDefault
-                    ?.Select(e => e.Properties.Name.ValueOrDefault ?? string.Empty) ?? [])
+                ? GetSelectedChildNames(element)
                 : null,
             "selectionitem.isselected" or "isselected" => element.Patterns.SelectionItem.IsSupported
-                ? element.Patterns.SelectionItem.Pattern.IsSelected.ValueOrDefault.ToString().ToLowerInvariant()
+                ? IsSelected(element).ToString().ToLowerInvariant()
                 : null,
             "expandcollapse.expandcollapsestate" => element.Patterns.ExpandCollapse.IsSupported
                 ? ((int)element.Patterns.ExpandCollapse.Pattern.ExpandCollapseState.Value).ToString()
@@ -226,6 +298,12 @@ public static class ElementInteraction
         }
 
         return false;
+    }
+
+    private static string GetSelectedChildNames(AutomationElement element)
+    {
+        var items = element.Patterns.Selection.Pattern.Selection.ValueOrDefault;
+        return string.Join(", ", items?.Select(e => e.Properties.Name.ValueOrDefault ?? string.Empty) ?? []);
     }
 
     public static ElementRect GetRect(AutomationElement element)

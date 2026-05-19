@@ -45,12 +45,40 @@ public class FlipView : WindowsElementWrapper
     /// <summary>
     /// Gets the currently selected item.
     /// </summary>
-    public virtual AppiumElement SelectedItem => this.Items.FirstOrDefault(i => i.IsSelected());
+    public virtual AppiumElement SelectedItem
+    {
+        get
+        {
+            var items = this.Items;
+            var idx = GetSelectedIndexFromItems(items);
+            return idx >= 0 && idx < items.Count ? items[idx] : items.FirstOrDefault();
+        }
+    }
 
     /// <summary>
     /// Gets the currently selected item index.
     /// </summary>
-    public virtual int SelectedIndex => this.Items.IndexOf(this.SelectedItem);
+    public virtual int SelectedIndex => GetSelectedIndexFromItems(this.Items);
+
+    private int GetSelectedIndexFromItems(ReadOnlyCollection<AppiumElement> items)
+    {
+        // WinUI FlipView has a bug where all items report SelectionItem.IsSelected = true.
+        // Use the FlipView's own Selection.Selection attribute which correctly reports
+        // the selected item name.
+        var selectedName = this.Element.GetAttribute("Selection.Selection");
+        if (!string.IsNullOrEmpty(selectedName))
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (selectedName.Equals(items[i].GetAttribute("Name"), StringComparison.OrdinalIgnoreCase))
+                {
+                    return i;
+                }
+            }
+        }
+
+        return 0;
+    }
 
     /// <summary>
     /// Allows conversion of a <see cref="WebElement"/> to the <see cref="FlipView"/> without direct casting.
@@ -113,7 +141,6 @@ public class FlipView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectNext()
     {
-        this.Click();
         this.Element.SendKeys(Keys.ArrowRight);
     }
 
@@ -124,7 +151,6 @@ public class FlipView : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectPrevious()
     {
-        this.Click();
         this.Element.SendKeys(Keys.ArrowLeft);
     }
 }

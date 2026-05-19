@@ -1,25 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <Product>Legerity Windows Driver - W3C WebDriver server for Windows UI Automation</Product>
     <Description>A W3C WebDriver compliant server for Windows UI Automation testing, replacing WinAppDriver</Description>
     <RootNamespace>Legerity.WindowsDriver</RootNamespace>
-
-    <!-- NuGet package metadata -->
-    <IsPackable>true</IsPackable>
-    <PackAsTool>true</PackAsTool>
-    <ToolCommandName>legerity-windows-driver</ToolCommandName>
-    <PackageId>Legerity.WindowsDriver</PackageId>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>UI Test WebDriver WinAppDriver LegerityWindowsDriver Windows UIA UIAutomation Appium Selenium</PackageTags>
+    <AssemblyName>Legerity.WindowsDriver</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
-    <PackageReference Include="FlaUI.Core" Version="5.0.0" />
-    <PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
+    <PackageReference Include="FlaUI.Core" Version="4.0.0" />
+    <PackageReference Include="FlaUI.UIA3" Version="4.0.0" />
     <PackageReference Include="System.Drawing.Common" Version="9.0.5" />
   </ItemGroup>
 </Project>

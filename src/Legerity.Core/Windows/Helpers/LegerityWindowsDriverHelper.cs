@@ -114,7 +114,6 @@ public static class LegerityWindowsDriverHelper
     private static string ResolveDriverPath()
     {
         const string exeName = "Legerity.WindowsDriver.exe";
-        const string toolShimName = "legerity-windows-driver.exe";
 
         // 1. Explicit path set by caller
         if (!string.IsNullOrEmpty(DriverPath))
@@ -128,16 +127,10 @@ public static class LegerityWindowsDriverHelper
                 $"The Legerity Windows Driver was not found at the specified path: {DriverPath}");
         }
 
-        // 2. Check PATH for the dotnet tool shim or the raw executable
+        // 2. Check PATH for the executable
         var pathDirs = Environment.GetEnvironmentVariable("PATH")?.Split(Path.PathSeparator) ?? [];
         foreach (var dir in pathDirs)
         {
-            var shimCandidate = Path.Combine(dir, toolShimName);
-            if (File.Exists(shimCandidate))
-            {
-                return shimCandidate;
-            }
-
             var exeCandidate = Path.Combine(dir, exeName);
             if (File.Exists(exeCandidate))
             {
@@ -145,15 +138,7 @@ public static class LegerityWindowsDriverHelper
             }
         }
 
-        // 3. Check dotnet global tools directory
-        var dotnetToolsDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".dotnet", "tools");
-        var toolShimPath = Path.Combine(dotnetToolsDir, toolShimName);
-        if (File.Exists(toolShimPath))
-        {
-            return toolShimPath;
-        }
-
-        // 4. Check local build output (development scenario)
+        // 3. Check local build output (development scenario)
         var assemblyDir = Path.GetDirectoryName(typeof(LegerityWindowsDriverHelper).Assembly.Location);
         if (assemblyDir != null)
         {
@@ -162,13 +147,16 @@ public static class LegerityWindowsDriverHelper
             {
                 foreach (var config in new[] { "Debug", "Release" })
                 {
-                    var tfmDir = Path.Combine(searchDir.FullName, "tools", "Legerity.WindowsDriver", "bin", config, "net10.0");
-                    if (Directory.Exists(tfmDir))
+                    foreach (var tfm in new[] { "net10.0-windows", "net10.0" })
                     {
-                        var matches = Directory.GetFiles(tfmDir, exeName, SearchOption.AllDirectories);
-                        if (matches.Length > 0)
+                        var tfmDir = Path.Combine(searchDir.FullName, "tools", "Legerity.WindowsDriver", "bin", config, tfm);
+                        if (Directory.Exists(tfmDir))
                         {
-                            return matches[0];
+                            var matches = Directory.GetFiles(tfmDir, exeName, SearchOption.AllDirectories);
+                            if (matches.Length > 0)
+                            {
+                                return matches[0];
+                            }
                         }
                     }
                 }
@@ -179,7 +167,7 @@ public static class LegerityWindowsDriverHelper
 
         throw new WindowsDriverLoadFailedException(
             $"The Legerity Windows Driver executable could not be found. " +
-            "Install it with 'dotnet tool install --global Legerity.WindowsDriver', set LegerityWindowsDriverHelper.DriverPath, " +
-            "or ensure it is on your PATH.");
+            "Download it from https://github.com/MADE-Apps/legerity/releases and add it to your PATH, " +
+            "or set LegerityWindowsDriverHelper.DriverPath to the executable location.");
     }
 }
