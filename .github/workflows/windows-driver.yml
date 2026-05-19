@@ -51,16 +51,16 @@ jobs:
         dotnet-version: 10.0.x
 
     - name: Restore
-      run: dotnet restore $env:PROJECT
+      run: dotnet restore $env:PROJECT --runtime win-x64 --runtime win-arm64
 
     - name: Build
       run: dotnet build $env:PROJECT --configuration $env:BUILD_CONFIG --no-restore -p:Version=$env:BUILD_VERSION
 
     - name: Publish (win-x64)
-      run: dotnet publish $env:PROJECT --configuration $env:BUILD_CONFIG --no-restore --runtime win-x64 --self-contained -p:Version=$env:BUILD_VERSION -p:PublishSingleFile=true -o publish/win-x64
+      run: dotnet publish $env:PROJECT --configuration $env:BUILD_CONFIG --runtime win-x64 --self-contained -p:Version=$env:BUILD_VERSION -p:PublishSingleFile=true -o publish/win-x64
 
     - name: Publish (win-arm64)
-      run: dotnet publish $env:PROJECT --configuration $env:BUILD_CONFIG --no-restore --runtime win-arm64 --self-contained -p:Version=$env:BUILD_VERSION -p:PublishSingleFile=true -o publish/win-arm64
+      run: dotnet publish $env:PROJECT --configuration $env:BUILD_CONFIG --runtime win-arm64 --self-contained -p:Version=$env:BUILD_VERSION -p:PublishSingleFile=true -o publish/win-arm64
 
     - name: Package artifacts
       run: |
