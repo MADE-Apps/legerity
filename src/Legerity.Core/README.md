@@ -1,4 +1,4 @@
-# Legerity.Core
+# Legerity Core
 
 [![NuGet](https://img.shields.io/nuget/v/Legerity.Core.svg)](https://www.nuget.org/packages/Legerity.Core/)
 

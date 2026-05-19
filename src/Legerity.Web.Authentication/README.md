@@ -1,4 +1,4 @@
-# Legerity.Web.Authentication
+# Legerity for Web Authentication
 
 [![NuGet](https://img.shields.io/nuget/v/Legerity.Web.Authentication.svg)](https://www.nuget.org/packages/Legerity.Web.Authentication/)
 

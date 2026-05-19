@@ -2,9 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <Product>Legerity Windows Driver</Product>
+    <Product>Legerity Windows Driver - W3C WebDriver server for Windows UI Automation</Product>
     <Description>A W3C WebDriver compliant server for Windows UI Automation testing, replacing WinAppDriver</Description>
     <RootNamespace>Legerity.WindowsDriver</RootNamespace>
 
@@ -12,16 +10,11 @@
     <IsPackable>true</IsPackable>
     <PackageId>Legerity.WindowsDriver</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>WebDriver WinAppDriver Windows UIA UIAutomation Appium Selenium</PackageTags>
+    <PackageTags>UI Test WebDriver WinAppDriver LegerityWindowsDriver Windows UIA UIAutomation Appium Selenium</PackageTags>
 
     <!-- Pack the publish output into tools/ so consumers get the exe -->
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FlaUI.Core" Version="5.0.0" />

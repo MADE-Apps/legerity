@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <Product>Legerity for WinUI - Framework for UI tests with Selenium/Appium</Product>
+    <Product>Legerity for WinUI - Framework for UI testing with Selenium/Appium</Product>
     <Description>WinUI extension for the Legerity UI testing framework. Provides typed element wrappers for InfoBar, MenuBar, NavigationView, NumberBox, RatingControl, and TabView.</Description>
     <PackageTags>UI Test Appium Selenium WinAppDriver LegerityWindowsDriver Windows WinUI</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.WinUI</RootNamespace>

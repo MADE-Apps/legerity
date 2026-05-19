@@ -3,12 +3,9 @@
   <PropertyGroup>
     <PackageType>Template</PackageType>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>Legerity Test Project Templates - Framework for UI testing with Selenium/Appium</Product>
-    <Description>
-      Get started with your automated UI testing with Legerity by creating new test projects with the Legerity test project templates.
-    </Description>
-    <PackageTags>UI Test Appium Selenium LegerityWindowsDriver POP Windows UWP WinUI Web Android IOS Xamarin MAUI Uno</PackageTags>
+    <Product>Legerity Templates - Project templates for the Legerity UI testing framework</Product>
+    <Description>dotnet new project templates for creating Legerity UI test projects with NUnit. Includes templates for Android, iOS, Web, Windows, and cross-platform applications.</Description>
+    <PackageTags>UI Test Appium Selenium WinAppDriver LegerityWindowsDriver POP Windows WinUI Web Android IOS Xamarin MAUI Uno</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.0.0</Version>
@@ -17,7 +14,7 @@
     <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
     <PackageProjectUrl>https://github.com/MADE-Apps/legerity</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>ProjectLogo.png</PackageIcon>
+    <PackageIcon>ProjectIcon.png</PackageIcon>
     <PackageReleaseNotes>https://github.com/MADE-Apps/legerity/releases</PackageReleaseNotes>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
@@ -25,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\assets\ProjectLogo.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\assets\ProjectIcon.png" Pack="true" PackagePath=""/>
     <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
     <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
     <Compile Remove="**\*" />

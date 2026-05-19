@@ -1,4 +1,4 @@
-# Legerity.PageObjectGenerator
+# Legerity Page Object Generator
 
 [![.NET Tool](https://img.shields.io/nuget/v/Legerity.PageObjectGenerator)](https://www.nuget.org/packages/Legerity.PageObjectGenerator/)
 

@@ -8,8 +8,8 @@
     <Nullable>enable</Nullable>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>legerity-pop</ToolCommandName>
-    <Product>Legerity Page Object Generator</Product>
-    <Description>A command line tool for auto generating page objects from Windows, Android, iOS, and web pages for UI tests using the Legerity framework</Description>
+    <Product>Legerity Page Object Generator - CLI tool for the Legerity UI testing framework</Product>
+    <Description>A dotnet CLI tool that auto-generates BasePage-derived page objects from XAML, AXML, Storyboard/XIB, and HTML layout files for UI tests using the Legerity framework.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RootNamespace>Legerity</RootNamespace>
     <PackageTags>PageObject Appium Selenium WinAppDriver LegerityWindowsDriver Windows WinUI Web Android IOS Xamarin MAUI Uno</PackageTags>

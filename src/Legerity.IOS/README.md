@@ -1,4 +1,4 @@
-# Legerity.IOS
+# Legerity for IOS
 
 [![NuGet](https://img.shields.io/nuget/v/Legerity.IOS.svg)](https://www.nuget.org/packages/Legerity.IOS/)
 

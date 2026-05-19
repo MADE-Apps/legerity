@@ -1,4 +1,4 @@
-# Legerity.Web
+# Legerity for Web
 
 [![NuGet](https://img.shields.io/nuget/v/Legerity.Web.svg)](https://www.nuget.org/packages/Legerity.Web/)
 

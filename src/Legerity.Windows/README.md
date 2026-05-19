@@ -1,4 +1,4 @@
-# Legerity.Windows
+# Legerity for Windows
 
 [![NuGet](https://img.shields.io/nuget/v/Legerity.Windows.svg)](https://www.nuget.org/packages/Legerity.Windows/)
 

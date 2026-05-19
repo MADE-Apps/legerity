@@ -61,10 +61,10 @@ jobs:
         dotnet-version: 10.0.x
 
     - name: Restore dependencies
-      run: dotnet restore $SOLUTION
+      run: dotnet restore $env:SOLUTION
 
     - name: Build
-      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore -p:Version=$BUILD_VERSION
+      run: dotnet build $env:SOLUTION --configuration $env:BUILD_CONFIG --no-restore -p:Version=$env:BUILD_VERSION
 
   publish:
     needs: build
@@ -94,10 +94,10 @@ jobs:
         dotnet-version: 10.0.x
 
     - name: Restore dependencies
-      run: dotnet restore $SOLUTION
+      run: dotnet restore $env:SOLUTION
 
     - name: Build
-      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore -p:Version=$BUILD_VERSION
+      run: dotnet build $env:SOLUTION --configuration $env:BUILD_CONFIG --no-restore -p:Version=$env:BUILD_VERSION
 
     - name: Publish to NuGet.org
       run: |

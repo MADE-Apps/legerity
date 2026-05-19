@@ -1,4 +1,4 @@
-# Legerity.Android
+# Legerity for Android
 
 [![NuGet](https://img.shields.io/nuget/v/Legerity.Android.svg)](https://www.nuget.org/packages/Legerity.Android/)
 

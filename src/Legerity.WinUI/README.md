@@ -1,4 +1,4 @@
-# Legerity.WinUI
+# Legerity for WinUI
 
 [![NuGet](https://img.shields.io/nuget/v/Legerity.WinUI.svg)](https://www.nuget.org/packages/Legerity.WinUI/)
 
