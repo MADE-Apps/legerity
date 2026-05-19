@@ -2,6 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <Product>Legerity Windows Driver - W3C WebDriver server for Windows UI Automation</Product>
     <Description>A W3C WebDriver compliant server for Windows UI Automation testing, replacing WinAppDriver</Description>
     <RootNamespace>Legerity.WindowsDriver</RootNamespace>
