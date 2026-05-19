@@ -114,7 +114,7 @@ public static class LegerityWindowsDriverHelper
     private static string ResolveDriverPath()
     {
         const string exeName = "Legerity.WindowsDriver.exe";
-        const string packageId = "legerity.windowsdriver";
+        const string toolShimName = "legerity-windows-driver.exe";
 
         // 1. Explicit path set by caller
         if (!string.IsNullOrEmpty(DriverPath))
@@ -128,18 +128,32 @@ public static class LegerityWindowsDriverHelper
                 $"The Legerity Windows Driver was not found at the specified path: {DriverPath}");
         }
 
-        // 2. Check PATH
+        // 2. Check PATH for the dotnet tool shim or the raw executable
         var pathDirs = Environment.GetEnvironmentVariable("PATH")?.Split(Path.PathSeparator) ?? [];
         foreach (var dir in pathDirs)
         {
-            var candidate = Path.Combine(dir, exeName);
-            if (File.Exists(candidate))
+            var shimCandidate = Path.Combine(dir, toolShimName);
+            if (File.Exists(shimCandidate))
             {
-                return candidate;
+                return shimCandidate;
+            }
+
+            var exeCandidate = Path.Combine(dir, exeName);
+            if (File.Exists(exeCandidate))
+            {
+                return exeCandidate;
             }
         }
 
-        // 3. Check local build output (development scenario)
+        // 3. Check dotnet global tools directory
+        var dotnetToolsDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".dotnet", "tools");
+        var toolShimPath = Path.Combine(dotnetToolsDir, toolShimName);
+        if (File.Exists(toolShimPath))
+        {
+            return toolShimPath;
+        }
+
+        // 4. Check local build output (development scenario)
         var assemblyDir = Path.GetDirectoryName(typeof(LegerityWindowsDriverHelper).Assembly.Location);
         if (assemblyDir != null)
         {
@@ -148,7 +162,7 @@ public static class LegerityWindowsDriverHelper
             {
                 foreach (var config in new[] { "Debug", "Release" })
                 {
-                    var tfmDir = Path.Combine(searchDir.FullName, "tools", "Legerity.WindowsDriver", "bin", config, "net10.0-windows");
+                    var tfmDir = Path.Combine(searchDir.FullName, "tools", "Legerity.WindowsDriver", "bin", config, "net10.0");
                     if (Directory.Exists(tfmDir))
                     {
                         var matches = Directory.GetFiles(tfmDir, exeName, SearchOption.AllDirectories);
@@ -163,33 +177,9 @@ public static class LegerityWindowsDriverHelper
             }
         }
 
-        // 4. Check NuGet global packages folder
-        var nugetDir = Environment.GetEnvironmentVariable("NUGET_PACKAGES")
-            ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".nuget", "packages");
-        var packageDir = Path.Combine(nugetDir, packageId);
-        if (Directory.Exists(packageDir))
-        {
-            var versions = Directory.GetDirectories(packageDir)
-                .OrderByDescending(d => d)
-                .ToArray();
-
-            foreach (var versionDir in versions)
-            {
-                var toolsDir = Path.Combine(versionDir, "tools");
-                if (Directory.Exists(toolsDir))
-                {
-                    var matches = Directory.GetFiles(toolsDir, exeName, SearchOption.AllDirectories);
-                    if (matches.Length > 0)
-                    {
-                        return matches[0];
-                    }
-                }
-            }
-        }
-
         throw new WindowsDriverLoadFailedException(
-            $"The Legerity Windows Driver executable ({exeName}) could not be found. " +
-            "Install the Legerity.WindowsDriver NuGet package, set LegerityWindowsDriverHelper.DriverPath, " +
+            $"The Legerity Windows Driver executable could not be found. " +
+            "Install it with 'dotnet tool install --global Legerity.WindowsDriver', set LegerityWindowsDriverHelper.DriverPath, " +
             "or ensure it is on your PATH.");
     }
 }

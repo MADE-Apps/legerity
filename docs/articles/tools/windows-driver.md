@@ -11,25 +11,27 @@ It implements the W3C WebDriver protocol, so it works with Selenium, Appium, and
 
 ## Installation
 
-The Windows Driver is distributed as a NuGet package (`Legerity.WindowsDriver`) containing the executable in its `tools/` folder. You can also build it from source:
+Install the Windows Driver as a global .NET tool:
 
-```powershell
-cd tools/Legerity.WindowsDriver
-dotnet build
+```bash
+dotnet tool install --global Legerity.WindowsDriver
 ```
+
+Or update an existing install:
+
+```bash
+dotnet tool update --global Legerity.WindowsDriver
+```
+
+> [!NOTE]
+> The Windows Driver requires Windows and .NET 10.0 or later.
 
 ## Usage
 
-Run the driver server from the build output or extracted NuGet tools folder:
+Start the driver server:
 
-```powershell
-dotnet run --project tools/Legerity.WindowsDriver -- --port 4723
-```
-
-Or run the built executable directly:
-
-```powershell
-./tools/Legerity.WindowsDriver/bin/Debug/net10.0-windows/Legerity.WindowsDriver.exe --port 4723
+```bash
+legerity-windows-driver --port 4723
 ```
 
 The server listens on `http://localhost:4723` and accepts W3C WebDriver commands. Point your test project's `DriverUri` at this address:
@@ -53,7 +55,7 @@ new WindowsAppManagerOptions
 - **W3C WebDriver protocol** for compatibility with modern Selenium and Appium clients.
 - **No Developer Mode required** on the Windows machine.
 - **Built on FlaUI/UIA3** which provides reliable access to the Windows UI Automation tree.
-- **Included in the repository** and distributed as a NuGet package with the executable ready to run.
+- **Included in the repository** and distributed as a .NET global tool via NuGet.
 
 ## Supported capabilities
 
@@ -136,12 +138,12 @@ For CI pipelines on Windows agents:
 ```yaml
 # GitHub Actions example
 steps:
-  - name: Build Windows Driver
-    run: dotnet build tools/Legerity.WindowsDriver -c Release
+  - name: Install Windows Driver
+    run: dotnet tool install --global Legerity.WindowsDriver
 
   - name: Start Windows Driver
     run: |
-      Start-Process tools/Legerity.WindowsDriver/bin/Release/net10.0-windows/Legerity.WindowsDriver.exe -ArgumentList "--port 4723" -WindowStyle Hidden
+      Start-Process legerity-windows-driver -ArgumentList "--port 4723" -WindowStyle Hidden
       Start-Sleep -Seconds 3
 
   - name: Run tests

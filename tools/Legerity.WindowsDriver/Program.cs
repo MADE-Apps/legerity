@@ -2,6 +2,12 @@ using Legerity.WindowsDriver.Automation;
 using Legerity.WindowsDriver.Endpoints;
 using Legerity.WindowsDriver.Middleware;
 
+if (!OperatingSystem.IsWindows())
+{
+    Console.Error.WriteLine("Legerity Windows Driver requires Windows.");
+    return 1;
+}
+
 var port = 4723;
 
 for (int i = 0; i < args.Length; i++)
@@ -27,3 +33,5 @@ Console.WriteLine($"Legerity Windows Driver listening on http://localhost:{port}
 Console.WriteLine("Press Ctrl+C to stop.");
 
 app.Run();
+
+return 0;
