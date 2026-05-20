@@ -1,9 +1,8 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using System;
 using Legerity.Windows.Tests.Pages;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class SliderTests : BaseTestClass
@@ -70,7 +69,7 @@ internal class SliderTests : BaseTestClass
 
     private SliderPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<SliderPage>("Slider");
     }
 }

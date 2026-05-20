@@ -1,25 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity for Web Authentication - Framework for UI testing with Selenium/Appium</Product>
-    <Description>
-      An extension to the Legerity UI testing framework to support authenticating with common web identity providers.
-    </Description>
+    <Description>Web authentication extension for the Legerity UI testing framework. Provides pre-built page objects for Azure AD, Facebook, and Google login flows.</Description>
     <PackageTags>UI Test AzureAD Facebook Google Appium Selenium ChromeDriver FirefoxDriver OperaDriver SafariDriver EdgeDriver InternetExplorerDriver RemoteWebDriver Web</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Legerity.Web\Legerity.Web.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

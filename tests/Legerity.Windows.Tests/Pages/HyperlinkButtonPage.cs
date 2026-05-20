@@ -1,11 +1,11 @@
-namespace Legerity.Windows.Tests.Pages;
+using Legerity.Windows.Elements.Core;
+using OpenQA.Selenium;
 
-using Elements.Core;
-using OpenQA.Selenium.Remote;
+namespace Legerity.Windows.Tests.Pages;
 
 internal class HyperlinkButtonPage : BaseNavigationPage
 {
-    public HyperlinkButtonPage(RemoteWebDriver app) : base(app)
+    public HyperlinkButtonPage(WebDriver app) : base(app)
     {
     }
 

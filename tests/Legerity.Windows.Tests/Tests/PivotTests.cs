@@ -1,9 +1,9 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using Extensions;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Extensions;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class PivotTests : BaseTestClass
@@ -17,7 +17,7 @@ internal class PivotTests : BaseTestClass
     public void ShouldSelectPivotItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         PivotPage pivotPage = new HomePage(app).NavigateTo<PivotPage>("Pivot");
 
         // Act
@@ -31,7 +31,7 @@ internal class PivotTests : BaseTestClass
     public void ShouldSelectPivotItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         PivotPage pivotPage = new HomePage(app).NavigateTo<PivotPage>("Pivot");
 
         // Act

@@ -1,9 +1,9 @@
-namespace Legerity.Web.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Legerity.Web.Elements;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Web.Elements.Core;
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Button control.
 /// </summary>
@@ -16,7 +16,7 @@ public class Button : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Button(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -24,23 +24,23 @@ public class Button : WebElementWrapper
     /// Initializes a new instance of the <see cref="Button"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Button(RemoteWebElement element)
+    public Button(WebElement element)
         : base(element)
     {
     }
 
     /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Button"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Button"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Button"/>.
     /// </returns>
-    public static implicit operator Button(RemoteWebElement element)
+    public static implicit operator Button(WebElement element)
     {
         return new Button(element);
     }

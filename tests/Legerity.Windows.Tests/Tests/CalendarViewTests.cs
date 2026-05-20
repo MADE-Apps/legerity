@@ -1,10 +1,9 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using Legerity.Windows.Tests.Pages;
-using OpenQA.Selenium.Remote;
-using Shouldly;
 using System.Globalization;
-using System;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
+using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class CalendarViewTests : BaseTestClass
@@ -14,14 +13,13 @@ internal class CalendarViewTests : BaseTestClass
     {
     }
 
-    [TestCase("12/12/2022")]
-    [TestCase("01/01/2023")]
-    [TestCase("02/02/2023")]
-    public void ShouldSelectDate(string dateString)
+    [TestCase(-30)]
+    [TestCase(30)]
+    public void ShouldSelectDate(int daysFromToday)
     {
         // Arrange
-        var expectedDate = DateTime.Parse(dateString, CultureInfo.InvariantCulture);
-        RemoteWebDriver app = this.StartApp();
+        var expectedDate = DateTime.Now.Date.AddDays(daysFromToday);
+        WebDriver app = this.StartApp();
         CalendarViewPage calendarViewPage = new HomePage(app).NavigateTo<CalendarViewPage>("CalendarView");
 
         // Act
@@ -36,7 +34,7 @@ internal class CalendarViewTests : BaseTestClass
     {
         // Arrange
         DateTime expectedDate = DateTime.Now.AddDays(1);
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         CalendarViewPage calendarViewPage = new HomePage(app).NavigateTo<CalendarViewPage>("CalendarView");
 
         // Act

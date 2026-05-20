@@ -1,17 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31710.8
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11801.241 oobstable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity", "Legerity\Legerity.csproj", "{6E084F55-FB61-4B0A-AF1D-454D67FBFD8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.WinUI", "Legerity.WinUI\Legerity.WinUI.csproj", "{39CD911A-FE7A-47AB-8581-888352267554}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.WCT", "Legerity.WCT\Legerity.WCT.csproj", "{DAE078FF-6E67-440E-B501-C2524209CF88}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.MADE", "Legerity.MADE\Legerity.MADE.csproj", "{AD0B92F8-E67B-46FB-8F9F-F080853CB7EF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Telerik.Uwp", "Legerity.Telerik.Uwp\Legerity.Telerik.Uwp.csproj", "{C2C23847-72CA-4201-BEF0-49EB4DFE33FE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Windows", "Legerity.Windows\Legerity.Windows.csproj", "{05F72C9E-FBF7-44D8-9201-2BE21D138989}"
 EndProject
@@ -41,9 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Windows.Tests", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.WinUI.Tests", "..\tests\Legerity.WinUI.Tests\Legerity.WinUI.Tests.csproj", "{74257F8D-E2F0-4327-B672-59F0530F2FD0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.WCT.Tests", "..\tests\Legerity.WCT.Tests\Legerity.WCT.Tests.csproj", "{C779A490-C926-4BF9-9165-0F407AA49A9F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legerity.Telerik.Uwp.Tests", "..\tests\Legerity.Telerik.Uwp.Tests\Legerity.Telerik.Uwp.Tests.csproj", "{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legerity.WindowsDriver", "..\tools\Legerity.WindowsDriver\Legerity.WindowsDriver.csproj", "{6D2AE8DC-DAF6-4A39-A62A-E12271F6A857}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,18 +51,6 @@ Global
 		{39CD911A-FE7A-47AB-8581-888352267554}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39CD911A-FE7A-47AB-8581-888352267554}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39CD911A-FE7A-47AB-8581-888352267554}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DAE078FF-6E67-440E-B501-C2524209CF88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAE078FF-6E67-440E-B501-C2524209CF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DAE078FF-6E67-440E-B501-C2524209CF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAE078FF-6E67-440E-B501-C2524209CF88}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD0B92F8-E67B-46FB-8F9F-F080853CB7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD0B92F8-E67B-46FB-8F9F-F080853CB7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD0B92F8-E67B-46FB-8F9F-F080853CB7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD0B92F8-E67B-46FB-8F9F-F080853CB7EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2C23847-72CA-4201-BEF0-49EB4DFE33FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2C23847-72CA-4201-BEF0-49EB4DFE33FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2C23847-72CA-4201-BEF0-49EB4DFE33FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2C23847-72CA-4201-BEF0-49EB4DFE33FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05F72C9E-FBF7-44D8-9201-2BE21D138989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05F72C9E-FBF7-44D8-9201-2BE21D138989}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F72C9E-FBF7-44D8-9201-2BE21D138989}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -119,14 +99,10 @@ Global
 		{74257F8D-E2F0-4327-B672-59F0530F2FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74257F8D-E2F0-4327-B672-59F0530F2FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74257F8D-E2F0-4327-B672-59F0530F2FD0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C779A490-C926-4BF9-9165-0F407AA49A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C779A490-C926-4BF9-9165-0F407AA49A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C779A490-C926-4BF9-9165-0F407AA49A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C779A490-C926-4BF9-9165-0F407AA49A9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D2AE8DC-DAF6-4A39-A62A-E12271F6A857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D2AE8DC-DAF6-4A39-A62A-E12271F6A857}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D2AE8DC-DAF6-4A39-A62A-E12271F6A857}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D2AE8DC-DAF6-4A39-A62A-E12271F6A857}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,8 +114,7 @@ Global
 		{B1646F24-AD2F-4894-8DD1-2A79001A21E6} = {3024AB14-F3D4-4B9B-AF9D-64EBC00F5361}
 		{C19013D7-97AF-4581-B9B3-32D128241D05} = {3024AB14-F3D4-4B9B-AF9D-64EBC00F5361}
 		{74257F8D-E2F0-4327-B672-59F0530F2FD0} = {3024AB14-F3D4-4B9B-AF9D-64EBC00F5361}
-		{C779A490-C926-4BF9-9165-0F407AA49A9F} = {3024AB14-F3D4-4B9B-AF9D-64EBC00F5361}
-		{10EB86E8-C74E-44AA-B5E8-C38BBC86B503} = {3024AB14-F3D4-4B9B-AF9D-64EBC00F5361}
+		{6D2AE8DC-DAF6-4A39-A62A-E12271F6A857} = {9064E354-7A64-4288-93E5-B3628CA12DD3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAB58D66-B3F1-408A-A96F-572170771367}

@@ -1,9 +1,9 @@
-namespace Legerity.Windows;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
-using Legerity.Windows.Helpers;
 using OpenQA.Selenium.Appium;
 
+namespace Legerity.Windows;
 /// <summary>
 /// Defines a specific <see cref="AppiumManagerOptions"/> for a Windows application.
 /// </summary>
@@ -48,9 +48,9 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     public string AppId { get; set; }
 
     /// <summary>
-    /// Gets or sets a value indicating whether to launch the WinAppDriver if it is not already running.
+    /// Gets or sets a value indicating whether to launch the Legerity Windows Driver server if it is not already running.
     /// </summary>
-    public bool LaunchWinAppDriver { get; set; }
+    public bool LaunchDriver { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether to maximize the window for the application.
@@ -58,20 +58,13 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
     public bool Maximize { get; set; }
 
     /// <summary>
-    /// Gets or sets the path to the WinAppDriver installation for launch.
-    /// <para>
-    /// By default, the path will be the default install location; C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe.
-    /// </para>
-    /// </summary>
-    public string WinAppDriverPath { get; set; } = WinAppDriverHelper.DefaultInstallLocation;
-
-    /// <summary>
     /// Configures the <see cref="AppiumManagerOptions.AppiumOptions"/> with the specified additional options.
     /// </summary>
     public override void Configure()
     {
         base.Configure();
-        this.AppiumOptions.AddAdditionalCapability("app", this.AppId);
+        this.AppiumOptions.PlatformName = "Windows";
+        this.AppiumOptions.App = this.AppId;
     }
 
     /// <summary>
@@ -104,7 +97,7 @@ public class WindowsAppManagerOptions : AppiumManagerOptions
 
         if (this.AdditionalOptions != null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
+            foreach ((var name, var value) in this.AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

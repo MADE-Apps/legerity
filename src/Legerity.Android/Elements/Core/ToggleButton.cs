@@ -1,13 +1,13 @@
-namespace Legerity.Android.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Extensions;
+using Legerity.Android.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Android.Elements.Core;
 /// <summary>
-/// Defines a <see cref="AndroidElement"/> wrapper for the core Android ToggleButton control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core Android ToggleButton control.
 /// </summary>
 public class ToggleButton : Button
 {
@@ -15,9 +15,9 @@ public class ToggleButton : Button
     /// Initializes a new instance of the <see cref="ToggleButton"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public ToggleButton(AndroidElement element)
+    public ToggleButton(AppiumElement element)
         : base(element)
     {
     }
@@ -29,52 +29,23 @@ public class ToggleButton : Button
     public virtual bool IsOn => this.GetCheckedState();
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="ToggleButton"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ToggleButton"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="ToggleButton"/>.
     /// </returns>
-    public static implicit operator ToggleButton(AndroidElement element)
+    public static implicit operator ToggleButton(WebElement element)
     {
-        return new ToggleButton(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ToggleButton"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ToggleButton"/>.
-    /// </returns>
-    public static implicit operator ToggleButton(AppiumWebElement element)
-    {
-        return new ToggleButton(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ToggleButton"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ToggleButton"/>.
-    /// </returns>
-    public static implicit operator ToggleButton(RemoteWebElement element)
-    {
-        return new ToggleButton(element as AndroidElement);
+        return new ToggleButton(element as AppiumElement);
     }
 
     /// <summary>
     /// Toggles the button on.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOn()
     {
@@ -90,7 +61,6 @@ public class ToggleButton : Button
     /// Toggles the button off.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOff()
     {

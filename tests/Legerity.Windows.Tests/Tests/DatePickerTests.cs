@@ -1,11 +1,9 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class DatePickerTests : BaseTestClass
@@ -19,7 +17,7 @@ internal class DatePickerTests : BaseTestClass
     public void ShouldSelectDate(DateTime expectedDate)
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         DatePickerPage datePickerPage = new HomePage(app).NavigateTo<DatePickerPage>("DatePicker");
 
         // Act
@@ -34,7 +32,7 @@ internal class DatePickerTests : BaseTestClass
     {
         // Arrange
         DateTime expectedDate = DateTime.Now.AddDays(1);
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         DatePickerPage datePickerPage = new HomePage(app).NavigateTo<DatePickerPage>("DatePicker");
 
         // Act

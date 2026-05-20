@@ -1,11 +1,11 @@
-namespace Legerity.WinUI.Tests.Pages;
+using Legerity.Windows.Elements.WinUI;
+using OpenQA.Selenium;
 
-using Windows.Elements.WinUI;
-using OpenQA.Selenium.Remote;
+namespace Legerity.WinUI.Tests.Pages;
 
 internal class NavigationViewPage : BaseNavigationPage
 {
-    public NavigationViewPage(RemoteWebDriver app) : base(app)
+    public NavigationViewPage(WebDriver app) : base(app)
     {
     }
 

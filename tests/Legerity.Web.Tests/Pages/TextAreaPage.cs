@@ -1,14 +1,16 @@
-namespace Legerity.Web.Tests.Pages;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Elements.Core;
+using Legerity.Web.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Web.Tests.Pages;
 
 internal class TextAreaPage : W3SchoolsBasePage
 {
     private readonly By reviewTextAreaLocator = By.Id("w3review");
 
-    public TextAreaPage(RemoteWebDriver app) : base(app)
+    public TextAreaPage(WebDriver app) : base(app)
     {
     }
 

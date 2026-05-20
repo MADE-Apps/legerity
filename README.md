@@ -43,13 +43,14 @@ Legerity also provides a best practice page object pattern for building UI tests
 
 ## Features ⭐
 
-- **AppManager** - A wrapper around the [Selenium WebDriver](https://github.com/SeleniumHQ/selenium) and [Appium WebDrivers](https://github.com/appium/appium-dotnet-driver) to simplify starting your UI tests. Supports running a single set of UI tests across multiple platforms, or browsers.
+- **AppManager** - A wrapper around the [Selenium WebDriver](https://github.com/SeleniumHQ/selenium) and [Appium WebDrivers](https://github.com/appium/appium-dotnet-driver) to simplify starting your UI tests. Supports running a single set of UI tests across multiple platforms or browsers.
 - **Page Object Pattern** - Provides a `BasePage` that can be used to create page objects associated with pages in your application that are easy to implement and maintain.
-- **[Page Object Generator](tools/Legerity.PageObjectGenerator)** - A dotnet CLI tool that will automatically create page objects by understanding your application page files!
+- **[Page Object Generator](tools/Legerity.PageObjectGenerator)** - A dotnet CLI tool that automatically generates page objects from your application's XAML, AXML, HTML, and Storyboard/XIB layout files.
 - **Element Wrappers** - Contains a collection of out-of-the-box wrappers for native UI elements that are easy to use with interactions.
+- **[Project Templates](tools/Legerity.Templates)** - `dotnet new` templates to scaffold test projects for each platform.
 - **Testing Frameworks** - Legerity is agnostic of .NET testing frameworks (e.g. NUnit, xUnit, MSTest, etc.) so you can work with what you know.
 - **CI** - Legerity is also agnostic of host CI runner platforms (e.g. GitHub Actions, Azure Pipelines, etc.) and can be run anywhere.
-- **Extendable** - [Legerity.Windows](https://www.nuget.org/packages/Legerity.Windows), [Legerity.Android](https://www.nuget.org/packages/Legerity.Android), [Legerity.IOS](https://www.nuget.org/packages/Legerity.IOS), [Legerity.Web](https://www.nuget.org/packages/Legerity.Web), [Legerity.MADE](https://www.nuget.org/packages/Legerity.MADE), [Legerity.Telerik.Uwp](https://www.nuget.org/packages/Legerity.Telerik.Uwp), [Legerity.WCT](https://www.nuget.org/packages/Legerity.WCT), and [Legerity.WinUI](https://www.nuget.org/packages/Legerity.WinUI) packages include out-of-the-box platform element wrappers for you to use. We also provide the [Legerity.Core](https://www.nuget.org/packages/Legerity.Core) for you to extend your UI components too.
+- **Extendable** - Platform-specific packages ([Legerity.Windows](https://www.nuget.org/packages/Legerity.Windows), [Legerity.Android](https://www.nuget.org/packages/Legerity.Android), [Legerity.IOS](https://www.nuget.org/packages/Legerity.IOS), [Legerity.Web](https://www.nuget.org/packages/Legerity.Web), [Legerity.WinUI](https://www.nuget.org/packages/Legerity.WinUI)) include out-of-the-box element wrappers. Use [Legerity.Core](https://www.nuget.org/packages/Legerity.Core) to build wrappers for your own custom UI components.
 
 ## Documentation 📃
 
@@ -61,8 +62,6 @@ Our documentation includes usages examples, as well as API documentation for you
 
 Legerity is publicly available via NuGet. Each available package is detailed below.
 
-For non-core platform controls, for example, WinUI or the Windows Community Toolkit, we're providing additional extension packages for you to take advantage of within your test projects.
-
 | Package | Downloads |
 | ------ | ------ |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.svg?label=Legerity)](https://www.nuget.org/packages/Legerity/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.svg)](https://www.nuget.org/packages/Legerity) |
@@ -72,10 +71,15 @@ For non-core platform controls, for example, WinUI or the Windows Community Tool
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.IOS.svg?label=Legerity.IOS)](https://www.nuget.org/packages/Legerity.IOS/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.IOS.svg)](https://www.nuget.org/packages/Legerity.IOS) |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.Web.svg?label=Legerity.Web)](https://www.nuget.org/packages/Legerity.Web/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Web.svg)](https://www.nuget.org/packages/Legerity.Web) |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.Web.Authentication.svg?label=Legerity.Web.Authentication)](https://www.nuget.org/packages/Legerity.Web.Authentication/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Web.Authentication.svg)](https://www.nuget.org/packages/Legerity.Web.Authentication) |
-| [![Nuget](https://img.shields.io/nuget/v/Legerity.MADE.svg?label=Legerity.MADE)](https://www.nuget.org/packages/Legerity.MADE/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.MADE.svg)](https://www.nuget.org/packages/Legerity.MADE) |
-| [![Nuget](https://img.shields.io/nuget/v/Legerity.Telerik.Uwp.svg?label=Legerity.Telerik.Uwp)](https://www.nuget.org/packages/Legerity.Telerik.Uwp/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Telerik.Uwp.svg)](https://www.nuget.org/packages/Legerity.Telerik.Uwp) |
-| [![Nuget](https://img.shields.io/nuget/v/Legerity.WCT.svg?label=Legerity.WCT)](https://www.nuget.org/packages/Legerity.WCT/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.WCT.svg)](https://www.nuget.org/packages/Legerity.WCT) |
 | [![Nuget](https://img.shields.io/nuget/v/Legerity.WinUI.svg?label=Legerity.WinUI)](https://www.nuget.org/packages/Legerity.WinUI/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.WinUI.svg)](https://www.nuget.org/packages/Legerity.WinUI) |
+
+### Tools
+
+| Tool | Install |
+| ------ | ------ |
+| Page Object Generator | `dotnet tool install -g Legerity.PageObjectGenerator` |
+| Project Templates | `dotnet new install Legerity.Templates` |
+| Windows Driver | [Legerity.WindowsDriver](https://www.nuget.org/packages/Legerity.WindowsDriver/) |
 
 ## Support Legerity 💗
 
@@ -87,24 +91,19 @@ Looking to help build Legerity? Take a look through our [contribution guidelines
 
 ## Building Legerity 🛠
 
-Legerity is built using .NET Standard, taking advantage of the new SDK-style projects.
+Legerity is built using .NET 10 with SDK-style projects.
 
-You can build the solution using Visual Studio with the following workloads installed:
+You can build the solution using Visual Studio or the .NET CLI:
 
-- .NET desktop development
-- .NET Core cross-platform development
+```bash
+dotnet build src/Legerity.sln
+```
 
 ## Got components? 💭
 
 Do you have a collection of custom components that you'd like to see added to the Legerity framework? Feel free to drop a feature request into our [work tracker](https://github.com/MADE-Apps/legerity/issues)!
 
 Even better, why not help build out your custom control wrapper elements within the framework and help out the community!
-
-### Additional component extensions
-
-| Package | Downloads | Description |
-| ------ | ------ | ------ |
-| [![Nuget](https://img.shields.io/nuget/v/Legerity.Uno.svg?label=Uno+Platform)](https://www.nuget.org/packages/Legerity.Uno/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Legerity.Uno.svg)](https://www.nuget.org/packages/Legerity.Uno/) | Extension framework to Legerity to support cross-platform UI testing for Uno Platform |
 
 ### UI Automation tooling 🧰
 

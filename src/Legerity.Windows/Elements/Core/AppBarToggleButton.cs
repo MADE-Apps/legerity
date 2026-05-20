@@ -1,13 +1,13 @@
-namespace Legerity.Windows.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.Core;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP AppBarToggleButton control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core UWP AppBarToggleButton control.
 /// </summary>
 public class AppBarToggleButton : AppBarButton
 {
@@ -15,9 +15,9 @@ public class AppBarToggleButton : AppBarButton
     /// Initializes a new instance of the <see cref="AppBarToggleButton"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public AppBarToggleButton(WindowsElement element)
+    public AppBarToggleButton(AppiumElement element)
         : base(element)
     {
     }
@@ -29,52 +29,23 @@ public class AppBarToggleButton : AppBarButton
     public virtual bool IsOn => this.GetToggleState() == ToggleState.Checked;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="AppBarToggleButton"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="AppBarToggleButton"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="AppBarToggleButton"/>.
     /// </returns>
-    public static implicit operator AppBarToggleButton(WindowsElement element)
+    public static implicit operator AppBarToggleButton(WebElement element)
     {
-        return new AppBarToggleButton(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="AppBarToggleButton"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="AppBarToggleButton"/>.
-    /// </returns>
-    public static implicit operator AppBarToggleButton(AppiumWebElement element)
-    {
-        return new AppBarToggleButton(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="AppBarToggleButton"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="AppBarToggleButton"/>.
-    /// </returns>
-    public static implicit operator AppBarToggleButton(RemoteWebElement element)
-    {
-        return new AppBarToggleButton(element as WindowsElement);
+        return new AppBarToggleButton(element as AppiumElement);
     }
 
     /// <summary>
     /// Toggles the button on.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOn()
     {
@@ -90,7 +61,6 @@ public class AppBarToggleButton : AppBarButton
     /// Toggles the button off.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOff()
     {

@@ -1,12 +1,11 @@
-namespace Legerity.WinUI.Tests.Pages;
-
-using Legerity.Windows;
 using Legerity.Windows.Elements.WinUI;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
+
+namespace Legerity.WinUI.Tests.Pages;
 
 internal class InfoBarPage : BaseNavigationPage
 {
-    public InfoBarPage(RemoteWebDriver app) : base(app)
+    public InfoBarPage(WebDriver app) : base(app)
     {
     }
 

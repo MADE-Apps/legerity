@@ -1,7 +1,6 @@
-namespace Legerity.Templates.IOS.NUnit.Pages;
-
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Templates.IOS.NUnit.Pages;
 
 internal class SamplePage : BasePage
 {
@@ -10,7 +9,7 @@ internal class SamplePage : BasePage
     {
     }
 
-    public SamplePage(RemoteWebDriver app)
+    public SamplePage(WebDriver app)
         : base(app, BaseTestClass.ImplicitWait)
     {
     }

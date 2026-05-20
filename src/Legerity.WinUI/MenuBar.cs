@@ -1,17 +1,14 @@
-namespace Legerity.Windows.Elements.WinUI;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using Legerity.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.WinUI;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI UWP MenuBar control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the WinUI UWP MenuBar control.
 /// </summary>
 public class MenuBar : WindowsElementWrapper
 {
@@ -19,9 +16,9 @@ public class MenuBar : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="MenuBar"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public MenuBar(WindowsElement element)
+    public MenuBar(AppiumElement element)
         : base(element)
     {
     }
@@ -31,48 +28,20 @@ public class MenuBar : WindowsElementWrapper
     /// </summary>
     public virtual IEnumerable<MenuBarItem> MenuItems =>
         this.Element.FindElements(By.ClassName("Microsoft.UI.Xaml.Controls.MenuBarItem"))
-            .Select(element => new MenuBarItem(this, element as WindowsElement));
+            .Select(element => new MenuBarItem(this, element as AppiumElement));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="MenuBar"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="MenuBar"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="MenuBar"/>.
     /// </returns>
-    public static implicit operator MenuBar(WindowsElement element)
+    public static implicit operator MenuBar(WebElement element)
     {
-        return new MenuBar(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="MenuBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="MenuBar"/>.
-    /// </returns>
-    public static implicit operator MenuBar(AppiumWebElement element)
-    {
-        return new MenuBar(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="MenuBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="MenuBar"/>.
-    /// </returns>
-    public static implicit operator MenuBar(RemoteWebElement element)
-    {
-        return new MenuBar(element as WindowsElement);
+        return new MenuBar(element as AppiumElement);
     }
 
     /// <summary>
@@ -86,19 +55,12 @@ public class MenuBar : WindowsElementWrapper
     /// </returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuBarItem ClickOption(string name)
     {
         MenuBarItem item = this.MenuItems.FirstOrDefault(
             element => element.GetName()
-                .Equals(name, StringComparison.CurrentCultureIgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find element by {name}");
-        }
-
+                .Equals(name, StringComparison.CurrentCultureIgnoreCase)) ?? throw new NoSuchElementException($"Unable to find element by {name}");
         item.Click();
         return item;
     }
@@ -114,19 +76,12 @@ public class MenuBar : WindowsElementWrapper
     /// </returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual MenuBarItem ClickOptionByPartialName(string name)
     {
         MenuBarItem item = this.MenuItems.FirstOrDefault(
             element => element.GetName()
-                .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find element by {name}");
-        }
-
+                .Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase)) ?? throw new NoSuchElementException($"Unable to find element by {name}");
         item.Click();
         return item;
     }

@@ -1,13 +1,9 @@
-namespace Legerity.Web.Tests.Tests;
-
-using System.Collections.Generic;
-using System.IO;
-using System;
-using System.Linq;
-using Elements.Core;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Elements.Core;
+using Legerity.Web.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -37,7 +33,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetTableHeaders()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -57,7 +53,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetTableRows()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -74,7 +70,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetDataTableRows()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -91,7 +87,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetRowDataByIndex()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -111,7 +107,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetColumnDataByIndex()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()
@@ -134,7 +130,7 @@ internal class TableTests : W3SchoolsBaseTestClass
     public void ShouldGetColumnDataByHeader()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         TablePage tablePage = new TablePage(app)
             .AcceptCookies<TablePage>()

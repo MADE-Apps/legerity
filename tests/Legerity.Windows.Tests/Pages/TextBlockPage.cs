@@ -1,12 +1,12 @@
-namespace Legerity.Windows.Tests.Pages;
 
-using Elements.Core;
+using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class TextBlockPage : BaseNavigationPage
 {
-    public TextBlockPage(RemoteWebDriver app) : base(app)
+    public TextBlockPage(WebDriver app) : base(app)
     {
     }
 

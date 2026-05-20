@@ -1,13 +1,13 @@
-namespace Legerity.Windows.Elements.WinUI;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.WinUI;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI InfoBar control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the WinUI InfoBar control.
 /// </summary>
 public class InfoBar : WindowsElementWrapper
 {
@@ -15,9 +15,9 @@ public class InfoBar : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="InfoBar"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public InfoBar(WindowsElement element)
+    public InfoBar(AppiumElement element)
         : base(element)
     {
     }
@@ -57,45 +57,17 @@ public class InfoBar : WindowsElementWrapper
     public virtual Button CloseButton => this.FindElement(WindowsByExtras.AutomationId("CloseButton"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="InfoBar"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="InfoBar"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="InfoBar"/>.
     /// </returns>
-    public static implicit operator InfoBar(WindowsElement element)
+    public static implicit operator InfoBar(WebElement element)
     {
-        return new InfoBar(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="InfoBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InfoBar"/>.
-    /// </returns>
-    public static implicit operator InfoBar(AppiumWebElement element)
-    {
-        return new InfoBar(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="InfoBar"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="InfoBar"/>.
-    /// </returns>
-    public static implicit operator InfoBar(RemoteWebElement element)
-    {
-        return new InfoBar(element as WindowsElement);
+        return new InfoBar(element as AppiumElement);
     }
 
     /// <summary>
@@ -103,7 +75,6 @@ public class InfoBar : WindowsElementWrapper
     /// </summary>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Close()
     {

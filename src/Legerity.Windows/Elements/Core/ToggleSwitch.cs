@@ -1,13 +1,13 @@
-namespace Legerity.Windows.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.Core;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP ToggleSwitch control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core UWP ToggleSwitch control.
 /// </summary>
 public class ToggleSwitch : WindowsElementWrapper
 {
@@ -15,9 +15,9 @@ public class ToggleSwitch : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="ToggleSwitch"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public ToggleSwitch(WindowsElement element)
+    public ToggleSwitch(AppiumElement element)
         : base(element)
     {
     }
@@ -29,52 +29,23 @@ public class ToggleSwitch : WindowsElementWrapper
     public virtual bool IsOn => this.GetToggleState() == ToggleState.Checked;
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="ToggleSwitch"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="ToggleSwitch"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="ToggleSwitch"/>.
     /// </returns>
-    public static implicit operator ToggleSwitch(WindowsElement element)
+    public static implicit operator ToggleSwitch(WebElement element)
     {
-        return new ToggleSwitch(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="ToggleSwitch"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ToggleSwitch"/>.
-    /// </returns>
-    public static implicit operator ToggleSwitch(AppiumWebElement element)
-    {
-        return new ToggleSwitch(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ToggleSwitch"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="ToggleSwitch"/>.
-    /// </returns>
-    public static implicit operator ToggleSwitch(RemoteWebElement element)
-    {
-        return new ToggleSwitch(element as WindowsElement);
+        return new ToggleSwitch(element as AppiumElement);
     }
 
     /// <summary>
     /// Toggles the switch on.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOn()
     {
@@ -90,7 +61,6 @@ public class ToggleSwitch : WindowsElementWrapper
     /// Toggles the switch off.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOff()
     {

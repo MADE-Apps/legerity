@@ -1,12 +1,11 @@
-namespace Legerity.Web.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
-using System.Linq;
 using Legerity.Extensions;
 using Legerity.Web.Extensions;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Web.Elements.Core;
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Table Row (tr) control.
 /// </summary>
@@ -19,7 +18,7 @@ public class TableRow : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public TableRow(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -27,9 +26,9 @@ public class TableRow : WebElementWrapper
     /// Initializes a new instance of the <see cref="TableRow"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public TableRow(RemoteWebElement element)
+    public TableRow(WebElement element)
         : base(element)
     {
     }

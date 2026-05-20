@@ -1,13 +1,13 @@
-namespace Legerity.Windows.Tests.Pages;
 
-using Elements.Core;
-using Elements.WinUI;
+using Legerity.Windows.Elements.Core;
+using Legerity.Windows.Elements.WinUI;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class ProgressRingPage : BaseNavigationPage
 {
-    public ProgressRingPage(RemoteWebDriver app) : base(app)
+    public ProgressRingPage(WebDriver app) : base(app)
     {
     }
 

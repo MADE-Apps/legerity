@@ -1,8 +1,9 @@
-namespace Legerity.Extensions;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using System.Globalization;
-using System.Linq;
 
+namespace Legerity.Extensions;
 /// <summary>
 /// Defines a collection of extensions for <see cref="string"/>.
 /// </summary>

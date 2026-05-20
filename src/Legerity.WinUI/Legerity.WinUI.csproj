@@ -1,32 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>Legerity for WinUI - Framework for UI tests with Selenium/Appium</Product>
-    <Description>
-      This package is a WinUI extension for speeding up the development of automated UI tests with Selenium/Appium including:
-      - MenuBar
-      - MenuBarItem
-      - NavigationView
-      - NavigationViewItem
-      - NumberBox
-      - TabView
-    </Description>
-    <PackageTags>UI Test Appium Selenium WindowsDriver WinAppDriver Windows WinUI</PackageTags>
+    <TargetFramework>net10.0</TargetFramework>
+    <Product>Legerity for WinUI - Framework for UI testing with Selenium/Appium</Product>
+    <Description>WinUI extension for the Legerity UI testing framework. Provides typed element wrappers for InfoBar, MenuBar, NavigationView, NumberBox, RatingControl, and TabView.</Description>
+    <PackageTags>UI Test Appium Selenium WinAppDriver LegerityWindowsDriver Windows WinUI</PackageTags>
     <RootNamespace>Legerity.Windows.Elements.WinUI</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Legerity.Windows\Legerity.Windows.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

@@ -1,28 +1,28 @@
-namespace Legerity.Windows.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
+using System.Globalization;
 using Legerity.Exceptions;
 using Legerity.Extensions;
 using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.Core;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP CalendarDatePicker control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core UWP CalendarDatePicker control.
 /// </summary>
 public class CalendarDatePicker : WindowsElementWrapper
 {
-    private readonly By calendarPopupLocator = By.XPath(".//*[@ClassName='Popup'][@Name='Popup']");
+    private readonly By calendarPopupLocator = By.XPath(".//*[@Name='Pop-up']");
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CalendarDatePicker"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public CalendarDatePicker(WindowsElement element)
+    public CalendarDatePicker(AppiumElement element)
         : base(element)
     {
     }
@@ -46,45 +46,17 @@ public class CalendarDatePicker : WindowsElementWrapper
     public virtual DateTime? SelectedDate => this.GetSelectedDate();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="CalendarDatePicker"/>.
     /// </returns>
-    public static implicit operator CalendarDatePicker(WindowsElement element)
+    public static implicit operator CalendarDatePicker(WebElement element)
     {
-        return new CalendarDatePicker(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarDatePicker"/>.
-    /// </returns>
-    public static implicit operator CalendarDatePicker(AppiumWebElement element)
-    {
-        return new CalendarDatePicker(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CalendarDatePicker"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarDatePicker"/>.
-    /// </returns>
-    public static implicit operator CalendarDatePicker(RemoteWebElement element)
-    {
-        return new CalendarDatePicker(element as WindowsElement);
+        return new CalendarDatePicker(element as AppiumElement);
     }
 
     /// <summary>
@@ -92,7 +64,6 @@ public class CalendarDatePicker : WindowsElementWrapper
     /// </summary>
     /// <param name="date">The date to set to.</param>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="ElementNotShownException">Thrown when an element is not shown for the expected locator.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
@@ -107,8 +78,8 @@ public class CalendarDatePicker : WindowsElementWrapper
 
     private DateTime? GetSelectedDate()
     {
-        string value = this.Value;
+        var value = this.Value;
         return string.IsNullOrEmpty(value) ? default :
-            DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
+            DateTime.TryParse(value, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces, out DateTime date) ? date : default(DateTime?);
     }
 }

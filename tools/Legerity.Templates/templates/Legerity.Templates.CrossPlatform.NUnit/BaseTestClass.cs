@@ -1,9 +1,5 @@
 namespace Legerity.Templates.CrossPlatform.NUnit;
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.
 /// </summary>
@@ -72,7 +68,7 @@ public abstract class BaseTestClass : LegerityTestClass
         new WindowsAppManagerOptions(WindowsApplication)
         {
             DriverUri = "http://127.0.0.1:4723",
-            LaunchWinAppDriver = true,
+            LaunchDriver = true,
             Maximize = true,
             ImplicitWait = ImplicitWait
         }

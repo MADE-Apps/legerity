@@ -1,10 +1,10 @@
-namespace Legerity.Web.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Legerity.Web.Elements;
 using Legerity.Web.Extensions;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Web.Elements.Core;
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Option control.
 /// </summary>
@@ -17,7 +17,7 @@ public class Option : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Option(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +25,9 @@ public class Option : WebElementWrapper
     /// Initializes a new instance of the <see cref="Option"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Option(RemoteWebElement element)
+    public Option(WebElement element)
         : base(element)
     {
     }
@@ -59,7 +59,7 @@ public class Option : WebElementWrapper
     /// <returns>
     /// The <see cref="Option"/>.
     /// </returns>
-    public static implicit operator Option(RemoteWebElement element)
+    public static implicit operator Option(WebElement element)
     {
         return new Option(element);
     }
@@ -69,7 +69,6 @@ public class Option : WebElementWrapper
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void Select()
     {
         this.Click();

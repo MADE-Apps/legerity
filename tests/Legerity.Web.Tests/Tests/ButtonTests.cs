@@ -1,10 +1,10 @@
-namespace Legerity.Web.Tests.Tests;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
+using OpenQA.Selenium;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -34,7 +34,7 @@ internal class ButtonTests : W3SchoolsBaseTestClass
     public void ShouldClickButton()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         ButtonPage buttonPage = new ButtonPage(app)
             .AcceptCookies<ButtonPage>()

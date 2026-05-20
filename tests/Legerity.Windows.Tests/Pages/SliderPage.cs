@@ -1,12 +1,12 @@
-namespace Legerity.Windows.Tests.Pages;
 
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class SliderPage : BaseNavigationPage
 {
-    public SliderPage(RemoteWebDriver app) : base(app)
+    public SliderPage(WebDriver app) : base(app)
     {
     }
 

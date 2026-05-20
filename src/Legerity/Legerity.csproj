@@ -1,23 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity - Framework for UI testing with Selenium/Appium</Product>
-    <Description>
-      This is a meta-package for the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      - Page object pattern framework.
-      - Windows core element wrappers.
-      - Android core element wrappers.
-      - iOS core element wrappers.
-      - Web core element wrappers.
-    </Description>
-    <PackageTags>UI Test Appium Selenium WinAppDriver POP Windows UWP Web Android IOS Xamarin Uno</PackageTags>
+    <Description>Meta-package for the Legerity UI testing framework. Includes core, Windows, Android, iOS, and Web element wrapper packages.</Description>
+    <PackageTags>UI Test Appium Selenium WinAppDriver LegerityWindowsDriver POP Windows UWP WinUI Web Android IOS Xamarin MAUI Uno</PackageTags>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Legerity.Android\Legerity.Android.csproj" />
@@ -25,10 +13,6 @@
     <ProjectReference Include="..\Legerity.IOS\Legerity.IOS.csproj" />
     <ProjectReference Include="..\Legerity.Web\Legerity.Web.csproj" />
     <ProjectReference Include="..\Legerity.Windows\Legerity.Windows.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

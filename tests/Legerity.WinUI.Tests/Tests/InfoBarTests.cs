@@ -1,8 +1,8 @@
-namespace Legerity.WinUI.Tests.Tests;
-
 using Legerity.WinUI.Tests.Pages;
-using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.WinUI.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class InfoBarTests : BaseTestClass
@@ -54,7 +54,7 @@ internal class InfoBarTests : BaseTestClass
 
     private InfoBarPage StartAndNavigateToPage()
     {
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         return new HomePage(app).NavigateTo<InfoBarPage>("InfoBar");
     }
 }

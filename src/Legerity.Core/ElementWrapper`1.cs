@@ -1,6 +1,5 @@
-namespace Legerity;
-
-using System;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using Legerity.Exceptions;
 
@@ -8,14 +7,15 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Support.UI;
 
+namespace Legerity;
 /// <summary>
 /// Defines a base wrapper for elements to expose platform element logic.
 /// </summary>
 /// <typeparam name="TElement">
-/// The type of <see cref="AppiumWebElement"/>.
+/// The type of <see cref="AppiumElement"/>.
 /// </typeparam>
 public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
-    where TElement : AppiumWebElement
+    where TElement : AppiumElement
 {
     private readonly WeakReference elementReference;
 
@@ -57,7 +57,6 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// Clicks the element.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Click()
     {
@@ -81,9 +80,9 @@ public abstract class ElementWrapper<TElement> : IElementWrapper<TElement>
     /// <param name="locator">The locator to find a child element by.</param>
     /// <returns>The <typeparamref name="TElement"/>.</returns>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
-    public AppiumWebElement FindElement(By locator)
+    public AppiumElement FindElement(By locator)
     {
-        return this.Element.FindElement(locator);
+        return this.Element.FindElement(locator) as AppiumElement;
     }
 
     /// <summary>

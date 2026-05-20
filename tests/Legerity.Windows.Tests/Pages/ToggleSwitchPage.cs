@@ -1,12 +1,12 @@
-namespace Legerity.Windows.Tests.Pages;
 
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class ToggleSwitchPage : BaseNavigationPage
 {
-    public ToggleSwitchPage(RemoteWebDriver app) : base(app)
+    public ToggleSwitchPage(WebDriver app) : base(app)
     {
     }
 

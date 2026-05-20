@@ -1,10 +1,10 @@
-namespace Legerity.Web.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Legerity.Web.Elements;
 using Legerity.Web.Extensions;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Web.Elements.Core;
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Input file control.
 /// </summary>
@@ -17,7 +17,7 @@ public class FileInput : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public FileInput(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -25,9 +25,9 @@ public class FileInput : WebElementWrapper
     /// Initializes a new instance of the <see cref="FileInput"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public FileInput(RemoteWebElement element)
+    public FileInput(WebElement element)
         : base(element)
     {
     }
@@ -47,7 +47,7 @@ public class FileInput : WebElementWrapper
     /// <returns>
     /// The <see cref="FileInput"/>.
     /// </returns>
-    public static implicit operator FileInput(RemoteWebElement element)
+    public static implicit operator FileInput(WebElement element)
     {
         return new FileInput(element);
     }
@@ -57,7 +57,6 @@ public class FileInput : WebElementWrapper
     /// </summary>
     /// <param name="filePath">The file path.</param>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SetAbsoluteFilePath(string filePath)
     {

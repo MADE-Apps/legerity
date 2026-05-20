@@ -1,12 +1,12 @@
-namespace Legerity.Android.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Android.Elements.Core;
 /// <summary>
-/// Defines a <see cref="AndroidElement"/> wrapper for the core Android Spinner control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core Android Spinner control.
 /// </summary>
 public class Spinner : AndroidElementWrapper
 {
@@ -14,9 +14,9 @@ public class Spinner : AndroidElementWrapper
     /// Initializes a new instance of the <see cref="Spinner"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public Spinner(AndroidElement element)
+    public Spinner(AppiumElement element)
         : base(element)
     {
     }
@@ -28,45 +28,17 @@ public class Spinner : AndroidElementWrapper
     public virtual string SelectedItem => this.GetSelectedItem();
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="Spinner"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Spinner"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Spinner"/>.
     /// </returns>
-    public static implicit operator Spinner(AndroidElement element)
+    public static implicit operator Spinner(WebElement element)
     {
-        return new Spinner(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="Spinner"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Spinner"/>.
-    /// </returns>
-    public static implicit operator Spinner(AppiumWebElement element)
-    {
-        return new Spinner(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Spinner"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Spinner"/>.
-    /// </returns>
-    public static implicit operator Spinner(RemoteWebElement element)
-    {
-        return new Spinner(element as AndroidElement);
+        return new Spinner(element as AppiumElement);
     }
 
     /// <summary>
@@ -76,7 +48,6 @@ public class Spinner : AndroidElementWrapper
     /// The name of the item to select.
     /// </param>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SelectItem(string name)
@@ -86,7 +57,7 @@ public class Spinner : AndroidElementWrapper
         var locator =
             new ByAndroidUIAutomator(
                 $"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\"{name}\"));");
-        AndroidElement item = this.Driver.FindElement(locator);
+        AppiumElement item = this.Driver.FindElement(locator);
 
         item.Click();
     }
@@ -96,7 +67,6 @@ public class Spinner : AndroidElementWrapper
     /// </summary>
     /// <param name="partialName">The partial name match for the item to select.</param>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SelectItemByPartialName(string partialName)
@@ -106,7 +76,7 @@ public class Spinner : AndroidElementWrapper
         var locator =
             new ByAndroidUIAutomator(
                 $"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().textContains(\"{partialName}\"));");
-        AndroidElement item = this.Driver.FindElement(locator);
+        AppiumElement item = this.Driver.FindElement(locator);
 
         item.Click();
     }

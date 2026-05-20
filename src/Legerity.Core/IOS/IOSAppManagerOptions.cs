@@ -1,9 +1,9 @@
-namespace Legerity.IOS;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Enums;
 
+namespace Legerity.IOS;
 /// <summary>
 /// Defines a specific <see cref="AppiumManagerOptions"/> for an iOS application.
 /// </summary>
@@ -108,12 +108,12 @@ public class IOSAppManagerOptions : AppiumManagerOptions
     {
         base.Configure();
 
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "iOS");
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, this.OSVersion);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, this.DeviceName);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, this.DeviceId);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.App, this.AppId);
-        this.AppiumOptions.AddAdditionalCapability(MobileCapabilityType.AutomationName, this.AutomationName);
+        this.AppiumOptions.PlatformName = "iOS";
+        this.AppiumOptions.PlatformVersion = this.OSVersion;
+        this.AppiumOptions.DeviceName = this.DeviceName;
+        this.AppiumOptions.AddAdditionalAppiumOption("udid", this.DeviceId);
+        this.AppiumOptions.App = this.AppId;
+        this.AppiumOptions.AutomationName = this.AutomationName;
     }
 
     /// <summary>
@@ -156,7 +156,7 @@ public class IOSAppManagerOptions : AppiumManagerOptions
 
         if (this.AdditionalOptions != null)
         {
-            foreach ((string name, object value) in this.AdditionalOptions)
+            foreach ((var name, var value) in this.AdditionalOptions)
             {
                 options.Add($"{name} [{value}]");
             }

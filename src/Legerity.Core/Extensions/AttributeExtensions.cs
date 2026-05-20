@@ -1,8 +1,9 @@
-namespace Legerity.Extensions;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Extensions;
 /// <summary>
 /// Defines a collection of extensions for retrieving element attributes.
 /// </summary>
@@ -23,7 +24,7 @@ public static class AttributeExtensions
     /// Retrieves the Name attribute from the specified element.
     /// </summary>
     /// <typeparam name="TElement">
-    /// The type of <see cref="RemoteWebElement"/>.
+    /// The type of <see cref="WebElement"/>.
     /// </typeparam>
     /// <param name="element">The <see cref="IElementWrapper{TElement}"/> to retrieve a Name from.</param>
     /// <returns>The Name of the element.</returns>

@@ -1,7 +1,9 @@
-namespace Legerity;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 using OpenQA.Selenium.Appium;
 
+namespace Legerity;
 /// <summary>
 /// Defines a base model that represents Appium specific configuration options for the <see cref="AppManager"/>.
 /// </summary>
@@ -37,9 +39,9 @@ public abstract class AppiumManagerOptions : AppManagerOptions
             return;
         }
 
-        foreach ((string capabilityName, object capabilityValue) in this.AdditionalOptions)
+        foreach ((var capabilityName, var capabilityValue) in this.AdditionalOptions)
         {
-            this.AppiumOptions.AddAdditionalCapability(capabilityName, capabilityValue);
+            this.AppiumOptions.AddAdditionalAppiumOption(capabilityName, capabilityValue);
         }
     }
 }

@@ -1,12 +1,12 @@
-namespace Legerity.Android.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using Legerity.Android.Elements;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Android.Elements.Core;
 /// <summary>
-/// Defines a <see cref="AndroidElement"/> wrapper for the core Android Button control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core Android Button control.
 /// </summary>
 public class Button : AndroidElementWrapper
 {
@@ -14,52 +14,24 @@ public class Button : AndroidElementWrapper
     /// Initializes a new instance of the <see cref="Button"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public Button(AndroidElement element)
+    public Button(AppiumElement element)
         : base(element)
     {
     }
 
     /// <summary>
-    /// Allows conversion of a <see cref="AndroidElement"/> to the <see cref="Button"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="Button"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="AndroidElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="Button"/>.
     /// </returns>
-    public static implicit operator Button(AndroidElement element)
+    public static implicit operator Button(WebElement element)
     {
-        return new Button(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="Button"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Button"/>.
-    /// </returns>
-    public static implicit operator Button(AppiumWebElement element)
-    {
-        return new Button(element as AndroidElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="Button"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="Button"/>.
-    /// </returns>
-    public static implicit operator Button(RemoteWebElement element)
-    {
-        return new Button(element as AndroidElement);
+        return new Button(element as AppiumElement);
     }
 }

@@ -1,9 +1,10 @@
-namespace Legerity.Helpers;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using Legerity.Pages;
 using OpenQA.Selenium;
 
+namespace Legerity.Helpers;
 /// <summary>
 /// Defines a set of conditions that can be used with the WaitUntil methods of elements and pages.
 /// </summary>

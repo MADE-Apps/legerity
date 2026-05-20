@@ -1,18 +1,16 @@
-namespace Legerity.Windows.Tests.Pages;
 
 using Legerity.Windows.Elements.Core;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class ComboBoxPage : BaseNavigationPage
 {
     private readonly By colorComboBox = By.Name("Colors");
 
-    public ComboBoxPage(RemoteWebDriver app) : base(app)
+    public ComboBoxPage(WebDriver app) : base(app)
     {
     }
-
-    protected override By Trait => By.XPath(".//*[@Name='ComboBox'][@AutomationId='TitleTextBlock']");
 
     public ComboBox ColorComboBox => this.FindElement(this.colorComboBox);
 

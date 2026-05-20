@@ -1,12 +1,8 @@
-namespace Legerity.Web.Tests.Tests;
-
-using System.Collections.Generic;
-using System.IO;
-using System;
-using System.Linq;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -36,7 +32,7 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldGetOptions()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -57,14 +53,14 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldGetIsMultipleFalse()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
             .SwitchToContentFrame<SelectPage>();
 
         // Act
-        bool isMultiple = selectPage.CarsSelect.IsMultiple;
+        var isMultiple = selectPage.CarsSelect.IsMultiple;
 
         // Assert
         isMultiple.ShouldBeFalse();
@@ -74,9 +70,9 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByValue()
     {
         // Arrange
-        string expected = "audi";
+        var expected = "audi";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -93,9 +89,9 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByDisplayValue()
     {
         // Arrange
-        string expected = "Audi";
+        var expected = "Audi";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -112,9 +108,9 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByPartialValue()
     {
         // Arrange
-        string expected = "audi";
+        var expected = "audi";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()
@@ -131,9 +127,9 @@ internal class SelectTests : W3SchoolsBaseTestClass
     public void ShouldSelectOptionByPartialDisplayValue()
     {
         // Arrange
-        string expected = "Audi";
+        var expected = "Audi";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         SelectPage selectPage = new SelectPage(app)
             .AcceptCookies<SelectPage>()

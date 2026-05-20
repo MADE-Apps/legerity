@@ -1,23 +1,27 @@
-namespace Legerity;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
-using Android;
-using Exceptions;
-using IOS;
+using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Reflection;
+using Legerity.Android;
+using Legerity.Exceptions;
+using Legerity.IOS;
+using Legerity.Web;
+using Legerity.Windows;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
-using Windows;
 
+namespace Legerity;
 /// <summary>
 /// Defines a base class for running tests with the Legerity framework.
 /// </summary>
 public abstract class LegerityTestClass
 {
-    private readonly List<RemoteWebDriver> apps = new();
+    private static readonly AsyncLocal<WebDriver> CurrentApp = new();
+    private readonly ConcurrentBag<WebDriver> apps = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LegerityTestClass"/> class.
@@ -39,28 +43,30 @@ public abstract class LegerityTestClass
     }
 
     /// <summary>
-    /// Gets the instance of the started application.
+    /// Gets the instance of the started application for the current test.
     /// <para>
-    /// This could be a <see cref="WindowsDriver{W}"/>, <see cref="AndroidDriver{W}"/>, <see cref="IOSDriver{W}"/>, or web driver.
+    /// This could be a <see cref="WindowsDriver"/>, <see cref="AndroidDriver"/>, <see cref="IOSDriver"/>, or web driver.
     /// </para>
     /// </summary>
     /// <remarks>
-    /// This instance should not be used in parallelized test runs. Instead, use the instance returned by the <see cref="StartApp(Func{IWebDriver,bool},TimeSpan?,int)"/> or <see cref="StartApp(AppManagerOptions,Func{IWebDriver,bool},TimeSpan?,int)"/> method.
+    /// This property is thread-safe and returns the driver for the current test execution context,
+    /// making it safe for use in parallelized test runs.
     /// </remarks>
-    protected RemoteWebDriver App { get; private set; }
+    protected static WebDriver App
+    {
+        get => CurrentApp.Value;
+        private set => CurrentApp.Value = value;
+    }
 
     /// <summary>
-    /// Gets or sets the instances of started applications.
+    /// Gets the instances of all started applications across this fixture.
     /// </summary>
-    /// <remarks>
-    /// This is useful for accessing drivers in parallelized tests.
-    /// </remarks>
-    protected IReadOnlyCollection<RemoteWebDriver> Apps => this.apps;
+    protected IReadOnlyCollection<WebDriver> Apps => this.apps.ToArray();
 
     /// <summary>
     /// Gets or sets the model that represents the configuration options for the <see cref="AppManager"/>.
     /// </summary>
-    protected AppManagerOptions Options { get; set; }
+    public AppManagerOptions Options { get; protected set; }
 
     /// <summary>
     /// Starts the application ready for testing.
@@ -79,10 +85,10 @@ public abstract class LegerityTestClass
     /// <exception cref="DriverLoadFailedException">Thrown when the application is null, the session ID is null once initialized, or the driver fails to configure correctly before returning.</exception>
     /// <exception cref="LegerityException">Thrown when:
     /// - The Appium server could not be found when running with <see cref="AndroidAppManagerOptions.LaunchAppiumServer"/> or <see cref="IOSAppManagerOptions.LaunchAppiumServer"/> true.
-    /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
-    /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
+    /// - The LegerityWindowsDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.
+    /// - The LegerityWindowsDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.
     /// </exception>
-    public virtual RemoteWebDriver StartApp(
+    public virtual WebDriver StartApp(
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
         int waitUntilRetries = 0)
@@ -112,11 +118,11 @@ public abstract class LegerityTestClass
     /// <exception cref="DriverLoadFailedException">Thrown when the application is null, the session ID is null once initialized, or the driver fails to configure correctly before returning.</exception>
     /// <exception cref="LegerityException">Thrown when:
     /// - The Appium server could not be found when running with <see cref="AndroidAppManagerOptions.LaunchAppiumServer"/> or <see cref="IOSAppManagerOptions.LaunchAppiumServer"/> true.
-    /// - The WinAppDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
-    /// - The WinAppDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchWinAppDriver"/> true.
+    /// - The LegerityWindowsDriver could not be found when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.
+    /// - The LegerityWindowsDriver failed to load when running with <see cref="WindowsAppManagerOptions.LaunchDriver"/> true.
     /// </exception>
     /// <exception cref="WebDriverException">Thrown when the wait until condition is not met in the allocated timeout period if provided.</exception>
-    public virtual RemoteWebDriver StartApp(
+    public virtual WebDriver StartApp(
         AppManagerOptions options,
         Func<IWebDriver, bool> waitUntil = default,
         TimeSpan? waitUntilTimeout = default,
@@ -127,14 +133,16 @@ public abstract class LegerityTestClass
             this.Options = options;
         }
 
-        RemoteWebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
-        this.App = app;
+        this.CheckAppExclusions();
+
+        WebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
+        App = app;
         this.apps.Add(app);
         return app;
     }
 
     /// <summary>
-    /// Stops the <see cref="App"/> and any running Appium or WinAppDriver server.
+    /// Stops the <see cref="App"/> and any running Appium or LegerityWindowsDriver server.
     /// </summary>
     public virtual void StopApp()
     {
@@ -142,49 +150,114 @@ public abstract class LegerityTestClass
     }
 
     /// <summary>
-    /// Stops the <see cref="App"/>, with an option to stop the running Appium or WinAppDriver server.
+    /// Stops the <see cref="App"/>, with an option to stop the running Appium or LegerityWindowsDriver server.
     /// </summary>
     /// <param name="stopServer">
-    /// An optional value indicating whether to stop the running Appium or WinAppDriver server.
+    /// An optional value indicating whether to stop the running Appium or LegerityWindowsDriver server.
     /// </param>
     public virtual void StopApp(bool stopServer)
     {
-        this.StopApp(this.App, stopServer);
+        this.StopApp(App, stopServer);
     }
 
     /// <summary>
-    /// Stops an application, with an option to stop the running Appium or WinAppDriver server.
+    /// Stops an application, with an option to stop the running Appium or LegerityWindowsDriver server.
     /// </summary>
     /// <param name="app">
     /// The <see cref="IWebDriver"/> instance to stop running.
     /// </param>
     /// <param name="stopServer">
-    /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>false</b>.
+    /// An optional value indicating whether to stop the running Appium or LegerityWindowsDriver server. Default, <b>false</b>.
     /// </param>
-    public virtual void StopApp(RemoteWebDriver app, bool stopServer = false)
+    public virtual void StopApp(WebDriver app, bool stopServer = false)
     {
-        this.StopAppManagerApp(app, stopServer, true);
+        StopAppManagerApp(app, stopServer);
     }
 
     /// <summary>
-    /// Stops all running application drivers, with an option to stop the running Appium or WinAppDriver server.
+    /// Stops all running application drivers, with an option to stop the running Appium or LegerityWindowsDriver server.
     /// </summary>
     /// <param name="stopServer">
-    /// An optional value indicating whether to stop the running Appium or WinAppDriver server. Default, <b>true</b>.
+    /// An optional value indicating whether to stop the running Appium or LegerityWindowsDriver server. Default, <b>true</b>.
     /// </param>
     public virtual void StopApps(bool stopServer = true)
     {
-        this.apps.ForEach(app => this.StopAppManagerApp(app, stopServer, false));
-        this.apps.Clear();
+        while (this.apps.TryTake(out WebDriver app))
+        {
+            AppManager.StopApp(app, stopServer);
+        }
     }
 
-    private void StopAppManagerApp(RemoteWebDriver app, bool stopServer, bool removeApp)
+    /// <summary>
+    /// Called when an <see cref="AppExclusionAttribute"/> matches the current application.
+    /// <para>
+    /// Override this method in test framework-specific base classes to call the appropriate
+    /// skip/ignore mechanism (e.g. <c>Assert.Ignore(reason)</c> for NUnit).
+    /// </para>
+    /// </summary>
+    /// <param name="reason">A human-readable description of why the test is being ignored.</param>
+    /// <exception cref="AppExcludedException">Thrown by default when no override is provided.</exception>
+    protected virtual void IgnoreTest(string reason)
     {
-        if (removeApp)
+        throw new AppExcludedException(reason);
+    }
+
+    private static void StopAppManagerApp(WebDriver app, bool stopServer)
+    {
+        AppManager.StopApp(app, stopServer);
+    }
+
+    private static string ResolveAppIdentifier(AppManagerOptions options) => options switch
+    {
+        WindowsAppManagerOptions windows => windows.AppId,
+        AndroidAppManagerOptions android => android.AppId,
+        IOSAppManagerOptions ios => ios.AppId,
+        WebAppManagerOptions web => web.Url,
+        _ => null,
+    };
+
+    private void CheckAppExclusions()
+    {
+        string appId = ResolveAppIdentifier(this.Options);
+        if (string.IsNullOrEmpty(appId))
         {
-            this.apps.Remove(app);
+            return;
         }
 
-        AppManager.StopApp(app, stopServer);
+        // Check class-level attributes.
+        foreach (var attr in this.GetType().GetCustomAttributes<AppExclusionAttribute>())
+        {
+            if (attr.IsExcluded(appId))
+            {
+                this.IgnoreTest($"Test excluded for app '{appId}'.");
+                return;
+            }
+        }
+
+        // Check method-level attributes via the call stack.
+        var testType = this.GetType();
+        var stackTrace = new StackTrace();
+        foreach (var frame in stackTrace.GetFrames())
+        {
+            var method = frame.GetMethod();
+            if (method == null || method.DeclaringType == null)
+            {
+                continue;
+            }
+
+            if (!testType.IsAssignableTo(method.DeclaringType))
+            {
+                continue;
+            }
+
+            foreach (var attr in method.GetCustomAttributes<AppExclusionAttribute>())
+            {
+                if (attr.IsExcluded(appId))
+                {
+                    this.IgnoreTest($"Test method '{method.Name}' excluded for app '{appId}'.");
+                    return;
+                }
+            }
+        }
     }
 }

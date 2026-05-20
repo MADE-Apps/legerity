@@ -1,19 +1,16 @@
-namespace Legerity.Windows.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading;
+using System.Globalization;
 using Legerity.Extensions;
 using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.Core;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the core UWP CalendarView control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the core UWP CalendarView control.
 /// </summary>
 public class CalendarView : WindowsElementWrapper
 {
@@ -37,9 +34,9 @@ public class CalendarView : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="CalendarView"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public CalendarView(WindowsElement element)
+    public CalendarView(AppiumElement element)
         : base(element)
     {
     }
@@ -66,7 +63,7 @@ public class CalendarView : WindowsElementWrapper
     /// <summary>
     /// Gets the collection of days associated with the current month in the calendar view.
     /// </summary>
-    public virtual ReadOnlyCollection<AppiumWebElement> Days =>
+    public virtual ReadOnlyCollection<AppiumElement> Days =>
         this.Element.FindElements(By.ClassName("CalendarViewDayItem"));
 
     /// <summary>
@@ -81,45 +78,17 @@ public class CalendarView : WindowsElementWrapper
     public virtual DateTime? SelectedDate => this.GetSelectedDate();
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="CalendarView"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="CalendarView"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="CalendarView"/>.
     /// </returns>
-    public static implicit operator CalendarView(WindowsElement element)
+    public static implicit operator CalendarView(WebElement element)
     {
-        return new CalendarView(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="CalendarView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarView"/>.
-    /// </returns>
-    public static implicit operator CalendarView(AppiumWebElement element)
-    {
-        return new CalendarView(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CalendarView"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="CalendarView"/>.
-    /// </returns>
-    public static implicit operator CalendarView(RemoteWebElement element)
-    {
-        return new CalendarView(element as WindowsElement);
+        return new CalendarView(element as AppiumElement);
     }
 
     /// <summary>
@@ -128,19 +97,17 @@ public class CalendarView : WindowsElementWrapper
     /// <param name="date">The date to set to.</param>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public void SetDate(DateTime date)
     {
-        string expectedDay = date.ToString("%d");
-        string expectedHeader = date.ToString("MMMM yyyy");
+        var expectedDay = date.ToString("%d");
 
-        string currentHeader = this.HeaderButton.GetName();
+        var currentHeader = this.HeaderButton.GetName();
         DateTime currentViewDate = this.GetCurrentViewDate(currentHeader);
 
-        while (!expectedHeader.Equals(currentHeader, StringComparison.CurrentCultureIgnoreCase))
+        while (currentViewDate.Year != date.Year || currentViewDate.Month != date.Month)
         {
-            if (currentViewDate.Date > date.Date)
+            if (currentViewDate > date)
             {
                 this.PreviousMonthButton.Click();
             }
@@ -152,16 +119,11 @@ public class CalendarView : WindowsElementWrapper
             Thread.Sleep(10);
 
             currentHeader = this.HeaderButton.GetName();
+            currentViewDate = this.GetCurrentViewDate(currentHeader);
         }
 
-        AppiumWebElement item = this.Days.FirstOrDefault(
-            element => element.GetName().Equals(expectedDay, StringComparison.CurrentCultureIgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find day {expectedDay} in the current view.");
-        }
-
+        AppiumElement item = this.Days.FirstOrDefault(
+            element => element.GetName().Equals(expectedDay, StringComparison.CurrentCultureIgnoreCase)) ?? throw new NoSuchElementException($"Unable to find day {expectedDay} in the current view.");
         item.Click();
     }
 
@@ -169,18 +131,18 @@ public class CalendarView : WindowsElementWrapper
     {
         this.months.TryGetValue(
             string.Join(string.Empty, currentHeader.Where(char.IsLetter)).Trim(),
-            out string month);
+            out var month);
 
-        string year = string.Join(string.Empty, currentHeader.Where(char.IsDigit)).Trim();
+        var year = string.Join(string.Empty, currentHeader.Where(char.IsDigit)).Trim();
 
-        string dateString = $"01/{month}/{year}";
+        var dateString = $"01/{month}/{year}";
         return DateTime.ParseExact(dateString, @"d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
     }
 
     private DateTime? GetSelectedDate()
     {
-        string value = this.Value;
+        var value = this.Value;
         return string.IsNullOrEmpty(value) ? default :
-            DateTime.TryParse(value, out DateTime date) ? date : default(DateTime?);
+            DateTime.TryParse(value, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces, out DateTime date) ? date : default(DateTime?);
     }
 }

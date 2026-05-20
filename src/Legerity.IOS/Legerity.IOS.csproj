@@ -1,26 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity for iOS - Framework for UI testing with Selenium/Appium</Product>
-    <Description>
-      This package is an iOS core extension to the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      - IOSElementWrapper, for creating element wrappers for custom controls
-    </Description>
-    <PackageTags>UI Test Appium Selenium IOSDriver IOS Xamarin Uno</PackageTags>
+    <Description>iOS platform extension for the Legerity UI testing framework. Provides IOSElementWrapper and typed element wrappers for iOS UI controls.</Description>
+    <PackageTags>UI Test Appium Selenium IOSDriver IOS Xamarin MAUI Uno</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Legerity.Core\Legerity.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,8 @@
-namespace Legerity.Web.Tests.Tests;
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -35,15 +32,15 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldGetValueRange()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
             .SwitchToContentFrame<RangeInputPage>();
 
         // Act
-        double minValue = rangeInputPage.VolumeRangeInput.Minimum;
-        double maxValue = rangeInputPage.VolumeRangeInput.Maximum;
+        var minValue = rangeInputPage.VolumeRangeInput.Minimum;
+        var maxValue = rangeInputPage.VolumeRangeInput.Maximum;
 
         // Assert
         minValue.ShouldBe(0);
@@ -54,7 +51,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldSetValue()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
@@ -71,7 +68,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldThrowOutOfRangeExceptionIfValueIsLessThanMinimum()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
@@ -85,7 +82,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldThrowOutOfRangeExceptionIfValueIsGreaterThanMaximum()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
@@ -99,7 +96,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldIncrementValue()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()
@@ -118,7 +115,7 @@ internal class RangeInputTests : W3SchoolsBaseTestClass
     public void ShouldDecrementValue()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         RangeInputPage rangeInputPage = new RangeInputPage(app)
             .AcceptCookies<RangeInputPage>()

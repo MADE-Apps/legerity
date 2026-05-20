@@ -1,9 +1,9 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using Extensions;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Extensions;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class ListBoxTests : BaseTestClass
@@ -17,7 +17,7 @@ internal class ListBoxTests : BaseTestClass
     public void ShouldClickItem()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ListBoxPage listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
 
         // Act
@@ -31,7 +31,7 @@ internal class ListBoxTests : BaseTestClass
     public void ShouldClickItemByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ListBoxPage listBoxPage = new HomePage(app).NavigateTo<ListBoxPage>("ListBox");
 
         // Act

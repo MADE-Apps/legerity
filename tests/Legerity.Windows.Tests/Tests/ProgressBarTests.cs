@@ -1,8 +1,8 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class ProgressBarTests : BaseTestClass
@@ -16,7 +16,7 @@ internal class ProgressBarTests : BaseTestClass
     public void ShouldGetDeterminateValue()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ProgressBarPage progressBarPage = new HomePage(app).NavigateTo<ProgressBarPage>("ProgressBar");
 
         // Act
@@ -31,7 +31,7 @@ internal class ProgressBarTests : BaseTestClass
     public void ShouldGetIndeterminateValue()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         ProgressBarPage progressBarPage = new HomePage(app).NavigateTo<ProgressBarPage>("ProgressBar");
 
         // Act & Assert

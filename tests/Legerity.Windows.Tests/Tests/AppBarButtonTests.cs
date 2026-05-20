@@ -1,7 +1,7 @@
-namespace Legerity.Windows.Tests.Tests;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 
-using OpenQA.Selenium.Remote;
-using Pages;
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class AppBarButtonTests : BaseTestClass
@@ -15,7 +15,7 @@ internal class AppBarButtonTests : BaseTestClass
     public void ShouldClickSymbolButton()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         AppBarButtonPage appBarButtonPage = new HomePage(app).NavigateTo<AppBarButtonPage>("AppBarButton");
 
         // Act & Assert

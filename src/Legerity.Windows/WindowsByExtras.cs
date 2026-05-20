@@ -1,8 +1,9 @@
-namespace Legerity.Windows;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using OpenQA.Selenium;
 
+namespace Legerity.Windows;
 /// <summary>
 /// Defines a collection of extra locator constraints for <see cref="By"/>.
 /// </summary>

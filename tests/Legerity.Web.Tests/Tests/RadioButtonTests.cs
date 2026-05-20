@@ -1,12 +1,8 @@
-namespace Legerity.Web.Tests.Tests;
-
-using System.Collections.Generic;
-using System.IO;
-using System;
-using System.Linq;
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Web.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Web.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 [Parallelizable(ParallelScope.All)]
@@ -36,7 +32,7 @@ internal class RadioButtonTests : W3SchoolsBaseTestClass
     public void ShouldSelectRadioButton()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         RadioButtonPage radioButtonPage = new RadioButtonPage(app)
             .AcceptCookies<RadioButtonPage>()
@@ -55,14 +51,14 @@ internal class RadioButtonTests : W3SchoolsBaseTestClass
         // Arrange
         const string expectedGroupName = "fav_language";
 
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
 
         RadioButtonPage radioButtonPage = new RadioButtonPage(app)
             .AcceptCookies<RadioButtonPage>()
             .SwitchToContentFrame<RadioButtonPage>();
 
         // Act
-        string groupName = radioButtonPage.LanguageGroupRadioButtons.FirstOrDefault().Group;
+        var groupName = radioButtonPage.LanguageGroupRadioButtons.FirstOrDefault().Group;
 
         // Assert
         groupName.ShouldBe(expectedGroupName);

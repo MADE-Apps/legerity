@@ -1,7 +1,6 @@
-namespace Legerity.Infrastructure.Configuration;
-
-using System;
 using CommandLine;
+
+namespace Legerity.Infrastructure.Configuration;
 
 internal class Options
 {

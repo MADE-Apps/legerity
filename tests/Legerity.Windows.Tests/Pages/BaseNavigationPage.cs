@@ -1,16 +1,14 @@
-namespace Legerity.Windows.Tests.Pages;
-
-using System;
-using Elements.Core;
-using Elements.WinUI;
+using Legerity.Windows.Elements.Core;
+using Legerity.Windows.Elements.WinUI;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
+
+namespace Legerity.Windows.Tests.Pages;
 
 internal class BaseNavigationPage : BasePage
 {
     private readonly By navigationViewLocator = WindowsByExtras.AutomationId("NavigationViewControl");
 
-    public BaseNavigationPage(RemoteWebDriver app)
+    public BaseNavigationPage(WebDriver app)
         : base(app)
     {
     }
@@ -18,7 +16,7 @@ internal class BaseNavigationPage : BasePage
     public NavigationView NavigationView => this.FindElement(this.navigationViewLocator);
 
     public AutoSuggestBox ControlsSearchBox =>
-        this.NavigationView.FindElement(WindowsByExtras.AutomationId("controlsSearchBox"));
+        this.FindElement(WindowsByExtras.AutomationId("controlsSearchBox"));
 
     protected override By Trait => this.navigationViewLocator;
 

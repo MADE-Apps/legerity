@@ -1,8 +1,8 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class PasswordBoxTests : BaseTestClass
@@ -16,7 +16,7 @@ internal class PasswordBoxTests : BaseTestClass
     public void ShouldSetPassword()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         PasswordBoxPage passwordBoxPage = new HomePage(app).NavigateTo<PasswordBoxPage>("PasswordBox");
 
         // Act

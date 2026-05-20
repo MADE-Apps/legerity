@@ -1,14 +1,11 @@
-namespace Legerity.Web.Elements.Core;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using Legerity.Extensions;
-using Legerity.Web.Elements;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Web.Elements.Core;
 /// <summary>
 /// Defines a <see cref="IWebElement"/> wrapper for the core web Select control.
 /// </summary>
@@ -21,7 +18,7 @@ public class Select : WebElementWrapper
     /// The <see cref="IWebElement"/> reference.
     /// </param>
     public Select(IWebElement element)
-        : this(element as RemoteWebElement)
+        : this(element as WebElement)
     {
     }
 
@@ -29,9 +26,9 @@ public class Select : WebElementWrapper
     /// Initializes a new instance of the <see cref="Select"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="RemoteWebElement"/> reference.
+    /// The <see cref="WebElement"/> reference.
     /// </param>
-    public Select(RemoteWebElement element)
+    public Select(WebElement element)
         : base(element)
     {
     }
@@ -69,7 +66,7 @@ public class Select : WebElementWrapper
     /// <returns>
     /// The <see cref="Select"/>.
     /// </returns>
-    public static implicit operator Select(RemoteWebElement element)
+    public static implicit operator Select(WebElement element)
     {
         return new Select(element);
     }
@@ -82,19 +79,12 @@ public class Select : WebElementWrapper
     /// </param>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectOptionByDisplayValue(string displayValue)
     {
         Option item =
             this.Options.FirstOrDefault(e =>
-                e.DisplayValue.Equals(displayValue, StringComparison.CurrentCultureIgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find option {displayValue}");
-        }
-
+                e.DisplayValue.Equals(displayValue, StringComparison.CurrentCultureIgnoreCase)) ?? throw new NoSuchElementException($"Unable to find option {displayValue}");
         item.Select();
     }
 
@@ -106,7 +96,6 @@ public class Select : WebElementWrapper
     /// </param>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectOptionByPartialDisplayValue(string partialDisplayValue)
     {
@@ -115,13 +104,7 @@ public class Select : WebElementWrapper
                 e.DisplayValue.Contains(
                     partialDisplayValue,
                     CultureInfo.CurrentCulture,
-                    CompareOptions.IgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find option {partialDisplayValue}");
-        }
-
+                    CompareOptions.IgnoreCase)) ?? throw new NoSuchElementException($"Unable to find option {partialDisplayValue}");
         item.Select();
     }
 
@@ -134,18 +117,11 @@ public class Select : WebElementWrapper
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SelectOptionByValue(string value)
     {
         Option item =
             this.Options.FirstOrDefault(e =>
-                e.Value.Equals(value, StringComparison.CurrentCultureIgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find option {value}");
-        }
-
+                e.Value.Equals(value, StringComparison.CurrentCultureIgnoreCase)) ?? throw new NoSuchElementException($"Unable to find option {value}");
         item.Select();
     }
 
@@ -157,7 +133,6 @@ public class Select : WebElementWrapper
     /// </param>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void SelectOptionByPartialValue(string partialValue)
     {
@@ -166,25 +141,19 @@ public class Select : WebElementWrapper
                 e.Value.Contains(
                     partialValue,
                     CultureInfo.CurrentCulture,
-                    CompareOptions.IgnoreCase));
-
-        if (item == null)
-        {
-            throw new NoSuchElementException($"Unable to find option {partialValue}");
-        }
-
+                    CompareOptions.IgnoreCase)) ?? throw new NoSuchElementException($"Unable to find option {partialValue}");
         item.Select();
     }
 
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private bool GetIsMultiple()
     {
-        string multipleAttr = this.GetAttribute("multiple");
+        var multipleAttr = this.GetAttribute("multiple");
         if (multipleAttr == null)
         {
             return false;
         }
 
-        return bool.TryParse(multipleAttr, out bool isMultiple) && isMultiple;
+        return bool.TryParse(multipleAttr, out var isMultiple) && isMultiple;
     }
 }

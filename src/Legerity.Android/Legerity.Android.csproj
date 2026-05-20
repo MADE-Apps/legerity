@@ -1,36 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net10.0</TargetFramework>
     <Product>Legerity for Android - Framework for UI testing with Selenium/Appium</Product>
-    <Description>
-      This package is an Android core extension to the Legerity framework for speeding up the development of automated UI tests with Selenium/Appium including:
-      - AndroidElementWrapper, for creating element wrappers for custom controls
-      - Button, a clickable button element
-      - CheckBox, a checkable element
-      - DatePicker, an element for selecting and validating dates
-      - EditText, a text input element
-      - RadioButton, a selectable button element
-      - Spinner, a drop down selector
-      - Switch, a slider element with an on/off toggle state
-      - TextView, a readonly text element
-      - ToggleButton, a button element with a toggle state
-      - View, a base for Android elements
-    </Description>
-    <PackageTags>UI Test Appium Selenium AndroidDriver Android Xamarin Uno</PackageTags>
+    <Description>Android platform extension for the Legerity UI testing framework. Provides AndroidElementWrapper and typed element wrappers for Android UI controls.</Description>
+    <PackageTags>UI Test Appium Selenium AndroidDriver Android Xamarin MAUI Uno</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Legerity.Core\Legerity.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

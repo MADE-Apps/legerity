@@ -1,7 +1,5 @@
 namespace Legerity.Features.Generators.Models;
 
-using System.Collections.Generic;
-
 internal class GeneratorTemplateData
 {
     public GeneratorTemplateData(string ns, string page, string baseElementType)
@@ -20,6 +18,8 @@ internal class GeneratorTemplateData
     public UiElement Trait { get; set; }
 
     public List<UiElement> Elements { get; set; } = new();
+
+    public List<string> AdditionalUsings { get; set; } = new();
 
     public override string ToString()
     {

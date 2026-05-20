@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Product>Legerity Windows Driver - W3C WebDriver server for Windows UI Automation</Product>
+    <Description>A W3C WebDriver compliant server for Windows UI Automation testing, replacing WinAppDriver</Description>
+    <RootNamespace>Legerity.WindowsDriver</RootNamespace>
+    <AssemblyName>Legerity.WindowsDriver</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FlaUI.Core" Version="4.0.0" />
+    <PackageReference Include="FlaUI.UIA3" Version="4.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.5" />
+  </ItemGroup>
+</Project>

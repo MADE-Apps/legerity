@@ -1,11 +1,8 @@
-[assembly: LevelOfParallelism(5)]
-namespace Legerity.Templates.Web.NUnit;
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+
+[assembly: LevelOfParallelism(5)]
+
+namespace Legerity.Templates.Web.NUnit;
 
 /// <summary>
 /// Defines the base test class for setting up and running UI tests.

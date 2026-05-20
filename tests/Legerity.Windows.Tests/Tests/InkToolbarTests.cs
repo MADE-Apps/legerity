@@ -1,10 +1,11 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
 
+namespace Legerity.Windows.Tests.Tests;
+
 [TestFixtureSource(nameof(PlatformOptions))]
+[AppExclusion("Microsoft.WinUI3ControlsGallery")]
 internal class InkToolbarTests : BaseTestClass
 {
     public InkToolbarTests(AppManagerOptions options)
@@ -16,7 +17,7 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetBallpointPenColor()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
@@ -30,7 +31,7 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetPencilColor()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
@@ -44,7 +45,7 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetHighlighterColor()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
@@ -58,7 +59,7 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetBallpointPenColorByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
@@ -72,7 +73,7 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetPencilColorByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act
@@ -86,7 +87,7 @@ internal class InkToolbarTests : BaseTestClass
     public void ShouldSetHighlighterColorByPartialName()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         InkToolbarPage inkToolbarPage = new HomePage(app).NavigateTo<InkToolbarPage>("InkToolbar");
 
         // Act

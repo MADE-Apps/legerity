@@ -1,40 +1,84 @@
-- name: Introduction
-  href: intro.md
-- name: Getting started
-  href: getting-started.md
+- name: Get Started
+  href: get-started/overview.md
   expanded: true
   items:
-    - name: Quick starts
-      href: getting-started/quick-starts.md
-      expanded: true
+    - name: Overview
+      href: get-started/overview.md
+    - name: Quickstart
+      href: get-started/quickstart.md
+    - name: What's New
       items:
-        - name: Windows
-          href: getting-started/quick-starts/windows.md
-        - name: Android
-          href: getting-started/quick-starts/android.md
-        - name: iOS
-          href: getting-started/quick-starts/ios.md
-        - name: Web
-          href: getting-started/quick-starts/web.md
-        - name: Cross platform
-          href: getting-started/quick-starts/cross-platform.md
-- name: Using Legerity
-  href: using-legerity.md
-  expanded: true
+        - name: v1.0
+          href: get-started/whats-new/v1.md
+    - name: Migration Guides
+      items:
+        - name: v0.x to v1.0
+          href: get-started/migration/v0-to-v1.md
+- name: Legerity.Core
+  href: core/overview.md
   items:
-    - name: Installation
-      href: using-legerity/installation.md
-    - name: Test Frameworks
-      href: using-legerity/test-frameworks.md
-    - name: Test Classes
-      href: using-legerity/test-classes.md
+    - name: Overview
+      href: core/overview.md
     - name: App Manager
-      href: using-legerity/app-manager.md
-    - name: Element Wrappers
-      href: using-legerity/element-wrappers.md
+      href: core/app-manager.md
+    - name: Test Classes
+      href: core/test-classes.md
     - name: Page Objects
-      href: using-legerity/page-objects.md
-    - name: By Locators
-      href: using-legerity/by-locators.md
+      href: core/page-objects.md
+    - name: Element Wrappers
+      href: core/element-wrappers.md
+    - name: Locators
+      href: core/locators.md
     - name: Wait Conditions
-      href: using-legerity/wait-conditions.md
+      href: core/wait-conditions.md
+- name: Legerity.Web
+  href: web/overview.md
+  items:
+    - name: Overview
+      href: web/overview.md
+    - name: Getting Started
+      href: web/getting-started.md
+    - name: Element Wrappers
+      href: web/element-wrappers.md
+    - name: Authentication
+      href: web/authentication.md
+- name: Legerity.Windows
+  href: windows/overview.md
+  items:
+    - name: Overview
+      href: windows/overview.md
+    - name: Getting Started
+      href: windows/getting-started.md
+    - name: Element Wrappers
+      href: windows/element-wrappers.md
+    - name: WinUI
+      href: windows/winui.md
+- name: Legerity.Android
+  href: android/overview.md
+  items:
+    - name: Overview
+      href: android/overview.md
+    - name: Getting Started
+      href: android/getting-started.md
+    - name: Element Wrappers
+      href: android/element-wrappers.md
+- name: Legerity.IOS
+  href: ios/overview.md
+  items:
+    - name: Overview
+      href: ios/overview.md
+    - name: Getting Started
+      href: ios/getting-started.md
+    - name: Element Wrappers
+      href: ios/element-wrappers.md
+- name: Tools
+  href: tools/overview.md
+  items:
+    - name: Overview
+      href: tools/overview.md
+    - name: Project Templates
+      href: tools/templates.md
+    - name: Page Object Generator
+      href: tools/page-object-generator.md
+    - name: Windows Driver
+      href: tools/windows-driver.md

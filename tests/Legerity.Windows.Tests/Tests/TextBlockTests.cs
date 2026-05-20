@@ -1,8 +1,8 @@
-namespace Legerity.Windows.Tests.Tests;
-
-using OpenQA.Selenium.Remote;
-using Pages;
+using Legerity.Windows.Tests.Pages;
+using OpenQA.Selenium;
 using Shouldly;
+
+namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
 internal class TextBlockTests : BaseTestClass
@@ -16,7 +16,7 @@ internal class TextBlockTests : BaseTestClass
     public void ShouldGetText()
     {
         // Arrange
-        RemoteWebDriver app = this.StartApp();
+        WebDriver app = this.StartApp();
         TextBlockPage textBlockPage = new HomePage(app).NavigateTo<TextBlockPage>("TextBlock");
 
         // Act & Assert

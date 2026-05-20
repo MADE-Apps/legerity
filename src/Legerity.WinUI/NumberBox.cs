@@ -1,15 +1,14 @@
-namespace Legerity.Windows.Elements.WinUI;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using Legerity.Windows.Elements.Core;
 using Legerity.Windows.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
+namespace Legerity.Windows.Elements.WinUI;
 /// <summary>
-/// Defines a <see cref="WindowsElement"/> wrapper for the WinUI NumberBox control.
+/// Defines a <see cref="AppiumElement"/> wrapper for the WinUI NumberBox control.
 /// </summary>
 public class NumberBox : WindowsElementWrapper
 {
@@ -17,9 +16,9 @@ public class NumberBox : WindowsElementWrapper
     /// Initializes a new instance of the <see cref="NumberBox"/> class.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/> reference.
+    /// The <see cref="AppiumElement"/> reference.
     /// </param>
-    public NumberBox(WindowsElement element)
+    public NumberBox(AppiumElement element)
         : base(element)
     {
     }
@@ -74,45 +73,17 @@ public class NumberBox : WindowsElementWrapper
     public virtual TextBox InputBox => this.FindElement(WindowsByExtras.AutomationId("InputBox"));
 
     /// <summary>
-    /// Allows conversion of a <see cref="WindowsElement"/> to the <see cref="NumberBox"/> without direct casting.
+    /// Allows conversion of a <see cref="WebElement"/> to the <see cref="NumberBox"/> without direct casting.
     /// </summary>
     /// <param name="element">
-    /// The <see cref="WindowsElement"/>.
+    /// The <see cref="WebElement"/>.
     /// </param>
     /// <returns>
     /// The <see cref="NumberBox"/>.
     /// </returns>
-    public static implicit operator NumberBox(WindowsElement element)
+    public static implicit operator NumberBox(WebElement element)
     {
-        return new NumberBox(element);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="NumberBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="AppiumWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NumberBox"/>.
-    /// </returns>
-    public static implicit operator NumberBox(AppiumWebElement element)
-    {
-        return new NumberBox(element as WindowsElement);
-    }
-
-    /// <summary>
-    /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="NumberBox"/> without direct casting.
-    /// </summary>
-    /// <param name="element">
-    /// The <see cref="RemoteWebElement"/>.
-    /// </param>
-    /// <returns>
-    /// The <see cref="NumberBox"/>.
-    /// </returns>
-    public static implicit operator NumberBox(RemoteWebElement element)
-    {
-        return new NumberBox(element as WindowsElement);
+        return new NumberBox(element as AppiumElement);
     }
 
     /// <summary>
@@ -127,11 +98,10 @@ public class NumberBox : WindowsElementWrapper
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void SetValue(double value)
     {
-        double min = this.Minimum;
-        double max = this.Maximum;
+        var min = this.Minimum;
+        var max = this.Maximum;
 
         if (value < this.Minimum)
         {
@@ -158,7 +128,6 @@ public class NumberBox : WindowsElementWrapper
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     public virtual void Increment()
     {
         this.Element.SendKeys(Keys.ArrowUp);
@@ -168,7 +137,6 @@ public class NumberBox : WindowsElementWrapper
     /// Decreases the number box value by the <see cref="SmallChange"/> value.
     /// </summary>
     /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
-    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
     /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void Decrement()
     {

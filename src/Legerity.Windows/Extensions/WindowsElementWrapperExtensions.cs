@@ -1,10 +1,11 @@
-namespace Legerity.Windows.Extensions;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System;
 using Legerity.Windows.Elements;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
+namespace Legerity.Windows.Extensions;
 /// <summary>
 /// Defines a collection of extensions for <see cref="WindowsElementWrapper"/> objects.
 /// </summary>

@@ -1,10 +1,10 @@
-namespace Legerity;
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using OpenQA.Selenium;
 
+namespace Legerity;
 /// <summary>
 /// Defines a <see cref="By"/> locator that can be used to find all elements that match all locators in sequence.
 /// </summary>
@@ -56,7 +56,7 @@ public class ByAll : By
             return new List<IWebElement>().AsReadOnly();
         }
 
-        IEnumerable<IWebElement> elements = null;
+        List<IWebElement> elements = null;
         foreach (By locator in this.locators)
         {
             ReadOnlyCollection<IWebElement> foundElements = locator.FindElements(context);
@@ -65,9 +65,16 @@ public class ByAll : By
                 return new List<IWebElement>().AsReadOnly();
             }
 
-            elements = elements == null ? foundElements : elements.Intersect(locator.FindElements(context));
+            if (elements == null)
+            {
+                elements = new List<IWebElement>(foundElements);
+            }
+            else
+            {
+                elements.RemoveAll(e => !foundElements.Any(f => f.Equals(e)));
+            }
         }
 
-        return (elements ?? new List<IWebElement>()).ToList().AsReadOnly();
+        return (elements ?? new List<IWebElement>()).AsReadOnly();
     }
 }
