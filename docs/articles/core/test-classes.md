@@ -163,6 +163,61 @@ public class LoginTests : BaseTestClass
 
 NUnit creates a separate test fixture for each set of options, running your entire test suite against each platform. Your test code and page objects stay the same because Legerity's abstractions work across all platforms.
 
+## Excluding tests for specific apps
+
+When testing against multiple applications, some tests may not apply to every app. For example, the WinUI 2 Gallery includes an InkToolbar control that doesn't exist in the WinUI 3 gallery. Use `AppExclusionAttribute` to skip tests for specific apps:
+
+```csharp
+[TestFixtureSource(typeof(BaseTestClass), nameof(PlatformOptions))]
+[AppExclusion("Microsoft.WinUI3ControlsGallery")]
+public class InkToolbarTests : BaseTestClass
+{
+    public InkToolbarTests(AppManagerOptions options)
+        : base(options)
+    {
+    }
+
+    [Test]
+    public void ShouldSetBallpointPenColor()
+    {
+        var app = StartApp();
+        // This test only runs against apps that don't match the exclusion.
+    }
+}
+```
+
+The attribute accepts one or more app identifier substrings. Matching is case-insensitive and uses substring comparison, so `"Microsoft.WinUI3ControlsGallery"` matches an app ID of `"Microsoft.WinUI3ControlsGallery_8wekyb3d8bbwe!App"`.
+
+You can also apply the attribute to individual test methods:
+
+```csharp
+[Test]
+[AppExclusion("com.example.legacyapp")]
+public void ShouldUseNewFeature()
+{
+    var app = StartApp();
+    // Skipped when running against the legacy app.
+}
+```
+
+The exclusion check runs automatically inside `StartApp()`. When an exclusion matches, `LegerityTestClass` calls its virtual `IgnoreTest(string reason)` method. Override this in your `BaseTestClass` to integrate with your test framework:
+
+```csharp
+// NUnit
+protected override void IgnoreTest(string reason)
+{
+    Assert.Ignore(reason);
+}
+```
+
+```csharp
+// xUnit
+protected override void IgnoreTest(string reason)
+{
+    throw new SkipException(reason);
+}
+```
+
 ## Overriding options per test
 
 You can start the app with different options for specific tests by passing options directly to `StartApp()`:

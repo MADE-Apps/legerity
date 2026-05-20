@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: LevelOfParallelism(5)]
+[assembly: LevelOfParallelism(1)]
 [assembly: ExcludeFromCodeCoverage]
 
 namespace Legerity.Windows.Tests.Tests;
@@ -9,8 +9,9 @@ namespace Legerity.Windows.Tests.Tests;
 /// </summary>
 public abstract class BaseTestClass : LegerityTestClass
 {
-    // This is the package family name of the Windows application that will be launched. These can be found by running Get-AppxPackage in PowerShell.
-    private const string WindowsApplication = "Microsoft.WinUI3ControlsGallery_8wekyb3d8bbwe!App";
+    // These are the package family names of the Windows applications that will be launched. These can be found by running Get-AppxPackage in PowerShell.
+    private const string WinUI3Application = "Microsoft.WinUI3ControlsGallery_8wekyb3d8bbwe!App";
+    private const string UWPApplication = "Microsoft.XAMLControlsGallery_8wekyb3d8bbwe!App";
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseTestClass"/> class.
@@ -38,7 +39,13 @@ public abstract class BaseTestClass : LegerityTestClass
     /// </summary>
     protected static IEnumerable<AppManagerOptions> PlatformOptions => new List<AppManagerOptions>
     {
-        new WindowsAppManagerOptions(WindowsApplication)
+        new WindowsAppManagerOptions(WinUI3Application)
+        {
+            DriverUri = "http://127.0.0.1:4723",
+            LaunchDriver = true,
+            ImplicitWait = ImplicitWait,
+        },
+        new WindowsAppManagerOptions(UWPApplication)
         {
             DriverUri = "http://127.0.0.1:4723",
             LaunchDriver = true,
@@ -71,5 +78,11 @@ public abstract class BaseTestClass : LegerityTestClass
     {
         // Ensures that any running app driver instances being tracked are stopped.
         this.StopApps();
+    }
+
+    /// <inheritdoc/>
+    protected override void IgnoreTest(string reason)
+    {
+        Assert.Ignore(reason);
     }
 }

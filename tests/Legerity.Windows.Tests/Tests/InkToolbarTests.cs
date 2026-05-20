@@ -5,6 +5,7 @@ using Shouldly;
 namespace Legerity.Windows.Tests.Tests;
 
 [TestFixtureSource(nameof(PlatformOptions))]
+[AppExclusion("Microsoft.WinUI3ControlsGallery")]
 internal class InkToolbarTests : BaseTestClass
 {
     public InkToolbarTests(AppManagerOptions options)

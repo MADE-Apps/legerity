@@ -2,9 +2,12 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Reflection;
 using Legerity.Android;
 using Legerity.Exceptions;
 using Legerity.IOS;
+using Legerity.Web;
 using Legerity.Windows;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
@@ -63,7 +66,7 @@ public abstract class LegerityTestClass
     /// <summary>
     /// Gets or sets the model that represents the configuration options for the <see cref="AppManager"/>.
     /// </summary>
-    protected AppManagerOptions Options { get; set; }
+    public AppManagerOptions Options { get; protected set; }
 
     /// <summary>
     /// Starts the application ready for testing.
@@ -130,6 +133,8 @@ public abstract class LegerityTestClass
             this.Options = options;
         }
 
+        this.CheckAppExclusions();
+
         WebDriver app = AppManager.StartApp(this.Options, waitUntil, waitUntilTimeout, waitUntilRetries);
         App = app;
         this.apps.Add(app);
@@ -183,8 +188,76 @@ public abstract class LegerityTestClass
         }
     }
 
+    /// <summary>
+    /// Called when an <see cref="AppExclusionAttribute"/> matches the current application.
+    /// <para>
+    /// Override this method in test framework-specific base classes to call the appropriate
+    /// skip/ignore mechanism (e.g. <c>Assert.Ignore(reason)</c> for NUnit).
+    /// </para>
+    /// </summary>
+    /// <param name="reason">A human-readable description of why the test is being ignored.</param>
+    /// <exception cref="AppExcludedException">Thrown by default when no override is provided.</exception>
+    protected virtual void IgnoreTest(string reason)
+    {
+        throw new AppExcludedException(reason);
+    }
+
     private static void StopAppManagerApp(WebDriver app, bool stopServer)
     {
         AppManager.StopApp(app, stopServer);
+    }
+
+    private static string ResolveAppIdentifier(AppManagerOptions options) => options switch
+    {
+        WindowsAppManagerOptions windows => windows.AppId,
+        AndroidAppManagerOptions android => android.AppId,
+        IOSAppManagerOptions ios => ios.AppId,
+        WebAppManagerOptions web => web.Url,
+        _ => null,
+    };
+
+    private void CheckAppExclusions()
+    {
+        string appId = ResolveAppIdentifier(this.Options);
+        if (string.IsNullOrEmpty(appId))
+        {
+            return;
+        }
+
+        // Check class-level attributes.
+        foreach (var attr in this.GetType().GetCustomAttributes<AppExclusionAttribute>())
+        {
+            if (attr.IsExcluded(appId))
+            {
+                this.IgnoreTest($"Test excluded for app '{appId}'.");
+                return;
+            }
+        }
+
+        // Check method-level attributes via the call stack.
+        var testType = this.GetType();
+        var stackTrace = new StackTrace();
+        foreach (var frame in stackTrace.GetFrames())
+        {
+            var method = frame.GetMethod();
+            if (method == null || method.DeclaringType == null)
+            {
+                continue;
+            }
+
+            if (!testType.IsAssignableTo(method.DeclaringType))
+            {
+                continue;
+            }
+
+            foreach (var attr in method.GetCustomAttributes<AppExclusionAttribute>())
+            {
+                if (attr.IsExcluded(appId))
+                {
+                    this.IgnoreTest($"Test method '{method.Name}' excluded for app '{appId}'.");
+                    return;
+                }
+            }
+        }
     }
 }
