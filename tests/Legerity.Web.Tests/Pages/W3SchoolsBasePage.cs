@@ -24,8 +24,16 @@ internal abstract class W3SchoolsBasePage : BasePage
 
     public T AcceptCookies<T>() where T : W3SchoolsBasePage
     {
-        this.WaitUntil(page => page.AcceptCookiesButton.IsVisible, this.WaitTimeout);
-        this.AcceptCookiesButton.Click();
+        try
+        {
+            this.WaitUntil(page => page.AcceptCookiesButton.IsVisible, this.WaitTimeout);
+            this.AcceptCookiesButton.Click();
+        }
+        catch (WebDriverTimeoutException)
+        {
+            // Cookie banner did not appear; continue without it.
+        }
+
         return (T)this;
     }
 
